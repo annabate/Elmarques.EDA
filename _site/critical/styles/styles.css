@@ -1,0 +1,817 @@
+:root {
+  /* Backgrounds */
+  --bg-base: #e8d9b9;          
+  --bg-pane: #fffdf8;
+  --bg-tooltip: #fff9f0;
+
+  /* Text */
+  --text-primary: #2e2e2e;
+  --text-heading: #5b4b3b;
+  --text-subheading: #776a5c;
+  --text-muted: #888;
+
+  /* Accents & Highlights */
+  --accent-icon: #6b5d4c;
+  --accent-underline: #b19362;
+  --highlight-lemma: #dbdcee;
+
+  /* Borders & UI */
+  --border-tooltip: #ccc;
+  --border-apparatus: #d8c8ae;
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  text-align: justify;
+}
+
+#sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1021;
+  background-color: #fffdf7;
+  border-bottom: 1px solid #e6dbc6;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Georgia, serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.header-title span {
+  font-size: 1.3rem;
+  color: #a88e65;
+  font-weight: bold;
+}
+
+#floating-tools {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.lem-apparatus.active .app-tooltip { 
+  pointer-events:auto 
+}
+
+h1 {
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.7em;
+  font-style: italic;
+  color:#b49970;
+  margin: 1em auto;
+}
+
+/* Layout */
+#tei-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  gap: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tei-column {
+  flex: 1;
+  background: var(--bg-pane);
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* TEI Headers */
+tei-head {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+tei-head:not([type]) {
+  font-size: 1.6em;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: var(--text-heading);
+}
+
+tei-head[type="subtitle"] {
+  font-size: 1em;
+  font-style: italic;
+  color: var(--text-subheading);
+}
+
+tei-head[type="subtitle1"] {
+  margin-top: 2em;
+  font-size: 1.3em;
+  text-align: center;
+  font-variant: small-caps;
+  color: var(--text-subheading);
+}
+
+/* Block Elements */
+tei-div, tei-p {
+  margin-bottom: 1em;
+  display: block;
+}
+
+tei-castList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 1.5em auto;
+  gap: 0.2em;
+}
+
+tei-castItem {
+  display: block;
+  font-variant: small-caps;
+  font-size: 1em;
+  line-height: 1.3;
+  margin: 0.1em 0;
+}
+
+tei-stage {
+  display: block;
+  font-style: italic;
+  font-size: 1em;
+  text-align: center;
+  margin: 1.2em 0 0.8em 0;
+}
+
+tei-speaker {
+  display: inline;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+/* Lines and line numbers */
+tei-l {
+  display: block;
+  margin-left: 2em;
+  position: relative;
+}
+
+tei-l[part="M"],
+tei-l[part="F"] {
+  text-indent: 0em;
+  padding-left: 0em;
+}
+
+.line-number {
+  position:relative;
+  left: -2em;
+  top: 0;
+  width: 2em;
+  text-align: right;
+  font-size: 0.9rem;
+  font-family: "Georgia", serif;
+  color: #7f674b;
+  font-weight: normal;
+  font-variant-numeric: oldstyle-nums;
+}
+
+/* Notes */
+.tei-note {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 0.25em;
+  vertical-align: top;
+}
+
+.note-icon {
+  font-size: 0.8em;
+  color: var(--accent-icon);
+  font-weight: bold;
+  user-select: none;
+  display: inline;
+  vertical-align: super;
+}
+
+.note-tooltip {
+  display: none;
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  color: #222;
+  padding: 0.8em 1em;
+  border: 1px solid var(--border-tooltip);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: normal;
+  max-width: 300px;
+  min-width: 220px;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.tei-note.active .note-tooltip {
+  display: block;
+}
+
+/* Apparatus (lemmas, variants) */
+.lem-wrapper,
+.variant-span {
+  background-color: #d3d4f2;
+  border-bottom: 1px dashed #4a6180;
+  cursor: pointer;
+  position: relative;
+  padding: 0 0.15em;
+  display: inline-block;
+}
+
+.apparatus-icon {
+  font-size: 0.9em;
+  margin-right: 0.3em;
+  color: #5a4a2f;
+  cursor: pointer;
+}
+
+
+.lem-wrapper.omission-block {
+  display: block !important;
+  margin: 0.5em 0;
+  padding: 0.5em 1em;
+  background-color: #f6f4ff;
+  border: 1.3px dashed #7a7fc5;
+  position: relative;
+  width: 280px;
+}
+
+/* Italic label like "[Texto omitido]" */
+.lem-wrapper.omission em {
+  font-style: italic;
+  color: #5a4a2f;
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+/* Speaker formatting */
+.lem-wrapper.omission-block tei-speaker,
+.lem-wrapper.omission .speaker {
+  font-weight: bold;
+  font-variant: small-caps;
+  font-style: normal;
+  display: block;
+}
+
+/* Line structure */
+.lem-wrapper.omission-block .line-text {
+  display: inline-block;
+  text-indent: 0;      /* Avoid indentation from global styles */
+  margin-bottom: 0.3em;
+}
+
+.lem-wrapper.omission-block .line-number {
+  display: inline-block;
+  top: 0;
+  width: 2em;
+  text-align: right;
+  margin-left: 1em;
+  font-size: 0.9rem;
+  font-family: "Georgia", serif;
+  color: #7f674b;
+  font-weight: normal;
+  font-variant-numeric: oldstyle-nums;
+}
+
+
+.lem-wrapper.omission .line-text {
+  display: inline-block;
+}
+
+/* Tooltip */
+.lem-wrapper .apparatus-tooltip {
+  display: none;
+  position: absolute;
+  top: 2em;
+  left: 0;
+  z-index: 10;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.4em;
+  font-size: 0.9em;
+  white-space: nowrap;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.lem-wrapper.active .apparatus-tooltip {
+  display: block;
+}
+
+
+#add-witness-btn {
+  background-color: #f7f1e8;
+  border: 1px solid #bca67b;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+  color: #5a4a2f;
+}
+
+#witness-select {
+  display: none;
+  background-color: #f7f1e8;
+  border: 1px solid #bca67b;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  padding: 0.3em 0.5em;
+  color: #333;
+}
+
+#witness-select.visible {
+  display: inline-block;
+}
+
+#witness-container.hidden {
+  display: none;
+}
+/* Ensures line containers render even when content is replaced (e.g. in omitted spans) */
+.line-container.omitted {
+  font-style: italic;
+  color: #a08f7c;
+  opacity: 0.8;
+}
+
+.line-container.omitted::before {
+  content: "⟨texto omitido⟩";
+  font-style: italic;
+  color: #a08f7c;
+}
+
+/* Handles long lemma spans for omitted sections */
+.lem-wrapper.omission {
+  background-color: #f6f4ff;
+  border: 1px dashed #7d6ea3;
+  padding: 0.25em 0.3em;
+  margin: 0.2em 0;
+  display: inline-block;
+  position: relative;
+  font-style: italic;
+}
+
+/* Tooltip for omission variant also styled correctly */
+.lem-wrapper.omission .apparatus-tooltip {
+  top: 2em;
+  left: 0;
+}
+
+/* Optional: animate tooltip fade in */
+.apparatus-tooltip,
+.note-tooltip {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.lem-wrapper:hover,
+.note-icon:hover {
+  text-decoration: underline;
+}
+
+#witness-select.visible {
+  display: inline-block !important;
+}
+
+.placeholder-block {
+  color: #a08f7c;
+  opacity: 0.8;
+  display: inline-block;
+  background-color: #f6f4ff;
+  text-align: center;
+  }
+
+tei-speaker
+.placeholder-block{
+  color: #a08f7c;
+  opacity: 0.8;
+  display: inline-block;
+  background-color: #f6f4ff;
+  font-weight: 400;
+  padding-left: 75px;
+  text-align: center;
+  }
+
+
+.line-container {
+  display: flex;
+  gap: 0; /* removes spacing between elements */
+}
+
+.addition-marker-wrapper {
+  position: relative;
+  display: block;
+  margin-left: 1.5em;
+}
+
+.addition-marker {
+  cursor: pointer;
+  font-size: 18px;
+  color: #888f8c;
+}
+
+.addition-tooltip {
+  visibility: hidden;
+  width: max-content;
+  background-color: #fffbea;
+  color: #444;
+  text-align: left;
+  border: 1px solid #ccc;
+  margin-left: 0.6em;
+  padding: 0.3em 0.5em;
+  border-radius: 4px;
+  position:relative;
+  font-size: 14px;
+  z-index: 10;
+  top: 125%; 
+  left: 0;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.addition-marker-wrapper:hover .addition-tooltip {
+  visibility: visible;
+}
+
+.witness-addition {
+  display: block;
+  background-color: #d9ffcfe2; /* light greenish tone */
+  border-left: 3px solid #55ab74;
+  color: #888f8c;
+  width: fit-content;
+  min-width: 230px;
+}
+
+tei-l[data-addition="true"] .line-text {
+  background-color: #d9ffcfe2; /* light greenish tone */
+  border-left: 3px solid #55ab74;
+  color: #888f8c;
+  width: fit-content;
+  min-width: 230px;
+}
+
+/* Optional: style lines inside additions */
+.witness-addition tei-l {
+  display: block;
+  margin-left: 2em;
+  position: relative;
+}
+
+/* Optional: style speakers inside additions */
+.witness-addition tei-speaker {
+  display: block;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: #888f8c;
+  margin-left: -3.5em;
+}
+
+
+.addition-block {
+  border-left: 3px dotted gray;
+  background-color: #fdfdfd;
+  margin: 1em 0;
+  padding-left: 1em;
+}
+.addition-block .apparatus-tooltip {
+  background-color: #fffbea;
+  color: #444;
+  border: 1px solid #ccc;
+}
+
+.witness-column tei-note,
+.witness-column .note,
+.witness-column .footnote,
+.witness-column .tooltip-note {
+  display: none !important;
+}
+
+.line-highlight {
+  background-color: #fff99e;
+  transition: background-color 0.3s ease;
+}
+
+/* General buttons */
+button,
+#witness-buttons button,
+#add-witness-btn,
+#toggle-global-chart-btn,
+#close-global-chart-btn,
+#close-stats-btn,
+#open-stats-btn {
+  background-color: #f7f1e8;
+  color: var(--text-primary);
+  border: 1px solid #bca67b;
+  border-radius: 6px;
+  font-family: "Georgia", serif;
+  font-size: 0.95rem;
+  padding: 0.35em 0.75em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin: 0.3em 0.3em 0.3em 0;
+}
+
+.witness-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+#witness-buttons {
+  display: flex;
+  gap: 0.3em;
+  flex-wrap: wrap;
+}
+
+#toggle-global-chart-btn {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+button:hover {
+  background-color: #ede4d3;
+  border-color: #a88e65;
+}
+
+button:active {
+  background-color: #dfd0b8;
+  border-color: #9a835c;
+}
+
+/* Modal base */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow:visible;
+}
+
+/* modal layout */
+.modal-content,
+#stats-modal,
+#global-chart-modal {
+  position: relative;
+  inset: 0;
+  margin: 1em;
+  background: white;
+  border-radius: 14px;
+  padding: 2em;
+  width: 90%;               
+  max-width: none;         
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: var(--text-primary);
+  font-family: "Georgia", serif;
+  z-index: 10000;
+}
+
+#global-chart-modal {
+  position: relative;
+  background: white;
+  padding: 2em;
+  margin: 2em auto;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 1300px;
+
+  overflow: auto; 
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+#global-chart-modal {
+  transition: opacity 0.3s ease;
+}
+
+#global-chart-modal.hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  overflow: auto;
+}
+
+#global-chart-modal.visible {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+}
+
+#global-chart-modal.hidden,
+.hidden {
+  display: none !important;
+}
+
+/* Stats / charts content blocks */
+.stats-box,
+.chart-box {
+  margin-top: 1.5em;
+  background-color: #f9f9f9;
+  border: 1px solid #d8c8ae;
+  padding: 1em;
+  border-radius: 20px;
+}
+
+.resizable-chart {
+  resize: both;
+  overflow: auto;
+  display: block;
+  border: 1px solid #ccc; /* Optional: visual cue */
+}
+
+/* Close button (top-right icon) */
+.close-stats-btn {
+  float: right;
+  font-size: 0.6em;
+  cursor: pointer;
+}
+
+/* Witness selector buttons */
+#witness-buttons button {
+  margin: 0.3em;
+  padding: 0.3em 0.6em;
+  cursor: pointer;
+}
+
+/* Hide the white chip the code inserts behind labels */
+.value-label rect { display: none; }
+
+/* Optional: keep labels readable with a subtle halo instead */
+.value-label text {
+  paint-order: stroke;
+  stroke: #fff;          
+  stroke-width: 2px;
+  stroke-opacity: .7;    
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #tei-wrapper {
+    flex-direction: column;
+    padding: 1em 0.5em;
+  }
+
+  .tei-column {
+    padding: 1.2em;
+  }
+
+  .modal-content,
+  #stats-modal,
+  #global-chart-modal {
+    width: 95%;
+    padding: 1.2em;
+  }
+}
+
+.stats-table {
+  margin: 1.5em auto;
+  width: 80%;
+  border-collapse: collapse;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  background-color: #fdfaf6;
+}
+
+.stats-table th,
+.stats-table td {
+  padding: 0.6em 1em;
+  border: 1px solid #e2d6c0;
+  text-align: left;
+}
+
+.stats-table th {
+  background-color: #f0e7d8;
+  font-weight: bold;
+}
+
+.stats-table td strong {
+  font-weight: bold;
+}
+
+
+.lem-wrapper.lem-apparatus{ padding:0; }
+
+.lem-wrapper.omission-block{
+  padding:0;                
+  border:none;              
+  outline:1px dashed #cbd5e1;     
+  outline-offset:.35rem;          
+  width: fit-content;
+}
+
+.omission-block .line-text{
+  padding-left:0 !important;
+  margin:0 !important;   
+}
+
+.lem-apparatus{
+  position: relative;          
+  display: inline-block;
+  padding: 0 .2em;
+  margin: 0;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+.app-tooltip{
+  position: absolute;
+  left: 50%;
+  top: calc(100% + .35rem);   
+  transform: translateX(-50%);
+  display: none;              
+  z-index: 100;
+
+  background: #f8fafc;         
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
+  padding: .35rem .5rem;
+
+  white-space: nowrap;
+  max-width: 90vw;            
+  overflow-x: auto;             
+  font-size: .92rem;
+}
+
+.apparatus-entry{
+  display: inline-flex;
+  align-items: baseline;
+  gap: .5rem;
+  padding: .15rem 0;
+  max-width: fit-content;
+}
+.app-tooltip .apparatus-entry + .apparatus-entry{
+  border-top: 1px dotted #e5e7eb;
+}
+
+
+.rdg-text{
+  text-decoration: dotted;
+}
+
+.witness-label{
+  font-variant: small-caps;
+  font-size: .85em;
+  color: #334155;
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 0 .4em;
+}
+
+.wit-chip{
+  border: 0;
+  background: #e2e8f0;      
+  color: #334155;         
+  border-radius: 999px;
+  padding: 0 .45em;
+  font: 600 .85rem/1 system-ui, sans-serif;
+  font-variant: small-caps;
+  cursor: pointer;
+}
+.wit-chip + .wit-chip{ margin-left: .3rem; }
+.wit-chip:hover{ background: #cbd5e1; }
+
+
+.app-tooltip .witness-labels{ display: inline-flex; gap: .3rem; }
+
+
+.flash-highlight{
+  animation: flash-bg 1.6s ease-out 1;
+}
+@keyframes flash-bg{
+  0%   { background: rgba(253,230,138,.35); }
+  100% { background: transparent; }
+}

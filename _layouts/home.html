@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  {% include head.html %}
+  {% include nav.html %}
+  <body>
+    <div class="container">
+      <div class="row" style="display: block;">
+        <div class="section-grid" id="contenidotexto">
+          <section class="home-box" id="presentation">
+            <img alt="presentation" class="home-image" src="{{ site.baseurl }}/images/presentation.png" />
+            <h2>
+              <a href="{{ site.baseurl }}/presentation.html">Presentación</a>
+            </h2>
+            <p>Bienvenidos al portal de <i>El marqués de las Navas</i>, comedia autógrafa de Lope de Vega. Esta plataforma proporciona acceso al texto editado y anotado críticamente. Igualmente, permite la visión sinóptica del facsímil del manuscrito, para apreciar en su totalidad el proceso de composición de la pieza.</p>
+          </section>
+
+          <section class="home-box" id="this-edition">
+            <img alt="this-edition" class="home-image" src="{{ site.baseurl }}/images/this_edition.png" />
+            <h2>
+              <a href="{{ site.baseurl }}/edition.html">Estudio</a>
+            </h2>
+            <p>En esta sección se presenta información adicional sobre la pieza, su contexto de escritura y transmisión. Se ofrece, además, detallada sobre los criterios editoriales que guiaron la elaboración de esta edición, así como el modelo de transcripción adoptado.</p>
+          </section>
+
+          <section class="home-box" id="access">
+            <img alt="access" class="home-image" src="{{ site.baseurl }}/images/access_text.png" />
+            <h2>
+              <a href="{{ site.baseurl }}/selection.html">Acceder al texto</a>
+            </h2>
+            <p>En esta sección se puede consultar tanto la edición crítica como la edición genética del texto. La primera permite seguir y reconstruir su proceso de escritura y variación interna, mientras que la segunda ofrece el texto fijado según criterios filológicos. Ambas ediciones están disponibles con sus respectivos recursos de consulta.</p>
+          </section>
+          
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+    <script src="{{ site.baseurl }}/assets/scripts.js"></script>
+  </body>
+
+</html>

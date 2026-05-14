@@ -1,0 +1,31 @@
+<!-- ✅ CORRECT WRAPPER -->
+<div id="tei-wrapper" class="synoptic-view">
+  <div id="facsimile-container" class="tei-column sticky">
+    <div class="column-header">
+      <label for="pb-selector">Folio:</label>
+      <select id="pb-selector"></select>
+      <button id="prev-folio">←</button>
+      <button id="next-folio">→</button>
+      <button class="close-column" title="cerrar">✕</button>
+    </div>
+    <div id="facsimile-wrapper">
+      <img id="facsimile-image" src="" alt="Facsímil" />
+    </div>
+  </div>
+
+  <div id="modern-container" class="tei-column">
+    <div class="column-header">
+      <span>Edición genética</span>
+      <button class="close-column" title="cerrar">✕</button>
+    </div>
+    <div class="tei-column-scroll"></div>
+  </div>
+
+  <div id="diplomatic-container" class="tei-column">
+    <div class="column-header">
+      <span>Transcripción</span>
+      <button class="close-column" title="cerrar">✕</button>
+    </div>
+    <div class="tei-column-scroll"></div>
+  </div>
+</div>

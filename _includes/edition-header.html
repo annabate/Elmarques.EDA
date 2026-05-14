@@ -1,0 +1,109 @@
+<header id="main-header">
+  <div class="header-title">
+    <h1><i>El marqués de las Navas</i> – Edición Genética Digital</h1>
+  </div>
+
+  <div id="toolbar">
+    <!-- Column toggles -->
+    <div class="toolbar-group">
+      <label
+        ><input
+          type="checkbox"
+          class="toggle-col"
+          data-target="facsimile-container"
+          checked
+        />
+        Facsímil</label
+      >
+      <label
+        ><input
+          type="checkbox"
+          class="toggle-col"
+          data-target="modern-container"
+          checked
+        />
+        Edición genética</label
+      >
+      <label
+        ><input
+          type="checkbox"
+          class="toggle-col"
+          data-target="diplomatic-container"
+          checked
+        />
+        Transcripción</label
+      >
+    </div>
+
+    <!-- Font size -->
+    <div class="toolbar-group" title="Ajustar fuente de texto">
+      <button onclick="adjustFontSize(-1)" title="Reducir fuente">A−</button>
+      <button onclick="adjustFontSize(1)" title="Aumentar fuente">A+</button>
+    </div>
+
+    <!-- Typology filter -->
+    <div class="toolbar-group">
+      <label for="variant-selector" style="font-size: 1rem; font-weight: bold"
+        >Filtrar intervenciones por tipología:</label
+      >
+      <select id="variant-selector">
+        <option value="all">Mostrar todas</option>
+        <option value="A0">A0 (original)</option>
+        <option value="A1">A1 (correcciones inmediatas)</option>
+        <option value="A2">A2 (revisión posterior)</option>
+        <option value="B">B (mano ajena)</option>
+      </select>
+      <div class="color-legend">
+        <span><span class="color-box wit-A0"></span> A0 (original)</span>
+        <span
+          ><span class="color-box wit-A1"></span> A1 (correcciones
+          inmediatas)</span
+        >
+        <span
+          ><span class="color-box wit-A2"></span> A2 (revisión posterior)</span
+        >
+        <span><span class="color-box wit-B"></span> B (mano ajena)</span>
+      </div>
+      <button id="clean-text-button">Texto limpio</button>
+    </div>
+
+    <!-- Search toggle -->
+    <div class="toolbar-group" style="margin-left: auto">
+      <button id="toggle-search" title="Buscar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26"
+          height="26"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 2a8 8 0 015.293 13.707l5 5a1 1 0 01-1.414 1.414l-5-5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"
+          />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Hidden search bar -->
+  <div id="search-bar" class="hidden">
+    <input type="text" id="search-input" placeholder="Buscar en el texto..." />
+    <button id="search-button" title="Buscar">🔍</button>
+    <button id="prev-match" title="Coincidencia anterior">⬆</button>
+    <button id="next-match" title="Coincidencia siguiente">⬇</button>
+    <select id="search-scope" title="Seleccionar texto">
+      <option value="both">Ambos</option>
+      <option value="modern">Edición genética</option>
+      <option value="diplomatic">Transcripción</option>
+    </select>
+    <button
+      id="close-search"
+      class="close-search"
+      aria-label="Close search"
+      title="Close search"
+    >
+      ✕
+    </button>
+  </div>
+</header>

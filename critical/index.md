@@ -1,0 +1,1532 @@
+---
+layout: critical
+title: El marqués de las Navas – Edición Digital Académica
+---
+
+<!-- Sticky header with title and buttons -->
+<header id="sticky-header" class="page-header">
+  <div class="header-title">
+    <span><em>El marqués de las Navas</em> – Edición Digital Académica</span>
+  </div>
+  <div id="floating-tools">
+    <button id="add-witness-btn" title="Comparar testimonio">+</button>
+    <select id="witness-select" class="hidden">
+      <option value="">Selecciona testimonio</option>
+    </select>
+    <button id="open-stats-btn">Ver estadísticas</button>
+  </div>
+</header>
+
+<!-- TEI Content Wrapper -->
+<div id="tei-wrapper" class="synoptic-view">
+  <div id="critical-container" class="tei-column critical-column"></div>
+  <div id="witness-container" class="tei-column witness-column hidden"></div>
+</div>
+
+<!-- Modal wrapper for centering and backdrop -->
+<div id="modal-wrapper" class="modal hidden">
+  <div id="stats-modal">
+    <!-- Close button -->
+    <button id="close-stats-btn">🗙</button>
+    <!-- Witness selection -->
+    <h3>Elige un testimonio</h3>
+    <div class="witness-controls">
+      <div id="witness-buttons"></div>
+      <button id="toggle-global-chart-btn">Ver gráficas</button>
+    </div>
+    <!-- Stats panel (list + individual chart) -->
+    <div id="stats-panel">
+      <canvas id="stats-chart" width="800" height="300"></canvas>
+    </div>
+    <!-- Global charts (general + per-act) -->
+    <div id="global-chart-modal" class="hidden">
+      <button id="close-global-chart-btn">Cerrar</button>
+      <h3>Comparativa global entre testimonios</h3>
+      <div id="global-charts-container"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // =========================
+  // CETEI + setup di base
+  // =========================
+  const CETEIcean = new CETEI();
+  CETEIcean.addBehaviors({
+    tei: {
+      anchor(el) {
+        const span = document.createElement("span");
+        const xmlID = el.getAttribute("xml:id");
+        if (xmlID) span.setAttribute("data-xml-id", xmlID);
+        return span;
+      },
+    },
+  });
+
+  let originalData, baseTEI;
+
+  // =========================
+  // Alias & utilità
+  // =========================
+  const speakerAliasMap = {
+    1: "Luis",
+    2: "Juan",
+    MUSICO: "Asián",
+    Músico: "Asián",
+    "Fer.": "Filipe",
+    Felipe: "Filipe",
+  };
+
+  function normalizeName(s) {
+    if (!s) return "";
+    const up = s
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    return up
+      .replace(/^(EL|LA|LOS|LAS)\s+/, "")
+      .replace(/[^A-Z0-9#]+/g, " ")
+      .trim();
+  }
+  function directChildren(el, tagName) {
+    const t = tagName.toLowerCase();
+    return Array.from(el.children).filter(
+      (c) => c.tagName && c.tagName.toLowerCase() === t,
+    );
+  }
+
+  // =========================
+  // Cast helpers
+  // =========================
+  function buildCastMap(data) {
+    const byId = {},
+      byNorm = {};
+    data.querySelectorAll("tei-castList tei-castItem").forEach((item) => {
+      const rawId = item.getAttribute("xml:id") || item.id;
+      const roleEl = item.querySelector("tei-role, tei-persona");
+      const label = ((roleEl ? roleEl.textContent : item.textContent) || "")
+        .trim()
+        .replace(/\s+/g, " ");
+      if (rawId) byId["#" + rawId] = label;
+      if (label) byNorm[normalizeName(label)] = label;
+    });
+    data.querySelectorAll("tei-listPerson tei-person").forEach((p) => {
+      const rawId = p.getAttribute("xml:id") || p.id;
+      const nameEl = p.querySelector("tei-persName");
+      const label = ((nameEl ? nameEl.textContent : p.textContent) || "")
+        .trim()
+        .replace(/\s+/g, " ");
+      if (rawId) byId["#" + rawId] = label;
+      if (label) byNorm[normalizeName(label)] = label;
+    });
+    return { byId, byNorm };
+  }
+  function mapFreeTextToCast(labelRaw, castMap) {
+    if (!labelRaw) return null;
+    const raw = labelRaw.trim();
+    if (raw.startsWith("#")) {
+      if (castMap.byId[raw]) return castMap.byId[raw];
+      const stripped = raw.slice(1);
+      const normId = normalizeName(stripped);
+      return castMap.byNorm[normId] || stripped;
+    }
+    const norm = normalizeName(raw);
+    if (castMap.byNorm[norm]) return castMap.byNorm[norm];
+    const aliasVal = speakerAliasMap[raw] ?? speakerAliasMap[norm];
+    if (aliasVal) {
+      if (typeof aliasVal === "string" && aliasVal.startsWith("#")) {
+        return (
+          castMap.byId[aliasVal] ||
+          castMap.byNorm[normalizeName(aliasVal.slice(1))] ||
+          aliasVal.slice(1)
+        );
+      } else {
+        return castMap.byNorm[normalizeName(aliasVal)] || aliasVal;
+      }
+    }
+    return raw.replace(/^#/, "");
+  }
+  function resolveSpeakersForSp(sp, witID, castMap) {
+    let spk = null;
+    for (const kid of sp.children)
+      if (kid.tagName?.toLowerCase() === "tei-speaker") {
+        spk = kid;
+        break;
+      }
+    if (spk) {
+      const app = spk.querySelector("tei-app");
+      if (app) {
+        const rdg = app.querySelector(`tei-rdg[wit~="#${witID}"]`);
+        const choice = rdg || app.querySelector("tei-lem");
+        const txt =
+          choice && choice.textContent ? choice.textContent.trim() : "";
+        if (txt) return [mapFreeTextToCast(txt, castMap)].filter(Boolean);
+      }
+      const label = (spk.textContent || "").trim();
+      if (label) return [mapFreeTextToCast(label, castMap)].filter(Boolean);
+      const whoAttr = spk.getAttribute("who");
+      if (whoAttr) {
+        const names = whoAttr
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((t) => mapFreeTextToCast(t, castMap));
+        return [...new Set(names.filter(Boolean))];
+      }
+    }
+    const who = (sp.getAttribute("who") || "").trim();
+    if (who) {
+      const names = who
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((t) => mapFreeTextToCast(t, castMap));
+      return [...new Set(names.filter(Boolean))];
+    }
+    return ["DESCONOCIDO"];
+  }
+
+  // =========================
+  // Witness reconstruction (inline); long-span via decorators
+  // =========================
+  function reconstructWitness(witID, originalData) {
+    const clone = originalData.cloneNode(true);
+
+    // Assicura il cast anche nei frammenti
+    if (
+      !clone.querySelector("tei-castList") &&
+      originalData.querySelector("tei-castList")
+    ) {
+      const cast = originalData.querySelector("tei-castList").cloneNode(true);
+      clone.insertBefore(cast, clone.firstChild);
+    }
+
+    // Helper per risolvere gli anchor
+    const resolveAnchor = (ctx, ref) => {
+      const id = (ref || "").replace(/^#/, "");
+      return (
+        ctx.querySelector(`tei-anchor[id="${CSS.escape(id)}"]`) ||
+        ctx.querySelector(`tei-anchor[xml\\:id="${CSS.escape(id)}"]`) ||
+        ctx.querySelector(`[data-xml-id="${CSS.escape(id)}"]`) ||
+        ctx.querySelector(`#${CSS.escape(id)}`) ||
+        ctx.querySelector(`[id="${CSS.escape(id)}"]`)
+      );
+    };
+
+    clone.querySelectorAll("tei-app").forEach((app) => {
+      const from = app.getAttribute("from");
+      const to = app.getAttribute("to");
+      const appType = app.getAttribute("type");
+
+      // Le aggiunte long-span le gestisce processAdditionSpans()
+      if (appType === "addition" && from && to) return;
+
+      // ===== 1) Omissione long-span =====
+      if (from && to) {
+        const omittedForThisWit = Array.from(
+          app.querySelectorAll("tei-rdg"),
+        ).some((rdg) => {
+          const wits = (rdg.getAttribute("wit") || "")
+            .split(/\s+/)
+            .map((w) => w.replace(/^#/, ""));
+          return wits.includes(witID) && rdg.textContent.trim() === "";
+        });
+        if (omittedForThisWit) {
+          const startAnchor = resolveAnchor(clone, from);
+          const endAnchor = resolveAnchor(clone, to);
+          if (startAnchor && endAnchor) {
+            const all = Array.from(clone.querySelectorAll("*"));
+            let inRange = false;
+            const affected = [];
+            for (const el of all) {
+              if (el === startAnchor) {
+                inRange = true;
+                continue;
+              }
+              if (el === endAnchor) break;
+              const tag = el.tagName?.toLowerCase();
+              if (inRange && (tag === "tei-l" || tag === "tei-speaker"))
+                affected.push(el);
+            }
+            affected.forEach((el) => {
+              while (el.firstChild) el.removeChild(el.firstChild);
+              const ph = document.createElement("span");
+              ph.className = "placeholder-block";
+              ph.innerHTML = "[...........................................]";
+              el.appendChild(ph);
+            });
+          }
+          return; // gestito
+        }
+      }
+
+      // ===== 2) Apparato inline (senza from/to) =====
+      const rdgs = Array.from(app.querySelectorAll("tei-rdg"));
+      const lemma = app.querySelector("tei-lem");
+
+      const matchingRdg = rdgs.find((rdg) =>
+        (rdg.getAttribute("wit") || "")
+          .split(/\s+/)
+          .map((w) => w.replace(/^#/, ""))
+          .includes(witID),
+      );
+
+      // 2a) Aggiunta inline: <rdg><add>…</add></rdg>
+      if (!from && !to && matchingRdg) {
+        const addEl = matchingRdg.querySelector("tei-add");
+        if (addEl) {
+          const insideLine = !!app.closest("tei-l, l");
+          const innerLines = addEl.querySelectorAll(
+            ":scope > tei-l, :scope > l",
+          );
+          const hasInnerLine = innerLines.length > 0;
+
+          if (insideLine) {
+            // Siamo già dentro una riga → appiattisci in uno span
+            const span = document.createElement("span");
+            span.className = "witness-addition";
+            if (hasInnerLine) {
+              let first = true;
+              innerLines.forEach((l) => {
+                if (!first) span.appendChild(document.createTextNode(" "));
+                l.childNodes.forEach((n) =>
+                  span.appendChild(n.cloneNode(true)),
+                );
+                first = false;
+              });
+            } else {
+              addEl.childNodes.forEach((n) =>
+                span.appendChild(n.cloneNode(true)),
+              );
+            }
+            app.replaceWith(span);
+            return; // gestito
+          } else {
+            // Fuori da una riga: se ci sono <l> li manteniamo, altrimenti span
+            if (hasInnerLine) {
+              const frag = document.createDocumentFragment();
+              innerLines.forEach((l) => {
+                const cloned = l.cloneNode(true);
+                cloned.setAttribute("data-addition", "true"); // per styling/analitiche
+                frag.appendChild(cloned);
+              });
+              app.replaceWith(frag);
+              return; // gestito
+            } else {
+              const span = document.createElement("span");
+              span.className = "witness-addition";
+              addEl.childNodes.forEach((n) =>
+                span.appendChild(n.cloneNode(true)),
+              );
+              app.replaceWith(span);
+              return; // gestito
+            }
+          }
+        }
+      }
+
+      // 2b) Omissione inline (rdg vuoto per questo testimone)
+      const isOmitted = matchingRdg && matchingRdg.textContent.trim() === "";
+      if (isOmitted) {
+        const parentL = app.closest("tei-l");
+        if (parentL && parentL.textContent.trim() === app.textContent.trim()) {
+          const replacement = document.createElement("span");
+          replacement.className = "placeholder-block";
+          replacement.innerHTML =
+            "[...........................................]";
+          app.parentNode.replaceChild(replacement, app);
+        } else {
+          const replacement = document.createElement("span");
+          replacement.className = "witness-reading";
+          replacement.textContent = "";
+          app.parentNode.replaceChild(replacement, app);
+        }
+        return; // gestito
+      }
+
+      // 2c) Lettura normale: rdg corrispondente, altrimenti lemma
+      let chosenText = "";
+      if (matchingRdg) {
+        chosenText = matchingRdg.textContent.trim();
+      } else if (lemma) {
+        chosenText = lemma.textContent.trim();
+      }
+
+      const replacement = document.createElement("span");
+      replacement.className = "witness-reading";
+      replacement.textContent = chosenText;
+      app.parentNode.replaceChild(replacement, app);
+    });
+
+    return clone;
+  }
+
+  // =========================
+  // Notes
+  // =========================
+  function decorateNotes(data) {
+    data.querySelectorAll("tei-note, note").forEach((originalNote) => {
+      const content = originalNote.textContent.trim();
+      const wrapper = document.createElement("span");
+      wrapper.className = "tei-note";
+      const icon = document.createElement("sup");
+      icon.className = "note-icon";
+      icon.textContent = "❋";
+      const tooltip = document.createElement("div");
+      tooltip.className = "note-tooltip";
+      tooltip.textContent = content;
+      wrapper.append(icon, tooltip);
+      originalNote.replaceWith(wrapper);
+    });
+  }
+  function attachNoteEvents(container = document) {
+    const notes = container.querySelectorAll(".tei-note");
+    notes.forEach((note) => {
+      const icon = note.querySelector(".note-icon");
+      icon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        container.querySelectorAll(".tei-note.active").forEach((n) => {
+          if (n !== note) n.classList.remove("active");
+        });
+        note.classList.toggle("active");
+      });
+    });
+    document.addEventListener("click", () => {
+      container
+        .querySelectorAll(".tei-note.active")
+        .forEach((n) => n.classList.remove("active"));
+    });
+  }
+
+  // =========================
+  // Line numbering (idempotente)
+  // =========================
+  function insertLeftAlignedLineNumbers(root) {
+    root.querySelectorAll("tei-l, l").forEach((line) => {
+      if (line.querySelector(".line-container")) return;
+      const num = line.getAttribute("n");
+      const part = line.getAttribute("part");
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "line-container";
+
+      const lineNum = document.createElement("span");
+      lineNum.className = "line-number";
+      if (num && (!part || part === "F") && parseInt(num, 10) % 5 === 0)
+        lineNum.textContent = num;
+
+      const lineText = document.createElement("span");
+      lineText.className = "line-text";
+      while (line.firstChild) lineText.appendChild(line.firstChild);
+
+      wrapper.append(lineNum, lineText);
+      line.appendChild(wrapper);
+    });
+  }
+  function alignSplitVerses(root) {
+    const lines = root.querySelectorAll("tei-l, l");
+    lines.forEach((line, index) => {
+      const part = line.getAttribute("part");
+      const container = line.querySelector(".line-text");
+      if (!part || !container) return;
+      const prev = lines[index - 1];
+      const prevPart = prev?.getAttribute("part");
+      const prevLineText = prev?.querySelector(".line-text");
+      if (
+        (part === "M" && prevPart === "I") ||
+        (part === "F" && (prevPart === "M" || prevPart === "I"))
+      ) {
+        if (prevLineText) {
+          const indent = prevLineText.getBoundingClientRect().width;
+          container.style.paddingLeft = `${indent}px`;
+        }
+      }
+    });
+  }
+
+  // =========================
+  // Apparatus inline (tooltip in <span>)
+  // =========================
+  function decorateApparatus(data) {
+    const apps = data.querySelectorAll("tei-app:not([from])");
+
+    if (!data.__apparatusClickAwayBound) {
+      document.addEventListener(
+        "click",
+        () => {
+          data.querySelectorAll(".lem-apparatus.active").forEach((el) => {
+            el.classList.remove("active");
+            el.querySelector(".app-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+            el.setAttribute("aria-expanded", "false");
+          });
+        },
+        { passive: true },
+      );
+      data.__apparatusClickAwayBound = true;
+    }
+
+    apps.forEach((app) => {
+      if (app.querySelector("tei-add")) return;
+      const lemma = app.querySelector("tei-lem");
+      if (!lemma) return;
+
+      const wrapper = document.createElement("span");
+      wrapper.className = "lem-wrapper lem-apparatus";
+      wrapper.textContent = lemma.textContent.trim();
+      wrapper.setAttribute("role", "button");
+      wrapper.setAttribute("tabindex", "0");
+      wrapper.setAttribute("aria-haspopup", "true");
+      wrapper.setAttribute("aria-expanded", "false");
+
+      const tooltip = document.createElement("span");
+      tooltip.className = "app-tooltip";
+      tooltip.style.display = "none";
+      tooltip.setAttribute("role", "listbox");
+
+      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+        const entry = document.createElement("span");
+        entry.className = "apparatus-entry";
+        entry.setAttribute("role", "option");
+
+        const rdgSpan = document.createElement("span");
+        rdgSpan.className = "rdg-text";
+        rdgSpan.textContent = rdg.textContent.trim() || "om.";
+
+        const witSpan = document.createElement("span");
+        witSpan.className = "witness-label";
+        witSpan.textContent = rdg.getAttribute("wit") || "";
+
+        entry.append(rdgSpan, witSpan);
+        tooltip.append(entry);
+      });
+
+      wrapper.append(tooltip);
+
+      const toggle = (e) => {
+        e.stopPropagation();
+        data.querySelectorAll(".lem-apparatus.active").forEach((el) => {
+          if (el !== wrapper) {
+            el.classList.remove("active");
+            el.querySelector(".app-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+            el.setAttribute("aria-expanded", "false");
+          }
+        });
+        const open = !wrapper.classList.contains("active");
+        wrapper.classList.toggle("active", open);
+        tooltip.style.display = open ? "block" : "none";
+        wrapper.setAttribute("aria-expanded", String(open));
+      };
+      wrapper.addEventListener("click", toggle);
+      wrapper.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") toggle(e);
+      });
+
+      app.replaceWith(wrapper);
+    });
+  }
+
+  // Rende cliccabili le sigle dei testimoni nell’apparato (chip)
+  function makeApparatusSiglaClickable(scope = document) {
+    scope.querySelectorAll(".witness-label").forEach((lbl) => {
+      if (lbl.__chipsified) return; // evita doppio lavoro
+      const wits = (lbl.textContent || "")
+        .trim()
+        .split(/\s+/)
+        .map((w) => w.replace(/^#/, ""))
+        .filter(Boolean);
+
+      lbl.__chipsified = true;
+      lbl.textContent = "";
+      wits.forEach((w) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "wit-chip";
+        chip.dataset.wit = w;
+        chip.textContent = w;
+        lbl.appendChild(chip);
+      });
+    });
+  }
+
+  // =========================
+  // Omission long-span (Range)
+  // =========================
+  function decorateOmissionSpans(root, inWitnessView = false) {
+    const apps = root.querySelectorAll(
+      'tei-app[from][to]:not([type="addition"])',
+    );
+
+    if (!root.__omissionClickAwayBound) {
+      document.addEventListener(
+        "click",
+        () => {
+          root.querySelectorAll(".lem-omission.active").forEach((el) => {
+            el.classList.remove("active");
+            el.querySelector(".omission-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+          });
+        },
+        { passive: true },
+      );
+      root.__omissionClickAwayBound = true;
+    }
+
+    const resolveAnchor = (ref) => {
+      const id = (ref || "").replace(/^#/, "");
+      let el =
+        root.querySelector(`tei-anchor[id="${CSS.escape(id)}"]`) ||
+        root.querySelector(`tei-anchor[xml\\:id="${CSS.escape(id)}"]`);
+      if (!el) {
+        const inner = root.querySelector(`[data-xml-id="${CSS.escape(id)}"]`);
+        if (inner) el = inner.closest("tei-anchor") || inner;
+      }
+      if (!el) {
+        el =
+          root.querySelector(`#${CSS.escape(id)}`) ||
+          root.querySelector(`[id="${CSS.escape(id)}"]`);
+      }
+      return el;
+    };
+
+    apps.forEach((app) => {
+      const fromRef = app.getAttribute("from");
+      const toRef = app.getAttribute("to");
+      if (!fromRef || !toRef) return;
+
+      const omittedWits = new Set();
+      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+        if (!rdg.textContent || rdg.textContent.trim() === "") {
+          (rdg.getAttribute("wit") || "")
+            .trim()
+            .split(/\s+/)
+            .forEach((w) => w && omittedWits.add(w.replace(/^#/, "")));
+        }
+      });
+      if (omittedWits.size === 0) return;
+
+      const startAnchor = resolveAnchor(fromRef);
+      const endAnchor = resolveAnchor(toRef);
+      if (!startAnchor || !endAnchor) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "lem-wrapper lem-omission omission-block";
+
+      const tooltip = document.createElement("div");
+      tooltip.className = "omission-tooltip";
+      tooltip.style.display = "none";
+      tooltip.textContent = `Texto omitido en: #${Array.from(omittedWits).join(
+        ", ",
+      )}`;
+      wrapper.appendChild(tooltip);
+
+      wrapper.addEventListener("click", (e) => {
+        e.stopPropagation();
+        root.querySelectorAll(".lem-omission.active").forEach((el) => {
+          if (el !== wrapper) {
+            el.classList.remove("active");
+            el.querySelector(".omission-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+          }
+        });
+        const open = !wrapper.classList.contains("active");
+        wrapper.classList.toggle("active", open);
+        tooltip.style.display = open ? "block" : "none";
+      });
+
+      const range = document.createRange();
+      range.setStartAfter(startAnchor);
+      range.setEndBefore(endAnchor);
+
+      const frag = range.extractContents();
+      if (!frag || !frag.hasChildNodes()) {
+        range.detach?.();
+        return;
+      }
+
+      startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
+      wrapper.appendChild(frag);
+
+      range.detach?.();
+      app.remove();
+    });
+  }
+
+  // =========================
+  // Aggiunte long-span (funzione unificata)
+  // mode: "base" | "witness"
+  // =========================
+  function processAdditionSpans(root, { mode = "base", witID = null } = {}) {
+    const apps = root.querySelectorAll(`tei-app[type="addition"][from][to]`);
+
+    const anchorIn = (ctx, ref) => {
+      const id = (ref || "").replace(/^#/, "");
+      return ctx.querySelector(
+        `tei-anchor[id="${CSS.escape(id)}"], tei-anchor[xml\\:id="${CSS.escape(
+          id,
+        )}"], [data-xml-id="${CSS.escape(id)}"], #${CSS.escape(id)}`,
+      );
+    };
+
+    apps.forEach((app) => {
+      const from = app.getAttribute("from");
+      const to = app.getAttribute("to");
+      if (!from || !to) return;
+
+      const startAnchor = anchorIn(root, from);
+      const endAnchor = anchorIn(root, to);
+      if (!startAnchor || !endAnchor) return;
+
+      const rdgs = Array.from(app.querySelectorAll("tei-rdg"));
+      const witsWithAdd = rdgs
+        .filter((rdg) => rdg.querySelector("tei-add"))
+        .flatMap((rdg) => (rdg.getAttribute("wit") || "").trim().split(/\s+/))
+        .map((w) => w.replace(/^#/, ""))
+        .filter(Boolean);
+
+      const range = document.createRange();
+      range.setStartAfter(startAnchor);
+      range.setEndBefore(endAnchor);
+
+      if (mode === "base") {
+        range.deleteContents();
+        const wrapper = document.createElement("span");
+        wrapper.className = "addition-marker-wrapper";
+        const marker = document.createElement("span");
+        marker.className = "addition-marker";
+        marker.textContent = "✚";
+        const tooltip = document.createElement("span");
+        tooltip.className = "addition-tooltip";
+        tooltip.textContent = witsWithAdd.length
+          ? `Se añade un pasaje en: #${witsWithAdd.join(", ")}`
+          : `Se añade un pasaje en algunos testigos`;
+        wrapper.append(marker, tooltip);
+        startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
+        app.remove();
+        range.detach?.();
+        return;
+      }
+
+      if (mode === "witness") {
+        const wanted = (witID || "").replace(/^#/, "");
+        const match = rdgs.find((rdg) =>
+          (rdg.getAttribute("wit") || "")
+            .split(/\s+/)
+            .map((w) => w.replace(/^#/, ""))
+            .includes(wanted),
+        );
+        const hasAddForWit = !!(match && match.querySelector("tei-add"));
+
+        const frag = range.extractContents();
+
+        if (hasAddForWit) {
+          const wrapper = document.createElement("div");
+          wrapper.className = "witness-addition";
+          wrapper.appendChild(frag);
+          startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
+        } // else: omissione nel testimone → non reinseriamo (sparisce)
+
+        app.remove();
+        range.detach?.();
+        return;
+      }
+    });
+  }
+
+  // =========================
+  // Aggiunte inline (senza anchors/type) → marker nel base
+  // =========================
+  function decorateInlineAdditionsWithoutAnchors(root) {
+    // prendi SOLO <app> inline (senza from/to), qualsiasi @type
+    const apps = Array.from(
+      root.querySelectorAll("tei-app:not([from]):not([to])"),
+    ).filter((app) => app.querySelector("tei-rdg tei-add") !== null);
+
+    apps.forEach((app) => {
+      // raccogli i testimoni che aggiungono
+      const witSet = new Set();
+      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+        if (rdg.querySelector("tei-add")) {
+          (rdg.getAttribute("wit") || "")
+            .trim()
+            .split(/\s+/)
+            .map((w) => w.replace(/^#/, ""))
+            .filter(Boolean)
+            .forEach((w) => witSet.add(w));
+        }
+      });
+
+      // sostituisci l'intero <app> con il marker ✚ (solo nel BASE)
+      const wrap = document.createElement("span");
+      wrap.className = "addition-marker-wrapper";
+      const marker = document.createElement("span");
+      marker.className = "addition-marker";
+      marker.textContent = "✚";
+      const tip = document.createElement("span");
+      tip.className = "addition-tooltip";
+      const list = Array.from(witSet);
+      tip.textContent = list.length
+        ? `Se añade un verso en: #${list.join(", ")}`
+        : `Se añade un verso en`;
+      wrap.append(marker, tip);
+
+      app.replaceWith(wrap);
+    });
+  }
+
+  // =========================
+  // Hover sync linee (robusta)
+  // =========================
+  function enableLineSyncHighlighting() {
+    if (window.__syncHLBound) return;
+    const scope = document.getElementById("tei-wrapper") || document;
+
+    const getLine = (node) => (node ? node.closest?.("[data-line-n]") : null);
+    const highlight = (n) =>
+      document
+        .querySelectorAll(`[data-line-n="${CSS.escape(n)}"]`)
+        .forEach((el) => el.classList.add("line-highlight"));
+    const unhighlight = (n) =>
+      document
+        .querySelectorAll(`[data-line-n="${CSS.escape(n)}"]`)
+        .forEach((el) => el.classList.remove("line-highlight"));
+
+    scope.addEventListener("pointerover", (e) => {
+      const to = getLine(e.target);
+      if (!to) return;
+      const from = getLine(e.relatedTarget);
+      const n = to.getAttribute("data-line-n");
+      if (from && from.getAttribute("data-line-n") === n) return; // transito interno
+      highlight(n);
+    });
+
+    scope.addEventListener("pointerout", (e) => {
+      const from = getLine(e.target);
+      if (!from) return;
+      const to = getLine(e.relatedTarget);
+      const n = from.getAttribute("data-line-n");
+      if (to && to.getAttribute("data-line-n") === n) return; // transito interno
+      unhighlight(n);
+    });
+
+    window.__syncHLBound = true;
+  }
+
+  // =========================
+  // Statistiche (D3)
+  // =========================
+  function clearNode(node) {
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function drawBarChartD3(container, rawStats, titleText) {
+    const draw = () => {
+      const old = container.querySelector("svg.d3-chart");
+      if (old) old.remove();
+      const data = Object.entries(rawStats)
+        .map(([name, v]) => ({ name, value: Math.round(v) }))
+        .sort((a, b) => b.value - a.value);
+
+      const width = container.clientWidth || 900;
+      const height = Math.max(360, 280 + Math.ceil(data.length / 12) * 28);
+      const margin = { top: 44, right: 20, bottom: 150, left: 64 };
+
+      const svg = d3
+        .select(container)
+        .append("svg")
+        .attr("class", "d3-chart")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
+
+      if (titleText)
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", margin.top - 18)
+          .attr("text-anchor", "middle")
+          .attr("font-weight", "600")
+          .attr("font-size", 16)
+          .text(titleText);
+
+      const maxVal = d3.max(data, (d) => d.value) || 1;
+      const step =
+        maxVal <= 80 ? 10 : maxVal <= 200 ? 25 : maxVal <= 400 ? 50 : 100;
+      const upper = Math.ceil(maxVal / step) * step;
+      const headroom = Math.max(6, Math.round(upper * 0.08));
+
+      const x = d3
+        .scaleBand()
+        .domain(data.map((d) => d.name))
+        .range([margin.left, width - margin.right])
+        .padding(0.1);
+      const y = d3
+        .scaleLinear()
+        .domain([0, upper + headroom])
+        .range([height - margin.bottom, margin.top])
+        .nice();
+      const narrow = x.bandwidth() < 16;
+
+      const xAxis = (g) =>
+        g
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x))
+          .selectAll("text")
+          .attr("font-size", narrow ? 10 : 12)
+          .attr("transform", narrow ? "rotate(-75)" : "rotate(-60)")
+          .attr("text-anchor", "end")
+          .attr("dx", "-.5em")
+          .attr("dy", ".35em");
+      const yAxis = (g) =>
+        g
+          .attr("transform", `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y).tickValues(d3.range(0, upper + step, step)))
+          .call((g) => g.select(".domain").remove())
+          .selectAll("text")
+          .attr("font-size", 12);
+
+      svg.append("g").call(xAxis);
+      svg.append("g").call(yAxis);
+
+      const g = svg.append("g");
+      const bars = g
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("x", (d) => x(d.name))
+        .attr("y", (d) => y(d.value))
+        .attr("width", x.bandwidth())
+        .attr("height", (d) => y(0) - y(d.value))
+        .attr("rx", 3)
+        .attr("ry", 3)
+        .attr("fill", "#69b3a2");
+
+      const labels = g
+        .selectAll("g.value-label")
+        .data(data)
+        .join("g")
+        .attr("class", "value-label")
+        .attr(
+          "transform",
+          (d) =>
+            `translate(${x(d.name) + x.bandwidth() / 2}, ${y(d.value) - 8})`,
+        );
+      labels.each(function (d) {
+        const group = d3.select(this);
+        const t = group
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("font-size", 8)
+          .style("paint-order", "stroke")
+          .style("stroke", "#fff")
+          .style("stroke-width", "2px")
+          .style("stroke-opacity", 0.7)
+          .text(d.value);
+      });
+
+      bars.append("title").text((d) => `${d.name}: ${d.value}`);
+    };
+    draw();
+    const ro = new ResizeObserver(() => draw());
+    ro.observe(container);
+  }
+
+  function drawGroupedBarChartD3(
+    container,
+    globalStats,
+    allWitnesses,
+    titleText,
+  ) {
+    const controls = document.createElement("div");
+    controls.className = "witness-toggle-bar";
+    controls.style.margin = "8px 0 6px 0";
+    controls.style.display = "flex";
+    controls.style.flexWrap = "wrap";
+    controls.style.gap = "6px";
+    const makeBtn = (label) => {
+      const b = document.createElement("button");
+      b.textContent = label;
+      b.type = "button";
+      b.style.padding = "4px 8px";
+      b.style.borderRadius = "8px";
+      b.style.border = "1px solid #ccc";
+      b.style.background = "#f6f6f6";
+      b.style.cursor = "pointer";
+      b.style.fontSize = "12px";
+      return b;
+    };
+    const selected = new Set(allWitnesses);
+    const selectAllBtn = makeBtn("Seleccionar todos");
+    const clearAllBtn = makeBtn("Ninguno");
+    controls.appendChild(selectAllBtn);
+    controls.appendChild(clearAllBtn);
+    const color = d3
+      .scaleOrdinal()
+      .domain(allWitnesses)
+      .range(
+        allWitnesses.map(
+          (_, i) => `hsl(${(i * 360) / allWitnesses.length}, 70%, 55%)`,
+        ),
+      );
+    const witnessBtns = allWitnesses.map((w) => {
+      const b = makeBtn(w);
+      b.dataset.wit = w;
+      b.style.borderColor = color(w);
+      b.style.background = "#eaf3ff";
+      controls.appendChild(b);
+      return b;
+    });
+    container.appendChild(controls);
+    const refreshBtnStyles = () => {
+      witnessBtns.forEach((b) => {
+        const on = selected.has(b.dataset.wit);
+        b.style.background = on ? "#eaf3ff" : "#f6f6f6";
+        b.style.opacity = on ? "1" : "0.55";
+      });
+    };
+
+    const draw = () => {
+      const old = container.querySelector("svg.d3-chart");
+      if (old) old.remove();
+      const characters = Object.keys(globalStats);
+      const totals = (name) =>
+        allWitnesses.reduce((acc, w) => acc + (globalStats[name][w] || 0), 0);
+      const labels = characters.sort((a, b) => totals(b) - totals(a));
+      const active = allWitnesses.filter((w) => selected.has(w));
+
+      const width = container.clientWidth || 900;
+      const height = Math.max(440, 320 + Math.ceil(labels.length / 12) * 28);
+      const margin = { top: 56, right: 24, bottom: 180, left: 64 };
+
+      const svg = d3
+        .select(container)
+        .append("svg")
+        .attr("class", "d3-chart")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
+
+      if (titleText)
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", margin.top - 26)
+          .attr("text-anchor", "middle")
+          .attr("font-weight", "600")
+          .attr("font-size", 16)
+          .text(titleText);
+
+      if (active.length === 0) {
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", height / 2)
+          .attr("text-anchor", "middle")
+          .text("Selecciona al menos un testimonio");
+        return;
+      }
+
+      const data = labels.map((name) => ({
+        name,
+        values: active.map((w) => ({
+          wit: w,
+          value: Math.round(globalStats[name][w] || 0),
+        })),
+      }));
+
+      const maxVal = d3.max(data, (d) => d3.max(d.values, (v) => v.value)) || 1;
+      const step =
+        maxVal <= 80 ? 10 : maxVal <= 200 ? 25 : maxVal <= 400 ? 50 : 100;
+      const upper = Math.ceil(maxVal / step) * step;
+      const headroom = Math.max(6, Math.round(upper * 0.1));
+
+      const x0 = d3
+        .scaleBand()
+        .domain(labels)
+        .range([margin.left, width - margin.right])
+        .padding(0.08);
+      const x1 = d3
+        .scaleBand()
+        .domain(active)
+        .range([0, x0.bandwidth()])
+        .padding(0.05);
+      const y = d3
+        .scaleLinear()
+        .domain([0, upper + headroom])
+        .range([height - margin.bottom, margin.top])
+        .nice();
+
+      const xTooNarrow = x0.bandwidth() < 22;
+      const xAxis = (g) =>
+        g
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x0))
+          .selectAll("text")
+          .attr("font-size", xTooNarrow ? 10 : 12)
+          .attr("transform", xTooNarrow ? "rotate(-80)" : "rotate(-60)")
+          .attr("text-anchor", "end")
+          .attr("dx", "-.55em")
+          .attr("dy", ".35em");
+      const yAxis = (g) =>
+        g
+          .attr("transform", `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y).tickValues(d3.range(0, upper + step, step)))
+          .call((g) => g.select(".domain").remove())
+          .selectAll("text")
+          .attr("font-size", 12);
+
+      svg.append("g").call(xAxis);
+      svg.append("g").call(yAxis);
+
+      const rows = svg
+        .append("g")
+        .selectAll("g.row")
+        .data(data)
+        .join("g")
+        .attr("class", "row")
+        .attr("transform", (d) => `translate(${x0(d.name)},0)`);
+
+      const bars = rows
+        .selectAll("rect")
+        .data((d) => d.values)
+        .join("rect")
+        .attr("x", (v) => x1(v.wit))
+        .attr("y", (v) => y(v.value))
+        .attr("width", x1.bandwidth())
+        .attr("height", (v) => y(0) - y(v.value))
+        .attr("fill", (v) => color(v.wit))
+        .attr("rx", 2)
+        .attr("ry", 2);
+
+      rows
+        .selectAll("g.value-label")
+        .data((d) => d.values)
+        .join("g")
+        .attr("class", "value-label")
+        .attr(
+          "transform",
+          (v) =>
+            `translate(${x1(v.wit) + x1.bandwidth() / 2}, ${y(v.value) - 7})`,
+        )
+        .each(function (v) {
+          const group = d3.select(this);
+          const t = group
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("font-size", 7)
+            .attr("font-weight", "300")
+            .text(v.value);
+          const bb = t.node().getBBox();
+          group
+            .insert("rect", "text")
+            .attr("x", bb.x - 3)
+            .attr("y", bb.y - 1)
+            .attr("width", bb.width + 6)
+            .attr("height", bb.height + 2)
+            .attr("rx", 3)
+            .attr("ry", 3)
+            .attr("fill", "#fff")
+            .attr("opacity", 0.95);
+        });
+
+      bars.append("title").text((v) => `${v.wit}: ${v.value}`);
+
+      const legend = svg
+        .append("g")
+        .attr(
+          "transform",
+          `translate(${width - margin.right - 10}, ${margin.top - 10})`,
+        );
+      const lineH = 18;
+      allWitnesses.forEach((wit, i) => {
+        const y0 = i * lineH;
+        legend
+          .append("rect")
+          .attr("x", -16)
+          .attr("y", y0)
+          .attr("width", 12)
+          .attr("height", 12)
+          .attr("fill", color(wit))
+          .attr("opacity", selected.has(wit) ? 1 : 0.25);
+        legend
+          .append("text")
+          .attr("x", 2)
+          .attr("y", y0 + 10)
+          .attr("font-size", 12)
+          .attr("opacity", selected.has(wit) ? 1 : 0.5)
+          .text(wit);
+      });
+    };
+
+    witnessBtns.forEach((b) =>
+      b.addEventListener("click", () => {
+        const w = b.dataset.wit;
+        if (selected.has(w)) selected.delete(w);
+        else selected.add(w);
+        refreshBtnStyles();
+        draw();
+      }),
+    );
+    selectAllBtn.addEventListener("click", () => {
+      allWitnesses.forEach((w) => selected.add(w));
+      refreshBtnStyles();
+      draw();
+    });
+    clearAllBtn.addEventListener("click", () => {
+      selected.clear();
+      refreshBtnStyles();
+      draw();
+    });
+
+    refreshBtnStyles();
+    draw();
+    const ro = new ResizeObserver(() => draw());
+    ro.observe(container);
+  }
+
+  function calculateLineStats(container, witID, castMap) {
+    const stats = Object.create(null);
+    container.querySelectorAll("tei-sp").forEach((sp) => {
+      const speakers = resolveSpeakersForSp(sp, witID, castMap);
+      const k = speakers.length || 1,
+        weight = 1 / k;
+      let counted = 0;
+      sp.querySelectorAll("tei-l").forEach((line) => {
+        const txt = (line.textContent || "").trim();
+        if (!txt || /^\[\.+\]$/.test(txt)) return;
+        counted++;
+      });
+      if (counted > 0)
+        speakers.forEach((name) => {
+          if (!stats[name]) stats[name] = 0;
+          stats[name] += counted * weight;
+        });
+    });
+    return stats;
+  }
+  function extractWitnessSigla(data) {
+    const siglaSet = new Set();
+    data.querySelectorAll("tei-rdg[wit], tei-lem[wit]").forEach((rdg) => {
+      const witAttr = rdg.getAttribute("wit");
+      if (!witAttr) return;
+      witAttr
+        .split(/\s+/)
+        .forEach((wit) => siglaSet.add(wit.replace(/^#/, "")));
+    });
+    return Array.from(siglaSet).sort();
+  }
+  function calculateGlobalStats(allWitnesses, baseTEI, castMap) {
+    const globalStats = Object.create(null);
+    allWitnesses.forEach((witID) => {
+      const dom = reconstructWitness(witID, baseTEI);
+      const local = calculateLineStats(dom, witID, castMap);
+      Object.entries(local).forEach(([name, count]) => {
+        if (!globalStats[name]) globalStats[name] = Object.create(null);
+        globalStats[name][witID] = (globalStats[name][witID] || 0) + count;
+      });
+    });
+    return globalStats;
+  }
+  function calculateActStatsPerWitness(baseTEI, allWitnesses, castMap) {
+    const acts = Array.from(
+      baseTEI.querySelectorAll('tei-div[type="act"], tei-div[type="jornada"]'),
+    );
+    const allStats = {};
+    acts.forEach((actDiv, idx) => {
+      const actKey = actDiv.getAttribute("n")
+        ? `Acto ${actDiv.getAttribute("n")}`
+        : `Acto ${idx + 1}`;
+      allStats[actKey] = {};
+      allWitnesses.forEach((witID) => {
+        const dom = reconstructWitness(witID, actDiv.cloneNode(true));
+        allStats[actKey][witID] = calculateLineStats(dom, witID, castMap);
+      });
+    });
+    return allStats;
+  }
+  function renderStatsPanel(stats, witID) {
+    const panel = document.getElementById("stats-panel");
+    clearNode(panel);
+    const entries = Object.entries(stats)
+      .map(([name, v]) => [name, Math.round(v)])
+      .sort((a, b) => b[1] - a[1]);
+    if (entries.length === 0) {
+      panel.innerHTML = `<h3>Sin líneas para ${witID}</h3>`;
+      return;
+    }
+    const table = document.createElement("table");
+    table.className = "stats-table";
+    table.innerHTML = `
+      <thead><tr><th style="font-variant: small-caps;">Personaje</th><th style="font-variant: small-caps;">Cantidad de líneas</th></tr></thead>
+      <tbody>${entries
+        .map(
+          ([label, count]) =>
+            `<tr><td><strong>${label}</strong></td><td>${count}</td></tr>`,
+        )
+        .join("")}</tbody>`;
+    const h3 = document.createElement("h3");
+    h3.textContent = `Estadísticas para testimonio #${witID}:`;
+    panel.append(h3, table);
+    const chartHolder = document.createElement("div");
+    chartHolder.style.marginTop = "16px";
+    panel.appendChild(chartHolder);
+    drawBarChartD3(
+      chartHolder,
+      Object.fromEntries(entries),
+      `Líneas habladas en ${witID}`,
+    );
+  }
+  function renderGlobalStatsChartD3(
+    globalStats,
+    allWitnesses,
+    container,
+    title,
+  ) {
+    drawGroupedBarChartD3(container, globalStats, allWitnesses, title);
+  }
+  function attachGlobalChartToggle() {
+    const toggleBtn = document.getElementById("toggle-global-chart-btn");
+    const globalChartModal = document.getElementById("global-chart-modal");
+    const closeBtn = document.getElementById("close-global-chart-btn");
+    if (toggleBtn)
+      toggleBtn.addEventListener("click", () => {
+        globalChartModal.classList.toggle("hidden");
+        if (!globalChartModal.classList.contains("hidden"))
+          globalChartModal.scrollIntoView({ behavior: "smooth" });
+      });
+    if (closeBtn)
+      closeBtn.addEventListener("click", () =>
+        globalChartModal.classList.add("hidden"),
+      );
+  }
+  function setupStatsPopup(allWitnesses, castMap) {
+    const openBtn = document.getElementById("open-stats-btn");
+    const closeBtn = document.getElementById("close-stats-btn");
+    const modalWrapper = document.getElementById("modal-wrapper");
+    const witnessButtons = document.getElementById("witness-buttons");
+    const statsPanel = document.getElementById("stats-panel");
+    const globalChartsContainer = document.getElementById(
+      "global-charts-container",
+    );
+
+    openBtn.addEventListener("click", () => {
+      modalWrapper.classList.remove("hidden");
+      clearNode(statsPanel);
+      clearNode(globalChartsContainer);
+
+      const allW = allWitnesses;
+      const globalStats = calculateGlobalStats(allW, baseTEI, castMap);
+      const overallHolder = document.createElement("div");
+      globalChartsContainer.appendChild(overallHolder);
+      renderGlobalStatsChartD3(
+        globalStats,
+        allW,
+        overallHolder,
+        "Comparación general de líneas",
+      );
+
+      const actStats = calculateActStatsPerWitness(baseTEI, allW, castMap);
+      Object.entries(actStats).forEach(([actName, witData]) => {
+        const actTitle = document.createElement("h4");
+        actTitle.textContent = `${actName}`;
+        globalChartsContainer.appendChild(actTitle);
+        const actHolder = document.createElement("div");
+        globalChartsContainer.appendChild(actHolder);
+        const actGlobalStats = {};
+        Object.entries(witData).forEach(([witID, speakerCounts]) => {
+          Object.entries(speakerCounts).forEach(([charName, count]) => {
+            if (!actGlobalStats[charName]) actGlobalStats[charName] = {};
+            actGlobalStats[charName][witID] = count;
+          });
+        });
+        renderGlobalStatsChartD3(
+          actGlobalStats,
+          allW,
+          actHolder,
+          `Líneas por personaje – ${actName}`,
+        );
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modalWrapper.classList.add("hidden");
+      clearNode(statsPanel);
+      clearNode(globalChartsContainer);
+    });
+
+    witnessButtons.innerHTML = "";
+    allWitnesses.forEach((witID) => {
+      const btn = document.createElement("button");
+      btn.textContent = witID;
+      btn.classList.add("witness-btn");
+      btn.addEventListener("click", () => {
+        const witnessDOM = reconstructWitness(witID, baseTEI);
+        const stats = calculateLineStats(witnessDOM, witID, castMap);
+        renderStatsPanel(stats, witID);
+        document.getElementById("global-chart-modal").classList.add("hidden");
+        document
+          .getElementById("stats-panel")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+      witnessButtons.appendChild(btn);
+    });
+  }
+
+  // =========================
+  // Pipeline di decorazione
+  // =========================
+  function decorateEdition(root, { inWitnessView = false } = {}) {
+    // 1) long-span
+    decorateOmissionSpans(root, inWitnessView);
+    processAdditionSpans(root, { mode: "base" }); // unificata (base)
+    // 2) inline
+    decorateInlineAdditionsWithoutAnchors(root);
+    decorateApparatus(root);
+    // 3) numerazione/impaginazione
+    insertLeftAlignedLineNumbers(root);
+    alignSplitVerses(root);
+    // 4) hover sync
+    enableLineSyncHighlighting();
+    root.__decoratedOnce = true;
+  }
+
+  // =========================
+  // UI
+  // =========================
+  function setupFloatingControls() {
+    const btn = document.getElementById("add-witness-btn");
+    const select = document.getElementById("witness-select");
+
+    btn.addEventListener("click", () => {
+      select.classList.toggle("visible");
+    });
+
+    // delega completamente su openWitness
+    select.addEventListener("change", () => {
+      openWitness(select.value);
+    });
+  }
+
+  function populateWitnessSelect(allWitnesses) {
+    const select = document.getElementById("witness-select");
+    select.innerHTML = '<option value="">Selecciona testimonio</option>';
+    allWitnesses.forEach((witID) => {
+      const option = document.createElement("option");
+      option.value = witID;
+      option.textContent = witID;
+      select.appendChild(option);
+    });
+  }
+
+  function openWitness(witnessID) {
+    if (!witnessID) return;
+
+    const container = document.getElementById("witness-container");
+    container.innerHTML = "";
+    container.classList.remove("hidden");
+
+    const witnessDOM = reconstructWitness(witnessID, baseTEI);
+    witnessDOM.setAttribute("data-witness-id", witnessID);
+    container.appendChild(witnessDOM);
+
+    requestAnimationFrame(() => {
+      decorateNotes(witnessDOM);
+      decorateApparatus(witnessDOM);
+      makeApparatusSiglaClickable(witnessDOM);
+
+      insertLeftAlignedLineNumbers(witnessDOM);
+      alignSplitVerses(witnessDOM);
+      decorateOmissionSpans(witnessDOM);
+
+      // aggiunte long-span per il testimone selezionato (funzione unificata)
+      processAdditionSpans(witnessDOM, {
+        mode: "witness",
+        witID: witnessID,
+      });
+
+      // data-line-n per evidenziazione sincronizzata
+      witnessDOM.querySelectorAll("tei-l[n]").forEach((line) => {
+        const n = line.getAttribute("n");
+        if (n) {
+          line.classList.add(`line-n-${n}`);
+          line.setAttribute("data-line-n", n);
+        }
+      });
+
+      enableLineSyncHighlighting();
+    });
+  }
+
+  // =========================
+  // Boot
+  // =========================
+  window.onload = function () {
+    CETEIcean.getHTML5("el_marques.xml", function (data) {
+      // 1) Clona prima di montare
+      baseTEI = data.cloneNode(true);
+      originalData = data.cloneNode(true);
+
+      // 2) Monta nel DOM
+      const criticalContainer = document.getElementById("critical-container");
+      criticalContainer.appendChild(data);
+      const root = criticalContainer;
+
+      // 3) Dati di supporto
+      const castMap = buildCastMap(baseTEI);
+      const allSigla = extractWitnessSigla(baseTEI);
+      populateWitnessSelect(allSigla);
+      setupStatsPopup(allSigla, castMap);
+
+      // Delegated handler: click su chip → apri testimone (senza passare dal <select>)
+      const wrapper = document.getElementById("tei-wrapper") || document;
+      wrapper.addEventListener("pointerdown", (e) => {
+        const chip = e.target.closest(".wit-chip");
+        if (!chip) return;
+        e.stopPropagation(); // evita il click-away del tooltip
+        const wit = chip.dataset.wit;
+
+        // apri subito la colonna del testimone
+        openWitness(wit);
+
+        // (opzionale) sincronizza il select, anche se è nascosto
+        const sel = document.getElementById("witness-select");
+        if (sel) {
+          sel.value = wit;
+          sel.classList.add("visible");
+        }
+      });
+
+      // 4) Decora il testo base (una volta pronto nel DOM)
+      requestAnimationFrame(() => {
+        decorateNotes(root);
+        decorateEdition(root, { inWitnessView: false });
+        attachNoteEvents(root);
+        attachGlobalChartToggle();
+
+        // Tagga le linee del BASE con data-line-n per la sync highlight
+        root.querySelectorAll("tei-l[n]").forEach((line) => {
+          const n = line.getAttribute("n");
+          if (n) {
+            line.classList.add(`line-n-${n}`);
+            line.setAttribute("data-line-n", n);
+          }
+        });
+
+        // Dopo che decorateApparatus ha creato i tooltip, rendi le sigle cliccabili
+        makeApparatusSiglaClickable(root);
+
+        // Evidenziazione sincronizzata (delegata, bind una sola volta)
+        enableLineSyncHighlighting();
+      });
+
+      // 5) Controlli flottanti
+      setupFloatingControls();
+    });
+  };
+</script>

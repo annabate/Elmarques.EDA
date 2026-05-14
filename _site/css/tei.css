@@ -1,0 +1,1016 @@
+body {
+  margin: 0;
+  font-family: Garamond, serif;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #212529;
+  text-align: justify;
+  background-color: #decfa2e3;
+  font-size: var(--user-font-size, 100%);
+}
+
+/* Make the whole page a flex column */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header and footer auto-size */
+#main-header {
+  flex: 0 0 auto;
+}
+#site-footer {
+  flex: 0 0 auto;
+}
+
+/* Central wrapper fills remaining space */
+#tei-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  overflow: hidden; /* prevent double scrollbars */
+}
+
+/* Each column takes equal space and scrolls inside */
+.tei-column {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+}
+
+.tei-column:last-child {
+  border-right: none;
+}
+
+/* Scrollable text area */
+.tei-column-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 1em;
+}
+
+/* Facsimile should fit the column height */
+#facsimile-wrapper {
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: none;
+}
+
+#facsimile-image {
+  max-width: 100%;
+  max-height: 100%;
+  transform-origin: 0 0; /* use translate+scale from top-left corner */
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#facsimile-image.grabbing {
+  cursor: grabbing;
+}
+
+body > #tei-wrapper {
+  flex: 1 0 auto;
+}
+
+tei-div,
+tei-p {
+  margin-bottom: 1.2em;
+}
+
+tei-p {
+  display: block;
+  text-align: justify;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+tei-castList {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  margin: 2em 0;
+}
+
+tei-castItem {
+  display: block;
+  margin: 0.1em 0;
+}
+
+tei-milestone {
+  display: none;
+}
+
+tei-note::after {
+  max-width: 90vw;
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+tei-sp {
+  display: grid;
+  grid-template-columns: 4em 2fr;
+  text-align: left;
+  column-gap: 1em;
+}
+
+tei-speaker {
+  display: inline;
+  font-variant: small-caps;
+  font-weight: bold;
+  text-align: right;
+  grid-column: 1;
+  grid-row: 1;
+  margin-left: -18px;
+}
+
+tei-lg {
+  display: contents;
+  grid-column: 2;
+}
+
+tei-l[met="stanza"] {
+  padding-left: 1.5em;
+  text-indent: 1.5em;
+  margin-top: 0em;
+}
+
+tei-l {
+  display: block;
+  position: relative;
+  padding-left: 2em;
+  grid-column: 2;
+  text-align: left;
+}
+
+tei-l[part="M"] {
+  padding-left: 5em;
+}
+
+tei-l[part="F"] {
+  padding-left: 8em;
+}
+
+/* Show all line numbers in a circle */
+tei-l::before {
+  content: attr(n);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(0.1em);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  font-size: 0.8em;
+  border-radius: 60%;
+  color: #938e87;
+  margin-right: 0.6em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Hide all line numbers except those ending in 0 or 5 */
+tei-l:not([n$="0"]):not([n$="5"])::before {
+  content: none;
+  background: none;
+}
+
+tei-head {
+  display: block;
+  font-weight: bold;
+  font-variant: small-caps;
+  font-size: 1.3em;
+  text-align: center;
+  margin: 1em 0;
+}
+
+tei-stage {
+  display: block;
+  font-style: italic;
+  font-size: 1em;
+  text-align: center;
+  margin: 2em 0;
+}
+
+tei-pb {
+  display: inline-block;
+  font-size: 0.8em;
+  color: #777;
+}
+
+tei-pb::before {
+  content: attr(n);
+  background-color: #dac4a65b;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: bold;
+  color: #444;
+}
+
+.metric-shift {
+  padding-left: 0.8em;
+}
+
+#main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1021;
+  background: white;
+  border-bottom: 3px solid #75603b98;
+  padding: 0.1em 1em;
+}
+
+.header-title {
+  padding: 1em 2em 0.3em;
+  text-align: center;
+}
+
+.header-title h1 {
+  font-family: Garamond, serif;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #4a3c27;
+  margin: 0;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3em 0.6em;
+  background: #f6f2e8;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+}
+
+.column-header button:not(.close-column) {
+  border-radius: 5px;
+  border: 1px solid #828282;
+}
+
+.close-column {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-column:hover {
+  color: #c00;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#search-bar {
+  padding: 0.5em;
+  background: #f9f9f9;
+  border-top: 1px solid #ccc;
+  display: flex;
+  gap: 0.3em;
+}
+
+#search-bar.hidden {
+  display: none;
+}
+
+#toggle-search {
+  background: #eee;
+  border: none;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#toggle-search:hover {
+  background: #ddd;
+  transform: scale(1.05);
+}
+
+#toggle-search:active {
+  background: #ccc;
+  transform: scale(0.95);
+}
+
+#close-search.close-search {
+  position: absolute;
+  right: 0.5em;
+  top: 8.5em;
+  border: 0;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em 1em 1em;
+  gap: 1em;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.toolbar-group-search {
+  display: flex;
+  padding-left: 73rem;
+  padding-top: 0em;
+  padding-bottom: 1em;
+  flex-wrap: wrap;
+}
+#toolbar select,
+#toolbar button {
+  font-family: Garamond, serif;
+  font-size: 1.1rem;
+  padding: 0.3em 0.7em;
+  border: 1px solid #bca689;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#toolbar button:hover,
+#toolbar select:hover {
+  background-color: #decfa298;
+}
+
+/* === SYNOPTIC VIEW === */
+#tei-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+#facsimile-container {
+  order: -1;
+  text-align: center;
+}
+
+#facsimile-image {
+  max-width: 100%;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+  border-radius: 8px;
+}
+
+#facsimile-image.zoomed {
+  transform: scale(2.5);
+  cursor: zoom-out;
+  z-index: 1000;
+  position: relative;
+}
+
+#tei-wrapper.single-view {
+  justify-content: center;
+}
+
+#tei-wrapper.single-view .tei-column {
+  width: 50%; /* oppure 50-70%, in base alle tue preferenze */
+  margin: 0 auto;
+}
+
+.header-title h1 {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin: 0;
+  color: #b49970;
+}
+
+.tei-column {
+  position: sticky;
+  top: 5rem;
+  height: calc(100vh - 5rem);
+  background-color: #f9f9f9;
+  padding: 1.2em;
+  border-radius: 10px;
+  overflow-x: auto;
+  min-width: 0; /* ✅ per evitare overflow */
+  box-sizing: border-box;
+  padding-bottom: 3rem;
+}
+
+.tei-column h1,
+.tei-column head {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5em;
+}
+
+.tei-column-scroll {
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  padding: 1rem;
+  position: relative;
+}
+
+#facsimile-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  background-color: #f9f9f9;
+  padding: 0.5em;
+}
+
+#facsimile-container.sticky {
+  position: sticky;
+  top: 4.5em;
+  align-self: flex-start;
+  z-index: 10;
+  max-width: 100%; /* ✅ Prevent overflow */
+  box-sizing: border-box; /* ✅ Include padding in width */
+}
+
+/* Quando c’è solo un box (vista singola), centrare */
+#tei-wrapper.single-view .tei-column {
+  width: 60%;
+}
+
+/* Tre colonne in modalità sinottica */
+#tei-wrapper.synoptic-view {
+  flex-wrap: wrap;
+}
+
+#tei-wrapper.synoptic-view .tei-column {
+  flex: 1 1 33.33%;
+  width: 33.33%;
+  max-width: 33.33%;
+}
+
+#view-selector {
+  text-align: center;
+  margin: 2em auto 1em;
+}
+
+#view-selector button {
+  margin: 0 0.5em;
+  padding: 0.6em 1.5em;
+  font-family: Garamond, serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  color: #262626;
+  background-color: #f9f9f9;
+  border: 1px solid #bca689;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#view-selector button:hover {
+  background-color: #e7d2b5;
+}
+
+#folio-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+#folio-controls button,
+.zoom-control button {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  padding: 0.2em 0.8em;
+  margin: 0 0.3em;
+  cursor: pointer;
+}
+
+.note-icon {
+  font-size: 0.8em;
+  color: var(--accent-icon);
+  font-weight: bold;
+  user-select: none;
+  display: inline;
+  vertical-align: super;
+}
+
+.floating-note {
+  position: absolute;
+  background-color: #ffffffd3;
+  border: 1px solid #c1c1c1;
+  box-shadow: 2px 2px 5px rgba(161, 161, 161, 0.3);
+  padding: 1em;
+  max-width: 300px;
+  min-width: 220px;
+  z-index: 9999;
+  font-family: Garamond, serif;
+  font-size: 16px;
+  word-wrap: break-word;
+  line-height: 1.4;
+  border-radius: 8px;
+  overflow: auto;
+  bottom: auto;
+  right: auto;
+}
+
+.tei-column {
+  flex: 1 1 0;
+  min-width: 250px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Facsimile container layout based on view mode */
+#tei-wrapper.dual-view #facsimile-container,
+#tei-wrapper.synoptic-view #facsimile-container {
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+#tei-wrapper.single-view #facsimile-container {
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+#phase-controls {
+  margin: 1em auto;
+  text-align: center;
+  padding: 0.5em;
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 90%;
+}
+
+#phase-controls button {
+  margin: 0.25em;
+  padding: 0.4em 1em;
+  font-size: 0.95em;
+  background: #f4f4f4;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#phase-controls button:hover {
+  background: #e7d2b5;
+}
+
+#variant-controls {
+  margin: 1em auto;
+  text-align: center;
+  padding: 0.5em;
+  background: #f9f9f9c2;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 100%;
+}
+
+#variant-selector {
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+#variant-selector:hover {
+  border-color: #e7d2b5;
+}
+
+#variant-selector:focus {
+  outline: none;
+  border-color: #555;
+}
+
+tei-subst {
+  display: inline;
+}
+
+tei-del {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: rgb(141, 9, 9);
+  margin-right: 0.25em;
+}
+
+tei-add {
+  font-weight: bold;
+  color: #184267;
+}
+
+.active-reading {
+  background-color: #fcf37bcd; /* light yellow highlight */
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+  transition: background-color 0.3s ease;
+}
+
+.non-authorial-reading {
+  background-color: #fcb196ec; /* light red highlight for B1, B2 */
+  font-style: italic;
+}
+
+.addition {
+  background-color: rgb(131, 171, 234);
+}
+.deletion {
+  text-decoration: line-through;
+  color: rgb(228, 60, 60);
+}
+
+.wit-A0 {
+  background-color: #c5edf5e8;
+} /* Light blue */
+.wit-A1 {
+  background-color: #fed794d8;
+} /* Light orange */
+.wit-A2 {
+  background-color: #e2cbe6;
+} /* Light purple */
+.wit-B {
+  background-color: #bcecac;
+} /* Light green */
+
+.color-legend {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.5em;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.color-legend .color-box {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.3em;
+  vertical-align: middle;
+  border: 1px solid #555;
+  border-radius: 2px;
+}
+
+.rdg-seq {
+  font-size: 0.6em;
+  vertical-align: super;
+  margin-left: 2px;
+  opacity: 0.8;
+}
+
+/* Multi-line deletion highlight (witness B etc.) */
+
+.has-del-gutter {
+  position: relative;
+}
+.has-del-gutter::before {
+  content: "✖";
+  position: absolute;
+  left: -1.1rem;
+  top: 0.1rem;
+  color: #b00000;
+  font-weight: 700;
+  opacity: 0.7;
+}
+.collapsed-del {
+  display: none !important;
+}
+
+.range-add {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+.range-del {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.15em;
+}
+
+body.clean-mode .note-icon {
+  display: none !important;
+}
+
+@media screen and (max-width: 1024px) {
+  #tei-wrapper {
+    flex-direction: column;
+  }
+
+  .tei-column {
+    width: 100% !important;
+    max-width: 100%;
+    margin-bottom: 1em;
+  }
+
+  #facsimile-container {
+    order: 0; /* show it first */
+  }
+}
+
+.font-size-ctr {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tei-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tei-column-scroll {
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.tei-column-scroll::after {
+  content: "";
+  display: block;
+  height: 3rem; /* ⬅️ ensures bottom spacing */
+}
+
+.tei-column.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.search-highlight {
+  background-color: rgba(254, 242, 68, 0.596);
+  padding: 0.1em;
+  border-radius: 2px;
+}
+
+.search-highlight.active-match {
+  outline: 2px solid rgb(248, 227, 3);
+}
+
+#site-footer {
+  border-top: 3px solid #75603b98;
+  padding: 2em 1em;
+  font-family: "Georgia", serif;
+  font-size: 0.95em;
+  background-color: #fff;
+  color: #333;
+  margin-top: 2em;
+}
+
+#site-footer a {
+  color: #decfa298;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 0.5em;
+}
+
+.footer-text p {
+  margin: 0.1em 0;
+  line-height: 1;
+}
+
+.edition footer {
+  margin-top: 0!important;
+}
+
+#unitn {
+  height: 70px;
+}
+
+.logo {
+  display: inline-block;
+  width: auto;
+  height: 70px;
+}
+
+:root {
+  /* Fallback if JS can’t measure per line; per-note override is --note-left */
+  --line-pad-left: 12px;
+}
+
+/* ===== Phase palette: vars a note inherits via its .wit-* class ===== */
+.wit-A0 {
+  --marginal-bg: #d7edf3;
+  --marginal-accent: #7fb6c5;
+}
+.wit-A1 {
+  --marginal-bg: #fee0ab;
+  --marginal-accent: #e29a1e;
+}
+.wit-A2 {
+  --marginal-bg: #edd1f1;
+  --marginal-accent: #b07fbb;
+}
+.wit-B {
+  --marginal-bg: #d0f3bf;
+  --marginal-accent: #67a953;
+}
+
+/* ---------------- Base neutral style ---------------- */
+tei-add[place] {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-style: normal;
+  vertical-align: baseline;
+  line-height: inherit;
+}
+
+/* ---------------- Active decoration (uses phase colors) ---------------- */
+tei-add.marginal-active {
+  background: var(--marginal-bg, transparent);
+  border-left: 2px dashed var(--marginal-accent, currentColor);
+  padding-left: 0.5em;
+  border-radius: 3px;
+}
+
+/* ---- ALIGNMENT in verse lines (descendant, not direct child) ----
+   Cancel the line's left offset for the note's box,
+   then add it back + a small nudge inside so text aligns perfectly. */
+:is(tei-l, l) tei-add[place].marginal-active {
+  margin-left: calc((var(--note-left, var(--line-pad-left))) * -0) !important;
+  padding-left: calc(
+    0.5em + var(--note-left, var(--line-pad-left)) + var(--marginal-align-pad)
+  ) !important;
+}
+
+/* If a verse line appears INSIDE a marginal note, remove its own left offset. */
+tei-add[place] :is(tei-l, l) {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  text-indent: 0 !important;
+}
+
+/* ---------------- A0 offset ---------------- */
+tei-add.marginal-a0-block {
+  display: inline-block;
+  margin-left: 2em; /* default in prose */
+  vertical-align: baseline;
+}
+/* Adjust A0 when inside verse lines (measure from text column) */
+:is(tei-l, l) tei-add[place].marginal-a0-block {
+  margin-left: calc(2em - var(--note-left, var(--line-pad-left))) !important;
+}
+
+/* ---------------- Hidden state ---------------- */
+.marginal-hidden {
+  display: none !important;
+}
+
+/* ---------------- Emphasis when active ---------------- */
+tei-add.highlighted-marginal {
+  font-weight: bold;
+  outline: 2px solid
+    color-mix(in srgb, var(--marginal-accent, #555) 25%, transparent);
+  outline-offset: 2px;
+}
+
+/* ---------------- Reveal animation ---------------- */
+tei-add.reveal {
+  display: inline-block; /* keep baseline alignment */
+  position: relative;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: transform 680ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 220ms ease-out;
+  background-color: rgba(255, 230, 180, 0.4); /* soft flash */
+}
+tei-add.marginal-a0-block.reveal {
+  display: inline-block;
+}
+
+tei-add.reveal[data-reveal="left"] {
+  transform: translateX(-10px) scale(0.97);
+}
+tei-add.reveal[data-reveal="right"] {
+  transform: translateX(10px) scale(0.97);
+}
+tei-add.reveal[data-reveal="top"] {
+  transform: translateY(-8px) scale(0.97);
+}
+tei-add.reveal[data-reveal="bottom"] {
+  transform: translateY(8px) scale(0.97);
+}
+
+tei-add.reveal.reveal-in {
+  opacity: 1;
+  transform: none;
+  background-color: transparent;
+}
+
+/* ---------------- Arrow (➤) colored by phase accent ----------------
+   Placement/orientation rules:
+   - left  -> arrow on LEFT,  pointing RIGHT
+   - right -> arrow on RIGHT, pointing LEFT
+   - top   -> arrow on LEFT,  pointing DOWN
+   - bottom-> arrow on RIGHT, pointing UP
+*/
+tei-add.reveal::after {
+  content: "➤";
+  position: absolute;
+  font-size: 0.9em;
+  line-height: 1;
+  color: var(--marginal-accent, currentColor);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* LEFT: left side, pointing right */
+tei-add.reveal[data-reveal="left"]::after {
+  left: -1.2em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* RIGHT: right side, pointing left */
+tei-add.reveal[data-reveal="right"]::after {
+  right: -1.2em;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* TOP: left side, pointing down */
+tei-add.reveal[data-reveal="top"]::after {
+  left: -1.2em;
+  top: 0;
+  transform: translate(-10%, -10%) rotate(90deg);
+}
+
+/* BOTTOM: right side, pointing up */
+tei-add.reveal[data-reveal="bottom"]::after {
+  right: -1.2em;
+  bottom: 0;
+  transform: translate(10%, 10%) rotate(-90deg);
+}
+
+/* ---------------- Toggle button ---------------- */
+.marginal-toggle {
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 0.1em 0.4em;
+  margin: 0 0.25em 0 0;
+  background: #eee;
+  border: 1px solid #999;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+/* Deletions */
+.int--del-range {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.6px;
+  text-decoration-color: currentColor; /* overridden per wit below */
+}
+
+/* Additions */
+.int--add-range {
+  text-decoration: underline dashed;
+  text-decoration-thickness: 1.6px;
+  text-underline-offset: 0.15em;
+  text-decoration-color: currentColor; /* overridden per wit below */
+}
