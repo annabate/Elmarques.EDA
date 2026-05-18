@@ -1138,7 +1138,11 @@ window.onload = function () {
     if (option) {
       const facs = option.dataset.facs;
       const img = document.getElementById("facsimile-image");
-      img.src = `../facs/${facs}.jpg`;
+      if (facs) {
+        img.src = facs;
+      } else {
+        img.src = "../facs/placeholder.jpg";
+      }
       img.onerror = () => {
         img.src = "../facs/placeholder.jpg";
       };
@@ -1362,7 +1366,16 @@ window.onload = function () {
       pbs.forEach((pb, i) => {
         const id = pb.getAttribute("xml:id") || `pb-${i + 1}`;
         const n = pb.getAttribute("n") || `Página ${i + 1}`;
-        const facsName = n.replace(/\[|\]/g, "").replace(/Fol\.?\s*/i, "fol").replace(/\s/g, "").toLowerCase();
+        const corresp = pb.getAttribute("corresp") || "";
+        let facsName;
+        if (corresp) {
+          facsName = corresp.replace(/^#/, "");
+          if (!facsName.match(/^[a-zA-Z][a-zA-Z0-9+.-]*:/) && !facsName.startsWith("/") && !facsName.startsWith("../") && !facsName.startsWith("./")) {
+            facsName = `../${facsName}`;
+          }
+        } else {
+          facsName = `../facs/${n.replace(/\[|\]/g, "").replace(/Fol\.?\s*/i, "fol").replace(/\s/g, "").toLowerCase()}.jpg`;
+        }
         pb.setAttribute("id", id);
         if (!Array.from(pbSelector.options).some((o) => o.value === id)) {
           const opt = document.createElement("option");
