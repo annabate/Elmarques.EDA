@@ -3,1708 +3,1530 @@ layout: critical
 title: El marqués de las Navas – Edición Digital Académica
 ---
 
-  <header id="main-header">
-    
+<!-- Sticky header with title and buttons -->
+<header id="sticky-header" class="page-header">
+  <div class="header-title">
+    <span><em>El marqués de las Navas</em> – Edición Digital Académica</span>
+  </div>
+  <div id="floating-tools">
+    <button id="add-witness-btn" title="Comparar testimonio">+</button>
+    <select id="witness-select" class="hidden">
+      <option value="">Selecciona testimonio</option>
+    </select>
+    <button id="open-stats-btn">Ver estadísticas</button>
+  </div>
+</header>
 
-    <div id="toolbar">
-      <!-- Column toggles -->
-      <div class="toolbar-group">
-        <label><input type="checkbox" class="toggle-col" data-target="facsimile-container" checked> Facsímil</label>
-        <label><input type="checkbox" class="toggle-col" data-target="modern-container" checked> Edición crítico-genética</label>
-        <label><input type="checkbox" class="toggle-col" data-target="diplomatic-container" checked> Transcripción</label>
-      </div>
+<!-- TEI Content Wrapper -->
+<div id="tei-wrapper" class="synoptic-view">
+  <div id="critical-container" class="tei-column critical-column"></div>
+  <div id="witness-container" class="tei-column witness-column hidden"></div>
+</div>
 
-      <!-- Font size -->
-      <div class="toolbar-group" title="Ajustar fuente de texto">
-        <button onclick="adjustFontSize(-1)" title="Reducir fuente">A−</button>
-        <button onclick="adjustFontSize(1)" title="Aumentar fuente">A+</button>
-      </div>
-
-      <!-- Typology filter -->
-      <div class="toolbar-group">
-        <label for="variant-selector" style="font-size: 1rem; font-weight: bold;">Filtrar intervenciones por tipología:</label>
-        <select id="variant-selector">
-          <option value="all">Mostrar todas</option>
-          <option value="A0">A0 (original)</option>
-          <option value="A1">A1 (correcciones inmediatas)</option>
-          <option value="A2">A2 (revisión posterior)</option>
-          <option value="B">B (mano ajena)</option>
-        </select>
-        <div class="color-legend">
-          <span><span class="color-box wit-A0"></span> A0 (original)</span>
-          <span><span class="color-box wit-A1"></span> A1 (correcciones inmediatas)</span>
-          <span><span class="color-box wit-A2"></span> A2 (revisión posterior)</span>
-          <span><span class="color-box wit-B"></span> B (mano ajena)</span>
-        </div>
-        <button id="clean-text-button">Texto limpio</button>
-      </div>
-
-      <!-- Search toggle -->
-      <div class="toolbar-group" style="margin-left:auto;">
-      <button id="toggle-search" title="Buscar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 2a8 8 0 015.293 13.707l5 5a1 1 0 01-1.414 1.414l-5-5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
-        </svg>
-      </button>
-      </div>
+<!-- Modal wrapper for centering and backdrop -->
+<div id="modal-wrapper" class="modal hidden">
+  <div id="stats-modal">
+    <!-- Close button -->
+    <button id="close-stats-btn">🗙</button>
+    <!-- Witness selection -->
+    <h3>Elige un testimonio</h3>
+    <div class="witness-controls">
+      <div id="witness-buttons"></div>
+      <button id="toggle-global-chart-btn">Ver gráficas</button>
     </div>
-
-    <!-- Hidden search bar -->
-    <div id="search-bar" class="hidden">
-      <input type="text" id="search-input" placeholder="Buscar en el texto..." />
-      <button id="search-button" title="Buscar">🔍</button>
-      <button id="prev-match" title="Coincidencia anterior">⬆</button>
-      <button id="next-match" title="Coincidencia siguiente">⬇</button>
-      <select id="search-scope" title="Seleccionar texto">
-        <option value="both">Ambos</option>
-        <option value="modern">Edición crítico-genética</option>
-        <option value="diplomatic">Transcripción</option>
-      </select>
-      <button id="close-search" class="close-search" aria-label="Close search" title="Close search">✕</button>
+    <!-- Stats panel (list + individual chart) -->
+    <div id="stats-panel">
+      <canvas id="stats-chart" width="800" height="300"></canvas>
     </div>
-  </header>
-
-  <!-- ✅ CORRECT WRAPPER -->
-  <div id="tei-wrapper" class="synoptic-view">
-    <div id="facsimile-container" class="tei-column sticky">
-      <div class="column-header">
-        <label for="pb-selector">Folio:</label>
-        <select id="pb-selector"></select>
-        <button id="prev-folio">←</button>
-        <button id="next-folio">→</button>
-        <button class="close-column" title="cerrar">✕</button>
-      </div>
-      <div id="facsimile-wrapper">
-        <img id="facsimile-image" src="" alt="Facsímil" />
-      </div>
-    </div>
-
-    <div id="modern-container" class="tei-column">
-      <div class="column-header">
-        <span>Edición genética</span>
-        <button class="close-column" title="cerrar">✕</button>
-      </div>
-      <div class="tei-column-scroll"></div>
-    </div>
-
-    <div id="diplomatic-container" class="tei-column">
-      <div class="column-header">
-        <span>Transcripción</span>
-        <button class="close-column" title="cerrar">✕</button>
-      </div>
-      <div class="tei-column-scroll"></div>
+    <!-- Global charts (general + per-act) -->
+    <div id="global-chart-modal" class="hidden">
+      <button id="close-global-chart-btn">Cerrar</button>
+      <h3>Comparativa global entre testimonios</h3>
+      <div id="global-charts-container"></div>
     </div>
   </div>
+</div>
 
-  <footer id="site-footer">
-    <div class="footer-text">
-      <p>
-        Vega, Lope de, <i>El marqués de las Navas: edición genética digital</i>.
-        Anna Abate, Università di Trento, Trento, 2025.
-    </div>
-    <div class="logos">
-      <p class="credit_links">
-        <a href="https://www.unitn.it/it"><img src="../logo/logoUnitn.JPG" class="logo" id="unitn"></a>
-      </p>
-    </div>
-  </footer>
 <script>
-/* =========================
-   GLOBAL STATE (no TDZ)
-   ========================= */
-const spanRanges = [];              // { id, type:'del'|'add', phase, nodes: Element[] }
-let spanRangeAutoId = 0;
-// Only mark real line/paragraph blocks, not big wrappers:
-const HIGHLIGHT_BLOCK_SEL = "tei-l, l, tei-p, p, tei-ab, tei-s, tei-head";
-// Map each block node -> array of {id, type, phase, [subtype], [place]} it belongs to (for overlaps)
-const nodeToRanges = new Map();
-// Clean mode flag: when true, spans must be invisible and not rebuilt
-let CLEAN_MODE = false;
-
-// show the entire sequence up to the selected phase (if you need it elsewhere)
-const DISPLAY_SEQUENCE = {
-  A0: ["A0"],
-  A1: ["A0","A1"],
-  A2: ["A0","A1","A2"],
-  B:  ["A0","A1","A2","B"]
-};
-
-// Convert "#rrggbb" to rgba(r,g,b,alpha)
-function hexToRgba(hex, alpha) {
-  const h = (hex || "").replace('#', '');
-  const r = parseInt(h.substring(0, 2) || "00", 16);
-  const g = parseInt(h.substring(2, 4) || "00", 16);
-  const b = parseInt(h.substring(4, 6) || "00", 16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
-
-// Phase palette: stroke = decoration color; tint = base hex (we'll add alpha in code)
-const PHASE_PALETTE = {
-  A0: { stroke: "#4d9db5", tint: "#b7cbd0" }, // blue
-  A1: { stroke: "#f7bb47", tint: "#f9d495" }, // orange
-  A2: { stroke: "#7578ac", tint: "#dfbee4" }, // purple
-  B:  { stroke: "#159644", tint: "#b9eca8" }  // green
-};
-
-// Tuning knobs for clarity
-const TINT_ALPHA_SINGLE  = 0.14; // single range: faint background
-const OVERLAP_ALPHA      = 0.16; // per-layer alpha when multiple phases overlap
-const GUTTER_WIDTH_PX    = 4;    // thin left gutter bar in stroke color (reserved)
-
-// Stronger washes
-const DEL_WASH_ALPHA     = 0.45; // deletion blocks (split painter)
-const ADD_WASH_ALPHA     = 0.42; // marginal add blocks when revealed
-
-/* =========================
-   TEI pointer normalizers
-   ========================= */
-function normWitList(val) {
-  return (val || "")
-    .trim()
-    .split(/\s+/)
-    .map(v => v.replace(/^#/, ""))
-    .map(v => v.toUpperCase())
-    .filter(Boolean);
-}
-function normWit(val) { return normWitList(val)[0] || ""; }
-function uniquePhases(arr) {
-  return Array.from(new Set((arr || []).map(p => (p || "").toUpperCase()).filter(Boolean)));
-}
-
-/* =========================
-   CETEI + BEHAVIORS
-   ========================= */
-const CETEIcean = new CETEI();
-CETEIcean.addBehaviors({
-  "tei": { "rdg": variantHandler, "lem": variantHandler }
-});
-
-/* =========================
-   FONT SIZE
-   ========================= */
-let currentFontSize = 100;
-function adjustFontSize(change) {
-  currentFontSize = Math.max(60, Math.min(160, currentFontSize + change * 10));
-  document.documentElement.style.setProperty('--user-font-size', `${currentFontSize}%`);
-}
-
-/* =========================
-   VARIANT WRAPPER (CETEI)
-   ========================= */
-function variantHandler(el) {
-  const span = document.createElement("span");
-  span.innerHTML = el.innerHTML;
-  span.setAttribute("varSeq", el.getAttribute("varSeq") || "");
-  span.setAttribute("wit", normWit(el.getAttribute("wit")) || "LEM");
-  span.setAttribute("hand", normWit(el.getAttribute("hand")));
-  span.dataset.originalHtml = el.innerHTML;
-  return span;
-}
-
-/* =========================
-   UTIL
-   ========================= */
-function getMaxSeq() {
-  let max = -1;
-  document.querySelectorAll("tei-rdg[data-authorial='true'], tei-lem[data-authorial='true']")
-    .forEach(rdg => {
-      const seq = parseInt(rdg.getAttribute("varSeq"), 10);
-      if (!isNaN(seq) && seq > max) max = seq;
-    });
-  return max;
-}
-
-const variantSelector = document.getElementById("variant-selector");
-let lastWit = null;
-if (variantSelector) { variantSelector.value = "all"; filterReadings({ showAll: true }); }
-
-/* =========================
-   BASIC UI HELPERS
-   ========================= */
-function toggleView(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle("hidden");
-  updateLayoutClasses();
-}
-let notesGlobalClickBound = false;
-function decorateNotes(data) {
-  const notes = data.querySelectorAll("tei-note");
-  notes.forEach(originalNote => {
-    const content = originalNote.cloneNode(true).textContent.trim();
-    const cleanNote = document.createElement("tei-note");
-    cleanNote.setAttribute("data-note", content);
-    cleanNote.classList.add("note-decorated");
-    const span = document.createElement("span");
-    span.className = "note-icon";
-    span.textContent = "❋";
-    span.style.fontWeight = "bold";
-    span.style.fontSize = "0.8em";
-    span.style.color = "#7f674b";
-    span.style.cursor = "pointer";
-    cleanNote.appendChild(span);
-    originalNote.replaceWith(cleanNote);
+  // =========================
+  // CETEI + setup di base
+  // =========================
+  const CETEIcean = new CETEI();
+  CETEIcean.addBehaviors({
+    tei: {
+      anchor(el) {
+        const span = document.createElement("span");
+        const xmlID = el.getAttribute("xml:id");
+        if (xmlID) span.setAttribute("data-xml-id", xmlID);
+        return span;
+      },
+    },
   });
-}
-function attachNoteEvents(container = document) {
-  const notes = container.querySelectorAll("tei-note");
-  notes.forEach(note => {
-    const content = note.getAttribute("data-note");
-    note.addEventListener("click", (e) => {
-      e.stopPropagation();
-      document.querySelectorAll(".floating-note").forEach(n => n.remove());
-      const rect = e.target.getBoundingClientRect();
-      const floating = document.createElement("div");
-      floating.className = "floating-note";
-      floating.innerHTML = `
-        <div style="position: relative; padding-right: 1.2em;">
-          <button class="close-note" style="position:absolute;top:.1em;right:.1em;border:none;background:none;font-size:.8em;cursor:pointer;color:#444;" aria-label="Cerrar nota">✖</button>
-          <div style="padding-top:1.1em;">${content}</div>
-        </div>`;
-      document.body.appendChild(floating);
-      floating.style.left = `${rect.right + 10 + window.scrollX}px`;
-      floating.style.top = `${rect.top + window.scrollY}px`;
-      floating.querySelector(".close-note").addEventListener("click", () => floating.remove());
-    });
-  });
-  if (!notesGlobalClickBound) {
-    document.addEventListener("click", () => {
-      document.querySelectorAll(".floating-note").forEach(n => n.remove());
-    });
-    notesGlobalClickBound = true;
+
+  let originalData, baseTEI;
+
+  // =========================
+  // Alias & utilità
+  // =========================
+  const speakerAliasMap = {
+    1: "Luis",
+    2: "Juan",
+    MUSICO: "Asián",
+    Músico: "Asián",
+    "Fer.": "Filipe",
+    Felipe: "Filipe",
+  };
+
+  function normalizeName(s) {
+    if (!s) return "";
+    const up = s
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    return up
+      .replace(/^(EL|LA|LOS|LAS)\s+/, "")
+      .replace(/[^A-Z0-9#]+/g, " ")
+      .trim();
   }
-}
-function updateLayoutClasses() {
-  const wrapper = document.getElementById("tei-wrapper");
-  const columns = wrapper.querySelectorAll(".tei-column");
-  const visible = Array.from(columns).filter(col => col.offsetParent !== null).length;
-  wrapper.classList.remove("single-view","dual-view","synoptic-view");
-  if (visible === 1) wrapper.classList.add("single-view");
-  else if (visible === 2) wrapper.classList.add("dual-view");
-  else wrapper.classList.add("synoptic-view");
-}
-
-/* =========================
-   CLEANER (NON-DESTRUCTIVE)
-   ========================= */
-function getCleanReadingHTML(rdgEl) {
-  const clone = rdgEl.cloneNode(true);
-  clone.querySelectorAll("tei-subst").forEach(subst => {
-    const add = subst.querySelector("tei-add");
-    const del = subst.querySelector("tei-del");
-    if (add) {
-      const frag = document.createElement("span");
-      frag.innerHTML = add.innerHTML;
-      subst.replaceWith(frag);
-    } else if (del) { subst.remove(); } else { subst.remove(); }
-  });
-  clone.querySelectorAll("tei-del").forEach(del => del.remove());
-  clone.querySelectorAll("tei-add").forEach(add => {
-    const span = document.createElement("span");
-    span.innerHTML = add.innerHTML;
-    add.replaceWith(span);
-  });
-  return clone.innerHTML;
-}
-function renderFinalAuthorialRdg(rdg) {
-  const clone = rdg.cloneNode(true);
-  clone.querySelectorAll("tei-del").forEach(del => del.remove());
-  clone.querySelectorAll("tei-add").forEach(add => {
-    const span = document.createElement("span");
-    span.innerHTML = add.innerHTML;
-    add.replaceWith(span);
-  });
-  rdg.innerHTML = clone.innerHTML;
-}
-
-/* =========================
-   PHASE HIERARCHY
-   ========================= */
-const phaseHierarchy = { "A0":["A0"], "A1":["A0","A1"], "A2":["A1","A2"], "B":["A0","A1","A2","B"] };
-function allowedWitsForPhase(phase) {
-  if (!phase || phase.toLowerCase()==="all") return null;
-  return phaseHierarchy[phase] || [phase];
-}
-
-/* =========================
-   DECORATION (INLINE)
-   ========================= */
-function decorateRdgWithHighlight(rdg) {
-  if (!rdg.dataset.originalHtml) rdg.dataset.originalHtml = rdg.innerHTML;
-  if (rdg.classList.contains("decorated")) return;
-
-  const wit = normWit(rdg.getAttribute("wit")) || "UNKNOWN";
-  const seq = rdg.getAttribute("varSeq") || "";
-
-  rdg.classList.add(`wit-${wit}`, "decorated");
-
-  if (seq && !rdg.querySelector(".rdg-seq")) {
-    const sup = document.createElement("sup");
-    sup.className = "rdg-seq";
-    sup.textContent = seq;
-    rdg.appendChild(sup);
-  }
-
-  const subst = rdg.querySelector("tei-subst");
-  if (subst) {
-    const del = subst.querySelector("tei-del");
-    const add = subst.querySelector("tei-add");
-    if (del) del.outerHTML = `<span class="deletion">${del.innerHTML}</span>`;
-    if (add) add.outerHTML = `<span class="addition">${add.innerHTML}</span>`;
-  }
-}
-
-/* =========================
-   MARGINALIA (single-line helper retained)
-   ========================= */
-function setupMarginalAdd(add, wit) {
-  const currentPhase = (document.getElementById("variant-selector")?.value || "all")
-    .trim().toUpperCase();
-  const noteWit = normWit(wit || add.getAttribute("wit") || "unknown");
-  const isActive = currentPhase === "ALL" || currentPhase === noteWit;
-
-  const placeRaw = (add.getAttribute("place") || "left").toLowerCase();
-  const dir = ["left", "right", "top", "bottom"].includes(placeRaw) ? placeRaw : "left";
-  const sideES = { left: "izquierdo", right: "derecho", top: "alto", bottom: "bajo" }[dir];
-
-  // Hover on the revealed box (single-line)
-  add.setAttribute("title", `añadido en el margen ${sideES}`);
-
-  // avoid duplicate buttons after switches
-  if (add.previousElementSibling?.classList?.contains("marginal-toggle")) add.previousElementSibling.remove();
-  if (add.nextElementSibling?.classList?.contains("marginal-toggle")) add.nextElementSibling.remove();
-
-  add.classList.remove(
-    "marginal-hidden","marginal-active","marginal-a0-block",
-    "highlighted-marginal","marginal-processed","reveal","reveal-in"
-  );
-  add.removeAttribute("data-reveal");
-  add.style.display = "";
-  add.style.removeProperty("--note-left");
-  add.style.removeProperty("--note-nudge-x");
-
-  if (!add.dataset.originalContent) add.dataset.originalContent = add.innerHTML;
-  else add.innerHTML = add.dataset.originalContent;
-
-  add.classList.add(`wit-${noteWit}`, "marginal-processed");
-
-  const verse = add.closest("tei-l, l");
-  if (verse) {
-    const cs = getComputedStyle(verse);
-    const pad = parseFloat(cs.paddingLeft) || 0;
-    const indent = parseFloat(cs.textIndent) || 0;
-    add.style.setProperty("--note-left", `${pad + indent}px`);
-  }
-
-  if (!isActive) { add.style.display = "inline"; return; }
-
-  add.classList.add("marginal-active", "highlighted-marginal");
-  if (noteWit === "A0") add.classList.add("marginal-a0-block");
-  add.classList.add("marginal-hidden");
-
-  const btn = document.createElement("button");
-  btn.type = "button"; // prevent unwanted form submits
-  btn.textContent = "+";
-  btn.className = "marginal-toggle";
-  btn.title = `Mostrar marginalia — añadido en el margen ${sideES} en ${noteWit}`;
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    add.classList.remove("marginal-hidden");
-    add.classList.add("reveal");
-    add.dataset.reveal = dir;
-    add.style.display = "inline-block";
-    btn.replaceWith(add);
-    requestAnimationFrame(() => add.classList.add("reveal-in"));
-  });
-  add.parentNode?.insertBefore(btn, add);
-}
-
-/* =========================
-   Helpers for multi-line marginalia
-   ========================= */
-function isMarginalLine(node) {
-  if (!node || !node.matches) return false;
-  if (node.matches("tei-l[type='marginalia'], l[type='marginalia']")) return true;
-  // also treat wrappers that only contain marginal lines as marginal blocks
-  const onlyMarginalChildren =
-    node.querySelector(":scope > tei-l[type='marginalia'], :scope > l[type='marginalia']");
-  return !!onlyMarginalChildren && !node.querySelector(":scope > tei-l:not([type='marginalia']), :scope > l:not([type='marginalia'])");
-}
-
-function setMarginalLineVisibility(node, { visible, place }) {
-  if (!node.dataset.marginalSetup) {
-    node.style.transition = "opacity 220ms ease, transform 220ms ease";
-    node.style.willChange = "opacity, transform";
-    node.dataset.marginalSetup = "1";
-  }
-  const side = (place || "left").toLowerCase();
-  let offX = 0, offY = 0;
-  const px = 14;
-  if (!visible) {
-    if (side === "left")  offX = -px;
-    if (side === "right") offX =  px;
-    if (side === "top")   offY = -px;
-    if (side === "bottom")offY =  px;
-    node.style.opacity = "0";
-    node.style.transform = `translate(${offX}px, ${offY}px)`;
-    node.classList.add("marginal-hidden"); // has display:none in CSS
-  } else {
-    node.style.opacity = "1";
-    node.style.transform = "translate(0, 0)";
-    node.classList.remove("marginal-hidden");
-  }
-}
-
-/* =========================
-   RANGE SPANS with overlaps
-   ========================= */
-function cssEscapeSafe(s){ if (window.CSS && CSS.escape) return CSS.escape(s); return String(s).replace(/[^a-zA-Z0-9_\-:.]/g, "\\$&"); }
-function findAnchor(root, ref){
-  const id=(ref||"").replace(/^#/,"");
-  if(!id) return null;
-  return root.querySelector(`#${cssEscapeSafe(id)}`) ||
-         root.querySelector(`[xml\\:id="${cssEscapeSafe(id)}"]`);
-}
-// Stable key so buttons are not duplicated across rebuilds
-function stableSpanId(spanEl, type, phaseId){
-  const xmlid = spanEl.getAttribute("xml:id") || spanEl.getAttribute("id");
-  if(xmlid) return `${type}-span:${xmlid}`;
-  const fromRef=(spanEl.getAttribute("from")||"").trim();
-  const toRef  =(spanEl.getAttribute("to")||"").trim();
-  const subtype=(type==="add" && ((spanEl.getAttribute("type")||"").toLowerCase()==="marginalia"))?"marginalia":"";
-  const place=(spanEl.getAttribute("place")||"").toLowerCase();
-  const composite = `${fromRef}|${toRef}|${(phaseId||"").toUpperCase()}|${subtype}|${place}`;
-  return composite.replace(/[|#]/g,"") ? `${type}-span:${composite}` : `${type}-span:auto-${++spanRangeAutoId}`;
-}
-
-function clearSpanRangeMarks(root) {
-  root.querySelectorAll(".int--del-range, .int--add-range, [data-range-id], .marginalia-range").forEach(el => {
-    el.classList.remove(
-      "int--del-range","int--add-range","has-del-gutter","marginalia-range",
-      "wit-A0","wit-A1","wit-A2","wit-B","collapsed-del","wit-MULTI"
+  function directChildren(el, tagName) {
+    const t = tagName.toLowerCase();
+    return Array.from(el.children).filter(
+      (c) => c.tagName && c.tagName.toLowerCase() === t,
     );
-    el.removeAttribute("data-range-id");
-    el.removeAttribute("data-marginalia-phases");
-    el.removeAttribute("data-marginalia-place");
-
-    // wipe background using shorthand so we beat any CSS rules
-    el.style.background = "none";
-    el.style.removeProperty("background-color");
-    el.style.removeProperty("background-image");
-    el.style.removeProperty("background-blend-mode");
-    el.style.removeProperty("background-position");
-    el.style.removeProperty("background-size");
-    el.style.removeProperty("background-repeat");
-
-    el.style.removeProperty("text-decoration");
-    el.style.removeProperty("text-decoration-thickness");
-    el.style.removeProperty("text-decoration-color");
-    el.style.removeProperty("text-underline-offset");
-  });
-
-  // unhide marginal lines if hidden in the previous pass
-  root.querySelectorAll("tei-l[type='marginalia'], l[type='marginalia']").forEach(el=>el.classList.remove("marginal-hidden"));
-
-  for (const [node] of nodeToRanges) {
-    if (root.contains(node)) nodeToRanges.delete(node);
   }
 
-  for (let i = spanRanges.length - 1; i >= 0; i--) {
-    const r = spanRanges[i];
-    if (r.nodes.length && root.contains(r.nodes[0])) spanRanges.splice(i, 1);
-  }
-}
-
-function walkElementsFromTo(startBlock, endAnchor, boundaryRoot, cb) {
-  const nextEl = (n) => {
-    if (n.firstElementChild) return n.firstElementChild;
-    while (n && n !== boundaryRoot && !n.nextElementSibling) n = n.parentElement;
-    return (n && n !== boundaryRoot) ? n.nextElementSibling : null;
-  };
-  let node = startBlock;
-  while (node) {
-    if (node.nodeType === 1) cb(node);
-    if (node.contains(endAnchor) || node === endAnchor) break;
-    node = nextEl(node);
-  }
-}
-
-function decorateSpanRanges(root) {
-  if (!root) return;
-
-  if (CLEAN_MODE) { clearSpanRangeMarks(root); return; }
-
-  clearSpanRangeMarks(root);
-  const scrollRoot = root.closest(".tei-column-scroll") || root;
-
-  const processSpan = (spanEl, type) => {
-    const fromRef = spanEl.getAttribute("from");
-    const toRef   = spanEl.getAttribute("to");
-    if (!fromRef || !toRef) return;
-
-    const startAnchor = findAnchor(root, fromRef);
-    const endAnchor   = findAnchor(root, toRef);
-    if (!startAnchor || !endAnchor) {
-      console.warn("Span anchor not found:", { from: fromRef, to: toRef });
-      return;
-    }
-
-    let first = startAnchor, last = endAnchor;
-    if (first.compareDocumentPosition(last) & Node.DOCUMENT_POSITION_PRECEDING) {
-      [first, last] = [last, first];
-    }
-
-    const innerRdg = spanEl.querySelector("tei-rdg");
-    const phaseId = normWit(innerRdg?.getAttribute("wit")) ||
-                    normWit(spanEl.getAttribute("wit"))     ||
-                    normWit(spanEl.getAttribute("hand"))     || "";
-
-    // detect marginalia addSpan subtype + place
-    const subtype = (type === "add" && ((spanEl.getAttribute("type") || "").toLowerCase() === "marginalia")) ? "marginalia" : "";
-    const place = (spanEl.getAttribute("place") || "").toLowerCase();
-
-    const id = stableSpanId(spanEl, type, phaseId);
-    const nodes = [];
-
-    const startBlock =
-      first.closest(HIGHLIGHT_BLOCK_SEL) ||
-      first.parentElement?.closest(HIGHLIGHT_BLOCK_SEL) ||
-      first;
-
-    walkElementsFromTo(startBlock, last, scrollRoot, el => {
-      if (!el.matches || !el.matches(HIGHLIGHT_BLOCK_SEL)) return;
-      const entry = { id, type, phase: phaseId };
-      if (subtype) entry.subtype = subtype;
-      if (place) entry.place = place;
-      const list = nodeToRanges.get(el) || [];
-      list.push(entry);
-      nodeToRanges.set(el, list);
-      el.dataset.rangeId = (el.dataset.rangeId ? el.dataset.rangeId + "," : "") + id;
-      nodes.push(el);
+  // =========================
+  // Cast helpers
+  // =========================
+  function buildCastMap(data) {
+    const byId = {},
+      byNorm = {};
+    data.querySelectorAll("tei-castList tei-castItem").forEach((item) => {
+      const rawId = item.getAttribute("xml:id") || item.id;
+      const roleEl = item.querySelector("tei-role, tei-persona");
+      const label = ((roleEl ? roleEl.textContent : item.textContent) || "")
+        .trim()
+        .replace(/\s+/g, " ");
+      if (rawId) byId["#" + rawId] = label;
+      if (label) byNorm[normalizeName(label)] = label;
     });
-
-    spanEl.style.display = "none";
-    spanRanges.push({ id, type, phase: phaseId, nodes, subtype, place });
-  };
-
-  root.querySelectorAll("tei-delspan").forEach(el => processSpan(el, "del"));
-  root.querySelectorAll("tei-addspan").forEach(el => processSpan(el, "add"));
-  root.querySelectorAll("tei-delSpan").forEach(el => processSpan(el, "del"));
-  root.querySelectorAll("tei-addSpan").forEach(el => processSpan(el, "add"));
-
-  const currentPhase = (document.getElementById("variant-selector")?.value || "ALL").toUpperCase();
-  updateSpanRangesVisibility(currentPhase);
-}
-
-/* =========================
-   ZIG-ZAG SPLIT for two-witness overlaps (deletions)
-   ========================= */
-function applyZigZagSplitBackground(node, leftColor, rightColor, {
-  biasPercent = 50,  // 50=even; >50 favors left color, <50 favors right
-  toothPx = 10,      // horizontal bite (as % of width)
-  stepPx = 14        // vertical spacing between teeth
-} = {}) {
-  node.style.background = "none";
-
-  const dx = Math.max(1, Math.min(20, (toothPx / 100) * 100));
-  const step = Math.max(4, Math.min(30, (stepPx / 100) * 100));
-  const mid = Math.max(5, Math.min(95, biasPercent));
-
-  const zig = [];
-  let x = mid;
-  let dir = -1;
-  for (let y = 0; y <= 100; y += step) {
-    zig.push([x, Math.min(y, 100)]);
-    x = mid + dir * dx;
-    dir *= -1;
+    data.querySelectorAll("tei-listPerson tei-person").forEach((p) => {
+      const rawId = p.getAttribute("xml:id") || p.id;
+      const nameEl = p.querySelector("tei-persName");
+      const label = ((nameEl ? nameEl.textContent : p.textContent) || "")
+        .trim()
+        .replace(/\s+/g, " ");
+      if (rawId) byId["#" + rawId] = label;
+      if (label) byNorm[normalizeName(label)] = label;
+    });
+    return { byId, byNorm };
   }
-  if (zig[zig.length - 1][1] !== 100) zig.push([mid, 100]);
-
-  const leftPts = [[0, 0],[mid, 0], ...zig.slice(1), [0, 100]];
-  const rightPts = [[mid, 0], ...zig.slice(1), [100, 100], [100, 0]];
-  const pts = ptsArr => ptsArr.map(([px, py]) => `${px},${py}`).join(" ");
-
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">` +
-      `<polygon fill="${leftColor}" points="${pts(leftPts)}"/>` +
-      `<polygon fill="${rightColor}" points="${pts(rightPts)}"/>` +
-    `</svg>`;
-
-  const url = `url("data:image/svg+xml;utf8,${encodeURIComponent(svg)}")`;
-  node.style.backgroundImage = url;
-  node.style.backgroundRepeat = "no-repeat";
-  node.style.backgroundSize = "100% 100%";
-  node.style.backgroundPosition = "0 0";
-}
-
-/* =========================
-   Deletion background painter (split inside one block)
-   ========================= */
-function applyDelBackgroundSplit(node, delPhases) {
-  node.style.background = "none";
-  node.style.removeProperty("background-color");
-  node.style.removeProperty("background-image");
-  node.style.removeProperty("background-blend-mode");
-  node.style.removeProperty("background-position");
-  node.style.removeProperty("background-size");
-  node.style.removeProperty("background-repeat");
-
-  const list = uniquePhases(delPhases);
-  if (!list.length) return;
-
-  if (list.length === 1) {
-    const p = list[0];
-    const c = hexToRgba(PHASE_PALETTE[p]?.tint || "#cccccc", DEL_WASH_ALPHA);
-    node.style.background = c;
-    return;
+  function mapFreeTextToCast(labelRaw, castMap) {
+    if (!labelRaw) return null;
+    const raw = labelRaw.trim();
+    if (raw.startsWith("#")) {
+      if (castMap.byId[raw]) return castMap.byId[raw];
+      const stripped = raw.slice(1);
+      const normId = normalizeName(stripped);
+      return castMap.byNorm[normId] || stripped;
+    }
+    const norm = normalizeName(raw);
+    if (castMap.byNorm[norm]) return castMap.byNorm[norm];
+    const aliasVal = speakerAliasMap[raw] ?? speakerAliasMap[norm];
+    if (aliasVal) {
+      if (typeof aliasVal === "string" && aliasVal.startsWith("#")) {
+        return (
+          castMap.byId[aliasVal] ||
+          castMap.byNorm[normalizeName(aliasVal.slice(1))] ||
+          aliasVal.slice(1)
+        );
+      } else {
+        return castMap.byNorm[normalizeName(aliasVal)] || aliasVal;
+      }
+    }
+    return raw.replace(/^#/, "");
+  }
+  function resolveSpeakersForSp(sp, witID, castMap) {
+    let spk = null;
+    for (const kid of sp.children)
+      if (kid.tagName?.toLowerCase() === "tei-speaker") {
+        spk = kid;
+        break;
+      }
+    if (spk) {
+      const app = spk.querySelector("tei-app");
+      if (app) {
+        const rdg = app.querySelector(`tei-rdg[wit~="#${witID}"]`);
+        const choice = rdg || app.querySelector("tei-lem");
+        const txt =
+          choice && choice.textContent ? choice.textContent.trim() : "";
+        if (txt) return [mapFreeTextToCast(txt, castMap)].filter(Boolean);
+      }
+      const label = (spk.textContent || "").trim();
+      if (label) return [mapFreeTextToCast(label, castMap)].filter(Boolean);
+      const whoAttr = spk.getAttribute("who");
+      if (whoAttr) {
+        const names = whoAttr
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((t) => mapFreeTextToCast(t, castMap));
+        return [...new Set(names.filter(Boolean))];
+      }
+    }
+    const who = (sp.getAttribute("who") || "").trim();
+    if (who) {
+      const names = who
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((t) => mapFreeTextToCast(t, castMap));
+      return [...new Set(names.filter(Boolean))];
+    }
+    return ["DESCONOCIDO"];
   }
 
-  if (list.length === 2) {
-    const c1 = hexToRgba(PHASE_PALETTE[list[0]]?.tint || "#ccc", DEL_WASH_ALPHA);
-    const c2 = hexToRgba(PHASE_PALETTE[list[1]]?.tint || "#ccc", DEL_WASH_ALPHA);
-    applyZigZagSplitBackground(node, c1, c2, { biasPercent: 50, toothPx: 10, stepPx: 14 });
-    return;
-  }
+  // =========================
+  // Witness reconstruction (inline); long-span via decorators
+  // =========================
+  function reconstructWitness(witID, originalData) {
+    const clone = originalData.cloneNode(true);
 
-  const n = list.length;
-  const parts = [];
-  for (let i = 0; i < n; i++) {
-    const p = list[i];
-    const c = hexToRgba(PHASE_PALETTE[p]?.tint || "#ccc", DEL_WASH_ALPHA);
-    const start = (100 / n) * i;
-    const end   = (100 / n) * (i + 1);
-    parts.push(`${c} ${start}% ${end}%`);
-  }
-  node.style.background = `linear-gradient(90deg, ${parts.join(", ")})`;
-  node.style.backgroundRepeat = "no-repeat";
-  node.style.backgroundSize = "100% 100%";
-}
+    // Assicura il cast anche nei frammenti
+    if (
+      !clone.querySelector("tei-castList") &&
+      originalData.querySelector("tei-castList")
+    ) {
+      const cast = originalData.querySelector("tei-castList").cloneNode(true);
+      clone.insertBefore(cast, clone.firstChild);
+    }
 
-/* =========================
-   Addition (marginalia) wash painter
-   ========================= */
-function applyAddBackgroundSplit(node, phases, alpha = ADD_WASH_ALPHA) {
-  node.style.background = "none";
-  node.style.removeProperty("background-image");
-  node.style.removeProperty("background-blend-mode");
-  node.style.removeProperty("background-position");
-  node.style.removeProperty("background-size");
-  node.style.removeProperty("background-repeat");
-
-  const list = uniquePhases(phases);
-  if (!list.length) return;
-
-  if (list.length === 1) {
-    const p = list[0];
-    const c = hexToRgba(PHASE_PALETTE[p]?.tint || "#cccccc", alpha);
-    node.style.background = c;
-    return;
-  }
-
-  const n = list.length;
-  const parts = [];
-  for (let i = 0; i < n; i++) {
-    const p = list[i];
-    const c = hexToRgba(PHASE_PALETTE[p]?.tint || "#ccc", alpha);
-    const start = (100 / n) * i;
-    const end   = (100 / n) * (i + 1);
-    parts.push(`${c} ${start}% ${end}%`);
-  }
-  node.style.background = `linear-gradient(90deg, ${parts.join(", ")})`;
-  node.style.backgroundRepeat = "no-repeat";
-  node.style.backgroundSize = "100% 100%";
-}
-
-/* =========================
-   Strike style helper
-   ========================= */
-function setStrike(node, { colored = false, phase = null }) {
-  node.style.textDecoration = "line-through";
-  node.style.textDecorationThickness = "1.6px";
-  node.style.textDecorationColor =
-    (colored && phase && PHASE_PALETTE[phase]) ? PHASE_PALETTE[phase].stroke : "#222";
-  node.style.removeProperty("text-underline-offset");
-}
-
-/* =========================
-   Visibility/update application
-   ========================= */
-function updateSpanRangesVisibility(currentPhase) {
-  const phase = (currentPhase || "ALL").toUpperCase();
-  const showAll = phase === "ALL";
-
-  if (typeof CLEAN_MODE !== "undefined" && CLEAN_MODE) {
-    for (const [node] of nodeToRanges) {
-      node.classList.remove(
-        "int--del-range","int--add-range","has-del-gutter","marginalia-range",
-        "wit-A0","wit-A1","wit-A2","wit-B","collapsed-del"
+    // Helper per risolvere gli anchor
+    const resolveAnchor = (ctx, ref) => {
+      const id = (ref || "").replace(/^#/, "");
+      return (
+        ctx.querySelector(`tei-anchor[id="${CSS.escape(id)}"]`) ||
+        ctx.querySelector(`tei-anchor[xml\\:id="${CSS.escape(id)}"]`) ||
+        ctx.querySelector(`[data-xml-id="${CSS.escape(id)}"]`) ||
+        ctx.querySelector(`#${CSS.escape(id)}`) ||
+        ctx.querySelector(`[id="${CSS.escape(id)}"]`)
       );
-      node.style.background = "none";
-      node.style.removeProperty("background-color");
-      node.style.removeProperty("background-image");
-      node.style.removeProperty("background-blend-mode");
-      node.style.removeProperty("background-position");
-      node.style.removeProperty("background-size");
-      node.style.removeProperty("background-repeat");
+    };
 
-      node.style.removeProperty("text-decoration");
-      node.style.removeProperty("text-decoration-thickness");
-      node.style.removeProperty("text-decoration-color");
-      node.style.removeProperty("text-underline-offset");
-      node.removeAttribute("data-marginalia-phases");
-      node.removeAttribute("data-marginalia-place");
-    }
-    return;
-  }
+    clone.querySelectorAll("tei-app").forEach((app) => {
+      const from = app.getAttribute("from");
+      const to = app.getAttribute("to");
+      const appType = app.getAttribute("type");
 
-  // reset
-  for (const [node] of nodeToRanges) {
-    node.classList.remove(
-      "int--del-range","int--add-range","has-del-gutter","marginalia-range",
-      "wit-A0","wit-A1","wit-A2","wit-B","collapsed-del"
-    );
-    node.style.background = "none";
-    node.style.removeProperty("background-color");
-    node.style.removeProperty("background-image");
-    node.style.removeProperty("background-blend-mode");
-    node.style.removeProperty("background-position");
-    node.style.removeProperty("background-size");
-    node.style.removeProperty("background-repeat");
+      // Le aggiunte long-span le gestisce processAdditionSpans()
+      if (appType === "addition" && from && to) return;
 
-    node.style.removeProperty("text-decoration");
-    node.style.removeProperty("text-decoration-thickness");
-    node.style.removeProperty("text-decoration-color");
-    node.style.removeProperty("text-underline-offset");
-    node.removeAttribute("data-marginalia-phases");
-    node.removeAttribute("data-marginalia-place");
-  }
-
-  // Collect marginal addSpan ranges for per-range buttons
-  const marginalAddRangesThisPass = new Map(); // rangeId -> { nodes, place, phases, marginalNodes }
-
-  // apply
-  for (const [node, ranges] of nodeToRanges) {
-    const visible = ranges.filter(r => {
-      const p = (r.phase || "").toUpperCase();
-      if (!showAll) {
-        if (phase !== "B" && p === "B") return false; // never show B in A0/A1/A2 views
-        return p === phase;
-      }
-      return true; // ALL
-    });
-
-    if (!visible.length) continue;
-
-    const hasDel = visible.some(r => r.type === "del");
-    const hasAdd = visible.some(r => r.type === "add");
-    const phases = uniquePhases(visible.map(r => r.phase));
-
-    phases.forEach(p => node.classList.add(`wit-${p}`));
-
-    // Deletions
-    const delPhases = uniquePhases(visible.filter(r => r.type === "del").map(r => r.phase));
-    if (delPhases.length) {
-      applyDelBackgroundSplit(node, delPhases);
-      node.classList.add("int--del-range","has-del-gutter");
-      if (showAll) setStrike(node, { colored: false });
-      else setStrike(node, { colored: true, phase });
-    }
-
-    // Additions
-    const addRanges = visible.filter(r => r.type === "add");
-    const marginalAdd = addRanges.filter(r => (r.subtype || "") === "marginalia");
-
-    if (marginalAdd.length) {
-      const phasesForMarg = uniquePhases(marginalAdd.map(r => r.phase));
-      const place = (marginalAdd[0].place || "left").toLowerCase();
-
-      node.classList.add("marginalia-range");
-      node.dataset.marginaliaPhases = JSON.stringify(phasesForMarg);
-      node.dataset.marginaliaPlace = place;
-
-      // Start hidden background (alpha 0) until click
-      applyAddBackgroundSplit(node, phasesForMarg, 0);
-
-      // If a marginal-line block, hide its text until reveal
-      if (isMarginalLine(node)) {
-        setMarginalLineVisibility(node, { visible: false, place });
-      }
-
-      // Register nodes by range id for a single toggle button per range per column
-      const ids = (node.dataset.rangeId || "").split(",").filter(Boolean);
-      ids.forEach(rangeId => {
-        if (!marginalAddRangesThisPass.has(rangeId)) {
-          marginalAddRangesThisPass.set(rangeId, { nodes: [], place, phases: phasesForMarg, marginalNodes: [] });
-        }
-        const pack = marginalAddRangesThisPass.get(rangeId);
-        pack.nodes.push(node);
-        if (isMarginalLine(node)) pack.marginalNodes.push(node);
-      });
-    }
-
-    // Plain non-marginal additions keep underline
-    if (hasAdd && !marginalAdd.length) {
-      node.classList.add("int--add-range");
-      node.style.textDecoration = "underline dashed";
-      node.style.textDecorationThickness = "1.6px";
-      node.style.textUnderlineOffset = "0.15em";
-      node.style.textDecorationColor = (phases.length === 1 && PHASE_PALETTE[phases[0]])
-        ? PHASE_PALETTE[phases[0]].stroke
-        : "currentColor";
-    }
-  }
-
-  // Buttons + interactions for multi-line marginalia
-  enhanceMarginalAddRangeInteractions(marginalAddRangesThisPass);
-}
-
-/* =========================
-   Buttons/Interactions for multi-line marginalia
-   ========================= */
-function enhanceMarginalAddRangeInteractions(rangeMap) {
-  rangeMap.forEach(({ nodes, place, phases }, rangeId) => {
-    if (!nodes?.length) return;
-
-    // Collect ALL marginal-line elements within the range
-    const marginalLineSet = new Set();
-    nodes.forEach(n => {
-      if (isMarginalLine(n)) marginalLineSet.add(n);
-      n.querySelectorAll("tei-l[type='marginalia'], l[type='marginalia']").forEach(x => marginalLineSet.add(x));
-    });
-    const marginalNodes = Array.from(marginalLineSet);
-
-    // One button per COLUMN per range
-    const column = nodes[0].closest(".tei-column-scroll") || document;
-    const existingBtn = column.querySelector(`button.marginal-range-toggle[data-range-id="${CSS.escape(rangeId)}"]`);
-    if (existingBtn) return;
-
-    const anchor = nodes.find(n => !isMarginalLine(n)) || nodes[0];
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "marginal-range-toggle";
-    btn.dataset.rangeId = rangeId;
-    btn.textContent = "+";
-
-    // full Spanish words, like single-line
-    const sideES = { left:"izquierdo", right:"derecho", top:"alto", bottom:"bajo" }[(place || "left").toLowerCase()] || "margen";
-
-    // choose witness for the tooltip: current phase if present, else the first phase of the range
-    const currentPhase = (document.getElementById("variant-selector")?.value || "all").toUpperCase();
-    const titleWit = (currentPhase !== "ALL" && phases.includes(currentPhase)) ? currentPhase : (phases[0] || "A0");
-
-    btn.title = `Mostrar marginalia — añadido en el margen ${sideES} en ${titleWit}`;
-
-    Object.assign(btn.style, {
-      display: "inline-block",
-      padding: "0 .4rem",
-      lineHeight: "1.2",
-      border: "1px solid #999",
-      borderRadius: "4px",
-      background: "#fff",
-      cursor: "pointer",
-      marginRight: ".35rem",
-      verticalAlign: "middle",
-      whiteSpace: "nowrap"
-    });
-
-    anchor.parentNode?.insertBefore(btn, anchor);
-
-    // On click: reveal text with the same animation + set final hover title
-    btn.addEventListener("click", (e)=> {
-      e.stopPropagation();
-
-      // Wash in background for all blocks in the range
-      nodes.forEach(n => {
-        const p = JSON.parse(n.dataset.marginaliaPhases || "[]");
-        applyAddBackgroundSplit(n, p, ADD_WASH_ALPHA);
-        n.classList.add("reveal-in");
-      });
-
-      const side = (place || "left").toLowerCase();
-      const dirMap = {left:"left", right:"right", top:"top", bottom:"bottom"};
-      const dir = dirMap[side] || "left";
-
-      // 👉 Reveal the marginal lines (remove hidden styles) and wrap to reuse single-line CSS
-      marginalNodes.forEach(line => {
-        // make it visible (undo opacity/transform + display:none from class)
-        setMarginalLineVisibility(line, { visible: true, place: side });
-
-        // avoid double wrapping
-        if (line.querySelector('tei-add[data-span-wrap="1"]')) return;
-
-        const wrap = document.createElement("tei-add");
-        wrap.setAttribute("place", side);
-        wrap.dataset.spanWrap = "1";
-        wrap.dataset.rangeId = rangeId;
-        wrap.dataset.reveal = dir;
-        wrap.classList.add("marginal-active", "reveal");
-
-        // final hover title like single-line (no witness mention)
-        wrap.setAttribute("title", `añadido en el margen ${sideES}`);
-
-        // move content inside wrapper
-        const kids = [...line.childNodes];
-        line.insertBefore(wrap, line.firstChild);
-        kids.forEach(k => wrap.appendChild(k));
-
-        requestAnimationFrame(()=> wrap.classList.add("reveal-in"));
-      });
-
-      btn.remove();
-    });
-  });
-}
-
-/* =========================
-   Overlap backgrounds — (kept for compatibility)
-   ========================= */
-function applyPhaseBackground(node, phases) {
-  node.style.background = "none";
-  node.style.removeProperty("background-blend-mode");
-
-  const list = phases.filter(p => PHASE_PALETTE[p]);
-  if (!list.length) return;
-
-  if (list.length === 1) {
-    const p = list[0];
-    node.style.background = hexToRgba(PHASE_PALETTE[p].tint, TINT_ALPHA_SINGLE);
-    return;
-  }
-
-  const layers = list.map(p => {
-    const c = hexToRgba(PHASE_PALETTE[p].tint, OVERLAP_ALPHA);
-    return `linear-gradient(0deg, ${c}, ${c})`;
-  });
-
-  node.style.background = layers.join(", ");
-  node.style.backgroundBlendMode = "multiply";
-}
-
-function collapseAllDelSpans(collapsed = true) {
-  spanRanges
-    .filter(r => r.type === "del")
-    .forEach(r => r.nodes.forEach(n => n.classList.toggle("collapsed-del", collapsed)));
-}
-
-/* =========================
-   FILTERING
-   ========================= */
-function filterReadings({ wit = null, showAll = false, defaultView = false }) {
-  const apps = document.querySelectorAll("tei-app");
-
-  apps.forEach(app => {
-    const rdgs = Array.from(app.querySelectorAll("tei-rdg, tei-lem"));
-
-    if (!showAll && !defaultView) {
-      rdgs.forEach(rdg => {
-        rdg.style.display = "none";
-        rdg.classList.remove("active-reading","decorated","wit-A0","wit-A1","wit-A2","wit-B1","wit-B2");
-        if (rdg.dataset.originalHtml) rdg.innerHTML = rdg.dataset.originalHtml;
-        const sup = rdg.querySelector(".rdg-seq"); if (sup) sup.remove();
-      });
-    }
-
-    if (wit) {
-      let found = false;
-      const allowedWits = (phaseHierarchy[wit] || [wit]).map(normWit);
-
-      rdgs.forEach(rdg => {
-        const rdgWit = normWit(rdg.getAttribute("wit"));
-        if (allowedWits.includes(rdgWit)) {
-          rdg.style.display = "inline";
-          found = true;
-          rdg.querySelectorAll("tei-add[place]").forEach(add => setupMarginalAdd(add, rdgWit));
-        }
-        if (rdgWit === normWit(wit)) {
-          decorateRdgWithHighlight(rdg);
-          rdg.classList.add("active-reading");
-        }
-      });
-
-      if (!rdgs.some(r => r.style.display !== "none") && (wit === "A1" || wit === "A2")) {
-        const a0 = rdgs.find(r => normWit(r.getAttribute("wit")) === "A0");
-        if (a0) {
-          a0.style.display = "inline";
-          a0.querySelectorAll("tei-add[place]").forEach(add => setupMarginalAdd(add, "A0"));
-          found = true;
-        }
-      }
-
-      app.style.display = found ? "inline" : "none";
-      return;
-    }
-
-    if (showAll || defaultView) {
-      rdgs.forEach(rdg => {
-        rdg.style.display = "inline";
-        decorateRdgWithHighlight(rdg);
-        rdg.querySelectorAll("tei-add[place]").forEach(add => {
-          setupMarginalAdd(add, normWit(rdg.getAttribute("wit")) || "unknown");
+      // ===== 1) Omissione long-span =====
+      if (from && to) {
+        const omittedForThisWit = Array.from(
+          app.querySelectorAll("tei-rdg"),
+        ).some((rdg) => {
+          const wits = (rdg.getAttribute("wit") || "")
+            .split(/\s+/)
+            .map((w) => w.replace(/^#/, ""));
+          return wits.includes(witID) && rdg.textContent.trim() === "";
         });
-      });
-      app.style.display = "inline";
-    }
-  });
-}
-/* =========================
-   PHASE CHANGE HANDLER
-   ========================= */
-function handleVariantChange(value) {
-  CLEAN_MODE = false;
-
-  document.body.classList.remove("clean-mode");
-  restoreAllReadings();
-
-  if (value === "all") filterReadings({ showAll: true });
-  else if (["A0","A1","A2","B"].includes(value)) filterReadings({ wit: value });
-
-  highlightMarginaliaForPhase(value);
-  document.querySelectorAll("tei-add[place]").forEach(add => {
-    const parentRdg = add.closest("tei-rdg, tei-lem");
-    const wit = normWit(parentRdg?.getAttribute("wit") || "unknown");
-    setupMarginalAdd(add, wit);
-  });
-
-  rebuildSpanRanges();
-  updateSpanRangesVisibility((value || "ALL").toUpperCase());
-}
-
-/* =========================
-   CLEAN / RESTORE
-   ========================= */
-function showCleanLemmasOnly() {
-  CLEAN_MODE = true;
-
-  const apps = document.querySelectorAll("tei-app");
-  apps.forEach(app => {
-    const rdgs = app.querySelectorAll("tei-rdg");
-    const lems = app.querySelectorAll("tei-lem");
-    rdgs.forEach(rdg => { rdg.style.display = "none"; });
-    lems.forEach(lem => {
-      if (!lem.dataset.originalHtml) lem.dataset.originalHtml = lem.innerHTML;
-      lem.style.display = "inline";
-      lem.classList.remove("decorated","active-reading");
-      Array.from(lem.classList).forEach(cls => { if (cls.startsWith("wit-")) lem.classList.remove(cls); });
-      const sup = lem.querySelector(".rdg-seq"); if (sup) sup.remove();
-      lem.innerHTML = getCleanReadingHTML(lem);
-    });
-    document.querySelectorAll("tei-note.note-decorated").forEach(note => { note.style.display = "none"; });
-    app.style.display = "inline";
-  });
-
-  for (const [node] of nodeToRanges) {
-    node.classList.remove(
-      "int--del-range","int--add-range","has-del-gutter",
-      "wit-A0","wit-A1","wit-A2","wit-B","collapsed-del"
-    );
-    node.style.background = "none";
-    node.style.removeProperty("background-color");
-    node.style.removeProperty("background-image");
-    node.style.removeProperty("background-blend-mode");
-    node.style.removeProperty("background-position");
-    node.style.removeProperty("background-size");
-    node.style.removeProperty("background-repeat");
-
-    node.style.removeProperty("text-decoration");
-    node.style.removeProperty("text-decoration-thickness");
-    node.style.removeProperty("text-decoration-color");
-    node.style.removeProperty("text-underline-offset");
-  }
-  spanRanges.length = 0;
-  nodeToRanges.clear();
-}
-
-function restoreAllReadings() {
-  document.querySelectorAll("tei-rdg, tei-lem").forEach(el => {
-    if (el.dataset.originalHtml) el.innerHTML = el.dataset.originalHtml;
-    el.style.display = "";
-    el.classList.remove("active-reading","decorated");
-    Array.from(el.classList).forEach(cls => { if (cls.startsWith("wit-")) el.classList.remove(cls); });
-  });
-  document.querySelectorAll("tei-note.note-decorated").forEach(note => { note.style.display = "inline"; });
-  collapseAllDelSpans(false);
-}
-
-/* =========================
-   REBUILD helper (both columns)
-   ========================= */
-function unwrapSyntheticSpanWrappers(scope=document){
-  scope.querySelectorAll('tei-add[data-span-wrap="1"]').forEach(w=>{
-    const parent=w.parentNode;
-    while(w.firstChild) parent.insertBefore(w.firstChild, w);
-    w.remove();
-  });
-}
-function rebuildSpanRanges() {
-  if (CLEAN_MODE) return;
-
-  // remove previous buttons and synthetic wrappers
-  document.querySelectorAll(".marginal-range-toggle").forEach(b=>b.remove());
-  unwrapSyntheticSpanWrappers(document);
-
-  spanRanges.length = 0;
-  nodeToRanges.clear();
-  const modern = document.querySelector("#modern-container .tei-column-scroll");
-  const diplomatic = document.querySelector("#diplomatic-container .tei-column-scroll");
-  if (modern) decorateSpanRanges(modern);
-  if (diplomatic) decorateSpanRanges(diplomatic);
-}
-
-/* =========================
-   Marginalia highlighting helper (unchanged)
-   ========================= */
-function highlightMarginaliaForPhase(wit) {
-  document.querySelectorAll("tei-add[place]").forEach(add => {
-    add.classList.remove("highlighted-marginal");
-  });
-  if (!wit || wit === "all") return;
-  const allowedWits = (phaseHierarchy[wit] || [wit]).map(normWit);
-  document.querySelectorAll("tei-rdg, tei-lem").forEach(varEl => {
-    const varWit = normWit(varEl.getAttribute("wit"));
-    if (allowedWits.includes(varWit) && varWit === normWit(wit)) {
-      varEl.querySelectorAll("tei-add[place]").forEach(add => {
-        add.classList.add("highlighted-marginal");
-      });
-    }
-  });
-}
-
-/* =========================
-   ONLOAD: SYNC, LOAD TEI, SEARCH
-   ========================= */
-window.onload = function () {
-  const pbSelector = document.getElementById("pb-selector");
-  let diplomaticLoaded = false;
-  let modernLoaded = false;
-
-  /* ===== Sync guards (pause ONLY during search) ===== */
-  let isSyncing = false;
-  let isSearchActive = false;
-  const SEARCH_SUSPEND_MS = 900;
-  let searchSuspendTimer = null;
-
-  function beginSearchSuspend() {
-    isSearchActive = true;
-    isSyncing = true;
-    if (searchSuspendTimer) clearTimeout(searchSuspendTimer);
-  }
-  function endSearchSuspendSoon() {
-    if (searchSuspendTimer) clearTimeout(searchSuspendTimer);
-    searchSuspendTimer = setTimeout(() => {
-      isSearchActive = false;
-      isSyncing = false;
-    }, SEARCH_SUSPEND_MS);
-  }
-
-  // Toggle search bar
-  document.getElementById("toggle-search").addEventListener("click", () => {
-    const searchBar = document.getElementById("search-bar");
-    searchBar.classList.toggle("hidden");
-    if (!searchBar.classList.contains("hidden")) {
-      document.getElementById("search-input").focus();
-    } else {
-      clearAllSearch();
-    }
-  });
-
-  // Column open/close
-  document.querySelectorAll('.close-column').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const col = e.target.closest('.tei-column');
-      col.classList.add('hidden');
-      document.querySelector(`.toggle-col[data-target="${col.id}"]`).checked = false;
-      updateLayoutClasses();
-    });
-  });
-  document.querySelectorAll('.toggle-col').forEach(cb => {
-    cb.addEventListener('change', e => {
-      const target = e.target.dataset.target;
-      document.getElementById(target).classList.toggle('hidden', !e.target.checked);
-      updateLayoutClasses(); // keep wrapper classes in sync
-    });
-  });
-
-  /* ===== PB sync helpers (edition drives others) ===== */
-  let modernPbAnchors = [];
-  let currentScrolledPbId = null;
-
-  function computeModernAnchors() {
-    const modernScroll = document.querySelector("#modern-container .tei-column-scroll");
-    if (!modernScroll) return;
-    const pbs = modernScroll.querySelectorAll("tei-pb, pb, [id^='pb']");
-    modernPbAnchors = [];
-    pbs.forEach(pb => {
-      const id = pb.getAttribute("id") || pb.getAttribute("xml:id");
-      if (!id) return;
-      modernPbAnchors.push({ id, top: pb.offsetTop });
-    });
-    modernPbAnchors.sort((a, b) => a.top - b.top);
-  }
-
-  function findPbByScrollY(y) {
-    if (!modernPbAnchors.length) return null;
-    let lo = 0, hi = modernPbAnchors.length - 1, ans = 0;
-    while (lo <= hi) {
-      const mid = (lo + hi) >> 1;
-      if (modernPbAnchors[mid].top <= y) { ans = mid; lo = mid + 1; }
-      else { hi = mid - 1; }
-    }
-    return modernPbAnchors[ans];
-  }
-
-  function updateFacsimile(id) {
-    const option = pbSelector.querySelector(`option[value="${id}"]`);
-    if (option) {
-      const facs = option.dataset.facs;
-      const img = document.getElementById("facsimile-image");
-      img.src = `../facs/${facs}.jpg`;
-      img.onerror = () => { img.src = "../facs/placeholder.jpg"; };
-    }
-  }
-
-  function scrollToPb(id, { force = false } = {}) {
-    if (!force && (isSearchActive || isSyncing)) return;
-
-    const containers = [
-      document.querySelector("#modern-container .tei-column-scroll"),
-      document.querySelector("#diplomatic-container .tei-column-scroll")
-    ];
-
-    isSyncing = true;
-    containers.forEach(container => {
-      const target = container?.querySelector(`#${id}`);
-      if (target && container) {
-        container.scrollTo({ top: target.offsetTop - 40, behavior: "smooth" });
-      }
-    });
-
-    updateFacsimile(id);
-    if (pbSelector.value !== id) pbSelector.value = id;
-
-    setTimeout(() => { isSyncing = false; }, 600);
-  }
-
-  function checkReadyAndInit() {
-    if (diplomaticLoaded && modernLoaded) {
-      pbSelector.addEventListener("change", (e) => scrollToPb(e.target.value, { force: true }));
-
-      computeModernAnchors();
-      let anchorsDebounce;
-      window.addEventListener("resize", () => {
-        clearTimeout(anchorsDebounce);
-        anchorsDebounce = setTimeout(computeModernAnchors, 120);
-      });
-
-      const modernScroll = document.querySelector("#modern-container .tei-column-scroll");
-      if (modernScroll) {
-        modernScroll.addEventListener("scroll", () => {
-          if (isSearchActive || isSyncing) return;
-          const y = modernScroll.scrollTop + 50;
-          const anchor = findPbByScrollY(y);
-          if (!anchor) return;
-          const id = anchor.id;
-          if (id && id !== currentScrolledPbId) {
-            currentScrolledPbId = id;
-            scrollToPb(id);
+        if (omittedForThisWit) {
+          const startAnchor = resolveAnchor(clone, from);
+          const endAnchor = resolveAnchor(clone, to);
+          if (startAnchor && endAnchor) {
+            const all = Array.from(clone.querySelectorAll("*"));
+            let inRange = false;
+            const affected = [];
+            for (const el of all) {
+              if (el === startAnchor) {
+                inRange = true;
+                continue;
+              }
+              if (el === endAnchor) break;
+              const tag = el.tagName?.toLowerCase();
+              if (inRange && (tag === "tei-l" || tag === "tei-speaker"))
+                affected.push(el);
+            }
+            affected.forEach((el) => {
+              while (el.firstChild) el.removeChild(el.firstChild);
+              const ph = document.createElement("span");
+              ph.className = "placeholder-block";
+              ph.innerHTML = "[...........................................]";
+              el.appendChild(ph);
+            });
           }
-        }, { passive: true });
+          return; // gestito
+        }
       }
 
-      const firstOption = pbSelector.options[0];
-      if (firstOption) {
-        pbSelector.value = firstOption.value;
-        scrollToPb(firstOption.value, { force: true });
+      // ===== 2) Apparato inline (senza from/to) =====
+      const rdgs = Array.from(app.querySelectorAll("tei-rdg"));
+      const lemma = app.querySelector("tei-lem");
+
+      const matchingRdg = rdgs.find((rdg) =>
+        (rdg.getAttribute("wit") || "")
+          .split(/\s+/)
+          .map((w) => w.replace(/^#/, ""))
+          .includes(witID),
+      );
+
+      // 2a) Aggiunta inline: <rdg><add>…</add></rdg>
+      if (!from && !to && matchingRdg) {
+        const addEl = matchingRdg.querySelector("tei-add");
+        if (addEl) {
+          const insideLine = !!app.closest("tei-l, l");
+          const innerLines = addEl.querySelectorAll(
+            ":scope > tei-l, :scope > l",
+          );
+          const hasInnerLine = innerLines.length > 0;
+
+          if (insideLine) {
+            // Siamo già dentro una riga → appiattisci in uno span
+            const span = document.createElement("span");
+            span.className = "witness-addition";
+            if (hasInnerLine) {
+              let first = true;
+              innerLines.forEach((l) => {
+                if (!first) span.appendChild(document.createTextNode(" "));
+                l.childNodes.forEach((n) =>
+                  span.appendChild(n.cloneNode(true)),
+                );
+                first = false;
+              });
+            } else {
+              addEl.childNodes.forEach((n) =>
+                span.appendChild(n.cloneNode(true)),
+              );
+            }
+            app.replaceWith(span);
+            return; // gestito
+          } else {
+            // Fuori da una riga: se ci sono <l> li manteniamo, altrimenti span
+            if (hasInnerLine) {
+              const frag = document.createDocumentFragment();
+              innerLines.forEach((l) => {
+                const cloned = l.cloneNode(true);
+                cloned.setAttribute("data-addition", "true"); // per styling/analitiche
+                frag.appendChild(cloned);
+              });
+              app.replaceWith(frag);
+              return; // gestito
+            } else {
+              const span = document.createElement("span");
+              span.className = "witness-addition";
+              addEl.childNodes.forEach((n) =>
+                span.appendChild(n.cloneNode(true)),
+              );
+              app.replaceWith(span);
+              return; // gestito
+            }
+          }
+        }
       }
-    }
+
+      // 2b) Omissione inline (rdg vuoto per questo testimone)
+      const isOmitted = matchingRdg && matchingRdg.textContent.trim() === "";
+      if (isOmitted) {
+        const parentL = app.closest("tei-l");
+        if (parentL && parentL.textContent.trim() === app.textContent.trim()) {
+          const replacement = document.createElement("span");
+          replacement.className = "placeholder-block";
+          replacement.innerHTML =
+            "[...........................................]";
+          app.parentNode.replaceChild(replacement, app);
+        } else {
+          const replacement = document.createElement("span");
+          replacement.className = "witness-reading";
+          replacement.textContent = "";
+          app.parentNode.replaceChild(replacement, app);
+        }
+        return; // gestito
+      }
+
+      // 2c) Lettura normale: rdg corrispondente, altrimenti lemma
+      let chosenText = "";
+      if (matchingRdg) {
+        chosenText = matchingRdg.textContent.trim();
+      } else if (lemma) {
+        chosenText = lemma.textContent.trim();
+      }
+
+      const replacement = document.createElement("span");
+      replacement.className = "witness-reading";
+      replacement.textContent = chosenText;
+      app.parentNode.replaceChild(replacement, app);
+    });
+
+    return clone;
   }
 
-  // ======= Zoom & Pan for facsimile image (mouse + touch) =======
-const wrap = document.getElementById("facsimile-wrapper");
-const img  = document.getElementById("facsimile-image");
-
-const Z = { scale: 1, min: 1, max: 6, x: 0, y: 0 };  // zoom/pan state
-let isPanning = false;
-let panStart = { x: 0, y: 0 };
-let lastTapTime = 0;
-
-// Apply transform to image
-function apply() {
-  img.style.transform = `translate(${Z.x}px, ${Z.y}px) scale(${Z.scale})`;
-}
-
-// Constrain panning so the image doesn't slide away completely
-function clampPan() {
-  const vw = wrap.clientWidth;
-  const vh = wrap.clientHeight;
-  const bw = img.offsetWidth * Z.scale;
-  const bh = img.offsetHeight * Z.scale;
-
-  // If the image is smaller than the viewport, keep it centered
-  const minX = Math.min(0, vw - bw);
-  const minY = Math.min(0, vh - bh);
-
-  Z.x = Math.max(minX, Math.min(0, Z.x));
-  Z.y = Math.max(minY, Math.min(0, Z.y));
-}
-
-// Zoom at a specific clientX/clientY point
-function zoomAt(clientX, clientY, nextScale) {
-  nextScale = Math.max(Z.min, Math.min(Z.max, nextScale));
-  const rect = wrap.getBoundingClientRect();
-
-  // point coordinates relative to the current transform
-  const px = (clientX - rect.left - Z.x) / Z.scale;
-  const py = (clientY - rect.top  - Z.y) / Z.scale;
-
-  // update scale and reposition so the point stays under the cursor/finger
-  Z.scale = nextScale;
-  Z.x = clientX - rect.left - px * Z.scale;
-  Z.y = clientY - rect.top  - py * Z.scale;
-
-  clampPan();
-  apply();
-}
-
-// --- Mouse wheel zoom (desktop)
-wrap.addEventListener("wheel", (e) => {
-  e.preventDefault();
-  const factor = Math.exp(-e.deltaY * 0.0015); // smooth zoom factor
-  zoomAt(e.clientX, e.clientY, Z.scale * factor);
-}, { passive: false });
-
-// --- Mouse drag panning
-img.addEventListener("mousedown", (e) => {
-  if (Z.scale <= 1) return; // no pan when fully zoomed out
-  isPanning = true;
-  img.classList.add("grabbing");
-  panStart = { x: e.clientX - Z.x, y: e.clientY - Z.y };
-});
-
-window.addEventListener("mousemove", (e) => {
-  if (!isPanning) return;
-  Z.x = e.clientX - panStart.x;
-  Z.y = e.clientY - panStart.y;
-  clampPan(); apply();
-});
-
-window.addEventListener("mouseup", () => {
-  isPanning = false;
-  img.classList.remove("grabbing");
-});
-
-// --- Double click to zoom in, Shift+click to zoom out
-wrap.addEventListener("dblclick", (e) => {
-  e.preventDefault();
-  const targetScale = e.shiftKey ? Math.max(Z.min, Z.scale / 2) : Math.min(Z.max, Z.scale * 2);
-  zoomAt(e.clientX, e.clientY, targetScale);
-});
-
-// --- Touch helpers (pan with 1 finger, pinch with 2 fingers)
-let touchState = null; // { d, cx, cy } previous distance & center
-
-function getTouchCenterAndDistance(touches) {
-  const t1 = touches[0], t2 = touches[1];
-  const cx = (t1.clientX + t2.clientX) / 2;
-  const cy = (t1.clientY + t2.clientY) / 2;
-  const dx = t1.clientX - t2.clientX;
-  const dy = t1.clientY - t2.clientY;
-  const d  = Math.hypot(dx, dy);
-  return { cx, cy, d };
-}
-
-wrap.addEventListener("touchstart", (e) => {
-  if (e.touches.length === 1) {
-    // double tap to zoom in/out
-    const now = Date.now();
-    if (now - lastTapTime < 300) {
-      const t = e.touches[0];
-      const target = (Z.scale < 2) ? Math.min(Z.max, Z.scale * 2) : Math.max(1, Z.scale / 2);
-      zoomAt(t.clientX, t.clientY, target);
-      lastTapTime = 0;
-      return;
-    }
-    lastTapTime = now;
-    if (Z.scale > 1) {
-      isPanning = true;
-      panStart = { x: e.touches[0].clientX - Z.x, y: e.touches[0].clientY - Z.y };
-    }
-  } else if (e.touches.length === 2) {
-    e.preventDefault();
-    touchState = getTouchCenterAndDistance(e.touches);
+  // =========================
+  // Notes
+  // =========================
+  function decorateNotes(data) {
+    data.querySelectorAll("tei-note, note").forEach((originalNote) => {
+      const content = originalNote.textContent.trim();
+      const wrapper = document.createElement("span");
+      wrapper.className = "tei-note";
+      const icon = document.createElement("sup");
+      icon.className = "note-icon";
+      icon.textContent = "❋";
+      const tooltip = document.createElement("div");
+      tooltip.className = "note-tooltip";
+      tooltip.textContent = content;
+      wrapper.append(icon, tooltip);
+      originalNote.replaceWith(wrapper);
+    });
   }
-}, { passive: false });
-
-wrap.addEventListener("touchmove", (e) => {
-  if (e.touches.length === 1 && isPanning) {
-    e.preventDefault();
-    Z.x = e.touches[0].clientX - panStart.x;
-    Z.y = e.touches[0].clientY - panStart.y;
-    clampPan(); apply();
-  } else if (e.touches.length === 2) {
-    e.preventDefault();
-    const cur = getTouchCenterAndDistance(e.touches);
-    if (touchState && touchState.d > 0) {
-      const factor = cur.d / touchState.d;
-      zoomAt(cur.cx, cur.cy, Z.scale * factor);
-      // update state for continuous gesture
-      touchState = { cx: cur.cx, cy: cur.cy, d: cur.d };
-    } else {
-      touchState = cur;
-    }
+  function attachNoteEvents(container = document) {
+    const notes = container.querySelectorAll(".tei-note");
+    notes.forEach((note) => {
+      const icon = note.querySelector(".note-icon");
+      icon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        container.querySelectorAll(".tei-note.active").forEach((n) => {
+          if (n !== note) n.classList.remove("active");
+        });
+        note.classList.toggle("active");
+      });
+    });
+    document.addEventListener("click", () => {
+      container
+        .querySelectorAll(".tei-note.active")
+        .forEach((n) => n.classList.remove("active"));
+    });
   }
-}, { passive: false });
 
-wrap.addEventListener("touchend", () => {
-  isPanning = false;
-  touchState = null;
-}, { passive: false });
+  // =========================
+  // Line numbering (idempotente)
+  // =========================
+  function insertLeftAlignedLineNumbers(root) {
+    root.querySelectorAll("tei-l, l").forEach((line) => {
+      if (line.querySelector(".line-container")) return;
+      const num = line.getAttribute("n");
+      const part = line.getAttribute("part");
 
-// Reset zoom/pan when switching folio
-function resetFacsView() { Z.scale = 1; Z.x = 0; Z.y = 0; apply(); }
-document.getElementById("prev-folio").addEventListener("click", resetFacsView);
-document.getElementById("next-folio").addEventListener("click", resetFacsView);
-document.getElementById("pb-selector").addEventListener("change", resetFacsView);
+      const wrapper = document.createElement("div");
+      wrapper.className = "line-container";
 
-// Recalculate after image load (ensures correct offsetWidth)
-img.addEventListener("load", () => { resetFacsView(); });
+      const lineNum = document.createElement("span");
+      lineNum.className = "line-number";
+      if (num && (!part || part === "F") && parseInt(num, 10) % 5 === 0)
+        lineNum.textContent = num;
 
-// Initialize
-apply();
+      const lineText = document.createElement("span");
+      lineText.className = "line-text";
+      while (line.firstChild) lineText.appendChild(line.firstChild);
 
+      wrapper.append(lineNum, lineText);
+      line.appendChild(wrapper);
+    });
+  }
+  function alignSplitVerses(root) {
+    const lines = root.querySelectorAll("tei-l, l");
+    lines.forEach((line, index) => {
+      const part = line.getAttribute("part");
+      const container = line.querySelector(".line-text");
+      if (!part || !container) return;
+      const prev = lines[index - 1];
+      const prevPart = prev?.getAttribute("part");
+      const prevLineText = prev?.querySelector(".line-text");
+      if (
+        (part === "M" && prevPart === "I") ||
+        (part === "F" && (prevPart === "M" || prevPart === "I"))
+      ) {
+        if (prevLineText) {
+          const indent = prevLineText.getBoundingClientRect().width;
+          container.style.paddingLeft = `${indent}px`;
+        }
+      }
+    });
+  }
 
-  function loadTEI(filename, containerId, prefix, onComplete) {
-    CETEIcean.getHTML5(filename, data => {
-      decorateNotes(data);
-      attachNoteEvents(data);
+  // =========================
+  // Apparatus inline (tooltip in <span>)
+  // =========================
+  function decorateApparatus(data) {
+    const apps = data.querySelectorAll("tei-app:not([from])");
 
-      const container = document.querySelector(`#${containerId} .tei-column-scroll`);
-      container.appendChild(data);
+    if (!data.__apparatusClickAwayBound) {
+      document.addEventListener(
+        "click",
+        () => {
+          data.querySelectorAll(".lem-apparatus.active").forEach((el) => {
+            el.classList.remove("active");
+            el.querySelector(".app-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+            el.setAttribute("aria-expanded", "false");
+          });
+        },
+        { passive: true },
+      );
+      data.__apparatusClickAwayBound = true;
+    }
 
-      // 🔧 Build range spans NOW that the column has content
-      decorateSpanRanges(container);
+    apps.forEach((app) => {
+      if (app.querySelector("tei-add")) return;
+      const lemma = app.querySelector("tei-lem");
+      if (!lemma) return;
 
-      const pbs = data.querySelectorAll("tei-pb");
-      pbs.forEach((pb, i) => {
-        const id = pb.getAttribute("xml:id") || `pb-${i + 1}`;
-        const n = pb.getAttribute("n") || `Página ${i + 1}`;
-        const facsName = n.replace(/\[|\]/g, "").replace(/Fol\.?\s*/i, "fol").replace(/\s/g, "").toLowerCase();
-        pb.setAttribute("id", id);
+      const wrapper = document.createElement("span");
+      wrapper.className = "lem-wrapper lem-apparatus";
+      wrapper.textContent = lemma.textContent.trim();
+      wrapper.setAttribute("role", "button");
+      wrapper.setAttribute("tabindex", "0");
+      wrapper.setAttribute("aria-haspopup", "true");
+      wrapper.setAttribute("aria-expanded", "false");
 
-        if (!Array.from(pbSelector.options).some(o => o.value === id)) {
-          const opt = document.createElement("option");
-          opt.value = id;
-          opt.textContent = n;
-          opt.dataset.facs = facsName;
-          pbSelector.appendChild(opt);
+      const tooltip = document.createElement("span");
+      tooltip.className = "app-tooltip";
+      tooltip.style.display = "none";
+      tooltip.setAttribute("role", "listbox");
+
+      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+        const entry = document.createElement("span");
+        entry.className = "apparatus-entry";
+        entry.setAttribute("role", "option");
+
+        const rdgSpan = document.createElement("span");
+        rdgSpan.className = "rdg-text";
+        rdgSpan.textContent = rdg.textContent.trim() || "om.";
+
+        const witSpan = document.createElement("span");
+        witSpan.className = "witness-label";
+        witSpan.textContent = rdg.getAttribute("wit") || "";
+
+        entry.append(rdgSpan, witSpan);
+        tooltip.append(entry);
+      });
+
+      wrapper.append(tooltip);
+
+      const toggle = (e) => {
+        e.stopPropagation();
+        data.querySelectorAll(".lem-apparatus.active").forEach((el) => {
+          if (el !== wrapper) {
+            el.classList.remove("active");
+            el.querySelector(".app-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+            el.setAttribute("aria-expanded", "false");
+          }
+        });
+        const open = !wrapper.classList.contains("active");
+        wrapper.classList.toggle("active", open);
+        tooltip.style.display = open ? "block" : "none";
+        wrapper.setAttribute("aria-expanded", String(open));
+      };
+      wrapper.addEventListener("click", toggle);
+      wrapper.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") toggle(e);
+      });
+
+      app.replaceWith(wrapper);
+    });
+  }
+
+  // Rende cliccabili le sigle dei testimoni nell’apparato (chip)
+  function makeApparatusSiglaClickable(scope = document) {
+    scope.querySelectorAll(".witness-label").forEach((lbl) => {
+      if (lbl.__chipsified) return; // evita doppio lavoro
+      const wits = (lbl.textContent || "")
+        .trim()
+        .split(/\s+/)
+        .map((w) => w.replace(/^#/, ""))
+        .filter(Boolean);
+
+      lbl.__chipsified = true;
+      lbl.textContent = "";
+      wits.forEach((w) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "wit-chip";
+        chip.dataset.wit = w;
+        chip.textContent = w;
+        lbl.appendChild(chip);
+      });
+    });
+  }
+
+  // =========================
+  // Omission long-span (Range)
+  // =========================
+  function decorateOmissionSpans(root, inWitnessView = false) {
+    const apps = root.querySelectorAll(
+      'tei-app[from][to]:not([type="addition"])',
+    );
+
+    if (!root.__omissionClickAwayBound) {
+      document.addEventListener(
+        "click",
+        () => {
+          root.querySelectorAll(".lem-omission.active").forEach((el) => {
+            el.classList.remove("active");
+            el.querySelector(".omission-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+          });
+        },
+        { passive: true },
+      );
+      root.__omissionClickAwayBound = true;
+    }
+
+    const resolveAnchor = (ref) => {
+      const id = (ref || "").replace(/^#/, "");
+      let el =
+        root.querySelector(`tei-anchor[id="${CSS.escape(id)}"]`) ||
+        root.querySelector(`tei-anchor[xml\\:id="${CSS.escape(id)}"]`);
+      if (!el) {
+        const inner = root.querySelector(`[data-xml-id="${CSS.escape(id)}"]`);
+        if (inner) el = inner.closest("tei-anchor") || inner;
+      }
+      if (!el) {
+        el =
+          root.querySelector(`#${CSS.escape(id)}`) ||
+          root.querySelector(`[id="${CSS.escape(id)}"]`);
+      }
+      return el;
+    };
+
+    apps.forEach((app) => {
+      const fromRef = app.getAttribute("from");
+      const toRef = app.getAttribute("to");
+      if (!fromRef || !toRef) return;
+
+      const omittedWits = new Set();
+      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+        if (!rdg.textContent || rdg.textContent.trim() === "") {
+          (rdg.getAttribute("wit") || "")
+            .trim()
+            .split(/\s+/)
+            .forEach((w) => w && omittedWits.add(w.replace(/^#/, "")));
+        }
+      });
+      if (omittedWits.size === 0) return;
+
+      const startAnchor = resolveAnchor(fromRef);
+      const endAnchor = resolveAnchor(toRef);
+      if (!startAnchor || !endAnchor) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "lem-wrapper lem-omission omission-block";
+
+      const tooltip = document.createElement("div");
+      tooltip.className = "omission-tooltip";
+      tooltip.style.display = "none";
+      tooltip.textContent = `Texto omitido en: #${Array.from(omittedWits).join(
+        ", ",
+      )}`;
+      wrapper.appendChild(tooltip);
+
+      wrapper.addEventListener("click", (e) => {
+        e.stopPropagation();
+        root.querySelectorAll(".lem-omission.active").forEach((el) => {
+          if (el !== wrapper) {
+            el.classList.remove("active");
+            el.querySelector(".omission-tooltip")?.style.setProperty(
+              "display",
+              "none",
+            );
+          }
+        });
+        const open = !wrapper.classList.contains("active");
+        wrapper.classList.toggle("active", open);
+        tooltip.style.display = open ? "block" : "none";
+      });
+
+      const range = document.createRange();
+      range.setStartAfter(startAnchor);
+      range.setEndBefore(endAnchor);
+
+      const frag = range.extractContents();
+      if (!frag || !frag.hasChildNodes()) {
+        range.detach?.();
+        return;
+      }
+
+      startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
+      wrapper.appendChild(frag);
+
+      range.detach?.();
+      app.remove();
+    });
+  }
+
+  // =========================
+  // Aggiunte long-span (funzione unificata)
+  // mode: "base" | "witness"
+  // =========================
+  function processAdditionSpans(root, { mode = "base", witID = null } = {}) {
+    const apps = root.querySelectorAll(`tei-app[type="addition"][from][to]`);
+
+    const anchorIn = (ctx, ref) => {
+      const id = (ref || "").replace(/^#/, "");
+      return ctx.querySelector(
+        `tei-anchor[id="${CSS.escape(id)}"], tei-anchor[xml\\:id="${CSS.escape(
+          id,
+        )}"], [data-xml-id="${CSS.escape(id)}"], #${CSS.escape(id)}`,
+      );
+    };
+
+    apps.forEach((app) => {
+      const from = app.getAttribute("from");
+      const to = app.getAttribute("to");
+      if (!from || !to) return;
+
+      const startAnchor = anchorIn(root, from);
+      const endAnchor = anchorIn(root, to);
+      if (!startAnchor || !endAnchor) return;
+
+      const rdgs = Array.from(app.querySelectorAll("tei-rdg"));
+      const witsWithAdd = rdgs
+        .filter((rdg) => rdg.querySelector("tei-add"))
+        .flatMap((rdg) => (rdg.getAttribute("wit") || "").trim().split(/\s+/))
+        .map((w) => w.replace(/^#/, ""))
+        .filter(Boolean);
+
+      const range = document.createRange();
+      range.setStartAfter(startAnchor);
+      range.setEndBefore(endAnchor);
+
+      if (mode === "base") {
+        range.deleteContents();
+        const wrapper = document.createElement("span");
+        wrapper.className = "addition-marker-wrapper";
+        const marker = document.createElement("span");
+        marker.className = "addition-marker";
+        marker.textContent = "✚";
+        const tooltip = document.createElement("span");
+        tooltip.className = "addition-tooltip";
+        tooltip.textContent = witsWithAdd.length
+          ? `Se añade un pasaje en: #${witsWithAdd.join(", ")}`
+          : `Se añade un pasaje en algunos testigos`;
+        wrapper.append(marker, tooltip);
+        startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
+        app.remove();
+        range.detach?.();
+        return;
+      }
+
+      if (mode === "witness") {
+        const wanted = (witID || "").replace(/^#/, "");
+        const match = rdgs.find((rdg) =>
+          (rdg.getAttribute("wit") || "")
+            .split(/\s+/)
+            .map((w) => w.replace(/^#/, ""))
+            .includes(wanted),
+        );
+        const hasAddForWit = !!(match && match.querySelector("tei-add"));
+
+        const frag = range.extractContents();
+
+        if (hasAddForWit) {
+          const wrapper = document.createElement("div");
+          wrapper.className = "witness-addition";
+          wrapper.appendChild(frag);
+          startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
+        } // else: omissione nel testimone → non reinseriamo (sparisce)
+
+        app.remove();
+        range.detach?.();
+        return;
+      }
+    });
+  }
+
+  // =========================
+  // Aggiunte inline (senza anchors/type) → marker nel base
+  // =========================
+  function decorateInlineAdditionsWithoutAnchors(root) {
+    // prendi SOLO <app> inline (senza from/to), qualsiasi @type
+    const apps = Array.from(
+      root.querySelectorAll("tei-app:not([from]):not([to])"),
+    ).filter((app) => app.querySelector("tei-rdg tei-add") !== null);
+
+    apps.forEach((app) => {
+      // raccogli i testimoni che aggiungono
+      const witSet = new Set();
+      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+        if (rdg.querySelector("tei-add")) {
+          (rdg.getAttribute("wit") || "")
+            .trim()
+            .split(/\s+/)
+            .map((w) => w.replace(/^#/, ""))
+            .filter(Boolean)
+            .forEach((w) => witSet.add(w));
         }
       });
 
-      onComplete();
+      // sostituisci l'intero <app> con il marker ✚ (solo nel BASE)
+      const wrap = document.createElement("span");
+      wrap.className = "addition-marker-wrapper";
+      const marker = document.createElement("span");
+      marker.className = "addition-marker";
+      marker.textContent = "✚";
+      const tip = document.createElement("span");
+      tip.className = "addition-tooltip";
+      const list = Array.from(witSet);
+      tip.textContent = list.length
+        ? `Se añade un verso en: #${list.join(", ")}`
+        : `Se añade un verso en`;
+      wrap.append(marker, tip);
+
+      app.replaceWith(wrap);
     });
   }
 
-  // Load both TEI files
-  loadTEI("EMN_dip.xml", "diplomatic-container", "pb-d", () => {
-    diplomaticLoaded = true;
-    checkReadyAndInit();
-  });
+  // =========================
+  // Hover sync linee (robusta)
+  // =========================
+  function enableLineSyncHighlighting() {
+    if (window.__syncHLBound) return;
+    const scope = document.getElementById("tei-wrapper") || document;
 
-  loadTEI("EMN_mod.xml", "modern-container", "pb-m", () => {
-    modernLoaded = true;
-    checkReadyAndInit();
-    setTimeout(() => {
-      filterReadings({ showAll: true });
-      document.getElementById("variant-selector").value = "all";
-      computeModernAnchors();
-      // Rebuild ranges after the initial filter pass
-      rebuildSpanRanges();
-    }, 100);
-  });
+    const getLine = (node) => (node ? node.closest?.("[data-line-n]") : null);
+    const highlight = (n) =>
+      document
+        .querySelectorAll(`[data-line-n="${CSS.escape(n)}"]`)
+        .forEach((el) => el.classList.add("line-highlight"));
+    const unhighlight = (n) =>
+      document
+        .querySelectorAll(`[data-line-n="${CSS.escape(n)}"]`)
+        .forEach((el) => el.classList.remove("line-highlight"));
 
-  document.getElementById("prev-folio").addEventListener("click", () => {
-    if (pbSelector.selectedIndex > 0) {
-      pbSelector.selectedIndex--;
-      pbSelector.dispatchEvent(new Event("change"));
+    scope.addEventListener("pointerover", (e) => {
+      const to = getLine(e.target);
+      if (!to) return;
+      const from = getLine(e.relatedTarget);
+      const n = to.getAttribute("data-line-n");
+      if (from && from.getAttribute("data-line-n") === n) return; // transito interno
+      highlight(n);
+    });
+
+    scope.addEventListener("pointerout", (e) => {
+      const from = getLine(e.target);
+      if (!from) return;
+      const to = getLine(e.relatedTarget);
+      const n = from.getAttribute("data-line-n");
+      if (to && to.getAttribute("data-line-n") === n) return; // transito interno
+      unhighlight(n);
+    });
+
+    window.__syncHLBound = true;
+  }
+
+  // =========================
+  // Statistiche (D3)
+  // =========================
+  function clearNode(node) {
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function drawBarChartD3(container, rawStats, titleText) {
+    const draw = () => {
+      const old = container.querySelector("svg.d3-chart");
+      if (old) old.remove();
+      const data = Object.entries(rawStats)
+        .map(([name, v]) => ({ name, value: Math.round(v) }))
+        .sort((a, b) => b.value - a.value);
+
+      const width = container.clientWidth || 900;
+      const height = Math.max(360, 280 + Math.ceil(data.length / 12) * 28);
+      const margin = { top: 44, right: 20, bottom: 150, left: 64 };
+
+      const svg = d3
+        .select(container)
+        .append("svg")
+        .attr("class", "d3-chart")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
+
+      if (titleText)
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", margin.top - 18)
+          .attr("text-anchor", "middle")
+          .attr("font-weight", "600")
+          .attr("font-size", 16)
+          .text(titleText);
+
+      const maxVal = d3.max(data, (d) => d.value) || 1;
+      const step =
+        maxVal <= 80 ? 10 : maxVal <= 200 ? 25 : maxVal <= 400 ? 50 : 100;
+      const upper = Math.ceil(maxVal / step) * step;
+      const headroom = Math.max(6, Math.round(upper * 0.08));
+
+      const x = d3
+        .scaleBand()
+        .domain(data.map((d) => d.name))
+        .range([margin.left, width - margin.right])
+        .padding(0.1);
+      const y = d3
+        .scaleLinear()
+        .domain([0, upper + headroom])
+        .range([height - margin.bottom, margin.top])
+        .nice();
+      const narrow = x.bandwidth() < 16;
+
+      const xAxis = (g) =>
+        g
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x))
+          .selectAll("text")
+          .attr("font-size", narrow ? 10 : 12)
+          .attr("transform", narrow ? "rotate(-75)" : "rotate(-60)")
+          .attr("text-anchor", "end")
+          .attr("dx", "-.5em")
+          .attr("dy", ".35em");
+      const yAxis = (g) =>
+        g
+          .attr("transform", `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y).tickValues(d3.range(0, upper + step, step)))
+          .call((g) => g.select(".domain").remove())
+          .selectAll("text")
+          .attr("font-size", 12);
+
+      svg.append("g").call(xAxis);
+      svg.append("g").call(yAxis);
+
+      const g = svg.append("g");
+      const bars = g
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("x", (d) => x(d.name))
+        .attr("y", (d) => y(d.value))
+        .attr("width", x.bandwidth())
+        .attr("height", (d) => y(0) - y(d.value))
+        .attr("rx", 3)
+        .attr("ry", 3)
+        .attr("fill", "#69b3a2");
+
+      const labels = g
+        .selectAll("g.value-label")
+        .data(data)
+        .join("g")
+        .attr("class", "value-label")
+        .attr(
+          "transform",
+          (d) =>
+            `translate(${x(d.name) + x.bandwidth() / 2}, ${y(d.value) - 8})`,
+        );
+      labels.each(function (d) {
+        const group = d3.select(this);
+        const t = group
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("font-size", 8)
+          .style("paint-order", "stroke")
+          .style("stroke", "#fff")
+          .style("stroke-width", "2px")
+          .style("stroke-opacity", 0.7)
+          .text(d.value);
+      });
+
+      bars.append("title").text((d) => `${d.name}: ${d.value}`);
+    };
+    draw();
+    const ro = new ResizeObserver(() => draw());
+    ro.observe(container);
+  }
+
+  function drawGroupedBarChartD3(
+    container,
+    globalStats,
+    allWitnesses,
+    titleText,
+  ) {
+    const controls = document.createElement("div");
+    controls.className = "witness-toggle-bar";
+    controls.style.margin = "8px 0 6px 0";
+    controls.style.display = "flex";
+    controls.style.flexWrap = "wrap";
+    controls.style.gap = "6px";
+    const makeBtn = (label) => {
+      const b = document.createElement("button");
+      b.textContent = label;
+      b.type = "button";
+      b.style.padding = "4px 8px";
+      b.style.borderRadius = "8px";
+      b.style.border = "1px solid #ccc";
+      b.style.background = "#f6f6f6";
+      b.style.cursor = "pointer";
+      b.style.fontSize = "12px";
+      return b;
+    };
+    const selected = new Set(allWitnesses);
+    const selectAllBtn = makeBtn("Seleccionar todos");
+    const clearAllBtn = makeBtn("Ninguno");
+    controls.appendChild(selectAllBtn);
+    controls.appendChild(clearAllBtn);
+    const color = d3
+      .scaleOrdinal()
+      .domain(allWitnesses)
+      .range(
+        allWitnesses.map(
+          (_, i) => `hsl(${(i * 360) / allWitnesses.length}, 70%, 55%)`,
+        ),
+      );
+    const witnessBtns = allWitnesses.map((w) => {
+      const b = makeBtn(w);
+      b.dataset.wit = w;
+      b.style.borderColor = color(w);
+      b.style.background = "#eaf3ff";
+      controls.appendChild(b);
+      return b;
+    });
+    container.appendChild(controls);
+    const refreshBtnStyles = () => {
+      witnessBtns.forEach((b) => {
+        const on = selected.has(b.dataset.wit);
+        b.style.background = on ? "#eaf3ff" : "#f6f6f6";
+        b.style.opacity = on ? "1" : "0.55";
+      });
+    };
+
+    const draw = () => {
+      const old = container.querySelector("svg.d3-chart");
+      if (old) old.remove();
+      const characters = Object.keys(globalStats);
+      const totals = (name) =>
+        allWitnesses.reduce((acc, w) => acc + (globalStats[name][w] || 0), 0);
+      const labels = characters.sort((a, b) => totals(b) - totals(a));
+      const active = allWitnesses.filter((w) => selected.has(w));
+
+      const width = container.clientWidth || 900;
+      const height = Math.max(440, 320 + Math.ceil(labels.length / 12) * 28);
+      const margin = { top: 56, right: 24, bottom: 180, left: 64 };
+
+      const svg = d3
+        .select(container)
+        .append("svg")
+        .attr("class", "d3-chart")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
+
+      if (titleText)
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", margin.top - 26)
+          .attr("text-anchor", "middle")
+          .attr("font-weight", "600")
+          .attr("font-size", 16)
+          .text(titleText);
+
+      if (active.length === 0) {
+        svg
+          .append("text")
+          .attr("x", width / 2)
+          .attr("y", height / 2)
+          .attr("text-anchor", "middle")
+          .text("Selecciona al menos un testimonio");
+        return;
+      }
+
+      const data = labels.map((name) => ({
+        name,
+        values: active.map((w) => ({
+          wit: w,
+          value: Math.round(globalStats[name][w] || 0),
+        })),
+      }));
+
+      const maxVal = d3.max(data, (d) => d3.max(d.values, (v) => v.value)) || 1;
+      const step =
+        maxVal <= 80 ? 10 : maxVal <= 200 ? 25 : maxVal <= 400 ? 50 : 100;
+      const upper = Math.ceil(maxVal / step) * step;
+      const headroom = Math.max(6, Math.round(upper * 0.1));
+
+      const x0 = d3
+        .scaleBand()
+        .domain(labels)
+        .range([margin.left, width - margin.right])
+        .padding(0.08);
+      const x1 = d3
+        .scaleBand()
+        .domain(active)
+        .range([0, x0.bandwidth()])
+        .padding(0.05);
+      const y = d3
+        .scaleLinear()
+        .domain([0, upper + headroom])
+        .range([height - margin.bottom, margin.top])
+        .nice();
+
+      const xTooNarrow = x0.bandwidth() < 22;
+      const xAxis = (g) =>
+        g
+          .attr("transform", `translate(0,${height - margin.bottom})`)
+          .call(d3.axisBottom(x0))
+          .selectAll("text")
+          .attr("font-size", xTooNarrow ? 10 : 12)
+          .attr("transform", xTooNarrow ? "rotate(-80)" : "rotate(-60)")
+          .attr("text-anchor", "end")
+          .attr("dx", "-.55em")
+          .attr("dy", ".35em");
+      const yAxis = (g) =>
+        g
+          .attr("transform", `translate(${margin.left},0)`)
+          .call(d3.axisLeft(y).tickValues(d3.range(0, upper + step, step)))
+          .call((g) => g.select(".domain").remove())
+          .selectAll("text")
+          .attr("font-size", 12);
+
+      svg.append("g").call(xAxis);
+      svg.append("g").call(yAxis);
+
+      const rows = svg
+        .append("g")
+        .selectAll("g.row")
+        .data(data)
+        .join("g")
+        .attr("class", "row")
+        .attr("transform", (d) => `translate(${x0(d.name)},0)`);
+
+      const bars = rows
+        .selectAll("rect")
+        .data((d) => d.values)
+        .join("rect")
+        .attr("x", (v) => x1(v.wit))
+        .attr("y", (v) => y(v.value))
+        .attr("width", x1.bandwidth())
+        .attr("height", (v) => y(0) - y(v.value))
+        .attr("fill", (v) => color(v.wit))
+        .attr("rx", 2)
+        .attr("ry", 2);
+
+      rows
+        .selectAll("g.value-label")
+        .data((d) => d.values)
+        .join("g")
+        .attr("class", "value-label")
+        .attr(
+          "transform",
+          (v) =>
+            `translate(${x1(v.wit) + x1.bandwidth() / 2}, ${y(v.value) - 7})`,
+        )
+        .each(function (v) {
+          const group = d3.select(this);
+          const t = group
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("font-size", 7)
+            .attr("font-weight", "300")
+            .text(v.value);
+          const bb = t.node().getBBox();
+          group
+            .insert("rect", "text")
+            .attr("x", bb.x - 3)
+            .attr("y", bb.y - 1)
+            .attr("width", bb.width + 6)
+            .attr("height", bb.height + 2)
+            .attr("rx", 3)
+            .attr("ry", 3)
+            .attr("fill", "#fff")
+            .attr("opacity", 0.95);
+        });
+
+      bars.append("title").text((v) => `${v.wit}: ${v.value}`);
+
+      const legend = svg
+        .append("g")
+        .attr(
+          "transform",
+          `translate(${width - margin.right - 10}, ${margin.top - 10})`,
+        );
+      const lineH = 18;
+      allWitnesses.forEach((wit, i) => {
+        const y0 = i * lineH;
+        legend
+          .append("rect")
+          .attr("x", -16)
+          .attr("y", y0)
+          .attr("width", 12)
+          .attr("height", 12)
+          .attr("fill", color(wit))
+          .attr("opacity", selected.has(wit) ? 1 : 0.25);
+        legend
+          .append("text")
+          .attr("x", 2)
+          .attr("y", y0 + 10)
+          .attr("font-size", 12)
+          .attr("opacity", selected.has(wit) ? 1 : 0.5)
+          .text(wit);
+      });
+    };
+
+    witnessBtns.forEach((b) =>
+      b.addEventListener("click", () => {
+        const w = b.dataset.wit;
+        if (selected.has(w)) selected.delete(w);
+        else selected.add(w);
+        refreshBtnStyles();
+        draw();
+      }),
+    );
+    selectAllBtn.addEventListener("click", () => {
+      allWitnesses.forEach((w) => selected.add(w));
+      refreshBtnStyles();
+      draw();
+    });
+    clearAllBtn.addEventListener("click", () => {
+      selected.clear();
+      refreshBtnStyles();
+      draw();
+    });
+
+    refreshBtnStyles();
+    draw();
+    const ro = new ResizeObserver(() => draw());
+    ro.observe(container);
+  }
+
+  function calculateLineStats(container, witID, castMap) {
+    const stats = Object.create(null);
+    container.querySelectorAll("tei-sp").forEach((sp) => {
+      const speakers = resolveSpeakersForSp(sp, witID, castMap);
+      const k = speakers.length || 1,
+        weight = 1 / k;
+      let counted = 0;
+      sp.querySelectorAll("tei-l").forEach((line) => {
+        const txt = (line.textContent || "").trim();
+        if (!txt || /^\[\.+\]$/.test(txt)) return;
+        counted++;
+      });
+      if (counted > 0)
+        speakers.forEach((name) => {
+          if (!stats[name]) stats[name] = 0;
+          stats[name] += counted * weight;
+        });
+    });
+    return stats;
+  }
+  function extractWitnessSigla(data) {
+    const siglaSet = new Set();
+    data.querySelectorAll("tei-rdg[wit], tei-lem[wit]").forEach((rdg) => {
+      const witAttr = rdg.getAttribute("wit");
+      if (!witAttr) return;
+      witAttr
+        .split(/\s+/)
+        .forEach((wit) => siglaSet.add(wit.replace(/^#/, "")));
+    });
+    return Array.from(siglaSet).sort();
+  }
+  function calculateGlobalStats(allWitnesses, baseTEI, castMap) {
+    const globalStats = Object.create(null);
+    allWitnesses.forEach((witID) => {
+      const dom = reconstructWitness(witID, baseTEI);
+      const local = calculateLineStats(dom, witID, castMap);
+      Object.entries(local).forEach(([name, count]) => {
+        if (!globalStats[name]) globalStats[name] = Object.create(null);
+        globalStats[name][witID] = (globalStats[name][witID] || 0) + count;
+      });
+    });
+    return globalStats;
+  }
+  function calculateActStatsPerWitness(baseTEI, allWitnesses, castMap) {
+    const acts = Array.from(
+      baseTEI.querySelectorAll('tei-div[type="act"], tei-div[type="jornada"]'),
+    );
+    const allStats = {};
+    acts.forEach((actDiv, idx) => {
+      const actKey = actDiv.getAttribute("n")
+        ? `Acto ${actDiv.getAttribute("n")}`
+        : `Acto ${idx + 1}`;
+      allStats[actKey] = {};
+      allWitnesses.forEach((witID) => {
+        const dom = reconstructWitness(witID, actDiv.cloneNode(true));
+        allStats[actKey][witID] = calculateLineStats(dom, witID, castMap);
+      });
+    });
+    return allStats;
+  }
+  function renderStatsPanel(stats, witID) {
+    const panel = document.getElementById("stats-panel");
+    clearNode(panel);
+    const entries = Object.entries(stats)
+      .map(([name, v]) => [name, Math.round(v)])
+      .sort((a, b) => b[1] - a[1]);
+    if (entries.length === 0) {
+      panel.innerHTML = `<h3>Sin líneas para ${witID}</h3>`;
+      return;
     }
-  });
-  document.getElementById("next-folio").addEventListener("click", () => {
-    if (pbSelector.selectedIndex < pbSelector.options.length - 1) {
-      pbSelector.selectedIndex++;
-      pbSelector.dispatchEvent(new Event("change"));
-    }
-  });
+    const table = document.createElement("table");
+    table.className = "stats-table";
+    table.innerHTML = `
+      <thead><tr><th style="font-variant: small-caps;">Personaje</th><th style="font-variant: small-caps;">Cantidad de líneas</th></tr></thead>
+      <tbody>${entries
+        .map(
+          ([label, count]) =>
+            `<tr><td><strong>${label}</strong></td><td>${count}</td></tr>`,
+        )
+        .join("")}</tbody>`;
+    const h3 = document.createElement("h3");
+    h3.textContent = `Estadísticas para testimonio #${witID}:`;
+    panel.append(h3, table);
+    const chartHolder = document.createElement("div");
+    chartHolder.style.marginTop = "16px";
+    panel.appendChild(chartHolder);
+    drawBarChartD3(
+      chartHolder,
+      Object.fromEntries(entries),
+      `Líneas habladas en ${witID}`,
+    );
+  }
+  function renderGlobalStatsChartD3(
+    globalStats,
+    allWitnesses,
+    container,
+    title,
+  ) {
+    drawGroupedBarChartD3(container, globalStats, allWitnesses, title);
+  }
+  function attachGlobalChartToggle() {
+    const toggleBtn = document.getElementById("toggle-global-chart-btn");
+    const globalChartModal = document.getElementById("global-chart-modal");
+    const closeBtn = document.getElementById("close-global-chart-btn");
+    if (toggleBtn)
+      toggleBtn.addEventListener("click", () => {
+        globalChartModal.classList.toggle("hidden");
+        if (!globalChartModal.classList.contains("hidden"))
+          globalChartModal.scrollIntoView({ behavior: "smooth" });
+      });
+    if (closeBtn)
+      closeBtn.addEventListener("click", () =>
+        globalChartModal.classList.add("hidden"),
+      );
+  }
+  function setupStatsPopup(allWitnesses, castMap) {
+    const openBtn = document.getElementById("open-stats-btn");
+    const closeBtn = document.getElementById("close-stats-btn");
+    const modalWrapper = document.getElementById("modal-wrapper");
+    const witnessButtons = document.getElementById("witness-buttons");
+    const statsPanel = document.getElementById("stats-panel");
+    const globalChartsContainer = document.getElementById(
+      "global-charts-container",
+    );
 
-  document.getElementById("variant-selector").addEventListener("change", function () {
-    handleVariantChange(this.value);
-    computeModernAnchors();
-    rebuildSpanRanges(); // variants can restructure content, so recompute ranges
-  });
+    openBtn.addEventListener("click", () => {
+      modalWrapper.classList.remove("hidden");
+      clearNode(statsPanel);
+      clearNode(globalChartsContainer);
 
-  document.getElementById("clean-text-button").addEventListener("click", () => {
-    document.body.classList.add("clean-mode");
-    showCleanLemmasOnly();
-    document.getElementById("variant-selector").value = "";
-    computeModernAnchors();
-    rebuildSpanRanges();
-  });
+      const allW = allWitnesses;
+      const globalStats = calculateGlobalStats(allW, baseTEI, castMap);
+      const overallHolder = document.createElement("div");
+      globalChartsContainer.appendChild(overallHolder);
+      renderGlobalStatsChartD3(
+        globalStats,
+        allW,
+        overallHolder,
+        "Comparación general de líneas",
+      );
 
-  /* =========================
-     🔎 SEARCH (non-destructive TreeWalker)
-     ========================= */
-  let searchResults = [];
-  let currentResultIndex = -1;
+      const actStats = calculateActStatsPerWitness(baseTEI, allW, castMap);
+      Object.entries(actStats).forEach(([actName, witData]) => {
+        const actTitle = document.createElement("h4");
+        actTitle.textContent = `${actName}`;
+        globalChartsContainer.appendChild(actTitle);
+        const actHolder = document.createElement("div");
+        globalChartsContainer.appendChild(actHolder);
+        const actGlobalStats = {};
+        Object.entries(witData).forEach(([witID, speakerCounts]) => {
+          Object.entries(speakerCounts).forEach(([charName, count]) => {
+            if (!actGlobalStats[charName]) actGlobalStats[charName] = {};
+            actGlobalStats[charName][witID] = count;
+          });
+        });
+        renderGlobalStatsChartD3(
+          actGlobalStats,
+          allW,
+          actHolder,
+          `Líneas por personaje – ${actName}`,
+        );
+      });
+    });
 
-  function clearHighlights(container) {
-    if (!container) return;
-    container.querySelectorAll("mark.search-highlight").forEach(mark => {
-      const text = document.createTextNode(mark.textContent);
-      mark.replaceWith(text);
-      if (text.parentNode) text.parentNode.normalize();
+    closeBtn.addEventListener("click", () => {
+      modalWrapper.classList.add("hidden");
+      clearNode(statsPanel);
+      clearNode(globalChartsContainer);
+    });
+
+    witnessButtons.innerHTML = "";
+    allWitnesses.forEach((witID) => {
+      const btn = document.createElement("button");
+      btn.textContent = witID;
+      btn.classList.add("witness-btn");
+      btn.addEventListener("click", () => {
+        const witnessDOM = reconstructWitness(witID, baseTEI);
+        const stats = calculateLineStats(witnessDOM, witID, castMap);
+        renderStatsPanel(stats, witID);
+        document.getElementById("global-chart-modal").classList.add("hidden");
+        document
+          .getElementById("stats-panel")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+      witnessButtons.appendChild(btn);
     });
   }
 
-  function clearAllSearch() {
-    document.getElementById("search-input").value = "";
-    clearHighlights(document.querySelector("#modern-container .tei-column-scroll"));
-    clearHighlights(document.querySelector("#diplomatic-container .tei-column-scroll"));
-    searchResults = [];
-    currentResultIndex = -1;
-    isSearchActive = false;
-    isSyncing = false;
-    if (searchSuspendTimer) clearTimeout(searchSuspendTimer);
-    const status = document.getElementById("search-aria-status");
-    if (status) status.textContent = "";
+  // =========================
+  // Pipeline di decorazione
+  // =========================
+  function decorateEdition(root, { inWitnessView = false } = {}) {
+    // 1) long-span
+    decorateOmissionSpans(root, inWitnessView);
+    processAdditionSpans(root, { mode: "base" }); // unificata (base)
+    // 2) inline
+    decorateInlineAdditionsWithoutAnchors(root);
+    decorateApparatus(root);
+    // 3) numerazione/impaginazione
+    insertLeftAlignedLineNumbers(root);
+    alignSplitVerses(root);
+    // 4) hover sync
+    enableLineSyncHighlighting();
+    root.__decoratedOnce = true;
   }
 
-  function highlightText(container, query, results = [], scope) {
-    clearHighlights(container);
-    if (!query || !container) return [];
+  // =========================
+  // UI
+  // =========================
+  function setupFloatingControls() {
+    const btn = document.getElementById("add-witness-btn");
+    const select = document.getElementById("witness-select");
 
-    const re = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "gi");
-    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
-      acceptNode(node) {
-        if (!node.data.trim()) return NodeFilter.FILTER_REJECT;
-        if (node.parentElement && node.parentElement.closest("mark.search-highlight")) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }
+    btn.addEventListener("click", () => {
+      select.classList.toggle("visible");
     });
 
-    const toWrap = [];
-    while (walker.nextNode()) {
-      const textNode = walker.currentNode;
-      let match;
-      re.lastIndex = 0;
-      while ((match = re.exec(textNode.data)) !== null) {
-        toWrap.push({ node: textNode, start: match.index, end: match.index + match[0].length });
-        if (match.index === re.lastIndex) re.lastIndex++;
-      }
-    }
-
-    for (let i = toWrap.length - 1; i >= 0; i--) {
-      const { node, start, end } = toWrap[i];
-      const range = document.createRange();
-      range.setStart(node, start);
-      range.setEnd(node, end);
-      const mark = document.createElement("mark");
-      mark.className = "search-highlight";
-      range.surroundContents(mark);
-      results.push({ el: mark, scope });
-    }
-    return results;
+    // delega completamente su openWitness
+    select.addEventListener("change", () => {
+      openWitness(select.value);
+    });
   }
 
-  function scrollToMatch(index) {
-    if (!searchResults.length) return;
-    if (index < 0) index = searchResults.length - 1;
-    if (index >= searchResults.length) index = 0;
-    currentResultIndex = index;
-
-    searchResults.forEach(r => r.el.classList.remove("active-match"));
-    const match = searchResults[currentResultIndex].el;
-    match.classList.add("active-match");
-
-    const container = match.closest('.tei-column-scroll');
-    if (!container) return;
-
-    beginSearchSuspend();
-    const cRect = container.getBoundingClientRect();
-    const mRect = match.getBoundingClientRect();
-    const offsetWithin = (mRect.top - cRect.top) + container.scrollTop;
-
-    const behavior = (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      ? "auto" : "smooth";
-
-    container.scrollTo({ top: Math.max(offsetWithin - 40, 0), behavior });
-
-    if (typeof match.focus === "function") match.focus({ preventScroll: true });
-    const status = document.getElementById("search-aria-status");
-    if (status) status.textContent = `Coincidencia ${currentResultIndex + 1} de ${searchResults.length}`;
-
-    endSearchSuspendSoon();
+  function populateWitnessSelect(allWitnesses) {
+    const select = document.getElementById("witness-select");
+    select.innerHTML = '<option value="">Selecciona testimonio</option>';
+    allWitnesses.forEach((witID) => {
+      const option = document.createElement("option");
+      option.value = witID;
+      option.textContent = witID;
+      select.appendChild(option);
+    });
   }
 
-  function runSearch() {
-    beginSearchSuspend();
-    const query = document.getElementById("search-input").value.trim();
-    const scopeChoice = document.getElementById("search-scope").value;
+  function openWitness(witnessID) {
+    if (!witnessID) return;
 
-    const modern = document.querySelector("#modern-container .tei-column-scroll");
-    const diplomatic = document.querySelector("#diplomatic-container .tei-column-scroll");
+    const container = document.getElementById("witness-container");
+    container.innerHTML = "";
+    container.classList.remove("hidden");
 
-    clearHighlights(modern);
-    clearHighlights(diplomatic);
-    searchResults = [];
-    currentResultIndex = -1;
+    const witnessDOM = reconstructWitness(witnessID, baseTEI);
+    witnessDOM.setAttribute("data-witness-id", witnessID);
+    container.appendChild(witnessDOM);
 
-    if (scopeChoice === "modern" || scopeChoice === "both") {
-      searchResults.push(...highlightText(modern, query, [], "modern"));
-    }
-    if (scopeChoice === "diplomatic" || scopeChoice === "both") {
-      searchResults.push(...highlightText(diplomatic, query, [], "diplomatic"));
-    }
+    requestAnimationFrame(() => {
+      decorateNotes(witnessDOM);
+      decorateApparatus(witnessDOM);
+      makeApparatusSiglaClickable(witnessDOM);
 
-    if (searchResults.length > 0) {
-      scrollToMatch(0);
-    } else {
-      const status = document.getElementById("search-aria-status");
-      if (status) status.textContent = "Sin resultados";
-    }
-    endSearchSuspendSoon();
+      insertLeftAlignedLineNumbers(witnessDOM);
+      alignSplitVerses(witnessDOM);
+      decorateOmissionSpans(witnessDOM);
+
+      // aggiunte long-span per il testimone selezionato (funzione unificata)
+      processAdditionSpans(witnessDOM, {
+        mode: "witness",
+        witID: witnessID,
+      });
+
+      // data-line-n per evidenziazione sincronizzata
+      witnessDOM.querySelectorAll("tei-l[n]").forEach((line) => {
+        const n = line.getAttribute("n");
+        if (n) {
+          line.classList.add(`line-n-${n}`);
+          line.setAttribute("data-line-n", n);
+        }
+      });
+
+      enableLineSyncHighlighting();
+    });
   }
 
-  document.getElementById("search-button").addEventListener("click", runSearch);
-  document.getElementById("search-scope").addEventListener("change", runSearch);
+  // =========================
+  // Boot
+  // =========================
+  window.onload = function () {
+    CETEIcean.getHTML5("el_marques.xml", function (data) {
+      // 1) Clona prima di montare
+      baseTEI = data.cloneNode(true);
+      originalData = data.cloneNode(true);
 
-  document.getElementById("search-input").addEventListener("input", () => {
-    if (document.getElementById("search-input").value.trim() === "") {
-      clearAllSearch();
-    }
-  });
+      // 2) Monta nel DOM
+      const criticalContainer = document.getElementById("critical-container");
+      criticalContainer.appendChild(data);
+      const root = criticalContainer;
 
-  document.getElementById("next-match").addEventListener("click", () => {
-    if (searchResults.length === 0) return;
-    scrollToMatch(currentResultIndex + 1);
-  });
-  document.getElementById("prev-match").addEventListener("click", () => {
-    if (searchResults.length === 0) return;
-    scrollToMatch(currentResultIndex - 1);
-  });
+      // 3) Dati di supporto
+      const castMap = buildCastMap(baseTEI);
+      const allSigla = extractWitnessSigla(baseTEI);
+      populateWitnessSelect(allSigla);
+      setupStatsPopup(allSigla, castMap);
 
-  // close button handler
-  document.getElementById("close-search").addEventListener("click", () => {
-    document.getElementById("search-bar").classList.add("hidden");
-    clearAllSearch();
-  });
+      // Delegated handler: click su chip → apri testimone (senza passare dal <select>)
+      const wrapper = document.getElementById("tei-wrapper") || document;
+      wrapper.addEventListener("pointerdown", (e) => {
+        const chip = e.target.closest(".wit-chip");
+        if (!chip) return;
+        e.stopPropagation(); // evita il click-away del tooltip
+        const wit = chip.dataset.wit;
 
-  // Escape key closes search too
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      const bar = document.getElementById("search-bar");
-      if (!bar.classList.contains("hidden")) {
-        bar.classList.add("hidden");
-        clearAllSearch();
-      }
-    }
-  });
-};
+        // apri subito la colonna del testimone
+        openWitness(wit);
+
+        // (opzionale) sincronizza il select, anche se è nascosto
+        const sel = document.getElementById("witness-select");
+        if (sel) {
+          sel.value = wit;
+          sel.classList.add("visible");
+        }
+      });
+
+      // 4) Decora il testo base (una volta pronto nel DOM)
+      requestAnimationFrame(() => {
+        decorateNotes(root);
+        decorateEdition(root, { inWitnessView: false });
+        attachNoteEvents(root);
+        attachGlobalChartToggle();
+
+        // Tagga le linee del BASE con data-line-n per la sync highlight
+        root.querySelectorAll("tei-l[n]").forEach((line) => {
+          const n = line.getAttribute("n");
+          if (n) {
+            line.classList.add(`line-n-${n}`);
+            line.setAttribute("data-line-n", n);
+          }
+        });
+
+        // Dopo che decorateApparatus ha creato i tooltip, rendi le sigle cliccabili
+        makeApparatusSiglaClickable(root);
+
+        // Evidenziazione sincronizzata (delegata, bind una sola volta)
+        enableLineSyncHighlighting();
+      });
+
+      // 5) Controlli flottanti
+      setupFloatingControls();
+    });
+  };
 </script>
