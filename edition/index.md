@@ -4,9 +4,6 @@ title: El marqués de las Navas - edición genética digital
 ---
 
 <header id="main-header">
-  <div class="header-title">
-    <h1><i>El marqués de las Navas</i> – Edición Genética Digital</h1>
-  </div>
 
   <div id="toolbar">
     <!-- Column toggles -->
