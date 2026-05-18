@@ -166,9 +166,9 @@
             <l n="81">Plega al çielo, pues el çielo</l>
             <l n="82">fue de tu maldad testigo</l>
             <l n="83">q a sus puertas enemigo</l>
-            <l n="84">bañes &lt;-d&gt; con tu sangre el suelo</l>
-            <stage>Bernardo entre</stage>
+            <l n="84">bañes &lt;-d&gt; con tu sangre el suelo</l>   
         </sp>
+         <stage>Bernardo entre</stage>
         <sp>
           <speaker>BE</speaker>
             <l part="I" n="85a">q es esto prima</l>
@@ -279,9 +279,9 @@
             <l n="138">juez riguroso alcanza</l>
             <l n="139">mira q offendida estoy</l>
             <l n="140">y mira q muger soy</l>
-            <l n="141">donde es mayor la venganza</l>
-            <stage>don luis y don Juan de noche</stage>
+            <l n="141">donde es mayor la venganza</l>   
         </sp>
+         <stage>don luis y don Juan de noche</stage>
         <sp>
           <speaker>LU</speaker>
             <l part="I" n="142a">bueno esta el prado</l>
@@ -336,9 +336,9 @@
         </sp>
         <sp>
           <speaker>JU</speaker>
-            <l n="157">no puede ser q me alegren</l>
-            <stage>Asian musico y detras, clara, criada Laurençia y gerarda de sombreros y reboçiños</stage>
+            <l n="157">no puede ser q me alegren</l>    
         </sp>
+        <stage>Asian musico y detras, clara, criada Laurençia y gerarda de sombreros y reboçiños</stage>
         <sp>
           <speaker>LAU</speaker>
             <l n="158">Suspensa me lleba el alma</l>
@@ -374,9 +374,9 @@
         </sp>
         <sp>
           <speaker>GER</speaker>
-            <l n="168">de Mastresala le sirbe</l>
-            <stage>Entren galanes de noche el &lt;-Marqs\&lt;-conde felis&gt;//marques&gt;, don Felipe &lt;- de Cordoua&gt; y don &lt;-enrique\&lt;-fadrique&gt;\\enrique&gt; y Mendoza paje de espada.</stage>
+            <l n="168">de Mastresala le sirbe</l>    
         </sp>
+        <stage>Entren galanes de noche el &lt;-Marqs\&lt;-conde felis&gt;//marques&gt;, don Felipe &lt;- de Cordoua&gt; y don &lt;-enrique\&lt;-fadrique&gt;\\enrique&gt; y Mendoza paje de espada.</stage>
         <sp>
           <speaker>FILI</speaker>
             <l n="169">gallardas son las mugeres</l>
@@ -633,9 +633,9 @@
         <sp>
           <speaker>LUI</speaker>
             <l n="301">pues yo parto a conozerle</l>
-            <l n="302">y darle satisfaçion</l>
-            <stage>Vayanse d. juan y d. luis</stage>
+            <l n="302">y darle satisfaçion</l>    
         </sp>
+        <stage>Vayanse d. juan y d. luis</stage>
         <sp>
           <speaker>FILI</speaker>
             <l n="303">muger çelestial quien eres</l>
@@ -1017,7 +1017,8 @@
         <sp>
           <speaker>CLA</speaker>
             <l part="F" n="454b">q alcaguete</l>
-        </sp><stage>Entren Antonio y Leonardo.</stage>
+        </sp>
+        <stage>Entren Antonio y Leonardo.</stage>
         <sp>
           <speaker>AN</speaker>
             <l n="455">traheis Leonardo vna baliente empresa</l>
@@ -1111,8 +1112,8 @@
           <speaker>LEO</speaker>
             <l n="511">cobardes los reçelos me parecen</l>
             <l n="512">pero yo tengo condiçion zelosa.</l>
-            <stage>entren Laurenzia y gerarda.</stage>
         </sp>
+        <stage>entren Laurenzia y gerarda.</stage>
         <sp>
           <speaker>LAU</speaker>
             <l n="513">gerarda dexame aqui</l>
@@ -1350,9 +1351,9 @@
             <pb type="folio" n="[Fol. 13r]" corresp="facs/fol13r.jpg"/>
             <l n="640">q no puede haber error</l>
             <l n="641">en las locuras de Amor</l>
-            <l n="642">si es Amor bien enpleado.</l>
-            <stage>don &lt;-Henriq+Fadriq&gt; y don Filipe con borçeguies y açicates y el &lt;-Marqs//Conde&gt;</stage>
+            <l n="642">si es Amor bien enpleado.</l>    
         </sp>
+        <stage>don &lt;-Henriq+Fadriq&gt; y don Filipe con borçeguies y açicates y el &lt;-Marqs//Conde&gt;</stage>
         <sp>
           <speaker>&lt;-MAR+CON&gt;</speaker>
             <l n="643">con q caballo entrareys</l>
@@ -1532,9 +1533,9 @@
         </sp>
         <sp>
           <speaker>&lt;-HEN?+FAD&gt;</speaker>
-            <l n="702">Mendozilla viene aqui</l>
-            <stage>Mendoza con vn lacayo vestido de librea de juego de cañas con quatro rexones</stage>
+            <l n="702">Mendozilla viene aqui</l>    
         </sp>
+        <stage>Mendoza con vn lacayo vestido de librea de juego de cañas con quatro rexones</stage>
         <sp>
           <speaker>MEN</speaker>
             <l n="703">Aqui estan ya los rexones</l>
@@ -1712,11 +1713,11 @@
             <l n="776">no se yo si es Angel bueno</l>
             <l n="777">&lt;- q los angeles\\ q Angel q \viene&gt; de noche</l>
             <l n="778">no debe&lt;-n&gt; de ser del çielo.</l>
+        </sp>
             <stage>Lea</stage>
             <p>oy no viene mi Padre y hauemos |determinado mi hermana y yo ver |
             a vs. tan baliente en la plaza | como galan en el Prado. Si tenemos |
             ventanas y coche, q las &lt;-nuestras\de nua casa&gt;| caen al labapies y en los nuestro | no podemos yr donde quisiera el | desseo.</p>
-        </sp>
         <sp>
           <speaker>[FELIPE]</speaker>
             <l n="779">Basta q letra tan linda</l>
