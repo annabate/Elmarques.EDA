@@ -4,6 +4,10 @@ title: El marqués de las Navas - edición genética digital
 ---
 
 <header id="main-header">
+  <div class="header-title">
+    <h1><i>El marqués de las Navas</i> – Edición Genética Digital</h1>
+  </div>
+
   <div id="toolbar">
     <!-- Column toggles -->
     <div class="toolbar-group">
@@ -1547,11 +1551,7 @@ title: El marqués de las Navas - edición genética digital
         if (option) {
           const facs = option.dataset.facs;
           const img = document.getElementById("facsimile-image");
-          if (facs) {
-            img.src = facs;
-          } else {
-            img.src = "../facs/placeholder.jpg";
-          }
+          img.src = `../facs/${facs}.jpg`;
           img.onerror = () => {
             img.src = "../facs/placeholder.jpg";
           };
@@ -1833,20 +1833,11 @@ title: El marqués de las Navas - edición genética digital
           pbs.forEach((pb, i) => {
             const id = pb.getAttribute("xml:id") || `pb-${i + 1}`;
             const n = pb.getAttribute("n") || `Página ${i + 1}`;
-            const corresp = pb.getAttribute("corresp") || "";
-            let facsName;
-            if (corresp) {
-              facsName = corresp.replace(/^#/, "");
-              if (!facsName.match(/^[a-zA-Z][a-zA-Z0-9+.-]*:/) && !facsName.startsWith("/") && !facsName.startsWith("../") && !facsName.startsWith("./")) {
-                facsName = `../${facsName}`;
-              }
-            } else {
-              facsName = `../facs/${n
-                .replace(/\[|\]/g, "")
-                .replace(/Fol\.?\s*/i, "fol")
-                .replace(/\s/g, "")
-                .toLowerCase()}.jpg`;
-            }
+            const facsName = n
+              .replace(/\[|\]/g, "")
+              .replace(/Fol\.?\s*/i, "fol")
+              .replace(/\s/g, "")
+              .toLowerCase();
             pb.setAttribute("id", id);
 
             if (!Array.from(pbSelector.options).some((o) => o.value === id)) {
