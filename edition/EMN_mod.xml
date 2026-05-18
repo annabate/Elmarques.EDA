@@ -23,7 +23,7 @@
 <text>
 <front/>
 <body>
-<pb type="folio" n="[Fol. 1r]"/>
+<pb type="folio" n="[Fol. n.n. r.]" corresp="facs/fol.n.n.jpg"/>
     <head><app><rdg wit="B" varSeq="3" hand="non-authorial">El marqués de las Navas</rdg></app></head>
     <castList>
           <castItem><app><rdg wit="B" hand="non-authorial">de Lope</rdg></app></castItem>
@@ -44,7 +44,7 @@
           <castItem><app><rdg wit="B" hand="non-authorial">Antonio</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Ludovico</rdg><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir dos manos distintas; con toda probabilidad, se trata de los autores de las compañías responsables de la puesta en escena de la pieza.</note></app></castItem>
         </castList>
-          <pb type="folio" n="[Fol. 1v]"/>
+          <pb type="folio" n="[Fol. n.n. v.]" corresp="facs/fol.n.n.v.jpg"/>
           <castItem><app><rdg wit="B" hand="non-authorial">don Juan - Jordán</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">músico - Cuadrado</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">don Luis - Vicente</rdg></app></castItem>
@@ -57,7 +57,7 @@
           <castItem><app><rdg wit="B" hand="non-authorial">Bernardo - Jerónimo</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Laurencia - señora María Vitoria</rdg><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Parece tratarse de los actores que formaban parte de la compañía de Antonio de Prado, según señala M. de los Reyes Peña.</note></app></castItem>
 <div type="act" n="1">
-<pb type="folio" n="[Fol. 2r]"/>
+<pb type="folio" n="[Fol. 1r]" corresp="facs/fol1r.jpg"/>
 <head>Acto primero</head>
 <stage>Leonardo y Feliciana</stage>
 <sp>
@@ -139,7 +139,7 @@
 <l>por más que abreviarle importe,</l>
 <l>el amanac de la corte</l>
 <l n="20">ningún pronóstico sabe.</l>
-<pb type="folio" n="[Fol. 2v]"/>
+<pb type="folio" n="[Fol. 1v]" corresp="facs/fol1v.jpg"/>
  <l met="stanza"> A Madrid voy; que no voy</l>
 <l>a Manila o a la China</l>
 <l>en cuya mar filipina</l>
@@ -171,7 +171,7 @@
 <l>en la misma sepoltura;</l>
 <l n="45">pero yo quedo segura</l>
 <l>que la palabra que aquí</l>
-<pb type="folio" n="[Fol. 3r]"/>
+<pb type="folio" n="[Fol. 2r]" corresp="facs/fol2r.jpg"/>
 <l>me quiebras, Leonardo, ansí</l>
 <l>—sin que el ser noble me valga―</l>
 <l>hará que muy presto salga</l>
@@ -199,7 +199,7 @@
 <l met="stanza"> Yo te he servido y de ti</l>
 <l>llevo tan buen galardón</l>
 <l>que espero que una traición</l>
-<pb type="folio" n="[Fol. 3v]"/>
+<pb type="folio" n="[Fol. 2v]" corresp="facs/fol2v.jpg"/>
 <l>te infame y me vengue a mí.</l>
 <l n="75">Vete, pues ya te perdí, </l>
 <l>y tan ingrato conoces</l>
@@ -285,7 +285,7 @@
 <l n="100">le alcanzan mis maldiciones. </l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 4r]"/>
+<pb type="folio" n="[Fol. 3r]" corresp="facs/fol3r.jpg"/>
 <sp>
 <speaker>Be</speaker>
 <lg>
@@ -326,7 +326,7 @@
 <speaker>Be</speaker>
 <lg>
 <l>El mejor procurador</l>
-<pb type="folio" n="[Fol. 4v]"/>
+<pb type="folio" n="[Fol. 3v]" corresp="facs/fol3v.jpg"/>
 <l>de un pleito es el mismo dueño.</l>
 </lg>
 </sp>
@@ -419,7 +419,7 @@
 <lg>
 <l>No hay seguridad de brazos,</l>
 <l>ni aun de las almas a veces,</l>
-<pb type="folio" n="[Fol. 5r]"/>
+<pb type="folio" n="[Fol. 4r]" corresp="facs/fol4r.jpg"/>
 <l>sin contradición del oro.</l>
 </lg>
 </sp>
@@ -534,7 +534,7 @@
 </lg>
 </sp>
 <sp>
-<pb type="folio" n="[Fol. 5v]"/>
+<pb type="folio" n="[Fol. 4v]" corresp="facs/fol4v.jpg"/>
 <speaker>Men</speaker>
 <lg>
 <l>Cara que no se apetece</l>
@@ -589,7 +589,7 @@
 <l>de hacer diablos para el jueves</l>
 <l>en que al despensero cuelgan</l>
 <l n="205">que afrenta los calabreses?</l>
- <pb type="folio" n="[Fol. 6r]"/>
+ <pb type="folio" n="[Fol. 5r]" corresp="facs/fol5r.jpg"/>
 <l>Mayormente si es tan Roma,</l>
 <l>que parece que Olofernes</l>
 <l>de dos mamonas la hizo</l>
@@ -643,7 +643,7 @@
 </lg>
 </sp>
 <sp>
-<pb type="folio" n="[Fol. 6v]"/>
+<pb type="folio" n="[Fol. 5v]" corresp="facs/fol5v.jpg"/>
 <speaker>Filipe</speaker>
 <lg> 
 <l n="235">Harás que te oiga y lo deje.</l>
@@ -710,7 +710,7 @@
 <l>el mejor olfato ofende―</l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">dele</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>dele</del><add>deme</add></subst></lem></app> lugar junto a sí</l>
 <l>y, por Dios, que no le pese</l>
-<pb type="folio" n="[Fol. 7r]"/>
+<pb type="folio" n="[Fol. 6r]" corresp="facs/fol6r.jpg"/>
 <l>de un asocarrado gusto.</l>
 </lg>
 </sp>
@@ -792,7 +792,7 @@
 </sp>
 <stage>Cante</stage>
 <sp>
-<pb type="folio" n="[Fol. 7v]"/>
+<pb type="folio" n="[Fol. 6v]" corresp="facs/fol6v.jpg"/>
 <speaker>[Asián]</speaker>
 <lg>
 <l>Quierese el moro partir</l>
@@ -866,7 +866,7 @@
 <l n="320">que mañana ha de venir</l>
 <l>causa me dio de atreverme</l>
 <l>a ver el Prado, que somos</l>
-<pb type="folio" n="[Fol. 8r]"/>
+<pb type="folio" n="[Fol. 7r]" corresp="facs/fol7r.jpg"/>
 <l>codiciosas las mujeres</l>
 <l>de ver lo que nos alaban,</l>
 <l n="325">y mucho más las que tienen</l>
@@ -933,7 +933,7 @@
 <lg>
 <l>Pues yo os prometo que he sido</l>
 <l>tan diamante algunas veces</l>
-<pb type="folio" n="[Fol. 8v]"/>
+<pb type="folio" n="[Fol. 7v]" corresp="facs/fol7v.jpg"/>
 <l>que no han podido unos ojos</l>
 <l n="355">con sus lágrimas moverme.</l>
 </lg>
@@ -1032,7 +1032,7 @@
 <speaker>Lau</speaker>
 <lg>
 <l part="F">Quedo, quedo,</l>
-<pb type="folio" n="[Fol. 9r]"/>
+<pb type="folio" n="[Fol. 8r]" corresp="facs/fol8r.jpg"/>
 <l>que no soy de las que creen</l>
 <l>en madalenas de amor.</l>
 </lg>
@@ -1141,7 +1141,7 @@
 <speaker>Me</speaker>
 <lg>
 <l part="F">Don Filipe</l>
-<pb type="folio" n="[Fol. 9v]"/>
+<pb type="folio" n="[Fol. 8v]" corresp="facs/fol8v.jpg"/>
 <l>de <app><lem wit="A0" varSeq="0" hand="authorial">Córdoba</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Córdoba</del><add>Cardona</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Cardona</del><add>Córdoba</add></subst></rdg></app>, que suspende</l>
 <l>la corte en esta ocasión</l>
 <l>con gentileza eminente</l>
@@ -1283,7 +1283,7 @@
 <speaker>Cla</speaker>
 <lg>   
 <l>Aunque imposibles emprenden,</l>
- <pb type="folio" n="[Fol. 10r]"/>
+ <pb type="folio" n="[Fol. 9r]" corresp="facs/fol9r.jpg"/>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">a</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>a</del></lem></app> la mayor de ellas <app><rdg wit="A0" varSeq="0" hand="authorial">llam</rdg> <lem wit="A1" varSeq="1" hand="authorial"><del>llam</del></lem></app> se llama</l>
 <l part="I">Laurencia.</l>
 </lg>
@@ -1433,7 +1433,7 @@
 <lg>    
 <l part="F">Vengo a casarme,</l>
 <l>y aunque vengo a casarme, no me pesa,</l>
-<pb type="folio" n="[Fol. 10v]"/>
+<pb type="folio" n="[Fol. 9v]" corresp="facs/fol9v.jpg"/>
 <l met="stanza">que sólo lo intenté por apartarme</l>
 <l>de aquella necedad que habéis oído,</l>
 <l n="465">que no quiere cansarse de cansarme.</l>
@@ -1492,7 +1492,7 @@
 <l>lo que al amor perdonan fácilmente.</l>
 <l>Mas yo, que sin amor vengo a casarme,</l>
 <l met="stanza"> ¿qué disculpa tendré de un desacierto?</l>
-<pb type="folio" n="[Fol. 11r]"/>
+<pb type="folio" n="[Fol. 10r]" corresp="facs/fol10r.jpg"/>
 <l>Luego, mejor acierto en informarme;</l>
 <l n="490">primero que firmemos el concierto </l>
 <l met="stanza"> tengo de andar su calle noche y día,</l>
@@ -1523,7 +1523,7 @@
 <l>veréis aquel gran Rey, que mil naciones</l>
 <l met="stanza"> tiemblan, respetan, aman y obedecen</l>
 <l>políticas y bárbaras regiones,</l>
-<pb type="folio" n="[Fol. 11v]"/>
+<pb type="folio" n="[Fol. 10v]" corresp="facs/fol10v.jpg"/>
 <l>y por dicha veréis, si lo merecen</l>
 <l met="stanza" n="515"> vuestros ojos, la dama vuestra esposa. </l>
 </lg>
@@ -1571,7 +1571,7 @@
 <l>Mas tampoco puede ser</l>
 <l>pensar, callar y vivir.</l>
 <l met="stanza"> Pienso en lo que estoy callando,</l>
-<pb type="folio" n="[Fol. 12r]"/>
+<pb type="folio" n="[Fol. 11r]" corresp="facs/fol11r.jpg"/>
 <l>callo lo que estoy sintiendo,</l>
 <l n="540">siento lo que estoy sufriendo, </l>
 <l>sufro lo que estoy pensando;</l>
@@ -1631,7 +1631,7 @@
 <l met="stanza"> una flecha, un pasador</l>
 <l>tirava amor, que rigor</l>
 <l n="565">ya con arcabuces tira,</l>
-<pb type="folio" n="[Fol. 12v]"/>
+<pb type="folio" n="[Fol. 11v]" corresp="facs/fol11v.jpg"/>
 <l>que a penas pone la mira</l>
 <l>cuando ya mata de amor.</l>
 <l met="stanza"> ¡Qué traidor<app><rdg wit="A0" varSeq="0" hand="authorial"> para mí fue</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>fue para mí</del><add>, Gerarda, fue</add></subst></lem></app></l>
@@ -1658,7 +1658,7 @@
 <l>para tratar de casarme</l>
 <l n="590">nuestro padre, que es matarme </l>
 <l>sin haber visto con quien.</l>
-<pb type="folio" n="[Fol. 13r]"/>
+<pb type="folio" n="[Fol. 12r]" corresp="facs/fol12r.jpg"/>
 <l>No hay remedio que me den</l>
 <l met="stanza"> mis males, si no es morir.</l>
 </lg>
@@ -1716,7 +1716,7 @@
 <lg>    
 <l>Ahora bien, yo estoy de suerte</l>
 <l>que de cuanto soy me olvido.</l>
-<pb type="folio" n="[Fol. 13v]"/>
+<pb type="folio" n="[Fol. 12v]" corresp="facs/fol12v.jpg"/>
 <l met="stanza" part="I"> ¡Clara!</l>
 </lg>
 </sp>
@@ -1832,7 +1832,7 @@
 <l>Pero tan dichoso empleo</l>
 <l met="stanza"> hace el error en que he dado</l>
 <l>disculpado, y aun honrado,</l>
-<pb type="folio" n="[Fol. 14r]"/>
+<pb type="folio" n="[Fol. 13r]" corresp="facs/fol13r.jpg"/>
 <l n="645">que no puede haber error </l>
 <l>en las locuras de amor,</l>
 <l>si es amor bien empleado.</l>
@@ -1940,7 +1940,7 @@
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Henr</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Henr</del><add>Fadri</add></susbt></rdg></app></speaker>
 <lg>
 <l met="stanza"> Salen Asculi y Pastrana,</l>
-<pb type="folio" n="[Fol. 14v]"/>
+<pb type="folio" n="[Fol. 13v]" corresp="facs/fol13v.jpg"/>
 <l>que se va el mundo tras ellos.</l>
 </lg>
 </sp>
@@ -2030,7 +2030,7 @@
 <lg>
 <l>Si aquella ninfa amorosa</l>
 <l n="695">por quien desde anoche muero </l>
-<pb type="folio" n="[Fol. 15r]"/>
+<pb type="folio" n="[Fol. 14r]" corresp="facs/fol14r.jpg"/>
 <l met="stanza"> me prestara algún favor,</l>
 <l>yo sé, <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>marqués</del><add>conde</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app> lo que hiciera.</l>
 </lg>
@@ -2137,7 +2137,7 @@
 <l n="720">Pedro, ¿salís vos conmigo?</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 15v]"/>
+<pb type="folio" n="[Fol. 14v]" corresp="facs/fol14v.jpg"/>
 <sp>
 <speaker>Ped</speaker>
 <lg>
@@ -2193,7 +2193,7 @@
 <lg>
  <l n="745">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: acepto la enmienda de Montesinos, pues la lección del autógrafo <i>caçeo</i> no hace sentido y parece atribuible a un lapso de pluma de Lope.</note>?</l>
 <stage>Clara entre</stage>
-<pb type="folio" n="[Fol. 16r]"/>
+<pb type="folio" n="[Fol. 15r]" corresp="facs/fol15r.jpg"/>
 <l>Vuesa merced sea servida,</l>
 <l>pues ya está en el aposento</l>
 <l>de aliviar la sobrevaina</l>
@@ -2276,7 +2276,7 @@
 <l part="F">Clarilla está aquí.</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 16v]"/>
+<pb type="folio" n="[Fol. 15v]" corresp="facs/fol15v.jpg"/>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -2355,7 +2355,7 @@
 <l>mejor aquello dos versos.</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 17r]"/>
+<pb type="folio" n="[Fol. 16r]" corresp="facs/fol16r.jpg"/>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -2413,7 +2413,7 @@
 <l>que la podais ver y hablar.</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 17v]"/>
+<pb type="folio" n="[Fol. 16v]" corresp="facs/fol16v.jpg"/>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -2521,6 +2521,8 @@
 <l>suelen acabar perdiendo.</l>
 </lg>
 </sp>
+<pb type="folio" n="Fol. guarda" corresp="facs/guarda.r.jpg"/>
+<pb type="folio" n="[Fol. guarda v.]" corresp="facs/guarda.v.jpg"/>
 </div>
 </body>
 <back/>
