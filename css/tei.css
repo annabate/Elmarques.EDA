@@ -39,41 +39,10 @@ body {
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ccc;
-  min-width: 220px;
 }
 
 .tei-column:last-child {
   border-right: none;
-}
-
-.column-resizer {
-  width: 12px;
-  flex: 0 0 auto;
-  cursor: col-resize;
-  position: relative;
-  user-select: none;
-  touch-action: none;
-}
-
-.column-resizer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: rgba(0, 0, 0, 0.12);
-  transform: translateX(-50%);
-}
-
-.column-resizer:hover::before,
-.column-resizer:active::before {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.tei-column.hidden + .column-resizer,
-.column-resizer + .tei-column.hidden {
-  display: none;
 }
 
 /* Scrollable text area */

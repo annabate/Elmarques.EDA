@@ -124,8 +124,6 @@ title: El marqués de las Navas - edición genética digital
     </div>
   </div>
 
-  <div class="column-resizer" data-left="facsimile-container" data-right="modern-container"></div>
-
   <div id="modern-container" class="tei-column">
     <div class="column-header">
       <span>Edición genética</span>
@@ -133,8 +131,6 @@ title: El marqués de las Navas - edición genética digital
     </div>
     <div class="tei-column-scroll"></div>
   </div>
-
-  <div class="column-resizer" data-left="modern-container" data-right="diplomatic-container"></div>
 
   <div id="diplomatic-container" class="tei-column">
     <div class="column-header">
@@ -1817,55 +1813,8 @@ title: El marqués de las Navas - edición genética digital
         resetFacsView();
       });
 
-      function setupColumnResizers() {
-        const minWidth = 220;
-        document.querySelectorAll(".column-resizer").forEach((resizer) => {
-          const left = document.getElementById(resizer.dataset.left);
-          const right = document.getElementById(resizer.dataset.right);
-          if (!left || !right) return;
-
-          let startX = 0;
-          let leftStart = 0;
-          let rightStart = 0;
-
-          const updateWidths = (clientX) => {
-            const delta = clientX - startX;
-            const total = leftStart + rightStart;
-            let leftWidth = Math.max(minWidth, Math.min(leftStart + delta, total - minWidth));
-            const rightWidth = total - leftWidth;
-            left.style.flex = "0 0 auto";
-            right.style.flex = "0 0 auto";
-            left.style.width = `${leftWidth}px`;
-            right.style.width = `${rightWidth}px`;
-          };
-
-          const onPointerMove = (e) => {
-            updateWidths(e.clientX);
-          };
-
-          const onPointerUp = () => {
-            document.body.style.cursor = "";
-            document.removeEventListener("pointermove", onPointerMove);
-            document.removeEventListener("pointerup", onPointerUp);
-          };
-
-          resizer.addEventListener("pointerdown", (e) => {
-            if (e.button !== 0) return;
-            e.preventDefault();
-            startX = e.clientX;
-            leftStart = left.getBoundingClientRect().width;
-            rightStart = right.getBoundingClientRect().width;
-            document.body.style.cursor = "col-resize";
-            document.addEventListener("pointermove", onPointerMove);
-            document.addEventListener("pointerup", onPointerUp);
-            resizer.setPointerCapture?.(e.pointerId);
-          });
-        });
-      }
-
       // Initialize
       apply();
-      setupColumnResizers();
 
       function loadTEI(filename, containerId, prefix, onComplete) {
         CETEIcean.getHTML5(filename, (data) => {
