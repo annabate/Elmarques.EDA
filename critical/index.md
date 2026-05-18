@@ -5,9 +5,6 @@ title: El marqués de las Navas – Edición Digital Académica
 
 <!-- Sticky header with title and buttons -->
 <header id="sticky-header" class="page-header">
-  <div class="header-title">
-    <span><em>El marqués de las Navas</em> – Edición Digital Académica</span>
-  </div>
   <div id="floating-tools">
     <button id="add-witness-btn" title="Comparar testimonio">+</button>
     <select id="witness-select" class="hidden">
