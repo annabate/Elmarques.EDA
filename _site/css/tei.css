@@ -94,8 +94,8 @@ tei-p {
 tei-castList {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   margin: 2em 0;
 }
 
