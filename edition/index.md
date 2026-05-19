@@ -142,23 +142,6 @@ title: El marqués de las Navas - edición genética digital
   </div>
 </div>
 
-<footer id="site-footer">
-  <div class="footer-text">
-    <p>
-      Vega, Lope de,
-      <i>El marqués de las Navas: edición genética digital</i>. Anna Abate,
-      Università di Trento, Trento, 2025.
-    </p>
-  </div>
-
-  <div class="logos">
-    <p class="credit_links">
-      <a href="https://www.unitn.it/it"
-        ><img src="../logo/logoUnitn.JPG" class="logo" id="unitn"
-      /></a>
-    </p>
-  </div>
-</footer>
 <script>
   /* =========================
    GLOBAL STATE (no TDZ)
