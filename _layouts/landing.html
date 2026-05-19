@@ -8,75 +8,259 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Foldit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      body.landing {
-        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        background-color: #decfa2e3;
-        margin: 0;
-        padding: 0;
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
       }
 
+      body.landing {
+        font-family: 'EB Garamond', serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        
+        background-color: #decfa2;
+        
+        /* background image */
+        background-image: 
+          /* 1. Overlay */
+          linear-gradient(to bottom, rgba(222, 207, 162, 0.85), rgba(222, 207, 162, 0.85)),
+          /* 2. image */
+          url('{{ site.baseurl }}/images/presentation.png');
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+      }
+
+      /* Wrapper responsive */
       .landing-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-        padding: 2rem;
-      }
-
-      .landing-card {
-        background-color: #ffffff;
-        padding: 3rem 4rem;
-        border-radius: 1.5rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        max-width: 700px;
         width: 100%;
+        padding: 2rem 1rem;
+        position: relative;
+        z-index: 1; /
       }
 
-      .landing-card h1 {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: #3e2f17;
-        margin-bottom: 1.5rem;
-      }
-
-      .landing-card p {
-        font-size: 1.15rem;
-        color: #333;
-        margin-bottom: 2rem;
-      }
-
-      .landing-btn {
-        background-color: #ae1414;
-        color: #fff;
-        padding: 0.7rem 1.4rem;
-        font-size: 1rem;
-        border: none;
+      /* landing card */
+      .landing-card {
+        background-color: #fdfbf7; 
+        padding: 3.5rem 3rem;
         border-radius: 0.5rem;
+        box-shadow: 0 15px 35px rgba(62, 47, 23, 0.25);
+        text-align: center;
+        max-width: 680px;
+        width: 100%;
+        position: relative;
+        border: 1px solid #c9b897;
+        outline: 8px solid #fdfbf7; 
+        outline-offset: -16px;
+      }
+
+      /* frame */
+      .landing-card::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border: 1px dashed #d4c3a3;
+        pointer-events: none;
+      }
+
+      /* label */
+      .project-label {
+        font-family: 'EB Garamond', serif;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #8c765c;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      /* Titolo dell'opera */
+      .landing-card h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 1.2;
+        color: #2c1e15;
+        margin: 0 0 1rem 0;
+      }
+
+      .landing-card h1 em {
+        font-style: italic;
+        font-weight: 800;
+      }
+
+      /* Subtitle */
+      .subtitle {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: #8a1515; 
+        margin-bottom: 2rem;
+        display: block;
+      }
+
+      /* ornament */
+      .vignette {
+        display: block;
+        width: 80px;
+        height: auto;
+        margin: 0 auto 2rem auto;
+        fill: #b5986a;
+      }
+
+      /* quote */
+      .quote-block {
+        margin: 0 0 2rem 0;
+        font-style: italic;
+        color: #55483c;
+        font-size: 1.15rem;
+        line-height: 1.5;
+        padding: 0 1.5rem;
+      }
+
+      /* description */
+      .landing-card p.description {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: #443c35;
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+      }
+
+      /* button */
+      .landing-btn {
+        display: inline-block;
+        background-color: #8a1515;
+        color: #fdfbf7;
+        padding: 0.8rem 2.5rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        font-style: italic;
+        font-weight: 600;
         text-decoration: none;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
+        border-radius: 0.25rem;
+        border: 1px solid #701010;
+        box-shadow: 0 4px 10px rgba(138, 21, 21, 0.15);
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
       }
 
       .landing-btn:hover {
-        background-color: #680808;
+        background-color: #630d0d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(138, 21, 21, 0.3);
+      }
+
+      .landing-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Footer */
+      .landing-footer {
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        color: #8c765c;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      /* Adjustments */
+      @media (max-width: 600px) {
+        body.landing {
+          background-attachment: scroll; 
+        }
+
+        .landing-card {
+          padding: 2.5rem 1.5rem;
+          outline: 6px solid #fdfbf7;
+          outline-offset: -10px;
+        }
+        
+        .landing-card::before {
+          top: 10px;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+        }
+
+        .landing-card h1 {
+          font-size: 1.8rem;
+        }
+
+        .subtitle {
+          font-size: 1.1rem;
+        }
+
+        .quote-block {
+          font-size: 1rem;
+          padding: 0;
+        }
+
+        .landing-card p.description {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
 
   <body class="landing">
+    
     <main class="landing-wrapper">
-      <section class="landing-card">
-        <h1><em>El marqués de las Navas</em>. Edición Digital Académica</h1>
-        <p>Bienvenidos.</p>
-        <p></p>Este portal alojará la edición digital de <em>El marqués de las Navas</em>, fruto de un proyecto de investigación desarrollado por Anna Abate en el marco de su tesis doctoral: <em>El marqués de las Navas. Estudio y edición en el entorno digital.</em></p>
-        <a href="{{ site.baseurl }}/home" class="landing-btn">Entrar</a>
-      </section>
+      <article class="landing-card">
+        
+        <span class="project-label">Edición Digital Académica</span>
+        
+        <h1><em>El marqués de las Navas</em></h1>
+        
+        <span class="subtitle">de Lope de Vega Carpio</span>
+
+        <!-- ornament sgv -->
+        <svg class="vignette" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50,0 C55,10 65,15 80,15 C65,15 55,20 50,30 C45,20 35,15 20,15 C35,15 45,10 50,0 Z" />
+          <circle cx="10" cy="15" r="3" />
+          <circle cx="90" cy="15" r="3" />
+          <line x1="18" y1="15" x2="35" y2="15" stroke="#b5986a" stroke-width="1" />
+          <line x1="65" y1="15" x2="82" y2="15" stroke="#b5986a" stroke-width="1" />
+        </svg>
+
+        <!-- quote -->
+        <blockquote class="quote-block">
+          «Esta Comedia que Lope de Vega Carpio su autor intitula El Marqués de las Navas es
+	una representación de aquel estraño suceso que tuvo con un difunto en la iglesia de San Martín de esta villa,
+	donde se mostró el Marqués cristiano y piadoso, si en matrarle había andado valiente y animoso caballero...»
+        </blockquote>
+
+        <p class="description">
+          Bienvenidos. Este portal aloja la edición digital crítica y genética de <em>El marqués de las Navas</em>, fruto del proyecto de investigación desarrollado por <strong>Anna Abate</strong> en el marco di su tesis doctoral: <em>Estudio y edición en el entorno digital</em>.
+        </p>
+
+        <a href="{{ site.baseurl }}/home" class="landing-btn">Entrar al portal</a>
+
+        <div class="landing-footer">
+          CETEIcean &bull; TEI &bull; Jekyll
+        </div>
+
+       </article>
     </main>
   </body>
 </html>
