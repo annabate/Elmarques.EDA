@@ -22,7 +22,7 @@
 
 body {
   margin: 0;
-  font-family: "Georgia", serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: var(--bg-base);
@@ -40,7 +40,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Georgia, serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
@@ -70,7 +70,7 @@ body {
 
 h1 {
   text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.7em;
   font-style: italic;
   color:#b49970;
@@ -181,7 +181,7 @@ tei-l[part="F"] {
   width: 2em;
   text-align: right;
   font-size: 0.9rem;
-  font-family: "Georgia", serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #7f674b;
   font-weight: normal;
   font-variant-numeric: oldstyle-nums;
@@ -290,7 +290,7 @@ tei-l[part="F"] {
   text-align: right;
   margin-left: 1em;
   font-size: 0.9rem;
-  font-family: "Georgia", serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #7f674b;
   font-weight: normal;
   font-variant-numeric: oldstyle-nums;
@@ -522,7 +522,7 @@ button,
   color: var(--text-primary);
   border: 1px solid #bca67b;
   border-radius: 6px;
-  font-family: "Georgia", serif;
+  font-family: "system-ui", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.95rem;
   padding: 0.35em 0.75em;
   cursor: pointer;
@@ -590,7 +590,7 @@ button:active {
   overflow-y: auto;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color: var(--text-primary);
-  font-family: "Georgia", serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   z-index: 10000;
 }
 
@@ -699,7 +699,7 @@ button:active {
   margin: 1.5em auto;
   width: 80%;
   border-collapse: collapse;
-  font-family: Georgia, serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.95rem;
   background-color: #fdfaf6;
 }
