@@ -815,3 +815,14 @@ button:active {
   0%   { background: rgba(253,230,138,.35); }
   100% { background: transparent; }
 }
+tei-ab{
+  display: block;
+  margin: 1.2em 3em;
+  text-align: center;
+}
+
+tei-trailer{
+  display: block;
+  margin: 1.2em 3em;
+  text-align: center;
+}

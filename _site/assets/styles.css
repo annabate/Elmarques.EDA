@@ -9033,3 +9033,15 @@ a.tooltip2.crit-app:hover,
 .footer-logo-link:hover {
   opacity: 0.7;
 }
+
+tei-ab{
+  display: block;
+  margin: 1.2em 3em;
+  text-align: center;
+}
+
+tei-trailer{
+  display: block;
+  margin: 1.2em 3em;
+  text-align: center;
+}
