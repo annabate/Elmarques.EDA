@@ -1867,6 +1867,1806 @@
         <p>en la ciudad de murª</p>
         <pb type="folio" n="[Fol. guarda v.]"/>   
         </div>
+         <div type="subsection" subtype="ACTO" n="2" xml:id="acto2">
+          <head type="acto">ACTO 2°</head>
+        <stage>Don &lt;-henriq̄\fadriq̄&gt; y don Filipe con libreas de las cañas y tocados de plumas</stage>
+        <sp>
+          <speaker>&lt;-HEN+FAD&gt;</speaker>
+            <l n="837">estremada fiesta ha sido</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="838">yo no la he visto mexor</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-HEN+FAD&gt;</speaker>
+            <l n="839">quanto ha querido el balor</l>
+            <l n="840">la esperanza se ha luzido.</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="841">&lt;-?&gt; notable a estado la plaza</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-FAD+HEN&gt;</speaker>
+            <l n="842">no la vio con mas decoro</l>
+            <l n="843">quanto el sol con &lt;-brazos\rayos&gt; de oro</l>
+            <l n="844">por los dos Polos abraza.</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="845">toda su gala y riqueza</l>
+            <l n="846">pareze q̄ en ella estaua</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-FAD+HEN&gt;</speaker>
+            <l n="847">mucho dizen q̄ la alaua</l>
+            <l n="848">su magestad a su Alteza.</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="849">puede con mucha razon.</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HEN+FAD&gt;</speaker>
+            <l n="850">El &lt;-Marques\-conde//marques&gt; pienso q̄ viene</l>    
+        </sp>
+        <stage>&lt;-Marq̄s\conde&gt; y Mendoza</stage>
+        <sp>
+          <speaker>&lt;-MA+COND&gt;</speaker>
+            <l part="I" n="851a">braua fiesta</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="F" n="851b">fama tiene</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MA+COND&gt;</speaker>
+            <l n="852">Toros y cañas lo son</l>
+            <l n="853">dadme los brazos mil vezes</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="854">habemos andado biem</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="855">ojos de quien quiere bien</l>
+            <l n="856">nunca son buenos juezes</l>
+            <l n="857">mas por dios q̄ para mí</l>
+            <l n="858">y aun para todos sospecho</l>
+            <l n="859">marauillas habeis echo</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="860">q̄ cuchillada q̄ dí</l>
+            <l n="861">al q̄ sacò de la silla</l>
+            <l part="I" n="862a">a don Juan</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l part="F" n="862b">no ay q̄ alaban</l>
+            <l n="863">los dos os podeis alçar</l>
+            <l n="864">con palaçio y con la villa</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="865">q̄ te pareze Mendoza?</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="866">q̄ en esta ocasion señor</l>
+            <l n="867">&lt;-como en todas\el blason&gt; tu balor</l>
+            <l n="868">&lt;-el nombre q̄ tienes\deuidos aplausos&gt; goza</l>
+            <l n="869">ygualo la balentia</l>
+            <l n="870">a la Fortuna de modo</l>
+            <l n="871">q̄ la tuuistes en todo</l>
+            <l n="872">&lt;-?&gt; braua gala, y bizarria</l>
+            <l n="873">quantos os han visto, van</l>
+            <l n="874">sin ojos y sin enojos</l>
+            <l n="875">q̄ les llebastes los ojos</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-HE\FADRIQ̄&gt;</speaker>
+            <l n="876">&lt;-y asi\\luego&gt; sin ojos estan?</l>
+        </sp>
+        <sp>
+          <speaker>&lt;+ME&gt;</speaker>
+            <l n="877">C&lt;o+a&gt;rdo&lt;u+n&gt;a y Aguila han sido</l>
+            <l n="878">los q̄ oy la plaza laurea</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="879">Como luzio la librea</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="880">como su dueño ha luzido</l>
+            <l n="881">&lt;// y luçió tanto su dueño</l>
+            <l n="882">meritos mas que ventura</l>
+            <l n="883">q̄ a mas de alguna hermosura</l>
+            <l n="884">quitará esta noche el sueño.&gt;</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l part="I" n="885a">los Toros</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="F" n="885b">brauos y fieros</l>
+            <l n="886">pero con dos mil razones</l>
+            <l n="887">truxeron Toros Leones</l>
+            <l n="888">para Hercules caualleros.</l>
+            <l n="889">y el buen Pedro anduuo bien</l>
+            <l n="890">aunq̄ en calças desgraçiado</l>
+            <l n="891">pues descubrio lo encarnado</l>
+            <l n="892">de los aforros tanbien.</l>
+            <l n="893">&lt;-No pudo hazer resistençia</l>
+            <l n="894">... que el no lo vió</l>
+            <l n="895">/no balieron resistençia&gt;</l>
+            <l n="896">por q̄ le asio por detras</l>
+            <l n="897">y asi le disculpan mas</l>
+            <l n="898">&lt;+los q̄  &lt;-b&gt; vieron&gt; &lt;-de&gt; sus ausençias &lt;- q̄ mostro&gt;</l>
+            <l n="899">&lt;-pero&gt; las dos manos se me acuerda</l>
+            <l n="900">llebo con graçia estremada</l>
+            <l n="901">en la derecha la espada</l>
+            <l n="902">y las calzas en la yzquierda</l>
+            <l n="903">&lt;-se&gt; asi discurrio la plaza</l>
+            <l n="904">boluio el Toro la tramoya</l>
+            <l n="905">soltolas y aqui fue Troya</l>
+            <l n="906">otra vez la plaza en plaza</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-&lt;-HE+FAD&gt;</speaker>
+            <l n="907">no preguntais al Marq̄s</l>
+            <l n="908">por las guespedas q̄ tuuo</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="909">ya vi quan galan estuuo</l>
+            <l n="910">puesto q̄ siempre lo es&gt;</l>
+        </sp>
+        <sp>
+          <speaker>&lt;//HEN</speaker>
+            <l n="911">no preguntais al marques</l>
+            <l n="912">por las guespedas q̄ tubo</l>
+        </sp>
+        <sp>
+          <speaker>FE</speaker>
+            <l n="913">ya vi quan alan estubo</l>
+            <l n="914">puesto q̄ siempre lo es&gt;</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="915">dadnos &lt;-?\algo&gt; a mi y a &lt;-Enriq̄+-Fadriq̄//enriq</l>
+            <l n="916">de lo q̄ oy haueis gozado</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="917">tanto me habeis enuidiados</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="918">No se como signifique</l>
+            <l n="919">la q̄ os tuue quando os ví</l>
+            <l n="920">tan ocupado en Laurençia</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="921">los dos teneis esperiençia</l>
+            <l n="922">de mi lealtad y de mi</l>
+            <l n="923">pero aseguraros puedo</l>
+            <l n="924">q̄ es Laurençia vn serafin</l>
+            <l n="925">y  q̄ esta tarde hasta el fin</l>
+            <l n="926">tube a mis antojos miedo</l>
+            <l n="927">q̄ es muger q̄ darlos puede</l>
+            <l n="928">lindo yngenio, linda traza</l>
+            <l n="929">vi lo bueno de la plaza</l>
+            <l n="930">y todo lo bueno excede</l>
+            <l n="931">habla bien en don Filipe</l>
+            <l n="932">y pienso q̄ habla tan bien</l>
+            <l n="933">q̄ no ay bien de q̄ mas bien</l>
+            <l n="934">su voluntad partiçipe</l>
+            <l n="935">deueisle notable Amor</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="936">harto mayor me le deue</l>
+            <l n="937">pues en termino tan breue</l>
+            <l n="938">me trata con tal rigor</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="939">gerarda no sabe tanto</l>
+            <l n="940">pero es gallarda muger</l>
+            <l n="941">y q̄ deue de querer</l>
+            <l n="942">sino es q̄ se lo lebanto</l>
+            <l n="943">&lt;-a fadri q̄ &lt;-notable\braua&gt;mente\ a enriq̄ notablemente&gt;</l>
+        </sp>
+        <sp>
+          <speaker>&lt;EN+FADRI&gt;</speaker>
+            <l n="944">para el tienpo q̄ ha costado</l>
+            <l n="945">yo me doy por bien pagado,</l>
+            <l n="946">quando no quererme intente</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="947">ynquietas estan las dos</l>
+            <l n="948">seguid la empresa q̄ creo</l>
+            <l n="949">q̄ tendra dicha el desseo.</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l part="I" n="950a">es burla</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l part="F" n="950b">es verdad por dios</l>
+            <l n="951">no me han dexado alabar</l>
+            <l n="952">a Caballero q̄ hiziese</l>
+            <l n="953">suerte, aun q̄ lo mereçiese</l>
+            <l n="954">solo se hauia de hablar</l>
+            <l n="955">&lt;- de las vuestras y del\ en vuestro donayre y &gt; talle</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="956">achas tomo viue dios</l>
+            <l n="957">con q̄ esta noche los dos</l>
+            <l n="958">hazemos fiesta en su calle</l>
+            <l n="959">&lt;&lt;-Enrri+-Fadri&gt;\enrique&gt;q̄ no yras conmigo?</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HENRIQ̄+FADRIQ̄&gt;</speaker>
+            <l n="960">no estoy tan enamorado</l>
+            <l n="961">seguire vro cuidado</l>
+            <l n="962">si mi esperanza no sigo,</l>
+            <l n="963">y seruire por lo menos</l>
+            <l n="964">de platicante con vos.</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="965">yo tengo de yr con los dos,</l>
+            <l n="966">Mendoza haz poner dos frenos</l>
+            <l n="967">a los rozines de caza</l>
+            <l n="968">porq̄ a lo catarribera</l>
+            <l n="969">veamos esta carrera</l>
+            <l n="970">mexor q̄ las de la plaza</l>
+            <l n="971">q̄ tu con Clara ocupado,</l>
+            <l n="972">no estuuiste mui atento</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="973">Socarron entendimiento,</l>
+            <l n="974">desenbuelto y despejado</l>
+            <l n="975">tiene la tal mantellina</l>
+            <l n="976">y a ser muger prinçipal</l>
+            <l n="977">pudiera ser çelestial</l>
+            <l n="978">y quedose en Çelestina.</l>
+            <l n="979">muchas cosas me contó</l>
+            <l n="980">de sus amas, buenas todas,</l>
+            <l n="981">pero aq̄sto de las bodas,</l>
+            <l n="982">gran pesadunbre me dió</l>
+        </sp>
+        <sp>
+          <speaker>&lt;+FIL</speaker>
+            <l n="983">de nada me marauillo</l>
+            <l n="984">vna vez determinado</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="985">dixome q̄ el desposado</l>
+            <l n="986">viene a ser Nobio, o Nouillo.&gt;</l>
+            <l n="987">si bien a vuseñoría</l>
+            <l n="988">le estara mucho mexor</l>
+            <l n="989">q̄ delante vn gastador</l>
+            <l n="990">le allano la inçierta vía</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="991">no lo nonbres q̄ no puedo</l>
+            <l n="992">sufrir la ymaginaçion</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="993">el viene a buena ocasion</l>
+            <l n="994">para q̄ la quite el miedo</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="995">no se puede enamorar</l>
+            <l n="996">y descuidarse de mí</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="997">las achas estan aquí</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="998">hasme dado vn gran pesar</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="I" n="999a">yo q̄ he dicho</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HEN+FAD&gt;</speaker>
+            <l part="F" n="999b">aorabien bamos</l>
+            <l n="1000">que este nobio no vendra</l>
+            <l part="I" n="1001a">tan presto</l>
+        </sp>
+        <sp>
+          <speaker>FE</speaker>
+            <l part="F" n="1001b">pena me da</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HEN+FAD&gt;</speaker>
+            <l n="1002">oy sus bodas celebramos</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1003">pues ha dado buelta el coche</l>
+            <l n="1004">ya esta en casa el serafin</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="1005">haz q̄ me den el rozin</l>
+            <l n="1006">y vn herreruelo de noche</l>  
+        </sp>
+          <stage>entrense y salgan Laurençia y gerarda</stage>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1007">No ay pasion q̄ se antiçipe</l>
+            <l n="1008">a todas como el querer</l>
+        </sp>
+        <sp>
+          <speaker>GE</speaker>
+            <l n="1009">la vida te ha dado el ver</l>
+            <l n="1010">las graçias de don Filipe</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1011">quando yo no le adorara</l>
+            <l n="1012">si oy en la plaza le viera</l>
+            <l n="1013">presumo q̄ no tuuiera</l>
+            <l n="1014">voluntad q̄ le negara.</l>
+            <l n="1015">hase visto cauallero</l>
+            <l n="1016">demas alma, demas brío</l>
+            <l n="1017">justamente dueño mío</l>
+            <l n="1018">&lt;-par&gt; como a mis ojos te quiero</l>
+            <l n="1019">[ojo]	&lt;+y no es poco en carecerte</l>
+            <l n="1020">puesto q̄ me has dado enojos</l>
+            <l n="1021">q̄ quiero bien a mis ojos</l>
+            <l n="1022">despues q̄ supieron verte.&gt;</l>
+            <l n="1023">No digan q̄ es menester</l>
+            <l n="1024">mucho tpo para amar</l>
+            <l n="1025">q̄ el Amor q̄ ha de matar</l>
+            <l n="1026">del primer golpe ha de ser</l>
+            <l n="1027">Amor q̄ comienza ingrato</l>
+            <l n="1028">y el trato le da balor</l>
+            <l n="1029">no se ha de llamar Amor</l>
+            <l n="1030">sino costunbre del trato</l>
+            <l n="1031">El q̄ vio, quiso y mato</l>
+            <l n="1032">ese es Amor verdadero</l>
+            <l n="1033">y mas quando fue el primero</l>
+            <l n="1034">Como el q̄ tengo yo,</l>
+            <l n="1035">mirar, escriuir, ablar</l>
+            <l n="1036">años vn galan, v dama</l>
+            <l n="1037">es tener amor con ama</l>
+            <l n="1038">q̄ se le han dado a Criar</l>
+            <l n="1039">onbre ha de nazer Amor.</l>
+            <l n="1040">luego &lt;-?&gt; andar, y ser galan</l>
+            <l n="1041">q̄ el Amor q̄ no es Adan</l>
+            <l n="1042">no puede tener balor</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1043">si tan onbre ha de nazer</l>
+            <l n="1044">menos tendra q̄ gozar</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1045">sabes tu como han de amar</l>
+            <l n="1046">dos &lt;-almas&gt; q̄ se llegan a ver?</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l part="I" n="1047a">como</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1047b">a vna vela ençendida</l>
+            <l part="I" n="1048a">no llega vna muerta?</l>
+        </sp>
+        <sp>
+          <speaker>GE</speaker>
+            <l part="F" n="1048b">sí</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1049">no le comunica alli</l>
+            <l n="1050">en un punto luz y vida?</l>
+            <l n="1051">&lt;-Asi//pues&gt; las almas en&lt;-tienden\\partiendo&gt;</l>
+            <l n="1052">&lt;-que vna a otra ha de encender\ a encenderse y a querer&gt;</l>
+            <l n="1053">&lt;-por q̄//aun&gt; apenas se han de ver</l>
+            <l n="1054">quando han de quedar ardiendo.</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1055">q̄ bien disculpas tu error</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1056">luego &lt;-tu a &lt;henri+fadri&gt;\ tu a enrique&gt;q no quieres?</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1057">como las demas mugeres</l>
+            <l n="1058">quiero &lt;-en&gt; con prinçipio Amor</l>
+            <l n="1059">no le quiero ver tan onbre</l>
+            <l n="1060">q̄ me espante de miralle</l>
+        </sp>  
+        <stage>Clara entre</stage>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1061">ya esta la plaza en la Calle</l>
+            <l n="1062">si se la deue este nonbre</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1063">Como Clara cla no sentís</l>
+            <l n="1064">los Cauallos de las cañas</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l part="I" n="1065a">brauas finezas</l>
+        </sp>
+        <sp>
+          <speaker>GE</speaker>
+            <l part="F" n="1065b">estrañas</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1066">si a la ventana salis</l>
+            <l n="1067">vereys los dos matadores</l>
+            <l n="1068">de los Toros y las damas</l>
+            <l n="1069">con achas q̄ arrojan llamas</l>
+            <l n="1070">de Amor, ençendiendo amores</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1071">bamos gerarda al balcon</l>
+            <l n="1072">ay dios q̄ gente es aq̄sta?</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1073">desconçertose la fiesta</l>
+            <l n="1074">tu Padre y Leonardo son</l>    
+        </sp>
+        <stage>Ludouico, Leonardo, y Antonio.</stage>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1075">Por la casa preguntaua</l>
+            <l n="1076">q̄ aun apenas se la calle</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1077">luego q̄ a la puerta os ví</l>
+            <l n="1078">en la persona y el traje</l>
+            <l n="1079">conoçi q̄ erades vos</l>
+            <l n="1080">sin acabar de apearme</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1081">siguiendo vine a Laurençia		[aparte]</l>
+            <l n="1082">no puede escusar de hablarle</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l n="1083">vos os disculpaste bien</l>
+        </sp>
+        <sp>
+          <speaker>LE</speaker>
+            <l part="I" n="1084a">ya estoy en el mar</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l part="F" n="1084b">pasalde</l>
+        </sp>
+        <sp>
+          <speaker>LU</speaker>
+            <l n="1085">mis hijas estan aqui</l>
+            <l n="1086">lizençia doy q̄ os abrazen</l>
+            <l n="1087">el Señor leonardo es</l>
+            <l n="1088">ya no ay de q̄ te recates</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1089">dadme Señora las manos</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l n="1090">y a mi por su amigo dadme</l>
+            <l n="1091">liçençia de q̄ os las besse</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1092">vuesa merçed no se espante</l>
+            <l n="1093">de q̄ su presta venida</l>
+            <l n="1094">me turbe y verguenza cause</l>
+            <l n="1095">[apar]	nunca gerarda viniera</l>
+            <l part="I" n="1096a">tenblando estoy</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="F" n="1096b">escusarme</l>
+            <l n="1097">quisiera de daros pena</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1098">ay dios ya no ay mal q̄ aguarde</l>
+            <l n="1099">sin duda sera mi nobio</l>
+            <l n="1100">q̄ ha dicho dos neçedades</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l part="I" n="1101a">sillas Clara</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l part="F" n="1101b">no le hundiera</l>
+            <l n="1102">En la calle de Xetafe</l>
+            <l part="I" n="1103a">algun lodo</l>
+        </sp>
+        <sp>
+          <speaker>LU</speaker>
+            <l part="F" n="1103b">ola criados</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1104">Señor no esta en casa nadie</l>
+            <l n="1105">&lt;+q̄&gt; &lt;-como es\ ha sido&gt; dia de Toros</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1106">pues hasta quando han de olgarse,</l>
+            <l n="1107">ya no son los Toros muertos?</l>
+            <l n="1108">q̄ puede haber q̄ les falte</l>
+            <l n="1109">sino es hallarse en su entierro</l>    
+        </sp>
+        <stage>todos se sienten</stage>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1110">q̄ venga vn onbre a casarse</l>
+            <l n="1111">Antonio, en dia de Toros</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l n="1112">brauos çelos os con&lt;-par?&gt;baten</l>
+            <l n="1113">por dios q̄ la nobia es bella</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1114">confieso q̄ tiene partes</l>
+            <l n="1115">para vn titulo, y las mias</l>
+            <l n="1116">no las merezen tan grandes</l>
+            </sp>
+        <stage>suenan cascabeles de Carrera</stage>
+        <sp>
+          <speaker>DENTRO</speaker>
+            <l n="1117">aparta aparta aparta</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MAR+CONDE&gt;</speaker>
+            <l n="1118">mas q̄ en la tierra, en el ayre</l>
+            <l n="1119">Pone los pies, pensamiento</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1120">q̄uien ha de haber q̄ le alcanze</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1121">&lt;-es el &lt;-marq̄s\conde&gt;\el marques&gt; y Mendozilla</l>
+            <l n="1122">hablan gerarda en la calle.</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1123">q̄ inquietas estan las dos</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1124">mugeres, no ay q̄ espantarse</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1125">mas quisieran las ventanas</l>
+            <l n="1126">q̄ al Nouio la q̄ este llegase</l>
+            <l n="1127">a quitarnos este bien</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l part="I" n="1128a">paçiençia</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1128b">estoy por matarme</l>
+        </sp>
+        <sp>
+          <speaker>DENTRO</speaker>
+            <l n="1129">aparta aparta, aparta</l>
+        </sp>
+        <sp>
+          <speaker>LUDO</speaker>
+            <l n="1130">plega el çielo q̄ te aparte</l>
+            <l n="1131">desta calle treynta leguas</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1132">No ayais miedo q̄ se canse</l>
+            <l n="1133">si el tiene por quien correr le hable</l>
+            <l n="1134">&lt;-en&gt; hasta q̄ el rozin</l>
+            <l n="1135">Como su burra a Balan.</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l part="I" n="1136a">brauo nouio</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1136b">dios le amanse</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l part="I" n="1137a">burra aquí</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1137b">de q̄ te espantas</l>
+            <l n="1138">si ay caballos en la calle</l>
+        </sp>
+        <sp>
+          <speaker>GE</speaker>
+            <l n="1139">discreto debe de ser</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1140">mandarianle sus Padres</l>
+            <l n="1141">q̄ lo tuuiese secreto.</l>
+            <l n="1142">por q̄ no se lo quitasen</l>
+        </sp>
+        <sp>
+          <speaker>GE</speaker>
+            <l n="1143">no escuchaste a don Filipe</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1144">ynquieta estoy de escuchalle</l>
+            <l n="1145">esta no es silla q̄ es potro</l>
+            <l n="1146">&lt;-y este/donde&gt; viene a tormentarme</l>
+            <l n="1147">&lt;-pues aun q̄ hablo de la burra&gt;</l>
+            <l n="1148">&lt;-como/este&gt; verdugo cruel</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1149">Cascabeles y pretales</l>
+            <l n="1150">a la puerta de vna Nouia</l>
+            <l n="1151">Antonio malas señales.</l>
+            <l n="1152">&lt;+ si antes de casar me corren</l>
+            <l n="1153">q̄ haran despues q̄ me case</l>
+            <l n="1154">pero pues aparta dizen</l>
+            <l n="1155">no sera yerro apartarme&gt;</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1156">reliquias son de las fiestas</l>
+            <l n="1157">nunca en la corte repares</l>
+            <l n="1158">mas que enseguir como todos</l>
+            <l n="1159">variedad y nouedades</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1160">habla con el no &lt;-s..?&gt; seas neçia</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1161">que cordura abra q̄ baste</l>
+            <l n="1162">si pienso q̄ esta diziendo</l>
+            <l n="1163">don Filipe, no le hables</l>
+            <l n="1164">mas oblicagion le corre</l>
+            <l n="1165">a el q̄ no a mi de hablarme.</l>
+        </sp><stage>Mendoza entre</stage>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1166">perdonad q̄ sin lizenzia</l>
+            <l n="1167">a entrar Señores me alarge.</l>
+            <l n="1168">la neçesidad me obliga</l>
+        </sp>
+        <sp>
+          <speaker>LU</speaker>
+            <l n="1169">mira q̄ quiere ese paje</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1170">dos caualleros q̄ han sido</l>
+            <l n="1171">de las cañas desta tarde</l>
+            <l n="1172">os piden vn xarro de agua</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1173">y aun abra donde descansen</l>
+            <l part="I" n="1174a">si quieren entrar</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l part="F" n="1174b">no abra</l>
+            <l n="1175">diles q̄ adelante pasen.</l>
+            <l n="1176">y tu Clara dales agua</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1177">dame señora las llabes</l>
+            <l n="1178">sacare del Camarin</l>
+            <l part="I" n="1179a">algun Bucaro</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1179b">q̄ saques</l>
+            <l n="1180">el mexor, te doy liçençia</l>
+            <l n="1181">por ser para gente grabe</l>
+            <l n="1182">y lleba a q̄ella toalla</l>
+            <l n="1183">q̄ tiene puntas de Flandes</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l part="I" n="1184a">venga hidalgo</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="F" n="1184b">Clara escucha</l>
+            <l n="1185">los dos ginetes amantes</l>
+            <l n="1186">dizen q̄ quieren venir</l>
+            <l n="1187">a habalar esta noche y darse</l>
+            <l n="1188">vn verde con dos azules</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1189">hermano, pues q̄ no salen</l>
+            <l n="1190">a la rexa &lt;-?&gt; quando corren</l>
+            <l n="1191">ya deuieran acocrdarse</l>
+            <l n="1192">de aq̄l esperado nouio</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="I" n="1193a">vino</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l part="F" n="1193b">vino mal y tarde</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="I" n="1194a">es aq̄l descolorido</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l part="F" n="1194b">el mismo</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1195">mucho agrio trahe</l>
+            <l n="1196">para nouio, aquel Color</l>
+            <l n="1197">no muestra dulce la sangre</l>
+            <l n="1198">&lt;viuen los çielos q̄ tiene</l>
+            <l n="1199">talle el vellacon de darte</l>
+            <l n="1200">en casaandose mil cozes</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1201">nunca los diablos le casen.&gt;</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1202">guebo de Abéstruz pareze</l>
+            <l n="1203">di a tu Ama q̄ se guarde</l>
+            <l n="1204">de moxicones en zelos</l>
+            <l n="1205">y de lisonjas en pazes</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1206">q̄ conuersaçion es esa</l>
+            <l n="1207">Clarilla con ese paje</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1208">pideme agua de Canela</l>
+            <l part="I" n="1209a">v de jazmines</l>
+        </sp>
+        <sp>
+          <speaker>LU</speaker>
+            <l part="F" n="1209b">pues dale</l>
+            <l n="1210">agua de aquel Canelon</l>
+            <l n="1211">q̄ de los texados cae</l>
+            <l n="1212">entanto q̄ yo a valençia</l>
+            <l n="1213">por los jazmines despache</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1214">Buen suegro lleba el buen yerno</l>
+            <l n="1215">caso, viue dios, notable</l>
+            <l n="1216">q̄ de vn bragero como este</l>
+            <l n="1217">saliese el rostro de vn Angel</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1218">Agua y bucaro y toalla</l>
+            <l n="1219">canela hazmines, paje,</l>
+            <l n="1220">o estos hablan en Latin</l>
+            <l n="1221">o yo no entiendo Romanze</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l n="1222">Callad q̄ es trato de Corte</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1223">pues Antonio en ella trate</l>
+            <l n="1224">el q̄ hiziere a España puente</l>
+            <l n="1225">por donde la plata pase</l>
+            <l n="1226">q̄ viniere de las yndias</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1227">quando Leonardo llegastes</l>
+            <l part="I" n="1228a">a Madrid</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="F" n="1228b">ayer llege</l>
+            <l n="1229">Cansado, quise aloxarme</l>
+            <l n="1230">y oy me llebaron a ver</l>
+            <l part="I" n="1231a">las fiestas</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l part="F" n="1231b">fueron notables</l>
+            <l part="I" n="1232a">segun me han dicho</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="F" n="1232b">famosas</l>
+            <l n="1233">de mil titulos y grandes</l>
+            <l n="1234">bien andubo el duq̄ de Alba</l>
+        </sp>
+        <sp>
+          <speaker>&lt;+LA</speaker>
+            <l n="1235">De tan altos çielos naze</l>
+            <l n="1236">para ser &lt;-de su casa\\sol de su casa&gt;</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1237">y con suertes admirables</l>
+            <l n="1238">el gran conde de Melgar</l>
+            <l n="1239">suçesor del Almirante</l>
+            <l n="1240">Pastrana es Prínçipe ynsigne</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1241">dizen q̄ a Flandes se parte</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1242">boluerase en Marte Adonis</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1243">bien pueden sus generales</l>
+            <l n="1244">hazer lugar al mayor.</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1245">q̄ bien onrro los guzmanes</l>
+            <l part="I" n="1246a">el del Algaua</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="F" n="1246b">no ay onbre</l>
+            <l n="1247">q̄ con el rexon le yguale</l>
+            <l n="1248">salio vn Toro, y la zerbiz</l>
+            <l n="1249">le paso de parte a parte</l>
+            <l n="1250">doblo los pies, y el ocico</l>
+            <l n="1251">sangre bebe y tierra paze</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1252">q̄ conversaçion de nobio</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1253">olgarame q̄ esta tarde</l>
+            <l n="1254">hubiera visto mi Esposa</l>
+            <l n="1255">tales fiestas suertes tales</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1256">Andaua alla don Filipe</l>
+            <l part="I" n="1257a">de &lt;Cordoua+Cardona&gt;</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="F" n="1257b">fue el esmalte</l>
+            <l n="1258">del oro de aq̄lla fiesta</l>
+            <l n="1259">fue enuidia de los galanes</l>
+            <l n="1260">fue de las damas el blanco</l>
+            <l n="1261">&lt;-y del Amor//y fue Español&gt; Duandarte</l>
+            <l n="1262">q̄ discreto q̄ anda el nobio</l>
+            <l n="1263">no me ha dicho q̄ me agrade</l>
+            <l part="I" n="1264a">cosa sino esta</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l part="F" n="1264b">y andubo</l>
+            <l n="1265">en estas fiestas reales</l>
+            <l n="1266">don &lt;henri+fadri&gt;q̄ de &lt;-guzman\oristan&gt;</l>
+            <l n="1267">con aq̄l balor q̄ sabe</l>
+            <l n="1268">&lt;+ de su gentileza el mundo</l>
+            <l n="1269">y de sus heroycas partes (versi aggiunti al margine destro; grafia di Lope, inchiostro diverso)&gt;</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1270">El y don Filipe hizieron</l>
+            <l n="1271">Cosas dignas de sus talles</l>
+            <l n="1272">y de su &lt;s-?&gt; balor y fama</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l part="I" n="1273a">quien lo viera</l>
+        </sp>
+        <sp>
+          <speaker>LU</speaker>
+            <l part="F" n="1273b">si le hazen</l>
+            <l n="1274">otras fiestas, yo os conuido</l>
+            <l n="1275">y por que pareze tarde</l>
+            <l n="1276">hijo adios hasta mañana</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1277">el çielo Seóra os guarde</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1278">y os de lo q̄ deseays.</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1279">ya no ay para q̄ te alabe</l>
+            <l n="1280">a Leonardo, pues le has visto.</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1281">soliçita q̄ descanse</l>
+            <l part="I" n="1282a">&lt;-gerarda señor//señor gerarda&gt;</l>
+        </sp>
+        <sp>
+          <speaker>LU</speaker>
+            <l part="F" n="1282b">adiós</l>
+        </sp>
+        <sp>
+          <speaker>CLA</speaker>
+            <l n="1283">dize Mendoza q̄ bazes</l>
+            <l n="1284">a la puerta si es posible</l>
+            <l n="1285">por q̄ van a desnudarse</l>
+            <l n="1286">y quieren boluer a verte</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1287">Clara venga, aunq̄ me mate</l>
+            <l n="1288">q̄ ya no ay sin don Filipe</l>
+            <l n="1289">ni vida, ni onor q̄ guarde</l>    
+        </sp>
+        <stage>Entren Feliçiana y Bernardo</stage>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1290">que dama tan compuestas</l>
+            <l n="1291">que aposentos tan bien aderezados.</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1292">oy para mi no ay fiestas</l>
+            <l n="1293">sino pleytos, desdichas y cuidados</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1294">q̄ bizarros galanes</l>
+            <l n="1295">Siluas, Enrriquez Laras y guzmanes</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l n="1296">q̄ Fortunas crueles</l>
+            <l n="1297">ansias, fatigas, dudas y &lt;-?&gt;trayçiones</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1298">q̄ heroycos Pimenteles</l>
+            <l n="1299">&lt;-Toledos&gt; Mendozas Leybas Cordouas girones</l>
+            <l n="1300">Auilas y Toledos</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1301">q̄ engaños, q reçelos y q̄ miedos</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1302">qual estaua y q̄ grabe</l>
+            <l n="1303">el Rey de la Española monarquia</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l n="1304">q̄ veneno suabe</l>
+            <l n="1305">Leonardo fiero para mi tenia</l>
+            <l n="1306">mirando vnas ventanas</l>
+            <l n="1307">destas bellas sirenas Cotesanas</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1308">yo vi la ynfanta hermosa</l>
+            <l n="1309">con dos soles en nieue guarneçidos</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1310">yo vi la temerosa</l>
+            <l n="1311">muerte q̄ amenazaua mis oydos</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1312">que Toros tan balientes</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l n="1313">que Amor, q̄ desengaños, q̄ accidentes</l>
+            <l n="1314">las damas de Leonardo</l>
+            <l n="1315">son las q̄ viuen en &lt;-esta casa\\aquesta casa&gt;</l>
+            <l n="1316">siguiendolos Bernardo</l>
+            <l n="1317">con la luz de la llama q̄ me abrasa</l>
+            <l n="1318">desesperada vengo</l>
+            <l n="1319">por ver si &lt;-?&gt; en ella algun remedio tengo</l>
+        </sp>
+        <sp>
+          <speaker>VER</speaker>
+            <l n="1320">hablarlas sera en vano</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1321">Amor me enseña industrias y piadoso</l>
+            <l n="1322">me quiere dar la mano.</l>
+            <l n="1323">Saca esa daga tu, y el riguroso</l>
+            <l n="1324">azero ponme al pecho.</l>
+            <l n="1325">&lt;-dexara pues q̄??&gt;</l>
+            <l n="1326">a tantas prueuas de tormentos hecho,</l>
+            <l n="1327">di q̄ quieres matarme</l>
+            <l n="1328">&lt;-y oxala q̄//Ay si(inchiostro e grafia diversi)&gt; quisieras &lt;+tu&gt;</l>
+        </sp>
+        <sp>
+          <speaker>BE</speaker>
+            <l n="1329">&lt;-a q̄ effeto\ ya el fin aguardo&gt;</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1330">quiero a vozes quexarme</l>
+            <l n="1331">por q̄ salgan a verme, tu &lt;-discreta?&gt; Bernardo</l>
+            <l n="1332">huiras a la posada</l>
+            <l n="1333">donde me aguarde &lt;-o muerta o remediada\ras muerta o uengada&gt;</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1334">pues q̄ es lo q̄ pretendes?</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1335">deçir q̄ aqui Leonardo me mataua</l>
+        </sp>
+        <sp>
+          <speaker>BER</speaker>
+            <l n="1336">mucho tu onor offendes</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l n="1337">antes presto veras q̄ no se alaba</l>
+            <l n="1338">de su trayçíon y engaño</l>
+            <l n="1339">si aqui de la verdad los desengaño.</l>
+        </sp>
+        <sp>
+          <speaker>BE</speaker>
+            <l n="1340">Saco la daga y digo</l>
+            <l n="1341">figura q̄ &lt;-&gt; ha ensayado tu Tragedia</l>
+            <l n="1342">tu infame, tu conmigo?</l>
+            <l n="1343">piensas q̄ de esa suerte se remedia</l>
+            <l part="I" n="1344a">tu engaño</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l part="F" n="1344b">&lt;-oy sera?\o cruel&gt; Leonardo</l>
+        </sp>
+        <sp>
+          <speaker>BE</speaker>
+            <l part="I" n="1345a">matarte tengo</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l part="F" n="1345b">ay dios, huye Bernardo.</l>
+        </sp>
+        <sp>
+          <speaker>BE</speaker>
+            <l n="1346">en la posada espero</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l n="1347">no ay justiçia en la Corte, no ay justiçia</l>
+            <l n="1348">Contra vn Barbaro fiero</l>
+            <l n="1349">pues defiendame dios de tu maliçia</l>
+            <l n="1350">piedad, piedad. señores</l>    
+        </sp>
+        <stage>ludouico, laurençia, gerarda</stage>
+        <sp>
+          <speaker>LUD</speaker>
+            <l part="I" n="1351a">q̄ es esto</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l part="F" n="1351b">vna muger y mil traydores</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l part="I" n="1352a">aqui no ay nadie</l>
+        </sp>
+        <sp>
+          <speaker>FE</speaker>
+            <l part="F" n="1352b">huyeron</l>
+            <l n="1353">y viendo adonde entraua me dexaron</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1354">sin duda pretendieron</l>
+            <l part="I" n="1355a">robarla</l>
+        </sp>
+        <sp>
+          <speaker>FEL</speaker>
+            <l part="F" n="1355b">antes de agora me robaron</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1356">estays acaso herida?</l>
+        </sp>
+        <sp>
+          <speaker>FE</speaker>
+            <l n="1357">con mas peligro estoy, no tengo vida</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1358">&lt;-q̄ es lo q̄ os ha&gt;</l>
+            <l n="1359">muger q̄ sola sale</l>
+            <l part="I" n="1360a">qualquier daño mereze, &lt;-sino fu?</l>
+        </sp>
+        <sp>
+          <speaker>\FE&gt;</speaker>
+            <l part="F" n="1360b">sino fuera</l>
+            <l n="1361">q̄ por disculpa bale</l>
+            <l n="1362">sola desesperada y forastera</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1363">de q̄ os ha procedido,</l>
+            <l part="I" n="1364a">tan gran desdicha</l>
+        </sp>
+        <sp>
+          <speaker>FE</speaker>
+            <l part="F" n="1364b">desta casa ha sido</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1365">Como de aquesta casa?</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1366">oydme por muger atentamente</l>
+            <l n="1367">y el fuego q̄ me abrasa</l>
+            <l n="1368">en quexas tristes respirar intente</l>
+            <l n="1369">&lt;-de?&gt; del tormento q̄ paso</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l part="I" n="1370a">todos lo estamos</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1370b">lastimoso caso</l>
+        </sp>
+        <sp>
+          <speaker>FELI</speaker>
+            <l n="1371">Entre dos soberbios montes</l>
+            <l n="1372">a quien con grillos estrechos</l>
+            <l n="1373">calza de cristal el Tajo</l>
+            <l n="1374">yaze la ynperial Toledo,</l>
+            <l n="1375">Corona Ilustre de España</l>
+            <l n="1376">donde por gusto del çielo</l>
+            <l n="1377">tuue de Padres onrrados</l>
+            <l n="1378">desdichado naçimiento</l>
+            <l n="1379">cerca de mi propia casa</l>
+            <l n="1380">viuio vn ydalgo mançebo</l>
+            <l n="1381">años q̄ miro mis ojos</l>
+            <l n="1382">q̄ ya desengaños fueron.</l>
+            <l n="1383">dile el alma por la suya</l>
+            <l n="1384">no fue con ventaja el truexo</l>
+            <l n="1385">porq̄ aunq̄ se truequen almas</l>
+            <l n="1386">puede estarse el onor quedo.</l>
+            <l n="1387">No dixe bien pues no estubo</l>
+            <l n="1388">q̄ tales fueron sus ruegos</l>
+            <l n="1389">sus lagrimas, sus mentiras</l>
+            <l n="1390">q̄ a perderle me mouieron</l>
+            <l n="1391">No con liuiandad notable</l>
+            <l n="1392">sino haziendo juramento</l>
+            <l n="1393">en la presençia de quien</l>
+            <l n="1394">no ay pensamiento encubierto</l>
+            <l n="1395">sobre tan altas palabras</l>
+            <l n="1396">y con testigo q̄ tiemblo</l>
+            <l n="1397">de ymaginar como tubo</l>
+            <l n="1398">de quebrarle atreuimiento</l>
+            <l n="1399">fue mi onor a su engaño</l>
+            <l n="1400">mi balor a su desseo,</l>
+            <l n="1401">toda mi vida a su amparo</l>
+            <l n="1402">todo mi amor a su pecho,</l>
+            <l n="1403">diome este engaño una hija</l>
+            <l n="1404">que oy tengo viua, aunq̄ tengo</l>
+            <l n="1405">mas credito en el &lt;-testigo&gt; juez</l>
+            <l n="1406">&lt;-ante quien paso mi pleyto&gt;</l>
+            <l n="1407">a quien de mi agrauio Apelo.</l>
+            <l n="1408">pasaron tienpos q̄ paso</l>
+            <l n="1409">amando mas presto el tiempo</l>
+            <l n="1410">&lt;+&lt;-los dias hurta a la&gt;</l>
+            <l n="1411">las oras hurta a las noches</l>
+            <l n="1412">los dias a los deseos&gt;</l>
+            <l n="1413">y sin hauerle offendido</l>
+            <l n="1414">ni con solo el pensamiento</l>
+            <l n="1415">&lt;+ sin asomarse a mis ojos</l>
+            <l n="1416">cosa q̄ le diese çelos&gt;</l>
+            <l n="1417">por q̄ a mi me parezia</l>
+            <l n="1418">q̄ quantos onbres &lt;-ha hecho\naçieron&gt;</l>
+            <l n="1419">&lt;-dios desde Adan se encerrauan\se cifrauan todos juntos&gt;</l>
+            <l n="1420">en aq̄l mi Amor primero</l>
+            <l n="1421">dio por su gusto en casarse</l>
+            <l n="1422">Como lo yntenta en effeto</l>
+            <l n="1423">sabiendo q̄ no es posible</l>
+            <l n="1424">por ley del mundo y del çielo</l>
+            <l n="1425">No se con qual de las dos</l>
+            <l n="1426">q̄ en esto fuera su intento</l>
+            <l n="1427">justo, a no saber vn agrauio</l>
+            <l n="1428">tan injusto de por medio</l>
+            <l n="1429">partio a Madrid y seguile</l>
+            <l n="1430">&lt;-donde&gt; con animo de q̄ luego</l>
+            <l n="1431">se ynpida su pretension</l>
+            <l n="1432">faboreçida de vn deudo</l>
+            <l n="1433">q̄ el pleyto me aconsejaua</l>
+            <l n="1434">aunque ponelle no pienso</l>
+            <l n="1435">por q̄ &lt;-m&gt; el fabor son sus manos</l>
+            <l n="1436">y sus pies son los dineros</l>
+            <l n="1437">tendre &lt;-m&gt; quien me ayude mal</l>
+            <l n="1438">con pluma y lengua sin ellos</l>
+            <l n="1439">y vn inorante Letrado</l>
+            <l n="1440">es puñalada de un pleyto.</l>
+            <l n="1441">en aquestas confesiones</l>
+            <l n="1442">vra casa me dixeron</l>
+            <l n="1443">vine a ver si aqui se hallaua</l>
+            <l n="1444">no me engaño el pensamiento</l>
+            <l n="1445">salio de aqui, llege a el</l>
+            <l n="1446">con lagrimas q̄ mouieron</l>
+            <l n="1447">los linteles desta puerta</l>
+            <l n="1448">pero no su ingrato pecho</l>
+            <l n="1449">hecheme a sus pies tiranos</l>
+            <l n="1450">y dixe de aq̄sto suelo</l>
+            <l n="1451">no pienso Leonardo mio</l>
+            <l n="1452">alma y vida deste cuerpo</l>
+            <l n="1453">lebantarme hasta q̄ digas</l>
+            <l n="1454">q̄ eres mi marido y luego</l>
+            <l n="1455">me la quita, si es tu gusto</l>
+            <l n="1456">Ay dios qual Aspid soberbio</l>
+            <l n="1457">asi se boluio a la planta</l>
+            <l n="1458">q̄ le piso sin saberlo</l>
+            <l n="1459">saco la daga, di vozes</l>
+            <l n="1460">entreme aqui, fuese huyendo,</l>
+            <l n="1461">nobles soys onrra teneis</l>
+            <l n="1462">este es mi triste suçeso</l>  
+        </sp> 
+         <stage>Vayase</stage>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1463">con mucha razon se quexa</l>
+            <l n="1464">y Leonardo ha proçedido</l>
+            <l n="1465">como mançebo atreuido.</l>
+        </sp>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1466">como es posible que dexa</l>
+            <l n="1467">de acudir vn onbre onrrado</l>
+            <l n="1468">a tales obligaçiones</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1469">siendo çiertas sus razones</l>
+            <l n="1470">esta Leonardo culpado.</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1471">quien duda q̄ lo seran,</l>
+            <l n="1472">ella va desesperada</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1473">q̄ ha de hazer desengañada</l>
+            <l n="1474">de q̄ este pago le dan</l>
+            <l n="1475">yo alomenos no sere</l>
+            <l n="1476">muger de Leonardo ya</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l part="I" n="1477a">Claro esta</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l part="F" n="1477b">pues claro esta</l>
+        </sp>
+        <sp>
+          <speaker>LUD</speaker>
+            <l n="1478">ni yo laurençia querre</l>
+            <l n="1479">hija y juramento guarda</l>
+            <l n="1480">aunq̄ estas razones son</l>
+            <l n="1481">de primera informaçion</l>
+            <l n="1482">y el juez discreto aguarda</l>
+            <l n="1483">a oyr la parte no quiero</l>
+            <l n="1484">mas parte q̄ esta muger</l>
+            <l n="1485">porq̄ yo no he de tener</l>
+            <l n="1486">yerno con tan mal aguero</l>
+            <l n="1487">recogeos q̄ ya es ora</l>
+            <l n="1488">y no aya mas casamiento</l>    
+        </sp>
+        <stage>Vase</stage>
+        <sp>
+          <speaker>LAU</speaker>
+            <l n="1489">dadme albriçias pensamiento</l>
+            <l n="1490">Halle mi remedio agora</l>
+            <l n="1491">&lt;+con el fin de mi desdicha</l>
+            <l n="1492">a don Filipe os enbio</l>
+            <l n="1493">nunca pensamiento mío</l>
+            <l n="1494">pensaste en tanta dicha&gt;</l>
+            <l n="1495">desbarato mi ventura</l>
+            <l n="1496">la tenpestad q̄ venia</l>
+            <l n="1497">sobre mi, quando no hauia</l>
+            <l n="1498">cosa en el alma segura</l>
+            <l n="1499">ay tal dicha loca estoy</l>
+            <l n="1500">mas no deue de estar loca</l>
+            <l n="1501">pues q̄ con muestra tan poca</l>
+            <l n="1502">de mi bien indiçios doy</l>
+            <l n="1503">q̄ quereis alma de mi?</l>
+            <l n="1504">o quien otra alma tuuiera</l>
+            <l n="1505">q̄ por albriçias os diera</l>
+            <l n="1506">ni aun os tengo q̄ ya os ví</l>
+            <l n="1507">bamos gerarda a saber</l>
+            <l n="1508">si ha de hablar quel mi dueño</l>
+            <l n="1509">q̄ ya no ay tratar de sueño</l>
+            <l n="1510">sino de solo querer.</l>
+            <l n="1511">&lt;-henri+fadri&gt;q̄ tanbien vendra</l>
+            <l n="1512">alegrate pues es justo</l>
+        </sp>
+        <sp>
+          <speaker>GER</speaker>
+            <l n="1513">tanto lo esto de tu gusto</l>
+            <l n="1514">como del q a mi me da</l>
+        </sp>
+        <sp>
+          <speaker>LA</speaker>
+            <l n="1515">no quieras tan tiuiamente</l>
+            <l n="1516">q̄ una prinçipal muger</l>
+            <l n="1517">o en su vida ha de querer</l>
+            <l n="1518">o ha de querer locamente</l>   
+        </sp>
+         <stage>Entren en hauito de noche el &lt;-Marq̄s\Conde&gt; y don Filipe y don &lt;-Henri+Fadri&gt;q̄</stage>
+        <sp>
+          <speaker>HEN</speaker>
+            <l part="I" n="1519a">quien due auisar</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l part="F" n="1519b">fue Mendoza</l>
+            <l n="1520">a saber quando abriran.</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MAR+COND&gt;</speaker>
+            <l n="1521">notable cuidados os dan.</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="1522">quien se descuida no goza</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-HEN+FAD&gt;</speaker>
+            <l n="1523">No se quitara de allí</l>
+            <l n="1524">Hasta ver si abren la puerta</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="1525">si ella esta una vez abierta</l>
+            <l n="1526">yo me quexare de mi</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-HEN+FAD&gt;</speaker>
+            <l n="1527">q̄ libre viue el &lt;-Marques\Conde&gt;</l>
+            <l n="1528">no ay muger a quien se &lt;-?&gt; apliq̄</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MAR+COND&gt;</speaker>
+            <l n="1529">&lt;-sola\solo&gt; una vez quise &lt;-henriq̄\\-fadrique\enriq̄</l>
+            <l n="1530">no he querido mas despues</l>
+            <l n="1531">ni hasta casarme estoy çierto</l>
+            <l n="1532">de no boluer a querer</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l part="I" n="1533a">brauo Amor</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MAR+COND.&gt;</speaker>
+            <l part="F" n="1533b">ansi ha de ser</l>
+            <l n="1534">en siendo amor descubierto</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-HEN+FADRI&gt;</speaker>
+            <l n="1535">q̄ aun dura la voluntad</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MA+COND&gt;</speaker>
+            <l n="1536">mientras q̄ Mendoza viene</l>
+            <l n="1537">oyd la causa q̄ tiene</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l part="I" n="1538a">yo estoy atento</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND.&gt;</speaker>
+            <l part="F" n="1538b">escuchad</l>
+            <l n="1539">&lt;-yazen &lt;-al pie de guadarrama helado\en la margen de un arroyo elado&gt;&gt;</l>
+            <l n="1540">&lt;-la aldea de bel flor?\\yacen al pie de guadaRoma elado (inchiostro e grafia diversi)&gt;</l>
+            <l n="1541">&lt;-las Navas del Marq̄s/Las nauas del marques&gt;este es su nonbre</l>
+            <l n="1542">donde el florido Mayo viste vn prado</l>
+            <l n="1543">q̄ no ay escarcha o nieue q̄ le asombre</l>
+            <l n="1544">Mirale enfrente  vn monte lebantado,</l>
+            <l n="1545">sobre simismo donde apenas ombre</l>
+            <l n="1546">atreuido pise su çentro escuro</l>
+            <l n="1547">asi le defendio siluestre muro.</l>
+            <l n="1548">Corren arroyos q̄ formando escalas</l>
+            <l n="1549">por las pintadas peñas le coronan</l>
+            <l n="1550">baxando de la cumbre cuyas alas</l>
+            <l n="1551">tal vez rigidos yelos aprisionan</l>
+            <l n="1552">Aqui jamas Amor ty fuego exalas</l>
+            <l n="1553">q̄ por elado sitio le perdonan</l>
+            <l n="1554">las llamas de tus rayos, q̄ es sagrado</l>
+            <l n="1555">a deydades de nieue dedicado</l>
+            <l n="1556">&lt;-Aqui pues siendo la estaçion mas fria?\y en esta parte tan elada y fria&gt;</l>
+            <l n="1557">&lt;-&lt;+de un aldeana&gt;&gt; vi &lt;-de jaçinta yo&gt; los ojos bellos</l>
+            <l n="1558">&lt;&lt;-parte/&lt;-fuego&gt;\parte&gt; del alma &lt;-y de la sangre\&lt;-venturosa\y de la sangre&gt;&gt; mía</l>
+            <l n="1559">y aqui supe morir y arder por ellos</l>
+            <l n="1560">&lt;-crreme en el veneno q̄ beuian\vivi mientras la edad lo permitia&gt;</l>
+            <l n="1561">sin sentir la presion de sus cabellos</l>
+            <l n="1562">&lt;-criaron?... edad en los engaños&gt;</l>
+            <l n="1563">&lt;-mas creziendo el amor y haziendo engaños&gt;</l>
+            <l n="1564">&lt;-burlose la esperan/mas como&gt; en pocos años ay engaños</l>
+            <l n="1565">&lt;-mas como poca edad esconde engaños&gt;</l>
+            <l n="1566">creçieron los desseos con los años</l>
+            <l n="1567">saliamos al prado y de sus flores</l>
+            <l n="1568">&lt;+ceñi,&gt; tal vez &lt;-?\sus candidos&gt; marfiles</l>
+            <l n="1569">&lt;-de su &lt;-?&gt; frente y los velos de colores\donde la variedad de los colores&gt;</l>
+            <l n="1570">en el çielo de Amor  &lt;-?+fueron&gt; pensiles.</l>
+            <l n="1571">&lt;... alguna vez\talvez tanbien&gt; los paxaros cantores</l>
+            <l n="1572">ya con nudosa red, ya con sutiles</l>
+            <l n="1573">lazos le &lt;-presentauan oy?+presente&gt; tal la pintada</l>
+            <l n="1574">perdiz del plomo ardiente derriuada</l>
+            <l n="1575">gustaua alguna vez de q̄ en la silla</l>
+            <l n="1576">del fogoso &lt;-?&gt; Bridon diese escarzeos</l>
+            <l n="1577">estanpando en la arena de la orilla</l>
+            <l n="1578">&lt;-del arroyo sus passos Pegaseos\sus pies como en sus ojos mis desseos&gt;</l>
+            <l n="1579">tal vez corriendo Toros en la villa</l>
+            <l n="1580">ganaua &lt;-mil&gt; aplausos &lt;-por trofeos\para dar trofeos&gt;</l>
+            <l n="1581">cortando la çerbizes &lt;-?\\arrugadas&gt;</l>
+            <l n="1582">&lt;-a un mismo tpo el animo y la espada\mas de los años que del sol curadas&gt;</l>
+            <l n="1583">&lt;-Mas?/Pero&gt; en aq̄sra vida generosa</l>
+            <l n="1584">&lt;-como no era mi ygual para ser mía&gt;</l>
+            <l n="1585">&lt;-quando esperaua yo q̄ fuera mia&gt;</l>
+            <l n="1586">&lt;-la casaron sus padres y fue?\la casaron sus padres y fue&gt; Esposa</l>
+            <l n="1587">&lt;-de quien&lt;-mexor q̄ yo\por ser su ygual&gt; la merezia</l>
+            <l n="1588">&lt;+//quando esperaba yo que fuera mia</l>
+            <l n="1589">la casaron sus padres y fue esposa</l>
+            <l n="1590">de quien mexor que yo la merezia&gt;</l>
+            <l n="1591">Entonzes &lt;-supe q?&gt; con el alma lastimosa</l>
+            <l n="1592">q̄ las eladas nieues encendia</l>
+            <l n="1593">hize locuras y llame la muerte</l>
+            <l n="1594">pero jamas en quien la llama aduierte</l>    
+        </sp>
+        <stage>Mendoza entre</stage>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1595">bien me podeis dar mil palos</l>
+            <l n="1596">de albriçias, de mal suçesos</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="1597">pues q̄ &lt;-t?&gt; tenemos Mendoza?</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1598">tenemos q̄ no tenemos</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HEN+FAD&gt;</speaker>
+            <l part="I" n="1599a">Como ansi</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l part="F" n="1599b">quando baxauan</l>
+            <l n="1600">sintio sus pasos el viejo</l>
+            <l n="1601">y baxando sin sentirle</l>
+            <l n="1602">hasta la puerta de &lt;-med&gt; enmedio</l>
+            <l n="1603">las ha dado muchos palos</l>
+            <l n="1604">y ençerrado en su aposento</l>
+        </sp>
+        <sp>
+          <speaker>FIL</speaker>
+            <l n="1605">ay hombre mas desdichado</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HEN+FAD&gt;</speaker>
+            <l n="1606">q̄ no ynporta, bolueremos</l>
+            <l n="1607">otra noche y otras mil</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="1608">como si esta en casa el yerno</l>
+            <l n="1609">&lt;-pues&gt; y le ha de querer casar</l>
+            <l n="1610">la hermosura y el desseo.</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1611">ha q̄ llorones amantes</l>
+            <l n="1612">yd q̄ os  aguardan yd presto</l>
+            <l n="1613">a ti la hermosa Laurençia</l>
+            <l n="1614">Filipe Alexandro nueuo</l>
+            <l n="1615">q̄ oy has de ganar el mundo</l>
+            <l n="1616">y a ti gerarda q̄ vn çielo</l>
+            <l n="1617">&lt;-tiene enrriq̄\fadrique esta&gt; para tí</l>
+            <l n="1618">de nieue y claueles hecho</l>
+            <l n="1619">q̄ a mi la fragante Clara</l>
+            <l n="1620">tan bien me aguarda a lo fresco</l>
+            <l n="1621">con delantal de verano</l>
+            <l n="1622">y con capote de inuierno</l>
+            <l n="1623">ea q̄ me estais mirando</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="1624">mientes o no Maxadero?</l>
+        </sp>
+        <sp>
+          <speaker>ME</speaker>
+            <l n="1625">quien tardare lo vera</l>
+        </sp>
+        <sp>
+          <speaker>FILI</speaker>
+            <l n="1626">&lt;-marq̄s amigo, don Pedro\conde don Felis ay cielo,&gt;/&lt;marques amigo don Pedro&gt;</l>
+            <l n="1627">aqui os habeys de quedar</l>
+            <l n="1628">por si acaso el de Toledo</l>
+            <l n="1629">boluiere a ver a la Nouia</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="1630">yd con dios q̄ en este puesto</l>
+            <l n="1631">estare como Español</l>
+            <l n="1632">sufrire como tudesco.</l>
+        </sp>
+        <sp>
+          <speaker>&lt;HEN+FAD&gt;</speaker>
+            <l n="1633">el sabe lo q̄ ha de hazer</l>
+            <l n="1634">no ay de q̄ tener reçelo.</l>   
+        </sp> 
+        <stage>Vanse</stage>
+        <sp>
+          <speaker>&lt;MA+COND.&gt;</speaker>
+            <l n="1635">yd con dios q̄ ya sabeis</l>
+            <l n="1636">lo q̄ balgo, o lo q̄ puedo.</l>
+            <l n="1637">Noche de estrellas vestida</l>
+            <l n="1638">Cuyo manto escuro y negro</l>
+            <l n="1639">&lt;-tantos&gt; mas hurtos q̄ tiene luzes</l>
+            <l n="1640">ha conçertado y cubierto</l>
+            <l n="1641">Noble terzera de Amor</l>
+            <l n="1642">a cuyo graue silençio</l>
+            <l n="1643">tiene el onor de los onbres</l>
+            <l n="1644">reseruado &lt;-d&gt; su secreto</l>
+            <l n="1645">que bien te pinto Liñan</l>
+            <l n="1646">en aq̄llos dulçes versos</l>
+            <l n="1647">mas todo es poco si miro</l>
+            <l n="1648">tus altos mereçimientos</l>
+            <l n="1649">Tu seras noche mi dama</l>
+            <l n="1650">a ti te dire requiebros</l>
+            <l n="1651">pues no tengo a quien dezillos</l>
+            <l n="1652">y tengo &lt;-?&gt; ocasión y tiempo.</l>
+            <l n="1653">pero si la clara Aurora</l>
+            <l n="1654">&lt;-Abre&gt; Corre el argentado velo</l>
+            <l n="1655">Con las manos de jazmines</l>
+            <l n="1656">al Rey del quarto elemento</l>
+            <l n="1657">perdona q̄ he de querer</l>
+            <l n="1658">mas su calor q̄ tu yelo</l>
+            <l n="1659">mas su Alxofar q̄ tu escarcha</l>
+            <l n="1660">mas su voz q̄ tu silençio</l>
+            <l n="1661">gente pareze q̄ suena</l>    
+        </sp>
+        <stage>Antonio y Leonardo de noche</stage>
+        <sp>
+          <speaker>&lt;+AN</speaker>
+            <l n="1662">agora os falta sosiego.&gt;</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1663">no me puedo sosegar</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l n="1664">sin Amor quien tiene zelos</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1665">no se pordios lo q̄ son.</l>
+            <l n="1666">mas se q̄ es onrra tenerlos</l>
+            <l n="1667">q̄ os pareçio de Laurençia</l>
+        </sp>
+        <sp>
+          <speaker>AN</speaker>
+            <l n="1668">hermosa por todo estremo,</l>
+            <l n="1669">y para muger mas linda</l>
+            <l n="1670">de lo q̄ dize un discreto</l>
+            <l n="1671">pero si &lt;es?+de&gt; la belleza</l>
+            <l n="1672">es la virtud fundamento</l>
+            <l n="1673">por el Camino Real</l>
+            <l n="1674">se &lt;-va\yra&gt; su marido al çielo</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1675">Aquello de las Carreras</l>
+            <l n="1676">se me ha puesto en el çelebro</l>
+            <l n="1677">no querria q̄ después</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1678">andad q̄ es miedo mui neçio</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1679">y lo del agua y el paje?</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1680">q̄ notable pensamiento</l>
+            <l n="1681">es la Corte cortesia</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-ANT+LEO/LEO&gt;</speaker>
+            <l n="1682">es corte con mucho Azero</l>
+            <l n="1683">y no querria cortarme</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1684">pues dexad el Casamiento</l>
+            <l n="1685">q̄ agora teneis lugar</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1686">&lt;-A?&gt; no se Antonio q̄ me tengo</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1687">llamad al Padre del Alma</l>
+            <l n="1688">por dicha os dara remedio</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1689">aorabien quiero llegar</l>
+            <l part="I" n="1690a">a la puerta</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MA+COND.&gt;</speaker>
+            <l part="F" n="1690b">Caballeros</l>
+            <l n="1691">hechen por esotra parte</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-LEO+AN?&gt;</speaker>
+            <l part="I" n="1692a">&lt;-por&gt; Como dixo</l>
+        </sp>
+        <sp>
+          <speaker>&lt;+L&gt;</speaker>
+            <l part="F" n="1692b">bueno es esto</l>
+            <l n="1693">y sera corte tanbien</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1694">lo q̄ es malo yo no puedo</l>
+            <l n="1695">deçir q̄ es bueno Leonardo</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1696">pues por q̄ no pasaremos?</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND.&gt;</speaker>
+            <l n="1697">por q̄ estoy por onbre aquí</l>
+            <l n="1698">y pienso q̄ me dixeron</l>
+            <l n="1699">q̄ no dexase passar</l>
+            <l n="1700">Calles &lt;-?&gt; ay, buelbanse &lt;-luego\\presto&gt;</l>
+            <l n="1701">o hare q̄ se buelban yo</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="I" n="1702a">a entranbos</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l part="F" n="1702b">y aun a otros çientos</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1703">eso quiero yo probar</l>
+        </sp>
+        <sp>
+          <speaker>&lt;MA+COND&gt;</speaker>
+            <l n="1704">saquen las espadas luego</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l part="I" n="1705a">honbre terrible</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l part="F" n="1705b">ay q̄ me ha muerto</l>
+        </sp>
+        <sp>
+          <speaker>&lt;-MA</speaker>
+            <l n="1706">por otra parte les dixe</l>
+            <l n="1707">q̄ echasen y no quisieron</l>
+            <l n="1708">y ya es fuerza rodear</l>
+            <l n="1709">si es q̄ han de yr por el barbero</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1710">con terrible cuchillada</l>
+            <l n="1711">&lt;-&lt;-media Cabeza me ha abierto\tengo los cascos abiertos&gt;</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1712">yo de una estocada estoy</l>
+            <l n="1713">Antonio amigo muriendo.</l>
+        </sp>
+        <sp>
+          <speaker>ANT</speaker>
+            <l n="1714">Caminad a la possada</l>
+        </sp>
+        <sp>
+          <speaker>LEO</speaker>
+            <l n="1715">Ay Feliçiana q̄ Creo</l>
+            <l n="1716">q̄ oyeron tus maldiçiones</l>
+            <l n="1717">y me castigan los çielos.</l>  
+        </sp>
+        <ab>Fin del 2° Acto del Estraño Suçeso</ab>
+        <sp>
+          <speaker>&lt;+CONDE</speaker>
+            <l n="1718">Por otra parte les dije</l>
+            <l n="1719">que echasen y no quisieron</l>
+            <l n="1720">y ya es fuerça Rodear</l>
+            <l n="1721">si es q̄ an de ir por el baruero&gt;</l>
+        </sp>
+        </div>
     </body>
     <back>
     </back>
