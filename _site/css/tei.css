@@ -104,6 +104,14 @@ tei-castItem {
   margin: 0.1em 0;
 }
 
+tei-ab {
+  display: block;
+  margin-top: 1.2em;
+  text-align: center;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
 tei-milestone {
   display: none;
 }

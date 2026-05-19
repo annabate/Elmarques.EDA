@@ -91,6 +91,14 @@ tei-p {
   margin-right: 3em;
 }
 
+tei-ab {
+  display: block;
+  margin-top: 1.2em;
+  text-align: center;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
 tei-castList {
   display: flex;
   flex-direction: column;
