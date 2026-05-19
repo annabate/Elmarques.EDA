@@ -70,7 +70,7 @@
 
       /* label */
       .project-label {
-        font-size: 0.75rem;
+        font-size: 1.02rem;
         text-transform: uppercase;
         letter-spacing: 0.12em;
         color: #7a6a53;
@@ -113,30 +113,22 @@
         max-width: 95%;
       }
 
-      .quote-label {
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #8c1d1d;
-        display: block;
-        margin-bottom: 0.3rem;
-        font-weight: 600;
-      }
-
+    
       .quote-block {
         font-family: 'EB Garamond', serif;
         margin: 0;
         font-style: italic;
+        font-size:1.15rem;
         color: #55483c;
         font-size: clamp(0.82rem, 2vw, 0.9rem);
         line-height: 1.45;
-        text-align: justify;
+        text-align: center;
         text-justify: inter-word;
       }
 
       /* description */
       .landing-card p.description {
-        font-size: clamp(0.82rem, 2vw, 0.9rem);
+        font-size: clamp(0.82rem, 2vw, 1.2rem);
         line-height: 1.5;
         color: #333333;
         margin-bottom: 1.4rem;
@@ -164,17 +156,7 @@
         background-color: #611010;
       }
 
-      /*footer*/
-      .landing-footer {
-        margin-top: 1.2rem;
-        font-size: 0.68rem;
-        color: #8c765c;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        border-top: 1px dashed rgba(0, 0, 0, 0.08);
-        padding-top: 0.8rem;
-      }
-
+    
       /* scroll options */
       @media (max-height: 620px) or (max-width: 480px) {
         body.landing {
@@ -216,11 +198,11 @@
 
         <a href="{{ site.baseurl }}/home" class="landing-btn">Entrar</a>
 
-        <div class="landing-footer">
-          CETEIcean &bull; TEI-XML &bull; Jekyll
-        </div>
 
        </article>
     </main>
+      <body class="landing">
+    {% include footer.html %}
+  </body>
   </body>
 </html>
