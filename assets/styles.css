@@ -8615,7 +8615,8 @@ h5 {
     font-optical-sizing: auto;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 22px;
-    font-style: normal
+    font-style: normal;
+    font-weight: 350;
 }
 h
 .dse {
