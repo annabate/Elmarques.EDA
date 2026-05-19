@@ -22,18 +22,20 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
+        
+        /* MODIFICA: Layout a colonna per gestire main + footer */
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
         min-height: 100vh;
-        overflow: hidden;
+        
+        /* Rimosso overflow:hidden per permettere la visualizzazione del footer */
         position: relative;
         background-color: #ebdcae;
         
         /* background image */
         background-image: 
           linear-gradient(to bottom, rgba(235, 220, 174, 0.88), rgba(235, 220, 174, 0.88)),
-          url("{ site.baseurl }}/images/presentation.png");
+          url("{{ site.baseurl }}/images/presentation.png"); /* Nota: mancava una parentesi graffa all'inizio qui nel tuo codice */
         
         background-size: cover;
         background-position: center;
@@ -47,10 +49,13 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        padding: 1rem;
+        padding: 2rem 1rem;
         position: relative;
         z-index: 1; 
-        height: 100vh;
+        
+        /* MODIFICA: flex-grow fa sì che questo spazio occupi tutto il volume disponibile, */
+        /* spingendo il footer permanentemente in fondo alla pagina */
+        flex-grow: 1; 
       }
 
       /* landing card */
@@ -113,12 +118,10 @@
         max-width: 95%;
       }
 
-    
       .quote-block {
         font-family: 'EB Garamond', serif;
         margin: 0;
         font-style: italic;
-        font-size:1.15rem;
         color: #55483c;
         font-size: clamp(0.82rem, 2vw, 0.9rem);
         line-height: 1.45;
@@ -156,15 +159,9 @@
         background-color: #611010;
       }
 
-    
       /* scroll options */
       @media (max-height: 620px) or (max-width: 480px) {
-        body.landing {
-          overflow-y: auto;
-        }
         .landing-wrapper {
-          height: auto;
-          min-height: 100vh;
           padding: 1.5rem 1rem;
         }
         .landing-card {
@@ -185,10 +182,9 @@
         
         <span class="subtitle">de Lope de Vega Carpio</span>
 
-        <!-- quote -->
         <div class="quote-container">
           <blockquote class="quote-block">
-            «Esta Comedia que Lope de Vega Carpio su autor intitula El Marqués de las Navas es una representación de aquel estraño suceso que tuvo con un difunto en la iglesia de San Martín de esta villa, donde se mostró el Marqués cristiano y piadoso, si en matarle había andado valiente y animoso caballero...»
+            «Esta Comedia que Lope de Vega Carpio su autor intitula El Marqués de las Navas es una representación de aquel estraño suceso que tuvo con un difunto in la iglesia de San Martín de esta villa, donde se mostró el Marqués cristiano y piadoso, si en matarle había andado valiente y animoso caballero...»
           </blockquote>
         </div>
 
@@ -198,11 +194,10 @@
 
         <a href="{{ site.baseurl }}/home" class="landing-btn">Entrar</a>
 
-
-       </article>
+      </article>
     </main>
-      <body class="landing">
+    
     {% include footer.html %}
-  </body>
+
   </body>
 </html>
