@@ -160,7 +160,7 @@ tei-l[part="F"] {
 }
 
 /* Show all line numbers in a circle */
-tei-l::before {
+tei-l::after {
   content: attr(n);
   position: absolute;
   left: 0;
