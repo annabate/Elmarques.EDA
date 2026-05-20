@@ -429,10 +429,6 @@ tei-trailer {
   color: inherit;
 }
 
-.toolbar-toggle.collapsed .toggle-icon {
-  transform: rotate(180deg);
-}
-
 #toolbar-content {
   display: flex;
   flex-wrap: wrap;

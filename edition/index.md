@@ -92,7 +92,7 @@ title: El marqués de las Navas - edición genética digital
 
     <!-- Toolbar toggle line -->
     <button id="toolbar-toggle" class="toolbar-toggle" title="Mostrar/ocultar barra de herramientas">
-      <span class="toggle-icon">―――――――――――――――――――――――――――――――</span>
+      <span class="toggle-icon">―――――――――――――――</span>
     </button>
   </div>
 
