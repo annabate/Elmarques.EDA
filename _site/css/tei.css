@@ -387,7 +387,7 @@ tei-pb::before {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.6em 0;
+  padding: 0.4em 0;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -395,25 +395,12 @@ tei-pb::before {
   font-size: 0.9rem;
   color: #bca689;
   position: relative;
-}
-
-.toolbar-toggle::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #d4c5b9;
-  transform: translateY(-50%);
+  border-top: 1px solid #d4c5b9;
 }
 
 .toolbar-toggle:hover {
-  background-color: rgba(212, 197, 185, 0.1);
-}
-
-.toolbar-toggle:hover::before {
-  background: #bca689;
+  background-color: rgba(212, 197, 185, 0.08);
+  border-top-color: #bca689;
 }
 
 .toggle-icon {
@@ -421,7 +408,7 @@ tei-pb::before {
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
-  font-size: 0.7em;
+  font-size: 0.65em;
   position: relative;
   z-index: 1;
   width: 1.2em;
@@ -443,7 +430,7 @@ tei-pb::before {
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
   opacity: 1;
-  padding: 0.6em 1em 1em 1em;
+  padding: 0.8em 1em 0.8em 1em;
 }
 
 #toolbar.collapsed #toolbar-content {

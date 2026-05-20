@@ -6,11 +6,6 @@ title: El marqués de las Navas - edición genética digital
 <header id="main-header">
 
   <div id="toolbar">
-    <!-- Toolbar toggle line -->
-    <button id="toolbar-toggle" class="toolbar-toggle" title="Mostrar/ocultar barra de herramientas">
-      <span class="toggle-icon">▾</span>
-    </button>
-
     <!-- Collapsible toolbar content -->
     <div id="toolbar-content" class="toolbar-content">
       <!-- Column toggles -->
@@ -94,6 +89,11 @@ title: El marqués de las Navas - edición genética digital
     </div>
     </div>
     <!-- End toolbar-content -->
+
+    <!-- Toolbar toggle line -->
+    <button id="toolbar-toggle" class="toolbar-toggle" title="Mostrar/ocultar barra de herramientas">
+      <span class="toggle-icon">▾</span>
+    </button>
   </div>
 
   <!-- Hidden search bar -->
