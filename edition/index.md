@@ -6,8 +6,15 @@ title: El marqués de las Navas - edición genética digital
 <header id="main-header">
 
   <div id="toolbar">
-    <!-- Column toggles -->
-    <div class="toolbar-group">
+    <!-- Toolbar toggle button -->
+    <button id="toolbar-toggle" class="toolbar-toggle" title="Mostrar/ocultar barra de herramientas">
+      <span class="toggle-icon">▼</span>
+    </button>
+
+    <!-- Collapsible toolbar content -->
+    <div id="toolbar-content" class="toolbar-content">
+      <!-- Column toggles -->
+      <div class="toolbar-group">
       <label
         ><input
           type="checkbox"
@@ -85,6 +92,8 @@ title: El marqués de las Navas - edición genética digital
         </svg>
       </button>
     </div>
+    </div>
+    <!-- End toolbar-content -->
 
   </div>
 
@@ -1560,6 +1569,14 @@ title: El marqués de las Navas - edición genética digital
         } else {
           clearAllSearch();
         }
+      });
+
+      // Toggle toolbar
+      document.getElementById("toolbar-toggle").addEventListener("click", () => {
+        const toolbar = document.getElementById("toolbar");
+        const btn = document.getElementById("toolbar-toggle");
+        toolbar.classList.toggle("collapsed");
+        btn.classList.toggle("collapsed");
       });
 
       // Column open/close
