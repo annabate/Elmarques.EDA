@@ -382,6 +382,25 @@ tei-pb::before {
   background-color: #decfa298;
 }
 
+.toolbar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
+  color: #bca689;
+}
+
+.toolbar-toggle:hover {
+  color: #8b7d5f;
+}
+
 /* === SYNOPTIC VIEW === */
 #tei-wrapper {
   display: flex;

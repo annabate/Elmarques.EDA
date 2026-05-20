@@ -386,20 +386,19 @@ tei-trailer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2em;
-  height: 2em;
+  width: 1.4em;
+  height: 1.4em;
   padding: 0;
-  border: 1px solid #bca689;
-  background: #fff;
-  border-radius: 5px;
+  border: none;
+  background: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-size: 1rem;
-  color: #666;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
+  color: #bca689;
 }
 
 .toolbar-toggle:hover {
-  background-color: #decfa298;
+  color: #8b7d5f;
 }
 
 .toggle-icon {
