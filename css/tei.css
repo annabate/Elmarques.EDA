@@ -486,13 +486,45 @@ tei-trailer {
 
 /* Tre colonne in modalità sinottica */
 #tei-wrapper.synoptic-view {
-  flex-wrap: wrap;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
 }
 
 #tei-wrapper.synoptic-view .tei-column {
-  flex: 1 1 33.33%;
-  width: 33.33%;
-  max-width: 33.33%;
+  flex: 0 0 33.33%;
+  width: auto;
+  max-width: none;
+  min-width: 180px;
+}
+
+.column-resizer {
+  width: 10px;
+  min-width: 10px;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  background: transparent;
+}
+
+.column-resizer::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 50%;
+  width: 2px;
+  background: rgba(102, 91, 77, 0.35);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.column-resizer:hover,
+.column-resizer.active {
+  background: rgba(102, 91, 77, 0.08);
 }
 
 #view-selector {

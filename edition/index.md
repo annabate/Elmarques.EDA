@@ -125,6 +125,8 @@ title: El marqués de las Navas - edición genética digital
     </div>
   </div>
 
+  <div class="column-resizer" data-left="facsimile-container" data-right="modern-container" aria-hidden="true"></div>
+
   <div id="modern-container" class="tei-column">
     <div class="column-header">
       <span>Edición genética</span>
@@ -132,6 +134,8 @@ title: El marqués de las Navas - edición genética digital
     </div>
     <div class="tei-column-scroll"></div>
   </div>
+
+  <div class="column-resizer" data-left="modern-container" data-right="diplomatic-container" aria-hidden="true"></div>
 
   <div id="diplomatic-container" class="tei-column">
     <div class="column-header">
@@ -331,7 +335,94 @@ title: El marqués de las Navas - edición genética digital
   if (visible === 1) wrapper.classList.add("single-view");
   else if (visible === 2) wrapper.classList.add("dual-view");
   else wrapper.classList.add("synoptic-view");
+  resetVisibleColumns();
+  refreshResizerVisibility();
   }
+
+  function resetVisibleColumns() {
+  const wrapper = document.getElementById("tei-wrapper");
+  const visibleCols = Array.from(wrapper.querySelectorAll(".tei-column")).filter(
+  (col) => !col.classList.contains("hidden"),
+  );
+  if (!visibleCols.length) return;
+  const width = 100 / visibleCols.length;
+  visibleCols.forEach((col) => {
+  col.style.flex = `0 0 ${width}%`;
+  col.style.maxWidth = `${width}%`;
+  });
+  }
+
+  function refreshResizerVisibility() {
+  const resizers = document.querySelectorAll(".column-resizer");
+  resizers.forEach((resizer) => {
+  const left = document.getElementById(resizer.dataset.left);
+  const right = document.getElementById(resizer.dataset.right);
+  const hidden = !left || !right || left.classList.contains("hidden") || right.classList.contains("hidden");
+  resizer.style.display = hidden ? "none" : "flex";
+  });
+  }
+
+  function initResizeHandles() {
+  const wrapper = document.getElementById("tei-wrapper");
+  const resizers = wrapper.querySelectorAll(".column-resizer");
+  resizers.forEach((resizer) => {
+  let dragging = false;
+  let startX = 0;
+  let leftCol = null;
+  let rightCol = null;
+  let leftStartWidth = 0;
+  let rightStartWidth = 0;
+  const minWidth = 180;
+
+  const onMouseMove = (e) => {
+  if (!dragging) return;
+  const delta = e.clientX - startX;
+  const total = leftStartWidth + rightStartWidth;
+  let newLeft = leftStartWidth + delta;
+  let newRight = rightStartWidth - delta;
+  if (newLeft < minWidth) {
+  newLeft = minWidth;
+  newRight = total - minWidth;
+  } else if (newRight < minWidth) {
+  newRight = minWidth;
+  newLeft = total - minWidth;
+  }
+  const wrapperWidth = wrapper.getBoundingClientRect().width;
+  const leftPct = (newLeft / wrapperWidth) * 100;
+  const rightPct = (newRight / wrapperWidth) * 100;
+  leftCol.style.flex = `0 0 ${leftPct}%`;
+  leftCol.style.maxWidth = `${leftPct}%`;
+  rightCol.style.flex = `0 0 ${rightPct}%`;
+  rightCol.style.maxWidth = `${rightPct}%`;
+  };
+
+  const stopDrag = () => {
+  if (!dragging) return;
+  dragging = false;
+  resizer.classList.remove("active");
+  document.body.style.cursor = "";
+  window.removeEventListener("mousemove", onMouseMove);
+  window.removeEventListener("mouseup", stopDrag);
+  };
+
+  resizer.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  leftCol = document.getElementById(resizer.dataset.left);
+  rightCol = document.getElementById(resizer.dataset.right);
+  if (!leftCol || !rightCol || leftCol.classList.contains("hidden") || rightCol.classList.contains("hidden")) return;
+  dragging = true;
+  startX = e.clientX;
+  leftStartWidth = leftCol.getBoundingClientRect().width;
+  rightStartWidth = rightCol.getBoundingClientRect().width;
+  resizer.classList.add("active");
+  document.body.style.cursor = "col-resize";
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", stopDrag);
+  });
+  });
+  }
+
+  initResizeHandles();
 
   // =========================
   // CLEANER (NON-DESTRUCTIVE)
@@ -1479,6 +1570,7 @@ title: El marqués de las Navas - edición genética digital
           document.querySelector(
             `.toggle-col[data-target="${col.id}"]`,
           ).checked = false;
+          updateLayoutClasses();
         });
       });
       document.querySelectorAll(".toggle-col").forEach((cb) => {
@@ -1487,6 +1579,7 @@ title: El marqués de las Navas - edición genética digital
           document
             .getElementById(target)
             .classList.toggle("hidden", !e.target.checked);
+          updateLayoutClasses();
         });
       });
 
