@@ -23,7 +23,7 @@
 <text>
 <front/>
 <body>
-<pb type="folio" n="[Fol. n. n. r.]"/>
+<pb type="folio" n="[Fol. 1r]"/>
     <head><app><rdg wit="B" varSeq="3" hand="non-authorial">El marqués de las Navas</rdg></app></head>
     <castList>
           <castItem><app><rdg wit="B" hand="non-authorial">de Lope</rdg></app></castItem>
@@ -44,7 +44,7 @@
           <castItem><app><rdg wit="B" hand="non-authorial">Antonio</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Ludovico</rdg><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir dos manos distintas; con toda probabilidad, se trata de los autores de las compañías responsables de la puesta en escena de la pieza.</note></app></castItem>
         </castList>
-          <pb type="folio" n="[Fol. n. n. v.]"/>
+          <pb type="folio" n="[Fol. 1v]"/>
           <castItem><app><rdg wit="B" hand="non-authorial">don Juan - Jordán</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">músico - Cuadrado</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">don Luis - Vicente</rdg></app></castItem>
@@ -57,19 +57,14 @@
           <castItem><app><rdg wit="B" hand="non-authorial">Bernardo - Jerónimo</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Laurencia - señora María Vitoria</rdg><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Parece tratarse de los actores que formaban parte de la compañía de Antonio de Prado, según señala M. de los Reyes Peña.</note></app></castItem>
 <div type="act" n="1">
-<pb type="folio" n="[Fol. 1r]"/>
+<pb type="folio" n="[Fol. 2r]"/>
 <head>Acto primero</head>
 <stage>Leonardo y Feliciana</stage>
 <sp>
-<speaker><app><rdg wit="A0" varSeq="0" hand="authorial">Leo</rdg><lem wit="A2" varSeq="1" hand="authorial"><subst><del>Leo</del><add>Feli</add></subst></lem></app></speaker>
+<speaker><app><rdg wit="A0" varSeq="0" hand="authorial">Leo</rdg><lem wit="A2" varSeq="1" hand="authorial"><subst><del>Leo</del><add>Feli</add></subst></lem></app></speaker><note>Por un lapso de pluma, Lope atribuye inicialmente este verso a Leonardo. Parece haberse percatado enseguida del error, ya que no traza la línea horizontal bajo el nombre, como es habitual, sino que lo sobrescribe corrigiendo la atribución equivocada; a pesar del trazo más grueso de la corrección, se observa claramente que debajo de la “F” y de la “l” de la nueva didascalia “Feli” había, respectivamente, una “L” y una “o”. Completada la corrección, Lope traza la línea debajo de la nueva didascalia.</note>
 <milestone unit="stanza" type="décimas"/>
 <lg>
 <l met="stanza">Al mismo Nerón te igualas.</l>
-<l>
-<app>
-  <lem wit="A2" hand="authorial"><add place="bottom" hand="B"><l type="marginalia">Prueba marginalia</l></add></lem>
-</app>
-</l>
 </lg>
 </sp>
 <sp>
@@ -78,14 +73,6 @@
 <l>Mira que es gran necedad</l>
 <l>detener la voluntad,</l>
 <l>porque la pintan con alas.</l>
-<anchor xml:id="l_2"/>
-<l type="marginalia">ancora prova</l>
-<l type="marginalia">ancora prova</l>
-<l type="marginalia">ancora prova</l>
-<anchor xml:id="l_5"/>
-<app>
-  <addSpan from="#l_2" to="#l_5" type="marginalia" place="bottom" wit="#A1" hand="authorial"/>
-</app>
 </lg>
 </sp>
 <sp>
@@ -97,32 +84,15 @@
 <l>de que te vengo a deber</l>
 <l>quererle agora poner</l>
 <l n="10">a tantas injustas penas.</l>
-<anchor xml:id="l_11"/>
-<l>prova prova prova prova</l>
-<l><app><lem wit="#A0" varSeq="0" hand="authorial">prova prova</lem> <rdg wit="A1" varSeq="1" hand="authorial">prova <del>prova</del></rdg></app></l>
-<l>prova prova prova prova</l>
-<anchor xml:id="l_13"/>
-<app>
-  <delSpan from="#l_11" to="#l_13"><rdg wit="B" varSeq="1" hand="non-authorial"></rdg></delSpan>
-</app>
-<l>prova prova prova prova</l>
-<anchor xml:id="l_14"/>
-<app><delSpan from="#l_11" to="#l_14"><rdg wit="A2" varSeq="2" hand="authorial"></rdg></delSpan></app>
-<l><app><rdg wit=" #A0" varSeq="0" hand="authorial">prova prova</rdg><lem wit="A1" varSeq="1" hand="authorial">prova prova <del>prova</del></lem></app></l>
-<l>prova prova prova prova</l>
-<anchor xml:id="l_16"/>
-<app>
-  <addSpan from="#l_14" to="l_16"><rdg wit="A2" varSeq="2" hand="non-authorial"></rdg></addSpan>
-</app>
 </lg>
 </sp>
 <sp>
-<speaker><app><rdg wit="B" varSeq="0" hand="authorial">Feli</rdg><lem wit="A2" varSeq="1" hand="authorial">Leo</lem></app></speaker>
+<speaker><app><rdg wit="B" varSeq="0" hand="authorial">Feli</rdg><lem wit="A2" varSeq="1" hand="authorial">Leo</lem></app></speaker><note>El Fénix atribuye erróneamente el parlamento a Feliciana. El texto está enmendado al parecer por otra mano, a juzgar por el color y grosor de la tinta.</note>
 <lg met="stanza">
 <l>¡Suéltame la capa! ¡Suelta!</l>
 <l>Suelta en paz, que una porfía</l>
 <l>convierte en descortesía</l>
-<l>determinación resuelta.<note>Tal vez por un descuido, Lope pone estos versos en boca de Feliciana. El manuscrito está enmendado al parecer de otra letra.</note></l>
+<l>determinación resuelta.</l>
 </lg>
 </sp>
 <sp>
@@ -139,7 +109,7 @@
 <l>por más que abreviarle importe,</l>
 <l>el amanac de la corte</l>
 <l n="20">ningún pronóstico sabe.</l>
-<pb type="folio" n="[Fol. 1v]"/>
+<pb type="folio" n="[Fol. 2v]"/>
  <l met="stanza"> A Madrid voy; que no voy</l>
 <l>a Manila o a la China</l>
 <l>en cuya mar filipina</l>
@@ -171,7 +141,7 @@
 <l>en la misma sepoltura;</l>
 <l n="45">pero yo quedo segura</l>
 <l>que la palabra que aquí</l>
-<pb type="folio" n="[Fol. 2r]"/>
+<pb type="folio" n="[Fol. 3r]"/>
 <l>me quiebras, Leonardo, ansí</l>
 <l>—sin que el ser noble me valga―</l>
 <l>hará que muy presto salga</l>
@@ -191,7 +161,7 @@
 <l>o has de ser tan desdichado</l>
 <l>que aun honra no has de tener;</l>
 <l n="65">que si os llegan a ofender</l>
-<l>las propia — <app><rdg wit="A0" varSeq="0" hand="authorial">a los más sabios</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>a los más sabios</del><add>como lo esperes</add></subst></lem></app></l>
+<l>las propia — <app><rdg wit="A0" varSeq="0" hand="authorial">a los más sabios</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>a los más sabios</del><add>como lo esperes</add></subst></lem></app></l><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note>
 <l>aunque tan honrado eres―</l>
 <l>y a los más nobles y sabios,</l>
 <l>es por vengar los agravios</l>
@@ -199,7 +169,7 @@
 <l met="stanza"> Yo te he servido y de ti</l>
 <l>llevo tan buen galardón</l>
 <l>que espero que una traición</l>
-<pb type="folio" n="[Fol. 2v]"/>
+<pb type="folio" n="[Fol. 3v]"/>
 <l>te infame y me vengue a mí.</l>
 <l n="75">Vete, pues ya te perdí, </l>
 <l>y tan ingrato conoces</l>
@@ -285,7 +255,7 @@
 <l n="100">le alcanzan mis maldiciones. </l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 3r]"/>
+<pb type="folio" n="[Fol. 4r]"/>
 <sp>
 <speaker>Be</speaker>
 <lg>
@@ -293,17 +263,18 @@
 <l>para Madrid de camino,</l>
 <l>que a sus fiestas me previno</l>
 <l>por muchas cartas Leonora.</l>
-<l n="110">¡Cuánta riqueza atesora, </l>
+<l n="105">¡Cuánta riqueza atesora, </l>
 <l>lustre, gala y valentía!</l>
-<l>Dicen que <app><rdg wit="A0" varSeq="0" hand="authorial">sale aquel día</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>sale aquel día</del><add></add></subst></lem></app>salir porfía</l>
+<l>Dicen que <app><rdg wit="A0" varSeq="0" hand="authorial">sale aquel día</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>sale aquel día</del><add></add></subst></lem></app>salir porfía</l><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
+</note>
 <l>y que ha de ser el espacio</l>
 <l>de la plaza de palacio,</l>
-<l n="115">cielo de Marte aquel día. </l>
+<l n="110">cielo de Marte aquel día. </l>
 <l met="stanza"> Esta sola ocupación</l>
 <l>poco me puede impedir</l>
 <l>que no te pueda servir,</l>
 <l>prima, en aquesta ocasión.</l>
-<l n="120">Si suele la dilación </l>
+<l n="115">Si suele la dilación </l>
 <l>deshacer los casamientos,</l>
 <l>ponle pleito y sus intentos</l>
 <l>no lleguen a ejecutarse.</l>
@@ -313,12 +284,12 @@
 <speaker>Feli</speaker>
 <lg>
 <l>Bien sé yo que es dilatarse</l>
-<l n="125">malograr los pensamientos, </l>
+<l n="120">malograr los pensamientos, </l>
 <l met="stanza"> pero tú solo te pones</l>
 <l>a peligro de tener</l>
 <l>disgustos, y una mujer</l>
 <l>con lágrimas y razones</l>
-<l n="130">ablanda los corazones </l>
+<l n="125">ablanda los corazones </l>
 <l>de los jüeces mejor.</l>
 </lg>
 </sp>
@@ -326,7 +297,7 @@
 <speaker>Be</speaker>
 <lg>
 <l>El mejor procurador</l>
-<pb type="folio" n="[Fol. 3v]"/>
+<pb type="folio" n="[Fol. 4v]"/>
 <l>de un pleito es el mismo dueño.</l>
 </lg>
 </sp>
@@ -334,12 +305,12 @@
 <speaker>Fel</speaker>
 <lg>
 <l>No lo seré yo pequeño;</l>
-<l n="135"><app><rdg wit="A0" varSeq="0" hand="authorial">llévame</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>llévame</del></lem></app>si quieres, contigo iré, </l>
+<l n="130"><app><rdg wit="A0" varSeq="0" hand="authorial">llévame(?)</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>llévame(?)</del></lem></app>si quieres, contigo iré,</l><note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note>
 <l>donde hasta el fin no tendré</l>
 <l>gusto, descanso, ni sueño.</l>
 <l met="stanza"> Haz esto, primo, por mí,</l>
 <l>por mi inocencia, por ser</l>
-<l n="140" part="I">mujer.</l>
+<l n="135" part="I">mujer.</l>
 </lg>
 </sp>
 <sp>
@@ -366,7 +337,7 @@
 <lg>
 <l>Ya, Leonardo, tu mudanza</l>
 <l>jüez riguroso alcanza.</l>
-<l n="145">Mira que ofendida estoy, </l>
+<l n="140">Mira que ofendida estoy, </l>
 <l>y mira que mujer soy</l>
 <l>donde es mayor la venganza.</l>
 </lg>
@@ -384,7 +355,7 @@
 <lg>
 <l part="F">¡Famoso!</l>
 <l>Aunque menos gente viene</l>
-<l n="150">como ya va refrescando.</l>
+<l n="145">como ya va refrescando.</l>
 </lg>
 </sp>
 <sp>
@@ -411,7 +382,7 @@
 <l part="F">A otro nido,</l>
 <l>donde dicen que miente</l>
 <l>la fama en llamarla sóla,</l>
-<l n="155">pues otro pájaro tiene.</l>
+<l n="150">pues otro pájaro tiene.</l>
 </lg>
 </sp>
 <sp>
@@ -419,7 +390,7 @@
 <lg>
 <l>No hay seguridad de brazos,</l>
 <l>ni aun de las almas a veces,</l>
-<pb type="folio" n="[Fol. 4r]"/>
+<pb type="folio" n="[Fol. 5r]"/>
 <l>sin contradición del oro.</l>
 </lg>
 </sp>
@@ -432,7 +403,7 @@
 <sp>
 <speaker>Lu</speaker>
 <lg>
-<l n="160">Alas le saldrán doradas.</l>
+<l n="155">Alas le saldrán doradas.</l>
 </lg>
 </sp>
 <sp>
@@ -463,7 +434,7 @@
 <sp>
 <speaker>Ger</speaker>
 <lg>
-<l n="165">¿No ves que Asián es este? </l>
+<l n="160">¿No ves que Asián es este? </l>
 <l>Un hidalgo de Navarra</l>
 <l>que canta celestialmente.</l>
 </lg>
@@ -479,7 +450,7 @@
 <lg>
 <l part="F">Aquí vive</l>
 <l>que sirviendo se entretiene</l>
-<l n="170">al gran cardenal Quiroga.</l>
+<l n="165">al gran cardenal Quiroga.</l>
 </lg>
 </sp>
 <sp>
@@ -507,11 +478,11 @@
 <l>De maestresala le sirve.</l>
 </lg>
 </sp>
-<stage>Entren galanes de noche, el <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>marqués</del><add>conde</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app>, don Filipe <app><lem wit="A0" varSeq="0" hand="authorial">de Córdoba</lem><rdg wit="B" varSeq="1" hand="non-authorial"><del>de Córdoba</del></rdg></app> y don <app><lem wit="A0" varSeq="0" hand="authorial">Henrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Henrique</del><add>Fadrique</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Enrique</add></subst></rdg></app> y Mendoza, paje de espada</stage>
+<stage>Entren galanes de noche, el <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>marqués</del><add>conde</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app>, don Filipe <app><lem wit="A0" varSeq="0" hand="authorial">de Córdoba</lem><rdg wit="B" varSeq="1" hand="non-authorial"><del>de Córdoba</del></rdg></app> y don <app><lem wit="A0" varSeq="0" hand="authorial">Henrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Henrique</del><add>Fadrique</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Enrique</add></subst></rdg></app> y Mendoza, paje de espada</stage><note>Dos manos, diferenciables por el color y el grosor de la tinta, así como por la grafía, intervienen sobre el texto: una de ellas tacha y sustituye los antropónimos, mientras la otra restituye la lección primitiva. Este fenómeno se repite a lo largo de la pieza, por lo que, para evitar una sobrecarga del aparato crítico, no se comentarán los casos análogos posteriores.</note>
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="175">¡Gallardas son las mujeres! </l>
+<l n="170">¡Gallardas son las mujeres! </l>
 </lg>
 </sp>
 <sp>
@@ -534,11 +505,11 @@
 </lg>
 </sp>
 <sp>
-<pb type="folio" n="[Fol. 4v]"/>
+<pb type="folio" n="[Fol. 5v]"/>
 <speaker>Men</speaker>
 <lg>
 <l>Cara que no se apetece</l>
-<l n="180">¿qué ha de llamar con el talle? </l>
+<l n="175">¿qué ha de llamar con el talle? </l>
 </lg>
 </sp>
 <sp>
@@ -558,7 +529,7 @@
 <speaker>Me</speaker>
 <lg>    
 <l>Siempre vuestras señorías</l>
-<l n="185">por lo singular se pierden. </l>
+<l n="180">por lo singular se pierden. </l>
 </lg>
 </sp>
 <sp>
@@ -568,7 +539,7 @@
 <l>muestra que el alma contiene</l>
 <l>todas las partes iguales;</l>
 <l>no el rostro, que el rostro puede</l>
-<l n="190">ser hermoso y no tener </l>
+<l n="185">ser hermoso y no tener </l>
 <l>las proporción que se debe</l>
 <l>a si mismo en las demás</l>
 <l>partes que el cuerpo ennoblecen.</l>
@@ -578,44 +549,44 @@
 <speaker>Me</speaker>
 <lg>    
 <l>¿Y qué importa que una dama</l>
-<l n="195">tenga el cuerpo <app><rdg wit="A0" varSeq="0" hand="authorial">de Olofernes</rdg> <lem wit="A1" varSeq="1" hand="authorial"><subst><del>de Olofernes</del> <add>diligente</add></subst></lem></app>,</l>
+<l n="190">tenga el cuerpo <app><rdg wit="A0" varSeq="0" hand="authorial">de Olofernes</rdg> <lem wit="A1" varSeq="1" hand="authorial"><subst><del>de Olofernes</del> <add>diligente</add></subst></lem></app>,</l>
 <l>derecho como una lanza,</l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">en la entrada de un ginete</rdg> <lem wit="A1" varSeq="1" hand="authorial"><subst><del>en la entrada de un ginete</del> <add>bizarro como un alférez</add></subst></lem></app>,</l>
 <l>la cintura que en un puño</l>
 <l>puede apretarse y cogerse,</l>
-<l n="200">las caderas como en Flandes,</l>
+<l n="195">las caderas como en Flandes,</l>
 <l>las piernas como un ginete,</l>
 <l>si el rostro puede ser molde</l>
 <l>de hacer diablos para el jueves</l>
 <l>en que al despensero cuelgan</l>
-<l n="205">que afrenta los calabreses?</l>
- <pb type="folio" n="[Fol. 5r]"/>
-<l>Mayormente si es tan Roma,</l>
+<l n="200">que afrenta los calabreses?</l>
+ <pb type="folio" n="[Fol. 6r]"/>
+<l><app><lem wit="A1" varSeq="1" hand="authorial"><del>(?)</del><add>Mayormente si es tan Roma</add></lem><rdg wit="A0" varSeq="0" hand="authorial">(?)</rdg></app></l><note>En este pasaje se documenta un proceso de génesis textual caracterizado por sucesivas intervenciones de reescritura, visibles en las tachaduras y sustituciones registradas en los vv. 190, 192 y 201. Dichas operaciones afectan a unidades léxicas que, en algunos casos, son reformuladas posteriormente, lo que apunta a una reelaboración progresiva del fragmento. El conjunto de variantes sugiere un trabajo de ajuste y expansión del material en fases distintas.</note>
 <l>que parece que Olofernes</l>
 <l>de dos mamonas la hizo</l>
 <l>sepulturas y juanetes.</l>
-<l n="210">¡Vive Dios, que es de mal gusto</l>
+<l n="205">¡Vive Dios, que es de mal gusto</l>
 <l>quien tal opinión tuviere!</l>
 <l>Que no puede enamorar</l>
 <l>la boca donde los dientes</l>
 <l>sobre los asientos riñen</l>
-<l n="215">como hidalgo montañeses.</l>
+<l n="210">como hidalgo montañeses.</l>
 <l>La cara es mayor indicio</l>
 <l>del alma, que en ella vense</l>
 <l>las costumbres como en mapa;</l>
 <l>luego, ¿a los cuerpos prefieren?</l>
 </lg>
 </sp>
-<stage><app><rdg wit="B" varSeq="3" hand="non-authorial">Siéntense</rdg></app></stage>
+<stage><app><rdg wit="B" varSeq="1" hand="non-authorial">Siéntense</rdg></app></stage>
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Ma</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Ma</del><add>Con</add></susbt></rdg></app></speaker>
 <lg>    
-<l n="220">No lo dice don Filipe,</l>
+<l n="215">No lo dice don Filipe,</l>
 <l>Mendoza, para que alegues</l>
 <l>aforismos por la cara,</l>
 <l>mas porque estas damas vienen</l>
 <l>de noche al Prado y <app><rdg wit="A0" varSeq="0" hand="authorial">las caras</rdg> <lem wit="A2" varSeq="1" hand="authorial"><subst><del>las caras</del> <add>de noche</add></subst></lem></app></l>
-<l n="225"><app><rdg wit="A0" varSeq="0" hand="authorial">de noche</rdg> <lem wit="A2" varSeq="1" hand="authorial"><subst><del>de noche</del> <add>las caras</add></subst></lem></app> no pueden verse;</l>
+<l n="220"><app><rdg wit="A0" varSeq="0" hand="authorial">de noche</rdg> <lem wit="A2" varSeq="1" hand="authorial"><subst><del>de noche</del> <add>las caras</add></subst></lem></app> no pueden verse;</l><note>esta intervención, junto con la que la precede, parece formar parte de una misma operación de reajuste estilístico llevada a cabo, al parecer, en un segundo momento, como sugieren el trazo ligeramente más grueso y la tinta más diluida.</note>
 <l>por eso habló de los talles.</l>
 </lg>
 </sp>
@@ -625,7 +596,7 @@
 <l>Ellas se sientan en frente</l>
 <l>de este cristal, cuyas venas</l>
 <l>sangran seis puntas o siete</l>
-<l n="230">para escuchar al que canta.</l>
+<l n="225">para escuchar al que canta.</l>
 </lg>
 </sp>
 <sp>
@@ -643,10 +614,10 @@
 </lg>
 </sp>
 <sp>
-<pb type="folio" n="[Fol. 5v]"/>
+<pb type="folio" n="[Fol. 6v]"/>
 <speaker>Filipe</speaker>
 <lg> 
-<l n="235">Harás que te oiga y lo deje.</l>
+<l n="230">Harás que te oiga y lo deje.</l>
 </lg>
 </sp>
 <sp>
@@ -656,7 +627,7 @@
 <l>es lo mismo que sucede</l>
 <l>a un largo brujulear,</l>
 <l>salir sota y hacer veinte.</l>
-<l n="240">Con la criada me acojo.</l>
+<l n="235">Con la criada me acojo.</l>
 </lg>
 </sp>
 <sp>
@@ -666,7 +637,7 @@
 <l>a don Filipe y mi hermano</l>
 <l>alargo liberalmente,</l>
 <l>que un preso no ha de tratar</l>
-<l n="245">de amor, pues no le consienten</l>
+<l n="240">de amor, pues no le consienten</l>
 <l>libertad que le ofrecen</l>
 <l>a la dama que tuviere.</l>
 </lg>
@@ -681,7 +652,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>    
-<l n="250">Vuestro buen talle y olor</l>
+<l n="245">Vuestro buen talle y olor</l>
 <l>de mi lado os favorece.</l>
 </lg>
 </sp>
@@ -696,7 +667,7 @@
 <speaker>Ger</speaker>
 <lg>
 <l>Podréis al ejemplo suyo</l>
-<l n="255">sentaros seguramente,</l>
+<l n="250">sentaros seguramente,</l>
 <l>que soy la menor en casa,</l>
 <l>y nunca los grandes suelen</l>
 <l>reñir por lo que ellas hacen.</l>
@@ -706,18 +677,18 @@
 <speaker>Men</speaker>
 <lg>    
 <l>Si Vuesa merced no huele,</l>
-<l n="260">―que tal vez, húmido, el Prado</l>
+<l n="255">―que tal vez, húmido, el Prado</l>
 <l>el mejor olfato ofende―</l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">dele</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>dele</del><add>deme</add></subst></lem></app> lugar junto a sí</l>
 <l>y, por Dios, que no le pese</l>
-<pb type="folio" n="[Fol. 6r]"/>
+<pb type="folio" n="[Fol. 7r]"/>
 <l>de un asocarrado gusto.</l>
 </lg>
 </sp>
 <sp>
 <speaker>Clar</speaker>
 <lg>    
-<l n="265">¡Arre allá, cómo se tiende!</l>
+<l n="260">¡Arre allá, cómo se tiende!</l>
 <l>¿Hiciera más un borrico?</l>
 </lg>
 </sp>
@@ -732,7 +703,7 @@
 <speaker>Clar</speaker>
 <lg>    
 <l>Pues vaya a tomar el verde</l>
-<l n="270">con el rocín de su amo.</l>
+<l n="265">con el rocín de su amo.</l>
 </lg>
 </sp>
 <sp>
@@ -742,12 +713,12 @@
 <l>conozco que eres hermosa,</l>
 <l>que las feas no defenden</l>
 <l>con tanto rigor sus caras,</l>
-<l n="275">y esta es la causa que siempre</l>
+<l n="270">y esta es la causa que siempre</l>
 <l>casan las hermosas tarde,</l>
 <l>juzgando que más merecen.</l>
 <l>No han dicho a una fea <app><rdg wit="A0" varSeq="0" hand="authorial">amores?</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>amores?</del><add>envido</add></subst></lem></app></l>
 <l>cuando con el resto quiere,</l>
-<l n="280">que piensa que no ha de haber</l>
+<l n="275">que piensa que no ha de haber</l>
 <l>hombre que a la tienda llegue.</l>
 </lg>
 </sp>
@@ -763,7 +734,7 @@
 <lg>  
 <l part="F">Tendreme</l>
 <l>por tenerla por hermosa,</l>
-<l n="285">que no porque me sustente.</l>
+<l n="280">que no porque me sustente.</l>
 </lg>
 </sp>
 <stage>Cante</stage>
@@ -779,7 +750,7 @@
 <sp>
 <speaker>Me</speaker>
 <lg>    
-<l n="290">¿De verde, blanco y morado?</l>
+<l n="285">¿De verde, blanco y morado?</l>
 <l>Aunque el poeta se queje,</l>
 <l>era rabano ese moro.</l>
 </lg>
@@ -792,11 +763,11 @@
 </sp>
 <stage>Cante</stage>
 <sp>
-<pb type="folio" n="[Fol. 6v]"/>
+<pb type="folio" n="[Fol. 7v]"/>
 <speaker>[Asián]</speaker>
 <lg>
 <l>Quierese el moro partir</l>
-<l n="295">a jugar cañas a Gelves.</l>
+<l n="290">a jugar cañas a Gelves.</l>
 </lg>
 </sp>
 <sp>
@@ -811,7 +782,7 @@
 <speaker>Asi</speaker>
 <lg>    
 <l>No se parta, si no quieren,</l>
-<l n="300">que yo cantaré otra cosa.</l>
+<l n="295">que yo cantaré otra cosa.</l>
 </lg>
 </sp>
 <sp>
@@ -832,7 +803,7 @@
 <speaker>Ju</speaker>
 <lg> 
 <l>Mal hicistes —vive Dios―</l>
-<l n="305">que sus palabras corteses</l>
+<l n="300">que sus palabras corteses</l>
 <l>más término merecían.</l>
 </lg>
 </sp>
@@ -848,12 +819,13 @@
 <speaker>Fili</speaker>
 <lg>
 <l>Mujer celestial, ¿quién eres</l>
-<l n="310">con ingenio tan divino,</l>
+<l n="305">con ingenio tan divino,</l>
 <l>con talle tan excelente</l>
 <l>y con tan hermosa cara?</l>
 <l>Que aunque la noche <app><rdg wit="A0" varSeq="0" hand="authorial">la defen</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>defen</del></lem></app> escurece</l>
 <l>el cielo en que te retratas,</l>
-<l n="315">sus estrellas <app><rdg wit="A0" varSeq="0" hand="authorial">la defenden</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>la defenden</del><add>resplandecen</add></subst></lem></app>.</l>
+<l n="310">sus estrellas <app><rdg wit="A0" varSeq="0" hand="authorial">la defenden</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>la defenden</del><add>resplandecen</add></subst></lem></app>.</l><note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
+</note>
 </lg>
 </sp>
 <sp>
@@ -863,13 +835,13 @@
 <l>no trate de conocerme,</l>
 <l>que no soy lo que parezco,</l>
 <l>porque sólo un padre ausente</l>
-<l n="320">que mañana ha de venir</l>
+<l n="315">que mañana ha de venir</l>
 <l>causa me dio de atreverme</l>
 <l>a ver el Prado, que somos</l>
-<pb type="folio" n="[Fol. 7r]"/>
+<pb type="folio" n="[Fol. 8r]"/>
 <l>codiciosas las mujeres</l>
 <l>de ver lo que nos alaban,</l>
-<l n="325">y mucho más las que tienen</l>
+<l n="320">y mucho más las que tienen</l>
 <l>una madre que las riña</l>
 <l>y un padre que las encierre.</l>
 </lg>
@@ -879,7 +851,7 @@
 <lg>
 <l>Quien sois dice vuestro estilo</l>
 <l>y me obliga a que os respete,</l>
-<l n="330">pero, por Dios, que estoy loco</l>
+<l n="325">pero, por Dios, que estoy loco</l>
 <l>de ver entre dos claveles</l>
 <l>la armonía de esa voz</l>
 <l>que me desmaya y suspende.</l>
@@ -889,7 +861,7 @@
 <speaker>Lau</speaker>
 <lg>
 <l>¿Sois a caso portugués,</l>
-<l n="335">que sólo a los portugueses</l>
+<l n="330">que sólo a los portugueses</l>
 <l>para enamorarse amor</l>
 <l>les dio término tan breve?</l>
 <l>¿Cómo os derretís ansí?</l>
@@ -899,7 +871,7 @@
 <speaker>Fili</speaker>
 <lg>
 <l>Pues ¿quién habrá que se acerque</l>
-<l n="340">al sol que no se derrita,</l>
+<l n="335">al sol que no se derrita,</l>
 <l>y más con alma de nieve?</l>
 </lg>
 </sp>
@@ -919,12 +891,12 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>
-<l n="345">¿Que haya un hombre que requiebre </l>
+<l n="340">¿Que haya un hombre que requiebre </l>
 <l>a scuras una mujer?</l>
 <l>Debeis de haber sido duende.</l>
 <l>¡Oh libertad de los hombres,</l>
 <l>cuanto miran, apetecen,</l>
-<l n="350">cuanto hablan, tanto engañan,</l>
+<l n="345">cuanto hablan, tanto engañan,</l>
 <l>cuanto encuentran, tanto quieren!</l>
 </lg>
 </sp>
@@ -933,9 +905,9 @@
 <lg>
 <l>Pues yo os prometo que he sido</l>
 <l>tan diamante algunas veces</l>
-<pb type="folio" n="[Fol. 7v]"/>
+<pb type="folio" n="[Fol. 8v]"/>
 <l>que no han podido unos ojos</l>
-<l n="355">con sus lágrimas moverme.</l>
+<l n="350">con sus lágrimas moverme.</l>
 </lg>
 </sp>
 <sp>
@@ -950,7 +922,7 @@
 <speaker>Fili</speaker>
 <lg>
 <l>Muchas veces acontece</l>
-<l n="360">que un vidrio que sirvió un año,</l>
+<l n="355">que un vidrio que sirvió un año,</l>
 <l>por irse a sacar se quiebre.</l>
 <l>Sin estrellas no hay amor,</l>
 <l>y, como ellas le concierten,</l>
@@ -960,7 +932,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>
-<l n="365">¿<app><rdg wit="A0" varSeq="0" hand="authorial">conciert</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>conciert</del></lem></app> Voluntades diferentes</l>
+<l n="360">¿<app><rdg wit="A0" varSeq="0" hand="authorial">conciert</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>conciert</del></lem></app> Voluntades diferentes</l><note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note>
 <l part="I">conciertan estrellas?</l>
 </lg>
 </sp>
@@ -982,7 +954,7 @@
 <lg>
 <l part="F">Mañana en la plaza,</l>
 <l>si gustais de conocerme,</l>
-<l n="370">me veréis con un rejón.</l>
+<l n="365">me veréis con un rejón.</l>
 </lg>
 </sp>
 <sp>
@@ -1002,7 +974,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>
-<l n="375">No querrán que las acete.</l>
+<l n="370">No querrán que las acete.</l>
 </lg>
 </sp>
 <sp>
@@ -1023,7 +995,7 @@
 <speaker>Fili</speaker>
 <lg>
 <l>A mí solo, solamente,</l>
-<l n="380">sucediera tal desdischa.</l>
+<l n="375">sucediera tal desdischa.</l>
 <l>¡Vive Dios, que me atraviese</l>
 <l part="I">esta daga!</l>
 </lg>
@@ -1032,7 +1004,7 @@
 <speaker>Lau</speaker>
 <lg>
 <l part="F">Quedo, quedo,</l>
-<pb type="folio" n="[Fol. 8r]"/>
+<pb type="folio" n="[Fol. 9r]"/>
 <l>que no soy de las que creen</l>
 <l>en madalenas de amor.</l>
 </lg>
@@ -1040,7 +1012,7 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="385">Si yo de vos mereciese</l>
+<l n="380">Si yo de vos mereciese</l>
 <l part="I">una mano...</l>
 </lg>
 </sp>
@@ -1056,7 +1028,7 @@
 <lg>
 <l>Yo os daré treinta diamantes</l>
 <l>que aquesta joya enriquecen</l>
-<l part="I" n="390">por esa mano.</l>
+<l part="I" n="385">por esa mano.</l>
 </lg>
 </sp>
 <sp>
@@ -1077,7 +1049,7 @@
 <speaker>Cla</speaker>
 <lg>
 <l>Si tú me dices quién son,</l>
-<l n="395">yo te diré libremente</l>
+<l n="390">yo te diré libremente</l>
 <l>calidad, nombres y casa</l>
 <l part="I">de estas damas.</l>
 </lg>
@@ -1093,7 +1065,7 @@
 <speaker>Cla</speaker>
 <lg>
 <l>¿El <app><lem wit="A0" varSeq="0" hand="authorial">de las Navas</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>de las Navas</del> <add>conde Felis</add></susbt></rdg> <rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde Felis</del> <add>de las Navas</add></subst></rdg></app> es este?</l>
-<l n="400">¿Que este <app><lem wit="A0" varSeq="0" hand="authorial">el de las Navas es</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>el de las Navas</del><add>es don Felis el conde</add></susbt></rdg> <rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>es don Felis el conde</del> <add>el de las Navas es</add></subst></rdg></app>?</l>
+<l n="395">¿Que este <app><lem wit="A0" varSeq="0" hand="authorial">el de las Navas es</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>el de las Navas</del><add>es don Felis el conde</add></susbt></rdg> <rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>es don Felis el conde</del> <add>el de las Navas es</add></subst></rdg></app>?</l>
 </lg>
 </sp>
 <sp>
@@ -1108,7 +1080,7 @@
 <lg>
 <l>Es por el nombre que tiene</l>
 <l>de bizarro y liberal,</l>
-<l n="405">galán discreto y valiente.</l>
+<l n="400">galán discreto y valiente.</l>
 </lg>
 </sp>
 <sp>
@@ -1134,78 +1106,41 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="410" part="I">¿Y aquel quién es?</l>
+<l n="405" part="I">¿Y aquel quién es?</l>
 </lg>
 </sp>
 <sp>
 <speaker>Me</speaker>
 <lg>
 <l part="F">Don Filipe</l>
-<pb type="folio" n="[Fol. 8v]"/>
+<pb type="folio" n="[Fol. 9v]"/>
 <l>de <app><lem wit="A0" varSeq="0" hand="authorial">Córdoba</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Córdoba</del><add>Cardona</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Cardona</del><add>Córdoba</add></subst></rdg></app>, que suspende</l>
 <l>la corte en esta ocasión</l>
 <l>con gentileza eminente</l>
 <l>a cuantas celebra España.</l>
-<l n="415">
-  <app>
-  <lem wit="A0" varSeq="0" hand="authorial">
+<l n="410">
+  <anchor xml:id="l_410"/>
     Ya habrás oído mil veces
-  </lem>
-  <rdg wit="B" varSeq="1" hand="non-authorial">
-    <del>Ya habrás oído mil veces</del>
-  </rdg>
-</app>
 </l>
 <l>
-  <app>
-  <lem wit="A0" varSeq="0" hand="authorial">
       que es hijo del gran don Diego
-  </lem>
-  <rdg wit="B" varSeq="1" hand="non-authorial">
-    <del>que es hijo del gran don Diego</del>
-  </rdg>
-</app>
 </l>
 <l>
-  <app>
-  <lem wit="A0" varSeq="0" hand="authorial">
     de Córdoba, nuevo Orestes,
-  </lem>
-  <rdg wit="B" varSeq="1" hand="non-authorial">
     <del>de Córdoba, nuevo Orestes,</del>
-  </rdg>
-</app>
 </l>
 <l>
-  <app>
-  <lem wit="A0" varSeq="0" hand="authorial">
     nuevo Acates de Filipe
-  </lem>
-  <rdg wit="B" varSeq="1" hand="non-authorial">
-    <del>nuevo Acates de Filipe</del>
-  </rdg>
-</app>
 </l>
 <l>
-  <app>
-  <lem wit="A0" varSeq="0" hand="authorial">
     Segundo, mas tú no entiendes
-  </lem>
-  <rdg wit="B" varSeq="1" hand="non-authorial">
-    <del>Segundo, mas tú no entiendes</del>
-  </rdg>
-</app>
 </l>
-<l>
-  <app>
-  <lem wit="A0" varSeq="0" hand="authorial">
+<l n="415">
       antigüedades ni historia.
-  </lem>
-  <rdg wit="B" varSeq="1" hand="non-authorial">
-    <del>antigüedades ni historia.</del>
-  </rdg>
-</app>
 </l>
+<anchor xml:id="l_415"/>
+<app><delSpan from="#l_410" to="#l_415"><rdg wit="B" varSeq="0" hand="non-authorial"></rdg></delSpan></app>
+<app><rdg wit="B" varSeq="0" hand="non-authorial">díjese</rdg></app><note>la tachadura por parte de la primera mano parece responder a la misma intención de encubrimiento ya señalada en otros pasajes. Lo más plausible es que, ante la dificultad de reescribir el pasaje sustituyendo los nombres citados, se optara directamente por su supresión, al no tener relevancia en la economía dramática.</note>
 </lg>
 </sp>
 <sp>
@@ -1226,7 +1161,7 @@
 <speaker>Cla</speaker>
 <lg>    
 <l>Al Lavapies, en la calle</l>
-<l n="425" part="I">de la Cabeza.</l>
+<l n="420" part="I">de la Cabeza.</l>
 </lg>
 </sp>
 <sp>
@@ -1241,14 +1176,14 @@
 <speaker>Fili</speaker>
 <lg>   
 <l part="F">¡Que lleguen</l>
-<l>para no <app><rdg wit="A0" varSeq="0" hand="authorial">acabarse</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>acabarse</del></lem></app> los males,</l>
+<l>para no <app><rdg wit="A0" varSeq="0" hand="authorial">acabarse</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>acabarse</del></lem></app> los males,</l><note>opinamos que la intervención puede deberse a un despiste del Fénix, quien copiaría el texto casi de memoria. Otra explicación, menos plausible, la atribuiría a un error métrico en la versión primitiva, lo que obligaría a suponer una lección original del tipo «para acabarse los bienes», con ruptura de la asonancia en -ee- requerida por el romance.</note>
 <l>para no durar los bienes!</l>
 </lg>
 </sp>
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Ma</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Ma</del><add>Cond</add></subst></rdg></app></speaker>
 <lg>    
-<l n="430">¿No iremos acompañarlas,</l>
+<l n="425">¿No iremos acompañarlas,</l>
 <l part="I">Filipe?</l>
 </lg>
 </sp>
@@ -1275,7 +1210,7 @@
 <lg>   
 <l>Tarde, señor, me previenes.</l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">Si er?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>Si er?</del></lem></app> ¡Hola, Inés, si eres Inés,</l>
-<l n="435">Juana, o como tú quisieres,</l>
+<l n="430">Juana, o como tú quisieres,</l>
 <l>los nombres me has de decir!</l>
 </lg>
 </sp>
@@ -1283,7 +1218,7 @@
 <speaker>Cla</speaker>
 <lg>   
 <l>Aunque imposibles emprenden,</l>
- <pb type="folio" n="[Fol. 9r]"/>
+ <pb type="folio" n="[Fol. 10r]"/>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">a</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>a</del></lem></app> la mayor de ellas <app><rdg wit="A0" varSeq="0" hand="authorial">llam</rdg> <lem wit="A1" varSeq="1" hand="authorial"><del>llam</del></lem></app> se llama</l>
 <l part="I">Laurencia.</l>
 </lg>
@@ -1292,7 +1227,7 @@
 <speaker>Me</speaker>
 <lg>  
 <l part="F">Dos mil laureles</l>
-<l n="440">merece su hermoso talle.</l>
+<l n="435">merece su hermoso talle.</l>
 </lg>
 </sp>
 <sp>
@@ -1306,8 +1241,8 @@
 <speaker>Me</speaker>
 <lg>    
 <l>Y gerarquía celeste</l>
-<l>se puede llamar,<app><rdg wit="A0" varSeq="0" hand="auhtorial">tu nombre</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>tu nombre</del></lem></app> por Dios.</l>
-<l n="445" part="I">¿Qué estado?</l>
+<l>se puede llamar,<app><rdg wit="A0" varSeq="0" hand="auhtorial">tu nombre</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>tu nombre</del></lem> por Dios.</app></l>
+<l n="440" part="I">¿Qué estado?</l>
 </lg>
 </sp>
 <sp>
@@ -1335,7 +1270,7 @@
 <l part="F">No pierden,</l>
 <l>pero es mucha cobardía</l>
 <l>irse guardando siempre.</l>
-<l n="450" part="I">¿Tú cómo te llamas?</l>
+<l n="445" part="I">¿Tú cómo te llamas?</l>
 </lg>
 </sp>
 <sp>
@@ -1373,7 +1308,7 @@
 <sp>
 <speaker>Me</speaker>
 <lg>    
-<l n="455">Pues ¿qué importa que se alejen?</l>
+<l n="450">Pues ¿qué importa que se alejen?</l>
 </lg>
 </sp>
 <sp>
@@ -1424,7 +1359,7 @@
 <speaker>An</speaker>
 <milestone unit="stanza" type="tercetos_encadenados"/>
 <lg>
-<l n="460">Traéis, Leonardo, una valiente empresa.</l>
+<l n="455">Traéis, Leonardo, una valiente empresa.</l>
 <l part="I">¿A casaros venís?</l>
 </lg>
 </sp>
@@ -1433,10 +1368,10 @@
 <lg>    
 <l part="F">Vengo a casarme,</l>
 <l>y aunque vengo a casarme, no me pesa,</l>
-<pb type="folio" n="[Fol. 9v]"/>
+<pb type="folio" n="[Fol. 10v]"/>
 <l met="stanza">que sólo lo intenté por apartarme</l>
 <l>de aquella necedad que habéis oído,</l>
-<l n="465">que no quiere cansarse de cansarme.</l>
+<l n="460">que no quiere cansarse de cansarme.</l>
 </lg>
 </sp>
 <sp>
@@ -1452,7 +1387,7 @@
 <l part="F">Feliciana</l>
 <l>con lágrimas y quejas lo ha sentido,</l>
 <l met="stanza">mas yo, burlando su esperanza vana,</l>
-<l n="470">vengo a Madrid a verme con mi suegro, </l>
+<l n="465">vengo a Madrid a verme con mi suegro, </l>
 <l>y a ver esta divina cortesana.</l>
 </lg>
 </sp>
@@ -1467,12 +1402,12 @@
 <lg>    
 <l>Aquí querría hacer alguna gala</l>
 <l>y entrar a vistas con vestido negro,</l>
-<l met="stanza" n="475"> que, aunque Toledo a lo mejor se iguala, </l>
+<l met="stanza" n="470"> que, aunque Toledo a lo mejor se iguala, </l>
 <l>la corte no permite competencia.</l>
 <l>Sin esto, aunque la buena fama exala</l>
 <l met="stanza"> divino olor en la mayor presencia,</l>
 <l>antes de ejecutar el casamiento,</l>
-<l n="480">―la calidad dejando de Laurencia― </l>
+<l n="475">―la calidad dejando de Laurencia― </l>
 <l met="stanza"> fuera informarme justo pensamiento</l>
 <l part="I">de su virtud y partes.</l>
 </lg>
@@ -1488,17 +1423,17 @@
 <speaker>Leo</speaker>
 <lg>    
 <l>Celosa condición no me consiente,</l>
-<l met="stanza" n="485"> aún en cosas muy viles, arrojarme, </l>
+<l met="stanza" n="480"> aún en cosas muy viles, arrojarme, </l>
 <l>lo que al amor perdonan fácilmente.</l>
 <l>Mas yo, que sin amor vengo a casarme,</l>
 <l met="stanza"> ¿qué disculpa tendré de un desacierto?</l>
-<pb type="folio" n="[Fol. 10r]"/>
+<pb type="folio" n="[Fol. 11r]"/>
 <l>Luego, mejor acierto en informarme;</l>
-<l n="490">primero que firmemos el concierto </l>
+<l n="485">primero que firmemos el concierto </l>
 <l met="stanza"> tengo de andar su calle noche y día,</l>
 <l>como nave en la mar mirando el puerto,</l>
 <l>y así ella fuere para prenda mía,</l>
-<l met="stanza"><app><rdg wit="A0" varSeq="0" hand="authorial">podré</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>podré</del></lem></app> después sólo de mí tendré la queja.</l>
+<l met="stanza"><app><rdg wit="A0" varSeq="0" hand="authorial">podré</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>podré</del>después sólo de mí tendré la queja.</lem></app> </l>
 <l n="495">Preguntaré su misma celosía, </l>
 <l>consultaré los hierros de su reja,</l>
 <l met="stanza"> hablaré con sus puertas y ventanas</l>
@@ -1509,23 +1444,23 @@
 <speaker>An</speaker>
 <lg>    
 <l>Celosas prevenciones no son vanas,</l>
-<l met="stanza" n="500"> Leonardo, adonde no hay conocimiento, </l>
+<l met="stanza" n="495"> Leonardo, adonde no hay conocimiento, </l>
 <l>y más en opiniones cortesanas.</l>
 <l>Hoy hay cañas y toros: un asiento</l>
 <l met="stanza"> en la palza tendréis, que es en palacio,</l>
 <l>y les falta a los grandes aposento,</l>
-<l n="505">veréis cifrado el mundo en breve espacio, </l>
+<l n="500">veréis cifrado el mundo en breve espacio, </l>
 <l met="stanza"> como en sortija suele generosas</l>
 <l>armas, el amatiste o el tupacio.</l>
 <l>Veréis mil caballeros, mil hermosas</l>
 <l met="stanza"> damas, y que por ellas los rejones</l>
-<l n="510">ya enprenden suerte diestra, ya dichosas; </l>
+<l n="505">ya enprenden suerte diestra, ya dichosas; </l>
 <l>veréis aquel gran Rey, que mil naciones</l>
 <l met="stanza"> tiemblan, respetan, aman y obedecen</l>
 <l>políticas y bárbaras regiones,</l>
-<pb type="folio" n="[Fol. 10v]"/>
+<pb type="folio" n="[Fol. 11v]"/>
 <l>y por dicha veréis, si lo merecen</l>
-<l met="stanza" n="515"> vuestros ojos, la dama vuestra esposa. </l>
+<l met="stanza" n="510"> vuestros ojos, la dama vuestra esposa. </l>
 </lg>
 </sp>
 <sp>
@@ -1547,7 +1482,7 @@
 <sp>
 <speaker>Ger</speaker>
 <lg>    
-<l n="520">¿Qué mal puedes tú tener </l>
+<l n="515">¿Qué mal puedes tú tener </l>
 <l>para guardarle de mí?</l>
 </lg>
 </sp>
@@ -1557,28 +1492,28 @@
 <l>No sé, alguna cosa vi</l>
 <l met="stanza"> que me ha quitado el sosiego,</l>
 <l>pues cuando a pensarla llego</l>
-<l n="525">me corro <app><rdg wit="A0" varSeq="0" hand="authorial">de</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>de</del></lem></app> en ver que se atreve </l>
+<l n="520">me corro <app><rdg wit="A0" varSeq="0" hand="authorial">de</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>de</del></lem></app> en ver que se atreve </l>
 <l>a todo un mundo de nieve</l>
 <l>tan poca parte de fuego.</l>
 <l met="stanza"> Yo no debo de ser yo,</l>
 <l>hablemos en otra cosa;</l>
-<l n="530">pero no que es tan gustosa </l>
+<l n="525">pero no que es tan gustosa </l>
 <l>que agradecer me mandó</l>
 <l>el veneno que me dio,</l>
 <l met="stanza"> pero ¿de qué ha de servir</l>
 <l>el hablar y repetir</l>
-<l n="535">lo que ya no se ha de ver? </l>
+<l n="530">lo que ya no se ha de ver? </l>
 <l>Mas tampoco puede ser</l>
 <l>pensar, callar y vivir.</l>
 <l met="stanza"> Pienso en lo que estoy callando,</l>
-<pb type="folio" n="[Fol. 11r]"/>
+<pb type="folio" n="[Fol. 12r]"/>
 <l>callo lo que estoy sintiendo,</l>
-<l n="540">siento lo que estoy sufriendo, </l>
+<l n="535">siento lo que estoy sufriendo, </l>
 <l>sufro lo que estoy pensando;</l>
 <l>y con pensar que dejando</l>
 <l met="stanza"> de pensar podré callar,</l>
 <l>me dan más ansias de hablar,</l>
-<l n="545">y es el rigor tan intenso </l>
+<l n="540">y es el rigor tan intenso </l>
 <l>que, pensando en que no pienso,</l>
 <l>nunca acabo de pensar.</l>
 </lg>
@@ -1588,7 +1523,7 @@
 <lg>    
 <l met="stanza"> No me ha parecido a mí</l>
 <l>enfermedad de mujer</l>
-<l n="550">la que debes de tener. </l>
+<l n="545">la que debes de tener. </l>
 </lg>
 </sp>
 <sp>
@@ -1603,7 +1538,7 @@
 <l>Tal desasosiego en ti</l>
 <l met="stanza"> yo jurara que era amor,</l>
 <l>pero ¿en tan breve rigor</l>
-<l n="555" part="I">tanto mal?</l>
+<l n="550" part="I">tanto mal?</l>
 </lg>
 </sp>
 <sp>
@@ -1625,40 +1560,40 @@
 <l>querer, por querer mejor.</l>
 <l met="stanza"> Maldiga Dios —¡ay Gerarda!—</l>
 <l>quien la pólvora inventó</l>
-<l n="560">que al plomo tal fuerza dio, </l>
+<l n="555">que al plomo tal fuerza dio, </l>
 <l>al cañón y a la bombarda,</l>
 <l>antes con mano gallarda</l>
 <l met="stanza"> una flecha, un pasador</l>
 <l>tirava amor, que rigor</l>
-<l n="565">ya con arcabuces tira,</l>
-<pb type="folio" n="[Fol. 11v]"/>
+<l n="560">ya con arcabuces tira,</l>
+<pb type="folio" n="[Fol. 12v]"/>
 <l>que a penas pone la mira</l>
 <l>cuando ya mata de amor.</l>
 <l met="stanza"> ¡Qué traidor<app><rdg wit="A0" varSeq="0" hand="authorial"> para mí fue</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>fue para mí</del><add>, Gerarda, fue</add></subst></lem></app></l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">de noche</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>de noche</del><add>para mí!</add></subst></lem></app> De noche vino.</l>
-<l n="570">¿Qué <app><rdg wit="A0" varSeq="0" hand="authorial">tan?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>tan?</del></lem></app> salteador en camino </l>
+<l n="565">¿Qué <app><rdg wit="A0" varSeq="0" hand="authorial">tan?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>tan?</del></lem></app> salteador en camino </l>
 <l>hay que tan oculto esté?</l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">Vi</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>Vi</del></lem></app>Al principio me burlé</l>
 <l met="stanza"> de un hombre que a penas vía,</l>
 <l>pero no sé que tenía,</l>
-<l n="575">que tal blandura y donaire </l>
+<l n="570">que tal blandura y donaire </l>
 <l>me mataron con el aire</l>
 <l>qie el mismo fuego encendía.</l>
 <l met="stanza"> Don Filipe (que ya vengo</l>
 <l>a hablar claro y no fingir,</l>
-<l n="580">pues no le puede sufrir </l>
+<l n="575">pues no le puede sufrir </l>
 <l>el alma donde le tengo;</l>
 <l>pues te agravio si detengo</l>
 <l met="stanza"> su nombre y también le agravio</l>
 <l>porque desde el alma al labio</l>
-<l n="585">sale como todo es fuego)</l>
+<l n="580">sale como todo es fuego)</l>
 <l>causó mi desasosiego,</l>
 <l>galán gentilhmobre y sabio.</l>
 <l met="stanza"> Ha<app><rdg wit="A0" varSeq="0" hand="authorial">le?</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>le?</del><add>me</add></subst></lem></app> venido muy bien</l>
 <l>para tratar de casarme</l>
-<l n="590">nuestro padre, que es matarme </l>
+<l n="585">nuestro padre, que es matarme </l>
 <l>sin haber visto con quien.</l>
-<pb type="folio" n="[Fol. 12r]"/>
+<pb type="folio" n="[Fol. 13r]"/>
 <l>No hay remedio que me den</l>
 <l met="stanza"> mis males, si no es morir.</l>
 </lg>
@@ -1667,12 +1602,12 @@
 <speaker>Ger</speaker>
 <lg>    
 <l>Si piensas de resistir</l>
-<l n="595">verte en tanto mal, no seas </l>
+<l n="590">verte en tanto mal, no seas </l>
 <l>necia en el bien que deseas,</l>
 <l>sino procura vivir.</l>
 <l met="stanza"> Hasta agora no has ligado</l>
 <l>al matrimonio la fe;</l>
-<l n="600" part="I">háblale.</l>
+<l n="595" part="I">háblale.</l>
 </lg>
 </sp>
 <sp>
@@ -1688,7 +1623,7 @@
 <l>escríbele que <app><rdg wit="A0" varSeq="0" hand="authorial">tu? has trazado</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>tu?</del> has <del>trazado</del> <add>pensado</add></subst></lem></app></l>
 <l met="stanza"> ir con secreto a la fiesta,</l>
 <l>que te envíe un coche, que esta</l>
-<l n="605">es la mejor invención </l>
+<l n="600">es la mejor invención </l>
 <l>para que tome ocasión</l>
 <l>y te la de su respuesta.</l>
 </lg>
@@ -1698,7 +1633,7 @@
 <lg>    
 <l met="stanza"> Es notable atrevimiento</l>
 <l>para una mujer que está</l>
-<l n="610">como en las vísperas ya </l>
+<l n="605">como en las vísperas ya </l>
 <l>de este necio casamiento;</l>
 <l>y bien sé yo que tu intento</l>
 <l met="stanza"> de ver la fiesta ha nacido...</l>
@@ -1708,7 +1643,7 @@
 <speaker>Ger</speaker>
 <lg>    
 <l>Engáñaste, que no ha sido</l>
-<l n="615">más que la pena de verte. </l>
+<l n="610">más que la pena de verte. </l>
 </lg>
 </sp>
 <sp>
@@ -1716,7 +1651,7 @@
 <lg>    
 <l>Ahora bien, yo estoy de suerte</l>
 <l>que de cuanto soy me olvido.</l>
-<pb type="folio" n="[Fol. 12v]"/>
+<pb type="folio" n="[Fol. 13v]"/>
 <l met="stanza" part="I"> ¡Clara!</l>
 </lg>
 </sp>
@@ -1743,7 +1678,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>   
-<l n="620">Tú respondiste más bien. </l>
+<l n="615">Tú respondiste más bien. </l>
 </lg>
 </sp>
 <sp>
@@ -1764,7 +1699,7 @@
 <lg>    
 <l part="F">Creo</l>
 <l>que me has hurtado el deseo.</l>
-<l n="625" part="I">¿Es a don Filipe?</l>
+<l n="620" part="I">¿Es a don Filipe?</l>
 </lg>
 </sp>
 <sp>
@@ -1791,7 +1726,7 @@
 <speaker>Cla</speaker>
 <lg>    
 <l part="F">¿Cómo no?</l>
-<l n="630" part="I">Ya está puesto.</l>
+<l n="625" part="I">Ya está puesto.</l>
 </lg>
 </sp>
 <sp>
@@ -1817,7 +1752,7 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>    
-<l n="635">Que tú le puedes honrar</l>
+<l n="630">Que tú le puedes honrar</l>
 <l>y el sol se le puede dar</l>
 <l>a una principal mujer.</l>
 </lg>
@@ -1827,13 +1762,13 @@
 <lg>   
 <l met="stanza"> ¡Ay, don Filipe, que creo</l>
 <l>que me has tener en poco!</l>
-<l n="640">Mira, pensamiento loco,</l>
+<l n="635">Mira, pensamiento loco,</l>
 <l>que te vas tras el deseo.</l>
 <l>Pero tan dichoso empleo</l>
 <l met="stanza"> hace el error en que he dado</l>
 <l>disculpado, y aun honrado,</l>
-<pb type="folio" n="[Fol. 13r]"/>
-<l n="645">que no puede haber error </l>
+<pb type="folio" n="[Fol. 14r]"/>
+<l n="640">que no puede haber error </l>
 <l>en las locuras de amor,</l>
 <l>si es amor bien empleado.</l>
 </lg>
@@ -1855,7 +1790,7 @@
 <sp>
 <speaker>Marqués</speaker>
 <lg>
-<l n="650">Bravo de entrada es el viento, </l>
+<l n="645">Bravo de entrada es el viento, </l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">ci.. a su?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>ci.. a su?</del></lem></app>entre sus alas iréis.</l>
 <l met="stanza" part="I">¿Tú, <app><lem wit="A0" varSeq="0" hand="authorial">Enrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Enrique</del><add>Fadrique</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Enrique</add></subst></rdg></app>?</l>
 </lg>
@@ -1882,7 +1817,7 @@
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Mar</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Mar</del><add>Cond</add></susbt></rdg></app></speaker>
 <lg>
-<l n="655">Braveza; a envidiaros vengo. </l>
+<l n="650">Braveza; a envidiaros vengo. </l>
 <l met="stanza"> Y agora, para el rejón,</l>
 <l part="I">¿qué lleva Filipe?</l>
 </lg>
@@ -1920,7 +1855,7 @@
 <l>de aquel jaëz encarnado,</l>
 <l>nielado de plata y oro.</l>
 <l met="stanza"> No dejó en Andalucía</l>
-<l n="665">caballos el del Algaba. </l>
+<l n="660">caballos el del Algaba. </l>
 </lg>
 </sp>
 <sp>
@@ -1940,14 +1875,14 @@
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Henr</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Henr</del><add>Fadri</add></susbt></rdg></app></speaker>
 <lg>
 <l met="stanza"> Salen Asculi y Pastrana,</l>
-<pb type="folio" n="[Fol. 13v]"/>
+<pb type="folio" n="[Fol. 14v]"/>
 <l>que se va el mundo tras ellos.</l>
 </lg>
 </sp>
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="670">Quién competirá con ellos? </l>
+<l n="665">Quién competirá con ellos? </l>
 </lg>
 </sp>
 <sp>
@@ -1967,7 +1902,7 @@
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Mar</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Mar</del><add>Cond</add></susbt></rdg></app></speaker>
 <lg>
-<l n="675">Pero ¿dónde se nos queda </l>
+<l n="670">Pero ¿dónde se nos queda </l>
 <l met="stanza"> aquel Alba que amanece</l>
 <l>con tan estendidos rayos</l>
 <l>que al mismo sol dan desmayos?</l>
@@ -1982,7 +1917,7 @@
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Mar</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Mar</del><add>Cond</add></susbt></rdg></app></speaker>
 <lg>
-<l met="stanza" n="680"> Pienso que sale con él </l>
+<l met="stanza" n="675"> Pienso que sale con él </l>
 <l>el duque de Franca Vila.</l>
 </lg>
 </sp>
@@ -2000,10 +1935,10 @@
 </lg>
 </sp>
 <sp>
-<speaker><app><lem wit="A0" varSeq="0" hand="authorial">Hen</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Hen</del><add>Fdri</add></susbt></rdg></app></speaker>
+<speaker><app><lem wit="A0" varSeq="0" hand="authorial">Hen</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Hen</del><add>Fadri</add></susbt></rdg></app></speaker>
 <lg>
 <l met="stanza"> Es don Juan el mismo Marte.</l>
-<l n="685" part="I">¿Sale el de Pradas?</l>
+<l n="680" part="I">¿Sale el de Pradas?</l>
 </lg>
 </sp>
 <sp>
@@ -2014,7 +1949,7 @@
 <l>en las galas mayor parte.</l>
 <l met="stanza"> Tiene el conde de Melgar,</l>
 <l>como hijo del almirante,</l>
-<l n="690">el mundo en ombros, Atlante, </l>
+<l n="685">el mundo en ombros, Atlante, </l>
 <l>que le podrá sustentar.</l>
 <l met="stanza"> ¡Qué bizarro caballero!</l>
 </lg>
@@ -2029,8 +1964,8 @@
 <speaker>Fili</speaker>
 <lg>
 <l>Si aquella ninfa amorosa</l>
-<l n="695">por quien desde anoche muero </l>
-<pb type="folio" n="[Fol. 14r]"/>
+<l n="690">por quien desde anoche muero </l>
+<pb type="folio" n="[Fol. 15r]"/>
 <l met="stanza"> me prestara algún favor,</l>
 <l>yo sé, <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>marqués</del><add>conde</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app> lo que hiciera.</l>
 </lg>
@@ -2051,7 +1986,7 @@
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Mar</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Mar</del><add>Cond</add></susbt></rdg></app></speaker>
 <lg>
-<l met="stanza" n="700"> ¿Queréis que vaya por él? </l>
+<l met="stanza" n="695"> ¿Queréis que vaya por él? </l>
 </lg>
 </sp>
 <sp>
@@ -2083,7 +2018,7 @@
 <speaker>Fil</speaker>
 <lg>
 <l part="F">Sí,</l>
-<l n="705">que hay mucho, de ver y hablar, </l>
+<l n="700">que hay mucho, de ver y hablar, </l>
 <l>a querer y desear.</l>
 </lg>
 </sp>
@@ -2099,7 +2034,7 @@
 <lg>
 <l met="stanza"> Aquí están ya los rejones</l>
 <l>que no ha de quedar por ellos</l>
-<l n="710">todos vienen amarillos, </l>
+<l n="705">todos vienen amarillos, </l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">m</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>m</del></lem></app>que a los toros tienen miedo.</l>
 </lg>
 </sp>
@@ -2114,7 +2049,7 @@
 <speaker>Me</speaker>
 <lg>
 <l>Por los brazos yo lo juro,</l>
-<l n="715">porque son de Aquiles y Hétor.</l>
+<l n="710">porque son de Aquiles y Hétor.</l>
 <l>Llegad, Pedro, esos rejones.</l>
 </lg>
 </sp>
@@ -2134,10 +2069,10 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="720">Pedro, ¿salís vos conmigo?</l>
+<l n="715">Pedro, ¿salís vos conmigo?</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 14v]"/>
+<pb type="folio" n="[Fol. 15v]"/>
 <sp>
 <speaker>Ped</speaker>
 <lg>
@@ -2145,7 +2080,7 @@
 <l>que no habrá dado en la plaza,</l>
 <l>de vuestro rejón, el eco,</l>
 <l>cuando las piernas del toro</l>
-<l n="725">midan a palmos el suelo. </l>
+<l n="720">midan a palmos el suelo. </l>
 </lg>
 </sp>
 <sp>
@@ -2166,17 +2101,17 @@
 <l>Es Pedro un hombre muy diestro,</l>
 <l>aunque en las fiestas pasadas</l>
 <l>un torillo jarameño</l>
-<l n="730">le asió de unas calzas verdes</l>
+<l n="725">le asió de unas calzas verdes</l>
 <l><app><rdg wit="A0" varSeq="0" hand="authorial">y los aforros</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>y los aforros</del><add>hasta el aforro</add></subst></lem></app> de lienzo.</l>
 <l>Y dicen que por alzar</l>
 <l>las cuchilladas más presto,</l>
 <l>alzó la misma camisa,</l>
-<l n="735">y en las ventanas dijeron </l>
+<l n="730">y en las ventanas dijeron </l>
 <l>que era muy hombre, y que había</l>
 <l>todo su honor satisfecho.</l>
 <l>Verdad es que algunas damas</l>
 <l>que se tardó previnieron</l>
-<l n="740">en componer su negocio, </l>
+<l n="735">en componer su negocio, </l>
 <l>así estaba descompuesto.</l>
 </lg>
 </sp>
@@ -2191,14 +2126,14 @@
 <sp>
 <speaker>Me</speaker>
 <lg>
- <l n="745">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: acepto la enmienda de Montesinos, pues la lección del autógrafo <i>caçeo</i> no hace sentido y parece atribuible a un lapso de pluma de Lope.</note>?</l>
+ <l n="740">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: acepto la enmienda de Montesinos, pues la lección del autógrafo <i>caçeo</i> no hace sentido y parece atribuible a un lapso de pluma de Lope.</note>?</l>
 <stage>Clara entre</stage>
-<pb type="folio" n="[Fol. 15r]"/>
+<pb type="folio" n="[Fol. 16r]"/>
 <l>Vuesa merced sea servida,</l>
 <l>pues ya está en el aposento</l>
 <l>de aliviar la sobrevaina</l>
 <l>a los azules o negros;</l>
-<l n="750">saque de la nube el sol</l>
+<l n="745">saque de la nube el sol</l>
 <l part="I">y diga qué quiere.</l>
 </lg>
 </sp>
@@ -2214,7 +2149,7 @@
 <lg>
 <l>Llamo a don Filipe luego,</l>
 <l>pero dígame quién es,</l>
-<l n="755">que sin saberlo primero</l>
+<l n="750">que sin saberlo primero</l>
 <l>no me atreveré a llamarle.</l>
 </lg>
 </sp>
@@ -2235,7 +2170,7 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="760"><app><rdg wit="A0" varSeq="0" hand="authorial">yo s?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>yo s?</del></lem></app>¿Con quién hablabas anoche</l>
+<l n="755"><app><rdg wit="A0" varSeq="0" hand="authorial">yo s?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>yo s?</del></lem></app>¿Con quién hablabas anoche</l>
 <l>en el Prado, majadero?</l>
 </lg>
 </sp>
@@ -2250,7 +2185,7 @@
 <speaker>Cla</speaker>
 <lg>
 <l>Hermano rocín, mi ama,</l>
-<l n="765">por ausencia de su dueño,</l>
+<l n="760">por ausencia de su dueño,</l>
 <l>quiere ver aquestas fiestas.</l>
 </lg>
 </sp>
@@ -2260,7 +2195,7 @@
 <l>Voy como un huso derecho</l>
 <l>a decirlo a don Filipe.</l>
 <l>Señor, escucha, que pienso</l>
-<l n="770">que dio la sopa en la miel</l>
+<l n="765">que dio la sopa en la miel</l>
 <l>por hüir de los buñuelos.</l>
 </lg>
 </sp>
@@ -2276,7 +2211,7 @@
 <l part="F">Clarilla está aquí.</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 15v]"/>
+<pb type="folio" n="[Fol. 16v]"/>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -2293,7 +2228,7 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="775">Quedo, no más, ya te entiendo.</l>
+<l n="770">Quedo, no más, ya te entiendo.</l>
 <l part="I">Clara hermosa...</l>
 </lg>
 </sp>
@@ -2319,7 +2254,7 @@
 <speaker>Fili</speaker>
 <lg>
 <l>De cualquier suerte, agradezco</l>
-<l n="780">aquel angel la memoria.</l>
+<l n="775">aquel angel la memoria.</l>
 </lg>
 </sp>
 <sp>
@@ -2332,7 +2267,7 @@
 </sp>
 <stage>Lea</stage>
 <sp>
-<speaker>[Fili]</speaker>
+<speaker></speaker>
 <p>«Oy no viene mi padre y habemos determinado mi hermana y yo ver a v. s. tan valiente en la plaza como galán en el Prado. Si tenemos ventanas y coche, que las <app><rdg wit="A0" varSeq="0" hand="authorial">nuestras</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>nuestras</del><add>de nuestra casa</add></subst></lem></app>caen en Lavapies y en los nuestros no podemos ir donde quisiera el deseo.»</p>
 <lg>
   <l>Basta, ¡qué letra tan linda!</l>
@@ -2341,7 +2276,7 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="785">Tales manos la escribieron.</l>
+<l n="780">Tales manos la escribieron.</l>
 <l>Prometo a Vuseñoría</l>
 <l>que son de cristal los dedos.</l>
 </lg>
@@ -2351,11 +2286,11 @@
 <lg>
 <l>¡Qué bien que sabe la Clara</l>
 <l>socorrer con agua al fuego!</l>
-<l n="790">No encajara Celestina </l>
+<l n="785">No encajara Celestina </l>
 <l>mejor aquello dos versos.</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 16r]"/>
+<pb type="folio" n="[Fol. 17r]"/>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -2367,7 +2302,7 @@
 <sp>
 <speaker><app><lem wit="A0" varSeq="0" hand="authorial">Mar</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Mar</del><add>Cond</add></subst></rdg></app></speaker>
 <lg>
-<l n="795">Pedro, avisad al cochero, </l>
+<l n="790">Pedro, avisad al cochero, </l>
 <l>que yo las pondré en mis ojos.</l>
 </lg>
 </sp>
@@ -2377,7 +2312,7 @@
 <l>Clara, decid que yo quedo</l>
 <l>de tal manera ocupado</l>
 <l>con galas y caballeros</l>
-<l n="800">que no puedo responderla </l>
+<l n="795">que no puedo responderla </l>
 <l>por papel, mas que le ruego</l>
 <l>que alguna prenda me envíe,</l>
 <l>de amor digo, no de precio,</l>
@@ -2387,12 +2322,12 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="805">Yo os la traeré, y estad cierto </l>
+<l n="800">Yo os la traeré, y estad cierto </l>
 <l>que si proseguís la empresa</l>
 <l>seréis dichoso, y muy presto,</l>
 <l>porque está desde que os vio</l>
 <l>Laurencia con mil deseos,</l>
-<l n="810">con mil ansias, con mil penas,</l>
+<l n="805">con mil ansias, con mil penas,</l>
 <l>todo por volver a veros.</l>
 <l>Pero advertid que os lo digo</l>
 <l>debajo de aquel secreto</l>
@@ -2402,7 +2337,7 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="815">Aunque soy mozo, soy cuerdo.</l>
+<l n="810">Aunque soy mozo, soy cuerdo.</l>
 </lg>
 </sp>
 <sp>
@@ -2413,12 +2348,12 @@
 <l>que la podais ver y hablar.</l>
 </lg>
 </sp>
-<pb type="folio" n="[Fol. 16v]"/>
+<pb type="folio" n="[Fol. 17v]"/>
 <sp>
 <speaker>Fili</speaker>
 <lg>
 <l>Con esta sortija puedo</l>
-<l n="820">sólo serviros agora.</l>
+<l n="815">sólo serviros agora.</l>
 </lg>
 </sp>
 <sp>
@@ -2439,14 +2374,14 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="825">Si vais, como ya os espero,</l>
+<l n="820">Si vais, como ya os espero,</l>
 <l>llevaos con vos a Mendoza.</l>
 </lg>
 </sp>
 <sp>
 <speaker>Me</speaker>
 <lg>
-<l>Encajome, ya lo entiendo.</l>
+<l>Encajome, ya lo entrevo.</l>
 </lg>
 </sp>
 <sp>
@@ -2465,7 +2400,7 @@
 <speaker>Fili</speaker>
 <lg>
 <l>Vamos, <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>marqués</del><add>conde</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app>, que hoy tenemos</l>
-<l n="830"><app><lem wit="A0" varSeq="0" hand="authorial">Henrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Henrique</del><add>Fadrique</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Henrique</add></subst></rdg></app> y yo brava causa </l>
+<l n="825"><app><lem wit="A0" varSeq="0" hand="authorial">Henrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Henrique</del><add>Fadrique</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Henrique</add></subst></rdg></app> y yo brava causa </l>
 <l>de dar rejones al viento.</l>
 </lg>
 </sp>
@@ -2491,7 +2426,7 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="835" part="I">Envidioso estás.</l>
+<l n="830" part="I">Envidioso estás.</l>
 </lg>
 </sp>
 <sp>
@@ -2517,7 +2452,7 @@
 <lg>
 <l>Muy aprisa, soy dichoso,</l>
 <l>perderé si amor es juego,</l>
-<l n="840"><app><rdg wit="A0" varSeq="0" hand="authorial">que quien comienza</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>que quien comienza</del><add>que los que empiezan</add></subst></lem></app> ganando</l>
+<l n="835"><app><rdg wit="A0" varSeq="0" hand="authorial">que quien comienza</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>que quien comienza</del><add>que los que empiezan</add></subst></lem></app> ganando</l>
 <l>suelen acabar perdiendo.</l>
 </lg>
 </sp>
