@@ -296,10 +296,7 @@ title: El marqués de las Navas - edición genética digital
   cleanNote.classList.add("note-decorated");
   const span = document.createElement("span");
   span.className = "note-icon";
-  span.textContent = "*";
-  span.style.fontWeight = "bold";
-  span.style.fontSize = "1.2em";
-  span.style.color = "#FF0000";
+  span.textContent = "❋";
   span.style.cursor = "pointer";
   cleanNote.appendChild(span);
   originalNote.replaceWith(cleanNote);
