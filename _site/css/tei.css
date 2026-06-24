@@ -615,7 +615,7 @@ tei-pb::before {
 
 .note-icon {
   font-size: 0.8em;
-  color: var(--accent-icon);
+  color: #5d5649;
   font-weight: bold;
   user-select: none;
   display: inline;
