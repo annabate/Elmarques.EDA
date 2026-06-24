@@ -161,7 +161,7 @@
 <l>o has de ser tan desdichado</l>
 <l>que aun honra no has de tener;</l>
 <l n="65">que si os llegan a ofender</l>
-<l>las propia — <app><rdg wit="A0" varSeq="0" hand="authorial">a los más sabios</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>a los más sabios</del><add>como lo esperes</add></subst></lem></app></l><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note>
+<l>las propia — <app><rdg wit="A0" varSeq="0" hand="authorial">a los más sabios</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>a los más sabios</del><add>como lo esperes</add></subst></lem></app><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note></l>
 <l>aunque tan honrado eres―</l>
 <l>y a los más nobles y sabios,</l>
 <l>es por vengar los agravios</l>
@@ -265,8 +265,8 @@
 <l>por muchas cartas Leonora.</l>
 <l n="105">¡Cuánta riqueza atesora, </l>
 <l>lustre, gala y valentía!</l>
-<l>Dicen que <app><rdg wit="A0" varSeq="0" hand="authorial">sale aquel día</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>sale aquel día</del><add></add></subst></lem></app>salir porfía</l><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
-</note>
+<l>Dicen que <app><rdg wit="A0" varSeq="0" hand="authorial">sale aquel día</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>sale aquel día</del><add>salir porfía</add></subst></lem></app><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
+</note></l>
 <l>y que ha de ser el espacio</l>
 <l>de la plaza de palacio,</l>
 <l n="110">cielo de Marte aquel día. </l>
@@ -305,7 +305,7 @@
 <speaker>Fel</speaker>
 <lg>
 <l>No lo seré yo pequeño;</l>
-<l n="130"><app><rdg wit="A0" varSeq="0" hand="authorial">llévame(?)</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>llévame(?)</del></lem></app>si quieres, contigo iré,</l><note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note>
+<l n="130"><app><rdg wit="A0" varSeq="0" hand="authorial">llévame(?)</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>llévame(?)</del></lem></app>si quieres, contigo iré,<note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note></l>
 <l>donde hasta el fin no tendré</l>
 <l>gusto, descanso, ni sueño.</l>
 <l met="stanza"> Haz esto, primo, por mí,</l>
@@ -478,7 +478,7 @@
 <l>De maestresala le sirve.</l>
 </lg>
 </sp>
-<stage>Entren galanes de noche, el <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>marqués</del><add>conde</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app>, don Filipe <app><lem wit="A0" varSeq="0" hand="authorial">de Córdoba</lem><rdg wit="B" varSeq="1" hand="non-authorial"><del>de Córdoba</del></rdg></app> y don <app><lem wit="A0" varSeq="0" hand="authorial">Henrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Henrique</del><add>Fadrique</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Enrique</add></subst></rdg></app> y Mendoza, paje de espada</stage><note>Dos manos, diferenciables por el color y el grosor de la tinta, así como por la grafía, intervienen sobre el texto: una de ellas tacha y sustituye los antropónimos, mientras la otra restituye la lección primitiva. Este fenómeno se repite a lo largo de la pieza, por lo que, para evitar una sobrecarga del aparato crítico, no se comentarán los casos análogos posteriores.</note>
+<stage>Entren galanes de noche, el <app><lem wit="A0" varSeq="0" hand="authorial">marqués</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>marqués</del><add>conde</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>conde</del><add>marqués</add></subst></rdg></app>, don Filipe <app><lem wit="A0" varSeq="0" hand="authorial">de Córdoba</lem><rdg wit="B" varSeq="1" hand="non-authorial"><del>de Córdoba</del></rdg></app> y don <app><lem wit="A0" varSeq="0" hand="authorial">Henrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><susbt><del>Henrique</del><add>Fadrique</add></susbt></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Enrique</add></subst></rdg></app> y Mendoza, paje de espada<note>Dos manos, diferenciables por el color y el grosor de la tinta, así como por la grafía, intervienen sobre el texto: una de ellas tacha y sustituye los antropónimos, mientras la otra restituye la lección primitiva. Este fenómeno se repite a lo largo de la pieza, por lo que, para evitar una sobrecarga del aparato crítico, no se comentarán los casos análogos posteriores.</note></stage>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -561,7 +561,7 @@
 <l>en que al despensero cuelgan</l>
 <l n="200">que afrenta los calabreses?</l>
  <pb type="folio" n="[Fol. 6r]"/>
-<l><app><lem wit="A1" varSeq="1" hand="authorial"><del>(?)</del><add>Mayormente si es tan Roma</add></lem><rdg wit="A0" varSeq="0" hand="authorial">(?)</rdg></app></l><note>En este pasaje se documenta un proceso de génesis textual caracterizado por sucesivas intervenciones de reescritura, visibles en las tachaduras y sustituciones registradas en los vv. 190, 192 y 201. Dichas operaciones afectan a unidades léxicas que, en algunos casos, son reformuladas posteriormente, lo que apunta a una reelaboración progresiva del fragmento. El conjunto de variantes sugiere un trabajo de ajuste y expansión del material en fases distintas.</note>
+<l><app><lem wit="A1" varSeq="1" hand="authorial"><del>(?)</del><add>Mayormente si es tan Roma</add></lem><rdg wit="A0" varSeq="0" hand="authorial">(?)</rdg></app><note>En este pasaje se documenta un proceso de génesis textual caracterizado por sucesivas intervenciones de reescritura, visibles en las tachaduras y sustituciones registradas en los vv. 190, 192 y 201. Dichas operaciones afectan a unidades léxicas que, en algunos casos, son reformuladas posteriormente, lo que apunta a una reelaboración progresiva del fragmento. El conjunto de variantes sugiere un trabajo de ajuste y expansión del material en fases distintas.</note></l>
 <l>que parece que Olofernes</l>
 <l>de dos mamonas la hizo</l>
 <l>sepulturas y juanetes.</l>
@@ -586,7 +586,7 @@
 <l>aforismos por la cara,</l>
 <l>mas porque estas damas vienen</l>
 <l>de noche al Prado y <app><rdg wit="A0" varSeq="0" hand="authorial">las caras</rdg> <lem wit="A2" varSeq="1" hand="authorial"><subst><del>las caras</del> <add>de noche</add></subst></lem></app></l>
-<l n="220"><app><rdg wit="A0" varSeq="0" hand="authorial">de noche</rdg> <lem wit="A2" varSeq="1" hand="authorial"><subst><del>de noche</del> <add>las caras</add></subst></lem></app> no pueden verse;</l><note>esta intervención, junto con la que la precede, parece formar parte de una misma operación de reajuste estilístico llevada a cabo, al parecer, en un segundo momento, como sugieren el trazo ligeramente más grueso y la tinta más diluida.</note>
+<l n="220"><app><rdg wit="A0" varSeq="0" hand="authorial">de noche</rdg> <lem wit="A2" varSeq="1" hand="authorial"><subst><del>de noche</del> <add>las caras</add></subst></lem></app> no pueden verse;<note>esta intervención, junto con la que la precede, parece formar parte de una misma operación de reajuste estilístico llevada a cabo, al parecer, en un segundo momento, como sugieren el trazo ligeramente más grueso y la tinta más diluida.</note></l>
 <l>por eso habló de los talles.</l>
 </lg>
 </sp>
@@ -824,8 +824,8 @@
 <l>y con tan hermosa cara?</l>
 <l>Que aunque la noche <app><rdg wit="A0" varSeq="0" hand="authorial">la defen</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>defen</del></lem></app> escurece</l>
 <l>el cielo en que te retratas,</l>
-<l n="310">sus estrellas <app><rdg wit="A0" varSeq="0" hand="authorial">la defenden</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>la defenden</del><add>resplandecen</add></subst></lem></app>.</l><note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
-</note>
+<l n="310">sus estrellas <app><rdg wit="A0" varSeq="0" hand="authorial">la defenden</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>la defenden</del><add>resplandecen</add></subst></lem></app>.<note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
+</note></l>
 </lg>
 </sp>
 <sp>
@@ -932,7 +932,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>
-<l n="360">¿<app><rdg wit="A0" varSeq="0" hand="authorial">conciert</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>conciert</del></lem></app> Voluntades diferentes</l><note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note>
+<l n="360">¿<app><rdg wit="A0" varSeq="0" hand="authorial">conciert</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>conciert</del>Voluntades diferentes</lem></app> <note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note></l>
 <l part="I">conciertan estrellas?</l>
 </lg>
 </sp>
@@ -1176,7 +1176,7 @@
 <speaker>Fili</speaker>
 <lg>   
 <l part="F">¡Que lleguen</l>
-<l>para no <app><rdg wit="A0" varSeq="0" hand="authorial">acabarse</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>acabarse</del></lem></app> los males,</l><note>opinamos que la intervención puede deberse a un despiste del Fénix, quien copiaría el texto casi de memoria. Otra explicación, menos plausible, la atribuiría a un error métrico en la versión primitiva, lo que obligaría a suponer una lección original del tipo «para acabarse los bienes», con ruptura de la asonancia en -ee- requerida por el romance.</note>
+<l>para no <app><rdg wit="A0" varSeq="0" hand="authorial">acabarse</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>acabarse</del></lem></app> los males,<note>opinamos que la intervención puede deberse a un despiste del Fénix, quien copiaría el texto casi de memoria. Otra explicación, menos plausible, la atribuiría a un error métrico en la versión primitiva, lo que obligaría a suponer una lección original del tipo «para acabarse los bienes», con ruptura de la asonancia en -ee- requerida por el romance.</note></l>
 <l>para no durar los bienes!</l>
 </lg>
 </sp>
