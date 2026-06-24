@@ -132,8 +132,8 @@ tei-sp {
 
 tei-speaker {
   display: inline;
-  font-variant: small-caps;
   font-weight: bold;
+  font-size: 13px;
   text-align: right;
   grid-column: 1;
   grid-row: 1;
