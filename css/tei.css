@@ -949,19 +949,13 @@ body {
 }
 
 .search-highlight {
-  background-color: rgba(254, 242, 68, 0.2);
-  padding: 0 0.08em;
+  background-color: rgba(254, 242, 68, 0.596);
+  padding: 0.1em;
   border-radius: 2px;
-  text-decoration: underline;
-  text-decoration-color: rgba(214, 176, 0, 0.95);
-  text-decoration-thickness: 0.16em;
-  text-underline-offset: 0.18em;
 }
 
 .search-highlight.active-match {
-  background-color: rgba(253, 224, 71, 0.42);
   outline: 2px solid rgb(248, 227, 3);
-  outline-offset: 1px;
 }
 
 #site-footer {
