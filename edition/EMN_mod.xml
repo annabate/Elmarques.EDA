@@ -42,7 +42,7 @@
           <castItem><app><rdg wit="B" hand="non-authorial">Bernardo</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Fadrique</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Antonio</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Ludovico</rdg><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir dos manos distintas; con toda probabilidad, se trata de los autores de las compañías responsables de la puesta en escena de la pieza.</note></app></castItem>
+          <castItem><app><rdg wit="B" hand="non-authorial">Ludovico</rdg><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir en él al menos dos manos distintas, atribuibles presumiblemente a integrantes de alguna de las compañías responsables de la puesta en escena.</note></app></castItem>
         </castList>
           <pb type="folio" n="[Fol. n. n. v.]"/>
           <castItem><app><rdg wit="B" hand="non-authorial">don Juan - Jordán</rdg></app></castItem>
@@ -55,7 +55,7 @@
           <castItem><app><rdg wit="B" hand="non-authorial">lacayo - Vicente</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">don Enrique - Mateo</rdg></app></castItem>
           <castItem><app><rdg wit="B" hand="non-authorial">Bernardo - Jerónimo</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Laurencia - señora María Vitoria</rdg><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Parece tratarse de los actores que formaban parte de la compañía de Antonio de Prado, según señala M. de los Reyes Peña.</note></app></castItem>
+          <castItem><app><rdg wit="B" hand="non-authorial">Laurencia - señora María Vitoria</rdg><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Según señala Reyes Peña [1997:235] se trata, con toda probabilidad, de los integrantes de la compañía de Antonio de Prado entre 1631 y 1636</note></app></castItem>
 <div type="act" n="1">
 <pb type="folio" n="[Fol. 1r]"/>
 <head>Acto primero</head>
@@ -2126,7 +2126,7 @@
 <sp>
 <speaker>Me</speaker>
 <lg>
- <l n="740">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: acepto la enmienda de Montesinos, pues la lección del autógrafo <i>caçeo</i> no hace sentido y parece atribuible a un lapso de pluma de Lope.</note>?</l>
+ <l n="740">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: el manuscrito transmite la lección <i>caçeo</i>, difícilmente justificable en el contexto. Seguimos la enmienda de Mon, pues el parlamento de Mendoza parece reproducir, a modo de acotación implícita, el sonido con que Clara reclama su atención. El error puede atribuirse verosímilmente a un simple lapsus de pluma del Fénix..</note>?</l>
 <stage>Clara entre</stage>
 <pb type="folio" n="[Fol. 15r]"/>
 <l>Vuesa merced sea servida,</l>
