@@ -137,7 +137,7 @@
 
   <!-- Hidden search bar -->
   <div id="search-bar" class="hidden">
-    <input type="text" id="search-input" placeholder="Buscar en el texto..." />
+    <input type="text" id="search-input" placeholder="Buscar por término, frase o AND/OR/NOT" />
     <button id="search-button" title="Buscar">🔍</button>
     <button id="prev-match" title="Coincidencia anterior">⬆</button>
     <button id="next-match" title="Coincidencia siguiente">⬇</button>
@@ -2007,39 +2007,155 @@
         if (searchSuspendTimer) clearTimeout(searchSuspendTimer);
       }
 
+      function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function buildQueryPlan(query) {
+        const trimmed = query.trim();
+        if (!trimmed) return null;
+
+        const tokens = trimmed.match(/"[^"]+"|[^\s]+/g) || [];
+        const terms = [];
+        let pendingOperator = null;
+
+        tokens.forEach((token) => {
+          const upper = token.toUpperCase();
+          if (upper === "AND" || upper === "OR" || upper === "NOT") {
+            pendingOperator = upper;
+            return;
+          }
+
+          const phrase = token.startsWith('"') && token.endsWith('"');
+          const value = phrase ? token.slice(1, -1) : token;
+          if (!value) return;
+
+          terms.push({
+            value,
+            phrase,
+            operator: pendingOperator || "TERM",
+          });
+          pendingOperator = null;
+        });
+
+        if (!terms.length) return null;
+
+        return {
+          type: /\b(AND|OR|NOT)\b/i.test(trimmed) ? "boolean" : "simple",
+          terms,
+        };
+      }
+
+      function matchesQueryPlan(plan, text) {
+        if (!plan || !text) return false;
+
+        const normalized = text.toLowerCase();
+        if (plan.type === "simple") {
+          const term = plan.terms[0];
+          return normalized.includes(term.value.toLowerCase());
+        }
+
+        let result = false;
+        let pendingOperator = "AND";
+        plan.terms.forEach((term, index) => {
+          const termMatches = normalized.includes(term.value.toLowerCase());
+          const effectiveMatch = term.operator === "NOT" ? !termMatches : termMatches;
+
+          if (index === 0) {
+            result = effectiveMatch;
+          } else if (pendingOperator === "AND") {
+            result = result && effectiveMatch;
+          } else if (pendingOperator === "OR") {
+            result = result || effectiveMatch;
+          }
+
+          if (term.operator !== "TERM") {
+            pendingOperator = term.operator;
+          }
+        });
+
+        return Boolean(result);
+      }
+
+      function buildHighlightRegex(plan) {
+        if (!plan) return null;
+        const values = plan.terms
+          .map((term) => term.value)
+          .filter(Boolean)
+          .map((value) => escapeRegExp(value));
+        if (!values.length) return null;
+        return new RegExp(`(${values.join("|")})`, "gi");
+      }
+
+      function highlightBlockMatches(block, plan, scope) {
+        if (!block || !plan) return [];
+        const regex = buildHighlightRegex(plan);
+        if (!regex) return [];
+
+        const matches = [];
+        const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        while (walker.nextNode()) {
+          textNodes.push(walker.currentNode);
+        }
+
+        textNodes.forEach((textNode) => {
+          const text = textNode.textContent || "";
+          if (!regex.test(text)) {
+            regex.lastIndex = 0;
+            return;
+          }
+          regex.lastIndex = 0;
+
+          const split = text.split(regex);
+          const fragments = [];
+          for (let i = 0; i < split.length; i++) {
+            fragments.push(document.createTextNode(split[i]));
+            if (i < split.length - 1) {
+              const span = document.createElement("span");
+              span.className = "search-highlight";
+              span.textContent = split[i + 1];
+              fragments.push(span);
+              matches.push({ el: span, scope, blockIndex: block.dataset.searchBlockIndex });
+            }
+          }
+
+          if (fragments.length) {
+            const parent = textNode.parentNode;
+            fragments.forEach((fragment) => parent.insertBefore(fragment, textNode));
+            parent.removeChild(textNode);
+          }
+        });
+
+        return matches;
+      }
+
       function highlightText(container, query, results = [], scope) {
         clearHighlights(container);
         if (!query || !container) return [];
-        const regex = new RegExp(
-          query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
-          "gi",
+        const plan = buildQueryPlan(query);
+        if (!plan) return [];
+
+        const blocks = Array.from(
+          container.querySelectorAll(HIGHLIGHT_BLOCK_SEL),
         );
-
-        container.querySelectorAll("*:not(script):not(style)").forEach((node) => {
-          Array.from(node.childNodes).forEach((child) => {
-            if (child.nodeType !== 3) return;
-            const text = child.textContent || "";
-            const matches = text.match(regex);
-            if (!matches) return;
-
-            const split = text.split(regex);
-            const fragments = [];
-            for (let i = 0; i < split.length; i++) {
-              fragments.push(document.createTextNode(split[i]));
-              if (i < split.length - 1) {
-                const span = document.createElement("span");
-                span.className = "search-highlight";
-                span.textContent = matches[i];
-                fragments.push(span);
-                results.push({ el: span, scope });
-              }
-            }
-            const parent = child.parentNode;
-            fragments.forEach((f) => parent.insertBefore(f, child));
-            parent.removeChild(child);
-          });
+        blocks.forEach((block, index) => {
+          block.dataset.searchBlockIndex = String(index);
+          if (!matchesQueryPlan(plan, block.textContent || "")) return;
+          const matches = highlightBlockMatches(block, plan, scope);
+          matches.forEach((match) => results.push(match));
         });
+
         return results;
+      }
+
+      function findPairedResult(result) {
+        return searchResults.find(
+          (candidate) =>
+            candidate !== result &&
+            candidate.scope !== result.scope &&
+            candidate.blockIndex === result.blockIndex,
+        );
       }
 
       function scrollToMatch(index) {
@@ -2049,27 +2165,43 @@
         currentResultIndex = index;
 
         searchResults.forEach((r) => r.el.classList.remove("active-match"));
-        const match = searchResults[currentResultIndex].el;
-        match.classList.add("active-match");
+        const currentMatch = searchResults[currentResultIndex];
+        currentMatch.el.classList.add("active-match");
 
-        const container = match.closest(".tei-column-scroll");
-        if (!container) return;
+        const pairedMatch = findPairedResult(currentMatch);
+        if (pairedMatch) {
+          pairedMatch.el.classList.add("active-match");
+        }
+
+        const containers = [
+          currentMatch.el.closest(".tei-column-scroll"),
+          pairedMatch?.el.closest(".tei-column-scroll"),
+        ].filter(Boolean);
+
+        if (!containers.length) return;
 
         beginSearchSuspend();
-        const cRect = container.getBoundingClientRect();
-        const mRect = match.getBoundingClientRect();
-        const offsetWithin = mRect.top - cRect.top + container.scrollTop;
-
         const behavior =
           window.matchMedia &&
           window.matchMedia("(prefers-reduced-motion: reduce)").matches
             ? "auto"
             : "smooth";
 
-        container.scrollTo({ top: Math.max(offsetWithin - 40, 0), behavior });
+        containers.forEach((container) => {
+          const cRect = container.getBoundingClientRect();
+          const targetMatch =
+            container === currentMatch.el.closest(".tei-column-scroll")
+              ? currentMatch.el
+              : pairedMatch?.el;
+          if (!targetMatch) return;
+          const tRect = targetMatch.getBoundingClientRect();
+          const offsetWithin = tRect.top - cRect.top + container.scrollTop;
+          container.scrollTo({ top: Math.max(offsetWithin - 40, 0), behavior });
+        });
 
-        if (typeof match.focus === "function")
-          match.focus({ preventScroll: true });
+        if (typeof currentMatch.el.focus === "function") {
+          currentMatch.el.focus({ preventScroll: true });
+        }
         endSearchSuspendSoon();
       }
 
@@ -2112,9 +2244,31 @@
         .getElementById("search-scope")
         .addEventListener("change", runSearch);
 
-      document.getElementById("search-input").addEventListener("input", () => {
-        if (document.getElementById("search-input").value.trim() === "") {
+      const searchInput = document.getElementById("search-input");
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim();
+        if (!query) {
           clearAllSearch();
+          return;
+        }
+        runSearch();
+      });
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          runSearch();
+        }
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          if (searchResults.length) {
+            scrollToMatch(currentResultIndex + 1);
+          }
+        }
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          if (searchResults.length) {
+            scrollToMatch(currentResultIndex - 1);
+          }
         }
       });
 
