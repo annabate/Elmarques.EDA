@@ -624,11 +624,11 @@ tei-pb::before {
 
 
 .floating-note {
-  position: absolute;
+  position: fixed;
   background-color: #ffffff;
   border: 1px solid #c1c1c1;
   box-shadow: 2px 2px 5px rgba(161, 161, 161, 0.3);
-  padding: 1em;
+  padding: 0.8em 0.9em 0.9em;
   max-width: 300px;
   min-width: 220px;
   z-index: 9999;
@@ -638,8 +638,48 @@ tei-pb::before {
   line-height: 1.4;
   border-radius: 8px;
   overflow: auto;
-  bottom: auto;
-  right: auto;
+  cursor: grab;
+  touch-action: none;
+}
+
+.floating-note.dragging {
+  cursor: grabbing;
+}
+
+.floating-note__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25em;
+  margin-bottom: 0.4em;
+}
+
+.pin-note,
+.close-note {
+  border: none;
+  background: transparent;
+  font-size: 0.9em;
+  cursor: pointer;
+  color: #444;
+  padding: 0.1em;
+  line-height: 1;
+}
+
+.pin-note:hover,
+.close-note:hover {
+  color: #000;
+}
+
+.floating-note.pinned {
+  border-color: #bca689;
+  box-shadow: 0 0 0 1px rgba(188, 166, 137, 0.25), 2px 2px 6px rgba(161, 161, 161, 0.3);
+}
+
+.floating-note.pinned .pin-note {
+  color: #8a5a1b;
+}
+
+.floating-note__body {
+  padding-top: 0.1em;
 }
 
 .tei-column {

@@ -354,25 +354,65 @@
   const content = note.getAttribute("data-note");
   note.addEventListener("click", (e) => {
   e.stopPropagation();
-  document.querySelectorAll(".floating-note").forEach((n) => n.remove());
+  document
+  .querySelectorAll(".floating-note:not(.pinned)")
+  .forEach((n) => n.remove());
   const rect = e.target.getBoundingClientRect();
   const floating = document.createElement("div");
   floating.className = "floating-note";
   floating.innerHTML = `
-          <div style="position: relative; padding-right: 1.2em;">
-            <button class="close-note" style="position:absolute;top:.1em;right:.1em;border:none;background:none;font-size:.8em;cursor:pointer;color:#444;">✖</button>
-            <div style="padding-top:1.1em;">${content}</div>
-          </div>`;
+          <div class="floating-note__controls">
+            <button class="pin-note" type="button" title="Pin note" aria-label="Pin note" aria-pressed="false">📌</button>
+            <button class="close-note" type="button" title="Close note" aria-label="Close note">✕</button>
+          </div>
+          <div class="floating-note__body">${content}</div>`;
   document.body.appendChild(floating);
-  floating.style.left = `${rect.right + 10 + window.scrollX}px`;
-  floating.style.top = `${rect.top + window.scrollY}px`;
-  floating
-  .querySelector(".close-note")
-  .addEventListener("click", () => floating.remove());
+  const maxLeft = Math.max(12, window.innerWidth - 320);
+  const maxTop = Math.max(12, window.innerHeight - 220);
+  floating.style.left = `${Math.min(Math.max(12, rect.right + 10), maxLeft)}px`;
+  floating.style.top = `${Math.min(Math.max(12, rect.top), maxTop)}px`;
+  const pinBtn = floating.querySelector(".pin-note");
+  const closeBtn = floating.querySelector(".close-note");
+  pinBtn.addEventListener("click", (ev) => {
+  ev.stopPropagation();
+  const isPinned = floating.classList.toggle("pinned");
+  pinBtn.setAttribute("aria-pressed", isPinned ? "true" : "false");
+  pinBtn.title = isPinned ? "Unpin note" : "Pin note";
+  pinBtn.textContent = isPinned ? "📍" : "📌";
+  });
+  closeBtn.addEventListener("click", (ev) => {
+  ev.stopPropagation();
+  floating.remove();
+  });
+  floating.addEventListener("pointerdown", (ev) => {
+  if (ev.target.closest(".floating-note__controls")) {
+  return;
+  }
+  ev.preventDefault();
+  floating.classList.add("dragging");
+  const startX = ev.clientX;
+  const startY = ev.clientY;
+  const startLeft = parseFloat(floating.style.left || "0");
+  const startTop = parseFloat(floating.style.top || "0");
+  const handleMove = (moveEvent) => {
+  floating.style.left = `${Math.min(Math.max(12, startLeft + moveEvent.clientX - startX), Math.max(12, window.innerWidth - 320))}px`;
+  floating.style.top = `${Math.min(Math.max(12, startTop + moveEvent.clientY - startY), Math.max(12, window.innerHeight - 220))}px`;
+  };
+  const handleUp = () => {
+  floating.classList.remove("dragging");
+  window.removeEventListener("pointermove", handleMove);
+  window.removeEventListener("pointerup", handleUp);
+  };
+  window.addEventListener("pointermove", handleMove);
+  window.addEventListener("pointerup", handleUp);
   });
   });
-  document.addEventListener("click", () => {
-  document.querySelectorAll(".floating-note").forEach((n) => n.remove());
+  });
+  document.addEventListener("click", (e) => {
+  if (e.target.closest(".floating-note")) {
+  return;
+  }
+  document.querySelectorAll(".floating-note:not(.pinned)").forEach((n) => n.remove());
   });
   }
   function updateLayoutClasses() {
