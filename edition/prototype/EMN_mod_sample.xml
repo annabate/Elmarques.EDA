@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>El marqués de las Navas — prototipo di codifica genetica</title>
+        <author>Lope de Vega</author>
+        <editor>Anna Abate</editor>
+      </titleStmt>
+      <publicationStmt>
+        <p>Prototipo di lavoro non destinato alla pubblicazione.</p>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            <settlement>Melbury Sampford</settlement>
+            <repository>Melbury House</repository>
+          </msIdentifier>
+          <msContents>
+            <msItem>
+              <title>El marqués de las Navas</title>
+            </msItem>
+          </msContents>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+
+    <encodingDesc>
+      <classDecl>
+        <taxonomy xml:id="genetic-layers">
+          <category xml:id="layer-A0">
+            <catDesc>Prima stesura autografa.</catDesc>
+          </category>
+          <category xml:id="layer-A1">
+            <catDesc>Lezione introdotta da una correzione immediata nel corso della prima stesura.</catDesc>
+          </category>
+          <category xml:id="layer-A2">
+            <catDesc>Lezione introdotta durante una revisione autoriale successiva.</catDesc>
+          </category>
+          <category xml:id="layer-B">
+            <catDesc>Lezione introdotta da una mano non autografa.</catDesc>
+          </category>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+
+    <profileDesc>
+      <handNotes>
+        <handNote xml:id="Lope" scope="major" scribe="author">Mano autografa di Lope de Vega.</handNote>
+        <handNote xml:id="hB1" scope="minor">Prima mano non autografa individuata.</handNote>
+        <handNote xml:id="hB2" scope="minor">Seconda mano non autografa individuata.</handNote>
+      </handNotes>
+      <creation>
+        <listChange ordered="true">
+          <change xml:id="stage-A0">Prima stesura autografa.</change>
+          <change xml:id="stage-A2">Revisione autoriale successiva.</change>
+          <listChange xml:id="stage-B" ordered="false">
+            <change xml:id="stage-B1">Campagna di interventi della prima mano non autografa.</change>
+            <change xml:id="stage-B2">Campagna di interventi della seconda mano non autografa.</change>
+          </listChange>
+        </listChange>
+      </creation>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body change="#stage-A0">
+      <div type="act" n="1">
+        <pb type="folio" n="[Fol. 1r]"/>
+        <head>Acto primero</head>
+        <stage>Leonardo y Feliciana</stage>
+
+        <sp>
+          <speaker>
+            <mod xml:id="g0001" type="subst" hand="#Lope" instant="true" ana="#layer-A1">
+              <del ana="#layer-A0">Leo</del>
+              <add ana="#layer-A1">Feli</add>
+            </mod>
+          </speaker>
+          <milestone unit="stanza" type="décimas"/>
+          <lg>
+            <l met="stanza">Al mismo Nerón te igualas.<note>Por un lapso de pluma, Lope atribuye inicialmente este verso a Leonardo y corrige inmediatamente la atribución.</note></l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Leo</speaker>
+          <lg>
+            <l>Mira que es gran necedad</l>
+            <l>detener la voluntad,</l>
+            <l>porque la pintan con alas.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Feli</speaker>
+          <lg>
+            <l n="5">Tus obras siempre tan <mod xml:id="g0005" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">m</del></mod> malas</l>
+            <l><mod xml:id="g0006" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">para mi</del></mod>a quien las debes tan buenas.</l>
+            <l>Leonardo, a mi fin ordenas</l>
+            <l>de que te vengo a deber</l>
+            <l>quererle agora poner</l>
+            <l n="10">a tantas injustas penas.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>
+            <mod xml:id="g0011" type="subst" hand="#hB1" change="#stage-B1" ana="#layer-B">
+              <del ana="#layer-A0">Feli</del>
+              <add ana="#layer-B">Leo</add>
+            </mod>
+          </speaker>
+          <lg met="stanza">
+            <l>¡Suéltame la capa! ¡Suelta!</l>
+            <l>Suelta en paz, que una porfía</l>
+            <l>convierte en descortesía</l>
+            <l>determinación resuelta.<note>La atribuzione del parlamento è corretta da una mano non autografa.</note></l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Feli</speaker>
+          <lg>
+            <l n="15">Y ¿cuándo <mod xml:id="g0015" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">ser</del></mod>darás la vuelta?</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Leo</speaker>
+          <lg>
+            <l>Luego que este pleito acabe,</l>
+            <l>que en pleitos —y más, tan grave―</l>
+            <l>por más que abreviarle importe,</l>
+            <l>el amanac de la corte</l>
+            <l n="20">ningún pronóstico sabe.</l>
+            <pb type="folio" n="[Fol. 1v]"/>
+            <l met="stanza">A Madrid voy; que no voy</l>
+            <l>a Manila o a la China</l>
+            <l>en cuya mar filipina</l>
+            <l>nuevo navegante soy.</l>
+            <l n="25">Presto sabrás que allí estoy,</l>
+            <l>si otra jornada recelas.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Feli</speaker>
+          <lg>
+            <l>Ya ¿de qué sirven cautelas?</l>
+            <l><mod xml:id="g0028" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">si ha hecho</del></mod>Cuando mi desconfianza</l>
+            <l>llega a mirar tu mudanza</l>
+            <l n="30">con alas y con espuelas.</l>
+            <l met="stanza">A pleitos dices que vas,</l>
+            <l>bien dices, quiero ayudarte,</l>
+            <l>pues vas, Leonardo, a casarte</l>
+            <l>o por ventura lo estás.</l>
+            <l n="35">No hay otro pleito que más</l>
+            <l><mod xml:id="g0036" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">que aun</del></mod>procure un hombre vencer.</l>
+            <l>Muchos buenos suele haber</l>
+            <l>mas ninguno oí decir</l>
+            <l>que desease morir</l>
+            <l n="40">primero que su mujer.</l>
+            <l met="stanza">Buen pleito llevas: procura</l>
+            <l>vencer tan gran diferencia,</l>
+            <l>que ha de tener la sentencia</l>
+            <l>en la misma sepoltura;</l>
+            <l n="45">pero yo quedo segura</l>
+            <l>que la palabra que aquí</l>
+            <pb type="folio" n="[Fol. 2r]"/>
+            <l>me quiebras, Leonardo, ansí</l>
+            <l>—sin que el ser noble me valga―</l>
+            <l>hará que muy presto salga</l>
+            <l n="50">la sentencia contra ti.</l>
+            <l met="stanza">Engañásteme, villano,</l>
+            <l>siendo tú, para mi mal,</l>
+            <l>el primero desleal,</l>
+            <l>que ha nacido toledano.</l>
+            <l n="55">El juramento y la mano,</l>
+            <l>que de Dios en la presencia</l>
+            <l>me diste, me da paciencia,</l>
+            <l>porque es razón que presuma</l>
+            <l>que le estás dando la pluma</l>
+            <l n="60">para firmar la sentencia.</l>
+            <l met="stanza">No lograrás la mujer</l>
+            <l>de quien vas enamorado</l>
+            <l>o has de ser tan desdichado</l>
+            <l>que aun honra no has de tener;</l>
+            <l n="65">que si os llegan a ofender</l>
+            <l>las propia — <mod xml:id="g0065" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">a los más sabios</del><add ana="#layer-A1">como lo esperes</add></mod><note>Correzione immediata nel corso della scrittura.</note></l>
+            <l>aunque tan honrado eres―</l>
+            <l>y a los más nobles y sabios,</l>
+            <l>es por vengar los agravios</l>
+            <l n="70">que habéis hecho a otras mujeres.</l>
+            <l met="stanza">Yo te he servido y de ti</l>
+            <l>llevo tan buen galardón</l>
+            <l>que espero que una traición</l>
+            <pb type="folio" n="[Fol. 2v]"/>
+            <l>te infame y me vengue a mí.</l>
+            <l n="75">Vete, pues ya te perdí,</l>
+            <l>y tan ingrato conoces</l>
+            <l part="I">mi verdad.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Leo</speaker>
+          <lg>
+            <l part="F">No me des voces,</l>
+            <l>que aun sola tu voz me enfada.</l>
+          </lg>
+        </sp>
+
+        <stage>Vase.</stage>
+        <sp>
+          <speaker>Feli</speaker>
+          <lg>
+            <l>¡Mueras de mala estocada</l>
+            <l n="80">antes que sus brazos goces!</l>
+            <l met="stanza">¡Plega al cielo —pues el cielo</l>
+            <l>fue de tu maldad testigo―</l>
+            <l>que a sus puertas, enemigo,</l>
+            <l>bañes <mod xml:id="g0084" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">d</del></mod>con tu sangre el suelo!</l>
+          </lg>
+        </sp>
+
+        <stage>Bernardo entre.</stage>
+        <sp>
+          <speaker>Be</speaker>
+          <lg>
+            <l n="85" part="I">¿Qué es esto, prima?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Fe</speaker>
+          <lg>
+            <l part="F">Que apelo</l>
+            <l>de un casamiento traidor</l>
+            <l>al cielo, alcalde mayor.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Be</speaker>
+          <lg>
+            <l>¿Has reñido con Leonardo?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Fe</speaker>
+          <lg>
+            <l>Nací con honra, Bernardo,</l>
+            <l n="90">que ya no trato de amor.</l>
+            <l met="stanza">De aquí se parte a casar</l>
+            <l part="I">a Madrid.</l>
+          </lg>
+        </sp>
+        <sp><speaker>Be</speaker><lg><l part="M">¿Qué dices?</l></lg></sp>
+        <sp><speaker>Fe</speaker><lg><l part="F">Digo</l><l>que me lo ha dicho el amigo</l><l>de quien más suele fïar.</l></lg></sp>
+        <sp><speaker>Be</speaker><lg><l n="95">¡Buen pago te viene a dar</l><l>tras tantas obligaciones!</l></lg></sp>
+        <sp><speaker>Fe</speaker><lg><l>En llegando a sin razones</l><l>se pierde todo el amor;</l><l>tú verás como al traidor</l><l n="100">le alcanzan mis maldiciones.</l></lg></sp>
+
+        <pb type="folio" n="[Fol. 3r]"/>
+        <sp>
+          <speaker>Be</speaker>
+          <lg>
+            <l met="stanza">Yo estoy, Feliciana, agora</l>
+            <l>para Madrid de camino,</l>
+            <l>que a sus fiestas me previno</l>
+            <l>por muchas cartas Leonora.</l>
+            <l n="105">¡Cuánta riqueza atesora,</l>
+            <l>lustre, gala y valentía!</l>
+            <l>Dicen que <mod xml:id="g0107" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">sale aquel día</del><add ana="#layer-A1">salir porfía</add></mod><note>Enmienda in itinere di natura stilistica.</note></l>
+            <l>y que ha de ser el espacio</l>
+            <l>de la plaza de palacio,</l>
+            <l n="110">cielo de Marte aquel día.</l>
+            <l met="stanza">Esta sola ocupación</l>
+            <l>poco me puede impedir</l>
+            <l>que no te pueda servir,</l>
+            <l>prima, en aquesta ocasión.</l>
+            <l n="115">Si suele la dilación</l>
+            <l>deshacer los casamientos,</l>
+            <l>ponle pleito y sus intentos</l>
+            <l>no lleguen a ejecutarse.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Feli</speaker>
+          <lg>
+            <l>Bien sé yo que es dilatarse</l>
+            <l n="120">malograr los pensamientos,</l>
+            <l met="stanza">pero tú solo te pones</l>
+            <l>a peligro de tener</l>
+            <l>disgustos, y una mujer</l>
+            <l>con lágrimas y razones</l>
+            <l n="125">ablanda los corazones</l>
+            <l>de los jüeces mejor.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Be</speaker>
+          <lg>
+            <l>El mejor procurador</l>
+            <pb type="folio" n="[Fol. 3v]"/>
+            <l>de un pleito es el mismo dueño.</l>
+          </lg>
+        </sp>
+
+        <sp>
+          <speaker>Fel</speaker>
+          <lg>
+            <l>No lo seré yo pequeño;</l>
+            <l n="130"><mod xml:id="g0130" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">llévame(?)</del></mod>si quieres, contigo iré,<note>La lettura sotto la cancellatura non può essere stabilita con sicurezza.</note></l>
+            <l>donde hasta el fin no tendré</l>
+            <l>gusto, descanso, ni sueño.</l>
+            <l met="stanza">Haz esto, primo, por mí,</l>
+            <l>por mi inocencia, por ser</l>
+            <l n="135" part="I">mujer.</l>
+          </lg>
+        </sp>
+
+        <sp><speaker>Be</speaker><lg><l part="F">Cuanto pueda hacer</l><l>haré, prima, por ti.</l></lg></sp>
+        <sp><speaker>Feli</speaker><lg><l part="I">Luego ¿voy contigo?</l></lg></sp>
+        <sp><speaker>Be</speaker><lg><l part="F">Sí.</l></lg></sp>
+        <sp>
+          <speaker>Feli</speaker>
+          <lg>
+            <l>Ya, Leonardo, tu mudanza</l>
+            <l>jüez riguroso alcanza.</l>
+            <l n="140">Mira que ofendida estoy,</l>
+            <l>y mira que mujer soy</l>
+            <l>donde es mayor la venganza.</l>
+          </lg>
+        </sp>
+
+        <stage>Don Luis y don Juan de noche.</stage>
+        <sp><speaker>Lu</speaker><milestone unit="stanza" type="romance-ée"/><lg><l part="I">Bueno está el Prado.</l></lg></sp>
+        <sp>
+          <speaker>Ju</speaker>
+          <lg>
+            <l part="F">¡Famoso!</l>
+            <l>Aunque menos gente viene</l>
+            <l n="145">como ya va refrescando.</l>
+          </lg>
+        </sp>
+        <sp><speaker>Lu</speaker><lg><l part="I">¿Qué hay de Fenis?</l></lg></sp>
+        <sp><speaker>Ju</speaker><lg><l part="F">Voló Fenis.</l></lg></sp>
+        <sp><speaker>Lu</speaker><lg><l part="I">¿Qué me decís?</l></lg></sp>
+        <sp>
+          <speaker>Ju</speaker>
+          <lg>
+            <l part="F">A otro nido,</l>
+            <l>donde dicen que miente</l>
+            <l>la fama en llamarla sóla,</l>
+            <l n="150">pues otro pájaro tiene.</l>
+          </lg>
+        </sp>
+      </div>
+    </body>
+  </text>
+</TEI>
