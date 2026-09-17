@@ -1,0 +1,110 @@
+name: Validate genetic TEI prototype
+
+on:
+  push:
+    branches:
+      - tei-genetic-model-prototype
+    paths:
+      - 'edition/prototype/**'
+      - '.github/workflows/validate-genetic-tei.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out project branch
+        uses: actions/checkout@v4
+
+      - name: Check out TEI Stylesheets 7.61.0
+        uses: actions/checkout@v4
+        with:
+          repository: TEIC/Stylesheets
+          ref: v7.61.0
+          path: .tei-xsl
+
+      - name: Install validators
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ant jing
+          python -m pip install --disable-pip-version-check lxml
+
+      - name: Compile ODD to RELAX NG
+        run: |
+          mkdir -p build/tei
+          chmod +x .tei-xsl/bin/*
+          .tei-xsl/bin/oddtorng \
+            --localsource="$PWD/.tei-xsl/source/p5subset.xml" \
+            --schema=emn-genetic \
+            edition/prototype/EMN_genetic.odd \
+            build/tei/EMN_genetic.rng
+
+      - name: Validate sample against generated RELAX NG
+        run: |
+          jing build/tei/EMN_genetic.rng edition/prototype/EMN_mod_sample.xml
+
+      - name: Extract project Schematron from ODD and validate sample
+        run: |
+          python - <<'PY'
+          from copy import deepcopy
+          from pathlib import Path
+          from lxml import etree, isoschematron
+
+          TEI = 'http://www.tei-c.org/ns/1.0'
+          SCH = 'http://purl.oclc.org/dsdl/schematron'
+          NS = {'tei': TEI, 'sch': SCH}
+
+          odd_path = Path('edition/prototype/EMN_genetic.odd')
+          xml_path = Path('edition/prototype/EMN_mod_sample.xml')
+          sch_path = Path('build/tei/EMN_genetic.sch')
+
+          odd = etree.parse(str(odd_path))
+          constraints = odd.xpath(
+              "//tei:constraintSpec[@ident='emn-genetic-rules']/tei:constraint",
+              namespaces=NS,
+          )
+          if len(constraints) != 1:
+              raise SystemExit('Expected exactly one emn-genetic-rules constraint block')
+
+          schema = etree.Element(f'{{{SCH}}}schema', nsmap={None: SCH})
+          schema.set('queryBinding', 'xslt')
+          etree.SubElement(schema, f'{{{SCH}}}ns', prefix='tei', uri=TEI)
+          pattern = etree.SubElement(schema, f'{{{SCH}}}pattern', id='emn-genetic-rules')
+
+          rules = constraints[0].xpath('./sch:rule', namespaces=NS)
+          if not rules:
+              raise SystemExit('No Schematron rules found in the ODD')
+          for rule in rules:
+              pattern.append(deepcopy(rule))
+
+          sch_tree = etree.ElementTree(schema)
+          sch_tree.write(
+              str(sch_path),
+              encoding='UTF-8',
+              xml_declaration=True,
+              pretty_print=True,
+          )
+
+          validator = isoschematron.Schematron(sch_tree, store_report=True)
+          document = etree.parse(str(xml_path))
+          valid = validator.validate(document)
+          if not valid:
+              report = validator.validation_report
+              messages = report.xpath(
+                  '//*[local-name()="failed-assert" or local-name()="successful-report"]/*[local-name()="text"]/text()'
+              )
+              for message in messages:
+                  print(message.strip())
+              raise SystemExit('Project Schematron validation failed')
+
+          print(f'Schematron OK: {len(rules)} project rules evaluated.')
+          PY
+
+      - name: Upload generated schemas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: emn-genetic-validation-schemas
+          path: build/tei/
+          if-no-files-found: warn
