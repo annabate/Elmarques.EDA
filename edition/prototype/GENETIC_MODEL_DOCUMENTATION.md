@@ -1,38 +1,38 @@
-# Documentazione del modello di codifica genetica di *El marqués de las Navas*
+# Documentación del modelo de codificación genética de *El marqués de las Navas*
 
-**Progetto:** *El marqués de las Navas. Estudio y edición en el entorno digital*  
-**Responsabile scientifica:** Anna Abate  
-**Stato del documento:** documentazione metodologica di lavoro  
-**Versione TEI di riferimento:** TEI P5 4.12.0  
-**Branch di sviluppo:** `tei-genetic-model-prototype`
-
----
-
-## 1. Scopo di questo documento
-
-Questo documento ricostruisce in modo unitario il percorso che ha portato dalla prima codifica genetica di *El marqués de las Navas* al nuovo modello TEI attualmente in fase di sperimentazione e validazione.
-
-L'obiettivo non è soltanto descrivere **come** è stato modificato il file XML, ma soprattutto spiegare **perché** sono state prese determinate decisioni. La codifica genetica non è infatti un puro problema tecnico: ogni scelta XML implica una particolare interpretazione del manoscritto, della successione degli interventi e della relazione tra testo, autore, mani successive e stati documentari.
-
-La documentazione è pensata per essere leggibile a più livelli:
-
-- come introduzione al modello per chi non conosce nel dettaglio la TEI;
-- come memoria delle decisioni editoriali prese durante lo sviluppo;
-- come base per la sezione metodologica della tesi o di una futura pubblicazione;
-- come manuale di riferimento per la conversione dell'intero file genetico;
-- come ponte tra la codifica XML e la futura interfaccia web.
-
-Il principio di fondo che guida l'intero lavoro è il seguente:
-
-> **La codifica deve descrivere il fenomeno documentario nel modo più corretto possibile secondo la TEI, ma deve anche preservare tutte le informazioni necessarie per ricostruire e visualizzare separatamente gli strati genetici A0, A1, A2 e B.**
-
-Questi due obiettivi — correttezza semantica e visualizzabilità — non sono alternativi. Il nuovo modello nasce precisamente dal tentativo di tenerli insieme senza forzare la TEI in funzione dell'interfaccia.
+**Proyecto:** *El marqués de las Navas. Estudio y edición en el entorno digital*  
+**Responsable científica:** Anna Abate  
+**Estado del documento:** documentación metodológica de trabajo  
+**Versión TEI de referencia:** TEI P5 4.12.0  
+**Rama de desarrollo:** `tei-genetic-model-prototype`
 
 ---
 
-## 2. Il punto di partenza: il modello genetico iniziale
+## 1. Objetivo de este documento
 
-Il file genetico originario, `edition/EMN_mod.xml`, era stato costruito per rendere visibili nell'interfaccia diversi strati del processo di scrittura. La soluzione adottata faceva ricorso agli elementi dell'apparato critico TEI:
+Este documento reconstruye de manera unitaria el recorrido que ha llevado desde la primera codificación genética de *El marqués de las Navas* hasta el nuevo modelo TEI actualmente en fase de experimentación y validación.
+
+Su finalidad no es únicamente describir **cómo** se ha modificado el archivo XML, sino explicar sobre todo **por qué** se han tomado determinadas decisiones. La codificación genética no constituye un mero problema técnico: cada elección XML implica una interpretación concreta del manuscrito, de la sucesión de las intervenciones y de la relación entre texto, autor, manos posteriores y estados documentales.
+
+La documentación está concebida para ser legible en varios niveles:
+
+- como introducción al modelo para quien no conozca en detalle la TEI;
+- como memoria de las decisiones editoriales adoptadas durante el desarrollo;
+- como base para la sección metodológica de la tesis o de una futura publicación;
+- como manual de referencia para la conversión completa del archivo genético;
+- como puente entre la codificación XML y la futura interfaz web.
+
+El principio de fondo que guía todo el trabajo puede formularse así:
+
+> **La codificación debe describir el fenómeno documental del modo más correcto posible según la TEI, pero debe preservar al mismo tiempo toda la información necesaria para reconstruir y visualizar por separado los estratos genéticos A0, A1, A2 y B.**
+
+Estos dos objetivos —corrección semántica y visualización— no son alternativos. El nuevo modelo nace precisamente del intento de mantenerlos unidos sin forzar la TEI en función de la interfaz.
+
+---
+
+## 2. Punto de partida: el modelo genético inicial
+
+El archivo genético originario, `edition/EMN_mod.xml`, había sido construido para hacer visibles en la interfaz distintos estratos del proceso de escritura. La solución adoptada recurría a los elementos del aparato crítico TEI:
 
 ```xml
 <app>
@@ -41,7 +41,7 @@ Il file genetico originario, `edition/EMN_mod.xml`, era stato costruito per rend
 </app>
 ```
 
-oppure:
+o bien:
 
 ```xml
 <app>
@@ -55,75 +55,75 @@ oppure:
 </app>
 ```
 
-Le sigle A0, A1, A2 e B erano quindi impiegate attraverso `@wit`, come se rappresentassero testimoni differenti. L'attributo personalizzato `@varSeq` indicava inoltre l'ordine delle trasformazioni, mentre `@hand` assumeva valori liberi come:
+Las siglas A0, A1, A2 y B se utilizaban, por tanto, mediante `@wit`, como si representaran testimonios distintos. El atributo personalizado `@varSeq` indicaba además el orden de las transformaciones, mientras que `@hand` asumía valores libres como:
 
 ```xml
 hand="authorial"
 hand="non-authorial"
 ```
 
-Questa soluzione aveva una ragione pratica chiara. Consentiva di trattare ogni modifica come una successione di “letture” e rendeva relativamente semplice costruire una visualizzazione nella quale i diversi strati potessero essere evidenziati con colori differenti.
+Esta solución respondía a una necesidad práctica clara. Permitía tratar cada modificación como una sucesión de “lecturas” y facilitaba la construcción de una visualización en la que los distintos estratos pudieran destacarse mediante colores diferentes.
 
-Dal punto di vista dell'interfaccia, dunque, il modello funzionava: A0, A1, A2 e B erano facilmente riconoscibili dal codice JavaScript e trasformabili in classi o filtri.
+Desde el punto de vista de la interfaz, por tanto, el sistema resultaba eficaz: A0, A1, A2 y B eran fácilmente reconocibles por el código JavaScript y podían transformarse en clases, filtros o estados de visualización.
 
-Il problema emergeva invece sul piano **semantico e filologico**.
+El problema aparecía en el plano **semántico y filológico**.
 
 ---
 
-## 3. Perché il modello iniziale era problematico
+## 3. Por qué el modelo inicial resultaba problemático
 
-### 3.1 A0, A1, A2 e B non sono testimoni
+### 3.1 A0, A1, A2 y B no son testimonios
 
-L'attributo `@wit` appartiene al modello dell'apparato critico e serve a indicare i **testimoni** che sostengono una determinata lezione.
+El atributo `@wit` pertenece al modelo del aparato crítico y sirve para indicar los **testimonios** que sustentan una determinada lección.
 
-Nel caso di *El marqués de las Navas*, però:
+En el caso de *El marqués de las Navas*, sin embargo:
 
-- A0 non è un manoscritto;
-- A1 non è un secondo testimone;
-- A2 non è una copia alternativa;
-- B non è un testimone indipendente.
+- A0 no es un manuscrito distinto;
+- A1 no es un segundo testimonio;
+- A2 no es una copia alternativa;
+- B no es un testimonio independiente.
 
-Sono invece categorie editoriali che descrivono **strati o momenti differenti della storia dello stesso documento**.
+Son categorías editoriales que describen **estratos o momentos diferentes de la historia del mismo documento**.
 
-L'uso di `<app>`, `<lem>`, `<rdg>` e `@wit` produceva quindi una sovrapposizione tra due modelli concettualmente distinti:
+El uso de `<app>`, `<lem>`, `<rdg>` y `@wit` superponía así dos modelos conceptualmente distintos:
 
-1. **apparato critico**, che confronta lezioni trasmesse da testimoni diversi;
-2. **codifica genetico-documentaria**, che descrive modificazioni avvenute sullo stesso oggetto manoscritto.
+1. **aparato crítico**, que compara lecciones transmitidas por testimonios diferentes;
+2. **codificación genético-documental**, que describe modificaciones producidas sobre un mismo objeto manuscrito.
 
-Questa distinzione è particolarmente importante nel progetto, perché l'edizione critica e l'edizione genetico-evolutiva sono volutamente separate anche a livello di interfaccia. Il modello genetico non deve quindi simulare un apparato critico.
+Esta distinción es especialmente importante en el proyecto porque la edición crítica y la edición genético-evolutiva están deliberadamente separadas también en la interfaz. El modelo genético no debe, por tanto, simular un aparato crítico.
 
-### 3.2 Le sigle mescolavano informazioni di natura diversa
+### 3.2 Las siglas mezclaban informaciones de naturaleza distinta
 
-Nel sistema originario A0/A1/A2/B sembravano appartenere a una stessa sequenza omogenea:
+En el sistema originario A0/A1/A2/B parecían formar una secuencia homogénea:
 
 ```text
 A0 → A1 → A2 → B
 ```
 
-In realtà non descrivono esattamente la stessa cosa.
+En realidad no describen exactamente la misma clase de información.
 
-- **A0** indica la prima stesura.
-- **A1** indica gli interventi immediati prodotti durante l'atto stesso di scrittura.
-- **A2** indica una revisione autoriale differita.
-- **B** indica interventi non autografi e quindi introduce anche una diversa dimensione di responsabilità grafica.
+- **A0** indica la primera redacción.
+- **A1** identifica intervenciones inmediatas realizadas durante el propio acto de escritura.
+- **A2** identifica una revisión autorial diferida.
+- **B** identifica intervenciones no autógrafas e introduce, por tanto, una dimensión adicional de responsabilidad gráfica.
 
-A1 è quindi, almeno in prima istanza, una **modalità dell'intervento**, mentre A2 è una **campagna di revisione** e B implica anche l'identificazione di **mani diverse**.
+A1 es, en primera instancia, una **modalidad de intervención**; A2 corresponde a una **campaña de revisión**; B implica además la identificación de **manos diferentes**.
 
-La codifica iniziale appiattiva queste dimensioni sotto la sola categoria di “variante”.
+La codificación inicial tendía a reducir todas estas dimensiones a una única categoría de “variante”.
 
-### 3.3 `hand="authorial"` e `hand="non-authorial"` erano troppo generici
+### 3.3 `hand="authorial"` y `hand="non-authorial"` eran demasiado genéricos
 
-Il manoscritto presenta interventi di mani differenti. In almeno alcuni passaggi è possibile distinguere due mani non autografe, una delle quali sostituisce alcuni nomi e l'altra restituisce la lezione precedente.
+El manuscrito presenta intervenciones de manos distintas. En determinados pasajes pueden distinguirse al menos dos manos no autógrafas, una de las cuales sustituye ciertos nombres mientras otra restituye posteriormente la lección anterior.
 
-Scrivere semplicemente:
+Escribir simplemente:
 
 ```xml
 hand="non-authorial"
 ```
 
-impedisce di conservare questa informazione.
+impide conservar esa información.
 
-Nel nuovo modello le mani vengono invece dichiarate nel `teiHeader` mediante `<handNotes>` e `<handNote>`, e richiamate poi tramite puntatori:
+En el nuevo modelo las manos se declaran en el `teiHeader` mediante `<handNotes>` y `<handNote>`, y se remiten después mediante punteros:
 
 ```xml
 hand="#Lope"
@@ -131,23 +131,23 @@ hand="#hB1"
 hand="#hB2"
 ```
 
-In questo modo la responsabilità materiale dell'intervento non è più una stringa descrittiva ma una relazione esplicita con una mano documentata.
+De este modo la responsabilidad material de la intervención deja de ser una cadena descriptiva libre y pasa a constituir una relación explícita con una mano documentada.
 
-### 3.4 `@varSeq` era un attributo locale non standard
+### 3.4 `@varSeq` era un atributo local no estándar
 
-`@varSeq` era stato introdotto per conservare l'ordine delle modificazioni. La TEI mette però già a disposizione `@seq` per esprimere l'ordine relativo degli interventi trascrizionali.
+`@varSeq` se había introducido para conservar el orden de las modificaciones. La TEI ofrece, sin embargo, `@seq` para expresar el orden relativo de intervenciones transcripcionales.
 
-L'eliminazione di `@varSeq` riduce quindi la quantità di markup personalizzato e rende il modello più leggibile anche fuori dal progetto.
+La eliminación de `@varSeq` reduce así el marcado personalizado y hace el modelo más comprensible también fuera del proyecto.
 
-### 3.5 Alcuni fenomeni strutturali richiedevano elementi specifici
+### 3.5 Algunos fenómenos estructurales exigen elementos específicos
 
-Le modifiche che attraversano più versi erano rappresentate in modo non conforme, ad esempio tramite una costruzione del tipo:
+Las modificaciones que atraviesan varios versos se representaban mediante soluciones no conformes, por ejemplo:
 
 ```xml
 <delSpan from="#l_410" to="#l_415">...</delSpan>
 ```
 
-La TEI usa invece `<delSpan>` come elemento vuoto che segnala **l'inizio** della cancellazione e richiede `@spanTo` per puntare a un `<anchor>` finale:
+La TEI utiliza `<delSpan>` como elemento vacío que señala **el inicio** de la cancelación y emplea `@spanTo` para apuntar a un `<anchor>` final:
 
 ```xml
 <delSpan spanTo="#end"/>
@@ -155,47 +155,47 @@ La TEI usa invece `<delSpan>` come elemento vuoto che segnala **l'inizio** della
 <anchor xml:id="end"/>
 ```
 
-Questo caso ha mostrato in modo molto concreto la necessità di ripensare il modello a partire dalla semantica del modulo `transcr`.
+Este caso mostró de manera especialmente clara la necesidad de replantear el modelo a partir de la semántica del módulo `transcr`.
 
 ---
 
-## 4. Il cambio di prospettiva: dal “testimone” all'evento genetico
+## 4. Cambio de perspectiva: de la “lectura” al evento genético
 
-Il passaggio decisivo è stato smettere di trattare ogni trasformazione come un rapporto tra “lezioni concorrenti” e descriverla invece come un **evento avvenuto sul documento**.
+El paso decisivo consistió en dejar de tratar cada transformación como una relación entre “lecturas concurrentes” y empezar a describirla como un **evento ocurrido sobre el documento**.
 
-La domanda non è più soltanto:
+La pregunta ya no es únicamente:
 
-> Qual è la lezione A0 e qual è la lezione A1?
+> ¿Cuál es la lección A0 y cuál es la lección A1?
 
-ma:
+sino:
 
-> Che cosa è successo materialmente? Chi è intervenuto? In quale momento? Quale lezione è stata eliminata e quale è stata introdotta?
+> ¿Qué ha sucedido materialmente? ¿Quién ha intervenido? ¿En qué momento? ¿Qué lección se ha eliminado y cuál se ha introducido?
 
-Questa prospettiva porta naturalmente al modulo TEI per la **Representation of Primary Sources**, che mette a disposizione elementi e attributi specificamente pensati per cancellazioni, aggiunte, sostituzioni, mani, revisioni, modifiche estese e campagne genetiche.
+Esta perspectiva conduce naturalmente al módulo TEI dedicado a la **representación de fuentes primarias**, que ofrece elementos y atributos específicamente concebidos para cancelaciones, adiciones, sustituciones, manos, revisiones, modificaciones extensas y campañas genéticas.
 
-Il nucleo del nuovo modello è costituito da:
+El núcleo del nuevo modelo está formado por:
 
-- `<mod>`: evento di modificazione;
-- `<del>`: materiale cancellato;
-- `<add>`: materiale aggiunto;
-- `@hand`: mano responsabile;
-- `@instant`: correzione immediata o no;
-- `@change`: appartenenza a una fase/campagna;
-- `@seq`: ordine relativo di più interventi;
-- `@ana`: classificazione analitica del progetto;
-- `<listChange>` / `<change>`: descrizione delle campagne o fasi documentarie;
-- `<handNotes>` / `<handNote>`: descrizione delle mani;
-- `<addSpan>` / `<delSpan>`: interventi che attraversano confini strutturali.
+- `<mod>`: evento de modificación;
+- `<del>`: material cancelado;
+- `<add>`: material añadido;
+- `@hand`: mano responsable;
+- `@instant`: carácter inmediato o no de la corrección;
+- `@change`: pertenencia a una fase o campaña;
+- `@seq`: orden relativo entre intervenciones;
+- `@ana`: clasificación analítica propia del proyecto;
+- `<listChange>` / `<change>`: descripción de campañas o fases documentales;
+- `<handNotes>` / `<handNote>`: descripción de las manos;
+- `<addSpan>` / `<delSpan>`: intervenciones que atraviesan límites estructurales.
 
 ---
 
-## 5. La distinzione fondamentale: evento e lezione
+## 5. Distinción fundamental: evento y lección
 
-Il nuovo modello introduce una distinzione che è essenziale sia filologicamente sia per la futura visualizzazione.
+El nuevo modelo introduce una separación esencial tanto para el análisis filológico como para la futura visualización.
 
-### 5.1 Il contenitore `<mod>` descrive l'evento
+### 5.1 El contenedor `<mod>` describe el evento
 
-Per esempio:
+Por ejemplo:
 
 ```xml
 <mod xml:id="g0065"
@@ -205,33 +205,33 @@ Per esempio:
      ana="#layer-A1">
 ```
 
-dice che:
+indica que:
 
-- esiste un intervento identificabile con `xml:id="g0065"`;
-- si tratta di una sostituzione;
-- la mano è quella di Lope;
-- l'intervento è immediato;
-- nella tassonomia editoriale del progetto appartiene ad A1.
+- existe una intervención identificable mediante `xml:id="g0065"`;
+- se trata de una sustitución;
+- la mano responsable es la de Lope;
+- la intervención es inmediata;
+- dentro de la taxonomía editorial del proyecto pertenece a A1.
 
-### 5.2 `<del>` e `<add>` descrivono le lezioni coinvolte
+### 5.2 `<del>` y `<add>` describen las lecciones implicadas
 
-All'interno dello stesso evento:
+Dentro del mismo evento:
 
 ```xml
 <del ana="#layer-A0">a los más sabios</del>
 <add ana="#layer-A1">como lo esperes</add>
 ```
 
-il primo elemento dice che la lezione eliminata appartiene allo strato A0; il secondo dice che la nuova lezione viene introdotta nello strato A1.
+el primer elemento indica que la lección eliminada pertenece al estrato A0; el segundo, que la nueva lección se introduce en A1.
 
-Da qui deriva una distinzione molto utile:
+De aquí se deriva una distinción especialmente útil:
 
 ```text
-mod/@ana          = strato dell'EVENTO
-del/@ana, add/@ana = strato della LEZIONE
+mod/@ana           = estrato del EVENTO
+del/@ana, add/@ana = estrato de la LECCIÓN
 ```
 
-Questo evita un problema importante. Una revisione A2, per esempio, può cancellare una lezione che non appartiene ad A0 ma ad A1. In quel caso avremo:
+Esto evita un problema importante. Una revisión A2 puede, por ejemplo, eliminar una lección que no pertenece a A0, sino a A1. En ese caso tendremos:
 
 ```xml
 <mod ana="#layer-A2" ...>
@@ -240,43 +240,43 @@ Questo evita un problema importante. Una revisione A2, per esempio, può cancell
 </mod>
 ```
 
-L'intervento è A2, ma la lezione eliminata è A1.
+La intervención es A2, pero la lección eliminada pertenece a A1.
 
 ---
 
-## 6. Ridefinire A0, A1, A2 e B
+## 6. Redefinición de A0, A1, A2 y B
 
-### 6.1 A0: prima stesura
+### 6.1 A0: primera redacción
 
-A0 rappresenta il testo di prima stesura.
+A0 representa el texto de primera redacción.
 
-Non è necessario marcare ogni parola ordinaria con:
+No resulta necesario marcar cada palabra ordinaria con:
 
 ```xml
 ana="#layer-A0"
 ```
 
-perché questo renderebbe il file molto pesante e ridondante.
+porque ello volvería el archivo excesivamente pesado y redundante.
 
-Nel modello di progetto il `<body>` viene associato alla prima stesura:
+En el modelo del proyecto el `<body>` se asocia a la primera redacción:
 
 ```xml
 <body change="#stage-A0">
 ```
 
-Il testo non coinvolto da modificazioni appartiene quindi implicitamente alla base A0.
+El texto no afectado por modificaciones pertenece, por tanto, implícitamente a la base A0.
 
-`ana="#layer-A0"` viene usato soprattutto quando è necessario identificare esplicitamente una lezione eliminata o sostituita.
+`ana="#layer-A0"` se utiliza sobre todo cuando es necesario identificar explícitamente una lección eliminada o sustituida.
 
-### 6.2 A1: correzione immediata
+### 6.2 A1: corrección inmediata
 
-A1 è stato il punto che ha richiesto la revisione concettuale più importante.
+A1 ha sido el punto que ha requerido la revisión conceptual más importante.
 
-Le TEI distinguono le modifiche effettuate dopo la scrittura dalle cosiddette **instant corrections**, cioè correzioni prodotte immediatamente durante l'atto di scrittura. In questi casi `@instant="true"` segnala che la modifica appartiene allo stesso momento genetico del contesto di scrittura.
+Las TEI distinguen las modificaciones realizadas después de la escritura de las llamadas **instant corrections**, es decir, correcciones producidas inmediatamente durante el propio acto de escribir. En estos casos `@instant="true"` permite señalar que la modificación pertenece al mismo momento genético que su contexto de escritura.
 
-Per questa ragione A1 non viene trattato come una campagna autonoma equivalente ad A2.
+Por esta razón A1 no se trata como una campaña autónoma equivalente a A2.
 
-Un caso A1 è codificato, per esempio, così:
+Un caso A1 se codifica, por ejemplo, así:
 
 ```xml
 <mod xml:id="g0065"
@@ -289,26 +289,26 @@ Un caso A1 è codificato, per esempio, così:
 </mod>
 ```
 
-Il punto importante è che:
+Lo importante es distinguir dos niveles:
 
-- `instant="true"` esprime la semantica TEI;
-- `ana="#layer-A1"` conserva la categoria editoriale del progetto.
+- `instant="true"` expresa la semántica documental;
+- `ana="#layer-A1"` conserva la categoría editorial utilizada por el proyecto.
 
-A1 resta dunque perfettamente filtrabile nell'interfaccia senza essere trasformato artificialmente in un `<change>`.
+A1 sigue siendo, por tanto, perfectamente filtrable en la interfaz sin convertirse artificialmente en un `<change>` autónomo.
 
-### 6.3 A2: revisione autoriale differita
+### 6.3 A2: revisión autorial diferida
 
-A2 corrisponde invece a una vera revisione successiva, riconoscibile paleograficamente o materialmente come distinta dalla prima stesura.
+A2 corresponde a una revisión posterior, reconocible paleográfica o materialmente como distinta de la primera redacción.
 
-Per questo viene dichiarata una campagna:
+Por ello se declara una campaña:
 
 ```xml
 <change xml:id="stage-A2">
-  Campagna di revisione autoriale successiva.
+  Campaña de revisión autorial posterior.
 </change>
 ```
 
-e gli interventi vengono collegati a essa:
+y las intervenciones se vinculan a ella:
 
 ```xml
 <mod xml:id="g0219a"
@@ -321,58 +321,58 @@ e gli interventi vengono collegati a essa:
 </mod>
 ```
 
-Qui `@change` e `@ana` hanno funzioni diverse:
+Aquí `@change` y `@ana` desempeñan funciones diferentes:
 
-- `@change` collega il fenomeno alla campagna documentaria;
-- `@ana` lo collega alla classificazione editoriale A2 usata anche dall'interfaccia.
+- `@change` vincula el fenómeno a la campaña documental;
+- `@ana` lo vincula a la clasificación editorial A2 utilizada también por la interfaz.
 
-### 6.4 B: interventi non autografi
+### 6.4 B: intervenciones no autógrafas
 
-B rimane uno strato editoriale unitario, utile soprattutto sul piano della visualizzazione.
+B sigue funcionando como un estrato editorial unitario, especialmente útil en el plano de la visualización.
 
-Internamente, però, può essere articolato quando la documentazione paleografica lo consente.
+Internamente, sin embargo, puede articularse cuando la evidencia paleográfica lo permite.
 
-Per esempio:
-
-```xml
-<handNote xml:id="hB1">Prima mano non autografa.</handNote>
-<handNote xml:id="hB2">Seconda mano non autografa.</handNote>
-```
-
-e:
+Por ejemplo:
 
 ```xml
-<change xml:id="stage-B1">Prima campagna non autografa.</change>
-<change xml:id="stage-B2">Seconda campagna non autografa.</change>
+<handNote xml:id="hB1">Primera mano no autógrafa.</handNote>
+<handNote xml:id="hB2">Segunda mano no autógrafa.</handNote>
 ```
 
-Tutti questi interventi possono continuare ad avere:
+y:
+
+```xml
+<change xml:id="stage-B1">Primera campaña no autógrafa.</change>
+<change xml:id="stage-B2">Segunda campaña no autógrafa.</change>
+```
+
+Todos estos eventos pueden seguir llevando:
 
 ```xml
 ana="#layer-B"
 ```
 
-così l'interfaccia conserva un solo filtro B, mentre il TEI mantiene una granularità molto maggiore.
+de modo que la interfaz conserve un único filtro B, mientras que el TEI mantiene una granularidad mucho mayor.
 
 ---
 
 ## 7. Un caso decisivo: `marqués → conde → marqués`
 
-Uno dei passaggi più utili per mettere alla prova il modello è quello in cui due mani non autografe intervengono successivamente sullo stesso testo.
+Uno de los pasajes más útiles para poner a prueba el modelo es aquel en que dos manos no autógrafas intervienen sucesivamente sobre el mismo texto.
 
-La sequenza materiale è:
+La secuencia material es:
 
 ```text
 A0   marqués
-      ↓ prima mano non autografa
+      ↓ primera mano no autógrafa
 B1   conde
-      ↓ seconda mano non autografa
+      ↓ segunda mano no autógrafa
 B2   marqués
 ```
 
-Nel vecchio modello entrambe le trasformazioni erano semplicemente classificate come B.
+En el modelo antiguo ambas transformaciones quedaban simplemente clasificadas como B.
 
-Nel nuovo modello si conserva la successione reale annidando il secondo intervento nella lezione introdotta dal primo:
+En el nuevo modelo se conserva la sucesión real anidando la segunda intervención dentro de la lección introducida por la primera:
 
 ```xml
 <mod xml:id="gB0170-1"
@@ -402,26 +402,26 @@ Nel nuovo modello si conserva la successione reale annidando il secondo interven
 </mod>
 ```
 
-Questa costruzione permette di conservare simultaneamente:
+Esta construcción permite conservar simultáneamente:
 
-- la prima lezione autografa;
-- la nuova lezione della prima mano;
-- la seconda modifica;
-- l'ordine degli interventi;
-- la responsabilità delle due mani;
-- l'appartenenza complessiva allo strato B.
+- la primera lección autógrafa;
+- la nueva lección introducida por la primera mano;
+- la segunda modificación;
+- el orden de los eventos;
+- la responsabilidad de cada mano;
+- la pertenencia global al estrato B.
 
-È importante sottolineare che non si usa automaticamente `<restore>`. Il fatto che la seconda mano ristabilisca una parola uguale alla lezione originaria non significa necessariamente che stia “ripristinando” materialmente una cancellazione nel senso tecnico previsto dalla TEI. Se compie una nuova sostituzione sulla lezione precedente, descriverla come seconda `<mod>` è più prudente e più aderente al fenomeno osservabile.
+Es importante subrayar que no se utiliza automáticamente `<restore>`. El hecho de que la segunda mano vuelva a una palabra idéntica a la lección originaria no significa necesariamente que esté “restaurando” materialmente una cancelación en el sentido técnico previsto por la TEI. Si ejecuta una nueva sustitución sobre la lección previa, describirla como una segunda `<mod>` resulta más prudente y más fiel al fenómeno observable.
 
 ---
 
-## 8. Le modifiche che attraversano più versi
+## 8. Modificaciones que atraviesan varios versos
 
-Il manoscritto contiene casi in cui un unico intervento interessa una sequenza di versi.
+El manuscrito contiene casos en los que una única intervención afecta a una secuencia de versos.
 
-In questi casi un elemento inline come `<del>` non può semplicemente contenere tutti i versi, perché ciò produrrebbe conflitti con la struttura gerarchica del testo.
+En estas situaciones un elemento en línea como `<del>` no puede contener simplemente todos los versos, porque ello entraría en conflicto con la estructura jerárquica del texto.
 
-La soluzione TEI è usare uno span:
+La solución TEI consiste en utilizar un span:
 
 ```xml
 <l n="410">
@@ -440,42 +440,42 @@ La soluzione TEI è usare uno span:
 <anchor xml:id="gB0415-end"/>
 ```
 
-Il vantaggio è evidente:
+La ventaja es clara:
 
-- i versi restano codificati normalmente;
-- la cancellazione può attraversare più elementi;
-- il renderer può identificare l'intervallo completo;
-- non è necessario duplicare o deformare il testo.
+- los versos conservan su codificación normal;
+- la cancelación puede atravesar varios elementos;
+- el renderer puede identificar el intervalo completo;
+- no es necesario duplicar ni deformar el texto.
 
-Questo modello sostituisce le precedenti costruzioni non standard con `from/to`.
+Este modelo sustituye las anteriores construcciones no estándar basadas en `from/to`.
 
 ---
 
-## 9. Le mani nel nuovo modello
+## 9. Las manos en el nuevo modelo
 
-Le mani vengono dichiarate nel `profileDesc`:
+Las manos se declaran en el `profileDesc`:
 
 ```xml
 <handNotes>
   <handNote xml:id="Lope"
             scope="major"
             scribe="author">
-    Mano autografa di Lope de Vega.
+    Mano autógrafa de Lope de Vega.
   </handNote>
 
   <handNote xml:id="hB1"
             scope="minor">
-    Prima mano non autografa.
+    Primera mano no autógrafa.
   </handNote>
 
   <handNote xml:id="hB2"
             scope="minor">
-    Seconda mano non autografa.
+    Segunda mano no autógrafa.
   </handNote>
 </handNotes>
 ```
 
-Gli interventi richiamano poi questi identificatori:
+Las intervenciones remiten después a estos identificadores:
 
 ```xml
 hand="#Lope"
@@ -483,43 +483,43 @@ hand="#hB1"
 hand="#hB2"
 ```
 
-Questo sistema presenta diversi vantaggi:
+Este sistema ofrece varias ventajas:
 
-1. evita valori testuali incoerenti o errori di battitura;
-2. consente di aggiungere una descrizione paleografica della mano una sola volta;
-3. permette di modificare in seguito l'identificazione senza cambiare tutti gli interventi;
-4. rende possibile distinguere responsabilità grafica e campagna cronologica.
+1. evita valores textuales incoherentes y errores tipográficos;
+2. permite describir paleográficamente una mano una sola vez;
+3. hace posible modificar más adelante una identificación sin cambiar todas las intervenciones;
+4. permite distinguir responsabilidad gráfica y campaña cronológica.
 
-Un punto metodologico importante è che **mano e campagna non coincidono necessariamente**.
+Un principio metodológico importante es que **mano y campaña no coinciden necesariamente**.
 
-La stessa mano potrebbe essere intervenuta in momenti differenti. Viceversa, una stessa fase potrebbe contenere interventi di più mani. Le due informazioni vengono quindi mantenute separate.
+La misma mano podría intervenir en momentos diferentes. A la inversa, una misma fase podría incluir intervenciones de más de una mano. Por ello ambas informaciones se mantienen separadas.
 
 ---
 
-## 10. Le campagne di revisione
+## 10. Campañas de revisión
 
-Le campagne o fasi documentarie vengono descritte mediante `<listChange>`:
+Las campañas o fases documentales se describen mediante `<listChange>`:
 
 ```xml
 <creation>
   <listChange ordered="true">
 
     <change xml:id="stage-A0">
-      Prima stesura autografa.
+      Primera redacción autógrafa.
     </change>
 
     <change xml:id="stage-A2">
-      Campagna di revisione autoriale successiva.
+      Campaña de revisión autorial posterior.
     </change>
 
     <listChange xml:id="stage-B" ordered="true">
 
       <change xml:id="stage-B1">
-        Prima campagna non autografa.
+        Primera campaña no autógrafa.
       </change>
 
       <change xml:id="stage-B2">
-        Seconda campagna non autografa.
+        Segunda campaña no autógrafa.
       </change>
 
     </listChange>
@@ -528,47 +528,47 @@ Le campagne o fasi documentarie vengono descritte mediante `<listChange>`:
 </creation>
 ```
 
-L'annidamento è utile perché consente di esprimere una gerarchia senza fingere che tutti gli strati abbiano lo stesso statuto.
+El anidamiento permite expresar una jerarquía sin fingir que todos los estratos poseen el mismo estatuto.
 
-A0 e A2 appartengono alla storia autoriale. B raccoglie invece una storia post-autoriale che può a sua volta articolarsi internamente.
+A0 y A2 pertenecen a la historia autorial. B reúne, en cambio, una historia postautorial que puede articularse internamente.
 
-Questa struttura deve comunque rimanere prudente: B1 e B2 vengono utilizzati solo quando l'ordine tra le mani è sostenibile paleograficamente.
+Esta estructura debe mantenerse prudente: B1 y B2 solo se utilizan cuando el orden entre las manos puede sostenerse paleográficamente.
 
 ---
 
-## 11. Perché `@ana` è essenziale per il progetto
+## 11. Por qué `@ana` es esencial para el proyecto
 
-La TEI descrive il fenomeno documentario attraverso `@instant`, `@change`, `@hand`, `@seq` e gli elementi trascrizionali.
+La TEI describe el fenómeno documental mediante `@instant`, `@change`, `@hand`, `@seq` y los elementos transcripcionales.
 
-L'interfaccia, però, deve continuare a lavorare con le categorie editoriali A0/A1/A2/B.
+La interfaz, sin embargo, debe seguir trabajando con las categorías editoriales A0/A1/A2/B.
 
-Per evitare di deformare la TEI in funzione del frontend, il modello usa `@ana` come **ponte tra i due livelli**.
+Para evitar deformar la TEI en función del frontend, el modelo utiliza `@ana` como **puente entre ambos niveles**.
 
-Nel `teiHeader` viene definita una tassonomia:
+En el `teiHeader` se define una taxonomía:
 
 ```xml
 <taxonomy xml:id="genetic-layers">
 
   <category xml:id="layer-A0">
-    <catDesc>Prima stesura autografa.</catDesc>
+    <catDesc>Primera redacción autógrafa.</catDesc>
   </category>
 
   <category xml:id="layer-A1">
-    <catDesc>Intervento immediato.</catDesc>
+    <catDesc>Intervención inmediata.</catDesc>
   </category>
 
   <category xml:id="layer-A2">
-    <catDesc>Revisione autoriale successiva.</catDesc>
+    <catDesc>Revisión autorial posterior.</catDesc>
   </category>
 
   <category xml:id="layer-B">
-    <catDesc>Intervento non autografo.</catDesc>
+    <catDesc>Intervención no autógrafa.</catDesc>
   </category>
 
 </taxonomy>
 ```
 
-Gli elementi possono quindi essere classificati con:
+Los elementos pueden clasificarse entonces mediante:
 
 ```xml
 ana="#layer-A1"
@@ -576,41 +576,41 @@ ana="#layer-A2"
 ana="#layer-B"
 ```
 
-La visualizzazione non deve interpretare tutta la logica paleografica. Può semplicemente leggere questi identificatori.
+La visualización no tiene que interpretar toda la lógica paleográfica: puede leer directamente estos identificadores.
 
 ---
 
-## 12. Codifica e visualizzazione: due livelli separati
+## 12. Codificación y visualización: dos niveles separados
 
-La futura trasformazione TEI → HTML dovrà esportare almeno due informazioni:
+La futura transformación TEI → HTML deberá exponer al menos dos informaciones:
 
 ```html
 data-event-layer="A1"
 data-reading-layer="A0"
 ```
 
-La prima indica **a quale strato appartiene l'intervento**.
+La primera indica **a qué estrato pertenece la intervención**.
 
-La seconda indica **a quale strato appartiene quella specifica lezione**.
+La segunda indica **a qué estrato pertenece esa lección concreta**.
 
-Questo rende possibili due funzioni dell'interfaccia che devono essere mantenute distinte.
+Esto hace posibles dos funciones de interfaz que deben mantenerse claramente separadas.
 
-### 12.1 Filtrare gli interventi
+### 12.1 Filtrar las intervenciones
 
-L'utente può decidere di mostrare soltanto:
+El usuario podrá decidir mostrar únicamente:
 
 - A1;
 - A2;
 - B;
-- una combinazione di questi.
+- o una combinación de ellos.
 
-Questa modalità serve a studiare il **processo di scrittura**.
+Esta modalidad sirve para estudiar el **proceso de escritura**.
 
-I colori attualmente associati agli strati rimangono pienamente utilizzabili, ma la palette appartiene al CSS/frontend e non viene memorizzata nel TEI.
+Los colores asociados actualmente a los estratos siguen siendo plenamente utilizables, pero la paleta pertenece al CSS/frontend y no se almacena en el TEI.
 
-### 12.2 Ricostruire gli stati del testo
+### 12.2 Reconstruir los estados del texto
 
-L'utente può invece chiedere di vedere il testo ricostruito a un determinato livello:
+El usuario podrá pedir, en cambio, una reconstrucción del texto a un determinado nivel:
 
 ```text
 A0
@@ -619,61 +619,61 @@ A0 + A1 + A2
 A0 + A1 + A2 + B
 ```
 
-Questa modalità risponde a una domanda diversa:
+Esta modalidad responde a otra pregunta:
 
-> Come si legge il testo se applico tutte le modifiche fino a questo punto?
+> ¿Cómo se lee el texto si aplico todas las modificaciones hasta este punto?
 
-È importante precisare che `A0 + A1` è una **ricostruzione editoriale cumulativa**, non necessariamente uno stato materiale dell'intero manoscritto esistito simultaneamente in un preciso istante.
+Conviene precisar que `A0 + A1` es una **reconstrucción editorial acumulativa**, no necesariamente un estado material global del manuscrito que haya existido simultáneamente en un momento preciso.
 
-### 12.3 Testo autoriale finale e stato documentario finale
+### 12.3 Último estado autorial y estado documental final
 
-Il nuovo modello consente inoltre di distinguere con chiarezza:
+El nuevo modelo permite además distinguir con claridad:
 
 ```text
-ultimo stato autoriale = A0 + A1 + A2
+último estado autorial = A0 + A1 + A2
 
-stato documentario finale = A0 + A1 + A2 + B
+estado documental final = A0 + A1 + A2 + B
 ```
 
-Questa distinzione è filologicamente significativa e dovrebbe essere mantenuta anche nell'interfaccia futura.
+Esta distinción es filológicamente significativa y debería mantenerse también en la futura interfaz.
 
 ---
 
-## 13. Perché i colori non devono essere codificati nell'XML
+## 13. Por qué los colores no deben codificarse en el XML
 
-Il TEI registra concetti, non decisioni grafiche temporanee.
+El TEI debe registrar conceptos, no decisiones gráficas contingentes.
 
-Per questo il file XML contiene:
+Por ello el archivo XML contiene:
 
 ```xml
 ana="#layer-A1"
 ```
 
-e non:
+y no:
 
 ```xml
 color="..."
 ```
 
-Il colore viene assegnato nel frontend.
+El color se asigna en el frontend.
 
-Questo produce un vantaggio di sostenibilità importante: una futura modifica della grafica, del CSS o dell'intera piattaforma non richiederà di modificare i dati TEI.
+Esto aporta una ventaja importante de sostenibilidad: una futura modificación de la gráfica, del CSS o incluso de toda la plataforma de publicación no obligará a modificar los datos TEI.
 
-Lo stesso principio vale per Jekyll, Astro, CETEIcean o qualsiasi altra tecnologia di pubblicazione. Il modello documentario deve rimanere indipendente dallo strumento usato per renderlo.
+El mismo principio vale para Jekyll, Astro, CETEIcean o cualquier otra tecnología de publicación. El modelo documental debe mantenerse independiente de la herramienta empleada para representarlo.
 
 ---
 
-## 14. Il ruolo dell'ODD
+## 14. El papel del ODD
 
-Il nuovo modello non viene lasciato soltanto alla documentazione prose.
+El nuevo modelo no se limita a una documentación en prosa.
 
-È stato creato un ODD di progetto:
+Se ha creado un ODD de proyecto:
 
 ```text
 edition/prototype/EMN_genetic.odd
 ```
 
-che fissa la versione:
+que fija la versión:
 
 ```xml
 <schemaSpec
@@ -682,103 +682,103 @@ che fissa la versione:
     source="tei:4.12.0">
 ```
 
-Il riferimento esplicito a TEI P5 4.12.0 è importante per la riproducibilità. Il progetto non dipende così automaticamente da future modifiche di `tei:current`.
+La referencia explícita a TEI P5 4.12.0 es importante para la reproducibilidad. El proyecto no depende así automáticamente de futuras modificaciones de `tei:current`.
 
-Il modulo `textcrit` non è incluso nel modello genetico.
+El módulo `textcrit` no forma parte del modelo genético.
 
-Sono invece inclusi i moduli necessari per:
+Se incluyen, en cambio, los módulos necesarios para:
 
-- struttura TEI;
-- header;
-- testo;
+- estructura TEI;
+- cabecera;
+- texto;
 - teatro;
 - verso;
-- trascrizione delle fonti primarie;
-- analisi;
+- transcripción de fuentes primarias;
+- análisis;
 - linking;
-- descrizione manoscritta;
-- nomi e date.
+- descripción manuscrita;
+- nombres y fechas.
 
 ---
 
-## 15. Le regole Schematron del progetto
+## 15. Reglas Schematron del proyecto
 
-L'ODD contiene anche regole specifiche che trasformano le scelte metodologiche in controlli automatici.
+El ODD contiene también reglas específicas que convierten las decisiones metodológicas en controles automáticos.
 
-Fra le condizioni verificate:
+Entre las condiciones verificadas:
 
-- ogni `<mod>` deve avere un `xml:id`;
-- ogni `<mod>` deve dichiarare il tipo di intervento;
-- ogni `<mod>` deve avere una mano;
-- A1 deve essere autografo e avere `instant="true"`;
-- A2 deve essere autografo e puntare a `#stage-A2`;
-- B deve essere associato a una mano non autografa dichiarata;
-- `<add>` e `<del>` devono avere uno strato leggibile dall'interfaccia;
-- una sostituzione deve contenere sia `<del>` sia `<add>`;
-- una cancellazione deve contenere `<del>` ma non `<add>`;
-- un'aggiunta deve contenere `<add>` ma non `<del>`;
-- gli interventi annidati devono dichiarare `@seq`;
-- la seconda modifica di una sequenza deve avere un numero di sequenza superiore alla prima;
-- `<delSpan>` e `<addSpan>` devono avere `@spanTo`;
-- il file genetico non deve reintrodurre `<app>`, `<lem>` o `<rdg>`.
+- cada `<mod>` debe poseer un `xml:id`;
+- cada `<mod>` debe declarar el tipo de intervención;
+- cada `<mod>` debe tener una mano;
+- A1 debe ser autógrafo y llevar `instant="true"`;
+- A2 debe ser autógrafo y remitir a `#stage-A2`;
+- B debe asociarse a una mano no autógrafa declarada;
+- `<add>` y `<del>` deben declarar un estrato interpretable por la interfaz;
+- una sustitución debe contener `<del>` y `<add>`;
+- una cancelación debe contener `<del>` y no `<add>`;
+- una adición debe contener `<add>` y no `<del>`;
+- las intervenciones anidadas deben declarar `@seq`;
+- la segunda modificación de una secuencia debe tener un valor de secuencia superior al de la primera;
+- `<delSpan>` y `<addSpan>` deben declarar `@spanTo`;
+- el archivo genético no debe reintroducir `<app>`, `<lem>` o `<rdg>`.
 
-Questi controlli hanno una funzione scientifica, non soltanto informatica. Impediscono che la codifica perda progressivamente coerenza durante il lavoro sull'intero testo.
+Estos controles tienen una función científica, no solo informática. Impiden que la codificación pierda coherencia progresivamente durante el trabajo sobre el texto completo.
 
 ---
 
-## 16. La validazione eseguita
+## 16. Validación realizada
 
-Il modello è stato provato su due file campione.
+El modelo se ha probado sobre dos archivos de muestra.
 
 ### 16.1 `EMN_mod_sample.xml`
 
-Contiene un primo segmento ricodificato fino circa al v. 150 e comprende:
+Contiene un primer segmento recodificado hasta aproximadamente el v. 150 e incluye:
 
-- cancellazioni immediate;
-- sostituzioni immediate;
-- interventi non autografi;
-- casi riclassificati rispetto alla codifica iniziale.
+- cancelaciones inmediatas;
+- sustituciones inmediatas;
+- intervenciones no autógrafas;
+- casos reclasificados respecto de la codificación inicial.
 
 ### 16.2 `EMN_complex_cases.xml`
 
-È stato creato come vero e proprio **stress test** e contiene:
+Se creó como auténtico **stress test** y contiene:
 
-- un caso A2 differito;
-- una sequenza B1 → B2;
-- una cancellazione long-span attraverso più versi.
+- un caso A2 diferido;
+- una secuencia B1 → B2;
+- una cancelación de largo alcance a través de varios versos.
 
-Entrambi i file sono stati verificati contro:
+Ambos archivos se han verificado contra:
 
-1. lo schema RELAX NG generato dall'ODD;
-2. le regole Schematron specifiche del progetto.
+1. el esquema RELAX NG generado a partir del ODD;
+2. las reglas Schematron específicas del proyecto.
 
-La validazione viene eseguita automaticamente tramite GitHub Actions nel workflow:
+La validación se ejecuta automáticamente mediante GitHub Actions en el workflow:
 
 ```text
 .github/workflows/validate-genetic-tei.yml
 ```
 
-Lo schema ODD viene compilato con gli Stylesheets TEI e ogni modifica ai file del prototipo può quindi essere controllata in maniera riproducibile.
+El ODD se compila con los Stylesheets TEI y cada modificación de los archivos del prototipo puede comprobarse así de manera reproducible.
 
-Al momento gli stress test hanno superato tutte le regole attive.
+Hasta el momento los stress tests han superado todas las reglas activas.
 
 ---
 
-## 17. Un esempio di riclassificazione filologica
+## 17. Un ejemplo de reclasificación filológica
 
-La revisione del modello ha già mostrato che correggere la sintassi XML non basta: alcuni casi devono essere rivalutati anche filologicamente.
+La revisión del modelo ha mostrado ya que corregir la sintaxis XML no basta: algunos casos deben reevaluarse también filológicamente.
 
-Un esempio è la correzione del nome del parlante:
+Un ejemplo es la corrección del nombre del interlocutor:
 
 ```text
 Leo → Feli
 ```
 
-Nel file iniziale era codificata come A2.
+En el archivo inicial estaba codificada como A2.
 
-La nota editoriale, tuttavia, descrive un intervento che sembra avvenire immediatamente: Lope si sarebbe accorto dell'errore prima ancora di completare normalmente la didascalia del parlante.
+La nota editorial, sin embargo, describe una intervención que parece inmediata: Lope se habría dado cuenta del error antes incluso de completar normalmente la indicación del personaje.
 
-Se questa interpretazione viene confermata, il fenomeno è più coerente con:
+Si esta interpretación se confirma, el fenómeno resulta más coherente con:
 
 ```xml
 <mod type="subst"
@@ -790,109 +790,109 @@ Se questa interpretazione viene confermata, il fenomeno è più coerente con:
 </mod>
 ```
 
-Questo esempio mostra un principio fondamentale della migrazione:
+Este ejemplo muestra un principio fundamental de la migración:
 
-> **La conversione non può essere un semplice find/replace.**
+> **La conversión no puede reducirse a una operación automática de búsqueda y sustitución.**
 
-Ogni trasformazione automatica dovrà essere accompagnata da una revisione dei casi in cui la precedente etichetta A1/A2 potrebbe non corrispondere all'analisi materiale descritta nelle note.
+Toda transformación automatizada deberá ir acompañada de una revisión de los casos en los que la antigua etiqueta A1/A2 pueda no corresponder al análisis material descrito por las notas.
 
 ---
 
-## 18. Cosa non cambia
+## 18. Qué no cambia
 
-Il nuovo modello non modifica alcuni principi fondamentali dell'edizione.
+El nuevo modelo no modifica algunos principios fundamentales de la edición.
 
-### 18.1 L'edizione critica e quella genetica restano separate
+### 18.1 La edición crítica y la genética permanecen separadas
 
-Non si intende riunificare tutto in un unico XML.
+No se pretende reunificar todo en un único XML.
 
-La separazione fra:
+La separación entre:
 
-- edizione critica;
-- edizione genetico-evolutiva
+- edición crítica;
+- edición genético-evolutiva
 
-resta metodologicamente valida e risponde a esigenze differenti.
+sigue siendo metodológicamente válida y responde a necesidades distintas.
 
-L'edizione critica usa il modello dell'apparato e dei testimoni.
+La edición crítica utiliza el modelo del aparato y de los testimonios.
 
-L'edizione genetica descrive il manoscritto autografo e le sue trasformazioni.
+La edición genética describe el manuscrito autógrafo y sus transformaciones.
 
-### 18.2 A0/A1/A2/B restano il linguaggio editoriale dell'interfaccia
+### 18.2 A0/A1/A2/B siguen siendo el lenguaje editorial de la interfaz
 
-Il fatto che questi strati non vengano più codificati con `@wit` non significa che vengano abbandonati.
+El hecho de que estos estratos ya no se codifiquen mediante `@wit` no significa que se abandonen.
 
-Al contrario, il nuovo modello li rende più espliciti come **categorie analitiche di progetto**.
+Al contrario, el nuevo modelo los hace más explícitos como **categorías analíticas del proyecto**.
 
-### 18.3 Restano possibili filtri e colori
+### 18.3 Siguen siendo posibles los filtros y los colores
 
-La nuova codifica non riduce le possibilità dell'interfaccia attuale.
+La nueva codificación no reduce las posibilidades de la interfaz actual.
 
-Permette anzi di distinguere più precisamente:
+Permite, de hecho, distinguir con mayor precisión:
 
-- strato;
+- estrato;
 - mano;
 - fase;
-- ordine;
-- tipo di intervento;
-- lezione precedente;
-- lezione successiva.
+- orden;
+- tipo de intervención;
+- lección anterior;
+- lección posterior.
 
 ---
 
-## 19. Cosa cambia
+## 19. Qué cambia
 
-Il cambiamento può essere riassunto così.
+El cambio puede resumirse así.
 
-### Prima
+### Antes
 
 ```text
 variante = app + rdg/lem
 A0/A1/A2/B = wit
-ordine = varSeq
-mano = stringa libera
+orden = varSeq
+mano = cadena libre
 ```
 
-### Dopo
+### Después
 
 ```text
-evento documentario = mod / add / del / spans
+evento documental = mod / add / del / spans
 fase = change
-immediatezza = instant
-ordine locale = seq
+inmediatez = instant
+orden local = seq
 mano = hand → handNote
-categoria editoriale = ana → taxonomy
+categoría editorial = ana → taxonomy
 ```
 
-Il nuovo modello separa quindi informazioni che prima erano compresse nello stesso costrutto.
+El nuevo modelo separa así informaciones que antes estaban comprimidas dentro de un mismo constructo.
 
 ---
 
-## 20. Principio di prudenza interpretativa
+## 20. Principio de prudencia interpretativa
 
-L'ODD è volutamente rigoroso, ma non deve costringere a dichiarare informazioni che il manoscritto non permette realmente di conoscere.
+El ODD es deliberadamente riguroso, pero no debe obligar a declarar información que el manuscrito no permite conocer realmente.
 
-Se non è possibile stabilire con sicurezza:
+Cuando no sea posible establecer con seguridad:
 
-- se un intervento è immediato o differito;
-- se una mano è hB1 o hB2;
-- se due interventi appartengono alla stessa campagna;
-- quale sia l'ordine preciso fra due modificazioni;
+- si una intervención es inmediata o diferida;
+- si una mano es hB1 o hB2;
+- si dos intervenciones pertenecen a la misma campaña;
+- cuál es el orden preciso entre dos modificaciones;
 
-la codifica deve conservare l'incertezza.
+la codificación debe conservar la incertidumbre.
 
-La modellazione non deve trasformare un'ipotesi filologica in una falsa certezza strutturale.
+La modelización no debe transformar una hipótesis filológica en una falsa certeza estructural.
 
-Questo principio sarà particolarmente importante durante la conversione dell'intero file.
+Este principio será especialmente importante durante la conversión del archivo completo.
 
 ---
 
-## 21. Strategia prevista per la migrazione completa
+## 21. Estrategia prevista para la migración completa
 
-La conversione di `EMN_mod.xml` dovrebbe procedere in più passaggi.
+La conversión de `EMN_mod.xml` debería desarrollarse en varias fases.
 
 ### Fase 1 — inventario
 
-Individuare tutti gli attuali:
+Localizar todos los actuales:
 
 - `<app>`;
 - `<lem>`;
@@ -900,34 +900,34 @@ Individuare tutti gli attuali:
 - `<subst>`;
 - `<add>`;
 - `<del>`;
-- costruzioni long-span;
-- valori di `@wit`;
-- valori di `@hand`;
-- valori di `@varSeq`.
+- construcciones de largo alcance;
+- valores de `@wit`;
+- valores de `@hand`;
+- valores de `@varSeq`.
 
-### Fase 2 — classificazione
+### Fase 2 — clasificación
 
-Per ogni caso registrare:
+Para cada caso registrar:
 
-- fenomeno materiale;
-- lezione precedente;
-- lezione nuova;
+- fenómeno material;
+- lección anterior;
+- lección nueva;
 - A1/A2/B;
 - mano;
-- eventuale ordine locale;
-- eventuale incertezza.
+- eventual orden local;
+- eventual incertidumbre.
 
-### Fase 3 — conversione automatizzabile
+### Fase 3 — conversión automatizable
 
-Convertire i casi non ambigui mediante script.
+Convertir mediante script los casos no ambiguos.
 
-Per esempio:
+Por ejemplo:
 
 ```text
 A0 → A1 + subst
 ```
 
-può spesso essere trasformato in:
+puede transformarse con frecuencia en:
 
 ```xml
 <mod type="subst" hand="#Lope" instant="true" ana="#layer-A1">
@@ -936,35 +936,35 @@ può spesso essere trasformato in:
 </mod>
 ```
 
-### Fase 4 — revisione filologica
+### Fase 4 — revisión filológica
 
-Isolare i casi nei quali:
+Aislar los casos en los que:
 
-- la nota contraddice la vecchia classificazione;
-- il numero delle mani è incerto;
-- la cronologia è dubbia;
-- il fenomeno materiale richiede un elemento più specifico.
+- la nota contradice la clasificación antigua;
+- el número de manos es incierto;
+- la cronología es dudosa;
+- el fenómeno material exige un elemento más específico.
 
-### Fase 5 — validazione
+### Fase 5 — validación
 
-Ogni nuova sezione convertita deve superare:
+Cada nueva sección convertida deberá superar:
 
 - RELAX NG;
 - Schematron;
-- controlli sui puntatori;
-- test di ricostruzione degli stati.
+- controles de punteros;
+- pruebas de reconstrucción de estados.
 
-### Fase 6 — integrazione con il frontend
+### Fase 6 — integración con el frontend
 
-Solo quando la struttura TEI sarà stabilizzata sarà opportuno riscrivere il renderer.
+Solo cuando la estructura TEI esté estabilizada será oportuno reescribir el renderer.
 
-Questo ordine evita di costruire una nuova interfaccia intorno a un modello ancora instabile.
+Este orden evita construir una nueva interfaz alrededor de un modelo todavía inestable.
 
 ---
 
-## 22. La relazione con la futura interfaccia
+## 22. Relación con la futura interfaz
 
-La trasformazione potrà produrre markup HTML del tipo:
+La transformación podrá producir marcado HTML del tipo:
 
 ```html
 <span
@@ -976,93 +976,93 @@ La trasformazione potrà produrre markup HTML del tipo:
 </span>
 ```
 
-Da qui l'interfaccia potrà implementare senza conoscere la sintassi TEI completa:
+A partir de ahí la interfaz podrá implementar, sin conocer toda la sintaxis TEI:
 
-- filtri A1/A2/B;
-- legenda;
-- colori;
-- popup con la mano;
-- informazioni sulla fase;
-- ricostruzione A0;
-- ricostruzione A0+A1;
-- ricostruzione A0+A1+A2;
-- stato documentario con B;
-- eventualmente B1/B2 nei casi in cui l'ordine sia sicuro.
+- filtros A1/A2/B;
+- leyenda;
+- colores;
+- ventanas o paneles con información sobre la mano;
+- información sobre la fase;
+- reconstrucción A0;
+- reconstrucción A0+A1;
+- reconstrucción A0+A1+A2;
+- estado documental con B;
+- eventualmente B1/B2 cuando su orden sea seguro.
 
-In altre parole, il TEI conserva la complessità scientifica; l'HTML espone soltanto i dati necessari alla navigazione.
+En otras palabras, el TEI conserva la complejidad científica; el HTML expone únicamente los datos necesarios para la navegación.
 
 ---
 
-## 23. Sostenibilità del modello
+## 23. Sostenibilidad del modelo
 
-Il nuovo sistema risponde anche all'obiettivo generale di sostenibilità del progetto.
+El nuevo sistema responde también al objetivo general de sostenibilidad del proyecto.
 
-La distinzione tra:
+La separación entre:
 
 ```text
-dati TEI
+datos TEI
         ↓
-trasformazione
+transformación
         ↓
 HTML
         ↓
 CSS / JavaScript
 ```
 
-impedisce che la semantica dipenda da una specifica tecnologia di pubblicazione.
+impide que la semántica dependa de una tecnología específica de publicación.
 
-La scelta di:
+La decisión de:
 
-- usare elementi TEI standard;
-- limitare gli attributi personalizzati;
-- fissare una release TEI;
-- mantenere un ODD;
-- validare automaticamente;
-- separare colori e dati;
+- usar elementos TEI estándar;
+- limitar los atributos personalizados;
+- fijar una release TEI;
+- mantener un ODD;
+- validar automáticamente;
+- separar colores y datos;
 
-riduce il rischio che il progetto diventi inutilizzabile quando cambieranno framework o librerie frontend.
+reduce el riesgo de que el proyecto quede inutilizable cuando cambien los frameworks o las bibliotecas frontend.
 
 ---
 
-## 24. File prodotti durante la revisione
+## 24. Archivos producidos durante la revisión
 
-Nella branch `tei-genetic-model-prototype` sono attualmente presenti:
+En la rama `tei-genetic-model-prototype` se encuentran actualmente:
 
 ### `edition/prototype/EMN_mod_sample.xml`
 
-Primo campione di conversione.
+Primera muestra de conversión.
 
 ### `edition/prototype/EMN_complex_cases.xml`
 
-Casi complessi usati per stressare il modello.
+Casos complejos empleados para poner a prueba el modelo.
 
 ### `edition/prototype/EMN_genetic.odd`
 
-ODD di progetto con schema e regole Schematron.
+ODD del proyecto con esquema y reglas Schematron.
 
 ### `edition/prototype/GENETIC_MODEL.md`
 
-Sintesi concettuale del modello.
+Síntesis conceptual del modelo.
 
 ### `edition/prototype/GENETIC_ENCODING_GUIDE.md`
 
-Manuale normativo operativo: fenomeno → codifica → attributi → visualizzazione.
+Manual normativo operativo: fenómeno → codificación → atributos → visualización.
 
 ### `.github/workflows/validate-genetic-tei.yml`
 
-Workflow automatico di validazione.
+Workflow automático de validación.
 
 ### `edition/prototype/GENETIC_MODEL_DOCUMENTATION.md`
 
-Il presente documento, che ricostruisce la storia e le ragioni della revisione.
+El presente documento, que reconstruye la historia y las razones de la revisión.
 
 ---
 
-## 25. Riferimenti TEI principali
+## 25. Principales referencias TEI
 
-Il modello è stato sviluppato assumendo come riferimento TEI P5 4.12.0, con particolare attenzione al capitolo **Representation of Primary Sources** e agli elementi del modulo `transcr`.
+El modelo se ha desarrollado tomando como referencia TEI P5 4.12.0, con especial atención al capítulo **Representation of Primary Sources** y a los elementos del módulo `transcr`.
 
-Riferimenti principali:
+Referencias principales:
 
 - TEI P5 4.12.0, *Representation of Primary Sources*:  
   https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html
@@ -1075,97 +1075,97 @@ Riferimenti principali:
 - `<delSpan>`:  
   https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-delSpan.html
 
-La documentazione TEI sottolinea in particolare che:
+La documentación TEI subraya, en particular, que:
 
-- `@change` collega un elemento a uno stato o a una campagna di revisione;
-- `@instant="true"` è previsto per false starts e correzioni immediate;
-- `<listChange>` può esprimere campagne ordinate e può essere annidato;
-- `<mod>` dispone di attributi come `@seq`, `@instant`, `@hand` e `@spanTo`;
-- `<delSpan>` richiede `@spanTo` e consente di rappresentare cancellazioni attraverso più elementi strutturali.
+- `@change` vincula un elemento a un estado o campaña de revisión;
+- `@instant="true"` está previsto para falsas arrancadas y correcciones inmediatas;
+- `<listChange>` puede expresar campañas ordenadas y puede anidarse;
+- `<mod>` dispone de atributos como `@seq`, `@instant`, `@hand` y `@spanTo`;
+- `<delSpan>` requiere `@spanTo` y permite representar cancelaciones que atraviesan varios elementos estructurales.
 
 ---
 
-## 26. Sintesi finale
+## 26. Síntesis final
 
-Il modello iniziale aveva un grande vantaggio: rendeva immediatamente leggibili A0/A1/A2/B e funzionava bene per il frontend.
+El modelo inicial tenía una ventaja importante: hacía inmediatamente legibles A0/A1/A2/B y funcionaba bien para el frontend.
 
-Il suo limite era però quello di rappresentare la genesi del manoscritto mediante strumenti pensati per l'apparato critico.
+Su límite consistía, sin embargo, en representar la génesis del manuscrito mediante herramientas concebidas para el aparato crítico.
 
-La revisione non ha quindi abbandonato l'intuizione originaria — la possibilità di vedere separatamente gli strati — ma ha cercato di darle una base più corretta.
+La revisión no ha abandonado, por tanto, la intuición originaria —la posibilidad de visualizar separadamente los estratos—, sino que ha buscado darle una base más adecuada.
 
-Il risultato può essere sintetizzato in quattro principi.
+El resultado puede resumirse en cuatro principios.
 
-### 1. Descrivere prima il manoscritto
+### 1. Describir primero el manuscrito
 
-La codifica deve partire dal fenomeno materiale:
+La codificación debe partir del fenómeno material:
 
 ```text
-cancellazione
-aggiunta
-sostituzione
-ripasso
+cancelación
+adición
+sustitución
+repaso
 span
 mano
-campagna
-ordine
+campaña
+orden
 ```
 
-### 2. Non confondere il dato con l'interpretazione
+### 2. No confundir el dato con la interpretación
 
 ```text
-TEI documentario     ≠     categoria editoriale
+TEI documental     ≠     categoría editorial
 ```
 
-`@instant`, `@change`, `@hand` descrivono il documento.
+`@instant`, `@change` y `@hand` describen el documento.
 
-`@ana="#layer-A1/A2/B"` conserva la tassonomia interpretativa del progetto.
+`@ana="#layer-A1/A2/B"` conserva la taxonomía interpretativa del proyecto.
 
-### 3. Non sacrificare la visualizzazione
+### 3. No sacrificar la visualización
 
-A0/A1/A2/B devono restare sempre interrogabili e filtrabili.
+A0/A1/A2/B deben seguir siendo siempre interrogables y filtrables.
 
-Il modello deve permettere sia di **mostrare il processo** sia di **ricostruire gli stati**.
+El modelo debe permitir tanto **mostrar el proceso** como **reconstruir los estados**.
 
-### 4. Rendere le decisioni verificabili
+### 4. Hacer verificables las decisiones
 
-ODD, Schematron, file di test e validazione automatica fanno sì che il modello non dipenda soltanto dalla memoria dell'editore o dal comportamento contingente del JavaScript.
+ODD, Schematron, archivos de prueba y validación automática garantizan que el modelo no dependa únicamente de la memoria del editor o del comportamiento contingente del JavaScript.
 
-La codifica genetica diventa così contemporaneamente:
+La codificación genética se convierte así simultáneamente en:
 
-- un'interpretazione filologica;
-- una descrizione documentaria;
-- un modello computabile;
-- una base sostenibile per la pubblicazione digitale.
+- una interpretación filológica;
+- una descripción documental;
+- un modelo computable;
+- una base sostenible para la publicación digital.
 
 ---
 
-## 27. Stato attuale e prossimi passi
+## 27. Estado actual y próximos pasos
 
-Il modello ha superato i primi test formali e i principali casi complessi finora selezionati.
+El modelo ha superado los primeros ensayos formales y los principales casos complejos seleccionados hasta ahora.
 
-La fase successiva consiste nella conversione sistematica dell'intero `EMN_mod.xml`.
+La siguiente fase consiste en la conversión sistemática de todo `EMN_mod.xml`.
 
-Questa migrazione dovrà produrre due risultati paralleli:
+Esta migración deberá producir dos resultados paralelos:
 
-1. **un nuovo file TEI geneticamente coerente e validabile**;
-2. **un registro dei casi dubbi**, in cui l'incertezza filologica venga esplicitata e non nascosta dalla codifica.
+1. **un nuevo archivo TEI genéticamente coherente y validable**;
+2. **un registro de casos dudosos**, en el que la incertidumbre filológica se haga explícita y no quede oculta por la codificación.
 
-Solo dopo questa fase sarà opportuno intervenire in modo strutturale sulla nuova interfaccia web.
+Solo después de esta fase será oportuno intervenir estructuralmente en la nueva interfaz web.
 
-La priorità rimane quindi:
+La prioridad sigue siendo, por tanto:
 
 ```text
-manoscritto
+manuscrito
     ↓
-interpretazione filologica
+interpretación filológica
     ↓
-modello TEI
+modelo TEI
     ↓
-validazione
+validación
     ↓
-trasformazione
+transformación
     ↓
-interfaccia
+interfaz
 ```
 
-e non il percorso inverso.
+y no el recorrido inverso.
