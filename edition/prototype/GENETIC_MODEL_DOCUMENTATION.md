@@ -272,7 +272,7 @@ El texto no afectado por modificaciones pertenece, por tanto, implícitamente a 
 
 A1 ha sido el punto que ha requerido la revisión conceptual más importante.
 
-Las TEI distinguen las modificaciones realizadas después de la escritura de las llamadas **instant corrections**, es decir, correcciones producidas inmediatamente durante el propio acto de escribir. En estos casos `@instant="true"` permite señalar que la modificación pertenece al mismo momento genético que su contexto de escritura.
+Las TEI distinguen las modificaciones realizadas después de la escritura de las llamadas **correcciones inmediatas**, es decir, correcciones producidas inmediatamente durante el propio acto de escribir. En estos casos `@instant="true"` permite señalar que la modificación pertenece al mismo momento genético que su contexto de escritura.
 
 Por esta razón A1 no se trata como una campaña autónoma equivalente a A2.
 
@@ -444,7 +444,7 @@ La ventaja es clara:
 
 - los versos conservan su codificación normal;
 - la cancelación puede atravesar varios elementos;
-- el renderer puede identificar el intervalo completo;
+- el renderizador puede identificar el intervalo completo;
 - no es necesario duplicar ni deformar el texto.
 
 Este modelo sustituye las anteriores construcciones no estándar basadas en `from/to`.
@@ -542,7 +542,7 @@ La TEI describe el fenómeno documental mediante `@instant`, `@change`, `@hand`,
 
 La interfaz, sin embargo, debe seguir trabajando con las categorías editoriales A0/A1/A2/B.
 
-Para evitar deformar la TEI en función del frontend, el modelo utiliza `@ana` como **puente entre ambos niveles**.
+Para evitar deformar la TEI en función del capa de presentación, el modelo utiliza `@ana` como **puente entre ambos niveles**.
 
 En el `teiHeader` se define una taxonomía:
 
@@ -606,7 +606,7 @@ El usuario podrá decidir mostrar únicamente:
 
 Esta modalidad sirve para estudiar el **proceso de escritura**.
 
-Los colores asociados actualmente a los estratos siguen siendo plenamente utilizables, pero la paleta pertenece al CSS/frontend y no se almacena en el TEI.
+Los colores asociados actualmente a los estratos siguen siendo plenamente utilizables, pero la paleta pertenece al CSS/capa de presentación y no se almacena en el TEI.
 
 ### 12.2 Reconstruir los estados del texto
 
@@ -655,7 +655,7 @@ y no:
 color="..."
 ```
 
-El color se asigna en el frontend.
+El color se asigna en el capa de presentación.
 
 Esto aporta una ventaja importante de sostenibilidad: una futura modificación de la gráfica, del CSS o incluso de toda la plataforma de publicación no obligará a modificar los datos TEI.
 
@@ -741,7 +741,7 @@ Contiene un primer segmento recodificado hasta aproximadamente el v. 150 e inclu
 
 ### 16.2 `EMN_complex_cases.xml`
 
-Se creó como auténtico **stress test** y contiene:
+Se creó como auténtico **prueba de estrés** y contiene:
 
 - un caso A2 diferido;
 - una secuencia B1 → B2;
@@ -752,15 +752,15 @@ Ambos archivos se han verificado contra:
 1. el esquema RELAX NG generado a partir del ODD;
 2. las reglas Schematron específicas del proyecto.
 
-La validación se ejecuta automáticamente mediante GitHub Actions en el workflow:
+La validación se ejecuta automáticamente mediante GitHub Actions en el flujo de trabajo:
 
 ```text
-.github/workflows/validate-genetic-tei.yml
+.github/flujo de trabajos/validate-genetic-tei.yml
 ```
 
 El ODD se compila con los Stylesheets TEI y cada modificación de los archivos del prototipo puede comprobarse así de manera reproducible.
 
-Hasta el momento los stress tests han superado todas las reglas activas.
+Hasta el momento los prueba de estréss han superado todas las reglas activas.
 
 ---
 
@@ -954,9 +954,9 @@ Cada nueva sección convertida deberá superar:
 - controles de punteros;
 - pruebas de reconstrucción de estados.
 
-### Fase 6 — integración con el frontend
+### Fase 6 — integración con el capa de presentación
 
-Solo cuando la estructura TEI esté estabilizada será oportuno reescribir el renderer.
+Solo cuando la estructura TEI esté estabilizada será oportuno reescribir el renderizador.
 
 Este orden evita construir una nueva interfaz alrededor de un modelo todavía inestable.
 
@@ -1020,7 +1020,7 @@ La decisión de:
 - validar automáticamente;
 - separar colores y datos;
 
-reduce el riesgo de que el proyecto quede inutilizable cuando cambien los frameworks o las bibliotecas frontend.
+reduce el riesgo de que el proyecto quede inutilizable cuando cambien los frameworks o las bibliotecas capa de presentación.
 
 ---
 
@@ -1048,7 +1048,7 @@ Síntesis conceptual del modelo.
 
 Manual normativo operativo: fenómeno → codificación → atributos → visualización.
 
-### `.github/workflows/validate-genetic-tei.yml`
+### `.github/flujo de trabajos/validate-genetic-tei.yml`
 
 Workflow automático de validación.
 
@@ -1087,7 +1087,7 @@ La documentación TEI subraya, en particular, que:
 
 ## 26. Síntesis final
 
-El modelo inicial tenía una ventaja importante: hacía inmediatamente legibles A0/A1/A2/B y funcionaba bien para el frontend.
+El modelo inicial tenía una ventaja importante: hacía inmediatamente legibles A0/A1/A2/B y funcionaba bien para el capa de presentación.
 
 Su límite consistía, sin embargo, en representar la génesis del manuscrito mediante herramientas concebidas para el aparato crítico.
 
