@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>El marqués de las Navas — casi complessi per il modello genetico</title>
+        <author>Lope de Vega</author>
+        <editor>Anna Abate</editor>
+      </titleStmt>
+      <publicationStmt>
+        <p>File di test per la customizzazione genetica EMN.</p>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            <settlement>Melbury Sampford</settlement>
+            <repository>Melbury House</repository>
+          </msIdentifier>
+          <msContents>
+            <msItem>
+              <title>El marqués de las Navas</title>
+            </msItem>
+          </msContents>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+
+    <encodingDesc>
+      <classDecl>
+        <taxonomy xml:id="genetic-layers">
+          <category xml:id="layer-A0">
+            <catDesc>Prima stesura autografa.</catDesc>
+          </category>
+          <category xml:id="layer-A1">
+            <catDesc>Lezione introdotta da una correzione immediata nel corso della prima stesura.</catDesc>
+          </category>
+          <category xml:id="layer-A2">
+            <catDesc>Lezione introdotta durante una revisione autoriale successiva.</catDesc>
+          </category>
+          <category xml:id="layer-B">
+            <catDesc>Lezione o intervento introdotto da una mano non autografa.</catDesc>
+          </category>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+
+    <profileDesc>
+      <handNotes>
+        <handNote xml:id="Lope" scope="major" scribe="author">Mano autografa di Lope de Vega.</handNote>
+        <handNote xml:id="hB1" scope="minor">Prima mano non autografa: sostituisce antroponimi e interviene sul testo della rappresentazione.</handNote>
+        <handNote xml:id="hB2" scope="minor">Seconda mano non autografa: in più casi restituisce la lezione primitiva modificata da hB1.</handNote>
+      </handNotes>
+      <creation>
+        <listChange ordered="true">
+          <change xml:id="stage-A0">Prima stesura autografa.</change>
+          <change xml:id="stage-A2">Campagna di revisione autoriale successiva.</change>
+          <listChange xml:id="stage-B" ordered="true">
+            <change xml:id="stage-B1">Prima campagna di interventi non autografi, attribuita a hB1.</change>
+            <change xml:id="stage-B2">Seconda campagna di interventi non autografi, attribuita a hB2.</change>
+          </listChange>
+        </listChange>
+      </creation>
+    </profileDesc>
+  </teiHeader>
+
+  <text>
+    <body change="#stage-A0">
+
+      <div type="testCase" xml:id="test-A2">
+        <head>Revisione autoriale differita: vv. 219-220</head>
+        <sp>
+          <speaker>Ma</speaker>
+          <lg>
+            <l n="215">No lo dice don Filipe,</l>
+            <l>Mendoza, para que alegues</l>
+            <l>aforismos por la cara,</l>
+            <l>mas porque estas damas vienen</l>
+            <l>de noche al Prado y
+              <mod xml:id="g0219a"
+                   type="subst"
+                   hand="#Lope"
+                   change="#stage-A2"
+                   ana="#layer-A2">
+                <del ana="#layer-A0">las caras</del>
+                <add ana="#layer-A2">de noche</add>
+              </mod>
+            </l>
+            <l n="220">
+              <mod xml:id="g0220a"
+                   type="subst"
+                   hand="#Lope"
+                   change="#stage-A2"
+                   ana="#layer-A2">
+                <del ana="#layer-A0">de noche</del>
+                <add ana="#layer-A2">las caras</add>
+              </mod>
+              no pueden verse;
+              <note>Le due modifiche sembrano appartenere alla stessa operazione di riassetto stilistico compiuta in un secondo momento.</note>
+            </l>
+            <l>por eso habló de los talles.</l>
+          </lg>
+        </sp>
+      </div>
+
+      <div type="testCase" xml:id="test-B-sequence">
+        <head>Successione di due mani non autografe: marqués → conde → marqués</head>
+        <stage>Entren galanes de noche, el
+          <mod xml:id="gB0170-1"
+               type="subst"
+               hand="#hB1"
+               change="#stage-B1"
+               ana="#layer-B"
+               seq="1">
+            <del ana="#layer-A0">marqués</del>
+            <add ana="#layer-B">
+              <mod xml:id="gB0170-2"
+                   type="subst"
+                   hand="#hB2"
+                   change="#stage-B2"
+                   ana="#layer-B"
+                   seq="2">
+                <del ana="#layer-B">conde</del>
+                <add ana="#layer-B">marqués</add>
+              </mod>
+            </add>
+          </mod>,
+          don Filipe de Córdoba y don Henrique y Mendoza, paje de espada.
+          <note>Due mani non autografe intervengono in successione: la prima sostituisce l'antroponimo, la seconda restituisce la lezione primitiva.</note>
+        </stage>
+      </div>
+
+      <div type="testCase" xml:id="test-B-long-span">
+        <head>Cancellazione non autografa estesa: vv. 410-415</head>
+        <sp>
+          <speaker>Me</speaker>
+          <lg>
+            <l>la corte en esta ocasión</l>
+            <l>con gentileza eminente</l>
+            <l>a cuantas celebra España.</l>
+            <l n="410">
+              <delSpan xml:id="gB0410"
+                       spanTo="#gB0415-end"
+                       hand="#hB1"
+                       change="#stage-B1"
+                       ana="#layer-B"
+                       seq="1"/>
+              Ya habrás oído mil veces
+            </l>
+            <l>que es hijo del gran don Diego</l>
+            <l>de Córdoba, nuevo Orestes,</l>
+            <l>nuevo Acates de Filipe</l>
+            <l>Segundo, mas tú no entiendes</l>
+            <l n="415">antigüedades ni historia.</l>
+            <anchor xml:id="gB0415-end"/>
+            <mod xml:id="gB0416"
+                 type="add"
+                 hand="#hB1"
+                 change="#stage-B1"
+                 ana="#layer-B"
+                 seq="2">
+              <add ana="#layer-B">díjese</add>
+            </mod>
+            <note>La prima mano non autografa cancella l'intero passaggio; il prototipo usa delSpan nel punto iniziale e un anchor come limite finale.</note>
+          </lg>
+        </sp>
+      </div>
+
+    </body>
+  </text>
+</TEI>
