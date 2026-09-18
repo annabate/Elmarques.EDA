@@ -40,9 +40,12 @@ jobs:
             edition/prototype/EMN_genetic.odd \
             build/tei/EMN_genetic.rng
 
-      - name: Validate sample against generated RELAX NG
+      - name: Validate prototype XML files against generated RELAX NG
         run: |
-          jing build/tei/EMN_genetic.rng edition/prototype/EMN_mod_sample.xml
+          for f in edition/prototype/EMN_mod_sample.xml edition/prototype/EMN_complex_cases.xml; do
+            echo "Validating $f"
+            jing build/tei/EMN_genetic.rng "$f"
+          done
 
       - name: Extract project Schematron from ODD and validate sample
         run: |
@@ -56,7 +59,10 @@ jobs:
           NS = {'tei': TEI, 'sch': SCH}
 
           odd_path = Path('edition/prototype/EMN_genetic.odd')
-          xml_path = Path('edition/prototype/EMN_mod_sample.xml')
+          xml_paths = [
+              Path('edition/prototype/EMN_mod_sample.xml'),
+              Path('edition/prototype/EMN_complex_cases.xml'),
+          ]
           sch_path = Path('build/tei/EMN_genetic.sch')
 
           odd = etree.parse(str(odd_path))
@@ -87,18 +93,19 @@ jobs:
           )
 
           validator = isoschematron.Schematron(sch_tree, store_report=True)
-          document = etree.parse(str(xml_path))
-          valid = validator.validate(document)
-          if not valid:
-              report = validator.validation_report
-              messages = report.xpath(
-                  '//*[local-name()="failed-assert" or local-name()="successful-report"]/*[local-name()="text"]/text()'
-              )
-              for message in messages:
-                  print(message.strip())
-              raise SystemExit('Project Schematron validation failed')
-
-          print(f'Schematron OK: {len(rules)} project rules evaluated.')
+          for xml_path in xml_paths:
+              document = etree.parse(str(xml_path))
+              valid = validator.validate(document)
+              if not valid:
+                  report = validator.validation_report
+                  messages = report.xpath(
+                      '//*[local-name()="failed-assert" or local-name()="successful-report"]/*[local-name()="text"]/text()'
+                  )
+                  print(f'Schematron failed for {xml_path}:')
+                  for message in messages:
+                      print(message.strip())
+                  raise SystemExit('Project Schematron validation failed')
+              print(f'Schematron OK: {xml_path} ({len(rules)} project rules evaluated).')
           PY
 
       - name: Upload generated schemas
