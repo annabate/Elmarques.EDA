@@ -5,7 +5,7 @@ Questo documento definisce una prima proposta di ricodifica per l'edizione genet
 ## Principi
 
 1. L'informazione genetica non viene più modellata come apparato critico (`app/lem/rdg`).
-2. Gli interventi materiali sono descritti mediante gli elementi del modulo `transcr`, in particolare `mod`, `add`, `del`, `subst`, `addSpan`, `delSpan` quando necessari.
+2. Gli interventi materiali sono descritti mediante gli elementi del modulo `transcr`; nel modello EMN le sostituzioni inline sono normalizzate come `mod type="subst"` contenente `del` e `add`, mentre `addSpan`/`delSpan` sono riservati agli interventi estesi.
 3. Le vere campagne o fasi documentarie sono descritte con `listChange/change` e richiamate con `@change`.
 4. Le mani sono dichiarate in `handNotes/handNote` e richiamate con `@hand`.
 5. Gli strati editoriali A0/A1/A2/B restano sempre interrogabili tramite una tassonomia e `@ana`.
@@ -76,10 +76,8 @@ A0, A1, A2 e B restano quindi categorie dell'edizione e dell'interfaccia, ma non
 </mod>
 ```
 
-## Questioni aperte
+## Stato attuale
 
-- stabilire quando usare `mod` come contenitore obbligatorio e quando lasciare `add`/`del` autonomi;
-- verificare paleograficamente la distinzione tra `#hB1`, `#hB2`, ecc.;
-- verificare caso per caso le attribuzioni A1/A2 dell'attuale file;
-- definire i casi long-span con `mod/@spanTo`, `addSpan` o `delSpan`;
-- formalizzare queste regole in un ODD/Schematron dedicato.
+Il modello è stato formalizzato in `EMN_genetic.odd` e validato su casi A1, A2, B, sequenze B1→B2 e cancellazioni long-span. Le regole operative complete sono raccolte in `GENETIC_ENCODING_GUIDE.md`.
+
+Restano da verificare paleograficamente la distinzione tra le mani non autografe e le attribuzioni dubbie A1/A2 dell'attuale file prima della conversione integrale.
