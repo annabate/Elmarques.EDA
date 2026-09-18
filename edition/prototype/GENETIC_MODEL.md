@@ -10,7 +10,7 @@ Este documento define una primera propuesta de recodificación para la edición 
 4. Las manos se declaran en `handNotes/handNote` y se remiten mediante `@hand`.
 5. Los estratos editoriales A0/A1/A2/B siguen siendo siempre interrogables mediante una taxonomía y `@ana`.
 6. A1 no se trata como una campaña autónoma: representa las intervenciones inmediatas producidas durante la primera redacción y se expresa principalmente mediante `@instant="true"`, manteniendo `@ana="#layer-A1"` para garantizar su filtrado.
-7. Los colores pertenecen exclusivamente al frontend; el TEI conserva únicamente los identificadores semánticos de los estratos.
+7. Los colores pertenecen exclusivamente al capa de presentación; el TEI conserva únicamente los identificadores semánticos de los estratos.
 
 ## Estratos editoriales
 
