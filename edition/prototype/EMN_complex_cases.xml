@@ -3,12 +3,12 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>El marqués de las Navas — casi complessi per il modello genetico</title>
+        <title>El marqués de las Navas — casos complejos para el modelo genético</title>
         <author>Lope de Vega</author>
         <editor>Anna Abate</editor>
       </titleStmt>
       <publicationStmt>
-        <p>File di test per la customizzazione genetica EMN.</p>
+        <p>Archivo de prueba para la personalización genética EMN.</p>
       </publicationStmt>
       <sourceDesc>
         <msDesc>
@@ -29,16 +29,16 @@
       <classDecl>
         <taxonomy xml:id="genetic-layers">
           <category xml:id="layer-A0">
-            <catDesc>Prima stesura autografa.</catDesc>
+            <catDesc>Primera redacción autógrafa.</catDesc>
           </category>
           <category xml:id="layer-A1">
-            <catDesc>Lezione introdotta da una correzione immediata nel corso della prima stesura.</catDesc>
+            <catDesc>Lección introducida mediante una corrección inmediata durante la primera redacción.</catDesc>
           </category>
           <category xml:id="layer-A2">
-            <catDesc>Lezione introdotta durante una revisione autoriale successiva.</catDesc>
+            <catDesc>Lección introducida durante una revisión autorial posterior.</catDesc>
           </category>
           <category xml:id="layer-B">
-            <catDesc>Lezione o intervento introdotto da una mano non autografa.</catDesc>
+            <catDesc>Lección o intervención introducida por una mano no autógrafa.</catDesc>
           </category>
         </taxonomy>
       </classDecl>
@@ -46,17 +46,17 @@
 
     <profileDesc>
       <handNotes>
-        <handNote xml:id="Lope" scope="major" scribe="author">Mano autografa di Lope de Vega.</handNote>
-        <handNote xml:id="hB1" scope="minor">Prima mano non autografa: sostituisce antroponimi e interviene sul testo della rappresentazione.</handNote>
-        <handNote xml:id="hB2" scope="minor">Seconda mano non autografa: in più casi restituisce la lezione primitiva modificata da hB1.</handNote>
+        <handNote xml:id="Lope" scope="major" scribe="author">Mano autógrafa de Lope de Vega.</handNote>
+        <handNote xml:id="hB1" scope="minor">Primera mano no autógrafa: sustituye antropónimos e interviene sobre el texto de representación.</handNote>
+        <handNote xml:id="hB2" scope="minor">Segunda mano no autógrafa: en varios casos restituye la lección primitiva modificada por hB1.</handNote>
       </handNotes>
       <creation>
         <listChange ordered="true">
-          <change xml:id="stage-A0">Prima stesura autografa.</change>
-          <change xml:id="stage-A2">Campagna di revisione autoriale successiva.</change>
+          <change xml:id="stage-A0">Primera redacción autógrafa.</change>
+          <change xml:id="stage-A2">Campaña de revisión autorial posterior.</change>
           <listChange xml:id="stage-B" ordered="true">
-            <change xml:id="stage-B1">Prima campagna di interventi non autografi, attribuita a hB1.</change>
-            <change xml:id="stage-B2">Seconda campagna di interventi non autografi, attribuita a hB2.</change>
+            <change xml:id="stage-B1">Primera campaña de intervenciones no autógrafas, atribuida a hB1.</change>
+            <change xml:id="stage-B2">Segunda campaña de intervenciones no autógrafas, atribuida a hB2.</change>
           </listChange>
         </listChange>
       </creation>
@@ -67,7 +67,7 @@
     <body change="#stage-A0">
 
       <div type="testCase" xml:id="test-A2">
-        <head>Revisione autoriale differita: vv. 219-220</head>
+        <head>Revisión autorial diferida: vv. 219-220</head>
         <sp>
           <speaker>Ma</speaker>
           <lg>
@@ -95,7 +95,7 @@
                 <add ana="#layer-A2">las caras</add>
               </mod>
               no pueden verse;
-              <note>Le due modifiche sembrano appartenere alla stessa operazione di riassetto stilistico compiuta in un secondo momento.</note>
+              <note>Las dos modificaciones parecen pertenecer a una misma operación de reajuste estilístico realizada en un segundo momento.</note>
             </l>
             <l>por eso habló de los talles.</l>
           </lg>
@@ -103,7 +103,7 @@
       </div>
 
       <div type="testCase" xml:id="test-B-sequence">
-        <head>Successione di due mani non autografe: marqués → conde → marqués</head>
+        <head>Sucesión de dos manos no autógrafas: marqués → conde → marqués</head>
         <stage>Entren galanes de noche, el
           <mod xml:id="gB0170-1"
                type="subst"
@@ -125,12 +125,12 @@
             </add>
           </mod>,
           don Filipe de Córdoba y don Henrique y Mendoza, paje de espada.
-          <note>Due mani non autografe intervengono in successione: la prima sostituisce l'antroponimo, la seconda restituisce la lezione primitiva.</note>
+          <note>Dos manos no autógrafas intervienen sucesivamente: la primera sustituye el antropónimo y la segunda restituye la lección primitiva.</note>
         </stage>
       </div>
 
       <div type="testCase" xml:id="test-B-long-span">
-        <head>Cancellazione non autografa estesa: vv. 410-415</head>
+        <head>Cancelación no autógrafa extensa: vv. 410-415</head>
         <sp>
           <speaker>Me</speaker>
           <lg>
@@ -160,7 +160,7 @@
                  seq="2">
               <add ana="#layer-B">díjese</add>
             </mod>
-            <note>La prima mano non autografa cancella l'intero passaggio; il prototipo usa delSpan nel punto iniziale e un anchor come limite finale.</note>
+            <note>La primera mano no autógrafa cancela todo el pasaje; el prototipo utiliza delSpan en el punto inicial y un anchor como límite final.</note>
           </lg>
         </sp>
       </div>
