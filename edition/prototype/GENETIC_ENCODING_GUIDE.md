@@ -62,8 +62,8 @@ La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lecci�
 | Adición no autógrafa | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `add/@ana="#layer-B"` | ausente en el último estado autorial; presente en B |
 | Sustitución no autógrafa | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = estrato anterior; `add/@ana="#layer-B"` | permite comparar el último estado autorial con el estado documental |
 | Dos intervenciones sucesivas sobre la misma lección | `<mod>` anidado dentro de la lección introducida por la modificación anterior | además de los atributos del estrato: `seq="1"`, `seq="2"`, etc. | cada `del/add` conserva el estrato de su propia lección | puede reconstruir también B1 y B2 manteniendo un único filtro o color B |
-| Cancelación que atraviesa varios elementos o versos | `<delSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | `xml:id`, `spanTo`, `hand`, `ana`; además `instant` o `change` según A1/A2/B | el span se trata como evento; el texto atravesado conserva su estructura | el renderer oculta o restituye el intervalo completo sin destruir la estructura de los versos |
-| Adición que atraviesa varios elementos o versos | `<addSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | como en `delSpan` | el span pertenece al estrato del evento que lo introduce | el renderer puede activar o desactivar el intervalo completo |
+| Cancelación que atraviesa varios elementos o versos | `<delSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | `xml:id`, `spanTo`, `hand`, `ana`; además `instant` o `change` según A1/A2/B | el span se trata como evento; el texto atravesado conserva su estructura | el renderizador oculta o restituye el intervalo completo sin destruir la estructura de los versos |
+| Adición que atraviesa varios elementos o versos | `<addSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | como en `delSpan` | el span pertenece al estrato del evento que lo introduce | el renderizador puede activar o desactivar el intervalo completo |
 | Restitución material de texto previamente cancelado | `<restore>` **solo si el fenómeno material corresponde realmente a la restitución de una cancelación anterior** | se definirá a partir del caso real: al menos identificación de mano y fase cuando puedan reconstruirse | depende de la lección restituida | no debe usarse como atajo para una segunda sustitución B |
 | Repaso gráfico de letras ya escritas | `<retrace>` cuando existe materialmente un repaso de los trazos | mano y fase cuando puedan reconstruirse | no crea automáticamente un nuevo estrato textual | visualización paleográfica; no implica necesariamente un cambio de estado |
 | Signo o instrucción gráfica no asimilable al texto | `<metamark>` | `xml:id`; eventualmente `function`, `target`, `spanTo`, `hand` según el fenómeno | normalmente no crea un estrato de lectura autónomo | visualización documental; puede expresar relaciones o instrucciones |
@@ -218,7 +218,7 @@ A0 + A1 + A2 + B
 
 El último estado autorial es **A0+A1+A2**. El estado con B corresponde, en cambio, al **estado documental postautorial**.
 
-Cuando la cronología interna de B sea suficientemente segura, el renderer podrá ofrecer opcionalmente:
+Cuando la cronología interna de B sea suficientemente segura, el renderizador podrá ofrecer opcionalmente:
 
 ```text
 ... + B1
