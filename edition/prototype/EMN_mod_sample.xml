@@ -3,12 +3,12 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>El marqués de las Navas — prototipo di codifica genetica</title>
+        <title>El marqués de las Navas — prototipo de codificación genética</title>
         <author>Lope de Vega</author>
         <editor>Anna Abate</editor>
       </titleStmt>
       <publicationStmt>
-        <p>Prototipo di lavoro non destinato alla pubblicazione.</p>
+        <p>Prototipo de trabajo no destinado a la publicación.</p>
       </publicationStmt>
       <sourceDesc>
         <msDesc>
@@ -29,16 +29,16 @@
       <classDecl>
         <taxonomy xml:id="genetic-layers">
           <category xml:id="layer-A0">
-            <catDesc>Prima stesura autografa.</catDesc>
+            <catDesc>Primera redacción autógrafa.</catDesc>
           </category>
           <category xml:id="layer-A1">
-            <catDesc>Lezione introdotta da una correzione immediata nel corso della prima stesura.</catDesc>
+            <catDesc>Lección introducida mediante una corrección inmediata durante la primera redacción.</catDesc>
           </category>
           <category xml:id="layer-A2">
-            <catDesc>Lezione introdotta durante una revisione autoriale successiva.</catDesc>
+            <catDesc>Lección introducida durante una revisión autorial posterior.</catDesc>
           </category>
           <category xml:id="layer-B">
-            <catDesc>Lezione introdotta da una mano non autografa.</catDesc>
+            <catDesc>Lección introducida por una mano no autógrafa.</catDesc>
           </category>
         </taxonomy>
       </classDecl>
@@ -46,17 +46,17 @@
 
     <profileDesc>
       <handNotes>
-        <handNote xml:id="Lope" scope="major" scribe="author">Mano autografa di Lope de Vega.</handNote>
-        <handNote xml:id="hB1" scope="minor">Prima mano non autografa individuata.</handNote>
-        <handNote xml:id="hB2" scope="minor">Seconda mano non autografa individuata.</handNote>
+        <handNote xml:id="Lope" scope="major" scribe="author">Mano autógrafa de Lope de Vega.</handNote>
+        <handNote xml:id="hB1" scope="minor">Primera mano no autógrafa identificada.</handNote>
+        <handNote xml:id="hB2" scope="minor">Segunda mano no autógrafa identificada.</handNote>
       </handNotes>
       <creation>
         <listChange ordered="true">
-          <change xml:id="stage-A0">Prima stesura autografa.</change>
-          <change xml:id="stage-A2">Revisione autoriale successiva.</change>
+          <change xml:id="stage-A0">Primera redacción autógrafa.</change>
+          <change xml:id="stage-A2">Revisión autorial posterior.</change>
           <listChange xml:id="stage-B" ordered="false">
-            <change xml:id="stage-B1">Campagna di interventi della prima mano non autografa.</change>
-            <change xml:id="stage-B2">Campagna di interventi della seconda mano non autografa.</change>
+            <change xml:id="stage-B1">Campaña de intervenciones de la primera mano no autógrafa.</change>
+            <change xml:id="stage-B2">Campaña de intervenciones de la segunda mano no autógrafa.</change>
           </listChange>
         </listChange>
       </creation>
@@ -115,7 +115,7 @@
             <l>¡Suéltame la capa! ¡Suelta!</l>
             <l>Suelta en paz, que una porfía</l>
             <l>convierte en descortesía</l>
-            <l>determinación resuelta.<note>La atribuzione del parlamento è corretta da una mano non autografa.</note></l>
+            <l>determinación resuelta.<note>La atribución del parlamento es corregida por una mano no autógrafa.</note></l>
           </lg>
         </sp>
 
@@ -187,7 +187,7 @@
             <l>o has de ser tan desdichado</l>
             <l>que aun honra no has de tener;</l>
             <l n="65">que si os llegan a ofender</l>
-            <l>las propia — <mod xml:id="g0065" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">a los más sabios</del><add ana="#layer-A1">como lo esperes</add></mod><note>Correzione immediata nel corso della scrittura.</note></l>
+            <l>las propia — <mod xml:id="g0065" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">a los más sabios</del><add ana="#layer-A1">como lo esperes</add></mod><note>Corrección inmediata durante el proceso de escritura.</note></l>
             <l>aunque tan honrado eres―</l>
             <l>y a los más nobles y sabios,</l>
             <l>es por vengar los agravios</l>
@@ -269,7 +269,7 @@
             <l>por muchas cartas Leonora.</l>
             <l n="105">¡Cuánta riqueza atesora,</l>
             <l>lustre, gala y valentía!</l>
-            <l>Dicen que <mod xml:id="g0107" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">sale aquel día</del><add ana="#layer-A1">salir porfía</add></mod><note>Enmienda in itinere di natura stilistica.</note></l>
+            <l>Dicen que <mod xml:id="g0107" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">sale aquel día</del><add ana="#layer-A1">salir porfía</add></mod><note>Enmienda in itinere de carácter estilístico.</note></l>
             <l>y que ha de ser el espacio</l>
             <l>de la plaza de palacio,</l>
             <l n="110">cielo de Marte aquel día.</l>
@@ -311,7 +311,7 @@
           <speaker>Fel</speaker>
           <lg>
             <l>No lo seré yo pequeño;</l>
-            <l n="130"><mod xml:id="g0130" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">llévame(?)</del></mod>si quieres, contigo iré,<note>La lettura sotto la cancellatura non può essere stabilita con sicurezza.</note></l>
+            <l n="130"><mod xml:id="g0130" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">llévame(?)</del></mod>si quieres, contigo iré,<note>La lectura bajo la tachadura no puede establecerse con seguridad.</note></l>
             <l>donde hasta el fin no tendré</l>
             <l>gusto, descanso, ni sueño.</l>
             <l met="stanza">Haz esto, primo, por mí,</l>
