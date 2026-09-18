@@ -1,28 +1,28 @@
-# Manuale di codifica genetica — *El marqués de las Navas*
+# Manual de codificación genética — *El marqués de las Navas*
 
-Versione di lavoro per la branch `tei-genetic-model-prototype`.
+Versión de trabajo para la rama `tei-genetic-model-prototype`.
 
-Questo documento traduce il modello teorico e l'ODD del progetto in regole operative di codifica. Il principio generale è separare sempre:
+Este documento traduce el modelo teórico y el ODD del proyecto en reglas operativas de codificación. El principio general consiste en separar siempre:
 
-1. **l'evento genetico**: che cosa succede materialmente e in quale momento/campagna;
-2. **la lezione coinvolta**: a quale strato editoriale appartiene il testo scritto, cancellato o sostituito;
-3. **la mano**: chi realizza materialmente l'intervento;
-4. **la visualizzazione**: come l'interfaccia filtra gli interventi e ricostruisce gli stati del testo.
+1. **el evento genético**: qué sucede materialmente y en qué momento o campaña;
+2. **la lección implicada**: a qué estrato editorial pertenece el texto escrito, cancelado o sustituido;
+3. **la mano**: quién realiza materialmente la intervención;
+4. **la visualización**: cómo filtra la interfaz las intervenciones y cómo reconstruye los estados del texto.
 
-## 1. Vocabolario di progetto
+## 1. Vocabulario del proyecto
 
-| Sigla | Significato editoriale | Espressione TEI principale | Uso nell'interfaccia |
+| Sigla | Significado editorial | Expresión TEI principal | Uso en la interfaz |
 | --- | --- | --- | --- |
-| A0 | prima stesura autografa | stato di base; `change="#stage-A0"` ereditato dal `body`; `ana="#layer-A0"` sulle lezioni coinvolte in modifiche | ricostruzione della prima stesura; colore A0 quando la lezione è coinvolta in un intervento |
-| A1 | intervento autoriale immediato durante la prima stesura | `hand="#Lope"` + `instant="true"` + `ana="#layer-A1"` sull'evento | filtro A1; applicazione delle correzioni immediate nella ricostruzione A0+A1 |
-| A2 | revisione autoriale differita | `hand="#Lope"` + `change="#stage-A2"` + `ana="#layer-A2"` sull'evento | filtro A2; applicazione della revisione nella ricostruzione A0+A1+A2 |
-| B | intervento non autografo | `hand="#hB…"` + `change="#stage-B…"` + `ana="#layer-B"` | filtro B; applicazione degli interventi post-autoriali nello stato documentario finale |
+| A0 | primera redacción autógrafa | estado de base; `change="#stage-A0"` heredado del `body`; `ana="#layer-A0"` en las lecciones implicadas en modificaciones | reconstrucción de la primera redacción; color A0 cuando la lección participa en una intervención |
+| A1 | intervención autorial inmediata durante la primera redacción | `hand="#Lope"` + `instant="true"` + `ana="#layer-A1"` en el evento | filtro A1; aplicación de las correcciones inmediatas en la reconstrucción A0+A1 |
+| A2 | revisión autorial diferida | `hand="#Lope"` + `change="#stage-A2"` + `ana="#layer-A2"` en el evento | filtro A2; aplicación de la revisión en la reconstrucción A0+A1+A2 |
+| B | intervención no autógrafa | `hand="#hB…"` + `change="#stage-B…"` + `ana="#layer-B"` | filtro B; aplicación de las intervenciones postautoriales en el estado documental final |
 
-A1, A2 e B sono quindi **categorie editoriali interrogabili**; non sono testimoni e non devono essere codificati con `@wit`.
+A1, A2 y B son, por tanto, **categorías editoriales interrogables**; no son testimonios y no deben codificarse mediante `@wit`.
 
-## 2. Regola fondamentale: evento e lezione
+## 2. Regla fundamental: evento y lección
 
-Sul contenitore dell'intervento si codifica **l'evento**:
+En el contenedor de la intervención se codifica **el evento**:
 
 ```xml
 <mod
@@ -33,45 +33,45 @@ Sul contenitore dell'intervento si codifica **l'evento**:
   ana="#layer-A1">
 ```
 
-Su `<del>` e `<add>` si codifica invece **lo strato della lezione**:
+En `<del>` y `<add>` se codifica, en cambio, **el estrato de la lección**:
 
 ```xml
-<del ana="#layer-A0">lezione precedente</del>
-<add ana="#layer-A1">lezione introdotta</add>
+<del ana="#layer-A0">lección anterior</del>
+<add ana="#layer-A1">lección introducida</add>
 ```
 
-Ne consegue questa regola generale:
+De ello se deriva esta regla general:
 
-- `mod/@ana` = **event layer**;
-- `add/@ana` e `del/@ana` = **reading layer**.
+- `mod/@ana` = **estrato del evento**;
+- `add/@ana` y `del/@ana` = **estrato de la lección**.
 
-La lezione cancellata non è necessariamente A0: se A2 cancella una lezione introdotta in A1, il `<del>` avrà `ana="#layer-A1"`. Analogamente, un intervento B2 può cancellare una lezione introdotta da B1.
+La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lección introducida en A1, el `<del>` llevará `ana="#layer-A1"`. Del mismo modo, una intervención B2 puede cancelar una lección introducida por B1.
 
-## 3. Tabella normativa dei fenomeni
+## 3. Tabla normativa de fenómenos
 
-| Fenomeno manoscritto | Codifica TEI di progetto | Attributi obbligatori | Strato della lezione | Comportamento nell'interfaccia |
+| Fenómeno manuscrito | Codificación TEI del proyecto | Atributos obligatorios | Estrato de la lección | Comportamiento en la interfaz |
 | --- | --- | --- | --- | --- |
-| Testo di prima stesura non modificato | testo normale nel `body` | nessuno specifico sul singolo segmento | A0 per eredità | visibile nello stato A0 e in tutti gli stati successivi finché non viene modificato |
-| Cancellazione immediata autoriale | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#Lope"`, `instant="true"`, `ana="#layer-A1"` | `del/@ana` = strato della lezione eliminata, normalmente A0 | filtro A1 evidenzia l'evento; A0 mostra la lezione, A0+A1 la elimina |
-| Aggiunta immediata autoriale | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `instant="true"`, `ana="#layer-A1"` | `add/@ana="#layer-A1"` | nascosta in A0; visibile da A0+A1 in poi |
-| Sostituzione immediata autoriale | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `instant="true"`, `ana="#layer-A1"` | `del` = strato precedente; `add="#layer-A1"` | A0 mostra il `del`; A0+A1 mostra l'`add` |
-| Cancellazione autoriale differita | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `del` = A0 o A1 secondo la storia reale della lezione | visibile fino allo stato precedente ad A2; eliminata nello stato A2 |
-| Aggiunta autoriale differita | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `add/@ana="#layer-A2"` | nascosta prima di A2; visibile nello stato A2 |
-| Sostituzione autoriale differita | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `del` = strato precedente; `add="#layer-A2"` | ricostruisce automaticamente pre-A2 e A2 |
-| Cancellazione non autografa | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = strato della lezione cancellata | filtro B; la lezione resta nello stato autoriale finale e scompare nello stato documentario B |
-| Aggiunta non autografa | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `add/@ana="#layer-B"` | assente nello stato autoriale finale; presente nello stato B |
-| Sostituzione non autografa | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = strato precedente; `add="#layer-B"` | consente confronto tra stato autoriale e stato documentario |
-| Due interventi successivi sulla stessa lezione | `<mod>` annidato nella lezione introdotta dalla modifica precedente | oltre agli attributi dello strato: `seq="1"`, `seq="2"`, ecc. | ogni `del/add` conserva lo strato della propria lezione | può ricostruire anche B1 e B2, pur mantenendo un unico filtro/colore B |
-| Cancellazione che attraversa più elementi/versi | `<delSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | `xml:id`, `spanTo`, `hand`, `ana`; inoltre `instant` o `change` secondo A1/A2/B | lo span è trattato come evento; il testo attraversato mantiene la propria struttura | il renderer oscura/ripristina l'intero intervallo senza distruggere la struttura dei versi |
-| Aggiunta che attraversa più elementi/versi | `<addSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | come per `delSpan` | lo span appartiene allo strato dell'evento che lo introduce | il renderer può attivare/disattivare l'intero intervallo |
-| Ripristino materiale di testo precedentemente cancellato | `<restore>` **solo se il fenomeno materiale corrisponde davvero a un ripristino di una precedente cancellazione** | da definire sul caso reale: almeno identificazione della mano/fase quando ricostruibili | dipende dalla lezione ripristinata | non usare come scorciatoia per una seconda sostituzione B |
-| Ripasso grafico di lettere già scritte | `<retrace>` quando è materialmente un ripasso dei tratti | mano e fase quando ricostruibili | non crea automaticamente un nuovo strato testuale | visualizzazione paleografica, non necessariamente cambio di stato |
-| Segno o istruzione grafica non assimilabile al testo | `<metamark>` | `xml:id`; eventuali `function`, `target`, `spanTo`, `hand` secondo il fenomeno | normalmente nessuno strato di lettura autonomo | visualizzazione documentaria; può comandare collegamenti o relazioni |
-| Trasposizione di segmenti | `<listTranspose>` / `<transpose>` e riferimenti ai segmenti coinvolti | identificatori stabili dei segmenti e ordine esplicito | le parole conservano il proprio strato; cambia l'ordine | ricostruzione dell'ordine precedente/successivo; da implementare quando compare un caso reale |
+| Texto de primera redacción no modificado | texto normal en el `body` | ninguno específico en el segmento | A0 por herencia | visible en A0 y en todos los estados posteriores mientras no sea modificado |
+| Cancelación autorial inmediata | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#Lope"`, `instant="true"`, `ana="#layer-A1"` | `del/@ana` = estrato de la lección eliminada, normalmente A0 | el filtro A1 resalta el evento; A0 muestra la lección y A0+A1 la elimina |
+| Adición autorial inmediata | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `instant="true"`, `ana="#layer-A1"` | `add/@ana="#layer-A1"` | oculta en A0; visible desde A0+A1 |
+| Sustitución autorial inmediata | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `instant="true"`, `ana="#layer-A1"` | `del` = estrato anterior; `add/@ana="#layer-A1"` | A0 muestra el `del`; A0+A1 muestra el `add` |
+| Cancelación autorial diferida | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `del` = A0 o A1 según la historia real de la lección | visible hasta el estado anterior a A2; eliminada en A2 |
+| Adición autorial diferida | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `add/@ana="#layer-A2"` | oculta antes de A2; visible en A2 |
+| Sustitución autorial diferida | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `del` = estrato anterior; `add/@ana="#layer-A2"` | permite reconstruir automáticamente el estado anterior a A2 y el estado A2 |
+| Cancelación no autógrafa | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = estrato de la lección cancelada | filtro B; la lección permanece en el último estado autorial y desaparece en el estado documental B |
+| Adición no autógrafa | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `add/@ana="#layer-B"` | ausente en el último estado autorial; presente en B |
+| Sustitución no autógrafa | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = estrato anterior; `add/@ana="#layer-B"` | permite comparar el último estado autorial con el estado documental |
+| Dos intervenciones sucesivas sobre la misma lección | `<mod>` anidado dentro de la lección introducida por la modificación anterior | además de los atributos del estrato: `seq="1"`, `seq="2"`, etc. | cada `del/add` conserva el estrato de su propia lección | puede reconstruir también B1 y B2 manteniendo un único filtro o color B |
+| Cancelación que atraviesa varios elementos o versos | `<delSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | `xml:id`, `spanTo`, `hand`, `ana`; además `instant` o `change` según A1/A2/B | el span se trata como evento; el texto atravesado conserva su estructura | el renderer oculta o restituye el intervalo completo sin destruir la estructura de los versos |
+| Adición que atraviesa varios elementos o versos | `<addSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | como en `delSpan` | el span pertenece al estrato del evento que lo introduce | el renderer puede activar o desactivar el intervalo completo |
+| Restitución material de texto previamente cancelado | `<restore>` **solo si el fenómeno material corresponde realmente a la restitución de una cancelación anterior** | se definirá a partir del caso real: al menos identificación de mano y fase cuando puedan reconstruirse | depende de la lección restituida | no debe usarse como atajo para una segunda sustitución B |
+| Repaso gráfico de letras ya escritas | `<retrace>` cuando existe materialmente un repaso de los trazos | mano y fase cuando puedan reconstruirse | no crea automáticamente un nuevo estrato textual | visualización paleográfica; no implica necesariamente un cambio de estado |
+| Signo o instrucción gráfica no asimilable al texto | `<metamark>` | `xml:id`; eventualmente `function`, `target`, `spanTo`, `hand` según el fenómeno | normalmente no crea un estrato de lectura autónomo | visualización documental; puede expresar relaciones o instrucciones |
+| Transposición de segmentos | `<listTranspose>` / `<transpose>` y referencias a los segmentos implicados | identificadores estables de los segmentos y orden explícito | las palabras conservan su estrato; cambia el orden | reconstrucción del orden anterior y posterior; se implementará cuando aparezca un caso real |
 
-## 4. Esempi canonici
+## 4. Ejemplos canónicos
 
-### A1 — sostituzione immediata
+### A1 — sustitución inmediata
 
 ```xml
 <mod xml:id="g0065"
@@ -84,7 +84,7 @@ La lezione cancellata non è necessariamente A0: se A2 cancella una lezione intr
 </mod>
 ```
 
-### A2 — revisione successiva
+### A2 — revisión posterior
 
 ```xml
 <mod xml:id="g0219a"
@@ -97,7 +97,7 @@ La lezione cancellata non è necessariamente A0: se A2 cancella una lezione intr
 </mod>
 ```
 
-### B1 → B2 — due mani successive
+### B1 → B2 — dos manos sucesivas
 
 ```xml
 <mod xml:id="gB0170-1"
@@ -121,7 +121,7 @@ La lezione cancellata non è necessariamente A0: se A2 cancella una lezione intr
 </mod>
 ```
 
-### B long-span — cancellazione vv. 410–415
+### B de largo alcance — cancelación vv. 410–415
 
 ```xml
 <l n="410">
@@ -137,25 +137,25 @@ La lezione cancellata non è necessariamente A0: se A2 cancella una lezione intr
 <anchor xml:id="gB0415-end"/>
 ```
 
-## 5. Regole per `@hand`
+## 5. Reglas para `@hand`
 
-Le mani devono essere dichiarate una sola volta in `<handNotes>` e richiamate tramite puntatore:
+Las manos deben declararse una sola vez en `<handNotes>` y remitirse mediante puntero:
 
 ```xml
 <handNotes>
   <handNote xml:id="Lope" scope="major" scribe="author">
-    Mano autografa di Lope de Vega.
+    Mano autógrafa de Lope de Vega.
   </handNote>
   <handNote xml:id="hB1" scope="minor">
-    Prima mano non autografa.
+    Primera mano no autógrafa.
   </handNote>
   <handNote xml:id="hB2" scope="minor">
-    Seconda mano non autografa.
+    Segunda mano no autógrafa.
   </handNote>
 </handNotes>
 ```
 
-Non sono ammessi valori liberi come:
+No se admiten valores libres como:
 
 ```xml
 hand="authorial"
@@ -163,31 +163,31 @@ hand="non-authorial"
 hand="non--authorial"
 ```
 
-L'identificazione di hB1/hB2 deve restare prudente: stessa mano e stessa campagna non sono automaticamente sinonimi. L'associazione tra una mano e una campagna si stabilisce solo quando il dato paleografico consente di sostenerla.
+La identificación de hB1/hB2 debe mantenerse prudente: una misma mano y una misma campaña no son necesariamente equivalentes. La asociación entre mano y campaña solo se establece cuando el dato paleográfico permite sostenerla.
 
-## 6. Regole per `@change`, `@instant` e `@seq`
+## 6. Reglas para `@change`, `@instant` y `@seq`
 
-- `@instant="true"` indica un intervento immediato durante l'atto di scrittura e caratterizza A1.
-- `@change="#stage-A2"` indica una revisione autoriale differita.
-- `@change="#stage-B1"`, `#stage-B2`, ecc. identifica campagne non autografe quando il loro ordinamento è sostenibile.
-- `@seq` si usa quando occorre esprimere l'ordine relativo di più interventi sulla stessa porzione di testo.
-- `@seq` non sostituisce `@change`: il primo esprime una sequenza locale, il secondo una campagna/stadio documentario.
+- `@instant="true"` indica una intervención inmediata durante el acto de escritura y caracteriza A1.
+- `@change="#stage-A2"` indica una revisión autorial diferida.
+- `@change="#stage-B1"`, `#stage-B2`, etc. identifica campañas no autógrafas cuando su ordenación puede sostenerse.
+- `@seq` se usa cuando es necesario expresar el orden relativo de varias intervenciones sobre la misma porción de texto.
+- `@seq` no sustituye a `@change`: el primero expresa una secuencia local; el segundo, una campaña o fase documental.
 
-## 7. Regole per gli identificatori
+## 7. Reglas para los identificadores
 
-Ogni evento genetico che deve essere interrogato, collegato al facsimile, annotato o visualizzato deve avere un `xml:id` stabile.
+Todo evento genético que deba ser interrogado, vinculado al facsímil, anotado o visualizado debe tener un `xml:id` estable.
 
-Convenzione provvisoria:
+Convención provisional:
 
-- `gNNNN` = intervento autoriale;
-- `gBNNNN` = intervento non autografo;
-- suffissi `-1`, `-2` = successione locale di interventi sullo stesso punto.
+- `gNNNN` = intervención autorial;
+- `gBNNNN` = intervención no autógrafa;
+- sufijos `-1`, `-2` = sucesión local de intervenciones sobre el mismo punto.
 
-La convenzione degli ID è tecnica, non semantica: la classificazione scientifica resta negli attributi TEI.
+La convención de los ID es técnica, no semántica: la clasificación científica permanece en los atributos TEI.
 
-## 8. Regole di rendering
+## 8. Reglas de renderización
 
-La trasformazione TEI → HTML dovrà esportare almeno:
+La transformación TEI → HTML deberá exportar al menos:
 
 ```html
 data-event-layer="A1|A2|B"
@@ -197,17 +197,17 @@ data-change="stage-A2|stage-B1|..."
 data-seq="..."
 ```
 
-I colori non sono codificati nel TEI.
+Los colores no se codifican en el TEI.
 
-L'interfaccia dovrà offrire due meccanismi distinti:
+La interfaz deberá ofrecer dos mecanismos distintos:
 
-### Filtri degli interventi
+### Filtros de intervenciones
 
-Permettono di evidenziare o nascondere gli eventi A1, A2 e B senza alterare la ricostruzione testuale.
+Permiten resaltar u ocultar los eventos A1, A2 y B sin alterar la reconstrucción textual.
 
-### Ricostruzione degli stati
+### Reconstrucción de estados
 
-Ordine editoriale di default:
+Orden editorial por defecto:
 
 ```text
 A0
@@ -216,42 +216,42 @@ A0 + A1 + A2
 A0 + A1 + A2 + B
 ```
 
-L'ultimo stato autoriale è **A0+A1+A2**. Lo stato con B è invece lo **stato documentario post-autoriale**.
+El último estado autorial es **A0+A1+A2**. El estado con B corresponde, en cambio, al **estado documental postautorial**.
 
-Quando la cronologia interna di B è sufficientemente sicura, il renderer potrà offrire opzionalmente:
+Cuando la cronología interna de B sea suficientemente segura, el renderer podrá ofrecer opcionalmente:
 
 ```text
 ... + B1
 ... + B1 + B2
 ```
 
-senza introdurre necessariamente colori distinti per B1 e B2.
+sin necesidad de introducir colores distintos para B1 y B2.
 
-## 9. Criterio di prudenza
+## 9. Criterio de prudencia
 
-La codifica non deve trasformare un'ipotesi paleografica in un fatto strutturale.
+La codificación no debe transformar una hipótesis paleográfica en un hecho estructural.
 
-Quando non è possibile stabilire con sicurezza:
+Cuando no sea posible establecer con seguridad:
 
-- se un intervento è A1 o A2;
-- quale mano non autografa interviene;
-- l'ordine tra due campagne B;
+- si una intervención es A1 o A2;
+- qué mano no autógrafa interviene;
+- el orden entre dos campañas B;
 
-la soluzione deve conservare l'incertezza e rinviare la classificazione forte. Non si deve assegnare `@instant`, `@change`, `@hand` o `@seq` più specifici di quanto consentano i dati materiali.
+la solución debe conservar la incertidumbre y aplazar la clasificación fuerte. No se deben asignar `@instant`, `@change`, `@hand` o `@seq` más específicos de lo que permitan los datos materiales.
 
-## 10. Stato del modello
+## 10. Estado del modelo
 
-Sono già stati validati formalmente contro l'ODD di progetto:
+Ya se han validado formalmente frente al ODD del proyecto:
 
-- cancellazioni e sostituzioni A1;
-- revisioni A2;
-- interventi B semplici;
-- sequenze B1 → B2;
-- cancellazioni long-span con `delSpan/@spanTo`.
+- cancelaciones y sustituciones A1;
+- revisiones A2;
+- intervenciones B simples;
+- secuencias B1 → B2;
+- cancelaciones de largo alcance mediante `delSpan/@spanTo`.
 
-I file di test sono:
+Los archivos de prueba son:
 
 - `EMN_mod_sample.xml`;
 - `EMN_complex_cases.xml`.
 
-Il passo successivo è applicare queste regole sistematicamente all'intero `EMN_mod.xml`, registrando separatamente i casi che richiedono una decisione filologica.
+El siguiente paso consiste en aplicar estas reglas sistemáticamente a todo `EMN_mod.xml`, registrando por separado los casos que requieran una decisión filológica.
