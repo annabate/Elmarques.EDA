@@ -1,47 +1,47 @@
-# Prototipo del modello genetico TEI
+# Prototipo del modelo genético TEI
 
-Questo documento definisce una prima proposta di ricodifica per l'edizione genetico-evolutiva di *El marqués de las Navas*.
+Este documento define una primera propuesta de recodificación para la edición genético-evolutiva de *El marqués de las Navas*.
 
-## Principi
+## Principios
 
-1. L'informazione genetica non viene più modellata come apparato critico (`app/lem/rdg`).
-2. Gli interventi materiali sono descritti mediante gli elementi del modulo `transcr`; nel modello EMN le sostituzioni inline sono normalizzate come `mod type="subst"` contenente `del` e `add`, mentre `addSpan`/`delSpan` sono riservati agli interventi estesi.
-3. Le vere campagne o fasi documentarie sono descritte con `listChange/change` e richiamate con `@change`.
-4. Le mani sono dichiarate in `handNotes/handNote` e richiamate con `@hand`.
-5. Gli strati editoriali A0/A1/A2/B restano sempre interrogabili tramite una tassonomia e `@ana`.
-6. A1 non è trattato come una campagna autonoma: rappresenta gli interventi immediati prodotti durante la prima stesura ed è espresso soprattutto tramite `@instant="true"`, mantenendo `@ana="#layer-A1"` per la filtrabilità.
-7. I colori appartengono esclusivamente al frontend; il TEI conserva soltanto gli identificatori semantici degli strati.
+1. La información genética deja de modelarse como aparato crítico (`app/lem/rdg`).
+2. Las intervenciones materiales se describen mediante los elementos del módulo `transcr`; en el modelo EMN las sustituciones en línea se normalizan como `mod type="subst"` que contiene `del` y `add`, mientras que `addSpan`/`delSpan` se reservan para intervenciones extensas.
+3. Las verdaderas campañas o fases documentales se describen con `listChange/change` y se remiten mediante `@change`.
+4. Las manos se declaran en `handNotes/handNote` y se remiten mediante `@hand`.
+5. Los estratos editoriales A0/A1/A2/B siguen siendo siempre interrogables mediante una taxonomía y `@ana`.
+6. A1 no se trata como una campaña autónoma: representa las intervenciones inmediatas producidas durante la primera redacción y se expresa principalmente mediante `@instant="true"`, manteniendo `@ana="#layer-A1"` para garantizar su filtrado.
+7. Los colores pertenecen exclusivamente al frontend; el TEI conserva únicamente los identificadores semánticos de los estratos.
 
-## Strati editoriali
+## Estratos editoriales
 
-- `#layer-A0`: prima stesura autografa.
-- `#layer-A1`: lezione introdotta da una correzione immediata nel corso della prima stesura.
-- `#layer-A2`: lezione introdotta durante una revisione autoriale successiva.
-- `#layer-B`: lezione introdotta da una mano non autografa.
+- `#layer-A0`: primera redacción autógrafa.
+- `#layer-A1`: lección introducida mediante una corrección inmediata durante la primera redacción.
+- `#layer-A2`: lección introducida durante una revisión autorial posterior.
+- `#layer-B`: lección introducida por una mano no autógrafa.
 
-## Fasi documentarie
+## Fases documentales
 
-- `#stage-A0`: prima stesura autografa.
-- `#stage-A2`: revisione autoriale successiva.
-- `#stage-B1`, `#stage-B2`, ecc.: campagne non autografe, solo quando l'ordinamento è paleograficamente sostenibile.
+- `#stage-A0`: primera redacción autógrafa.
+- `#stage-A2`: revisión autorial posterior.
+- `#stage-B1`, `#stage-B2`, etc.: campañas no autógrafas, únicamente cuando su ordenación puede sostenerse paleográficamente.
 
-## Regole di visualizzazione
+## Reglas de visualización
 
-La trasformazione verso HTML dovrà esporre separatamente almeno due informazioni:
+La transformación a HTML deberá exponer por separado al menos dos informaciones:
 
-- `data-reading-layer`: strato al quale appartiene una determinata lezione (`A0`, `A1`, `A2`, `B`).
-- `data-event-layer`: classe dell'intervento che la produce o la elimina.
+- `data-reading-layer`: estrato al que pertenece una determinada lección (`A0`, `A1`, `A2`, `B`).
+- `data-event-layer`: clase de la intervención que introduce, modifica o elimina esa lección.
 
-Questo consente due funzioni diverse:
+Esto permite distinguir dos funciones:
 
-- **filtro degli interventi**: mostra/nasconde A1, A2, B e relative evidenziazioni;
-- **ricostruzione dello stato testuale**: restituisce A0, A0+A1, A0+A1+A2 e lo stato documentario con B.
+- **filtro de intervenciones**: muestra u oculta A1, A2 y B y sus correspondientes resaltados;
+- **reconstrucción del estado textual**: devuelve A0, A0+A1, A0+A1+A2 y el estado documental con B.
 
-A0, A1, A2 e B restano quindi categorie dell'edizione e dell'interfaccia, ma non vengono impropriamente codificate come `@wit`.
+A0, A1, A2 y B siguen siendo, por tanto, categorías de la edición y de la interfaz, pero ya no se codifican impropiamente como `@wit`.
 
-## Esempi
+## Ejemplos
 
-### Cancellazione immediata
+### Cancelación inmediata
 
 ```xml
 <mod xml:id="g0005" type="del" hand="#Lope" instant="true" ana="#layer-A1">
@@ -49,7 +49,7 @@ A0, A1, A2 e B restano quindi categorie dell'edizione e dell'interfaccia, ma non
 </mod>
 ```
 
-### Sostituzione immediata
+### Sustitución inmediata
 
 ```xml
 <mod xml:id="g0065" type="subst" hand="#Lope" instant="true" ana="#layer-A1">
@@ -58,7 +58,7 @@ A0, A1, A2 e B restano quindi categorie dell'edizione e dell'interfaccia, ma non
 </mod>
 ```
 
-### Revisione autoriale successiva
+### Revisión autorial posterior
 
 ```xml
 <mod xml:id="g0777" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2">
@@ -67,7 +67,7 @@ A0, A1, A2 e B restano quindi categorie dell'edizione e dell'interfaccia, ma non
 </mod>
 ```
 
-### Intervento di altra mano
+### Intervención de otra mano
 
 ```xml
 <mod xml:id="gB001" type="subst" hand="#hB1" change="#stage-B1" ana="#layer-B">
@@ -76,8 +76,8 @@ A0, A1, A2 e B restano quindi categorie dell'edizione e dell'interfaccia, ma non
 </mod>
 ```
 
-## Stato attuale
+## Estado actual
 
-Il modello è stato formalizzato in `EMN_genetic.odd` e validato su casi A1, A2, B, sequenze B1→B2 e cancellazioni long-span. Le regole operative complete sono raccolte in `GENETIC_ENCODING_GUIDE.md`.
+El modelo se ha formalizado en `EMN_genetic.odd` y se ha validado con casos A1, A2, B, secuencias B1→B2 y cancelaciones de largo alcance. Las reglas operativas completas se recogen en `GENETIC_ENCODING_GUIDE.md`.
 
-Restano da verificare paleograficamente la distinzione tra le mani non autografe e le attribuzioni dubbie A1/A2 dell'attuale file prima della conversione integrale.
+Antes de la conversión integral quedan por verificar paleográficamente la distinción entre las manos no autógrafas y las atribuciones dudosas A1/A2 del archivo actual.
