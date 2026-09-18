@@ -20,6 +20,7 @@
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-09-18">Aggiunte regole per sequenze di interventi B annidati e relativi ordini.</change>
       <change when="2026-09-17">Prima versione dell'ODD di progetto.</change>
     </revisionDesc>
   </teiHeader>
@@ -105,6 +106,17 @@
             <sch:rule context="tei:text//tei:mod[@ana='#layer-B']">
               <sch:assert test="@hand='#hB1' or @hand='#hB2'">Un intervento B deve essere attribuito a una mano non autografa dichiarata.</sch:assert>
               <sch:assert test="contains(concat(' ', normalize-space(@change), ' '), ' #stage-B1 ') or contains(concat(' ', normalize-space(@change), ' '), ' #stage-B2 ')">Un intervento B deve essere associato a stage-B1 o stage-B2.</sch:assert>
+            </sch:rule>
+
+            <!-- Sequenze di revisioni sulla stessa lezione -->
+            <sch:rule context="tei:text//tei:mod[ancestor::tei:mod]">
+              <sch:assert test="@seq">Una modifica annidata deve dichiarare @seq per rendere esplicito l'ordine degli interventi.</sch:assert>
+              <sch:assert test="ancestor::tei:mod[1]/@seq">Anche la modifica contenitore deve dichiarare @seq.</sch:assert>
+              <sch:assert test="number(@seq) &gt; number(ancestor::tei:mod[1]/@seq)">La modifica annidata deve avere @seq maggiore della modifica sulla quale interviene.</sch:assert>
+            </sch:rule>
+
+            <sch:rule context="tei:text//tei:mod[@ana='#layer-B'][descendant::tei:mod[@ana='#layer-B']]">
+              <sch:assert test="@seq">Il primo intervento di una sequenza B deve dichiarare @seq.</sch:assert>
             </sch:rule>
 
             <!-- Lezioni coinvolte nell'intervento: uno strato leggibile dall'interfaccia -->
