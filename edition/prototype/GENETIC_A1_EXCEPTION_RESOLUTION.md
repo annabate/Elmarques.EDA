@@ -198,21 +198,21 @@ has
 </mod>
 ```
 
-pero antes es necesario comprobar sul facsímil si se trata efectivamente de dos operaciones distinguibili o de una única corrección complessa. Per questo il caso resta sospeso.
+pero antes es necesario comprobar en el facsímil si se trata efectivamente de dos operaciones distinguibles o de una única corrección compleja. Por esta razón, el caso permanece pendiente.
 
 ### APP-098 — f. 13r, entorno del v. 645
 
-La lectura `ci.. a su?` contiene sia una congettura sia una porzione apparentemente non trascritta. Non è possibile stabilire automaticamente se i due punti rappresentino:
+La lectura `ci.. a su?` contiene tanto una conjetura como una porción aparentemente no transcrita. No es posible establecer automáticamente si los dos puntos representan:
 
-- grafemi illeggibili;
-- una lacuna di estensione ignota;
-- una convenzione provvisoria di trascrizione.
+- grafemas ilegibles;
+- una laguna de extensión desconocida;
+- una convención provisional de transcripción.
 
-Il caso richiede il controllo del facsimile per decidere tra `<unclear>`, `<gap>` o una combinazione di entrambi.
+El caso requiere comprobar el facsímil para decidir entre `<unclear>`, `<gap>` o una combinación de ambos.
 
 ### APP-127 — f. 15r, entorno del v. 755
 
-La lettura `yo s?` è troppo frammentaria per stabilire se l'intera sequenza debba essere trattata come `<unclear>` o se vi sia una porzione non leggibile da rappresentare con `<gap>`. Resta quindi pendente fino alla verifica del facsimile.
+La lectura `yo s?` es demasiado fragmentaria para establecer si toda la secuencia debe tratarse como `<unclear>` o si existe una porción ilegible que deba representarse mediante `<gap>`. Por ello, permanece pendiente hasta comprobar el facsímil.
 
 ## 4. Resultado del segundo paso
 
