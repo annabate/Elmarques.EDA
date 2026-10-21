@@ -5,6 +5,8 @@
 **SHA del archivo:** `0841554a66c58e52e4d61a47df1c0f29423b9dd7`  
 **Finalidad:** preparar la migración al modelo TEI genético definido en `EMN_genetic.odd`.
 
+> **Alcance del inventario.** El archivo `EMN_mod.xml` disponible actualmente en `main` contiene únicamente el **acto I**, hasta aproximadamente el v. 835. Por tanto, este inventario es completo respecto del archivo actual, pero no respecto de la comedia completa. El archivo diplomático `EMN_dip.xml` contiene también el acto II, por lo que la extensión del modelo a los actos restantes deberá abordarse como una fase posterior.
+
 ## 1. Resultado general
 
 El archivo contiene **136 aparatos `<app>`**. El inventario confirma que una parte relevante puede convertirse de forma semiautomática, pero también que existen grupos que requieren revisión filológica antes de la migración.
