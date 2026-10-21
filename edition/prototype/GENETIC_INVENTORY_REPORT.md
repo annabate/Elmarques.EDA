@@ -135,4 +135,4 @@ El archivo completo, con una fila por cada `<app>`, se conserva en `GENETIC_INVE
 
 ## 9. Pilot de migración A1
 
-Se ha creado `EMN_mod_A1_pilot.xml`, un archivo híbrido de transición en el que se han convertido únicamente los **23 casos A1 seguros**. La comparación detallada se documenta en `GENETIC_A1_PILOT_COMPARISON.md` y las **15 excepciones** en `GENETIC_A1_PILOT_EXCEPTIONS.md`.
+Se ha creado `EMN_mod_A1_pilot.xml`, un archivo híbrido de transición. Tras dos fases de revisión contiene **34 casos A1 migrados**. La comparación se documenta en `GENETIC_A1_PILOT_COMPARISON.md`, la resolución individual de las excepciones en `GENETIC_A1_EXCEPTION_RESOLUTION.md` y los **4 casos todavía pendientes** en `GENETIC_A1_PILOT_EXCEPTIONS.md`.
