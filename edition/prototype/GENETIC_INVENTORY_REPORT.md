@@ -17,7 +17,7 @@ El archivo contiene **136 aparatos `<app>`**. El inventario confirma que una par
 | Media | 93 |
 | Alta | 5 |
 
-Los **38 casos A0→A1 de prioridad baja** constituyen el primer núcleo razonable para una conversión automatizada controlada.
+La primera clasificación automática identificó **38 casos A0→A1 de prioridad baja**. Un segundo control estructural más estricto ha demostrado que solo **23** son isomorfos y pueden convertirse automáticamente sin pérdida de información; los otros **15** se han trasladado al registro de excepciones del piloto.
 
 ## 2. Secuencias actuales de `@wit`
 
@@ -128,6 +128,11 @@ Se han detectado **7 casos** cuya nota contiene formulaciones como «parece», �
 
 ## 8. Estrategia de migración recomendada
 
-La migración debería empezar por los casos **A0→A1 de prioridad baja**, porque su estructura actual suele corresponder de manera clara a cancelaciones o sustituciones inmediatas autoriales. Después pueden abordarse los A2 ya confirmados, y solo en un tercer bloque las intervenciones B, que requieren primero establecer de manera coherente la relación entre manos y campañas.
+La migración ha comenzado con los **23 casos A0→A1 estructuralmente isomorfos**. Los otros 15 casos inicialmente clasificados como de baja prioridad han quedado fuera de la conversión automática porque presentan incertidumbre, texto significativo fuera de los elementos de modificación o discrepancias entre la lectura A0 y el contenido de `<del>`. Después pueden abordarse los A2 ya confirmados, y solo en un tercer bloque las intervenciones B, que requieren primero establecer de manera coherente la relación entre manos y campañas.
 
 El archivo completo, con una fila por cada `<app>`, se conserva en `GENETIC_INVENTORY.csv`. La lista de los casos que requieren atención filológica se resume en `GENETIC_REVIEW_CASES.md`.
+
+
+## 9. Pilot de migración A1
+
+Se ha creado `EMN_mod_A1_pilot.xml`, un archivo híbrido de transición en el que se han convertido únicamente los **23 casos A1 seguros**. La comparación detallada se documenta en `GENETIC_A1_PILOT_COMPARISON.md` y las **15 excepciones** en `GENETIC_A1_PILOT_EXCEPTIONS.md`.
