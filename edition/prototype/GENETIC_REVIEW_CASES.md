@@ -1,6 +1,6 @@
 # Registro de casos para revisión filológica
 
-Este documento reúne los casos que no deberían entrar en una conversión automática sin revisión. Se deriva del inventario completo de `edition/EMN_mod.xml`.
+Este documento reúne los casos que no deberían entrar en una conversión automática sin revisión. Se deriva del inventario completo del `edition/EMN_mod.xml` disponible actualmente, que contiene únicamente el **acto I** hasta aproximadamente el v. 835.
 
 ## 1. Prioridad alta
 
