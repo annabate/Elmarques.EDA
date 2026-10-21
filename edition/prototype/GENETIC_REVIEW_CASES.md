@@ -86,3 +86,8 @@ Se han localizado **43 aparatos** que contienen al menos uno de estos problemas:
 ## 5. Criterio de uso
 
 Este registro no pretende decidir automáticamente si una intervención es A1, A2, B1 o B2. Su función es señalar los lugares en que la estructura heredada, la nota o la materialidad descrita exigen una decisión editorial explícita antes de producir la nueva codificación.
+
+
+## 6. Refinamiento del grupo A0→A1 inicialmente considerado de baja prioridad
+
+Un control estructural previo a la conversión redujo de **38 a 23** los casos aptos para migración automática. Los **15 restantes** se documentan en `GENETIC_A1_PILOT_EXCEPTIONS.md` porque presentan una o varias de estas condiciones: lecturas inciertas marcadas con «?», texto significativo fuera de `<del>/<add>`, discrepancia entre la lectura A0 y el contenido cancelado, o estructura de sustitución no normalizada.
