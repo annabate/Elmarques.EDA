@@ -90,4 +90,4 @@ Este registro no pretende decidir automáticamente si una intervención es A1, A
 
 ## 6. Refinamiento del grupo A0→A1 inicialmente considerado de baja prioridad
 
-Un control estructural previo a la conversión redujo de **38 a 23** los casos aptos para migración automática. Los **15 restantes** se documentan en `GENETIC_A1_PILOT_EXCEPTIONS.md` porque presentan una o varias de estas condiciones: lecturas inciertas marcadas con «?», texto significativo fuera de `<del>/<add>`, discrepancia entre la lectura A0 y el contenido cancelado, o estructura de sustitución no normalizada.
+Un control estructural previo a la conversión redujo inicialmente de **38 a 23** los casos aptos para migración automática. La revisión individual posterior permitió resolver **11 de las 15 excepciones**. El piloto contiene ahora **34 casos A1 migrados**; los **4 restantes** se conservan en `GENETIC_A1_PILOT_EXCEPTIONS.md`.
