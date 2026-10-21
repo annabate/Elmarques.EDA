@@ -30,6 +30,15 @@ jobs:
           sudo apt-get install -y ant jing
           python -m pip install --disable-pip-version-check lxml
 
+      - name: Check transitional pilot XML well-formedness
+        run: |
+          python - <<'PY'
+          from lxml import etree
+          path = 'edition/prototype/EMN_mod_A1_pilot.xml'
+          etree.parse(path)
+          print(f'XML well-formed: {path}')
+          PY
+
       - name: Compile ODD to RELAX NG
         run: |
           mkdir -p build/tei
