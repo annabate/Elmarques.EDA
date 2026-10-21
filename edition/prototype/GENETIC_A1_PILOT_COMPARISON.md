@@ -24,7 +24,7 @@ Para una sustitución se exige que:
 - no haya texto significativo fuera de `<del>/<add>`;
 - no haya marcas de incertidumbre.
 
-Con este criterio, **23 de los 38 casos** pueden convertirse automáticamente. Los otros **15** pasan al registro de revisión.
+Con este criterio, **23 de los 38 casos** pudieron convertirse automáticamente en la primera fase. La revisión individual posterior de las 15 excepciones permitió migrar **11 casos adicionales**, de modo que el piloto contiene actualmente **34 casos A1 migrados** y **4 pendientes**.
 
 ## 2. Casos convertidos
 
@@ -422,3 +422,8 @@ Estos casos permanecen sin modificar en el archivo piloto y deben resolverse med
 `EMN_mod_A1_pilot.xml` es deliberadamente un archivo **híbrido de transición**: contiene los 23 casos A1 ya migrados al nuevo modelo y conserva el aparato antiguo en todos los demás lugares. Por esta razón no debe validarse todavía contra `EMN_genetic.odd`, cuyo propósito es controlar un archivo ya completamente migrado.
 
 El objetivo del piloto es verificar que la transformación conserva el contenido textual, permite reconocer con claridad los casos no convertidos y ofrece una base segura para extender progresivamente la migración.
+
+
+## 5. Segunda fase del piloto
+
+La revisión individual de las excepciones se documenta en `GENETIC_A1_EXCEPTION_RESOLUTION.md`. Se han añadido al piloto los casos APP-040, APP-048, APP-062, APP-063, APP-065, APP-080, APP-083, APP-084, APP-085, APP-090 y APP-092. Los casos APP-088, APP-093, APP-098 y APP-127 permanecen sin migrar hasta comprobar el facsímil o resolver su estructura genética.
