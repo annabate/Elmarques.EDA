@@ -29,7 +29,7 @@
 </taxonomy>
 </classDecl>
 <projectDesc>
-<p>Archivo piloto híbrido para la migración de la codificación genética. Solo los casos A1 considerados estructuralmente isomorfos se han convertido al nuevo modelo; los demás aparatos conservan provisionalmente la codificación anterior.</p>
+<p>Archivo piloto híbrido para la migración de la codificación genética. Se han convertido los casos A1 considerados seguros tras una revisión estructural y filológica; los demás aparatos conservan provisionalmente la codificación anterior.</p>
 </projectDesc>
 </encodingDesc>
 <profileDesc>
@@ -43,6 +43,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-21">Segunda fase del piloto: se incorporan 11 casos A1 adicionales, incluidos seis con incertidumbre de lectura codificada mediante unclear. El piloto contiene ahora 34 casos A1 migrados.</change>
 <change when="2026-10-21">Conversión piloto de 23 casos A0→A1 estructuralmente isomorfos al modelo genético basado en mod/del/add.</change>
 </revisionDesc>
 </teiHeader>
@@ -331,7 +332,7 @@
 <speaker>Fel</speaker>
 <lg>
 <l>No lo seré yo pequeño;</l>
-<l n="130"><app><rdg wit="A0" varSeq="0" hand="authorial">llévame(?)</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>llévame(?)</del></lem></app>si quieres, contigo iré,<note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note></l>
+<l n="130"><mod xml:id="g040" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">llévame</unclear></del></mod>si quieres, contigo iré,<note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note></l>
 <l>donde hasta el fin no tendré</l>
 <l>gusto, descanso, ni sueño.</l>
 <l met="stanza"> Haz esto, primo, por mí,</l>
@@ -561,7 +562,7 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>    
-<l>La disposición del <app><rdg wit="A0" varSeq="0" hand="authorial">j</rdg><lem wit="A1" varSeq="1" hand="authorial">c</lem></app>uerpo</l>
+<l>La disposición del <mod xml:id="g048" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">j</del><add ana="#layer-A1">c</add></mod>uerpo</l>
 <l>muestra que el alma contiene</l>
 <l>todas las partes iguales;</l>
 <l>no el rostro, que el rostro puede</l>
@@ -742,7 +743,7 @@
 <l n="270">y esta es la causa que siempre</l>
 <l>casan las hermosas tarde,</l>
 <l>juzgando que más merecen.</l>
-<l>No han dicho a una fea <app><rdg wit="A0" varSeq="0" hand="authorial">amores?</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>amores?</del><add>envido</add></subst></lem></app></l>
+<l>No han dicho a una fea <mod xml:id="g062" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">amores</unclear></del><add ana="#layer-A1">envido</add></mod></l>
 <l>cuando con el resto quiere,</l>
 <l n="275">que piensa que no ha de haber</l>
 <l>hombre que a la tienda llegue.</l>
@@ -848,7 +849,7 @@
 <l n="305">con ingenio tan divino,</l>
 <l>con talle tan excelente</l>
 <l>y con tan hermosa cara?</l>
-<l>Que aunque la noche <app><rdg wit="A0" varSeq="0" hand="authorial">la defen</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>defen</del></lem></app> escurece</l>
+<l>Que aunque la noche la <mod xml:id="g063" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">defen</del></mod> escurece</l>
 <l>el cielo en que te retratas,</l>
 <l n="310">sus estrellas <app><rdg wit="A0" varSeq="0" hand="authorial">la defenden</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>la defenden</del><add>resplandecen</add></subst></lem></app>.<note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
 </note></l>
@@ -958,7 +959,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>
-<l n="360">¿<app><rdg wit="A0" varSeq="0" hand="authorial">conciert</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>conciert</del>Voluntades diferentes</lem></app> <note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note></l>
+<l n="360">¿<mod xml:id="g065" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">conciert</del></mod>Voluntades diferentes <note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note></l>
 <l part="I">conciertan estrellas?</l>
 </lg>
 </sp>
@@ -1235,7 +1236,7 @@
 <speaker>Men</speaker>
 <lg>   
 <l>Tarde, señor, me previenes.</l>
-<l><app><rdg wit="A0" varSeq="0" hand="authorial">Si er?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>Si er?</del></lem></app> ¡Hola, Inés, si eres Inés,</l>
+<l><mod xml:id="g080" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">Si er</unclear></del></mod> ¡Hola, Inés, si eres Inés,</l>
 <l n="430">Juana, o como tú quisieres,</l>
 <l>los nombres me has de decir!</l>
 </lg>
@@ -1267,7 +1268,7 @@
 <speaker>Me</speaker>
 <lg>    
 <l>Y gerarquía celeste</l>
-<l>se puede llamar,<app><rdg wit="A0" varSeq="0" hand="auhtorial">tu nombre</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>tu nombre</del></lem> por Dios.</app></l>
+<l>se puede llamar,<mod xml:id="g083" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">tu nombre</del></mod> por Dios.</l>
 <l n="440" part="I">¿Qué estado?</l>
 </lg>
 </sp>
@@ -1308,7 +1309,7 @@
 <sp>
 <speaker>Men</speaker>
 <lg>    
-<l>¡Oh Clara hermosa, <app><rdg wit="A0" varSeq="0" hand="authorial">quien?</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>quien?</del><add>pues</add></subst></lem></app> eres</l>
+<l>¡Oh Clara hermosa, <mod xml:id="g084" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">quien</unclear></del><add ana="#layer-A1">pues</add></mod> eres</l>
 <l>Clara, herido estoy de amor!</l>
 </lg>
 </sp>
@@ -1459,7 +1460,7 @@
 <l met="stanza"> tengo de andar su calle noche y día,</l>
 <l>como nave en la mar mirando el puerto,</l>
 <l>y así ella fuere para prenda mía,</l>
-<l met="stanza"><app><rdg wit="A0" varSeq="0" hand="authorial">podré</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>podré</del>después sólo de mí tendré la queja.</lem></app> </l>
+<l met="stanza"><mod xml:id="g085" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">podré</del></mod>después sólo de mí tendré la queja. </l>
 <l n="495">Preguntaré su misma celosía, </l>
 <l>consultaré los hierros de su reja,</l>
 <l met="stanza"> hablaré con sus puertas y ventanas</l>
@@ -1597,7 +1598,7 @@
 <l>cuando ya mata de amor.</l>
 <l met="stanza"> ¡Qué traidor<app><rdg wit="A0" varSeq="0" hand="authorial"> para mí fue</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>fue para mí</del><add>, Gerarda, fue</add></subst></lem></app></l>
 <l><mod xml:id="g089" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">de noche</del><add ana="#layer-A1">para mí!</add></mod> De noche vino.</l>
-<l n="565">¿Qué <app><rdg wit="A0" varSeq="0" hand="authorial">tan?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>tan?</del></lem></app> salteador en camino </l>
+<l n="565">¿Qué <mod xml:id="g090" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">tan</unclear></del></mod> salteador en camino </l>
 <l>hay que tan oculto esté?</l>
 <l><mod xml:id="g091" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">Vi</del></mod>Al principio me burlé</l>
 <l met="stanza"> de un hombre que a penas vía,</l>
@@ -1615,7 +1616,7 @@
 <l n="580">sale como todo es fuego)</l>
 <l>causó mi desasosiego,</l>
 <l>galán gentilhmobre y sabio.</l>
-<l met="stanza"> Ha<app><rdg wit="A0" varSeq="0" hand="authorial">le?</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>le?</del><add>me</add></subst></lem></app> venido muy bien</l>
+<l met="stanza"> Ha<mod xml:id="g092" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">le</unclear></del><add ana="#layer-A1">me</add></mod> venido muy bien</l>
 <l>para tratar de casarme</l>
 <l n="585">nuestro padre, que es matarme </l>
 <l>sin haber visto con quien.</l>
