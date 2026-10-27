@@ -353,19 +353,29 @@
     });
   }
 
+  function keepFirstAct(root) {
+    const clone = root.cloneNode(true);
+    const acts = Array.from(
+      clone.querySelectorAll(
+        'tei-div[type="act"], tei-div[type="jornada"]',
+      ),
+    );
+    acts.slice(1).forEach((act) => act.remove());
+    return clone;
+  }
+
   async function boot() {
     modelStatus.textContent = "Cargando TEI…";
 
-    const cetei = new CETEI();
     const [genetic, diplomatic] = await Promise.all([
-      loadTEI(cetei, geneticSourceUrl),
-      loadTEI(cetei, diplomaticSourceUrl),
+      loadTEI(new CETEI(), geneticSourceUrl),
+      loadTEI(new CETEI(), diplomaticSourceUrl),
     ]);
 
     geneticSource =
       window.EMNGeneticModel.normalizeXmlIds(genetic.cloneNode(true));
     diplomaticSource =
-      window.EMNGeneticModel.normalizeXmlIds(diplomatic.cloneNode(true));
+      window.EMNGeneticModel.normalizeXmlIds(keepFirstAct(diplomatic));
 
     const counts = window.EMNGeneticModel.layerCounts(geneticSource);
     modelStatus.textContent =
