@@ -113,25 +113,23 @@ La codificación inicial tendía a reducir todas estas dimensiones a una única 
 
 ### 3.3 `hand="authorial"` y `hand="non-authorial"` eran demasiado genéricos
 
-El manuscrito presenta intervenciones de manos distintas. En determinados pasajes pueden distinguirse al menos dos manos no autógrafas, una de las cuales sustituye ciertos nombres mientras otra restituye posteriormente la lección anterior.
+La codificación inicial utilizaba valores libres para indicar de forma muy general si una intervención era autógrafa o no autógrafa.
 
-Escribir simplemente:
-
-```xml
-hand="non-authorial"
-```
-
-impide conservar esa información.
-
-En el nuevo modelo las manos se declaran en el `teiHeader` mediante `<handNotes>` y `<handNote>`, y se remiten después mediante punteros:
+Para la mano de Lope esta información puede normalizarse mediante un identificador estable:
 
 ```xml
 hand="#Lope"
-hand="#hB1"
-hand="#hB2"
 ```
 
-De este modo la responsabilidad material de la intervención deja de ser una cadena descriptiva libre y pasa a constituir una relación explícita con una mano documentada.
+y una declaración en `<handNote>`.
+
+La situación de las manos no autógrafas es distinta. El manuscrito permite reconocer en determinados lugares intervenciones materialmente diferentes, pero no permite establecer con seguridad:
+
+- cuántas manos no autógrafas intervienen en total;
+- si una misma mano aparece en sectores distintos;
+- si las manos de la cubierta y los repartos coinciden con las del cuerpo dramático.
+
+Por ello el nuevo modelo **no obliga a utilizar `@hand` en B**. La ausencia de atribución no significa pérdida de información: evita convertir una hipótesis paleográfica en una identidad estructural no demostrada.
 
 ### 3.4 `@varSeq` era un atributo local no estándar
 
@@ -328,18 +326,7 @@ Aquí `@change` y `@ana` desempeñan funciones diferentes:
 
 ### 6.4 B: intervenciones no autógrafas
 
-B sigue funcionando como un estrato editorial unitario, especialmente útil en el plano de la visualización.
-
-Internamente, sin embargo, puede articularse cuando la evidencia paleográfica lo permite.
-
-Por ejemplo:
-
-```xml
-<handNote xml:id="hB1">Primera mano no autógrafa.</handNote>
-<handNote xml:id="hB2">Segunda mano no autógrafa.</handNote>
-```
-
-y:
+B continúa funcionando como un estrato editorial unitario y como una fase postautorial:
 
 ```xml
 <change xml:id="stage-B">
@@ -347,40 +334,59 @@ y:
 </change>
 ```
 
-Todos estos eventos pueden seguir llevando:
+Todos los eventos B llevan:
 
 ```xml
 ana="#layer-B"
+change="#stage-B"
 ```
 
-de modo que la interfaz conserve un único filtro B, mientras que el TEI mantiene una granularidad mucho mayor.
+La atribución mediante `@hand` es facultativa.
 
----
+La articulación interna de B se expresa mediante dos mecanismos independientes:
+
+1. `@seq`, cuando puede demostrarse una sucesión local entre dos intervenciones;
+2. una taxonomía funcional secundaria:
+
+```xml
+<taxonomy xml:id="B-functions">
+  <category xml:id="B-substitution">
+    <catDesc>Sustitución no autógrafa de una lección anterior.</catDesc>
+  </category>
+  <category xml:id="B-restoration">
+    <catDesc>Restitución posterior, dentro de B, de una lección previamente modificada.</catDesc>
+  </category>
+  <category xml:id="B-performance">
+    <catDesc>Intervención vinculada al uso escénico o a la representación.</catDesc>
+  </category>
+</taxonomy>
+```
+
+De este modo B puede describirse con bastante granularidad sin presuponer un número fijo de manos ni una cronología global interna.
 
 ## 7. Un caso decisivo: `marqués → conde → marqués`
 
-Uno de los pasajes más útiles para poner a prueba el modelo es aquel en que dos manos no autógrafas intervienen sucesivamente sobre el mismo texto.
+Uno de los pasajes más útiles para poner a prueba el modelo es aquel en que una sustitución no autógrafa es modificada posteriormente por otra intervención B.
 
-La secuencia material es:
+La secuencia material puede representarse como:
 
 ```text
 A0   marqués
-      ↓ primera mano no autógrafa
-B1   conde
-      ↓ segunda mano no autógrafa
-B2   marqués
+      ↓
+B, intervención 1   conde
+      ↓
+B, intervención 2   marqués
 ```
 
-En el modelo antiguo ambas transformaciones quedaban simplemente clasificadas como B.
+La lógica del pasaje permite afirmar que existen dos operaciones sucesivas. No obliga, sin embargo, a identificar dos manos globales.
 
-En el nuevo modelo se conserva la sucesión real anidando la segunda intervención dentro de la lección introducida por la primera:
+La codificación es:
 
 ```xml
 <mod xml:id="gB0170-1"
      type="subst"
-     hand="#hB1"
      change="#stage-B"
-     ana="#layer-B"
+     ana="#layer-B #B-substitution"
      seq="1">
 
   <del ana="#layer-A0">marqués</del>
@@ -389,9 +395,8 @@ En el nuevo modelo se conserva la sucesión real anidando la segunda intervenci�
 
     <mod xml:id="gB0170-2"
          type="subst"
-         hand="#hB2"
          change="#stage-B"
-         ana="#layer-B"
+         ana="#layer-B #B-restoration"
          seq="2">
 
       <del ana="#layer-B">conde</del>
@@ -403,32 +408,27 @@ En el nuevo modelo se conserva la sucesión real anidando la segunda intervenci�
 </mod>
 ```
 
-Esta construcción permite conservar simultáneamente:
+Esta construcción conserva:
 
-- la primera lección autógrafa;
-- la nueva lección introducida por la primera mano;
-- la segunda modificación;
-- el orden de los eventos;
-- la responsabilidad de cada mano;
+- la lección A0;
+- la primera sustitución B;
+- la segunda intervención B;
+- el orden local de las operaciones;
+- la función de sustitución y restitución;
 - la pertenencia global al estrato B.
 
-Es importante subrayar que no se utiliza automáticamente `<restore>`. El hecho de que la segunda mano vuelva a una palabra idéntica a la lección originaria no significa necesariamente que esté “restaurando” materialmente una cancelación en el sentido técnico previsto por la TEI. Si ejecuta una nueva sustitución sobre la lección previa, describirla como una segunda `<mod>` resulta más prudente y más fiel al fenómeno observable.
+La última lección `marqués` continúa siendo B aunque coincida con A0, porque constituye una nueva inscripción postautorial.
 
----
+No se utiliza automáticamente `<restore>`: la coincidencia textual con una lectura anterior no demuestra por sí sola una restauración material en el sentido técnico del elemento TEI.
 
 ## 8. Modificaciones que atraviesan varios versos
 
-El manuscrito contiene casos en los que una única intervención afecta a una secuencia de versos.
-
-En estas situaciones un elemento en línea como `<del>` no puede contener simplemente todos los versos, porque ello entraría en conflicto con la estructura jerárquica del texto.
-
-La solución TEI consiste en utilizar un span:
+Cuando una intervención afecta a una secuencia de versos se utiliza un span:
 
 ```xml
 <l n="410">
   <delSpan xml:id="gB0410"
            spanTo="#gB0415-end"
-           hand="#hB1"
            change="#stage-B"
            ana="#layer-B"/>
   Ya habrás oído mil veces
@@ -441,20 +441,20 @@ La solución TEI consiste en utilizar un span:
 <anchor xml:id="gB0415-end"/>
 ```
 
-La ventaja es clara:
+No se añade `@hand` si la identidad paleográfica no puede establecerse con seguridad.
 
-- los versos conservan su codificación normal;
+La ventaja del modelo es que:
+
+- los versos conservan su estructura;
 - la cancelación puede atravesar varios elementos;
-- el renderizador puede identificar el intervalo completo;
-- no es necesario duplicar ni deformar el texto.
+- el intervalo resulta recuperable por el renderizador;
+- no es necesario deformar la jerarquía XML.
 
-Este modelo sustituye las anteriores construcciones no estándar basadas en `from/to`.
-
----
+Esta solución sustituye las anteriores construcciones no estándar basadas en `from/to`.
 
 ## 9. Las manos en el nuevo modelo
 
-Las manos se declaran en el `profileDesc`:
+La mano autógrafa se declara mediante:
 
 ```xml
 <handNotes>
@@ -463,43 +463,26 @@ Las manos se declaran en el `profileDesc`:
             scribe="author">
     Mano autógrafa de Lope de Vega.
   </handNote>
-
-  <handNote xml:id="hB1"
-            scope="minor">
-    Primera mano no autógrafa.
-  </handNote>
-
-  <handNote xml:id="hB2"
-            scope="minor">
-    Segunda mano no autógrafa.
-  </handNote>
 </handNotes>
 ```
 
-Las intervenciones remiten después a estos identificadores:
+Las intervenciones A1 y A2 remiten a ella mediante:
 
 ```xml
 hand="#Lope"
-hand="#hB1"
-hand="#hB2"
 ```
 
-Este sistema ofrece varias ventajas:
+En B, en cambio, `@hand` es facultativo.
 
-1. evita valores textuales incoherentes y errores tipográficos;
-2. permite describir paleográficamente una mano una sola vez;
-3. hace posible modificar más adelante una identificación sin cambiar todas las intervenciones;
-4. permite distinguir responsabilidad gráfica y campaña cronológica.
+La decisión responde a una limitación real de la evidencia: pueden distinguirse en algunos lugares trazos o intervenciones diferentes, pero no es posible reconstruir con seguridad un inventario global de manos no autógrafas ni hacer corresponder automáticamente las manos de sectores distintos del manuscrito.
 
-Un principio metodológico importante es que **mano y campaña no coinciden necesariamente**.
+Si una futura revisión paleográfica permite identificar una mano estable, podrá añadirse un `<handNote>` y utilizarse `@hand` en los lugares pertinentes sin alterar el resto del modelo.
 
-La misma mano podría intervenir en momentos diferentes. A la inversa, una misma fase podría incluir intervenciones de más de una mano. Por ello ambas informaciones se mantienen separadas.
-
----
+La estructura TEI debe registrar únicamente el grado de atribución que pueda sostenerse.
 
 ## 10. Campañas de revisión
 
-Las campañas o fases documentales se describen mediante `<listChange>`:
+Las fases documentales principales se describen mediante:
 
 ```xml
 <creation>
@@ -521,13 +504,11 @@ Las campañas o fases documentales se describen mediante `<listChange>`:
 </creation>
 ```
 
-El anidamiento permite expresar una jerarquía sin fingir que todos los estratos poseen el mismo estatuto.
+A0 y A2 pertenecen a la historia autorial. B designa la fase postautorial.
 
-A0 y A2 pertenecen a la historia autorial. B reúne, en cambio, la fase postautorial. Su articulación interna se expresa mediante la identificación de las manos y, cuando sea demostrable, mediante secuencias locales.
+No se crean `stage-B1` y `stage-B2`.
 
-La estructura debe mantenerse prudente: hB1 y hB2 identifican manos, no campañas globales. El orden hB1→hB2 solo se declara mediante `@seq` en los lugares donde puede sostenerse materialmente.
-
----
+Cuando dentro de B puede demostrarse una sucesión concreta, se utiliza `@seq` de forma local. Así se evita convertir la repetición de un patrón en una cronología global no demostrada.
 
 ## 11. Por qué `@ana` es esencial para el proyecto
 
@@ -734,28 +715,26 @@ Contiene un primer segmento recodificado hasta aproximadamente el v. 150 e inclu
 
 ### 16.2 `EMN_complex_cases.xml`
 
-Se creó como auténtico **prueba de estrés** y contiene:
+Se creó como auténtica **prueba de estrés** y contiene:
 
 - un caso A2 diferido;
-- una secuencia local hB1 → hB2;
-- una cancelación de largo alcance a través de varios versos.
+- una secuencia local de sustitución y restitución dentro de B;
+- una cancelación B de largo alcance.
+
+Las intervenciones B de prueba no requieren identificación de mano.
 
 Ambos archivos se han verificado contra:
 
 1. el esquema RELAX NG generado a partir del ODD;
 2. las reglas Schematron específicas del proyecto.
 
-La validación se ejecuta automáticamente mediante GitHub Actions en el flujo de trabajo:
+La validación se ejecuta automáticamente mediante GitHub Actions en:
 
 ```text
-.github/flujo de trabajos/validate-genetic-tei.yml
+.github/workflows/validate-genetic-tei.yml
 ```
 
-El ODD se compila con los Stylesheets TEI y cada modificación de los archivos del prototipo puede comprobarse así de manera reproducible.
-
-Hasta el momento los prueba de estréss han superado todas las reglas activas.
-
----
+El ODD se compila con los Stylesheets TEI y cada modificación del prototipo puede comprobarse de manera reproducible.
 
 ## 17. Un ejemplo de reclasificación filológica
 
@@ -852,8 +831,8 @@ evento documental = mod / add / del / spans
 fase = change
 inmediatez = instant
 orden local = seq
-mano = hand → handNote
-categoría editorial = ana → taxonomy
+mano = hand → handNote, solo cuando la atribución es segura
+categoría editorial y funcional = ana → taxonomy
 ```
 
 El nuevo modelo separa así informaciones que antes estaban comprimidas dentro de un mismo constructo.
@@ -862,22 +841,20 @@ El nuevo modelo separa así informaciones que antes estaban comprimidas dentro d
 
 ## 20. Principio de prudencia interpretativa
 
-El ODD es deliberadamente riguroso, pero no debe obligar a declarar información que el manuscrito no permite conocer realmente.
+El ODD debe ser riguroso sin obligar a declarar información que el manuscrito no permite conocer.
 
 Cuando no sea posible establecer con seguridad:
 
 - si una intervención es inmediata o diferida;
-- si una mano es hB1 o hB2;
-- si dos intervenciones pertenecen a la misma campaña;
-- cuál es el orden preciso entre dos modificaciones;
+- la identidad de una mano no autógrafa;
+- si dos intervenciones materialmente distintas pertenecen al mismo escribiente;
+- cuál es el orden relativo entre dos modificaciones B;
 
-la codificación debe conservar la incertidumbre.
+la codificación debe conservar esa incertidumbre.
 
-La modelización no debe transformar una hipótesis filológica en una falsa certeza estructural.
+En particular, B puede codificarse plenamente sin `@hand`.
 
-Este principio será especialmente importante durante la conversión del archivo completo.
-
----
+La modelización no debe transformar una hipótesis paleográfica en una falsa certeza estructural.
 
 ## 21. Estrategia prevista para la migración completa
 
@@ -1182,4 +1159,4 @@ y no el recorrido inverso.
 
 ### Nota de revisión sobre B
 
-La primera formulación del modelo tendía a identificar `hB1/hB2` con `stage-B1/stage-B2`. Esa equivalencia se abandona porque mano y campaña no son categorías idénticas. El modelo actual utiliza un único `stage-B` para la fase postautorial y reserva `@hand` para la atribución paleográfica y `@seq` para el orden local entre intervenciones.
+La primera formulación del modelo intentó distinguir de forma estable hB1/hB2 y relacionar esas identidades con una articulación interna de B. Esa solución se abandona. El modelo actual utiliza un único `stage-B`, hace `@hand` facultativo en B y expresa únicamente las sucesiones locales demostrables mediante `@seq`. La taxonomía funcional `B-functions` permite distinguir sustitución, restitución e intervenciones de representación sin convertirlas en identidades paleográficas.
