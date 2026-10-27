@@ -201,7 +201,7 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "note-trigger";
-      button.textContent = "✶";
+      button.textContent = "·";
       button.dataset.noteId = `note-${++noteCounter}`;
       button.setAttribute("aria-label", "Abrir nota editorial");
       button.setAttribute("aria-expanded", "false");
@@ -329,11 +329,18 @@
     [geneticPane, diplomaticPane].forEach((pane) => pane.normalize());
   }
 
+  function updateSearchControls() {
+    document
+      .querySelector(".search-control")
+      ?.classList.toggle("has-results", searchMatches.length > 0);
+  }
+
   function clearSearch() {
     unwrapSearchMarks();
     searchMatches = [];
     searchIndex = -1;
     document.getElementById("search-count").textContent = "";
+    updateSearchControls();
   }
 
   function markMatches(container, query) {
@@ -424,6 +431,7 @@
       ...markMatches(diplomaticPane, query),
     ];
 
+    updateSearchControls();
     if (searchMatches.length) showSearchMatch(0);
     else document.getElementById("search-count").textContent = "0";
   }
@@ -463,15 +471,6 @@
     rebuildPaneResizers();
   }
 
-  function updatePaneOrderControls() {
-    const panes = visiblePanes();
-    panes.forEach((pane, index) => {
-      const left = pane.querySelector('[data-move-pane="left"]');
-      const right = pane.querySelector('[data-move-pane="right"]');
-      if (left) left.disabled = index === 0;
-      if (right) right.disabled = index === panes.length - 1;
-    });
-  }
 
   function resizePanePair(leftPane, rightPane, startEvent) {
     if (window.matchMedia("(max-width: 760px)").matches) return;
@@ -521,6 +520,10 @@
       resizePanePair(leftPane, rightPane, event);
     });
 
+    resizer.addEventListener("dblclick", () => {
+      equalizeVisiblePanes();
+    });
+
     resizer.addEventListener("keydown", (event) => {
       if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
       event.preventDefault();
@@ -557,7 +560,80 @@
       pane.after(makePaneResizer(pane, panes[index + 1]));
     });
 
-    updatePaneOrderControls();
+  }
+
+  function clearPaneDropHints() {
+    editionGrid
+      .querySelectorAll(".pane-drop-before, .pane-drop-after")
+      .forEach((pane) =>
+        pane.classList.remove("pane-drop-before", "pane-drop-after"),
+      );
+  }
+
+  function setupPaneDragging() {
+    editionGrid.querySelectorAll(":scope > .edition-pane").forEach((pane) => {
+      const header = pane.querySelector(".pane-header");
+      if (!header || header.dataset.dragReady === "true") return;
+
+      header.dataset.dragReady = "true";
+      header.draggable = true;
+      header.tabIndex = 0;
+
+      header.addEventListener("dragstart", (event) => {
+        if (window.matchMedia("(max-width: 760px)").matches) {
+          event.preventDefault();
+          return;
+        }
+        pane.classList.add("is-pane-dragging");
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("text/plain", pane.id);
+        editionGrid
+          .querySelectorAll(":scope > .pane-resizer")
+          .forEach((resizer) => resizer.remove());
+      });
+
+      header.addEventListener("dragend", () => {
+        pane.classList.remove("is-pane-dragging");
+        clearPaneDropHints();
+        rebuildPaneResizers();
+      });
+
+      pane.addEventListener("dragover", (event) => {
+        if (!document.querySelector(".is-pane-dragging")) return;
+        event.preventDefault();
+        const rect = pane.getBoundingClientRect();
+        const before = event.clientX < rect.left + rect.width / 2;
+        clearPaneDropHints();
+        pane.classList.add(before ? "pane-drop-before" : "pane-drop-after");
+      });
+
+      pane.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const draggedId = event.dataTransfer.getData("text/plain");
+        const draggedPane = document.getElementById(draggedId);
+        if (!draggedPane || draggedPane === pane) return;
+
+        const rect = pane.getBoundingClientRect();
+        const before = event.clientX < rect.left + rect.width / 2;
+        if (before) pane.before(draggedPane);
+        else pane.after(draggedPane);
+
+        clearPaneDropHints();
+        rebuildPaneResizers();
+      });
+
+      header.addEventListener("keydown", (event) => {
+        if (!event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) {
+          return;
+        }
+        event.preventDefault();
+        movePane(
+          pane,
+          event.key === "ArrowLeft" ? "left" : "right",
+        );
+        header.focus();
+      });
+    });
   }
 
   function updatePaneLayout({ equalize = false } = {}) {
@@ -580,21 +656,18 @@
       input.addEventListener("change", renderGenetic),
     );
 
-    document
-      .getElementById("go-verse")
-      .addEventListener("click", () => goToVerse(verseInput.value));
-
     verseInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") goToVerse(verseInput.value);
     });
 
     document
-      .getElementById("search-button")
-      .addEventListener("click", runSearch);
-    document
       .getElementById("search-input")
       .addEventListener("keydown", (event) => {
         if (event.key === "Enter") runSearch();
+        if (event.key === "Escape") {
+          event.currentTarget.value = "";
+          clearSearch();
+        }
       });
     document
       .getElementById("search-next")
@@ -618,17 +691,8 @@
       });
     });
 
-    document
-      .getElementById("reset-layout")
-      .addEventListener("click", equalizeVisiblePanes);
-
-    editionGrid.querySelectorAll("[data-move-pane]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const pane = button.closest(".edition-pane");
-        if (pane) movePane(pane, button.dataset.movePane);
-      });
-    });
-
+    setupPaneDragging();
+    updateSearchControls();
     updatePaneLayout({ equalize: true });
   }
 
