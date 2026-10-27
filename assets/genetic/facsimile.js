@@ -78,25 +78,50 @@
       selector.appendChild(option);
     });
 
+    const stage = image.closest(".facsimile-stage");
     let scale = 1;
+    let fittedWidth = 0;
+
+    function computeFittedWidth() {
+      if (!stage || !image.naturalWidth || !image.naturalHeight) return 0;
+
+      const availableWidth = Math.max(120, stage.clientWidth - 28);
+      const availableHeight = Math.max(160, stage.clientHeight - 28);
+      const widthScale = availableWidth / image.naturalWidth;
+      const heightScale = availableHeight / image.naturalHeight;
+      const fitScale = Math.min(widthScale, heightScale, 1);
+
+      return Math.max(120, Math.round(image.naturalWidth * fitScale));
+    }
 
     function applyZoom() {
-      const percentage = Math.round(scale * 100);
-      image.style.width = `${percentage}%`;
+      if (!fittedWidth) fittedWidth = computeFittedWidth();
+      if (!fittedWidth) return;
+
+      const width = Math.round(fittedWidth * scale);
+      image.style.width = `${width}px`;
       image.style.height = "auto";
       image.style.maxWidth = "none";
       image.style.transform = "none";
       image.dataset.zoom = scale.toFixed(2);
+
+      const percentage = Math.round(scale * 100);
       resetZoomButton.textContent = `${percentage}%`;
       resetZoomButton.title =
         scale === 1
-          ? "Zoom al 100 %"
-          : "Restablecer zoom al 100 %";
+          ? "Facsímil ajustado al panel"
+          : "Volver a ajustar el facsímil al panel";
+    }
+
+    function refit({ preserveZoom = true } = {}) {
+      fittedWidth = computeFittedWidth();
+      if (!preserveZoom) scale = 1;
+      applyZoom();
     }
 
     function resetZoom() {
       scale = 1;
-      applyZoom();
+      refit({ preserveZoom: true });
     }
 
     function showFolio(folioN, { scrollText = true } = {}) {
@@ -145,6 +170,17 @@
 
     resetZoomButton.addEventListener("click", resetZoom);
 
+    image.addEventListener("load", () => {
+      refit({ preserveZoom: false });
+    });
+
+    if (stage && "ResizeObserver" in window) {
+      const observer = new ResizeObserver(() => {
+        refit({ preserveZoom: true });
+      });
+      observer.observe(stage);
+    }
+
     image.addEventListener(
       "wheel",
       (event) => {
@@ -158,6 +194,8 @@
       },
       { passive: false },
     );
+
+    image.addEventListener("dblclick", resetZoom);
 
     textContainers.forEach((container) => {
       container.addEventListener("click", (event) => {
