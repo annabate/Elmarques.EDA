@@ -44,6 +44,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se migran dos casos A1 adicionales confirmados por las notas como correcciones inmediatas: «a los más sabios»→«como lo esperes» y «sale aquel día»→«salir porfía».</change>
 <change when="2026-10-27">Revisión A2: la corrección inicial Leo→Feli se reclasifica como A1 inmediata; se migran como A2 confirmados los reajustes de los vv. 219–220 y la sustitución «que los angeles»→«que angel que viene».</change>
 <change when="2026-10-27">Se resuelven los cuatro casos pendientes a partir de la revisión del aparato: los vv. 565–566 se codifican como reescritura A1 en dos versos; el v. 597 se descompone en una cancelación A1 y una sustitución A2; los vv. 646 y 755 se codifican como cancelaciones A1 con lectura parcialmente incierta.</change>
 <change when="2026-10-21">Segunda fase del piloto: se incorporan 11 casos A1 adicionales, incluidos seis con incertidumbre de lectura codificada mediante unclear. El piloto contiene ahora 34 casos A1 migrados.</change>
@@ -191,7 +192,7 @@
 <l>o has de ser tan desdichado</l>
 <l>que aun honra no has de tener;</l>
 <l n="65">que si os llegan a ofender</l>
-<l>las propia — <app><rdg wit="A0" varSeq="0" hand="authorial">a los más sabios</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>a los más sabios</del><add>como lo esperes</add></subst></lem></app><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note></l>
+<l>las propia — <mod xml:id="g037" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">a los más sabios</del><add ana="#layer-A1">como lo esperes</add></mod><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note></l>
 <l>aunque tan honrado eres―</l>
 <l>y a los más nobles y sabios,</l>
 <l>es por vengar los agravios</l>
@@ -295,7 +296,7 @@
 <l>por muchas cartas Leonora.</l>
 <l n="105">¡Cuánta riqueza atesora, </l>
 <l>lustre, gala y valentía!</l>
-<l>Dicen que <app><rdg wit="A0" varSeq="0" hand="authorial">sale aquel día</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>sale aquel día</del><add>salir porfía</add></subst></lem></app><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
+<l>Dicen que <mod xml:id="g039" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">sale aquel día</del><add ana="#layer-A1">salir porfía</add></mod><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
 </note></l>
 <l>y que ha de ser el espacio</l>
 <l>de la plaza de palacio,</l>
