@@ -83,6 +83,14 @@
     );
   }
 
+  function deleteSpanRange(span, anchor) {
+    if (!anchor) return;
+    const range = document.createRange();
+    range.setStartAfter(span);
+    range.setEndBefore(anchor);
+    range.deleteContents();
+  }
+
   function resolveSpans(root, targetRank) {
     const spans = Array.from(
       root.querySelectorAll("tei-delspan, tei-addspan"),
@@ -98,19 +106,59 @@
         layerRank !== undefined && targetRank >= layerRank;
 
       const shouldDeleteRange = isDeletion ? eventApplies : !eventApplies;
-
-      if (shouldDeleteRange && anchor) {
-        const range = document.createRange();
-        range.setStartAfter(span);
-        range.setEndBefore(anchor);
-        range.deleteContents();
-      }
-
+      if (shouldDeleteRange) deleteSpanRange(span, anchor);
       span.remove();
     });
 
     root.querySelectorAll("tei-anchor").forEach((anchor) => {
       anchor.hidden = true;
+    });
+  }
+
+  function resolveUnselectedSpans(root, activeLayers) {
+    const active = new Set(activeLayers);
+    const maxActiveRank = Math.max(
+      -1,
+      ...Array.from(active)
+        .map((layer) => LAYER_RANK[layer])
+        .filter((rank) => rank !== undefined),
+    );
+
+    root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
+      const layer = eventLayer(span);
+      if (!layer || active.has(layer)) return;
+
+      const rank = LAYER_RANK[layer];
+      const applyEvent = maxActiveRank > rank;
+      const isDeletion = span.tagName.toLowerCase() === "tei-delspan";
+      const pointer = attr(span, "spanTo") || attr(span, "spanto");
+      const anchor = getTargetAnchor(root, pointer);
+
+      const shouldDeleteRange = isDeletion ? applyEvent : !applyEvent;
+      if (shouldDeleteRange) deleteSpanRange(span, anchor);
+      span.remove();
+    });
+  }
+
+  function pruneEmptyStructures(root) {
+    [
+      "tei-castitem",
+      "tei-stage",
+      "tei-head",
+      "tei-castlist",
+    ].forEach((selector) => {
+      Array.from(root.querySelectorAll(selector))
+        .reverse()
+        .forEach((el) => {
+          const hasText = (el.textContent || "").trim().length > 0;
+          const hasMeaningfulChildren = Array.from(el.children).some(
+            (child) =>
+              !["tei-anchor", "tei-pb"].includes(
+                child.tagName.toLowerCase(),
+              ),
+          );
+          if (!hasText && !hasMeaningfulChildren) el.remove();
+        });
     });
   }
 
@@ -133,6 +181,7 @@
     });
 
     resolveSpans(root, targetRank);
+    pruneEmptyStructures(root);
     root.classList.add("reconstructed-text");
     root.dataset.reconstruction = stage;
     return root;
@@ -202,6 +251,8 @@
   function renderInterventions(sourceRoot, activeLayers) {
     const root = normalizeXmlIds(sourceRoot.cloneNode(true));
     collapseUnselectedMods(root, activeLayers);
+    resolveUnselectedSpans(root, activeLayers);
+    pruneEmptyStructures(root);
     decorateVisibleEvents(root);
     root.classList.add("genetic-intervention-view");
     return root;
