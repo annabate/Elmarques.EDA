@@ -66,14 +66,12 @@ permalink: /genetic/
         <input type="checkbox" data-toggle-pane="diplomatic-pane">
         <span>Diplomática</span>
       </label>
-      <button id="reset-layout" class="layout-reset" type="button" title="Repartir el espacio por igual">Equilibra</button>
     </fieldset>
 
     <div class="toolbar-group toolbar-navigation">
       <label for="verse-input" class="toolbar-label">Verso</label>
       <div class="compact-control">
         <input id="verse-input" type="number" min="1" inputmode="numeric" placeholder="n.º">
-        <button id="go-verse" type="button">Ir</button>
       </div>
     </div>
 
@@ -81,7 +79,6 @@ permalink: /genetic/
       <label for="search-input" class="toolbar-label">Buscar</label>
       <div class="search-control">
         <input id="search-input" type="text" placeholder="Buscar en los textos…">
-        <button id="search-button" type="button">Buscar</button>
         <button id="search-prev" class="icon-button" type="button" title="Coincidencia anterior" aria-label="Coincidencia anterior">↑</button>
         <button id="search-next" class="icon-button" type="button" title="Coincidencia siguiente" aria-label="Coincidencia siguiente">↓</button>
         <button id="search-clear" class="icon-button" type="button" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">×</button>
@@ -103,23 +100,19 @@ permalink: /genetic/
 
   <main id="edition-grid" class="two-pane">
     <section id="facsimile-pane" class="edition-pane facsimile-pane" aria-label="Facsímil">
-      <header class="pane-header">
+      <header class="pane-header" title="Arrastrar para cambiar la posición del panel">
         <div class="pane-title">
           <span class="pane-eyebrow">Manuscrito</span>
           <strong>Facsímil</strong>
         </div>
         <div class="pane-header-actions">
-          <div class="pane-order-controls" aria-label="Cambiar posición del facsímil">
-            <button type="button" data-move-pane="left" title="Mover panel a la izquierda" aria-label="Mover facsímil a la izquierda">←</button>
-            <button type="button" data-move-pane="right" title="Mover panel a la derecha" aria-label="Mover facsímil a la derecha">→</button>
-          </div>
           <div class="facsimile-controls">
           <button id="folio-prev" type="button" title="Folio anterior" aria-label="Folio anterior">←</button>
           <select id="folio-selector" aria-label="Seleccionar folio"></select>
           <button id="folio-next" type="button" title="Folio siguiente" aria-label="Folio siguiente">→</button>
           <span class="control-divider" aria-hidden="true"></span>
           <button id="zoom-out" type="button" title="Reducir" aria-label="Reducir">−</button>
-          <button id="zoom-reset" type="button" title="Restablecer zoom">1:1</button>
+          <button id="zoom-reset" type="button" title="Ajustar el facsímil al panel">Ajustar</button>
           <button id="zoom-in" type="button" title="Ampliar" aria-label="Ampliar">+</button>
         </div>
         </div>
@@ -132,34 +125,26 @@ permalink: /genetic/
     </section>
 
     <section id="genetic-pane" class="edition-pane genetic-pane" aria-label="Edición genética">
-      <header class="pane-header">
+      <header class="pane-header" title="Arrastrar para cambiar la posición del panel">
         <div class="pane-title">
           <span class="pane-eyebrow">Texto</span>
           <strong>Edición genética</strong>
         </div>
         <div class="pane-header-actions">
           <span class="pane-meta">A0 · A1 · A2 · B</span>
-          <div class="pane-order-controls" aria-label="Cambiar posición de la edición genética">
-            <button type="button" data-move-pane="left" title="Mover panel a la izquierda" aria-label="Mover edición genética a la izquierda">←</button>
-            <button type="button" data-move-pane="right" title="Mover panel a la derecha" aria-label="Mover edición genética a la derecha">→</button>
-          </div>
         </div>
       </header>
       <div id="genetic-scroll" class="pane-scroll text-scroll"></div>
     </section>
 
     <section id="diplomatic-pane" class="edition-pane diplomatic-pane is-hidden-pane" aria-label="Transcripción diplomática">
-      <header class="pane-header">
+      <header class="pane-header" title="Arrastrar para cambiar la posición del panel">
         <div class="pane-title">
           <span class="pane-eyebrow">Transcripción</span>
           <strong>Diplomática</strong>
         </div>
         <div class="pane-header-actions">
           <span class="pane-meta">Acto I</span>
-          <div class="pane-order-controls" aria-label="Cambiar posición de la transcripción diplomática">
-            <button type="button" data-move-pane="left" title="Mover panel a la izquierda" aria-label="Mover transcripción diplomática a la izquierda">←</button>
-            <button type="button" data-move-pane="right" title="Mover panel a la derecha" aria-label="Mover transcripción diplomática a la derecha">→</button>
-          </div>
         </div>
       </header>
       <div id="diplomatic-scroll" class="pane-scroll text-scroll"></div>
