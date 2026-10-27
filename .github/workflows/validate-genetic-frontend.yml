@@ -9,6 +9,8 @@ on:
       - 'css/genetic-edition.css'
       - 'edition/index.md'
       - '_layouts/edition.html'
+      - 'Gemfile'
+      - 'vercel.json'
       - '.github/workflows/validate-genetic-frontend.yml'
   workflow_dispatch:
 
@@ -32,9 +34,8 @@ jobs:
 
       - name: Build Jekyll site
         run: |
-          gem install jekyll -v 4.3.4 --no-document
-          gem install webrick --no-document
-          jekyll build --destination _site-test
+          bundle install
+          bundle exec jekyll build --destination _site-test
           test -f _site-test/edition/index.html
 
       - name: Check JavaScript syntax
