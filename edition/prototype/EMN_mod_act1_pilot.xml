@@ -52,6 +52,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se migran los 29 aparatos B de la cubierta y los repartos como adiciones postautoriales sin atribución de mano. El título se trata como adición B simple y las 28 entradas de reparto como adiciones B vinculadas funcionalmente al uso teatral mediante #B-performance.</change>
 <change when="2026-10-27">Se migran los tres últimos aparatos B del cuerpo del acto I: «Feli»→«Leo» como sustitución B, «Siéntense» como adición B de función escénica y «díjese» como adición B sin atribución funcional adicional. El cuerpo del acto I queda sin aparatos B legacy.</change>
 <change when="2026-10-27">Se crea el piloto global del acto I y se migran 58 aparatos B del cuerpo. Las intervenciones se integran en un único estrato postautorial B; las sucesiones locales se distinguen mediante @seq y categorías funcionales, sin fijar identidades paleográficas globales para las manos no autógrafas.</change>
 <change when="2026-10-27">Se fija la secuencia de los vv. 308–309 según el aparato de la edición: el v. 308 contiene una sustitución inmediata A1 («la defen»→«escurece»); el v. 309 contiene una sustitución posterior A2 («la defenden»→«resplandecen»). Ambas pertenecen a un mismo proceso de enmienda desarrollado en dos fases.</change>
@@ -66,38 +67,38 @@
 <front/>
 <body change="#stage-A0">
 <pb type="folio" n="[Fol. n. n. r.]"/>
-    <head><app><rdg wit="B" varSeq="3" hand="non-authorial">El marqués de las Navas</rdg></app></head>
+    <head><mod xml:id="gBF001" type="add" change="#stage-B" ana="#layer-B"><add ana="#layer-B">El marqués de las Navas</add></mod></head>
     <castList>
-          <castItem><app><rdg wit="B" hand="non-authorial">de Lope</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">De Fadrique Doristán</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">don Felipe de Cardona</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">don Diego de Cardona</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">el conde don Felis</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Frutos Bravo</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Bernardo - el marqués</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">don Felipe</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Leonardo</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Mendozilla</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Gerarda</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Laurencia</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Clara</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Bernardo</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Fadrique</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Antonio</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Ludovico</rdg><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir en él al menos dos manos distintas, atribuibles presumiblemente a integrantes de alguna de las compañías responsables de la puesta en escena.</note></app></castItem>
+          <castItem><mod xml:id="gBF002" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">de Lope</add></mod></castItem>
+          <castItem><mod xml:id="gBF003" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">De Fadrique Doristán</add></mod></castItem>
+          <castItem><mod xml:id="gBF004" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Felipe de Cardona</add></mod></castItem>
+          <castItem><mod xml:id="gBF005" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Diego de Cardona</add></mod></castItem>
+          <castItem><mod xml:id="gBF006" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">el conde don Felis</add></mod></castItem>
+          <castItem><mod xml:id="gBF007" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Frutos Bravo</add></mod></castItem>
+          <castItem><mod xml:id="gBF008" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Bernardo - el marqués</add></mod></castItem>
+          <castItem><mod xml:id="gBF009" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Felipe</add></mod></castItem>
+          <castItem><mod xml:id="gBF010" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Leonardo</add></mod></castItem>
+          <castItem><mod xml:id="gBF011" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Mendozilla</add></mod></castItem>
+          <castItem><mod xml:id="gBF012" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Gerarda</add></mod></castItem>
+          <castItem><mod xml:id="gBF013" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Laurencia</add></mod></castItem>
+          <castItem><mod xml:id="gBF014" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Clara</add></mod></castItem>
+          <castItem><mod xml:id="gBF015" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Bernardo</add></mod></castItem>
+          <castItem><mod xml:id="gBF016" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Fadrique</add></mod></castItem>
+          <castItem><mod xml:id="gBF017" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Antonio</add></mod></castItem>
+          <castItem><mod xml:id="gBF018" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Ludovico</add></mod><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir en él al menos dos manos distintas, atribuibles presumiblemente a integrantes de alguna de las compañías responsables de la puesta en escena.</note></castItem>
         </castList>
           <pb type="folio" n="[Fol. n. n. v.]"/>
-          <castItem><app><rdg wit="B" hand="non-authorial">don Juan - Jordán</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">músico - Cuadrado</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">don Luis - Vicente</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Gerarda - señora Catarina</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Antonio - Jordán</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Ludovico - Escorigüela</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Clara - señora Germana</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">lacayo - Vicente</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">don Enrique - Mateo</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Bernardo - Jerónimo</rdg></app></castItem>
-          <castItem><app><rdg wit="B" hand="non-authorial">Laurencia - señora María Vitoria</rdg><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Según señala Reyes Peña [1997:235] se trata, con toda probabilidad, de los integrantes de la compañía de Antonio de Prado entre 1631 y 1636</note></app></castItem>
+          <castItem><mod xml:id="gBF019" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Juan - Jordán</add></mod></castItem>
+          <castItem><mod xml:id="gBF020" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">músico - Cuadrado</add></mod></castItem>
+          <castItem><mod xml:id="gBF021" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Luis - Vicente</add></mod></castItem>
+          <castItem><mod xml:id="gBF022" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Gerarda - señora Catarina</add></mod></castItem>
+          <castItem><mod xml:id="gBF023" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Antonio - Jordán</add></mod></castItem>
+          <castItem><mod xml:id="gBF024" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Ludovico - Escorigüela</add></mod></castItem>
+          <castItem><mod xml:id="gBF025" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Clara - señora Germana</add></mod></castItem>
+          <castItem><mod xml:id="gBF026" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">lacayo - Vicente</add></mod></castItem>
+          <castItem><mod xml:id="gBF027" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Enrique - Mateo</add></mod></castItem>
+          <castItem><mod xml:id="gBF028" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Bernardo - Jerónimo</add></mod></castItem>
+          <castItem><mod xml:id="gBF029" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Laurencia - señora María Vitoria</add></mod><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Según señala Reyes Peña [1997:235] se trata, con toda probabilidad, de los integrantes de la compañía de Antonio de Prado entre 1631 y 1636</note></castItem>
 <div type="act" n="1">
 <pb type="folio" n="[Fol. 1r]"/>
 <head>Acto primero</head>
