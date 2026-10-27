@@ -54,7 +54,7 @@
               <sch:assert test=".//tei:taxonomy[@xml:id='B-functions']">Debe declararse la taxonomía funcional B-functions.</sch:assert>
               <sch:assert test=".//tei:category[@xml:id='B-substitution'] and .//tei:category[@xml:id='B-restoration'] and .//tei:category[@xml:id='B-performance']">La taxonomía B-functions debe declarar B-substitution, B-restoration y B-performance.</sch:assert>
               <sch:assert test=".//tei:handNote[@xml:id='Lope']">Debe declararse la mano autógrafa #Lope.</sch:assert>
-              <sch:assert test=".//tei:change[@xml:id='stage-A0'] and .//tei:change[@xml:id='stage-A2']">Deben declararse al menos los estados stage-A0 y stage-A2.</sch:assert>
+              <sch:assert test=".//tei:change[@xml:id='stage-A0'] and .//tei:change[@xml:id='stage-A2'] and .//tei:change[@xml:id='stage-B']">Deben declararse stage-A0, stage-A2 y stage-B.</sch:assert>
             </sch:rule>
 
             <sch:rule context="tei:text/tei:body">
@@ -108,15 +108,19 @@
               <sch:assert test="not(@hand='#Lope')">Una intervención B no puede atribuirse a la mano autógrafa #Lope.</sch:assert>
             </sch:rule>
 
-            <!-- Secuencias de revisiones sobre la misma lección -->
-            <sch:rule context="tei:text//tei:mod[ancestor::tei:mod]">
-              <sch:assert test="@seq">Una modificación anidada debe declarar @seq para hacer explícito el orden de las intervenciones.</sch:assert>
-              <sch:assert test="ancestor::tei:mod[1]/@seq">La modificación contenedora también debe declarar @seq.</sch:assert>
-              <sch:assert test="number(@seq) &gt; number(ancestor::tei:mod[1]/@seq)">La modificación anidada debe tener un @seq mayor que la modificación sobre la que interviene.</sch:assert>
+            <!-- Secuencias locales dentro de B -->
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')][ancestor::tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')]]">
+              <sch:assert test="@seq">Una intervención B anidada dentro de otra intervención B debe declarar @seq.</sch:assert>
+              <sch:assert test="ancestor::tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')][1]/@seq">La intervención B contenedora también debe declarar @seq.</sch:assert>
+              <sch:assert test="number(@seq) &gt; number(ancestor::tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')][1]/@seq)">La intervención B anidada debe tener un @seq mayor que la intervención B sobre la que actúa.</sch:assert>
             </sch:rule>
 
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-B'][descendant::tei:mod[@ana='#layer-B']]">
-              <sch:assert test="@seq">La primera intervención de una secuencia B debe declarar @seq.</sch:assert>
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')][descendant::tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')]]">
+              <sch:assert test="@seq">La primera intervención de una secuencia local B debe declarar @seq.</sch:assert>
+            </sch:rule>
+
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #B-restoration ')]">
+              <sch:assert test="contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ') and @seq and ancestor::tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')]">B-restoration solo puede usarse para una intervención B posterior dentro de una secuencia local.</sch:assert>
             </sch:rule>
 
             <!-- Lecciones implicadas en la intervención: un estrato legible por la interfaz -->
