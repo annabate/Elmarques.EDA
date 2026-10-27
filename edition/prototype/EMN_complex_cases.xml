@@ -47,8 +47,6 @@
     <profileDesc>
       <handNotes>
         <handNote xml:id="Lope" scope="major" scribe="author">Mano autógrafa de Lope de Vega.</handNote>
-        <handNote xml:id="hB1" scope="minor">Primera mano no autógrafa: sustituye antropónimos e interviene sobre el texto de representación.</handNote>
-        <handNote xml:id="hB2" scope="minor">Segunda mano no autógrafa: en varios casos restituye la lección primitiva modificada por hB1.</handNote>
       </handNotes>
       <creation>
         <listChange ordered="true">
@@ -104,17 +102,15 @@
         <stage>Entren galanes de noche, el
           <mod xml:id="gB0170-1"
                type="subst"
-               hand="#hB1"
                change="#stage-B"
-               ana="#layer-B"
+               ana="#layer-B #B-substitution"
                seq="1">
             <del ana="#layer-A0">marqués</del>
             <add ana="#layer-B">
               <mod xml:id="gB0170-2"
                    type="subst"
-                   hand="#hB2"
                    change="#stage-B"
-                   ana="#layer-B"
+                   ana="#layer-B #B-restoration"
                    seq="2">
                 <del ana="#layer-B">conde</del>
                 <add ana="#layer-B">marqués</add>
@@ -137,7 +133,6 @@
             <l n="410">
               <delSpan xml:id="gB0410"
                        spanTo="#gB0415-end"
-                       hand="#hB1"
                        change="#stage-B"
                        ana="#layer-B"
                        seq="1"/>
@@ -151,7 +146,6 @@
             <anchor xml:id="gB0415-end"/>
             <mod xml:id="gB0416"
                  type="add"
-                 hand="#hB1"
                  change="#stage-B"
                  ana="#layer-B"
                  seq="2">
