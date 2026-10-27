@@ -11,6 +11,7 @@ on:
       - '_layouts/edition.html'
       - 'Gemfile'
       - 'vercel.json'
+      - '_config.vercel.yml'
       - '.github/workflows/validate-genetic-frontend.yml'
   workflow_dispatch:
 
@@ -35,8 +36,8 @@ jobs:
       - name: Build Jekyll site
         run: |
           bundle install
-          bundle exec jekyll build --destination _site-test
-          test -f _site-test/edition/index.html
+          bundle exec jekyll build --config _config.yml,_config.vercel.yml --destination _site-test
+          test -f _site-test/genetic/index.html
 
       - name: Check JavaScript syntax
         run: |
