@@ -23,7 +23,7 @@ Este documento define una primera propuesta de recodificación para la edición 
 
 - `#stage-A0`: primera redacción autógrafa.
 - `#stage-A2`: revisión autorial posterior.
-- `#stage-B1`, `#stage-B2`, etc.: campañas no autógrafas, únicamente cuando su ordenación puede sostenerse paleográficamente.
+- `#stage-B`: fase postautorial que reúne las intervenciones no autógrafas. Las manos se distinguen mediante `@hand` y el orden local entre intervenciones mediante `@seq` cuando puede sostenerse materialmente.
 
 ## Reglas de visualización
 
@@ -70,7 +70,7 @@ A0, A1, A2 y B siguen siendo, por tanto, categorías de la edición y de la inte
 ### Intervención de otra mano
 
 ```xml
-<mod xml:id="gB001" type="subst" hand="#hB1" change="#stage-B1" ana="#layer-B">
+<mod xml:id="gB001" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B">
   <del ana="#layer-A0">marqués</del>
   <add ana="#layer-B">conde</add>
 </mod>
@@ -81,3 +81,8 @@ A0, A1, A2 y B siguen siendo, por tanto, categorías de la edición y de la inte
 El modelo se ha formalizado en `EMN_genetic.odd` y se ha validado con casos A1, A2, B, secuencias B1→B2 y cancelaciones de largo alcance. Las reglas operativas completas se recogen en `GENETIC_ENCODING_GUIDE.md`.
 
 Antes de la conversión integral quedan por verificar paleográficamente la distinción entre las manos no autógrafas y las atribuciones dudosas A1/A2 del archivo actual.
+
+
+## Precaución sobre B
+
+`hB1` y `hB2` designan manos, no campañas globales. La repetición de secuencias locales hB1→hB2 permite expresar el orden mediante `@seq` en esos lugares, pero no autoriza por sí sola a afirmar una cronología universal entre todas las intervenciones de ambas manos.
