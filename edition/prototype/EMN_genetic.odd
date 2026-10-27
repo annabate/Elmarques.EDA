@@ -51,6 +51,8 @@
             <sch:rule context="tei:teiHeader">
               <sch:assert test=".//tei:taxonomy[@xml:id='genetic-layers']">Debe declararse la taxonomía genetic-layers.</sch:assert>
               <sch:assert test=".//tei:category[@xml:id='layer-A0'] and .//tei:category[@xml:id='layer-A1'] and .//tei:category[@xml:id='layer-A2'] and .//tei:category[@xml:id='layer-B']">La taxonomía debe contener layer-A0, layer-A1, layer-A2 y layer-B.</sch:assert>
+              <sch:assert test=".//tei:taxonomy[@xml:id='B-functions']">Debe declararse la taxonomía funcional B-functions.</sch:assert>
+              <sch:assert test=".//tei:category[@xml:id='B-substitution'] and .//tei:category[@xml:id='B-restoration'] and .//tei:category[@xml:id='B-performance']">La taxonomía B-functions debe declarar B-substitution, B-restoration y B-performance.</sch:assert>
               <sch:assert test=".//tei:handNote[@xml:id='Lope']">Debe declararse la mano autógrafa #Lope.</sch:assert>
               <sch:assert test=".//tei:change[@xml:id='stage-A0'] and .//tei:change[@xml:id='stage-A2']">Deben declararse al menos los estados stage-A0 y stage-A2.</sch:assert>
             </sch:rule>
@@ -69,9 +71,7 @@
             <sch:rule context="tei:text//tei:mod">
               <sch:assert test="@xml:id">Cada mod debe tener un xml:id estable.</sch:assert>
               <sch:assert test="@type">Cada mod debe declarar @type.</sch:assert>
-              <sch:assert test="@hand">Cada mod debe declarar @hand.</sch:assert>
-              <sch:assert test="@ana='#layer-A1' or @ana='#layer-A2' or @ana='#layer-B'">Cada mod debe pertenecer exactamente a un estrato de evento: layer-A1, layer-A2 o layer-B.</sch:assert>
-              <sch:assert test="@hand='#Lope' or @hand='#hB1' or @hand='#hB2'">@hand debe apuntar a una mano declarada por el modelo actual (#Lope, #hB1, #hB2).</sch:assert>
+              <sch:assert test="(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A1 ') and not(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A2 ')) and not(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B '))) or (contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A2 ') and not(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A1 ')) and not(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B '))) or (contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ') and not(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A1 ')) and not(contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A2 ')))">Cada mod debe pertenecer a un único estrato de evento: layer-A1, layer-A2 o layer-B; puede añadir categorías funcionales secundarias.</sch:assert>
               <sch:assert test="@type='subst' or @type='del' or @type='add' or @type='transpose' or @type='restore' or @type='retrace' or @type='other'">Valor de @type no previsto por el modelo EMN.</sch:assert>
             </sch:rule>
 
@@ -89,23 +89,23 @@
             </sch:rule>
 
             <!-- A1 = intervención autorial inmediata -->
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-A1']">
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A1 ')]">
               <sch:assert test="@hand='#Lope'">Una intervención A1 debe ser autógrafa.</sch:assert>
               <sch:assert test="@instant='true'">Una intervención A1 debe llevar instant='true'.</sch:assert>
               <sch:assert test="not(contains(concat(' ', normalize-space(@change), ' '), ' #stage-A2 '))">Una intervención A1 no puede pertenecer a stage-A2.</sch:assert>
             </sch:rule>
 
             <!-- A2 = revisión autorial posterior -->
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-A2']">
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A2 ')]">
               <sch:assert test="@hand='#Lope'">Una intervención A2 debe ser autógrafa.</sch:assert>
               <sch:assert test="contains(concat(' ', normalize-space(@change), ' '), ' #stage-A2 ')">Una intervención A2 debe apuntar a change='#stage-A2'.</sch:assert>
               <sch:assert test="not(@instant='true')">Una intervención A2 no puede marcarse como instantánea.</sch:assert>
             </sch:rule>
 
             <!-- B = intervención no autógrafa -->
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-B']">
-              <sch:assert test="@hand='#hB1' or @hand='#hB2'">Una intervención B debe atribuirse a una mano no autógrafa declarada.</sch:assert>
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')]">
               <sch:assert test="contains(concat(' ', normalize-space(@change), ' '), ' #stage-B ')">Una intervención B debe asociarse a la fase postautorial #stage-B.</sch:assert>
+              <sch:assert test="not(@hand='#Lope')">Una intervención B no puede atribuirse a la mano autógrafa #Lope.</sch:assert>
             </sch:rule>
 
             <!-- Secuencias de revisiones sobre la misma lección -->
@@ -126,15 +126,15 @@
             </sch:rule>
 
             <!-- La nueva lección debe pertenecer al estrato del evento que la introduce -->
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-A1']/tei:add">
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A1 ')]/tei:add">
               <sch:assert test="@ana='#layer-A1'">Una lección añadida por una intervención A1 debe pertenecer a layer-A1.</sch:assert>
             </sch:rule>
 
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-A2']/tei:add">
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-A2 ')]/tei:add">
               <sch:assert test="@ana='#layer-A2'">Una lección añadida por una intervención A2 debe pertenecer a layer-A2.</sch:assert>
             </sch:rule>
 
-            <sch:rule context="tei:text//tei:mod[@ana='#layer-B']/tei:add">
+            <sch:rule context="tei:text//tei:mod[contains(concat(' ', normalize-space(@ana), ' '), ' #layer-B ')]/tei:add">
               <sch:assert test="@ana='#layer-B'">Una lección añadida por una intervención B debe pertenecer a layer-B.</sch:assert>
             </sch:rule>
 
@@ -142,7 +142,6 @@
             <sch:rule context="tei:text//tei:addSpan | tei:text//tei:delSpan">
               <sch:assert test="@xml:id">Cada addSpan/delSpan debe tener un xml:id estable.</sch:assert>
               <sch:assert test="@spanTo">Cada addSpan/delSpan debe declarar @spanTo.</sch:assert>
-              <sch:assert test="@hand">Cada addSpan/delSpan debe declarar @hand.</sch:assert>
               <sch:assert test="@ana='#layer-A1' or @ana='#layer-A2' or @ana='#layer-B'">Cada addSpan/delSpan debe pertenecer a layer-A1, layer-A2 o layer-B.</sch:assert>
             </sch:rule>
 
@@ -155,7 +154,8 @@
             </sch:rule>
 
             <sch:rule context="tei:text//tei:addSpan[@ana='#layer-B'] | tei:text//tei:delSpan[@ana='#layer-B']">
-              <sch:assert test="(@hand='#hB1' or @hand='#hB2') and contains(concat(' ', normalize-space(@change), ' '), ' #stage-B ')">Una intervención extensa B debe tener una mano no autógrafa declarada y asociarse a #stage-B.</sch:assert>
+              <sch:assert test="contains(concat(' ', normalize-space(@change), ' '), ' #stage-B ')">Una intervención extensa B debe asociarse a #stage-B.</sch:assert>
+              <sch:assert test="not(@hand='#Lope')">Una intervención extensa B no puede atribuirse a la mano autógrafa #Lope.</sch:assert>
             </sch:rule>
 
           </constraint>
