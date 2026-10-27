@@ -97,7 +97,7 @@ La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lecci�
 </mod>
 ```
 
-### B1 → B2 — dos manos sucesivas
+### hB1 → hB2 — dos manos sucesivas
 
 ```xml
 <mod xml:id="gB0170-1"
@@ -169,7 +169,7 @@ La identificación de hB1/hB2 debe mantenerse prudente: una misma mano y una mis
 
 - `@instant="true"` indica una intervención inmediata durante el acto de escritura y caracteriza A1.
 - `@change="#stage-A2"` indica una revisión autorial diferida.
-- `@change="#stage-B"`, `#stage-B2`, etc. identifica campañas no autógrafas cuando su ordenación puede sostenerse.
+- `@change="#stage-B"` identifica la fase postautorial no autógrafa; no distingue campañas internas.
 - `@seq` se usa cuando es necesario expresar el orden relativo de varias intervenciones sobre la misma porción de texto.
 - `@seq` expresa exclusivamente una secuencia local entre intervenciones; `@change="#stage-B"` no establece un orden global entre hB1 y hB2.
 
@@ -246,7 +246,7 @@ Ya se han validado formalmente frente al ODD del proyecto:
 - cancelaciones y sustituciones A1;
 - revisiones A2;
 - intervenciones B simples;
-- secuencias B1 → B2;
+- secuencias locales hB1 → hB2;
 - cancelaciones de largo alcance mediante `delSpan/@spanTo`.
 
 Los archivos de prueba son:
