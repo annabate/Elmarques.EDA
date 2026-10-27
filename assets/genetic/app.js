@@ -357,7 +357,7 @@
     const clone = root.cloneNode(true);
     const acts = Array.from(
       clone.querySelectorAll(
-        'tei-div[type="act"], tei-div[type="jornada"]',
+        'tei-div[type="act"], tei-div[type="jornada"], tei-div[subtype="ACTO"], tei-div[subtype="acto"]',
       ),
     );
     acts.slice(1).forEach((act) => act.remove());
