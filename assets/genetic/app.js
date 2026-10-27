@@ -302,6 +302,17 @@
     else document.getElementById("search-count").textContent = "0";
   }
 
+  function updatePaneLayout() {
+    const grid = document.getElementById("edition-grid");
+    const visiblePanes = Array.from(
+      grid.querySelectorAll(":scope > .edition-pane"),
+    ).filter((pane) => !pane.classList.contains("is-hidden-pane"));
+
+    grid.classList.toggle("single-pane", visiblePanes.length === 1);
+    grid.classList.toggle("two-pane", visiblePanes.length === 2);
+    grid.classList.toggle("three-pane", visiblePanes.length >= 3);
+  }
+
   function setupToolbar() {
     reconstructionSelect.addEventListener("change", renderGenetic);
     layerInputs.forEach((input) =>
@@ -341,16 +352,11 @@
       input.addEventListener("change", () => {
         const pane = document.getElementById(input.dataset.togglePane);
         pane?.classList.toggle("is-hidden-pane", !input.checked);
-        document
-          .getElementById("edition-grid")
-          .classList.toggle(
-            "single-pane",
-            document.querySelectorAll(
-              "#edition-grid > .edition-pane:not(.is-hidden-pane)",
-            ).length === 1,
-          );
+        updatePaneLayout();
       });
     });
+
+    updatePaneLayout();
   }
 
   function keepFirstAct(root) {
