@@ -1,6 +1,7 @@
 ---
 layout: edition
 title: El marqués de las Navas - edición genética digital
+permalink: /genetic/
 ---
 
 <div
