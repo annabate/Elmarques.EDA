@@ -38,7 +38,19 @@
             <catDesc>Lección introducida durante una revisión autorial posterior.</catDesc>
           </category>
           <category xml:id="layer-B">
-            <catDesc>Lección introducida por una mano no autógrafa.</catDesc>
+            <catDesc>Lección introducida mediante una intervención no autógrafa.</catDesc>
+          </category>
+        </taxonomy>
+
+        <taxonomy xml:id="B-functions">
+          <category xml:id="B-substitution">
+            <catDesc>Sustitución no autógrafa de una lección anterior.</catDesc>
+          </category>
+          <category xml:id="B-restoration">
+            <catDesc>Restitución posterior, dentro de B, de una lección previamente modificada.</catDesc>
+          </category>
+          <category xml:id="B-performance">
+            <catDesc>Intervención no autógrafa vinculada al uso escénico o a la representación.</catDesc>
           </category>
         </taxonomy>
       </classDecl>
