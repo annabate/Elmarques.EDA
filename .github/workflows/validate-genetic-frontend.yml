@@ -25,6 +25,18 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Build Jekyll site
+        run: |
+          gem install jekyll -v 4.3.4 --no-document
+          gem install webrick --no-document
+          jekyll build --destination _site-test
+          test -f _site-test/edition/index.html
+
       - name: Check JavaScript syntax
         run: |
           node --check assets/genetic/model.js
