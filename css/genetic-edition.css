@@ -255,6 +255,21 @@ body.edition a {
   color: #2f2b26;
 }
 
+.layout-reset {
+  min-height: 2.15rem;
+  padding: 0 0.58rem;
+  border: 1px solid var(--edition-border-strong);
+  border-radius: 0.38rem;
+  background: #fff;
+  color: #5f5a53;
+  font: 500 0.72rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.layout-reset:hover {
+  background: #f1ede6;
+}
+
 .compact-control,
 .search-control {
   display: flex;
@@ -349,27 +364,17 @@ body.edition a {
 /* Editorial workspace */
 
 #edition-grid {
-  display: grid;
-  grid-template-columns: minmax(20rem, 0.94fr) minmax(28rem, 1.06fr);
-  gap: 0.7rem;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
   padding: 0.7rem;
   min-height: 42rem;
-}
-
-#edition-grid.three-pane {
-  grid-template-columns:
-    minmax(17rem, 0.78fr)
-    minmax(23rem, 1.05fr)
-    minmax(21rem, 0.95fr);
-}
-
-#edition-grid.single-pane {
-  grid-template-columns: minmax(0, 58rem);
-  justify-content: center;
+  overflow: hidden;
 }
 
 .edition-pane {
-  min-width: 0;
+  flex: var(--pane-weight, 1) 1 0;
+  min-width: 14rem;
   min-height: 38rem;
   height: calc(100vh - 13.25rem);
   display: flex;
@@ -380,8 +385,46 @@ body.edition a {
   background: var(--edition-panel);
 }
 
+#edition-grid.three-pane .edition-pane {
+  min-width: 12rem;
+}
+
 .edition-pane.is-hidden-pane {
   display: none;
+}
+
+.pane-resizer {
+  position: relative;
+  flex: 0 0 0.72rem;
+  width: 0.72rem;
+  min-width: 0.72rem;
+  cursor: col-resize;
+  touch-action: none;
+  outline: 0;
+}
+
+.pane-resizer::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  bottom: 0.45rem;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: #c9c2b7;
+  transition: width 120ms ease, background 120ms ease;
+}
+
+.pane-resizer:hover::before,
+.pane-resizer:focus-visible::before,
+.is-resizing-panes .pane-resizer::before {
+  width: 3px;
+  background: #8f877d;
+}
+
+.is-resizing-panes {
+  cursor: col-resize;
+  user-select: none;
 }
 
 .pane-header {
@@ -397,9 +440,45 @@ body.edition a {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.pane-header > div:first-child {
+.pane-title {
   display: grid;
   gap: 0.05rem;
+  min-width: 0;
+}
+
+.pane-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.pane-order-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.16rem;
+}
+
+.pane-order-controls button {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid var(--edition-border-strong);
+  border-radius: 0.3rem;
+  background: #fff;
+  color: #5d564e;
+  font: 600 0.7rem/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.pane-order-controls button:hover:not(:disabled) {
+  background: #e9e4dc;
+}
+
+.pane-order-controls button:disabled {
+  opacity: 0.28;
+  cursor: default;
 }
 
 .pane-header strong {
@@ -462,18 +541,17 @@ body.edition a {
 
 .facsimile-stage {
   min-height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  display: block;
   overflow: auto;
+  text-align: center;
 }
 
 #facsimile-image {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  max-width: none;
   height: auto;
-  transform-origin: top center;
-  transition: transform 120ms ease;
+  margin: 0 auto;
   background: #fff;
   box-shadow: 0 2px 10px rgba(30, 26, 20, 0.13);
 }
@@ -741,22 +819,79 @@ tei-addspan::after {
   color: #3f3426;
 }
 
-.note-popover {
-  position: absolute;
-  z-index: 90;
-  left: 0.65rem;
-  top: 1rem;
-  width: min(27rem, 75vw);
-  max-height: 20rem;
-  overflow: auto;
-  padding: 0.78rem 0.85rem;
-  border: 1px solid #cfc6b9;
-  border-radius: 0.38rem;
+.floating-note {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: min(29rem, calc(100vw - 2rem));
+  min-width: 16rem;
+  min-height: 8rem;
+  max-width: calc(100vw - 1rem);
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+  resize: both;
+  border: 1px solid #bdb4a7;
+  border-radius: 0.42rem;
   background: #fffdf8;
-  box-shadow: 0 6px 20px rgba(45, 36, 26, 0.14);
+  box-shadow: 0 10px 34px rgba(38, 31, 24, 0.19);
   color: #423c35;
-  font: 400 0.8rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  vertical-align: baseline;
+  font: 400 0.82rem/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.floating-note.is-dragging {
+  box-shadow: 0 13px 40px rgba(38, 31, 24, 0.24);
+}
+
+.floating-note-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.4rem;
+  padding: 0.42rem 0.5rem 0.42rem 0.7rem;
+  border-bottom: 1px solid #d8d0c5;
+  background: #f1ede5;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.floating-note.is-dragging .floating-note-header {
+  cursor: grabbing;
+}
+
+.floating-note-title {
+  font-weight: 650;
+  font-size: 0.76rem;
+}
+
+.floating-note-drag-hint {
+  margin-right: auto;
+  color: #8b8378;
+  font-size: 0.64rem;
+}
+
+.floating-note-close {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 0.3rem;
+  background: transparent;
+  color: #625b52;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.floating-note-close:hover {
+  background: #e4ddd2;
+}
+
+.floating-note-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.8rem 0.9rem 1rem;
 }
 
 /* Search and navigation */
@@ -786,18 +921,17 @@ tei-addspan::after {
     position: static;
   }
 
-  #edition-grid,
-  #edition-grid.three-pane {
-    grid-template-columns: minmax(18rem, 0.92fr) minmax(24rem, 1.08fr);
-  }
-
-  #edition-grid.three-pane .diplomatic-pane {
-    grid-column: 1 / -1;
-    height: 32rem;
+  #edition-grid {
+    overflow-x: auto;
   }
 
   .edition-pane {
     height: 42rem;
+    min-width: 13rem;
+  }
+
+  #edition-grid.three-pane .edition-pane {
+    min-width: 12rem;
   }
 
   .toolbar-search {
@@ -884,19 +1018,38 @@ tei-addspan::after {
   #edition-grid,
   #edition-grid.three-pane,
   #edition-grid.single-pane {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 0.45rem;
     padding: 0.45rem;
+    overflow: visible;
+  }
+
+  .pane-resizer {
+    display: none;
   }
 
   .edition-pane,
-  #edition-grid.three-pane .diplomatic-pane {
-    grid-column: auto;
+  #edition-grid.three-pane .edition-pane {
+    width: 100%;
+    min-width: 0;
     height: 70vh;
     min-height: 30rem;
   }
 
   .pane-header {
     flex-wrap: wrap;
+  }
+
+  .pane-header-actions {
+    flex-wrap: wrap;
+  }
+
+  .floating-note {
+    width: calc(100vw - 1rem);
+    min-width: 0;
+    max-height: 72vh;
+    resize: none;
   }
 
   .facsimile-controls {
