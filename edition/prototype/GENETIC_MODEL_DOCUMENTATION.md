@@ -947,7 +947,7 @@ Cada nueva sección convertida deberá superar:
 - controles de punteros;
 - pruebas de reconstrucción de estados.
 
-### Fase 6 — integración con el capa de presentación
+### Fase 6 — integración con la capa de presentación
 
 Solo cuando la estructura TEI esté estabilizada será oportuno reescribir el renderizador.
 
@@ -980,7 +980,7 @@ A partir de ahí la interfaz podrá implementar, sin conocer toda la sintaxis TE
 - reconstrucción A0+A1;
 - reconstrucción A0+A1+A2;
 - estado documental con B;
-- eventualmente B1/B2 cuando su orden sea seguro.
+- eventualmente los estados locales de una secuencia B cuando el orden entre intervenciones sea seguro.
 
 En otras palabras, el TEI conserva la complejidad científica; el HTML expone únicamente los datos necesarios para la navegación.
 
@@ -1013,7 +1013,7 @@ La decisión de:
 - validar automáticamente;
 - separar colores y datos;
 
-reduce el riesgo de que el proyecto quede inutilizable cuando cambien los frameworks o las bibliotecas capa de presentación.
+reduce el riesgo de que el proyecto quede inutilizable cuando cambien los frameworks o las bibliotecas de la capa de presentación.
 
 ---
 
@@ -1040,6 +1040,22 @@ Síntesis conceptual del modelo.
 ### `edition/prototype/GENETIC_ENCODING_GUIDE.md`
 
 Manual normativo operativo: fenómeno → codificación → atributos → visualización.
+
+### `edition/prototype/EMN_mod_A1_pilot.xml`
+
+Archivo transicional utilizado durante la estabilización de A1.
+
+### `edition/prototype/EMN_mod_act1_pilot.xml`
+
+Piloto general del acto I, con A1 y A2 revisados y una primera migración sistemática de B en el cuerpo de la comedia.
+
+### `edition/prototype/GENETIC_A2_REVIEW.md`
+
+Revisión razonada de los casos A2 del acto I.
+
+### `edition/prototype/GENETIC_B_REVIEW.md`
+
+Revisión de las intervenciones no autógrafas, distinción entre manos y cronología local, y estado de la migración B.
 
 ### `.github/flujo de trabajos/validate-genetic-tei.yml`
 
