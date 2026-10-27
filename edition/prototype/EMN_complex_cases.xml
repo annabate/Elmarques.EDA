@@ -54,10 +54,7 @@
         <listChange ordered="true">
           <change xml:id="stage-A0">Primera redacción autógrafa.</change>
           <change xml:id="stage-A2">Campaña de revisión autorial posterior.</change>
-          <listChange xml:id="stage-B" ordered="true">
-            <change xml:id="stage-B1">Primera campaña de intervenciones no autógrafas, atribuida a hB1.</change>
-            <change xml:id="stage-B2">Segunda campaña de intervenciones no autógrafas, atribuida a hB2.</change>
-          </listChange>
+          <change xml:id="stage-B">Intervenciones no autógrafas posteriores al último estado autorial.</change>
         </listChange>
       </creation>
     </profileDesc>
@@ -108,7 +105,7 @@
           <mod xml:id="gB0170-1"
                type="subst"
                hand="#hB1"
-               change="#stage-B1"
+               change="#stage-B"
                ana="#layer-B"
                seq="1">
             <del ana="#layer-A0">marqués</del>
@@ -116,7 +113,7 @@
               <mod xml:id="gB0170-2"
                    type="subst"
                    hand="#hB2"
-                   change="#stage-B2"
+                   change="#stage-B"
                    ana="#layer-B"
                    seq="2">
                 <del ana="#layer-B">conde</del>
@@ -141,7 +138,7 @@
               <delSpan xml:id="gB0410"
                        spanTo="#gB0415-end"
                        hand="#hB1"
-                       change="#stage-B1"
+                       change="#stage-B"
                        ana="#layer-B"
                        seq="1"/>
               Ya habrás oído mil veces
@@ -155,7 +152,7 @@
             <mod xml:id="gB0416"
                  type="add"
                  hand="#hB1"
-                 change="#stage-B1"
+                 change="#stage-B"
                  ana="#layer-B"
                  seq="2">
               <add ana="#layer-B">díjese</add>
