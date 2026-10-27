@@ -737,7 +737,7 @@ Contiene un primer segmento recodificado hasta aproximadamente el v. 150 e inclu
 Se creó como auténtico **prueba de estrés** y contiene:
 
 - un caso A2 diferido;
-- una secuencia B1 → B2;
+- una secuencia local hB1 → hB2;
 - una cancelación de largo alcance a través de varios versos.
 
 Ambos archivos se han verificado contra:
