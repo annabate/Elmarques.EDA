@@ -81,8 +81,17 @@
     let scale = 1;
 
     function applyZoom() {
-      image.style.transform = `scale(${scale})`;
+      const percentage = Math.round(scale * 100);
+      image.style.width = `${percentage}%`;
+      image.style.height = "auto";
+      image.style.maxWidth = "none";
+      image.style.transform = "none";
       image.dataset.zoom = scale.toFixed(2);
+      resetZoomButton.textContent = `${percentage}%`;
+      resetZoomButton.title =
+        scale === 1
+          ? "Zoom al 100 %"
+          : "Restablecer zoom al 100 %";
     }
 
     function resetZoom() {
