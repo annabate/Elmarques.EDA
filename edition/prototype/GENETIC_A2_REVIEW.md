@@ -98,12 +98,13 @@ La lección `trazado` pertenece todavía a A0 porque la intervención A1 anterio
 
 ## 4. Estado actual de A2
 
-En el archivo piloto hay actualmente **cuatro eventos A2 ya migrados**:
+En el archivo piloto hay actualmente **cinco eventos A2 ya migrados**:
 
 1. `las caras → de noche`;
 2. `de noche → las caras`;
-3. `trazado → pensado`;
-4. `que los angeles → que angel que viene`.
+3. `la defenden → resplandecen`;
+4. `trazado → pensado`;
+5. `que los angeles → que angel que viene`.
 
 Queda un caso compuesto **A2 + B** pendiente de migración conjunta:
 
@@ -117,19 +118,44 @@ Otro antiguo A2 ha sido remitido a B:
 
 - `Feli → Leo`.
 
-## 5. Caso limítrofe A1/A2 aún abierto
+## 5. Vv. 308–309: un mismo proceso en dos fases
 
-Permanece sin resolver `la defenden → resplandecen`. La nota lo vincula con la cancelación inmediatamente anterior y habla de un único proceso de enmienda «llevado a cabo, al parecer, en dos fases diferentes».
+El aparato de la edición fija explícitamente la secuencia:
 
-La codificación heredada lo clasifica como A1, pero la referencia a dos fases aconseja no fijar todavía `instant="true"` sin decidir si la segunda intervención pertenece realmente a una revisión posterior.
+- v. 308: A0 `q aunq la noche la offen` → A1, sustitución inmediata de la secuencia cancelada por `escureze`;
+- v. 309: A0 `sus estrellas la defenden` → A2, sustitución posterior `la defenden → resplandezen`.
 
-Este caso constituye, por tanto, el único punto limítrofe entre A1 y A2 todavía abierto en el acto I.
+La nota establece que ambas intervenciones «forman parte de un único proceso de enmienda», pero añade que este se llevó a cabo «al parecer, en dos fases diferentes».
+
+Esta formulación permite mantener simultáneamente dos afirmaciones:
+
+1. las dos correcciones pertenecen a una misma operación de reajuste de la imagen poética;
+2. no pertenecen al mismo estrato cronológico.
+
+En el archivo de trabajo, que conserva la grafía ya presente en `EMN_mod.xml`, se codifican:
+
+```xml
+<mod xml:id="g063" type="subst"
+     hand="#Lope" instant="true" ana="#layer-A1">
+  <del ana="#layer-A0">la defen</del>
+  <add ana="#layer-A1">escurece</add>
+</mod>
+```
+
+y:
+
+```xml
+<mod xml:id="g064" type="subst"
+     hand="#Lope" change="#stage-A2" ana="#layer-A2">
+  <del ana="#layer-A0">la defenden</del>
+  <add ana="#layer-A2">resplandecen</add>
+</mod>
+```
+
+Este caso confirma que la pertenencia a un mismo proceso de enmienda no obliga a representar todas sus operaciones dentro de un único estrato.
 
 ## 6. Conclusión
 
 La revisión reduce sensiblemente los A2 heredados y mejora su fundamento filológico.
 
-El siguiente paso es doble:
-
-- resolver el caso limítrofe `la defenden → resplandecen`;
-- pasar a la revisión de B, empezando por los lugares en que B se superpone a una revisión autorial previa, como `Fili → He → Fad`.
+El sistema A2 queda así estabilizado para los casos autoriales simples del acto I. El siguiente paso es pasar a la revisión de B, empezando por los lugares en que B se superpone a una revisión autorial previa, como `Fili → He → Fad`.
