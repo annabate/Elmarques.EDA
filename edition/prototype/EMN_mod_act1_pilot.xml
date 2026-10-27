@@ -25,18 +25,21 @@
 <category xml:id="layer-A0"><catDesc>Primera redacción autógrafa.</catDesc></category>
 <category xml:id="layer-A1"><catDesc>Lección introducida mediante una corrección inmediata durante la primera redacción.</catDesc></category>
 <category xml:id="layer-A2"><catDesc>Lección introducida durante una revisión autorial posterior.</catDesc></category>
-<category xml:id="layer-B"><catDesc>Lección introducida por una mano no autógrafa.</catDesc></category>
+<category xml:id="layer-B"><catDesc>Lección introducida por una intervención no autógrafa.</catDesc></category>
+</taxonomy>
+<taxonomy xml:id="B-functions">
+<category xml:id="B-substitution"><catDesc>Sustitución no autógrafa de una lección anterior.</catDesc></category>
+<category xml:id="B-restoration"><catDesc>Restitución posterior, dentro de B, de una lección previamente modificada.</catDesc></category>
+<category xml:id="B-performance"><catDesc>Intervención no autógrafa vinculada al uso escénico o a la representación.</catDesc></category>
 </taxonomy>
 </classDecl>
 <projectDesc>
-<p>Archivo piloto de la migración genética del acto I. Integra las conversiones A1 y A2 ya revisadas y una primera migración sistemática de las intervenciones B del cuerpo de la comedia. Los repartos iniciales y algunos casos B de mano todavía no identificada conservan provisionalmente la codificación anterior.</p>
+<p>Archivo piloto de la migración genética del acto I. Integra las conversiones A1 y A2 ya revisadas y una primera migración sistemática de las intervenciones B del cuerpo de la comedia. B se trata como un estrato postautorial unitario; la sucesión interna se expresa solo localmente mediante @seq y categorías funcionales, sin identificar de forma estable las manos no autógrafas.</p>
 </projectDesc>
 </encodingDesc>
 <profileDesc>
 <handNotes>
 <handNote xml:id="Lope" scope="major" scribe="author">Mano autógrafa de Lope de Vega.</handNote>
-<handNote xml:id="hB1" scope="minor">Primera mano no autógrafa identificada en el cuerpo de la comedia; sustituye de manera sistemática determinados antropónimos y otras referencias.</handNote>
-<handNote xml:id="hB2" scope="minor">Segunda mano no autógrafa identificada en el cuerpo de la comedia; en varios lugares restituye la lección modificada por hB1.</handNote>
 </handNotes>
 <creation>
 <listChange ordered="true">
@@ -47,7 +50,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
-<change when="2026-10-27">Se crea el piloto global del acto I y se migran 58 aparatos B del cuerpo: sustituciones sistemáticas de hB1, restauraciones locales de hB2, cadenas sobre A1/A2 y una cancelación extensa. Permanecen en codificación legacy los repartos iniciales y tres casos B cuya mano no se considera todavía suficientemente identificada.</change>
+<change when="2026-10-27">Se crea el piloto global del acto I y se migran 58 aparatos B del cuerpo. Las intervenciones se integran en un único estrato postautorial B; las sucesiones locales se distinguen mediante @seq y categorías funcionales, sin fijar identidades paleográficas globales para las manos no autógrafas.</change>
 <change when="2026-10-27">Se fija la secuencia de los vv. 308–309 según el aparato de la edición: el v. 308 contiene una sustitución inmediata A1 («la defen»→«escurece»); el v. 309 contiene una sustitución posterior A2 («la defenden»→«resplandecen»). Ambas pertenecen a un mismo proceso de enmienda desarrollado en dos fases.</change>
 <change when="2026-10-27">Se migran dos casos A1 adicionales confirmados por las notas como correcciones inmediatas: «a los más sabios»→«como lo esperes» y «sale aquel día»→«salir porfía».</change>
 <change when="2026-10-27">Revisión A2: la corrección inicial Leo→Feli se reclasifica como A1 inmediata; se migran como A2 confirmados los reajustes de los vv. 219–220 y la sustitución «que los angeles»→«que angel que viene».</change>
@@ -514,7 +517,7 @@
 <l>De maestresala le sirve.</l>
 </lg>
 </sp>
-<stage>Entren galanes de noche, el <mod xml:id="gB001-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB001-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod>, don Filipe <mod xml:id="gB002" type="del" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">de Córdoba</del></mod> y don <mod xml:id="gB003-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB003-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Enrique</add></mod></add></mod> y Mendoza, paje de espada<note>Dos manos, diferenciables por el color y el grosor de la tinta, así como por la grafía, intervienen sobre el texto: una de ellas tacha y sustituye los antropónimos, mientras la otra restituye la lección primitiva. Este fenómeno se repite a lo largo de la pieza, por lo que, para evitar una sobrecarga del aparato crítico, no se comentarán los casos análogos posteriores.</note></stage>
+<stage>Entren galanes de noche, el <mod xml:id="gB001-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB001-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod>, don Filipe <mod xml:id="gB002" type="del" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">de Córdoba</del></mod> y don <mod xml:id="gB003-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB003-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Enrique</add></mod></add></mod> y Mendoza, paje de espada<note>Dos manos, diferenciables por el color y el grosor de la tinta, así como por la grafía, intervienen sobre el texto: una de ellas tacha y sustituye los antropónimos, mientras la otra restituye la lección primitiva. Este fenómeno se repite a lo largo de la pieza, por lo que, para evitar una sobrecarga del aparato crítico, no se comentarán los casos análogos posteriores.</note></stage>
 <sp>
 <speaker>Fili</speaker>
 <lg>
@@ -522,7 +525,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB004" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
+<speaker><mod xml:id="gB004" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
 <lg>    
 <l>Siempre juzgáis por los talles.</l>
 </lg>
@@ -535,7 +538,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB005" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB005" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>    
 <l part="F">¿Y no de la cara?</l>
 </lg>
@@ -556,7 +559,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB006" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
+<speaker><mod xml:id="gB006" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
 <lg>    
 <l>No, es el que menos entiende.</l>
 </lg>
@@ -615,7 +618,7 @@
 </sp>
 <stage><app><rdg wit="B" varSeq="1" hand="non-authorial">Siéntense</rdg></app></stage>
 <sp>
-<speaker><mod xml:id="gB007" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
+<speaker><mod xml:id="gB007" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
 <lg>    
 <l n="215">No lo dice don Filipe,</l>
 <l>Mendoza, para que alegues</l>
@@ -636,13 +639,13 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB008" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB008" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>    
 <l>¡Quiera el cielo que no tiemple!</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB009" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
+<speaker><mod xml:id="gB009" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
 <lg>    
 <l>Si él templare, yo me acojo</l>
 <l>por estos álamos verdes,</l>
@@ -667,7 +670,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB010" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB010" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>    
 <l>Pues <mod xml:id="g059" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">ya</del></mod> las Juanas o Isabeles</l>
 <l>a don Filipe y mi hermano</l>
@@ -693,7 +696,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB011" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB011" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>   
 <l>¿Y yo podré merecer</l>
 <l>lo que a este galán conceden?</l>
@@ -1076,7 +1079,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB012-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB012-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Henrique</add></mod></add></mod></speaker>
+<speaker><mod xml:id="gB012-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB012-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Henrique</add></mod></add></mod></speaker>
 <lg>
 <l>Es hombre que lo merece.</l>
 </lg>
@@ -1094,21 +1097,21 @@
 <speaker>Me</speaker>
 <lg>
 <l part="F">Pues advierte:</l>
-<l><mod xml:id="g067" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">los que están a esta parte</del><add ana="#layer-A1"><mod xml:id="gB013-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A1">este es marqués de las Navas</del><add ana="#layer-B"><mod xml:id="gB013-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">este es el conde don Felis</del><add ana="#layer-B">este es marqués de las Navas</add></mod></add></mod></add></mod>.</l>
+<l><mod xml:id="g067" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">los que están a esta parte</del><add ana="#layer-A1"><mod xml:id="gB013-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A1">este es marqués de las Navas</del><add ana="#layer-B"><mod xml:id="gB013-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">este es el conde don Felis</del><add ana="#layer-B">este es marqués de las Navas</add></mod></add></mod></add></mod>.</l>
 </lg>
 </sp>
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l>¿El <mod xml:id="gB014-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">de las Navas</del><add ana="#layer-B"><mod xml:id="gB014-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">conde Felis</del><add ana="#layer-B">de las Navas</add></mod></add></mod> es este?</l>
-<l n="395">¿Que este <mod xml:id="gB015-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">el de las Navas es</del><add ana="#layer-B"><mod xml:id="gB015-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">es don Felis el conde</del><add ana="#layer-B">el de las Navas es</add></mod></add></mod>?</l>
+<l>¿El <mod xml:id="gB014-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">de las Navas</del><add ana="#layer-B"><mod xml:id="gB014-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde Felis</del><add ana="#layer-B">de las Navas</add></mod></add></mod> es este?</l>
+<l n="395">¿Que este <mod xml:id="gB015-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">el de las Navas es</del><add ana="#layer-B"><mod xml:id="gB015-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">es don Felis el conde</del><add ana="#layer-B">el de las Navas es</add></mod></add></mod>?</l>
 </lg>
 </sp>
 <sp>
 <speaker>Me</speaker>
 <lg>
 <l>Te admiras como si fuese</l>
-<l><mod xml:id="gB016-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">de las Navas de Tolosa</del><add ana="#layer-B"><mod xml:id="gB016-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">el conde Partinuplés</del><add ana="#layer-B">de las Navas de Tolosa</add></mod></add></mod></l>
+<l><mod xml:id="gB016-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">de las Navas de Tolosa</del><add ana="#layer-B"><mod xml:id="gB016-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">el conde Partinuplés</del><add ana="#layer-B">de las Navas de Tolosa</add></mod></add></mod></l>
 </lg>
 </sp>
 <sp>
@@ -1122,8 +1125,8 @@
 <sp>
 <speaker>Me</speaker>
 <lg>
-<l>Es su hermano <mod xml:id="gB017-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">don Henrique</del><add ana="#layer-B"><mod xml:id="gB017-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">don Fadrique</del><add ana="#layer-B">don Henrique</add></mod></add></mod></l>
-<l>de <mod xml:id="gB018-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Guzmán</del><add ana="#layer-B"><mod xml:id="gB018-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Oristán</del><add ana="#layer-B">Guzmán</add></mod></add></mod>, el que entretiene</l>
+<l>Es su hermano <mod xml:id="gB017-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">don Henrique</del><add ana="#layer-B"><mod xml:id="gB017-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">don Fadrique</del><add ana="#layer-B">don Henrique</add></mod></add></mod></l>
+<l>de <mod xml:id="gB018-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Guzmán</del><add ana="#layer-B"><mod xml:id="gB018-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Oristán</del><add ana="#layer-B">Guzmán</add></mod></add></mod>, el que entretiene</l>
 <l>esa tu menor señora.</l>
 </lg>
 </sp>
@@ -1150,13 +1153,13 @@
 <lg>
 <l part="F">Don Filipe</l>
 <pb type="folio" n="[Fol. 8v]"/>
-<l>de <mod xml:id="gB019-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Córdoba</del><add ana="#layer-B"><mod xml:id="gB019-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Cardona</del><add ana="#layer-B">Córdoba</add></mod></add></mod>, que suspende</l>
+<l>de <mod xml:id="gB019-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Córdoba</del><add ana="#layer-B"><mod xml:id="gB019-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Cardona</del><add ana="#layer-B">Córdoba</add></mod></add></mod>, que suspende</l>
 <l>la corte en esta ocasión</l>
 <l>con gentileza eminente</l>
 <l>a cuantas celebra España.</l>
 <l n="410">
   <anchor xml:id="l_410"/>
-    <delSpan xml:id="gB020" spanTo="#l_415" hand="#hB1" change="#stage-B" ana="#layer-B"/>
+    <delSpan xml:id="gB020" spanTo="#l_415" change="#stage-B" ana="#layer-B"/>
     Ya habrás oído mil veces
 </l>
 <l>
@@ -1218,7 +1221,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB021" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB021" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>    
 <l n="425">¿No iremos acompañarlas,</l>
 <l part="I">Filipe?</l>
@@ -1227,11 +1230,11 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>    
-<l part="F"><mod xml:id="gB022-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Marqués</del><add ana="#layer-B"><mod xml:id="gB022-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Conde</del><add ana="#layer-B">Marqués</add></mod></add></mod>, no quieren.</l>
+<l part="F"><mod xml:id="gB022-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Marqués</del><add ana="#layer-B"><mod xml:id="gB022-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Conde</del><add ana="#layer-B">Marqués</add></mod></add></mod>, no quieren.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB023" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB023" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>    
 <l part="I">Pues adiós.</l>
 </lg>
@@ -1810,9 +1813,9 @@
 <l>si es amor bien empleado.</l>
 </lg>
 </sp>
-<stage>Don <mod xml:id="gB024" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Henrique</del><add ana="#layer-B">Fadrique</add></mod> y don Filipe con borceguíes y acicates, y el <mod xml:id="gB025" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">marqués</del><add ana="#layer-B">conde</add></mod></stage>
+<stage>Don <mod xml:id="gB024" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Henrique</del><add ana="#layer-B">Fadrique</add></mod> y don Filipe con borceguíes y acicates, y el <mod xml:id="gB025" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">marqués</del><add ana="#layer-B">conde</add></mod></stage>
 <sp>
-<speaker><mod xml:id="gB026" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB026" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <milestone unit="stanza" type="redondillas"/>
 <lg>    
 <l met="stanza">¿Con qué caballo entraréis?</l>
@@ -1829,30 +1832,30 @@
 <lg>
 <l n="645">Bravo de entrada es el viento, </l>
 <l><mod xml:id="g098" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">gi</unclear> a su</del></mod>entre sus alas iréis.</l>
-<l met="stanza" part="I">¿Tú, <mod xml:id="gB027-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Enrique</del><add ana="#layer-B"><mod xml:id="gB027-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Enrique</add></mod></add></mod>?</l>
+<l met="stanza" part="I">¿Tú, <mod xml:id="gB027-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Enrique</del><add ana="#layer-B"><mod xml:id="gB027-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Enrique</add></mod></add></mod>?</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB028" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">He</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB028" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">He</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>
 <l part="F">El overo tengo</l>
 <l>por mejor para la entrada.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB029" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB029" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="I">¿Y agora?</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB030" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">He</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB030" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">He</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>
 <l part="F">El bayo me agrada.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB031" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB031" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l n="650">Braveza; a envidiaros vengo. </l>
 <l met="stanza"> Y agora, para el rejón,</l>
@@ -1867,7 +1870,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB032" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB032" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="F">No le apruebo.</l>
 </lg>
@@ -1879,7 +1882,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB033" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB033" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="F">Gustos son.</l>
 </lg>
@@ -1896,7 +1899,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB034" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB034" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l>El de Palma tiene brava</l>
 <l part="I">cuadrilla.</l>
@@ -1909,7 +1912,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB035" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Henr</del><add ana="#layer-B">Fadri</add></mod></speaker>
+<speaker><mod xml:id="gB035" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Henr</del><add ana="#layer-B">Fadri</add></mod></speaker>
 <lg>
 <l met="stanza"> Salen Asculi y Pastrana,</l>
 <pb type="folio" n="[Fol. 13v]"/>
@@ -1923,7 +1926,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB036" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB036" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l>Eso se sabrá mañana,</l>
 <l met="stanza"> pues —por Dios— que Castañeda</l>
@@ -1937,7 +1940,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB037" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB037" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l n="670">Pero ¿dónde se nos queda </l>
 <l met="stanza"> aquel Alba que amanece</l>
@@ -1946,13 +1949,13 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB038" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fadr</add></mod></speaker>
+<speaker><mod xml:id="gB038" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fadr</add></mod></speaker>
 <lg>
 <l>Donde él mismo resplandece.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB039" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB039" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l met="stanza" n="675"> Pienso que sale con él </l>
 <l>el duque de Franca Vila.</l>
@@ -1965,21 +1968,21 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB040" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB040" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="F">Que afila</l>
 <l>rayos de Marte por él.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB041" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fadri</add></mod></speaker>
+<speaker><mod xml:id="gB041" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fadri</add></mod></speaker>
 <lg>
 <l met="stanza"> Es don Juan el mismo Marte.</l>
 <l n="680" part="I">¿Sale el de Pradas?</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB042" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB042" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="F">Saldrá </l>
 <l>con que ninguno tendrá</l>
@@ -1992,7 +1995,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="g115" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">Fili</del><add ana="#layer-A2"><mod xml:id="gB043" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A2">He</del><add ana="#layer-B">Fad</add></mod></add></mod>></speaker>
+<speaker><mod xml:id="g115" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">Fili</del><add ana="#layer-A2"><mod xml:id="gB043" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A2">He</del><add ana="#layer-B">Fad</add></mod></add></mod>></speaker>
 <lg>
 <l>La fiesta ha de ser famosa.</l>
 </lg>
@@ -2004,11 +2007,11 @@
 <l n="690">por quien desde anoche muero </l>
 <pb type="folio" n="[Fol. 14r]"/>
 <l met="stanza"> me prestara algún favor,</l>
-<l>yo sé, <mod xml:id="gB044-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB044-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod> lo que hiciera.</l>
+<l>yo sé, <mod xml:id="gB044-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB044-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod> lo que hiciera.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB045" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB045" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="I">¿Que es tan hermosa?</l>
 </lg>
@@ -2021,7 +2024,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB046" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB046" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l met="stanza" n="695"> ¿Queréis que vaya por él? </l>
 </lg>
@@ -2033,7 +2036,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB047" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB047" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="F">Pues ¿qué importa?</l>
 </lg>
@@ -2046,7 +2049,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB048" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB048" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l met="stanza" part="I">¿Crüel y en el Prado?</l>
 </lg>
@@ -2060,7 +2063,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB049" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB049" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>
 <l>Mendozilla viene aquí.</l>
 </lg>
@@ -2076,7 +2079,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB050" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB050" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l>Como no le haya en los brazos,</l>
 <l>no le habrá, Mendoza, en ellos.</l>
@@ -2121,7 +2124,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB051" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB051" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l part="I">¿Cortáis bien?</l>
 </lg>
@@ -2153,7 +2156,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB052" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB052" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l>Pedro es valiente y lo hará</l>
 <l>como de un hombre manchego</l>
@@ -2215,7 +2218,7 @@
 <speaker>Me</speaker>
 <lg>
 <l>¡Válate Dios por borrica!</l>
-<l>¿Tú en San <mod xml:id="gB053-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Martín</del><add ana="#layer-B"><mod xml:id="gB053-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Ginés</del><add ana="#layer-B">Martín</add></mod></add></mod>? ¿Qué hay de nuevo?</l>
+<l>¿Tú en San <mod xml:id="gB053-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Martín</del><add ana="#layer-B"><mod xml:id="gB053-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Ginés</del><add ana="#layer-B">Martín</add></mod></add></mod>? ¿Qué hay de nuevo?</l>
 </lg>
 </sp>
 <sp>
@@ -2331,13 +2334,13 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l><mod xml:id="gB054-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Marqués</del><add ana="#layer-B"><mod xml:id="gB054-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Conde</del><add ana="#layer-B">Marqués</add></mod></add></mod>, dadme vuestro coche,</l>
+<l><mod xml:id="gB054-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Marqués</del><add ana="#layer-B"><mod xml:id="gB054-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Conde</del><add ana="#layer-B">Marqués</add></mod></add></mod>, dadme vuestro coche,</l>
 <l>que desde agora os advierto</l>
 <l>que tenéis dos convidados.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB055" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
+<speaker><mod xml:id="gB055" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Cond</add></mod></speaker>
 <lg>
 <l n="790">Pedro, avisad al cochero, </l>
 <l>que yo las pondré en mis ojos.</l>
@@ -2436,13 +2439,13 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l>Vamos, <mod xml:id="gB056-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB056-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod>, que hoy tenemos</l>
-<l n="825"><mod xml:id="gB057-1" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB057-2" type="subst" hand="#hB2" change="#stage-B" ana="#layer-B" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Henrique</add></mod></add></mod> y yo brava causa </l>
+<l>Vamos, <mod xml:id="gB056-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB056-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod>, que hoy tenemos</l>
+<l n="825"><mod xml:id="gB057-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB057-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Henrique</add></mod></add></mod> y yo brava causa </l>
 <l>de dar rejones al viento.</l>
 </lg>
 </sp>
 <sp>
-<speaker><mod xml:id="gB058" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
+<speaker><mod xml:id="gB058" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Hen</del><add ana="#layer-B">Fad</add></mod></speaker>
 <lg>
 <l part="I">¿Tengo mi parte?</l>
 </lg>
