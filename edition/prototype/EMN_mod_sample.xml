@@ -47,8 +47,6 @@
     <profileDesc>
       <handNotes>
         <handNote xml:id="Lope" scope="major" scribe="author">Mano autógrafa de Lope de Vega.</handNote>
-        <handNote xml:id="hB1" scope="minor">Primera mano no autógrafa identificada.</handNote>
-        <handNote xml:id="hB2" scope="minor">Segunda mano no autógrafa identificada.</handNote>
       </handNotes>
       <creation>
         <listChange ordered="true">
@@ -103,7 +101,7 @@
 
         <sp>
           <speaker>
-            <mod xml:id="g0011" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B">
+            <mod xml:id="g0011" type="subst" change="#stage-B" ana="#layer-B #B-substitution">
               <del ana="#layer-A0">Feli</del>
               <add ana="#layer-B">Leo</add>
             </mod>
