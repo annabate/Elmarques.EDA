@@ -26,6 +26,8 @@
   let facsimileController = null;
   let searchMatches = [];
   let searchIndex = -1;
+  let floatingNoteZ = 200;
+  let noteCounter = 0;
 
   function loadTEI(cetei, url) {
     return new Promise((resolve, reject) => {
@@ -50,6 +52,144 @@
     });
   }
 
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function bringFloatingNoteToFront(panel) {
+    floatingNoteZ += 1;
+    panel.style.zIndex = String(floatingNoteZ);
+  }
+
+  function makeFloatingNoteDraggable(panel, handle) {
+    let drag = null;
+
+    handle.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("button")) return;
+      event.preventDefault();
+      bringFloatingNoteToFront(panel);
+
+      const rect = panel.getBoundingClientRect();
+      drag = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        left: rect.left,
+        top: rect.top,
+      };
+      handle.setPointerCapture(event.pointerId);
+      panel.classList.add("is-dragging");
+    });
+
+    handle.addEventListener("pointermove", (event) => {
+      if (!drag || event.pointerId !== drag.pointerId) return;
+      const width = panel.offsetWidth;
+      const height = panel.offsetHeight;
+      const nextLeft = clamp(
+        drag.left + event.clientX - drag.startX,
+        8,
+        Math.max(8, window.innerWidth - Math.min(width, window.innerWidth) - 8),
+      );
+      const nextTop = clamp(
+        drag.top + event.clientY - drag.startY,
+        8,
+        Math.max(8, window.innerHeight - Math.min(height, window.innerHeight) - 8),
+      );
+      panel.style.left = `${nextLeft}px`;
+      panel.style.top = `${nextTop}px`;
+    });
+
+    function endDrag(event) {
+      if (!drag || event.pointerId !== drag.pointerId) return;
+      drag = null;
+      panel.classList.remove("is-dragging");
+      if (handle.hasPointerCapture(event.pointerId)) {
+        handle.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    handle.addEventListener("pointerup", endDrag);
+    handle.addEventListener("pointercancel", endDrag);
+  }
+
+  function closeFloatingNote(panel, trigger) {
+    panel.remove();
+    if (trigger?.isConnected) {
+      trigger.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  function openFloatingNote(trigger, content) {
+    const noteId = trigger.dataset.noteId;
+    const existing = document.querySelector(
+      `.floating-note[data-note-id="${noteId}"]`,
+    );
+
+    if (existing) {
+      bringFloatingNoteToFront(existing);
+      return;
+    }
+
+    const panel = document.createElement("aside");
+    panel.className = "floating-note";
+    panel.dataset.noteId = noteId;
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-label", "Nota editorial");
+
+    const header = document.createElement("div");
+    header.className = "floating-note-header";
+
+    const title = document.createElement("span");
+    title.className = "floating-note-title";
+    title.textContent = "Nota editorial";
+
+    const hint = document.createElement("span");
+    hint.className = "floating-note-drag-hint";
+    hint.textContent = "arrastrar";
+
+    const close = document.createElement("button");
+    close.type = "button";
+    close.className = "floating-note-close";
+    close.setAttribute("aria-label", "Cerrar nota");
+    close.textContent = "×";
+
+    const body = document.createElement("div");
+    body.className = "floating-note-body";
+    body.textContent = content;
+
+    header.append(title, hint, close);
+    panel.append(header, body);
+    document.body.appendChild(panel);
+
+    bringFloatingNoteToFront(panel);
+    trigger.setAttribute("aria-expanded", "true");
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const width = panel.offsetWidth;
+    const height = panel.offsetHeight;
+    const preferredLeft = triggerRect.right + 12;
+    const preferredTop = triggerRect.top - 12;
+
+    panel.style.left = `${clamp(
+      preferredLeft,
+      8,
+      Math.max(8, window.innerWidth - Math.min(width, window.innerWidth) - 8),
+    )}px`;
+    panel.style.top = `${clamp(
+      preferredTop,
+      8,
+      Math.max(8, window.innerHeight - Math.min(height, window.innerHeight) - 8),
+    )}px`;
+
+    close.addEventListener("click", () =>
+      closeFloatingNote(panel, trigger),
+    );
+    panel.addEventListener("pointerdown", () =>
+      bringFloatingNoteToFront(panel),
+    );
+    makeFloatingNoteDraggable(panel, header);
+  }
+
   function decorateNotes(root) {
     root.querySelectorAll("tei-note").forEach((note) => {
       if (note.dataset.decorated === "true") return;
@@ -62,46 +202,32 @@
       button.type = "button";
       button.className = "note-trigger";
       button.textContent = "✶";
-      button.setAttribute("aria-label", "Mostrar nota");
+      button.dataset.noteId = `note-${++noteCounter}`;
+      button.setAttribute("aria-label", "Abrir nota editorial");
       button.setAttribute("aria-expanded", "false");
-
-      const popover = document.createElement("span");
-      popover.className = "note-popover";
-      popover.textContent = content;
-      popover.hidden = true;
 
       button.addEventListener("click", (event) => {
         event.stopPropagation();
-        const willOpen = popover.hidden;
-        document
-          .querySelectorAll(".note-popover:not([hidden])")
-          .forEach((other) => {
-            if (other !== popover) {
-              other.hidden = true;
-              other.previousElementSibling?.setAttribute(
-                "aria-expanded",
-                "false",
-              );
-            }
-          });
-        popover.hidden = !willOpen;
-        button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        openFloatingNote(button, content);
       });
 
-      note.append(button, popover);
+      note.append(button);
     });
   }
 
   function closeNotesOnOutsideClick() {
-    document.addEventListener("click", (event) => {
-      if (event.target.closest(".edition-note")) return;
-      document.querySelectorAll(".note-popover").forEach((popover) => {
-        popover.hidden = true;
-        popover.previousElementSibling?.setAttribute(
-          "aria-expanded",
-          "false",
-        );
-      });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      const panels = Array.from(
+        document.querySelectorAll(".floating-note"),
+      );
+      if (!panels.length) return;
+      const topmost = panels.sort(
+        (a, b) =>
+          Number.parseInt(a.style.zIndex || "0", 10) -
+          Number.parseInt(b.style.zIndex || "0", 10),
+      ).pop();
+      topmost?.remove();
     });
   }
 
@@ -302,15 +428,150 @@
     else document.getElementById("search-count").textContent = "0";
   }
 
-  function updatePaneLayout() {
-    const grid = document.getElementById("edition-grid");
-    const visiblePanes = Array.from(
-      grid.querySelectorAll(":scope > .edition-pane"),
-    ).filter((pane) => !pane.classList.contains("is-hidden-pane"));
+  const editionGrid = document.getElementById("edition-grid");
 
-    grid.classList.toggle("single-pane", visiblePanes.length === 1);
-    grid.classList.toggle("two-pane", visiblePanes.length === 2);
-    grid.classList.toggle("three-pane", visiblePanes.length >= 3);
+  function visiblePanes() {
+    return Array.from(
+      editionGrid.querySelectorAll(":scope > .edition-pane"),
+    ).filter((pane) => !pane.classList.contains("is-hidden-pane"));
+  }
+
+  function setPaneWeight(pane, weight) {
+    const safeWeight = Math.max(1, Number(weight) || 1);
+    pane.dataset.flexWeight = String(safeWeight);
+    pane.style.setProperty("--pane-weight", String(safeWeight));
+  }
+
+  function equalizeVisiblePanes() {
+    visiblePanes().forEach((pane) => setPaneWeight(pane, 1));
+    rebuildPaneResizers();
+  }
+
+  function movePane(pane, direction) {
+    const panes = visiblePanes();
+    const index = panes.indexOf(pane);
+    if (index < 0) return;
+
+    if (direction === "left" && index > 0) {
+      editionGrid.insertBefore(pane, panes[index - 1]);
+    } else if (direction === "right" && index < panes.length - 1) {
+      editionGrid.insertBefore(panes[index + 1], pane);
+    } else {
+      return;
+    }
+
+    rebuildPaneResizers();
+  }
+
+  function updatePaneOrderControls() {
+    const panes = visiblePanes();
+    panes.forEach((pane, index) => {
+      const left = pane.querySelector('[data-move-pane="left"]');
+      const right = pane.querySelector('[data-move-pane="right"]');
+      if (left) left.disabled = index === 0;
+      if (right) right.disabled = index === panes.length - 1;
+    });
+  }
+
+  function resizePanePair(leftPane, rightPane, startEvent) {
+    if (window.matchMedia("(max-width: 760px)").matches) return;
+
+    const leftRect = leftPane.getBoundingClientRect();
+    const rightRect = rightPane.getBoundingClientRect();
+    const total = leftRect.width + rightRect.width;
+    const minWidth = Math.min(220, total * 0.32);
+    const startX = startEvent.clientX;
+
+    document.body.classList.add("is-resizing-panes");
+
+    function onMove(event) {
+      const delta = event.clientX - startX;
+      const leftWidth = clamp(
+        leftRect.width + delta,
+        minWidth,
+        total - minWidth,
+      );
+      const rightWidth = total - leftWidth;
+      setPaneWeight(leftPane, leftWidth);
+      setPaneWeight(rightPane, rightWidth);
+    }
+
+    function onEnd() {
+      document.body.classList.remove("is-resizing-panes");
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onEnd);
+      window.removeEventListener("pointercancel", onEnd);
+    }
+
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onEnd, { once: true });
+    window.addEventListener("pointercancel", onEnd, { once: true });
+  }
+
+  function makePaneResizer(leftPane, rightPane) {
+    const resizer = document.createElement("div");
+    resizer.className = "pane-resizer";
+    resizer.setAttribute("role", "separator");
+    resizer.setAttribute("aria-orientation", "vertical");
+    resizer.setAttribute("aria-label", "Redimensionar paneles");
+    resizer.tabIndex = 0;
+
+    resizer.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      resizePanePair(leftPane, rightPane, event);
+    });
+
+    resizer.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+      event.preventDefault();
+
+      const leftRect = leftPane.getBoundingClientRect();
+      const rightRect = rightPane.getBoundingClientRect();
+      const total = leftRect.width + rightRect.width;
+      const step = event.shiftKey ? 48 : 20;
+      const delta = event.key === "ArrowLeft" ? -step : step;
+      const minWidth = Math.min(220, total * 0.32);
+      const leftWidth = clamp(
+        leftRect.width + delta,
+        minWidth,
+        total - minWidth,
+      );
+      setPaneWeight(leftPane, leftWidth);
+      setPaneWeight(rightPane, total - leftWidth);
+    });
+
+    return resizer;
+  }
+
+  function rebuildPaneResizers() {
+    editionGrid
+      .querySelectorAll(":scope > .pane-resizer")
+      .forEach((resizer) => resizer.remove());
+
+    const panes = visiblePanes();
+    panes.forEach((pane) => {
+      if (!pane.dataset.flexWeight) setPaneWeight(pane, 1);
+    });
+
+    panes.slice(0, -1).forEach((pane, index) => {
+      pane.after(makePaneResizer(pane, panes[index + 1]));
+    });
+
+    updatePaneOrderControls();
+  }
+
+  function updatePaneLayout({ equalize = false } = {}) {
+    const panes = visiblePanes();
+
+    editionGrid.classList.toggle("single-pane", panes.length === 1);
+    editionGrid.classList.toggle("two-pane", panes.length === 2);
+    editionGrid.classList.toggle("three-pane", panes.length >= 3);
+
+    if (equalize) {
+      equalizeVisiblePanes();
+    } else {
+      rebuildPaneResizers();
+    }
   }
 
   function setupToolbar() {
@@ -352,11 +613,23 @@
       input.addEventListener("change", () => {
         const pane = document.getElementById(input.dataset.togglePane);
         pane?.classList.toggle("is-hidden-pane", !input.checked);
-        updatePaneLayout();
+        if (input.checked && pane) setPaneWeight(pane, 1);
+        updatePaneLayout({ equalize: true });
       });
     });
 
-    updatePaneLayout();
+    document
+      .getElementById("reset-layout")
+      .addEventListener("click", equalizeVisiblePanes);
+
+    editionGrid.querySelectorAll("[data-move-pane]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const pane = button.closest(".edition-pane");
+        if (pane) movePane(pane, button.dataset.movePane);
+      });
+    });
+
+    updatePaneLayout({ equalize: true });
   }
 
   function keepFirstAct(root) {
