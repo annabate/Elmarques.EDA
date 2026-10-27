@@ -3,124 +3,104 @@
 **Archivo de trabajo:** `edition/prototype/EMN_mod_act1_pilot.xml`  
 **Fecha:** 27 de octubre de 2026
 
-## 1. Objetivo
+## 1. Principio general
 
-Esta revisión aborda las intervenciones no autógrafas del acto I y redefine su representación a partir de una distinción fundamental:
+B se define como un **estrato postautorial unitario** que reúne las intervenciones no autógrafas.
 
-- **B** es el estrato o fase postautorial;
-- **hB1 / hB2** son manos;
-- el orden entre dos intervenciones B solo se expresa mediante `@seq` cuando puede demostrarse localmente.
+El modelo no presupone:
 
-No se presupone, por tanto, una cronología global del tipo «campaña B1 → campaña B2» para todo el manuscrito.
+- un número determinado de manos no autógrafas;
+- la identidad de una misma mano en sectores diferentes del manuscrito;
+- una correspondencia estable entre «primera» y «segunda» intervención y dos escribientes concretos;
+- una cronología global interna de B.
 
-## 2. Inventario de partida
+Esta decisión responde a la situación material del manuscrito: en algunos lugares es posible distinguir con bastante seguridad dos intervenciones sucesivas, pero no puede establecerse con la misma seguridad cuántas manos intervienen en el conjunto del códice ni si las observables en la cubierta, los repartos y el cuerpo de la comedia corresponden a los mismos escribientes.
 
-En el archivo heredado se localizaron **90 aparatos que contienen B**.
+## 2. Información que sí puede codificarse con seguridad
 
-Se distribuyen en dos conjuntos diferentes:
+El modelo separa cuatro niveles:
 
-- **29 intervenciones en los repartos iniciales**, anteriores al comienzo del acto;
-- **61 intervenciones dentro del cuerpo del acto I**.
+- `ana="#layer-B"`: pertenencia general al estrato postautorial B;
+- `change="#stage-B"`: pertenencia a la fase postautorial;
+- `@seq`: orden relativo entre intervenciones B únicamente cuando este puede establecerse en un lugar concreto;
+- una taxonomía funcional secundaria para describir qué hace cada intervención.
 
-Los repartos se mantienen separados porque las notas indican que intervienen en ellos al menos dos manos no autógrafas vinculables al ámbito de la representación, pero no existe todavía base suficiente para identificarlas con hB1 y hB2, las dos manos observadas en las correcciones del cuerpo dramático.
+La atribución mediante `@hand` es **facultativa** en B y solo deberá usarse en el futuro si una mano puede identificarse con suficiente seguridad.
 
-## 3. Evidencia para distinguir hB1 y hB2 en el cuerpo
+## 3. Taxonomía funcional de B
 
-La nota asociada a la primera secuencia sistemática de correcciones establece que dos manos, distinguibles por color, grosor de tinta y grafía, intervienen sobre los antropónimos:
-
-1. una primera mano tacha y sustituye nombres;
-2. una segunda mano restituye la lección primitiva.
-
-La misma nota afirma que el fenómeno se repite a lo largo de la pieza.
-
-Sobre esta base, el modelo utiliza:
-
-- `#hB1` para la mano que realiza la primera sustitución;
-- `#hB2` para la mano que interviene después restaurando la lección previa en los lugares donde esa secuencia es visible.
-
-La identificación se aplica únicamente a los casos materialmente análogos.
-
-## 4. Revisión de la cronología de B
-
-La primera versión del modelo utilizaba:
+Se declara una taxonomía independiente:
 
 ```xml
-change="#stage-B1"
-change="#stage-B2"
+<taxonomy xml:id="B-functions">
+  <category xml:id="B-substitution">
+    <catDesc>Sustitución no autógrafa de una lección anterior.</catDesc>
+  </category>
+  <category xml:id="B-restoration">
+    <catDesc>
+      Restitución posterior, dentro de B, de una lección previamente modificada.
+    </catDesc>
+  </category>
+  <category xml:id="B-performance">
+    <catDesc>
+      Intervención no autógrafa vinculada al uso escénico o a la representación.
+    </catDesc>
+  </category>
+</taxonomy>
 ```
 
-Esta solución identificaba de hecho cada mano con una campaña cronológica global.
+Estas categorías no sustituyen a `#layer-B`: lo complementan.
 
-Se abandona ahora esa equivalencia.
+## 4. Sustitución B simple
 
-El modelo actual utiliza:
-
-```xml
-change="#stage-B"
-```
-
-para todas las intervenciones postautoriales del cuerpo.
-
-La distinción entre las manos se conserva en:
+Una sustitución postautorial puede codificarse sin atribuirla a una mano:
 
 ```xml
-hand="#hB1"
-hand="#hB2"
-```
-
-y el orden local, cuando existe, mediante:
-
-```xml
-seq="1"
-seq="2"
-```
-
-De esta forma, una secuencia local hB1→hB2 no se convierte automáticamente en una afirmación sobre la cronología global de todas las intervenciones de ambas manos.
-
-## 5. Sustituciones simples de hB1
-
-Los cambios sistemáticos de antropónimos y abreviaturas se modelan como sustituciones B.
-
-Por ejemplo:
-
-```xml
-<mod xml:id="gB..."
+<mod xml:id="gB001"
      type="subst"
-     hand="#hB1"
      change="#stage-B"
-     ana="#layer-B">
+     ana="#layer-B #B-substitution">
   <del ana="#layer-A0">Mar</del>
   <add ana="#layer-B">Cond</add>
 </mod>
 ```
 
-El mismo patrón se aplica, entre otros, a:
+El marcado afirma únicamente:
 
-- `marqués → conde`;
-- `Henrique → Fadrique`;
-- `Hen → Fad`;
-- `Ma → Con/Cond`.
+1. que la intervención no es autógrafa;
+2. que pertenece a B;
+3. que sustituye una lección anterior.
 
-En estos casos no se introduce `@seq`, porque solo se conserva una intervención B en ese punto.
+No afirma quién la ejecutó.
 
-## 6. Secuencias locales hB1 → hB2
+## 5. Sustitución seguida de restitución
 
-Cuando la segunda mano vuelve sobre una lectura introducida por hB1, la segunda modificación se anida en la lección añadida por la primera:
+En numerosos lugares se observa una secuencia material del tipo:
+
+```text
+A0: marqués
+    ↓
+B, intervención 1: conde
+    ↓
+B, intervención 2: marqués
+```
+
+La lógica del fenómeno y los rasgos materiales permiten sostener que existen dos intervenciones diferentes y sucesivas. No es necesario, sin embargo, convertir esa observación en la identificación de dos manos globales.
+
+Se codifica:
 
 ```xml
 <mod xml:id="gB001-1"
      type="subst"
-     hand="#hB1"
      change="#stage-B"
-     ana="#layer-B"
+     ana="#layer-B #B-substitution"
      seq="1">
   <del ana="#layer-A0">marqués</del>
   <add ana="#layer-B">
     <mod xml:id="gB001-2"
          type="subst"
-         hand="#hB2"
          change="#stage-B"
-         ana="#layer-B"
+         ana="#layer-B #B-restoration"
          seq="2">
       <del ana="#layer-B">conde</del>
       <add ana="#layer-B">marqués</add>
@@ -129,36 +109,37 @@ Cuando la segunda mano vuelve sobre una lectura introducida por hB1, la segunda 
 </mod>
 ```
 
-El archivo piloto contiene actualmente **17 intervenciones de hB2**, todas ellas ligadas a secuencias locales de este tipo.
+La segunda lección `marqués` continúa perteneciendo a B: aunque coincida con A0, constituye una nueva inscripción postautorial.
 
-La lección restaurada por hB2 sigue llevando `ana="#layer-B"`: aunque coincida gráficamente con A0, es una nueva inscripción producida por una mano posterior.
+## 6. Qué significa `@seq`
 
-## 7. B sobre una lección A1
+`@seq` expresa solamente una cronología **local**.
 
-Un caso conserva una cadena:
+Por tanto:
 
-```text
-A0 → A1 → hB1 → hB2
+```xml
+seq="1"
+seq="2"
 ```
 
-El evento A1 se mantiene como modificación autorial inmediata. Dentro de su nueva lección se anidan las dos modificaciones B.
+significa que, en ese punto concreto, una segunda intervención actúa sobre el resultado de la primera.
 
-Esto permite conservar simultáneamente:
+No significa:
 
-- la lectura inicial A0;
-- la corrección inmediata A1;
-- la sustitución de hB1;
-- la restauración de hB2.
+- «mano 1» y «mano 2»;
+- «campaña B1» y «campaña B2»;
+- que todos los eventos con `seq="1"` pertenezcan al mismo escribiente;
+- que todos los eventos con `seq="2"` pertenezcan a otro escribiente común.
 
-## 8. B sobre una lección A2
+## 7. B sobre A1 o A2
 
-El caso `Fili → He → Fad` se interpreta como:
+Cuando B interviene sobre una lección autorial ya modificada, la cronología global está suficientemente expresada por los estratos.
 
-- A0: `Fili`;
-- A2: `He`;
-- B/hB1: `Fad`.
+Por ejemplo, en `Fili → He → Fad`:
 
-La modificación B debe cancelar, por tanto, una lección A2:
+- `Fili` pertenece a A0;
+- `He` es una revisión A2;
+- `Fad` es una sustitución B.
 
 ```xml
 <mod type="subst"
@@ -168,9 +149,8 @@ La modificación B debe cancelar, por tanto, una lección A2:
   <del ana="#layer-A0">Fili</del>
   <add ana="#layer-A2">
     <mod type="subst"
-         hand="#hB1"
          change="#stage-B"
-         ana="#layer-B">
+         ana="#layer-B #B-substitution">
       <del ana="#layer-A2">He</del>
       <add ana="#layer-B">Fad</add>
     </mod>
@@ -178,18 +158,32 @@ La modificación B debe cancelar, por tanto, una lección A2:
 </mod>
 ```
 
-Este caso confirma la utilidad de separar el estrato del evento del estrato de la lección.
+No se añade `@seq` a la intervención B porque A2→B ya está expresado por la sucesión de fases. `@seq` se reserva a las sucesiones internas de B.
+
+## 8. Cancelaciones B
+
+Una cancelación no autógrafa no necesita una categoría funcional secundaria si la estructura `type="del"` ya describe adecuadamente el fenómeno:
+
+```xml
+<mod xml:id="gB..."
+     type="del"
+     change="#stage-B"
+     ana="#layer-B">
+  <del ana="#layer-A0">...</del>
+</mod>
+```
+
+El mismo principio se aplica a una cancelación extensa.
 
 ## 9. Cancelación extensa de los vv. 410–415
 
-La construcción heredada con `from/to` se ha sustituido por el mecanismo TEI correcto:
+El intervalo se representa mediante `delSpan/@spanTo`:
 
 ```xml
 <l n="410">
   <anchor xml:id="l_410"/>
   <delSpan xml:id="gB020"
            spanTo="#l_415"
-           hand="#hB1"
            change="#stage-B"
            ana="#layer-B"/>
   Ya habrás oído mil veces
@@ -198,53 +192,76 @@ La construcción heredada con `from/to` se ha sustituido por el mecanismo TEI co
 <anchor xml:id="l_415"/>
 ```
 
-La nota atribuye expresamente la tachadura a la primera mano, por lo que la asignación a hB1 es suficientemente segura.
+No se añade `@hand`: la nota permite hablar de una intervención no autógrafa dentro del mismo proceso de ocultación, pero no es necesario identificar esa «primera mano» con una entidad paleográfica global.
 
-## 10. Casos del cuerpo todavía no migrados
+## 10. Intervenciones vinculadas a la representación
 
-Quedan **tres aparatos B** dentro del cuerpo del acto I.
+La categoría:
 
-### Corrección de parlamento `Feli → Leo`
+```xml
+ana="#layer-B #B-performance"
+```
 
-La nota indica que la corrección fue realizada «al parecer por otra mano», pero no permite identificar con seguridad esa mano como hB1 o hB2.
+queda disponible para intervenciones cuya relación con el uso escénico pueda sostenerse, por ejemplo determinadas adiciones o anotaciones de representación.
 
-Se mantiene provisionalmente en la codificación heredada.
+No se aplicará automáticamente a todo el material de los repartos: la función concreta de cada inscripción deberá comprobarse.
+
+## 11. Repartos, cubierta y otros sectores del manuscrito
+
+Las intervenciones de la cubierta y de los repartos se mantienen deliberadamente fuera de una identificación paleográfica fuerte.
+
+Las notas permiten afirmar que:
+
+- el material no es autógrafo;
+- probablemente intervienen varias manos;
+- en determinados sectores pueden distinguirse diferencias gráficas.
+
+No permiten afirmar con seguridad:
+
+- cuántas manos no autógrafas existen en total;
+- que las manos de los repartos sean las mismas que las del cuerpo;
+- que una misma mano intervenga en todos los casos aparentemente análogos.
+
+Por ello, estos sectores se integrarán en B sin crear identificadores de mano salvo que una futura revisión paleográfica proporcione una base suficiente.
+
+## 12. Casos todavía pendientes en el cuerpo
+
+Tres aparatos B permanecen provisionalmente en la codificación heredada:
+
+### `Feli → Leo`
+
+La nota indica que la corrección fue realizada «al parecer por otra mano». Esto basta para excluirla de A2 y situarla en B, pero la estructura exacta se revisará antes de migrarla.
 
 ### `Siéntense`
 
-Es una adición escénica no autógrafa. Todavía no se ha atribuido con seguridad a hB1/hB2.
-
-Se mantiene provisionalmente en la codificación heredada.
+Es una adición no autógrafa de probable valor escénico. Podrá utilizar `#B-performance` cuando se cierre su interpretación.
 
 ### `díjese`
 
-La palabra aparece junto a la cancelación extensa de los vv. 410–415. La tachadura está atribuida a hB1, pero no se ha considerado suficiente esta proximidad para atribuir automáticamente también `díjese` a la misma mano.
+Aparece junto a la cancelación extensa de los vv. 410–415. Debe decidirse si constituye una adición ligada al mismo evento o una intervención independiente.
 
-Se mantiene provisionalmente en la codificación heredada hasta comprobar la grafía.
+## 13. Estado actual de la migración
 
-## 11. Repartos iniciales
+El archivo heredado contenía **90 aparatos con B**:
 
-Los **29 aparatos B de los repartos** no se han migrado todavía.
+- 29 en los repartos iniciales;
+- 61 en el cuerpo del acto I.
 
-La razón no es técnica sino filológica: las notas reconocen al menos dos manos no autógrafas, pero no debe suponerse que estas coincidan con hB1/hB2 del cuerpo dramático.
+En `EMN_mod_act1_pilot.xml` se han migrado **58 de los 61 aparatos B del cuerpo**.
 
-La migración de los repartos requerirá:
+Estos 58 aparatos producen actualmente:
 
-1. distinguir materialmente las manos;
-2. asignar identificadores específicos si no coinciden con hB1/hB2;
-3. decidir si cada entrada debe representarse como adición, inscripción de reparto u otra estructura documental;
-4. mantener separada esta información de las modificaciones del texto dramático.
+- **56 eventos clasificados funcionalmente como `#B-substitution`**;
+- **17 segundos eventos locales clasificados como `#B-restoration`**;
+- **2 intervenciones B** descritas únicamente por su estructura de cancelación;
+- **75 referencias totales a `change="#stage-B"`**.
 
-## 12. Estado actual
+No se utiliza ningún identificador `hB1/hB2`.
 
-En `EMN_mod_act1_pilot.xml` se han migrado **58 de las 61 intervenciones B del cuerpo del acto I**.
+## 14. Principio metodológico
 
-El archivo contiene actualmente:
+El modelo adopta una regla general:
 
-- **58 referencias a hB1**, incluida la cancelación extensa;
-- **17 referencias a hB2**, correspondientes a restauraciones locales;
-- **75 referencias a `change="#stage-B"`**;
-- **3 aparatos B pendientes en el cuerpo**;
-- **29 aparatos B pendientes en los repartos iniciales**.
+> debe codificarse con precisión el fenómeno observable, no una identidad paleográfica que no pueda demostrarse.
 
-El modelo B del cuerpo puede considerarse estructuralmente estabilizado, aunque la atribución de algunas intervenciones concretas requiere todavía comprobación paleográfica.
+Por ello B puede contener sucesiones internas muy precisas sin que sea necesario determinar cuántas manos no autógrafas existen en el manuscrito ni atribuir cada intervención a una de ellas.
