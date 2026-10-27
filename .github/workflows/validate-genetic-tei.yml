@@ -72,12 +72,12 @@ jobs:
 
       - name: Validate prototype XML files against generated RELAX NG
         run: |
-          for f in edition/prototype/EMN_mod_sample.xml edition/prototype/EMN_complex_cases.xml; do
+          for f in edition/prototype/EMN_mod_sample.xml edition/prototype/EMN_complex_cases.xml edition/prototype/EMN_mod_act1_pilot.xml; do
             echo "Validating $f"
             jing build/tei/EMN_genetic.rng "$f"
           done
 
-      - name: Extract project Schematron from ODD and validate sample
+      - name: Extract project Schematron from ODD and validate prototype XML files
         run: |
           python - <<'PY'
           from copy import deepcopy
@@ -92,6 +92,7 @@ jobs:
           xml_paths = [
               Path('edition/prototype/EMN_mod_sample.xml'),
               Path('edition/prototype/EMN_complex_cases.xml'),
+              Path('edition/prototype/EMN_mod_act1_pilot.xml'),
           ]
           sch_path = Path('build/tei/EMN_genetic.sch')
 
