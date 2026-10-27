@@ -52,6 +52,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se elimina el último aparato legacy del acto I: la lectura A0 ilegible del v. 201 se representa mediante gap dentro de la cancelación A1, seguida de la adición «Mayormente si es tan Roma».</change>
 <change when="2026-10-27">Se migran los 29 aparatos B de la cubierta y los repartos como adiciones postautoriales sin atribución de mano. El título se trata como adición B simple y las 28 entradas de reparto como adiciones B vinculadas funcionalmente al uso teatral mediante #B-performance.</change>
 <change when="2026-10-27">Se migran los tres últimos aparatos B del cuerpo del acto I: «Feli»→«Leo» como sustitución B, «Siéntense» como adición B de función escénica y «díjese» como adición B sin atribución funcional adicional. El cuerpo del acto I queda sin aparatos B legacy.</change>
 <change when="2026-10-27">Se crea el piloto global del acto I y se migran 58 aparatos B del cuerpo. Las intervenciones se integran en un único estrato postautorial B; las sucesiones locales se distinguen mediante @seq y categorías funcionales, sin fijar identidades paleográficas globales para las manos no autógrafas.</change>
@@ -604,7 +605,7 @@
 <l>en que al despensero cuelgan</l>
 <l n="200">que afrenta los calabreses?</l>
  <pb type="folio" n="[Fol. 5r]"/>
-<l><app><lem wit="A1" varSeq="1" hand="authorial"><del>(?)</del><add>Mayormente si es tan Roma</add></lem><rdg wit="A0" varSeq="0" hand="authorial">(?)</rdg></app><note>En este pasaje se documenta un proceso de génesis textual caracterizado por sucesivas intervenciones de reescritura, visibles en las tachaduras y sustituciones registradas en los vv. 190, 192 y 201. Dichas operaciones afectan a unidades léxicas que, en algunos casos, son reformuladas posteriormente, lo que apunta a una reelaboración progresiva del fragmento. El conjunto de variantes sugiere un trabajo de ajuste y expansión del material en fases distintas.</note></l>
+<l><mod xml:id="g051" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><gap reason="illegible"/></del><add ana="#layer-A1">Mayormente si es tan Roma</add></mod><note>En este pasaje se documenta un proceso de génesis textual caracterizado por sucesivas intervenciones de reescritura, visibles en las tachaduras y sustituciones registradas en los vv. 190, 192 y 201. Dichas operaciones afectan a unidades léxicas que, en algunos casos, son reformuladas posteriormente, lo que apunta a una reelaboración progresiva del fragmento. El conjunto de variantes sugiere un trabajo de ajuste y expansión del material en fases distintas.</note></l>
 <l>que parece que Olofernes</l>
 <l>de dos mamonas la hizo</l>
 <l>sepulturas y juanetes.</l>
