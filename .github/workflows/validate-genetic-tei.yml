@@ -43,6 +43,23 @@ jobs:
               print(f'XML well-formed: {path}')
           PY
 
+      - name: Check act I pilot has no legacy B apparatus
+        run: |
+          python - <<'PY'
+          from lxml import etree
+
+          path = 'edition/prototype/EMN_mod_act1_pilot.xml'
+          tree = etree.parse(path)
+          ns = {'tei': 'http://www.tei-c.org/ns/1.0'}
+          legacy = tree.xpath(
+              '//tei:app[.//*[@wit="B"] or @wit="B"]',
+              namespaces=ns,
+          )
+          if legacy:
+              raise SystemExit(f'Legacy B apparatus remaining in {path}: {len(legacy)}')
+          print(f'No legacy B apparatus: {path}')
+          PY
+
       - name: Compile ODD to RELAX NG
         run: |
           mkdir -p build/tei
