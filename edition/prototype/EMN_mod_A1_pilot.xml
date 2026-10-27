@@ -44,6 +44,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se fija la secuencia de los vv. 308–309 según el aparato de la edición: el v. 308 contiene una sustitución inmediata A1 («la defen»→«escurece»); el v. 309 contiene una sustitución posterior A2 («la defenden»→«resplandecen»). Ambas pertenecen a un mismo proceso de enmienda desarrollado en dos fases.</change>
 <change when="2026-10-27">Se migran dos casos A1 adicionales confirmados por las notas como correcciones inmediatas: «a los más sabios»→«como lo esperes» y «sale aquel día»→«salir porfía».</change>
 <change when="2026-10-27">Revisión A2: la corrección inicial Leo→Feli se reclasifica como A1 inmediata; se migran como A2 confirmados los reajustes de los vv. 219–220 y la sustitución «que los angeles»→«que angel que viene».</change>
 <change when="2026-10-27">Se resuelven los cuatro casos pendientes a partir de la revisión del aparato: los vv. 565–566 se codifican como reescritura A1 en dos versos; el v. 597 se descompone en una cancelación A1 y una sustitución A2; los vv. 646 y 755 se codifican como cancelaciones A1 con lectura parcialmente incierta.</change>
@@ -853,9 +854,9 @@
 <l n="305">con ingenio tan divino,</l>
 <l>con talle tan excelente</l>
 <l>y con tan hermosa cara?</l>
-<l>Que aunque la noche la <mod xml:id="g063" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">defen</del></mod> escurece</l>
+<l>Que aunque la noche <mod xml:id="g063" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">la defen</del><add ana="#layer-A1">escurece</add></mod></l>
 <l>el cielo en que te retratas,</l>
-<l n="310">sus estrellas <app><rdg wit="A0" varSeq="0" hand="authorial">la defenden</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>la defenden</del><add>resplandecen</add></subst></lem></app>.<note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
+<l n="310">sus estrellas <mod xml:id="g064" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">la defenden</del><add ana="#layer-A2">resplandecen</add></mod>.<note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
 </note></l>
 </lg>
 </sp>
