@@ -5,18 +5,15 @@
 <titleStmt>
 <title>El marqués de las Navas</title>
 <author>Lope de Vega</author>
+<editor>Anna Abate</editor>
 </titleStmt>
 <publicationStmt>
 <publisher>
 <ref>Università di Trento</ref>
 </publisher>
-<editor>Anna Abate</editor>
 </publicationStmt>
 <sourceDesc>
-<bibl>Colocacion</bibl>
-<listWit>
-<witness>O Manuscrito autógrafo, Melbury House.</witness>
-</listWit>
+<bibl>Manuscrito autógrafo de <title>El marqués de las Navas</title>, Melbury House.</bibl>
 </sourceDesc>
 </fileDesc>
 <encodingDesc>
@@ -52,6 +49,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se normaliza el teiHeader para la validación del modelo genético y se sustituye el único elemento HTML i por hi rend="italic".</change>
 <change when="2026-10-27">Se elimina una duplicación residual de «de Córdoba, nuevo Orestes» dentro de la cancelación extensa de los vv. 410–415, ausente en la transcripción diplomática, y se normaliza estructuralmente el segundo reparto dentro de castList.</change>
 <change when="2026-10-27">Se elimina el último aparato legacy del acto I: la lectura A0 ilegible del v. 201 se representa mediante gap dentro de la cancelación A1, seguida de la adición «Mayormente si es tan Roma».</change>
 <change when="2026-10-27">Se migran los 29 aparatos B de la cubierta y los repartos como adiciones postautoriales sin atribución de mano. El título se trata como adición B simple y las 28 entradas de reparto como adiciones B vinculadas funcionalmente al uso teatral mediante #B-performance.</change>
@@ -2173,7 +2171,7 @@
 <sp>
 <speaker>Me</speaker>
 <lg>
- <l n="740">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: el manuscrito transmite la lección <i>caçeo</i>, difícilmente justificable en el contexto. Seguimos la enmienda de Mon, pues el parlamento de Mendoza parece reproducir, a modo de acotación implícita, el sonido con que Clara reclama su atención. El error puede atribuirse verosímilmente a un simple lapsus de pluma del Fénix..</note>?</l>
+ <l n="740">¿Aquí dama? ¿Aquí ceceo<note><hi rend="italic">ceceo</hi>: el manuscrito transmite la lección <hi rend="italic">caçeo</hi>, difícilmente justificable en el contexto. Seguimos la enmienda de Mon, pues el parlamento de Mendoza parece reproducir, a modo de acotación implícita, el sonido con que Clara reclama su atención. El error puede atribuirse verosímilmente a un simple lapsus de pluma del Fénix..</note>?</l>
 <stage>Clara entre</stage>
 <pb type="folio" n="[Fol. 15r]"/>
 <l>Vuesa merced sea servida,</l>
