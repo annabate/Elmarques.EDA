@@ -256,7 +256,7 @@ Estos 58 aparatos producen actualmente:
 - **2 intervenciones B** descritas únicamente por su estructura de cancelación;
 - **75 referencias totales a `change="#stage-B"`**.
 
-No se utiliza ningún identificador `hB1/hB2`.
+No se utiliza ningún identificador estable para las manos no autógrafas.
 
 ## 14. Principio metodológico
 
