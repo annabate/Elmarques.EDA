@@ -39,10 +39,12 @@
 <creation>
 <listChange ordered="true">
 <change xml:id="stage-A0">Primera redacción autógrafa.</change>
+<change xml:id="stage-A2">Revisión autorial posterior.</change>
 </listChange>
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se resuelven los cuatro casos pendientes a partir de la revisión del aparato: los vv. 565–566 se codifican como reescritura A1 en dos versos; el v. 597 se descompone en una cancelación A1 y una sustitución A2; los vv. 646 y 755 se codifican como cancelaciones A1 con lectura parcialmente incierta.</change>
 <change when="2026-10-21">Segunda fase del piloto: se incorporan 11 casos A1 adicionales, incluidos seis con incertidumbre de lectura codificada mediante unclear. El piloto contiene ahora 34 casos A1 migrados.</change>
 <change when="2026-10-21">Conversión piloto de 23 casos A0→A1 estructuralmente isomorfos al modelo genético basado en mod/del/add.</change>
 </revisionDesc>
@@ -1596,7 +1598,7 @@
 <pb type="folio" n="[Fol. 11v]"/>
 <l>que a penas pone la mira</l>
 <l>cuando ya mata de amor.</l>
-<l met="stanza"> ¡Qué traidor<app><rdg wit="A0" varSeq="0" hand="authorial"> para mí fue</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>fue para mí</del><add>, Gerarda, fue</add></subst></lem></app></l>
+<l met="stanza"> ¡Qué traidor <mod xml:id="g088" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">fue para mí</del><add ana="#layer-A1">, Gerarda, fue</add></mod></l>
 <l><mod xml:id="g089" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">de noche</del><add ana="#layer-A1">para mí!</add></mod> De noche vino.</l>
 <l n="565">¿Qué <mod xml:id="g090" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">tan</unclear></del></mod> salteador en camino </l>
 <l>hay que tan oculto esté?</l>
@@ -1647,7 +1649,7 @@
 <speaker>Ger</speaker>
 <lg>    
 <l>El tiempo ocasión te ha dado:</l>
-<l>escríbele que <app><rdg wit="A0" varSeq="0" hand="authorial">tu? has trazado</rdg><lem wit="A1" varSeq="1" hand="authorial"><subst><del>tu?</del> has <del>trazado</del> <add>pensado</add></subst></lem></app></l>
+<l>escríbele que <mod xml:id="g093a" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">te</unclear></del></mod> has <mod xml:id="g093b" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">trazado</del><add ana="#layer-A2">pensado</add></mod></l>
 <l met="stanza"> ir con secreto a la fiesta,</l>
 <l>que te envíe un coche, que esta</l>
 <l n="600">es la mejor invención </l>
@@ -1818,7 +1820,7 @@
 <speaker>Marqués</speaker>
 <lg>
 <l n="645">Bravo de entrada es el viento, </l>
-<l><app><rdg wit="A0" varSeq="0" hand="authorial">ci.. a su?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>ci.. a su?</del></lem></app>entre sus alas iréis.</l>
+<l><mod xml:id="g098" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">gi</unclear> a su</del></mod>entre sus alas iréis.</l>
 <l met="stanza" part="I">¿Tú, <app><lem wit="A0" varSeq="0" hand="authorial">Enrique</lem><rdg wit="B" varSeq="1" hand="non-authorial"><subst><del>Enrique</del><add>Fadrique</add></subst></rdg><rdg wit="B" varSeq="2" hand="non-authorial"><subst><del>Fadrique</del><add>Enrique</add></subst></rdg></app>?</l>
 </lg>
 </sp>
@@ -2197,7 +2199,7 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="755"><app><rdg wit="A0" varSeq="0" hand="authorial">yo s?</rdg><lem wit="A1" varSeq="1" hand="authorial"><del>yo s?</del></lem></app>¿Con quién hablabas anoche</l>
+<l n="755"><mod xml:id="g127" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">ya <unclear cert="low">se</unclear></del></mod>¿Con quién hablabas anoche</l>
 <l>en el Prado, majadero?</l>
 </lg>
 </sp>
