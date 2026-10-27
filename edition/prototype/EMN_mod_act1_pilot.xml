@@ -52,6 +52,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se migran los tres últimos aparatos B del cuerpo del acto I: «Feli»→«Leo» como sustitución B, «Siéntense» como adición B de función escénica y «díjese» como adición B sin atribución funcional adicional. El cuerpo del acto I queda sin aparatos B legacy.</change>
 <change when="2026-10-27">Se crea el piloto global del acto I y se migran 58 aparatos B del cuerpo. Las intervenciones se integran en un único estrato postautorial B; las sucesiones locales se distinguen mediante @seq y categorías funcionales, sin fijar identidades paleográficas globales para las manos no autógrafas.</change>
 <change when="2026-10-27">Se fija la secuencia de los vv. 308–309 según el aparato de la edición: el v. 308 contiene una sustitución inmediata A1 («la defen»→«escurece»); el v. 309 contiene una sustitución posterior A2 («la defenden»→«resplandecen»). Ambas pertenecen a un mismo proceso de enmienda desarrollado en dos fases.</change>
 <change when="2026-10-27">Se migran dos casos A1 adicionales confirmados por las notas como correcciones inmediatas: «a los más sabios»→«como lo esperes» y «sale aquel día»→«salir porfía».</change>
@@ -128,7 +129,7 @@
 </lg>
 </sp>
 <sp>
-<speaker><app><rdg wit="B" varSeq="0" hand="authorial">Feli</rdg><lem wit="A2" varSeq="1" hand="authorial">Leo</lem></app></speaker>
+<speaker><mod xml:id="gB059" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Feli</del><add ana="#layer-B">Leo</add></mod></speaker>
 <lg met="stanza">
 <l>¡Suéltame la capa! ¡Suelta!</l>
 <l>Suelta en paz, que una porfía</l>
@@ -618,7 +619,7 @@
 <l>luego, ¿a los cuerpos prefieren?</l>
 </lg>
 </sp>
-<stage><app><rdg wit="B" varSeq="1" hand="non-authorial">Siéntense</rdg></app></stage>
+<stage><mod xml:id="gB060" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Siéntense</add></mod></stage>
 <sp>
 <speaker><mod xml:id="gB007" type="subst" change="#stage-B" ana="#layer-B #B-substitution"><del ana="#layer-A0">Ma</del><add ana="#layer-B">Con</add></mod></speaker>
 <lg>    
@@ -1182,7 +1183,7 @@
 </l>
 <anchor xml:id="l_415"/>
 
-<app><rdg wit="B" varSeq="0" hand="non-authorial">díjese</rdg></app><note>la tachadura por parte de la primera mano parece responder a la misma intención de encubrimiento ya señalada en otros pasajes. Lo más plausible es que, ante la dificultad de reescribir el pasaje sustituyendo los nombres citados, se optara directamente por su supresión, al no tener relevancia en la economía dramática.</note>
+<mod xml:id="gB061" type="add" change="#stage-B" ana="#layer-B"><add ana="#layer-B">díjese</add></mod><note>la tachadura por parte de la primera mano parece responder a la misma intención de encubrimiento ya señalada en otros pasajes. Lo más plausible es que, ante la dificultad de reescribir el pasaje sustituyendo los nombres citados, se optara directamente por su supresión, al no tener relevancia en la economía dramática.</note>
 </lg>
 </sp>
 <sp>
