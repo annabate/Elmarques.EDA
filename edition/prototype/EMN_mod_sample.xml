@@ -54,10 +54,7 @@
         <listChange ordered="true">
           <change xml:id="stage-A0">Primera redacción autógrafa.</change>
           <change xml:id="stage-A2">Revisión autorial posterior.</change>
-          <listChange xml:id="stage-B" ordered="false">
-            <change xml:id="stage-B1">Campaña de intervenciones de la primera mano no autógrafa.</change>
-            <change xml:id="stage-B2">Campaña de intervenciones de la segunda mano no autógrafa.</change>
-          </listChange>
+          <change xml:id="stage-B">Intervenciones no autógrafas posteriores al último estado autorial.</change>
         </listChange>
       </creation>
     </profileDesc>
@@ -106,7 +103,7 @@
 
         <sp>
           <speaker>
-            <mod xml:id="g0011" type="subst" hand="#hB1" change="#stage-B1" ana="#layer-B">
+            <mod xml:id="g0011" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B">
               <del ana="#layer-A0">Feli</del>
               <add ana="#layer-B">Leo</add>
             </mod>
