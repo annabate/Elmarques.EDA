@@ -105,7 +105,7 @@
             <!-- B = intervención no autógrafa -->
             <sch:rule context="tei:text//tei:mod[@ana='#layer-B']">
               <sch:assert test="@hand='#hB1' or @hand='#hB2'">Una intervención B debe atribuirse a una mano no autógrafa declarada.</sch:assert>
-              <sch:assert test="contains(concat(' ', normalize-space(@change), ' '), ' #stage-B1 ') or contains(concat(' ', normalize-space(@change), ' '), ' #stage-B2 ')">Una intervención B debe asociarse a stage-B1 o stage-B2.</sch:assert>
+              <sch:assert test="contains(concat(' ', normalize-space(@change), ' '), ' #stage-B ')">Una intervención B debe asociarse a la fase postautorial #stage-B.</sch:assert>
             </sch:rule>
 
             <!-- Secuencias de revisiones sobre la misma lección -->
@@ -155,7 +155,7 @@
             </sch:rule>
 
             <sch:rule context="tei:text//tei:addSpan[@ana='#layer-B'] | tei:text//tei:delSpan[@ana='#layer-B']">
-              <sch:assert test="(@hand='#hB1' or @hand='#hB2') and (contains(concat(' ', normalize-space(@change), ' '), ' #stage-B1 ') or contains(concat(' ', normalize-space(@change), ' '), ' #stage-B2 '))">Una intervención extensa B debe tener una mano y una campaña no autógrafas coherentes.</sch:assert>
+              <sch:assert test="(@hand='#hB1' or @hand='#hB2') and contains(concat(' ', normalize-space(@change), ' '), ' #stage-B ')">Una intervención extensa B debe tener una mano no autógrafa declarada y asociarse a #stage-B.</sch:assert>
             </sch:rule>
 
           </constraint>
