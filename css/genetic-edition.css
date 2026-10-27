@@ -35,6 +35,32 @@ body.edition a {
   min-height: 100vh;
 }
 
+.edition-sitebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 2.45rem;
+  padding: 0.45rem 1.5rem;
+  border-bottom: 1px solid var(--edition-border);
+  background: #ebe7df;
+  color: var(--edition-muted);
+  font: 500 0.7rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.edition-sitebar a {
+  text-decoration: none;
+}
+
+.edition-sitebar a:hover {
+  text-decoration: underline;
+}
+
+.edition-back {
+  color: #514b44;
+  font-weight: 650;
+}
+
 /* Workspace header */
 
 .edition-workspace-header {
@@ -784,6 +810,15 @@ tei-addspan::after {
 }
 
 @media (max-width: 760px) {
+  .edition-sitebar {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.66rem;
+  }
+
+  .edition-sitebar span {
+    display: none;
+  }
+
   .edition-workspace-header {
     align-items: flex-start;
     flex-direction: column;
