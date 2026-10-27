@@ -445,7 +445,7 @@
   }
 
   function setPaneWeight(pane, weight) {
-    const safeWeight = Math.max(1, Number(weight) || 1);
+    const safeWeight = Math.max(0.25, Number(weight) || 1);
     pane.dataset.flexWeight = String(safeWeight);
     pane.style.setProperty("--pane-weight", String(safeWeight));
   }
@@ -573,13 +573,16 @@
   function setupPaneDragging() {
     editionGrid.querySelectorAll(":scope > .edition-pane").forEach((pane) => {
       const header = pane.querySelector(".pane-header");
-      if (!header || header.dataset.dragReady === "true") return;
+      const handle = pane.querySelector(".pane-title");
+      if (!header || !handle || handle.dataset.dragReady === "true") return;
 
-      header.dataset.dragReady = "true";
-      header.draggable = true;
-      header.tabIndex = 0;
+      handle.dataset.dragReady = "true";
+      handle.draggable = true;
+      handle.tabIndex = 0;
+      handle.setAttribute("role", "button");
+      handle.setAttribute("aria-label", "Arrastrar para cambiar la posición del panel");
 
-      header.addEventListener("dragstart", (event) => {
+      handle.addEventListener("dragstart", (event) => {
         if (window.matchMedia("(max-width: 760px)").matches) {
           event.preventDefault();
           return;
@@ -592,7 +595,7 @@
           .forEach((resizer) => resizer.remove());
       });
 
-      header.addEventListener("dragend", () => {
+      handle.addEventListener("dragend", () => {
         pane.classList.remove("is-pane-dragging");
         clearPaneDropHints();
         rebuildPaneResizers();
@@ -622,7 +625,7 @@
         rebuildPaneResizers();
       });
 
-      header.addEventListener("keydown", (event) => {
+      handle.addEventListener("keydown", (event) => {
         if (!event.altKey || !["ArrowLeft", "ArrowRight"].includes(event.key)) {
           return;
         }
@@ -631,7 +634,7 @@
           pane,
           event.key === "ArrowLeft" ? "left" : "right",
         );
-        header.focus();
+        handle.focus();
       });
     });
   }
@@ -694,6 +697,19 @@
     setupPaneDragging();
     updateSearchControls();
     updatePaneLayout({ equalize: true });
+
+    const facsimilePanel = document.getElementById("facsimile-pane");
+    const geneticPanel = document.getElementById("genetic-pane");
+    if (
+      facsimilePanel &&
+      geneticPanel &&
+      !facsimilePanel.classList.contains("is-hidden-pane") &&
+      !geneticPanel.classList.contains("is-hidden-pane")
+    ) {
+      setPaneWeight(facsimilePanel, 0.9);
+      setPaneWeight(geneticPanel, 1.1);
+      rebuildPaneResizers();
+    }
   }
 
   function keepFirstAct(root) {
