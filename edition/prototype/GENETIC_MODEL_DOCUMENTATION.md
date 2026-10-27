@@ -506,7 +506,7 @@ Las fases documentales principales se describen mediante:
 
 A0 y A2 pertenecen a la historia autorial. B designa la fase postautorial.
 
-No se crean `stage-B1` y `stage-B2`.
+No se crean subfases globales internas de B.
 
 Cuando dentro de B puede demostrarse una sucesión concreta, se utiliza `@seq` de forma local. Así se evita convertir la repetición de un patrón en una cronología global no demostrada.
 
@@ -1159,4 +1159,4 @@ y no el recorrido inverso.
 
 ### Nota de revisión sobre B
 
-La primera formulación del modelo intentó distinguir de forma estable hB1/hB2 y relacionar esas identidades con una articulación interna de B. Esa solución se abandona. El modelo actual utiliza un único `stage-B`, hace `@hand` facultativo en B y expresa únicamente las sucesiones locales demostrables mediante `@seq`. La taxonomía funcional `B-functions` permite distinguir sustitución, restitución e intervenciones de representación sin convertirlas en identidades paleográficas.
+La primera formulación del modelo intentó distinguir de forma estable varias manos no autógrafas y relacionarlas con una articulación interna de B. Esa solución se abandona. El modelo actual utiliza un único `stage-B`, hace `@hand` facultativo en B y expresa únicamente las sucesiones locales demostrables mediante `@seq`. La taxonomía funcional `B-functions` permite distinguir sustitución, restitución e intervenciones de representación sin convertirlas en identidades paleográficas.
