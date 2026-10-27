@@ -1,88 +1,117 @@
 # Prototipo del modelo genético TEI
 
-Este documento define una primera propuesta de recodificación para la edición genético-evolutiva de *El marqués de las Navas*.
+Este documento define la propuesta actual de recodificación para la edición genético-evolutiva de *El marqués de las Navas*.
 
 ## Principios
 
 1. La información genética deja de modelarse como aparato crítico (`app/lem/rdg`).
-2. Las intervenciones materiales se describen mediante los elementos del módulo `transcr`; en el modelo EMN las sustituciones en línea se normalizan como `mod type="subst"` que contiene `del` y `add`, mientras que `addSpan`/`delSpan` se reservan para intervenciones extensas.
-3. Las verdaderas campañas o fases documentales se describen con `listChange/change` y se remiten mediante `@change`.
-4. Las manos se declaran en `handNotes/handNote` y se remiten mediante `@hand`.
-5. Los estratos editoriales A0/A1/A2/B siguen siendo siempre interrogables mediante una taxonomía y `@ana`.
-6. A1 no se trata como una campaña autónoma: representa las intervenciones inmediatas producidas durante la primera redacción y se expresa principalmente mediante `@instant="true"`, manteniendo `@ana="#layer-A1"` para garantizar su filtrado.
-7. Los colores pertenecen exclusivamente al capa de presentación; el TEI conserva únicamente los identificadores semánticos de los estratos.
+2. Las intervenciones materiales se describen mediante el módulo `transcr`; las sustituciones en línea se normalizan como `mod type="subst"` con `del` y `add`.
+3. Las fases documentales se describen mediante `listChange/change` y se remiten mediante `@change`.
+4. La mano autógrafa se identifica mediante `@hand="#Lope"`. En B, `@hand` es facultativo y solo debe utilizarse si una atribución paleográfica puede sostenerse con seguridad.
+5. Los estratos editoriales A0/A1/A2/B siguen siendo interrogables mediante `@ana`.
+6. A1 representa las intervenciones inmediatas producidas durante la primera redacción y se expresa mediante `@instant="true"`.
+7. B funciona como un único estrato postautorial. Su articulación interna puede expresarse mediante `@seq` y categorías funcionales, sin convertir hipótesis paleográficas en identidades de mano estables.
+8. Los colores pertenecen exclusivamente a la capa de presentación.
 
 ## Estratos editoriales
 
 - `#layer-A0`: primera redacción autógrafa.
 - `#layer-A1`: lección introducida mediante una corrección inmediata durante la primera redacción.
 - `#layer-A2`: lección introducida durante una revisión autorial posterior.
-- `#layer-B`: lección introducida por una mano no autógrafa.
+- `#layer-B`: lección introducida mediante una intervención no autógrafa.
 
 ## Fases documentales
 
 - `#stage-A0`: primera redacción autógrafa.
 - `#stage-A2`: revisión autorial posterior.
-- `#stage-B`: fase postautorial que reúne las intervenciones no autógrafas. Las manos se distinguen mediante `@hand` y el orden local entre intervenciones mediante `@seq` cuando puede sostenerse materialmente.
+- `#stage-B`: fase postautorial que reúne las intervenciones no autógrafas.
+
+No se establecen fases globales B1/B2 ni se presupone un número fijo de manos no autógrafas.
+
+## Funciones internas de B
+
+La taxonomía `B-functions` permite añadir una clasificación funcional secundaria:
+
+- `#B-substitution`: sustitución no autógrafa de una lección anterior;
+- `#B-restoration`: restitución posterior, dentro de B, de una lección previamente modificada;
+- `#B-performance`: intervención vinculada al uso escénico o a la representación.
+
+Estas categorías complementan, pero nunca sustituyen, `#layer-B`.
 
 ## Reglas de visualización
 
-La transformación a HTML deberá exponer por separado al menos dos informaciones:
+La transformación a HTML deberá exponer por separado al menos:
 
-- `data-reading-layer`: estrato al que pertenece una determinada lección (`A0`, `A1`, `A2`, `B`).
-- `data-event-layer`: clase de la intervención que introduce, modifica o elimina esa lección.
+- `data-reading-layer`: estrato de la lección (`A0`, `A1`, `A2`, `B`);
+- `data-event-layer`: estrato del evento;
+- opcionalmente, una categoría funcional B;
+- `data-seq` cuando exista una sucesión local segura.
 
-Esto permite distinguir dos funciones:
+Esto permite mantener separados:
 
-- **filtro de intervenciones**: muestra u oculta A1, A2 y B y sus correspondientes resaltados;
-- **reconstrucción del estado textual**: devuelve A0, A0+A1, A0+A1+A2 y el estado documental con B.
-
-A0, A1, A2 y B siguen siendo, por tanto, categorías de la edición y de la interfaz, pero ya no se codifican impropiamente como `@wit`.
+- **filtro de intervenciones**: A1, A2 y B;
+- **reconstrucción del estado textual**: A0, A0+A1, A0+A1+A2 y estado documental con B.
 
 ## Ejemplos
 
-### Cancelación inmediata
+### Cancelación inmediata A1
 
 ```xml
-<mod xml:id="g0005" type="del" hand="#Lope" instant="true" ana="#layer-A1">
+<mod xml:id="g0005" type="del"
+     hand="#Lope"
+     instant="true"
+     ana="#layer-A1">
   <del ana="#layer-A0">m</del>
 </mod>
 ```
 
-### Sustitución inmediata
+### Sustitución A2
 
 ```xml
-<mod xml:id="g0065" type="subst" hand="#Lope" instant="true" ana="#layer-A1">
-  <del ana="#layer-A0">a los más sabios</del>
-  <add ana="#layer-A1">como lo esperes</add>
-</mod>
-```
-
-### Revisión autorial posterior
-
-```xml
-<mod xml:id="g0777" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2">
+<mod xml:id="g0777" type="subst"
+     hand="#Lope"
+     change="#stage-A2"
+     ana="#layer-A2">
   <del ana="#layer-A0">que los angeles</del>
   <add ana="#layer-A2">que angel que viene</add>
 </mod>
 ```
 
-### Intervención de otra mano
+### Sustitución B sin atribución de mano
 
 ```xml
-<mod xml:id="gB001" type="subst" hand="#hB1" change="#stage-B" ana="#layer-B">
+<mod xml:id="gB001" type="subst"
+     change="#stage-B"
+     ana="#layer-B #B-substitution">
   <del ana="#layer-A0">marqués</del>
   <add ana="#layer-B">conde</add>
 </mod>
 ```
 
+### Sustitución y restitución locales dentro de B
+
+```xml
+<mod xml:id="gB002-1" type="subst"
+     change="#stage-B"
+     ana="#layer-B #B-substitution"
+     seq="1">
+  <del ana="#layer-A0">marqués</del>
+  <add ana="#layer-B">
+    <mod xml:id="gB002-2" type="subst"
+         change="#stage-B"
+         ana="#layer-B #B-restoration"
+         seq="2">
+      <del ana="#layer-B">conde</del>
+      <add ana="#layer-B">marqués</add>
+    </mod>
+  </add>
+</mod>
+```
+
+`seq="1"` y `seq="2"` expresan únicamente una sucesión local de intervenciones; no identifican manos ni campañas globales.
+
 ## Estado actual
 
-El modelo se ha formalizado en `EMN_genetic.odd` y se ha validado con casos A1, A2, B, secuencias B1→B2 y cancelaciones de largo alcance. Las reglas operativas completas se recogen en `GENETIC_ENCODING_GUIDE.md`.
+El modelo se formaliza en `EMN_genetic.odd` y se prueba con A1, A2, B, sucesiones locales dentro de B y cancelaciones de largo alcance. Las reglas operativas se recogen en `GENETIC_ENCODING_GUIDE.md`.
 
-Antes de la conversión integral quedan por verificar paleográficamente la distinción entre las manos no autógrafas y las atribuciones dudosas A1/A2 del archivo actual.
-
-
-## Precaución sobre B
-
-`hB1` y `hB2` designan manos, no campañas globales. La repetición de secuencias locales hB1→hB2 permite expresar el orden mediante `@seq` en esos lugares, pero no autoriza por sí sola a afirmar una cronología universal entre todas las intervenciones de ambas manos.
+El principio rector es conservador: se codifica con precisión el fenómeno material observable y se omite la atribución de mano cuando el manuscrito no permite establecerla con seguridad.
