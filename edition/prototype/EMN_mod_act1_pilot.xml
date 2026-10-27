@@ -52,6 +52,7 @@
 </creation>
 </profileDesc>
 <revisionDesc>
+<change when="2026-10-27">Se elimina una duplicación residual de «de Córdoba, nuevo Orestes» dentro de la cancelación extensa de los vv. 410–415, ausente en la transcripción diplomática, y se normaliza estructuralmente el segundo reparto dentro de castList.</change>
 <change when="2026-10-27">Se elimina el último aparato legacy del acto I: la lectura A0 ilegible del v. 201 se representa mediante gap dentro de la cancelación A1, seguida de la adición «Mayormente si es tan Roma».</change>
 <change when="2026-10-27">Se migran los 29 aparatos B de la cubierta y los repartos como adiciones postautoriales sin atribución de mano. El título se trata como adición B simple y las 28 entradas de reparto como adiciones B vinculadas funcionalmente al uso teatral mediante #B-performance.</change>
 <change when="2026-10-27">Se migran los tres últimos aparatos B del cuerpo del acto I: «Feli»→«Leo» como sustitución B, «Siéntense» como adición B de función escénica y «díjese» como adición B sin atribución funcional adicional. El cuerpo del acto I queda sin aparatos B legacy.</change>
@@ -89,6 +90,7 @@
           <castItem><mod xml:id="gBF018" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Ludovico</add></mod><note>Este reparto y el contenido de este folio no son autógrafos. Parecen intervenir en él al menos dos manos distintas, atribuibles presumiblemente a integrantes de alguna de las compañías responsables de la puesta en escena.</note></castItem>
         </castList>
           <pb type="folio" n="[Fol. n. n. v.]"/>
+          <castList>
           <castItem><mod xml:id="gBF019" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Juan - Jordán</add></mod></castItem>
           <castItem><mod xml:id="gBF020" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">músico - Cuadrado</add></mod></castItem>
           <castItem><mod xml:id="gBF021" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Luis - Vicente</add></mod></castItem>
@@ -100,6 +102,7 @@
           <castItem><mod xml:id="gBF027" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">don Enrique - Mateo</add></mod></castItem>
           <castItem><mod xml:id="gBF028" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Bernardo - Jerónimo</add></mod></castItem>
           <castItem><mod xml:id="gBF029" type="add" change="#stage-B" ana="#layer-B #B-performance"><add ana="#layer-B">Laurencia - señora María Vitoria</add></mod><note>Tampoco este reparto es autógrafo. Junto a los nombres de los personajes, aparecen a la derecha nombres de actores. Según señala Reyes Peña [1997:235] se trata, con toda probabilidad, de los integrantes de la compañía de Antonio de Prado entre 1631 y 1636</note></castItem>
+          </castList>
 <div type="act" n="1">
 <pb type="folio" n="[Fol. 1r]"/>
 <head>Acto primero</head>
@@ -1172,7 +1175,6 @@
 </l>
 <l>
     de Córdoba, nuevo Orestes,
-    <del>de Córdoba, nuevo Orestes,</del>
 </l>
 <l>
     nuevo Acates de Filipe
