@@ -240,28 +240,42 @@ Es una adición no autógrafa de probable valor escénico. Podrá utilizar `#B-p
 
 Aparece junto a la cancelación extensa de los vv. 410–415. Debe decidirse si constituye una adición ligada al mismo evento o una intervención independiente.
 
-## 13. Estado actual de la migración
+## 13. Estado final de la migración B en el acto I
 
-El archivo heredado contenía **90 aparatos con B**:
+La migración B del acto I está completa.
 
-- 29 en los repartos iniciales;
-- 61 en el cuerpo del acto I.
+El archivo `EMN_mod_act1_pilot.xml` contiene:
 
-En `EMN_mod_act1_pilot.xml` se han migrado **58 de los 61 aparatos B del cuerpo**.
+- **106 eventos B codificados mediante `<mod>`**;
+- **1 cancelación extensa B mediante `<delSpan>`**;
+- **107 intervenciones B en total**;
+- **74 sustituciones B**;
+- **31 adiciones B**;
+- **1 cancelación B en línea**;
+- **57 eventos funcionalmente clasificados como `#B-substitution`**;
+- **17 eventos funcionalmente clasificados como `#B-restoration`**;
+- **29 eventos funcionalmente clasificados como `#B-performance`**;
+- **34 eventos con `@seq`**, correspondientes a 17 secuencias locales de dos intervenciones;
+- **0 intervenciones B con `@hand`**;
+- **0 aparatos `<app>` con B** restantes.
 
-Estos 58 aparatos producen actualmente:
+Los 29 casos de cubierta y repartos se han migrado como adiciones B sin atribución de mano. El título añadido se conserva como adición B simple; las 28 entradas de reparto se clasifican además mediante `#B-performance`.
 
-- **56 eventos clasificados funcionalmente como `#B-substitution`**;
-- **17 segundos eventos locales clasificados como `#B-restoration`**;
-- **2 intervenciones B** descritas únicamente por su estructura de cancelación;
-- **75 referencias totales a `change="#stage-B"`**.
+Los tres últimos casos del cuerpo se han resuelto así:
 
-No se utiliza ningún identificador estable para las manos no autógrafas.
+- `Feli → Leo`: sustitución B;
+- `Siéntense`: adición B con función escénica;
+- `díjese`: adición B sin clasificación funcional adicional.
 
-## 14. Principio metodológico
+## 14. Resultado metodológico
 
-El modelo adopta una regla general:
+La migración confirma que el estrato B puede describirse de forma suficientemente precisa sin reconstruir un inventario global de manos no autógrafas.
 
-> debe codificarse con precisión el fenómeno observable, no una identidad paleográfica que no pueda demostrarse.
+La estructura actual permite recuperar:
 
-Por ello B puede contener sucesiones internas muy precisas sin que sea necesario determinar cuántas manos no autógrafas existen en el manuscrito ni atribuir cada intervención a una de ellas.
+- el carácter postautorial de cada intervención;
+- su relación con A0/A1/A2;
+- la función de sustitución, restitución o uso escénico cuando resulta pertinente;
+- el orden local de operaciones sucesivas.
+
+Al mismo tiempo, evita afirmar datos no demostrables sobre el número y la identidad de las manos.
