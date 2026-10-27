@@ -16,7 +16,7 @@ Este documento traduce el modelo teórico y el ODD del proyecto en reglas operat
 | A0 | primera redacción autógrafa | estado de base; `change="#stage-A0"` heredado del `body`; `ana="#layer-A0"` en las lecciones implicadas en modificaciones | reconstrucción de la primera redacción; color A0 cuando la lección participa en una intervención |
 | A1 | intervención autorial inmediata durante la primera redacción | `hand="#Lope"` + `instant="true"` + `ana="#layer-A1"` en el evento | filtro A1; aplicación de las correcciones inmediatas en la reconstrucción A0+A1 |
 | A2 | revisión autorial diferida | `hand="#Lope"` + `change="#stage-A2"` + `ana="#layer-A2"` en el evento | filtro A2; aplicación de la revisión en la reconstrucción A0+A1+A2 |
-| B | intervención no autógrafa | `hand="#hB…"` + `change="#stage-B…"` + `ana="#layer-B"` | filtro B; aplicación de las intervenciones postautoriales en el estado documental final |
+| B | intervención no autógrafa | `hand="#hB…"` + `change="#stage-B"` + `ana="#layer-B"` | filtro B; aplicación de las intervenciones postautoriales en el estado documental final |
 
 A1, A2 y B son, por tanto, **categorías editoriales interrogables**; no son testimonios y no deben codificarse mediante `@wit`.
 
@@ -58,9 +58,9 @@ La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lecci�
 | Cancelación autorial diferida | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `del` = A0 o A1 según la historia real de la lección | visible hasta el estado anterior a A2; eliminada en A2 |
 | Adición autorial diferida | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `add/@ana="#layer-A2"` | oculta antes de A2; visible en A2 |
 | Sustitución autorial diferida | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#Lope"`, `change="#stage-A2"`, `ana="#layer-A2"` | `del` = estrato anterior; `add/@ana="#layer-A2"` | permite reconstruir automáticamente el estado anterior a A2 y el estado A2 |
-| Cancelación no autógrafa | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = estrato de la lección cancelada | filtro B; la lección permanece en el último estado autorial y desaparece en el estado documental B |
-| Adición no autógrafa | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `add/@ana="#layer-B"` | ausente en el último estado autorial; presente en B |
-| Sustitución no autógrafa | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B…"`, `ana="#layer-B"` | `del` = estrato anterior; `add/@ana="#layer-B"` | permite comparar el último estado autorial con el estado documental |
+| Cancelación no autógrafa | `<mod type="del"><del>…</del></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B"`, `ana="#layer-B"` | `del` = estrato de la lección cancelada | filtro B; la lección permanece en el último estado autorial y desaparece en el estado documental B |
+| Adición no autógrafa | `<mod type="add"><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B"`, `ana="#layer-B"` | `add/@ana="#layer-B"` | ausente en el último estado autorial; presente en B |
+| Sustitución no autógrafa | `<mod type="subst"><del>…</del><add>…</add></mod>` | `xml:id`, `hand="#hB…"`, `change="#stage-B"`, `ana="#layer-B"` | `del` = estrato anterior; `add/@ana="#layer-B"` | permite comparar el último estado autorial con el estado documental |
 | Dos intervenciones sucesivas sobre la misma lección | `<mod>` anidado dentro de la lección introducida por la modificación anterior | además de los atributos del estrato: `seq="1"`, `seq="2"`, etc. | cada `del/add` conserva el estrato de su propia lección | puede reconstruir también B1 y B2 manteniendo un único filtro o color B |
 | Cancelación que atraviesa varios elementos o versos | `<delSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | `xml:id`, `spanTo`, `hand`, `ana`; además `instant` o `change` según A1/A2/B | el span se trata como evento; el texto atravesado conserva su estructura | el renderizador oculta o restituye el intervalo completo sin destruir la estructura de los versos |
 | Adición que atraviesa varios elementos o versos | `<addSpan ... spanTo="#end"/>` + `<anchor xml:id="end"/>` | como en `delSpan` | el span pertenece al estrato del evento que lo introduce | el renderizador puede activar o desactivar el intervalo completo |
@@ -103,7 +103,7 @@ La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lecci�
 <mod xml:id="gB0170-1"
      type="subst"
      hand="#hB1"
-     change="#stage-B1"
+     change="#stage-B"
      ana="#layer-B"
      seq="1">
   <del ana="#layer-A0">marqués</del>
@@ -111,7 +111,7 @@ La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lecci�
     <mod xml:id="gB0170-2"
          type="subst"
          hand="#hB2"
-         change="#stage-B2"
+         change="#stage-B"
          ana="#layer-B"
          seq="2">
       <del ana="#layer-B">conde</del>
@@ -128,7 +128,7 @@ La lección cancelada no pertenece necesariamente a A0: si A2 elimina una lecci�
   <delSpan xml:id="gB0410"
            spanTo="#gB0415-end"
            hand="#hB1"
-           change="#stage-B1"
+           change="#stage-B"
            ana="#layer-B"/>
   Ya habrás oído mil veces
 </l>
@@ -169,9 +169,9 @@ La identificación de hB1/hB2 debe mantenerse prudente: una misma mano y una mis
 
 - `@instant="true"` indica una intervención inmediata durante el acto de escritura y caracteriza A1.
 - `@change="#stage-A2"` indica una revisión autorial diferida.
-- `@change="#stage-B1"`, `#stage-B2`, etc. identifica campañas no autógrafas cuando su ordenación puede sostenerse.
+- `@change="#stage-B"`, `#stage-B2`, etc. identifica campañas no autógrafas cuando su ordenación puede sostenerse.
 - `@seq` se usa cuando es necesario expresar el orden relativo de varias intervenciones sobre la misma porción de texto.
-- `@seq` no sustituye a `@change`: el primero expresa una secuencia local; el segundo, una campaña o fase documental.
+- `@seq` expresa exclusivamente una secuencia local entre intervenciones; `@change="#stage-B"` no establece un orden global entre hB1 y hB2.
 
 ## 7. Reglas para los identificadores
 
@@ -193,7 +193,7 @@ La transformación TEI → HTML deberá exportar al menos:
 data-event-layer="A1|A2|B"
 data-reading-layer="A0|A1|A2|B"
 data-hand="Lope|hB1|hB2|..."
-data-change="stage-A2|stage-B1|..."
+data-change="stage-A2|stage-B"
 data-seq="..."
 ```
 
@@ -218,11 +218,11 @@ A0 + A1 + A2 + B
 
 El último estado autorial es **A0+A1+A2**. El estado con B corresponde, en cambio, al **estado documental postautorial**.
 
-Cuando la cronología interna de B sea suficientemente segura, el renderizador podrá ofrecer opcionalmente:
+Cuando un lugar concreto conserve una secuencia interna de B suficientemente segura, el renderizador podrá ofrecer opcionalmente:
 
 ```text
-... + B1
-... + B1 + B2
+... + primera intervención B
+... + segunda intervención B
 ```
 
 sin necesidad de introducir colores distintos para B1 y B2.
