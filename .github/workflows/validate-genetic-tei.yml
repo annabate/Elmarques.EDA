@@ -34,9 +34,13 @@ jobs:
         run: |
           python - <<'PY'
           from lxml import etree
-          path = 'edition/prototype/EMN_mod_A1_pilot.xml'
-          etree.parse(path)
-          print(f'XML well-formed: {path}')
+          paths = [
+              'edition/prototype/EMN_mod_A1_pilot.xml',
+              'edition/prototype/EMN_mod_act1_pilot.xml',
+          ]
+          for path in paths:
+              etree.parse(path)
+              print(f'XML well-formed: {path}')
           PY
 
       - name: Compile ODD to RELAX NG
