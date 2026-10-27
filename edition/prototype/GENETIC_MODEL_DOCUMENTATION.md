@@ -342,8 +342,9 @@ Por ejemplo:
 y:
 
 ```xml
-<change xml:id="stage-B1">Primera campaña no autógrafa.</change>
-<change xml:id="stage-B2">Segunda campaña no autógrafa.</change>
+<change xml:id="stage-B">
+  Intervenciones no autógrafas posteriores al último estado autorial.
+</change>
 ```
 
 Todos estos eventos pueden seguir llevando:
@@ -378,7 +379,7 @@ En el nuevo modelo se conserva la sucesión real anidando la segunda intervenci�
 <mod xml:id="gB0170-1"
      type="subst"
      hand="#hB1"
-     change="#stage-B1"
+     change="#stage-B"
      ana="#layer-B"
      seq="1">
 
@@ -389,7 +390,7 @@ En el nuevo modelo se conserva la sucesión real anidando la segunda intervenci�
     <mod xml:id="gB0170-2"
          type="subst"
          hand="#hB2"
-         change="#stage-B2"
+         change="#stage-B"
          ana="#layer-B"
          seq="2">
 
@@ -428,7 +429,7 @@ La solución TEI consiste en utilizar un span:
   <delSpan xml:id="gB0410"
            spanTo="#gB0415-end"
            hand="#hB1"
-           change="#stage-B1"
+           change="#stage-B"
            ana="#layer-B"/>
   Ya habrás oído mil veces
 </l>
@@ -512,17 +513,9 @@ Las campañas o fases documentales se describen mediante `<listChange>`:
       Campaña de revisión autorial posterior.
     </change>
 
-    <listChange xml:id="stage-B" ordered="true">
-
-      <change xml:id="stage-B1">
-        Primera campaña no autógrafa.
-      </change>
-
-      <change xml:id="stage-B2">
-        Segunda campaña no autógrafa.
-      </change>
-
-    </listChange>
+    <change xml:id="stage-B">
+      Intervenciones no autógrafas posteriores al último estado autorial.
+    </change>
 
   </listChange>
 </creation>
@@ -530,9 +523,9 @@ Las campañas o fases documentales se describen mediante `<listChange>`:
 
 El anidamiento permite expresar una jerarquía sin fingir que todos los estratos poseen el mismo estatuto.
 
-A0 y A2 pertenecen a la historia autorial. B reúne, en cambio, una historia postautorial que puede articularse internamente.
+A0 y A2 pertenecen a la historia autorial. B reúne, en cambio, la fase postautorial. Su articulación interna se expresa mediante la identificación de las manos y, cuando sea demostrable, mediante secuencias locales.
 
-Esta estructura debe mantenerse prudente: B1 y B2 solo se utilizan cuando el orden entre las manos puede sostenerse paleográficamente.
+La estructura debe mantenerse prudente: hB1 y hB2 identifican manos, no campañas globales. El orden hB1→hB2 solo se declara mediante `@seq` en los lugares donde puede sostenerse materialmente.
 
 ---
 
@@ -1169,3 +1162,8 @@ interfaz
 ```
 
 y no el recorrido inverso.
+
+
+### Nota de revisión sobre B
+
+La primera formulación del modelo tendía a identificar `hB1/hB2` con `stage-B1/stage-B2`. Esa equivalencia se abandona porque mano y campaña no son categorías idénticas. El modelo actual utiliza un único `stage-B` para la fase postautorial y reserva `@hand` para la atribución paleográfica y `@seq` para el orden local entre intervenciones.
