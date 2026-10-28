@@ -261,7 +261,7 @@ tei-head {
 }
 
 /* The work title belongs to the page, not to each synoptic column. */
-.tei-column tei-body > tei-head:not([type]) {
+.witness-column tei-body > tei-head:not([type]) {
   display: none;
 }
 
@@ -544,13 +544,7 @@ tei-l[part="F"] .line-text {
 .critical-omission-range .line-text {
   position: relative;
   padding-left: 0.42rem;
-  background:
-    linear-gradient(
-      to right,
-      rgba(95, 141, 166, 0.10) 0,
-      rgba(95, 141, 166, 0.045) 48%,
-      transparent 100%
-    );
+  background: rgba(95, 141, 166, 0.07);
 }
 
 .critical-omission-range .line-text::before {
@@ -565,13 +559,7 @@ tei-l[part="F"] .line-text {
 }
 
 .critical-omission-range.flash-highlight .line-text {
-  background:
-    linear-gradient(
-      to right,
-      rgba(95, 141, 166, 0.18) 0,
-      rgba(95, 141, 166, 0.08) 58%,
-      transparent 100%
-    );
+  background: rgba(95, 141, 166, 0.14);
 }
 
 .critical-omission-range.flash-highlight .line-text::before {
