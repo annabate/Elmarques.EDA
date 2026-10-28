@@ -2,6 +2,7 @@
 layout: edition
 title: El marqués de las Navas - edición genética digital
 permalink: /genetic/
+edition_label: Edición genético-evolutiva · prototipo
 ---
 
 <div
