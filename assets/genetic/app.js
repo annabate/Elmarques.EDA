@@ -148,7 +148,9 @@
 
     const hint = document.createElement("span");
     hint.className = "floating-note-drag-hint";
-    hint.textContent = "arrastrar";
+    hint.textContent = "⠿";
+    hint.setAttribute("aria-hidden", "true");
+    hint.title = "Mover nota";
 
     const close = document.createElement("button");
     close.type = "button";
@@ -204,7 +206,7 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "note-trigger";
-      button.textContent = "·";
+      button.textContent = "✶";
       button.dataset.noteId = `note-${++noteCounter}`;
       button.setAttribute("aria-label", "Abrir nota editorial");
       button.setAttribute("aria-expanded", "false");
