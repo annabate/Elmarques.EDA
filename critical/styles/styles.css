@@ -541,15 +541,38 @@ tei-l[part="F"] .line-text {
   position: relative;
 }
 
+.critical-omission-range .line-text {
+  padding-bottom: 0.02em;
+  border-bottom: 1.5px dashed var(--critical-variant-line);
+  background:
+    linear-gradient(
+      to top,
+      var(--critical-variant-bg) 0,
+      var(--critical-variant-bg) 28%,
+      transparent 28%
+    );
+}
+
+.critical-omission-range.flash-highlight .line-text {
+  border-bottom-color: #3f748f;
+  background:
+    linear-gradient(
+      to top,
+      var(--critical-variant-bg-active) 0,
+      var(--critical-variant-bg-active) 58%,
+      transparent 58%
+    );
+}
+
 .transmission-note {
   position: relative;
   display: inline;
   margin-left: 0.28rem;
   padding: 0;
   border: 0;
-  border-bottom: 1px dotted #a9a096;
+  border-bottom: 1px dotted #8eafc0;
   background: transparent;
-  color: #786f65;
+  color: #53788b;
   cursor: pointer;
   font: italic 600 0.68rem/1 var(--sch-sans);
   vertical-align: super;
@@ -557,9 +580,9 @@ tei-l[part="F"] .line-text {
 
 .transmission-note:hover,
 .transmission-note.active {
-  border-bottom-color: #6e655b;
+  border-bottom-color: #3f748f;
   background: transparent;
-  color: var(--critical-text);
+  color: #315f77;
 }
 
 .transmission-tooltip {
