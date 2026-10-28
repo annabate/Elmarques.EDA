@@ -13,7 +13,7 @@ edition_label: Edición genética · prototipo
 >
   <header class="edition-workspace-header">
     <div>
-      <p class="workspace-kicker">Edición genético-evolutiva · prototipo</p>
+      <p class="workspace-kicker">Edición genética · prototipo</p>
       <h1><em>El marqués de las Navas</em></h1>
       <p class="workspace-subtitle">Acto I · manuscrito autógrafo de Lope de Vega</p>
     </div>
