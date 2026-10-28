@@ -185,6 +185,51 @@ edition_label: Edición crítica · prototipo
     return n ? `Acto ${n}` : "Acto";
   }
 
+  function verseRangeForApp(app, root) {
+    const from = app.getAttribute("from");
+    const to = app.getAttribute("to");
+    if (!from || !to) return null;
+
+    const resolveAnchor = (ref) => {
+      const id = ref.replace(/^#/, "");
+      return (
+        root.querySelector(`tei-anchor[id="${CSS.escape(id)}"]`) ||
+        root.querySelector(`tei-anchor[xml\\:id="${CSS.escape(id)}"]`) ||
+        root.querySelector(`[data-xml-id="${CSS.escape(id)}"]`) ||
+        root.querySelector(`#${CSS.escape(id)}`)
+      );
+    };
+
+    const startAnchor = resolveAnchor(from);
+    const endAnchor = resolveAnchor(to);
+    if (!startAnchor || !endAnchor) return null;
+
+    const numbers = [];
+    let inRange = false;
+    Array.from(root.querySelectorAll("*")).forEach((el) => {
+      if (el === startAnchor) {
+        inRange = true;
+        return;
+      }
+      if (el === endAnchor) {
+        inRange = false;
+        return;
+      }
+      if (!inRange || el.tagName?.toLowerCase() !== "tei-l") return;
+      const n = el.getAttribute("n");
+      if (n) numbers.push(n);
+    });
+
+    if (!numbers.length) return null;
+    const first = numbers[0];
+    const last = numbers[numbers.length - 1];
+    return {
+      first,
+      last,
+      label: first === last ? `v. ${first}` : `vv. ${first}–${last}`,
+    };
+  }
+
   // =========================
   // Witness reconstruction
   // Inline apparatus is resolved recursively so nested <app> remains valid.
@@ -1098,19 +1143,22 @@ edition_label: Edición crítica · prototipo
       const stage = app.closest("tei-stage");
       const speaker = app.closest("tei-speaker");
       const tags = locusTags(app);
-      const reference = verse
-        ? `v. ${verse}`
-        : stage
-          ? "Acotación"
-          : speaker
-            ? "Interlocutor"
-            : actForNode(app);
+      const verseRange = verseRangeForApp(app, root);
+      const reference = verseRange?.label
+        || (verse
+          ? `v. ${verse}`
+          : stage
+            ? "Acotación"
+            : speaker
+              ? "Interlocutor"
+              : actForNode(app));
 
       return {
         id: app.dataset.locusId,
         tags,
         act: actForNode(app),
-        verse,
+        verse: verseRange?.first || verse,
+        verseRange,
         reference,
         lemma: cleanReadingText(lemma) || (tags.includes("adiciones") ? "∅" : ""),
         lemmaWitnesses,
@@ -1330,7 +1378,6 @@ edition_label: Edición crítica · prototipo
 
       const lemma = document.createElement("span");
       lemma.className = "variant-locus-lemma";
-      lemma.textContent = shortened(locus.lemma || "∅");
 
       const arrow = document.createElement("span");
       arrow.className = "variant-reading-arrow";
@@ -1339,14 +1386,23 @@ edition_label: Edición crítica · prototipo
       const rdgs = readingsForScope(locus, witID);
       const variants = document.createElement("span");
       variants.className = "variant-locus-rdgs";
-      variants.textContent = rdgs.length
-        ? rdgs
-            .map((rdg) => {
-              const sigla = witID ? "" : ` [${rdg.witnesses.join(" ")}]`;
-              return `${shortened(rdg.text)}${sigla}`;
-            })
-            .join(" · ")
-        : "—";
+
+      if (locus.tags.includes("omisiones") && locus.verseRange) {
+        lemma.textContent = locus.verseRange.label;
+        variants.textContent = witID
+          ? "omitido"
+          : `omitido [${rdgs.flatMap((rdg) => rdg.witnesses).join(" ")}]`;
+      } else {
+        lemma.textContent = shortened(locus.lemma || "∅");
+        variants.textContent = rdgs.length
+          ? rdgs
+              .map((rdg) => {
+                const sigla = witID ? "" : ` [${rdg.witnesses.join(" ")}]`;
+                return `${shortened(rdg.text)}${sigla}`;
+              })
+              .join(" · ")
+          : "—";
+      }
 
       reading.append(lemma, arrow, variants);
       item.append(meta, reading);
