@@ -354,19 +354,25 @@ edition_label: Edición crítica · prototipo
     const notes = container.querySelectorAll(".tei-note");
     notes.forEach((note) => {
       const icon = note.querySelector(".note-icon");
+      if (!icon || icon.__noteBound) return;
+      icon.__noteBound = true;
       icon.addEventListener("click", (e) => {
         e.stopPropagation();
-        container.querySelectorAll(".tei-note.active").forEach((n) => {
+        document.querySelectorAll(".tei-note.active").forEach((n) => {
           if (n !== note) n.classList.remove("active");
         });
         note.classList.toggle("active");
       });
     });
-    document.addEventListener("click", () => {
-      container
-        .querySelectorAll(".tei-note.active")
-        .forEach((n) => n.classList.remove("active"));
-    });
+
+    if (!window.__noteClickAwayBound) {
+      document.addEventListener("click", () => {
+        document
+          .querySelectorAll(".tei-note.active")
+          .forEach((n) => n.classList.remove("active"));
+      });
+      window.__noteClickAwayBound = true;
+    }
   }
 
   // =========================
@@ -600,7 +606,7 @@ edition_label: Edición crítica · prototipo
       if (!fromRef || !toRef) return;
 
       const omittedWits = new Set();
-      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+      directChildren(app, "tei-rdg").forEach((rdg) => {
         if (!rdg.textContent || rdg.textContent.trim() === "") {
           (rdg.getAttribute("wit") || "")
             .trim()
@@ -684,7 +690,7 @@ edition_label: Edición crítica · prototipo
       const endAnchor = anchorIn(root, to);
       if (!startAnchor || !endAnchor) return;
 
-      const rdgs = Array.from(app.querySelectorAll("tei-rdg"));
+      const rdgs = directChildren(app, "tei-rdg");
       const witsWithAdd = rdgs
         .filter((rdg) => rdg.querySelector("tei-add"))
         .flatMap((rdg) => (rdg.getAttribute("wit") || "").trim().split(/\s+/))
@@ -1436,6 +1442,7 @@ edition_label: Edición crítica · prototipo
 
     requestAnimationFrame(() => {
       decorateNotes(witnessDOM);
+      attachNoteEvents(witnessDOM);
       decorateApparatus(witnessDOM);
       makeApparatusSiglaClickable(witnessDOM);
 
