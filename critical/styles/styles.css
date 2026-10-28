@@ -826,3 +826,84 @@ tei-trailer{
   margin: 1.2em 3em;
   text-align: center;
 }
+
+/* Shared scholarly shell harmonization */
+body.critical-edition {
+  margin: 0;
+  background: #f3f1ec;
+  color: #26231f;
+  font-family: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  line-height: 1.62;
+  text-align: left;
+  text-rendering: optimizeLegibility;
+}
+
+body.critical-edition #sticky-header {
+  top: 4rem;
+  padding: 0.7rem 1.5rem;
+  border-bottom: 1px solid #d9d3c8;
+  background: rgba(255, 254, 250, 0.97);
+  box-shadow: 0 1px 5px rgba(37, 31, 24, 0.05);
+  backdrop-filter: blur(10px);
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+body.critical-edition #tei-wrapper {
+  max-width: 1240px;
+  gap: 0.8rem;
+  padding: 0.8rem;
+}
+
+body.critical-edition .tei-column {
+  border: 1px solid #d9d3c8;
+  border-radius: 0.48rem;
+  background: #fffefa;
+  box-shadow: 0 5px 20px rgba(45, 36, 26, 0.045);
+}
+
+body.critical-edition h1 {
+  color: #3f4a46;
+  font-family: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  font-weight: 520;
+}
+
+body.critical-edition tei-head:not([type]) {
+  color: #403b35;
+  font-family: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+}
+
+body.critical-edition tei-head[type="subtitle"],
+body.critical-edition tei-head[type="subtitle1"] {
+  color: #756e65;
+}
+
+body.critical-edition #floating-tools button,
+body.critical-edition #floating-tools select {
+  min-height: 2.15rem;
+  border: 1px solid #c7beb1;
+  border-radius: 0.36rem;
+  background: #fff;
+  color: #403b35;
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 0.78rem;
+}
+
+body.critical-edition #floating-tools button:hover {
+  background: #f1ede6;
+}
+
+@media (max-width: 991.98px) {
+  body.critical-edition #sticky-header {
+    top: 3.85rem;
+  }
+}
+
+@media (max-width: 720px) {
+  body.critical-edition #tei-wrapper {
+    padding: 0.45rem;
+  }
+
+  body.critical-edition .tei-column {
+    padding: 1.2rem 0.85rem;
+  }
+}
