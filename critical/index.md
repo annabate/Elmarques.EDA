@@ -184,12 +184,67 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
-  // Witness reconstruction (inline); long-span via decorators
+  // Witness reconstruction
+  // Inline apparatus is resolved recursively so nested <app> remains valid.
+  // Long-span apparatus is left in place for the dedicated range decorators.
   // =========================
+  function witnessTokens(value) {
+    return (value || "")
+      .trim()
+      .split(/\s+/)
+      .map((w) => w.replace(/^#/, ""))
+      .filter(Boolean);
+  }
+
+  function readingMatchesWitness(reading, witID) {
+    return witnessTokens(reading?.getAttribute("wit")).includes(
+      (witID || "").replace(/^#/, ""),
+    );
+  }
+
+  function cloneForWitness(node, witID) {
+    if (node.nodeType === Node.TEXT_NODE) return node.cloneNode(true);
+    if (node.nodeType !== Node.ELEMENT_NODE) return node.cloneNode(true);
+
+    const tag = node.tagName.toLowerCase();
+
+    // Resolve inline apparatus recursively. Range apparatus is handled later.
+    if (tag === "tei-app" && !node.hasAttribute("from") && !node.hasAttribute("to")) {
+      const rdgs = directChildren(node, "tei-rdg");
+      const lemma = directChildren(node, "tei-lem")[0] || null;
+      const matchingRdg = rdgs.find((rdg) =>
+        readingMatchesWitness(rdg, witID),
+      );
+      const chosen = matchingRdg || lemma;
+      const frag = document.createDocumentFragment();
+
+      if (!chosen) return frag;
+      Array.from(chosen.childNodes).forEach((child) => {
+        frag.appendChild(cloneForWitness(child, witID));
+      });
+      return frag;
+    }
+
+    // <add> belongs to the selected reading: show its content, not the TEI wrapper.
+    if (tag === "tei-add") {
+      const frag = document.createDocumentFragment();
+      Array.from(node.childNodes).forEach((child) => {
+        frag.appendChild(cloneForWitness(child, witID));
+      });
+      return frag;
+    }
+
+    const copy = node.cloneNode(false);
+    Array.from(node.childNodes).forEach((child) => {
+      copy.appendChild(cloneForWitness(child, witID));
+    });
+    return copy;
+  }
+
   function reconstructWitness(witID, originalData) {
     const clone = originalData.cloneNode(true);
 
-    // Assicura il cast anche nei frammenti
+    // Preserve cast information when reconstructing an act fragment.
     if (
       !clone.querySelector("tei-castList") &&
       originalData.querySelector("tei-castList")
@@ -198,7 +253,6 @@ edition_label: Edición crítica · prototipo
       clone.insertBefore(cast, clone.firstChild);
     }
 
-    // Helper per risolvere gli anchor
     const resolveAnchor = (ctx, ref) => {
       const id = (ref || "").replace(/^#/, "");
       return (
@@ -210,149 +264,69 @@ edition_label: Edición crítica · prototipo
       );
     };
 
-    clone.querySelectorAll("tei-app").forEach((app) => {
-      const from = app.getAttribute("from");
-      const to = app.getAttribute("to");
-      const appType = app.getAttribute("type");
+    // Long-span omissions: mark the affected lines for the selected witness.
+    clone
+      .querySelectorAll('tei-app[from][to]:not([type="addition"])')
+      .forEach((app) => {
+        const omittedForThisWit = directChildren(app, "tei-rdg").some(
+          (rdg) =>
+            readingMatchesWitness(rdg, witID) &&
+            rdg.textContent.trim() === "",
+        );
+        if (!omittedForThisWit) return;
 
-      // Le aggiunte long-span le gestisce processAdditionSpans()
-      if (appType === "addition" && from && to) return;
+        const startAnchor = resolveAnchor(clone, app.getAttribute("from"));
+        const endAnchor = resolveAnchor(clone, app.getAttribute("to"));
+        if (!startAnchor || !endAnchor) return;
 
-      // ===== 1) Omissione long-span =====
-      if (from && to) {
-        const omittedForThisWit = Array.from(
-          app.querySelectorAll("tei-rdg"),
-        ).some((rdg) => {
-          const wits = (rdg.getAttribute("wit") || "")
-            .split(/\s+/)
-            .map((w) => w.replace(/^#/, ""));
-          return wits.includes(witID) && rdg.textContent.trim() === "";
+        const all = Array.from(clone.querySelectorAll("*"));
+        let inRange = false;
+        const affected = [];
+        for (const el of all) {
+          if (el === startAnchor) {
+            inRange = true;
+            continue;
+          }
+          if (el === endAnchor) break;
+          const tag = el.tagName?.toLowerCase();
+          if (inRange && (tag === "tei-l" || tag === "tei-speaker")) {
+            affected.push(el);
+          }
+        }
+
+        affected.forEach((el) => {
+          while (el.firstChild) el.removeChild(el.firstChild);
+          const ph = document.createElement("span");
+          ph.className = "placeholder-block";
+          ph.textContent = "[...........................................]";
+          el.appendChild(ph);
         });
-        if (omittedForThisWit) {
-          const startAnchor = resolveAnchor(clone, from);
-          const endAnchor = resolveAnchor(clone, to);
-          if (startAnchor && endAnchor) {
-            const all = Array.from(clone.querySelectorAll("*"));
-            let inRange = false;
-            const affected = [];
-            for (const el of all) {
-              if (el === startAnchor) {
-                inRange = true;
-                continue;
-              }
-              if (el === endAnchor) break;
-              const tag = el.tagName?.toLowerCase();
-              if (inRange && (tag === "tei-l" || tag === "tei-speaker"))
-                affected.push(el);
-            }
-            affected.forEach((el) => {
-              while (el.firstChild) el.removeChild(el.firstChild);
-              const ph = document.createElement("span");
-              ph.className = "placeholder-block";
-              ph.innerHTML = "[...........................................]";
-              el.appendChild(ph);
-            });
-          }
-          return; // gestito
-        }
+      });
+
+    // Resolve only outermost inline apparatus. Nested apparatus is resolved
+    // recursively by cloneForWitness(), preventing descendant <rdg> leakage.
+    const inlineApps = Array.from(
+      clone.querySelectorAll("tei-app:not([from]):not([to])"),
+    ).filter(
+      (app) =>
+        !app.parentElement?.closest("tei-app:not([from]):not([to])"),
+    );
+
+    inlineApps.forEach((app) => {
+      const resolved = cloneForWitness(app, witID);
+      const parentL = app.closest("tei-l");
+      const isWholeLine =
+        parentL && parentL.textContent.trim() === app.textContent.trim();
+      const resolvedText = (resolved.textContent || "").trim();
+
+      if (!resolvedText && isWholeLine) {
+        const ph = document.createElement("span");
+        ph.className = "placeholder-block";
+        ph.textContent = "[...........................................]";
+        app.replaceWith(ph);
+      } else {
+        app.replaceWith(resolved);
       }
-
-      // ===== 2) Apparato inline (senza from/to) =====
-      const rdgs = Array.from(app.querySelectorAll("tei-rdg"));
-      const lemma = app.querySelector("tei-lem");
-
-      const matchingRdg = rdgs.find((rdg) =>
-        (rdg.getAttribute("wit") || "")
-          .split(/\s+/)
-          .map((w) => w.replace(/^#/, ""))
-          .includes(witID),
-      );
-
-      // 2a) Aggiunta inline: <rdg><add>…</add></rdg>
-      if (!from && !to && matchingRdg) {
-        const addEl = matchingRdg.querySelector("tei-add");
-        if (addEl) {
-          const insideLine = !!app.closest("tei-l, l");
-          const innerLines = addEl.querySelectorAll(
-            ":scope > tei-l, :scope > l",
-          );
-          const hasInnerLine = innerLines.length > 0;
-
-          if (insideLine) {
-            // Siamo già dentro una riga → appiattisci in uno span
-            const span = document.createElement("span");
-            span.className = "witness-addition";
-            if (hasInnerLine) {
-              let first = true;
-              innerLines.forEach((l) => {
-                if (!first) span.appendChild(document.createTextNode(" "));
-                l.childNodes.forEach((n) =>
-                  span.appendChild(n.cloneNode(true)),
-                );
-                first = false;
-              });
-            } else {
-              addEl.childNodes.forEach((n) =>
-                span.appendChild(n.cloneNode(true)),
-              );
-            }
-            app.replaceWith(span);
-            return; // gestito
-          } else {
-            // Fuori da una riga: se ci sono <l> li manteniamo, altrimenti span
-            if (hasInnerLine) {
-              const frag = document.createDocumentFragment();
-              innerLines.forEach((l) => {
-                const cloned = l.cloneNode(true);
-                cloned.setAttribute("data-addition", "true"); // per styling/analitiche
-                frag.appendChild(cloned);
-              });
-              app.replaceWith(frag);
-              return; // gestito
-            } else {
-              const span = document.createElement("span");
-              span.className = "witness-addition";
-              addEl.childNodes.forEach((n) =>
-                span.appendChild(n.cloneNode(true)),
-              );
-              app.replaceWith(span);
-              return; // gestito
-            }
-          }
-        }
-      }
-
-      // 2b) Omissione inline (rdg vuoto per questo testimone)
-      const isOmitted = matchingRdg && matchingRdg.textContent.trim() === "";
-      if (isOmitted) {
-        const parentL = app.closest("tei-l");
-        if (parentL && parentL.textContent.trim() === app.textContent.trim()) {
-          const replacement = document.createElement("span");
-          replacement.className = "placeholder-block";
-          replacement.innerHTML =
-            "[...........................................]";
-          app.parentNode.replaceChild(replacement, app);
-        } else {
-          const replacement = document.createElement("span");
-          replacement.className = "witness-reading";
-          replacement.textContent = "";
-          app.parentNode.replaceChild(replacement, app);
-        }
-        return; // gestito
-      }
-
-      // 2c) Lettura normale: rdg corrispondente, altrimenti lemma
-      let chosenText = "";
-      if (matchingRdg) {
-        chosenText = matchingRdg.textContent.trim();
-      } else if (lemma) {
-        chosenText = lemma.textContent.trim();
-      }
-
-      const replacement = document.createElement("span");
-      replacement.className = "witness-reading";
-      replacement.textContent = chosenText;
-      app.parentNode.replaceChild(replacement, app);
     });
 
     return clone;
