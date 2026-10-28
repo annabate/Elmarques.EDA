@@ -117,11 +117,12 @@
       stage?.classList.toggle("is-pannable", scale > 1.05);
 
       const percentage = Math.round(scale * 100);
-      resetZoomButton.textContent = `${percentage}%`;
+      resetZoomButton.textContent = "↺";
+      resetZoomButton.hidden = scale <= 1.05;
       resetZoomButton.title =
         scale === 1
           ? "Facsímil ajustado al panel"
-          : "Volver a ajustar el facsímil al panel";
+          : `Volver al ajuste del panel (zoom actual: ${percentage} %)`;
     }
 
     function refit({ preserveZoom = true } = {}) {
@@ -250,7 +251,6 @@
         if (scale <= 1.05 || event.button !== 0) return;
         if (event.target !== image) return;
 
-        event.preventDefault();
         panState = {
           pointerId: event.pointerId,
           x: event.clientX,
