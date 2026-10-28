@@ -110,6 +110,17 @@ edition_label: Edición crítica · prototipo
 
     <div id="characters-summary" class="characters-summary"></div>
 
+    <div class="characters-controls">
+      <div class="characters-metric-toggle" role="group" aria-label="Métrica de comparación">
+        <button type="button" class="characters-metric-btn is-active" data-character-metric="lines">Líneas</button>
+        <button type="button" class="characters-metric-btn" data-character-metric="interventions">Intervenciones</button>
+      </div>
+      <label class="characters-differences-toggle">
+        <input id="characters-only-differences" type="checkbox" checked>
+        <span>Solo diferencias</span>
+      </label>
+    </div>
+
     <div class="characters-layout">
       <div class="characters-table-panel">
         <div id="characters-table"></div>
@@ -121,7 +132,7 @@ edition_label: Edición crítica · prototipo
     </div>
 
     <p class="characters-method-note">
-      La tabla compara la distribución de las líneas e intervenciones entre el texto crítico y los testimonios. Los versos partidos entre dos personajes se contabilizan en ambas intervenciones.
+      El texto crítico funciona como referencia. En los testimonios, «—» indica que el valor coincide con el texto crítico; cuando existe una diferencia se muestra el valor del testimonio y, entre paréntesis, su variación. Los versos partidos entre dos personajes se contabilizan en ambas intervenciones.
     </p>
   </div>
 </div>
@@ -1736,7 +1747,24 @@ edition_label: Edición crítica · prototipo
     });
   }
 
-  function renderCharacterTable(comparison, witnessIDs, selectedWit) {
+  function metricLabel(metric) {
+    return metric === "interventions" ? "Intervenciones" : "Líneas";
+  }
+
+  function characterMetricDiffers(row, witnessIDs, metric) {
+    return witnessIDs.some(
+      (witID) =>
+        row.witnesses[witID][metric] !== row.critical[metric],
+    );
+  }
+
+  function renderCharacterTable(
+    comparison,
+    witnessIDs,
+    selectedWit,
+    metric = "lines",
+    onlyDifferences = true,
+  ) {
     const container = document.getElementById("characters-table");
     if (!container) return;
     clearNode(container);
@@ -1752,7 +1780,8 @@ edition_label: Edición crítica · prototipo
     headRow.appendChild(personHead);
 
     const criticalHead = document.createElement("th");
-    criticalHead.textContent = "Texto crítico";
+    criticalHead.innerHTML =
+      `Texto crítico<span class="table-metric-label">${metricLabel(metric)}</span>`;
     headRow.appendChild(criticalHead);
 
     witnessIDs.forEach((witID) => {
@@ -1766,10 +1795,16 @@ edition_label: Edición crítica · prototipo
     thead.appendChild(headRow);
     table.appendChild(thead);
 
+    const visibleRows = comparison.rows.filter(
+      (row) =>
+        !onlyDifferences ||
+        characterMetricDiffers(row, witnessIDs, metric),
+    );
+
     const tbody = document.createElement("tbody");
-    comparison.rows.forEach((row) => {
+    visibleRows.forEach((row) => {
       const tr = document.createElement("tr");
-      if (characterRowDiffers(row, witnessIDs)) {
+      if (characterMetricDiffers(row, witnessIDs, metric)) {
         tr.classList.add("has-transmission-difference");
       }
 
@@ -1780,35 +1815,44 @@ edition_label: Edición crítica · prototipo
 
       const critical = document.createElement("td");
       critical.className = "character-stat-cell critical-stat-cell";
-      critical.innerHTML =
-        `<strong>${row.critical.lines}</strong><span>${row.critical.interventions} interv.</span>`;
+      critical.innerHTML = `<strong>${row.critical[metric]}</strong>`;
       tr.appendChild(critical);
 
       witnessIDs.forEach((witID) => {
-        const value = row.witnesses[witID];
-        const deltaLines = value.lines - row.critical.lines;
-        const deltaInterventions =
-          value.interventions - row.critical.interventions;
+        const value = row.witnesses[witID][metric];
+        const baseline = row.critical[metric];
+        const delta = value - baseline;
         const td = document.createElement("td");
         td.className = "character-stat-cell";
         td.dataset.wit = witID;
 
         if (witID === selectedWit) td.classList.add("is-selected-witness");
-        if (deltaLines || deltaInterventions) td.classList.add("is-different");
 
-        const deltaBits = [];
-        if (deltaLines) deltaBits.push(`${signedNumber(deltaLines)} lín.`);
-        if (deltaInterventions) {
-          deltaBits.push(`${signedNumber(deltaInterventions)} int.`);
+        if (!delta) {
+          td.classList.add("is-same");
+          td.innerHTML = `<span class="same-as-critical" aria-label="Coincide con el texto crítico">—</span>`;
+        } else {
+          td.classList.add("is-different");
+          td.innerHTML =
+            `<strong>${value}</strong><span class="character-inline-delta">(${signedNumber(delta)})</span>`;
         }
 
-        td.innerHTML =
-          `<strong>${value.lines}</strong><span>${value.interventions} interv.${deltaBits.length ? ` · ${deltaBits.join(" · ")}` : ""}</span>`;
         tr.appendChild(td);
       });
 
       tbody.appendChild(tr);
     });
+
+    if (!visibleRows.length) {
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.colSpan = witnessIDs.length + 2;
+      td.className = "characters-empty-row";
+      td.textContent =
+        "No se registran diferencias para esta métrica entre los testimonios codificados.";
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
 
     table.appendChild(tbody);
     container.appendChild(table);
@@ -1865,12 +1909,19 @@ edition_label: Edición crítica · prototipo
     const closeBtn = document.getElementById("close-characters-btn");
     const modal = document.getElementById("characters-modal-wrapper");
     const scopeLabel = document.getElementById("characters-scope");
+    const onlyDifferencesControl =
+      document.getElementById("characters-only-differences");
+    const metricButtons = Array.from(
+      document.querySelectorAll("[data-character-metric]"),
+    );
 
     let cachedComparison = null;
+    let metric = "lines";
 
     const refresh = () => {
       const selectedWit =
         document.getElementById("witness-select")?.value || "";
+      const onlyDifferences = onlyDifferencesControl?.checked ?? true;
 
       if (!cachedComparison) {
         cachedComparison = buildCharacterComparison(witnessIDs);
@@ -1882,14 +1933,35 @@ edition_label: Edición crítica · prototipo
           : "Todos los testimonios";
       }
 
+      metricButtons.forEach((button) => {
+        const active = button.dataset.characterMetric === metric;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
       renderCharacterSummary(cachedComparison, witnessIDs);
-      renderCharacterTable(cachedComparison, witnessIDs, selectedWit);
+      renderCharacterTable(
+        cachedComparison,
+        witnessIDs,
+        selectedWit,
+        metric,
+        onlyDifferences,
+      );
       renderAttributionChanges(
         cachedComparison,
         witnessIDs,
         selectedWit,
       );
     };
+
+    metricButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        metric = button.dataset.characterMetric || "lines";
+        refresh();
+      });
+    });
+
+    onlyDifferencesControl?.addEventListener("change", refresh);
 
     openBtn?.addEventListener("click", () => {
       refresh();
