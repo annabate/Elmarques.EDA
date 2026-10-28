@@ -292,10 +292,23 @@ tei-head[type="subtitle1"] {
   text-align: center;
 }
 
-tei-div,
-tei-p {
+tei-div {
   display: block;
   margin-bottom: 1em;
+}
+
+.tei-column tei-body tei-p {
+  display: block;
+  width: min(100%, 36rem);
+  margin: 1rem auto 1.2rem;
+  padding: 0.45rem 2rem;
+  color: var(--critical-text);
+  font-size: 0.96em;
+  line-height: 1.68;
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 
 tei-castList {
@@ -476,23 +489,23 @@ tei-l[part="F"] .line-text {
   top: calc(100% + 0.45rem);
   left: 50%;
   display: none;
-  width: max-content;
-  min-width: 0;
-  max-width: min(44rem, calc(100vw - 2rem));
-  padding: 0.35rem;
-  overflow-x: auto;
+  width: min(32rem, calc(100vw - 2rem));
+  min-width: min(16rem, calc(100vw - 2rem));
+  max-width: 32rem;
+  padding: 0.4rem;
+  overflow: visible;
   transform: translateX(-50%);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .apparatus-entry {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  width: max-content;
-  min-width: 100%;
-  padding: 0.35rem 0.4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.9rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.42rem 0.45rem;
 }
 
 .app-tooltip .apparatus-entry + .apparatus-entry {
@@ -501,7 +514,8 @@ tei-l[part="F"] .line-text {
 
 .rdg-text {
   min-width: 0;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .witness-label {
@@ -1065,14 +1079,20 @@ tei-l[data-addition="true"] .line-text {
     bottom: 0.6rem;
     left: 0.6rem;
     width: auto;
+    min-width: 0;
     max-width: none;
-    overflow-x: auto;
+    overflow: visible;
     transform: none;
   }
 
   .apparatus-entry {
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .tei-column tei-body tei-p {
+    width: 100%;
+    padding-inline: 1rem;
   }
 
   #stats-modal {
