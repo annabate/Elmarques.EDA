@@ -7,18 +7,27 @@ edition_label: Edición crítica · prototipo
 <header id="sticky-header" class="critical-toolbar" aria-label="Herramientas de la edición crítica">
   <div class="critical-toolbar-title">
     <span class="critical-toolbar-eyebrow">Edición crítica</span>
-    <strong>Texto y aparato</strong>
   </div>
 
   <div id="floating-tools" class="critical-toolbar-actions">
     <label class="witness-picker" for="witness-select">
-      <span>Comparar con</span>
+      <span>Cotejar con</span>
       <select id="witness-select">
         <option value="">Selecciona testimonio</option>
       </select>
     </label>
-    <button id="open-witness-info-btn" class="tool-button tool-button-secondary" type="button">
-      Testimonios
+    <button
+      id="open-witness-info-btn"
+      class="tool-button tool-button-secondary icon-tool-button"
+      type="button"
+      aria-label="Información de los testimonios"
+      title="Testimonios"
+    >
+      <svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 3.75h8.75a2 2 0 0 1 2 2V17.5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5.75a2 2 0 0 1 2-2Z"></path>
+        <path d="M8.25 7h6.25M8.25 10h6.25M8.25 13h4.5"></path>
+        <path d="M4.75 6.5H4a2 2 0 0 0-2 2v9.75a2 2 0 0 0 2 2h8.75"></path>
+      </svg>
     </button>
     <button id="open-stats-btn" class="tool-button tool-button-secondary" type="button">
       Estadísticas
