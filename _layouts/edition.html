@@ -6,7 +6,15 @@
     <title>{{ page.title }} | El marqués de las Navas</title>
     <meta
       name="description"
-      content="Edición genética digital de El marqués de las Navas de Lope de Vega"
+      content="Edición genético-evolutiva digital de El marqués de las Navas de Lope de Vega"
+    />
+    <meta name="author" content="Anna Abate" />
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" crossorigin rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;650;700&display=swap"
+      rel="stylesheet"
     />
 
     <link href="{{ site.baseurl }}/assets/styles.css" rel="stylesheet" />
@@ -16,8 +24,14 @@
 
   <body class="edition">
     <nav class="edition-sitebar" aria-label="Navegación de la edición">
-      <a href="{{ site.baseurl }}/" class="edition-back">← Volver al sitio</a>
-      <span>Prototipo de trabajo · acceso restringido</span>
+      <a href="{{ site.baseurl }}/home/" class="edition-project-link">
+        <em>El marqués de las Navas</em>
+        <span>Edición Digital Académica</span>
+      </a>
+      <div class="edition-sitebar-actions">
+        <span>Prototipo de trabajo · acceso restringido</span>
+        <a href="{{ site.baseurl }}/selection" class="edition-back">← Selección de ediciones</a>
+      </div>
     </nav>
     {{ content }}
   </body>
