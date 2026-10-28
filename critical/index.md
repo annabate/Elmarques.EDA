@@ -1,6 +1,7 @@
 ---
 layout: critical
 title: El marqués de las Navas – Edición Digital Académica
+edition_label: Edición crítica · prototipo
 ---
 
 <!-- Sticky header with title and buttons -->
