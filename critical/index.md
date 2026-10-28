@@ -30,7 +30,7 @@ edition_label: Edición crítica · prototipo
       </svg>
     </button>
     <button id="open-variants-btn" class="tool-button tool-button-secondary" type="button">
-      Variantes
+      Aparato
     </button>
   </div>
 </header>
@@ -69,8 +69,8 @@ edition_label: Edición crítica · prototipo
     <button id="close-variants-btn" class="modal-close" type="button" aria-label="Cerrar">×</button>
     <div class="variants-modal-heading">
       <div>
-        <span class="variants-kicker">Aparato crítico</span>
-        <h3 id="variants-title">Variantes</h3>
+        <span class="variants-kicker">Edición crítica</span>
+        <h3 id="variants-title">Aparato crítico</h3>
       </div>
       <span id="variants-scope" class="variants-scope"></span>
     </div>
