@@ -32,6 +32,9 @@ edition_label: Edición crítica · prototipo
     <button id="open-variants-btn" class="tool-button tool-button-secondary" type="button">
       Aparato
     </button>
+    <button id="open-characters-btn" class="tool-button tool-button-secondary" type="button">
+      Personajes
+    </button>
   </div>
 </header>
 
@@ -91,6 +94,36 @@ edition_label: Edición crítica · prototipo
         <div id="variants-distribution" class="variants-distribution"></div>
       </aside>
     </div>
+  </div>
+</div>
+
+<div id="characters-modal-wrapper" class="modal hidden">
+  <div id="characters-modal" class="characters-modal" role="dialog" aria-modal="true" aria-labelledby="characters-title">
+    <button id="close-characters-btn" class="modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="characters-modal-heading">
+      <div>
+        <span class="characters-kicker">Estructura dramática</span>
+        <h3 id="characters-title">Distribución de personajes</h3>
+      </div>
+      <span id="characters-scope" class="characters-scope"></span>
+    </div>
+
+    <div id="characters-summary" class="characters-summary"></div>
+
+    <div class="characters-layout">
+      <div class="characters-table-panel">
+        <div id="characters-table"></div>
+      </div>
+      <aside class="characters-bars-panel">
+        <h4>Distribución de líneas</h4>
+        <div id="characters-bars" class="characters-bars"></div>
+        <div id="attribution-changes" class="attribution-changes"></div>
+      </aside>
+    </div>
+
+    <p class="characters-method-note">
+      Se contabiliza cada línea de verso codificada en una intervención; los versos partidos entre dos personajes se representan en ambas intervenciones.
+    </p>
   </div>
 </div>
 
@@ -1498,6 +1531,377 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
+  // Character distribution
+  // =========================
+  function canonicalSpeakerLabel(raw, fallback = "") {
+    const value = (raw || fallback || "")
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/^#/, "");
+    if (!value) return "Sin atribución";
+
+    const directAlias = speakerAliasMap[value];
+    if (directAlias) return String(directAlias).replace(/^#/, "");
+
+    const normalized = normalizeName(value);
+    const normalizedAlias = speakerAliasMap[normalized];
+    if (normalizedAlias) return String(normalizedAlias).replace(/^#/, "");
+
+    if (normalized === "EL MARQUES" || normalized === "MARQUES") return "Marqués";
+    return value.replace(/_/g, " ");
+  }
+
+  function renderedSpeakerLabel(sp) {
+    const speaker = directChildren(sp, "tei-speaker")[0] || null;
+    const text = cleanReadingText(speaker);
+    const who = (sp.getAttribute("who") || "").split(/\s+/)[0] || "";
+    return canonicalSpeakerLabel(text, who);
+  }
+
+  function presentVerseLines(sp) {
+    return Array.from(sp.querySelectorAll("tei-l")).filter((line) => {
+      if (line.hasAttribute("data-witness-omitted")) return false;
+      if (line.querySelector(".omission-placeholder")) return false;
+      const text = cleanReadingText(line);
+      return !!text && !/^\[\.+\]$/.test(text);
+    });
+  }
+
+  function calculateCharacterStats(scope) {
+    const stats = new Map();
+
+    scope.querySelectorAll("tei-sp").forEach((sp) => {
+      const lines = presentVerseLines(sp);
+      if (!lines.length) return;
+
+      const name = renderedSpeakerLabel(sp);
+      if (!stats.has(name)) {
+        stats.set(name, { name, lines: 0, interventions: 0 });
+      }
+      const row = stats.get(name);
+      row.lines += lines.length;
+      row.interventions += 1;
+    });
+
+    return stats;
+  }
+
+  function firstVerseReference(sp) {
+    const line = Array.from(sp.querySelectorAll("tei-l")).find(
+      (el) => el.getAttribute("n"),
+    );
+    return line?.getAttribute("n") || "";
+  }
+
+  function calculateAttributionChanges(criticalScope, witnessScope) {
+    if (!witnessScope) return [];
+    const criticalSp = Array.from(criticalScope.querySelectorAll("tei-sp"));
+    const witnessSp = Array.from(witnessScope.querySelectorAll("tei-sp"));
+    const changes = [];
+    const length = Math.min(criticalSp.length, witnessSp.length);
+
+    for (let i = 0; i < length; i += 1) {
+      const crit = criticalSp[i];
+      const wit = witnessSp[i];
+      const critLines = presentVerseLines(crit);
+      const witLines = presentVerseLines(wit);
+      if (!critLines.length || !witLines.length) continue;
+
+      const from = renderedSpeakerLabel(crit);
+      const to = renderedSpeakerLabel(wit);
+      if (normalizeName(from) === normalizeName(to)) continue;
+
+      changes.push({
+        from,
+        to,
+        verse: firstVerseReference(crit),
+      });
+    }
+    return changes;
+  }
+
+  function mergedCharacterRows(criticalStats, witnessStats = null) {
+    const names = new Set([
+      ...criticalStats.keys(),
+      ...(witnessStats ? witnessStats.keys() : []),
+    ]);
+
+    return Array.from(names)
+      .map((name) => ({
+        name,
+        critical: criticalStats.get(name) || { lines: 0, interventions: 0 },
+        witness:
+          witnessStats?.get(name) || { lines: 0, interventions: 0 },
+      }))
+      .sort(
+        (a, b) =>
+          b.critical.lines - a.critical.lines ||
+          b.witness.lines - a.witness.lines ||
+          a.name.localeCompare(b.name, "es"),
+      );
+  }
+
+  function signedNumber(value) {
+    if (value > 0) return `+${value}`;
+    if (value < 0) return `−${Math.abs(value)}`;
+    return "0";
+  }
+
+  function renderCharacterSummary(rows, witID, attributionChanges) {
+    const summary = document.getElementById("characters-summary");
+    if (!summary) return;
+    clearNode(summary);
+
+    const totalCriticalLines = rows.reduce(
+      (sum, row) => sum + row.critical.lines,
+      0,
+    );
+    const totalCriticalInterventions = rows.reduce(
+      (sum, row) => sum + row.critical.interventions,
+      0,
+    );
+
+    const cards = [
+      ["Personajes", rows.filter((row) => row.critical.lines > 0).length],
+      ["Líneas", totalCriticalLines],
+      ["Intervenciones", totalCriticalInterventions],
+    ];
+
+    if (witID) cards.push(["Cambios de atribución", attributionChanges.length]);
+
+    cards.forEach(([label, value]) => {
+      const card = document.createElement("div");
+      card.className = "character-summary-card";
+      const number = document.createElement("strong");
+      number.textContent = String(value);
+      const caption = document.createElement("span");
+      caption.textContent = label;
+      card.append(number, caption);
+      summary.appendChild(card);
+    });
+  }
+
+  function renderCharacterTable(rows, witID) {
+    const container = document.getElementById("characters-table");
+    if (!container) return;
+    clearNode(container);
+
+    const table = document.createElement("table");
+    table.className = "characters-table";
+
+    if (witID) {
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Personaje</th>
+            <th>Texto crítico</th>
+            <th>${witID}</th>
+            <th>Diferencia</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
+    } else {
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Personaje</th>
+            <th>Líneas</th>
+            <th>Intervenciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      `;
+    }
+
+    const tbody = table.querySelector("tbody");
+    rows.forEach((row) => {
+      const tr = document.createElement("tr");
+      const name = document.createElement("th");
+      name.scope = "row";
+      name.textContent = row.name;
+      tr.appendChild(name);
+
+      if (witID) {
+        const critical = document.createElement("td");
+        critical.innerHTML =
+          `<strong>${row.critical.lines}</strong> líneas <span>· ${row.critical.interventions} interv.</span>`;
+
+        const witness = document.createElement("td");
+        witness.innerHTML =
+          `<strong>${row.witness.lines}</strong> líneas <span>· ${row.witness.interventions} interv.</span>`;
+
+        const deltaLines = row.witness.lines - row.critical.lines;
+        const deltaInterventions =
+          row.witness.interventions - row.critical.interventions;
+        const delta = document.createElement("td");
+        delta.className =
+          deltaLines === 0 && deltaInterventions === 0
+            ? "character-delta is-neutral"
+            : "character-delta";
+        delta.innerHTML =
+          `<strong>${signedNumber(deltaLines)}</strong> líneas <span>· ${signedNumber(deltaInterventions)} interv.</span>`;
+
+        tr.append(critical, witness, delta);
+      } else {
+        const lines = document.createElement("td");
+        lines.textContent = String(row.critical.lines);
+        const interventions = document.createElement("td");
+        interventions.textContent = String(row.critical.interventions);
+        tr.append(lines, interventions);
+      }
+
+      tbody.appendChild(tr);
+    });
+
+    container.appendChild(table);
+  }
+
+  function renderCharacterBars(rows, witID) {
+    const container = document.getElementById("characters-bars");
+    if (!container) return;
+    clearNode(container);
+
+    const topRows = rows
+      .filter((row) => row.critical.lines > 0 || row.witness.lines > 0)
+      .slice(0, 12);
+    const max = Math.max(
+      1,
+      ...topRows.flatMap((row) => [
+        row.critical.lines,
+        witID ? row.witness.lines : 0,
+      ]),
+    );
+
+    topRows.forEach((row) => {
+      const item = document.createElement("div");
+      item.className = "character-bar-item";
+
+      const header = document.createElement("div");
+      header.className = "character-bar-head";
+      const label = document.createElement("span");
+      label.textContent = row.name;
+      const value = document.createElement("strong");
+      value.textContent = witID
+        ? `${row.critical.lines} / ${row.witness.lines}`
+        : String(row.critical.lines);
+      header.append(label, value);
+
+      const tracks = document.createElement("div");
+      tracks.className = "character-bar-tracks";
+
+      const criticalTrack = document.createElement("div");
+      criticalTrack.className = "character-bar-track";
+      const criticalBar = document.createElement("span");
+      criticalBar.className = "character-bar character-bar-critical";
+      criticalBar.style.width = `${(row.critical.lines / max) * 100}%`;
+      criticalTrack.appendChild(criticalBar);
+      tracks.appendChild(criticalTrack);
+
+      if (witID) {
+        const witnessTrack = document.createElement("div");
+        witnessTrack.className = "character-bar-track";
+        const witnessBar = document.createElement("span");
+        witnessBar.className = "character-bar character-bar-witness";
+        witnessBar.style.width = `${(row.witness.lines / max) * 100}%`;
+        witnessTrack.appendChild(witnessBar);
+        tracks.appendChild(witnessTrack);
+      }
+
+      item.append(header, tracks);
+      container.appendChild(item);
+    });
+
+    const legend = document.createElement("div");
+    legend.className = "character-bars-legend";
+    legend.innerHTML = witID
+      ? `<span><i class="legend-critical"></i>Texto crítico</span><span><i class="legend-witness"></i>${witID}</span>`
+      : `<span><i class="legend-critical"></i>Texto crítico</span>`;
+    container.appendChild(legend);
+  }
+
+  function renderAttributionChanges(changes, witID) {
+    const container = document.getElementById("attribution-changes");
+    if (!container) return;
+    clearNode(container);
+    if (!witID || !changes.length) return;
+
+    const heading = document.createElement("h4");
+    heading.textContent = "Cambios de atribución";
+    container.appendChild(heading);
+
+    changes.forEach((change) => {
+      const item = document.createElement("div");
+      item.className = "attribution-change";
+      const ref = change.verse ? `v. ${change.verse} · ` : "";
+      item.textContent = `${ref}${change.from} → ${change.to}`;
+      container.appendChild(item);
+    });
+  }
+
+  function setupCharacterExplorer() {
+    const openBtn = document.getElementById("open-characters-btn");
+    const closeBtn = document.getElementById("close-characters-btn");
+    const modal = document.getElementById("characters-modal-wrapper");
+    const scopeLabel = document.getElementById("characters-scope");
+
+    const refresh = () => {
+      const criticalScope = document.getElementById("critical-container");
+      const witID = document.getElementById("witness-select")?.value || "";
+      const witnessScope = witID
+        ? document.getElementById("witness-container")
+        : null;
+
+      if (!criticalScope) return;
+
+      const criticalStats = calculateCharacterStats(criticalScope);
+      const witnessStats =
+        witID && witnessScope
+          ? calculateCharacterStats(witnessScope)
+          : null;
+      const rows = mergedCharacterRows(criticalStats, witnessStats);
+      const changes =
+        witID && witnessScope
+          ? calculateAttributionChanges(criticalScope, witnessScope)
+          : [];
+
+      if (scopeLabel) {
+        scopeLabel.textContent = witID
+          ? `Texto crítico / ${witID}`
+          : "Texto crítico";
+      }
+
+      renderCharacterSummary(rows, witID, changes);
+      renderCharacterTable(rows, witID);
+      renderCharacterBars(rows, witID);
+      renderAttributionChanges(changes, witID);
+    };
+
+    openBtn?.addEventListener("click", () => {
+      refresh();
+      modal?.classList.remove("hidden");
+    });
+
+    closeBtn?.addEventListener("click", () => modal?.classList.add("hidden"));
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.add("hidden");
+    });
+
+    document.getElementById("witness-select")?.addEventListener("change", () => {
+      if (modal?.classList.contains("hidden")) return;
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => refresh()),
+      );
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+      }
+    });
+  }
+
+  // =========================
   // Pipeline di decorazione
   // =========================
   function decorateEdition(root, { inWitnessView = false } = {}) {
@@ -1712,6 +2116,7 @@ edition_label: Edición crítica · prototipo
       populateWitnessSelect(allSigla);
       setupWitnessInfo(allSigla);
       setupVariantExplorer(variantInventory);
+      setupCharacterExplorer();
 
       // Delegated handler: click su chip → apri testimone (senza passare dal <select>)
       const wrapper = document.getElementById("tei-wrapper") || document;
