@@ -24,7 +24,7 @@ edition_label: Edición genético-evolutiva · prototipo
 
   <div class="edition-toolbar" aria-label="Controles de la edición genética">
     <div class="toolbar-group toolbar-view">
-      <label for="reconstruction-select" class="toolbar-label">Vista textual</label>
+      <label for="reconstruction-select" class="toolbar-label">Estado textual</label>
       <select id="reconstruction-select">
         <option value="genesis" selected>Génesis del texto</option>
         <option value="A0">A0 · primera redacción</option>
@@ -35,7 +35,7 @@ edition_label: Edición genético-evolutiva · prototipo
     </div>
 
     <fieldset class="toolbar-group toolbar-layers">
-      <legend class="toolbar-label">Intervenciones</legend>
+      <legend class="toolbar-label">Estratos</legend>
       <label class="layer-toggle layer-a1">
         <input type="checkbox" name="intervention-layer" value="A1" checked>
         <span>A1</span>
@@ -44,7 +44,7 @@ edition_label: Edición genético-evolutiva · prototipo
       <label class="layer-toggle layer-a2">
         <input type="checkbox" name="intervention-layer" value="A2" checked>
         <span>A2</span>
-        <small>revisión</small>
+        <small>revisión autorial</small>
       </label>
       <label class="layer-toggle layer-b">
         <input type="checkbox" name="intervention-layer" value="B" checked>
