@@ -257,11 +257,19 @@ edition_label: Edición crítica · prototipo
       return frag;
     }
 
-    // <add> belongs to the selected reading: show its content, not the TEI wrapper.
+    // <add> belongs to the selected reading: keep the added text, but mark
+    // added verse lines so the comparison can distinguish them from the base text.
     if (tag === "tei-add") {
       const frag = document.createDocumentFragment();
       Array.from(node.childNodes).forEach((child) => {
-        frag.appendChild(cloneForWitness(child, witID));
+        const cloned = cloneForWitness(child, witID);
+        if (
+          cloned?.nodeType === Node.ELEMENT_NODE &&
+          cloned.tagName?.toLowerCase() === "tei-l"
+        ) {
+          cloned.setAttribute("data-witness-addition", "true");
+        }
+        frag.appendChild(cloned);
       });
       return frag;
     }
@@ -325,17 +333,37 @@ edition_label: Edición crítica · prototipo
               }
             }
 
+            const affectedLines = affected.filter(
+              (el) => el.tagName?.toLowerCase() === "tei-l",
+            );
+            const startN = affectedLines[0]?.getAttribute("n") || "";
+            const endN =
+              affectedLines[affectedLines.length - 1]?.getAttribute("n") || startN;
+            const rangeLabel =
+              startN && endN && startN !== endN
+                ? `vv. ${startN}–${endN}`
+                : startN
+                  ? `v. ${startN}`
+                  : "pasaje";
+
             affected.forEach((el) => {
               const tag = el.tagName?.toLowerCase();
               while (el.firstChild) el.removeChild(el.firstChild);
 
-              // Keep verse slots for synoptic alignment, but do not invent
-              // a speaker label for a passage absent from this witness.
+              // Keep empty verse slots for synoptic alignment, but show the
+              // omission label only once at the beginning of the range.
               if (tag === "tei-l") {
-                const ph = document.createElement("span");
-                ph.className = "placeholder-block";
-                ph.textContent = "[...........................................]";
-                el.appendChild(ph);
+                el.setAttribute("data-witness-omitted", "true");
+                const slot = document.createElement("span");
+                slot.className = "omission-slot";
+                if (el === affectedLines[0]) {
+                  slot.classList.add("omission-slot-label");
+                  slot.textContent = `⟨${rangeLabel} omitidos⟩`;
+                } else {
+                  slot.setAttribute("aria-hidden", "true");
+                  slot.innerHTML = "&nbsp;";
+                }
+                el.appendChild(slot);
               }
             });
           }
@@ -363,8 +391,9 @@ edition_label: Edición crítica · prototipo
 
       if (!resolvedText && isWholeLine) {
         const ph = document.createElement("span");
-        ph.className = "placeholder-block";
-        ph.textContent = "[...........................................]";
+        ph.className = "omission-slot omission-slot-label";
+        ph.textContent = "⟨verso omitido⟩";
+        parentL?.setAttribute("data-witness-omitted", "true");
         app.replaceWith(ph);
       } else {
         app.replaceWith(resolved);
@@ -463,6 +492,10 @@ edition_label: Edición crítica · prototipo
         line.classList.add(`line-n-${logical}`);
         line.setAttribute("data-line-n", logical);
         line.setAttribute("data-critical-n", logical);
+        line.setAttribute("data-sync-key", `v-${logical}`);
+      } else if (line.hasAttribute("data-witness-addition") && currentVerse) {
+        line.setAttribute("data-critical-anchor", currentVerse);
+        line.setAttribute("data-sync-key", `add-after-${currentVerse}`);
       }
     });
   }
@@ -478,7 +511,9 @@ edition_label: Edición crítica · prototipo
       const numberEl = line.querySelector(":scope > .line-container > .line-number");
       if (numberEl) numberEl.textContent = "";
 
-      const omitted = !!line.querySelector(".placeholder-block");
+      const omitted =
+        line.hasAttribute("data-witness-omitted") ||
+        !!line.querySelector(".omission-slot, .placeholder-block");
       if (omitted) {
         line.setAttribute("data-witness-omitted", "true");
         line.removeAttribute("data-witness-n");
@@ -1318,6 +1353,7 @@ edition_label: Edición crítica · prototipo
         weight = 1 / k;
       let counted = 0;
       sp.querySelectorAll("tei-l").forEach((line) => {
+        if (line.hasAttribute("data-witness-omitted")) return;
         const txt = (line.textContent || "").trim();
         if (!txt || /^\[\.+\]$/.test(txt)) return;
         counted++;
