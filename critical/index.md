@@ -336,34 +336,39 @@ edition_label: Edición crítica · prototipo
             const affectedLines = affected.filter(
               (el) => el.tagName?.toLowerCase() === "tei-l",
             );
-            const startN = affectedLines[0]?.getAttribute("n") || "";
-            const endN =
-              affectedLines[affectedLines.length - 1]?.getAttribute("n") || startN;
-            const rangeLabel =
-              startN && endN && startN !== endN
-                ? `vv. ${startN}–${endN}`
-                : startN
-                  ? `v. ${startN}`
-                  : "pasaje";
+            const includesSpeaker = affected.some(
+              (el) => el.tagName?.toLowerCase() === "tei-speaker",
+            );
+            const omissionLabel =
+              affectedLines.length === 1
+                ? "verso omitido"
+                : includesSpeaker
+                  ? "pasaje omitido"
+                  : "versos omitidos";
 
             affected.forEach((el) => {
               const tag = el.tagName?.toLowerCase();
               while (el.firstChild) el.removeChild(el.firstChild);
 
-              // Keep empty verse slots for synoptic alignment, but show the
-              // omission label only once at the beginning of the range.
               if (tag === "tei-l") {
                 el.setAttribute("data-witness-omitted", "true");
-                const slot = document.createElement("span");
-                slot.className = "omission-slot";
+
+                const wrap = document.createElement("span");
+                wrap.className = "omission-placeholder-wrap";
+
+                const placeholder = document.createElement("span");
+                placeholder.className = "omission-placeholder";
+                placeholder.textContent = "[...........................................]";
+                wrap.appendChild(placeholder);
+
                 if (el === affectedLines[0]) {
-                  slot.classList.add("omission-slot-label");
-                  slot.textContent = `⟨${rangeLabel} omitidos⟩`;
-                } else {
-                  slot.setAttribute("aria-hidden", "true");
-                  slot.innerHTML = "&nbsp;";
+                  const label = document.createElement("span");
+                  label.className = "omission-kind-label";
+                  label.textContent = omissionLabel;
+                  wrap.appendChild(label);
                 }
-                el.appendChild(slot);
+
+                el.appendChild(wrap);
               } else if (tag === "tei-speaker") {
                 const slot = document.createElement("span");
                 slot.className = "speaker-alignment-slot";
@@ -396,11 +401,20 @@ edition_label: Edición crítica · prototipo
       const resolvedText = (resolved.textContent || "").trim();
 
       if (!resolvedText && isWholeLine) {
-        const ph = document.createElement("span");
-        ph.className = "omission-slot omission-slot-label";
-        ph.textContent = "⟨verso omitido⟩";
+        const wrap = document.createElement("span");
+        wrap.className = "omission-placeholder-wrap";
+
+        const placeholder = document.createElement("span");
+        placeholder.className = "omission-placeholder";
+        placeholder.textContent = "[...........................................]";
+
+        const label = document.createElement("span");
+        label.className = "omission-kind-label";
+        label.textContent = "verso omitido";
+
+        wrap.append(placeholder, label);
         parentL?.setAttribute("data-witness-omitted", "true");
-        app.replaceWith(ph);
+        app.replaceWith(wrap);
       } else {
         app.replaceWith(resolved);
       }
@@ -519,7 +533,7 @@ edition_label: Edición crítica · prototipo
 
       const omitted =
         line.hasAttribute("data-witness-omitted") ||
-        !!line.querySelector(".omission-slot, .placeholder-block");
+        !!line.querySelector(".omission-placeholder, .placeholder-block");
       if (omitted) {
         line.setAttribute("data-witness-omitted", "true");
         line.removeAttribute("data-witness-n");
@@ -766,7 +780,7 @@ edition_label: Edición crítica · prototipo
 
       const all = Array.from(root.querySelectorAll("*"));
       let inRange = false;
-      const affectedLines = [];
+      const affectedElements = [];
 
       for (const el of all) {
         if (el === startAnchor) {
@@ -774,13 +788,28 @@ edition_label: Edición crítica · prototipo
           continue;
         }
         if (el === endAnchor) break;
-        if (inRange && el.tagName?.toLowerCase() === "tei-l") {
-          affectedLines.push(el);
+        const tag = el.tagName?.toLowerCase();
+        if (inRange && (tag === "tei-l" || tag === "tei-speaker")) {
+          affectedElements.push(el);
         }
       }
 
+      const affectedLines = affectedElements.filter(
+        (el) => el.tagName?.toLowerCase() === "tei-l",
+      );
+
       if (affectedLines.length) {
         const sigla = Array.from(omittedWits);
+        const includesSpeaker = affectedElements.some(
+          (el) => el.tagName?.toLowerCase() === "tei-speaker",
+        );
+        const omissionLabel =
+          affectedLines.length === 1
+            ? "Verso omitido"
+            : includesSpeaker
+              ? "Pasaje omitido"
+              : "Versos omitidos";
+
         affectedLines.forEach((line) => {
           line.classList.add("critical-omission-range");
           line.dataset.omittedIn = sigla.join(" ");
@@ -792,13 +821,13 @@ edition_label: Edición crítica · prototipo
         marker.className = "transmission-note omission-note";
         marker.setAttribute(
           "aria-label",
-          `Pasaje omitido en ${sigla.join(", ")}`,
+          `${omissionLabel} en ${sigla.join(", ")}`,
         );
-        marker.textContent = "−";
+        marker.textContent = "om.";
 
         const tooltip = document.createElement("span");
         tooltip.className = "transmission-tooltip";
-        tooltip.textContent = `Omitido en: ${sigla.join(", ")}`;
+        tooltip.textContent = `${omissionLabel} en: ${sigla.join(", ")}`;
         marker.appendChild(tooltip);
 
         marker.addEventListener("click", (e) => {
