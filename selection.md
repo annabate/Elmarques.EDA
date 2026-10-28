@@ -29,7 +29,7 @@ title: Acceder al texto
         <p class="card-text">
           Acceda a la edición genética digital basada en el manuscrito autógrafo.
         </p>
-        <a href="{{ site.baseurl }}/edition/index.html" class="btn btn-primary">Acceder</a>
+        <a href="{{ site.baseurl }}/genetic/" class="btn btn-primary">Acceder</a>
       </div>
     </div>
   </div>
