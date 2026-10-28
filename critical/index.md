@@ -13,7 +13,7 @@ edition_label: Edición crítica · prototipo
     <label class="witness-picker" for="witness-select">
       <span>Cotejar con</span>
       <select id="witness-select">
-        <option value="">Selecciona testimonio</option>
+        <option value="">Seleccionar testimonio</option>
       </select>
     </label>
     <button
@@ -113,7 +113,7 @@ edition_label: Edición crítica · prototipo
     <div class="characters-controls">
       <div class="characters-metric-toggle" role="group" aria-label="Métrica de comparación">
         <button type="button" class="characters-metric-btn is-active" data-character-metric="lines">Líneas</button>
-        <button type="button" class="characters-metric-btn" data-character-metric="interventions">Intervenciones</button>
+        <button type="button" class="characters-metric-btn" data-character-metric="interventions">Parlamentos</button>
       </div>
       <label class="characters-differences-toggle">
         <input id="characters-only-differences" type="checkbox" checked>
@@ -126,7 +126,7 @@ edition_label: Edición crítica · prototipo
         <div id="characters-table"></div>
       </div>
       <aside class="characters-bars-panel">
-        <h4>Diferencias de atribución</h4>
+        <h4>Variantes de atribución</h4>
         <div id="attribution-changes" class="attribution-changes"></div>
       </aside>
     </div>
@@ -1137,7 +1137,7 @@ edition_label: Edición crítica · prototipo
     todos: "Todos",
     texto: "Texto",
     acotaciones: "Acotaciones",
-    interlocutores: "Interlocutores",
+    interlocutores: "Atribuciones",
     omisiones: "Omisiones",
     adiciones: "Adiciones",
   };
@@ -1261,11 +1261,11 @@ edition_label: Edición crítica · prototipo
 
     const counts = countVariantTags(loci);
     [
-      ["Loci", counts.todos],
+      ["Entradas", counts.todos],
       ["Omisiones", counts.omisiones],
       ["Adiciones", counts.adiciones],
       ["Acotaciones", counts.acotaciones],
-      ["Interlocutores", counts.interlocutores],
+      ["Atribuciones", counts.interlocutores],
     ].forEach(([label, value]) => {
       const card = document.createElement("div");
       card.className = "variant-summary-card";
@@ -1734,7 +1734,7 @@ edition_label: Edición crítica · prototipo
       ["Testimonios", witnessIDs.length],
       ["Personajes", comparison.rows.length],
       ["Con diferencias", differingCharacters],
-      ["Cambios de atribución", attributionCount],
+      ["Variantes de atribución", attributionCount],
     ].forEach(([label, value]) => {
       const card = document.createElement("div");
       card.className = "character-summary-card";
@@ -1748,7 +1748,7 @@ edition_label: Edición crítica · prototipo
   }
 
   function metricLabel(metric) {
-    return metric === "interventions" ? "Intervenciones" : "Líneas";
+    return metric === "interventions" ? "Parlamentos" : "Líneas";
   }
 
   function characterMetricDiffers(row, witnessIDs, metric) {
@@ -1899,7 +1899,7 @@ edition_label: Edición crítica · prototipo
       const empty = document.createElement("p");
       empty.className = "characters-empty";
       empty.textContent =
-        "No se registran cambios explícitos de atribución entre los testimonios codificados.";
+        "No se registran variantes explícitas de atribución entre los testimonios codificados.";
       container.appendChild(empty);
     }
   }
@@ -2120,7 +2120,7 @@ edition_label: Edición crítica · prototipo
 
   function populateWitnessSelect(allWitnesses) {
     const select = document.getElementById("witness-select");
-    select.innerHTML = '<option value="">Selecciona testimonio</option>';
+    select.innerHTML = '<option value="">Seleccionar testimonio</option>';
     allWitnesses.forEach((witID) => {
       const option = document.createElement("option");
       const description = getWitnessDescription(witID);
