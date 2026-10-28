@@ -437,7 +437,7 @@
           <l n="177">filósofo de estas cosas.</l>
         </sp>
         <anchor xml:id="l_177"/>
-        <app from="#l_176" to="l_177">
+        <app from="#l_176" to="#l_177">
           <rdg wit="#M #S1 #P"/>
         </app>
         <sp who="#El_marqués">
@@ -480,7 +480,7 @@
           <l n="203">de dos mamonas la hizo</l>
           <l n="204">sepulturas y juanetes.</l>
           <anchor xml:id="l_204"/>
-          <app from="#l_201" to="l_204">
+          <app from="#l_201" to="#l_204">
             <rdg wit="#E #M #S1 #P"/>
           </app>
           <l n="205">¡Vive Dios, que es de mal gusto</l>
@@ -751,7 +751,7 @@
         <anchor xml:id="l_351"/>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-           <l xml:id="l_351" n="351">¿Y yo a oscuras pude tanto</l>
+           <l n="351">¿Y yo a oscuras pude tanto</l>
             <l xml:id="l_352" n="352">
               <app xml:id="app352_line">
                 <lem wit="#O #E #M">
@@ -775,7 +775,7 @@
           <l n="359">basta el ver, basta el oír.</l>
         </sp>
         <anchor xml:id="l_359"/>
-        <app from="l_351" to="l_359"><rdg wit="#P"/></app>
+        <app from="#l_351" to="#l_359"><rdg wit="#P"/></app>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="360">¿Voluntades diferentes</l>
