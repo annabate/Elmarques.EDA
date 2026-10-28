@@ -291,7 +291,7 @@
         A0: "A0 · primera redacción",
         A1: "A0 + A1 · estado tras las correcciones inmediatas",
         A2: "A0 + A1 + A2 · último estado autorial",
-        B: "A0 + A1 + A2 + B · estado documental",
+        B: "A0 + A1 + A2 + B · estado final del manuscrito",
       };
       modeHint.textContent = labels[mode];
     }
