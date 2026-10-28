@@ -4,21 +4,51 @@ title: El marqués de las Navas – Edición Digital Académica
 edition_label: Edición crítica · prototipo
 ---
 
-<!-- Sticky header with title and buttons -->
-<header id="sticky-header" class="page-header">
-  <div id="floating-tools">
-    <button id="add-witness-btn" title="Comparar testimonio">+</button>
-    <select id="witness-select" class="hidden">
-      <option value="">Selecciona testimonio</option>
-    </select>
-    <button id="open-stats-btn">Ver estadísticas</button>
+<header id="sticky-header" class="critical-toolbar" aria-label="Herramientas de la edición crítica">
+  <div class="critical-toolbar-title">
+    <span class="critical-toolbar-eyebrow">Edición crítica</span>
+    <strong>Texto y aparato</strong>
+  </div>
+
+  <div id="floating-tools" class="critical-toolbar-actions">
+    <label class="witness-picker" for="witness-select">
+      <span>Comparar con</span>
+      <select id="witness-select">
+        <option value="">Selecciona testimonio</option>
+      </select>
+    </label>
+    <button id="open-stats-btn" class="tool-button tool-button-secondary" type="button">
+      Estadísticas
+    </button>
   </div>
 </header>
 
-<!-- TEI Content Wrapper -->
-<div id="tei-wrapper" class="synoptic-view">
-  <div id="critical-container" class="tei-column critical-column"></div>
-  <div id="witness-container" class="tei-column witness-column hidden"></div>
+<div id="tei-wrapper" class="synoptic-view" data-comparison="closed">
+  <section id="critical-pane" class="edition-pane critical-pane" aria-label="Texto crítico">
+    <header class="pane-header">
+      <div>
+        <span class="pane-eyebrow">Texto crítico</span>
+        <h1>El marqués de las Navas</h1>
+      </div>
+      <span class="pane-meta">Edición crítica</span>
+    </header>
+    <div id="critical-container" class="tei-column critical-column">
+      <div class="edition-loading" id="critical-loading" role="status">Cargando la edición…</div>
+    </div>
+  </section>
+
+  <section id="witness-pane" class="edition-pane witness-pane hidden" aria-label="Testimonio comparado">
+    <header class="pane-header">
+      <div>
+        <span class="pane-eyebrow">Testimonio</span>
+        <h2 id="witness-title">—</h2>
+      </div>
+      <button id="close-witness-btn" class="pane-close" type="button" aria-label="Cerrar comparación">
+        Cerrar
+      </button>
+    </header>
+    <div id="witness-container" class="tei-column witness-column"></div>
+  </section>
 </div>
 
 <!-- Modal wrapper for centering and backdrop -->
