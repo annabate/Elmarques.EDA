@@ -443,26 +443,11 @@
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
           <l n="178">No, es el que menos entiende.</l>
-          <!-- delimita l’intervallo dell’aggiunta -->
-          <anchor xml:id="addA1"/>
-          <!-- QUI dentro metti il contenuto dell’aggiunta,
-              così il testimone lo potrà recuperare -->
-          <l n="123">Este es el pasaje añadido…</l>
-          <l n="124">…que ocupa varias líneas.</l>
-          <anchor xml:id="addA2"/>
-          <!-- apparatus a raggio lungo che dichiara l’aggiunta -->
-          <app type="addition" from="#addA1" to="#addA2">
-            <!-- Testimoni che contengono l’aggiunta -->
-            <rdg wit="#M">
-              <add/>  
-            </rdg>
-          </app>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="179"><app><lem wit="#O">Siempre vuestras señorías</lem><rdg wit="#E #M #S1 #P">Que siempre vuestra señoría</rdg></app></l>
           <l n="180">por lo singular se <app><lem wit="#O">pierden</lem><rdg wit="#E #M #S1 #P">pierde</rdg></app>.</l>
-          <app><rdg wit="#P"><add><l>otra prueba</l></add></rdg></app>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
