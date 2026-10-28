@@ -709,29 +709,15 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
-  // Omission long-span (Range)
+  // Long-span omissions in the critical text
+  // Keep the critical reading untouched; mark the range discreetly.
   // =========================
   function decorateOmissionSpans(root, inWitnessView = false) {
+    if (inWitnessView) return;
+
     const apps = root.querySelectorAll(
       'tei-app[from][to]:not([type="addition"])',
     );
-
-    if (!root.__omissionClickAwayBound) {
-      document.addEventListener(
-        "click",
-        () => {
-          root.querySelectorAll(".lem-omission.active").forEach((el) => {
-            el.classList.remove("active");
-            el.querySelector(".omission-tooltip")?.style.setProperty(
-              "display",
-              "none",
-            );
-          });
-        },
-        { passive: true },
-      );
-      root.__omissionClickAwayBound = true;
-    }
 
     const resolveAnchor = (ref) => {
       const id = (ref || "").replace(/^#/, "");
@@ -758,59 +744,65 @@ edition_label: Edición crítica · prototipo
       const omittedWits = new Set();
       directChildren(app, "tei-rdg").forEach((rdg) => {
         if (!rdg.textContent || rdg.textContent.trim() === "") {
-          (rdg.getAttribute("wit") || "")
-            .trim()
-            .split(/\s+/)
-            .forEach((w) => w && omittedWits.add(w.replace(/^#/, "")));
+          witnessTokens(rdg.getAttribute("wit")).forEach((w) =>
+            omittedWits.add(w),
+          );
         }
       });
-      if (omittedWits.size === 0) return;
+      if (omittedWits.size === 0) {
+        app.remove();
+        return;
+      }
 
       const startAnchor = resolveAnchor(fromRef);
       const endAnchor = resolveAnchor(toRef);
       if (!startAnchor || !endAnchor) return;
 
-      const wrapper = document.createElement("div");
-      wrapper.className = "lem-wrapper lem-omission omission-block";
+      const all = Array.from(root.querySelectorAll("*"));
+      let inRange = false;
+      const affectedLines = [];
 
-      const tooltip = document.createElement("div");
-      tooltip.className = "omission-tooltip";
-      tooltip.style.display = "none";
-      tooltip.textContent = `Texto omitido en: #${Array.from(omittedWits).join(
-        ", ",
-      )}`;
-      wrapper.appendChild(tooltip);
-
-      wrapper.addEventListener("click", (e) => {
-        e.stopPropagation();
-        root.querySelectorAll(".lem-omission.active").forEach((el) => {
-          if (el !== wrapper) {
-            el.classList.remove("active");
-            el.querySelector(".omission-tooltip")?.style.setProperty(
-              "display",
-              "none",
-            );
-          }
-        });
-        const open = !wrapper.classList.contains("active");
-        wrapper.classList.toggle("active", open);
-        tooltip.style.display = open ? "block" : "none";
-      });
-
-      const range = document.createRange();
-      range.setStartAfter(startAnchor);
-      range.setEndBefore(endAnchor);
-
-      const frag = range.extractContents();
-      if (!frag || !frag.hasChildNodes()) {
-        range.detach?.();
-        return;
+      for (const el of all) {
+        if (el === startAnchor) {
+          inRange = true;
+          continue;
+        }
+        if (el === endAnchor) break;
+        if (inRange && el.tagName?.toLowerCase() === "tei-l") {
+          affectedLines.push(el);
+        }
       }
 
-      startAnchor.parentNode.insertBefore(wrapper, startAnchor.nextSibling);
-      wrapper.appendChild(frag);
+      if (affectedLines.length) {
+        const sigla = Array.from(omittedWits);
+        affectedLines.forEach((line) => {
+          line.classList.add("critical-omission-range");
+          line.dataset.omittedIn = sigla.join(" ");
+        });
 
-      range.detach?.();
+        const first = affectedLines[0];
+        const marker = document.createElement("button");
+        marker.type = "button";
+        marker.className = "transmission-note omission-note";
+        marker.setAttribute(
+          "aria-label",
+          `Pasaje omitido en ${sigla.join(", ")}`,
+        );
+        marker.textContent = "−";
+
+        const tooltip = document.createElement("span");
+        tooltip.className = "transmission-tooltip";
+        tooltip.textContent = `Omitido en: ${sigla.join(", ")}`;
+        marker.appendChild(tooltip);
+
+        marker.addEventListener("click", (e) => {
+          e.stopPropagation();
+          marker.classList.toggle("active");
+        });
+
+        first.appendChild(marker);
+      }
+
       app.remove();
     });
   }
@@ -897,43 +889,88 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
-  // Aggiunte inline (senza anchors/type) → marker nel base
+  // Inline added verses in witnesses
+  // In the critical text create a neutral alignment slot.
   // =========================
   function decorateInlineAdditionsWithoutAnchors(root) {
-    // prendi SOLO <app> inline (senza from/to), qualsiasi @type
     const apps = Array.from(
       root.querySelectorAll("tei-app:not([from]):not([to])"),
     ).filter((app) => app.querySelector("tei-rdg tei-add") !== null);
 
     apps.forEach((app) => {
-      // raccogli i testimoni che aggiungono
       const witSet = new Set();
-      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+      directChildren(app, "tei-rdg").forEach((rdg) => {
         if (rdg.querySelector("tei-add")) {
-          (rdg.getAttribute("wit") || "")
-            .trim()
-            .split(/\s+/)
-            .map((w) => w.replace(/^#/, ""))
-            .filter(Boolean)
-            .forEach((w) => witSet.add(w));
+          witnessTokens(rdg.getAttribute("wit")).forEach((w) => witSet.add(w));
         }
       });
 
-      // sostituisci l'intero <app> con il marker ✚ (solo nel BASE)
-      const wrap = document.createElement("span");
-      wrap.className = "addition-marker-wrapper";
-      const marker = document.createElement("span");
-      marker.className = "addition-marker";
-      marker.textContent = "✚";
-      const tip = document.createElement("span");
-      tip.className = "addition-tooltip";
-      const list = Array.from(witSet);
-      tip.textContent = list.length
-        ? `Se añade un verso en: #${list.join(", ")}`
-        : `Se añade un verso en`;
-      wrap.append(marker, tip);
+      // Find the nearest preceding numbered critical verse.
+      let previousN = null;
+      let cursor = app.previousElementSibling;
+      while (cursor && !previousN) {
+        if (cursor.tagName?.toLowerCase() === "tei-l" && cursor.getAttribute("n")) {
+          previousN = cursor.getAttribute("n");
+          break;
+        }
+        const nested = cursor.querySelector?.("tei-l[n]:last-of-type");
+        if (nested) previousN = nested.getAttribute("n");
+        cursor = cursor.previousElementSibling;
+      }
 
-      app.replaceWith(wrap);
+      if (!previousN) {
+        const parent = app.closest("tei-sp, tei-div");
+        const preceding = parent
+          ? Array.from(parent.querySelectorAll("tei-l[n]")).filter(
+              (line) =>
+                line.compareDocumentPosition(app) &
+                Node.DOCUMENT_POSITION_FOLLOWING,
+            )
+          : [];
+        previousN = preceding.at(-1)?.getAttribute("n") || "";
+      }
+
+      const slot = document.createElement("div");
+      slot.className = "transmission-slot addition-slot";
+      slot.dataset.additionWits = Array.from(witSet).join(" ");
+      if (previousN) {
+        slot.dataset.additionAfter = previousN;
+        slot.dataset.syncKey = `add-after-${previousN}`;
+      }
+
+      const gutter = document.createElement("span");
+      gutter.className = "transmission-slot-gutter";
+      gutter.setAttribute("aria-hidden", "true");
+
+      const body = document.createElement("span");
+      body.className = "transmission-slot-body";
+
+      const sign = document.createElement("span");
+      sign.className = "transmission-sign";
+      sign.textContent = "+";
+
+      const label = document.createElement("span");
+      label.className = "transmission-label";
+      label.textContent = `Verso añadido en ${Array.from(witSet).join(", ")}`;
+
+      body.append(sign, label);
+      slot.append(gutter, body);
+      app.replaceWith(slot);
+    });
+  }
+
+  function updateCriticalAdditionSlots(witID = null) {
+    const critical = document.getElementById("critical-container");
+    if (!critical) return;
+
+    const wanted = (witID || "").replace(/^#/, "");
+    critical.querySelectorAll(".addition-slot").forEach((slot) => {
+      const wits = witnessTokens(slot.dataset.additionWits);
+      slot.classList.remove("is-alignment-active", "is-suppressed");
+
+      if (!wanted) return;
+      if (wits.includes(wanted)) slot.classList.add("is-alignment-active");
+      else slot.classList.add("is-suppressed");
     });
   }
 
@@ -944,32 +981,33 @@ edition_label: Edición crítica · prototipo
     if (window.__syncHLBound) return;
     const scope = document.getElementById("tei-wrapper") || document;
 
-    const getLine = (node) => (node ? node.closest?.("[data-line-n]") : null);
-    const highlight = (n) =>
+    const getSyncNode = (node) =>
+      node ? node.closest?.("[data-sync-key]") : null;
+    const highlight = (key) =>
       document
-        .querySelectorAll(`[data-line-n="${CSS.escape(n)}"]`)
+        .querySelectorAll(`[data-sync-key="${CSS.escape(key)}"]`)
         .forEach((el) => el.classList.add("line-highlight"));
-    const unhighlight = (n) =>
+    const unhighlight = (key) =>
       document
-        .querySelectorAll(`[data-line-n="${CSS.escape(n)}"]`)
+        .querySelectorAll(`[data-sync-key="${CSS.escape(key)}"]`)
         .forEach((el) => el.classList.remove("line-highlight"));
 
     scope.addEventListener("pointerover", (e) => {
-      const to = getLine(e.target);
+      const to = getSyncNode(e.target);
       if (!to) return;
-      const from = getLine(e.relatedTarget);
-      const n = to.getAttribute("data-line-n");
-      if (from && from.getAttribute("data-line-n") === n) return; // transito interno
-      highlight(n);
+      const from = getSyncNode(e.relatedTarget);
+      const key = to.getAttribute("data-sync-key");
+      if (from && from.getAttribute("data-sync-key") === key) return;
+      highlight(key);
     });
 
     scope.addEventListener("pointerout", (e) => {
-      const from = getLine(e.target);
+      const from = getSyncNode(e.target);
       if (!from) return;
-      const to = getLine(e.relatedTarget);
-      const n = from.getAttribute("data-line-n");
-      if (to && to.getAttribute("data-line-n") === n) return; // transito interno
-      unhighlight(n);
+      const to = getSyncNode(e.relatedTarget);
+      const key = from.getAttribute("data-sync-key");
+      if (to && to.getAttribute("data-sync-key") === key) return;
+      unhighlight(key);
     });
 
     window.__syncHLBound = true;
@@ -1569,6 +1607,7 @@ edition_label: Edición crítica · prototipo
     if (select) select.value = "";
     if (title) title.textContent = "—";
     if (description) description.textContent = "";
+    updateCriticalAdditionSlots(null);
   }
 
   function setupFloatingControls() {
@@ -1624,6 +1663,7 @@ edition_label: Edición crítica · prototipo
     wrapper.dataset.comparison = "open";
     title.textContent = witnessID;
     description.textContent = getWitnessDescription(witnessID);
+    updateCriticalAdditionSlots(witnessID);
 
     const witnessDOM = reconstructWitness(witnessID, baseTEI);
     witnessDOM.setAttribute("data-witness-id", witnessID);
