@@ -211,6 +211,13 @@ button:focus-visible,
   white-space: nowrap;
 }
 
+.pane-numbering-note {
+  display: inline-block;
+  margin-top: 0.18rem;
+  color: #8a8177;
+  font: 500 0.64rem/1.15 var(--sch-sans);
+}
+
 .pane-meta {
   color: var(--critical-muted);
   font: 500 0.7rem/1 var(--sch-sans);
