@@ -30,7 +30,7 @@ edition_label: Edición crítica · prototipo
         <span class="pane-eyebrow">Texto crítico</span>
         <h1>El marqués de las Navas</h1>
       </div>
-      <span class="pane-meta">Edición crítica</span>
+      <span class="pane-meta">Numeración crítica</span>
     </header>
     <div id="critical-container" class="tei-column critical-column">
       <div class="edition-loading" id="critical-loading" role="status">Cargando la edición…</div>
@@ -43,6 +43,7 @@ edition_label: Edición crítica · prototipo
         <span class="pane-eyebrow">Testimonio</span>
         <h2 id="witness-title">—</h2>
         <p id="witness-description" class="pane-description"></p>
+        <span class="pane-numbering-note">Numeración propia del testimonio</span>
       </div>
       <button id="close-witness-btn" class="pane-close" type="button" aria-label="Cerrar comparación">
         Cerrar
