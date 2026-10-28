@@ -3,35 +3,39 @@ layout: default
 title: Acceder al texto
 ---
 
-<h3>Seleccione el tipo de edición que desea consultar:</h3>
+<p class="edition-choice-intro">
+  El proyecto ofrece dos recorridos complementarios por la comedia. Seleccione la
+  modalidad de consulta según el aspecto del texto que desee examinar.
+</p>
 
-<div class="row justify-content-center">
-
-  <!-- Edición crítica -->
-  <div class="col-md-5 mb-4 d-flex align-items-stretch">
-    <div class="card shadow-sm w-100">
-      <div class="card-body">
-        <h5 class="card-title">Edición crítica</h5>
-        <p class="card-text">
-          Consulte la edición crítica digital del texto basada en la colación entre testimonios.
-        </p>
-        <a href="{{ site.baseurl }}/critical/index.html" class="btn btn-secondary">Acceder</a>
-      </div>
+<div class="edition-choice-grid">
+  <a class="edition-choice" href="{{ site.baseurl }}/critical/">
+    <span class="edition-choice-label">Edición filológica</span>
+    <h2>Edición crítica</h2>
+    <p>
+      Texto crítico establecido a partir de la tradición de la obra, con acceso a
+      las variantes de los testimonios y herramientas de comparación.
+    </p>
+    <div class="edition-choice-meta" aria-hidden="true">
+      <span>Texto crítico</span>
+      <span>Aparato de variantes</span>
+      <span>Comparación</span>
     </div>
-  </div>
+    <span class="edition-choice-action">Consultar la edición <span>→</span></span>
+  </a>
 
-
-  <!-- Edición genética -->
-  <div class="col-md-5 mb-4 d-flex align-items-stretch">
-    <div class="card shadow-sm w-100">
-      <div class="card-body">
-        <h5 class="card-title">Edición genética</h5>
-        <p class="card-text">
-          Acceda a la edición genética digital basada en el manuscrito autógrafo.
-        </p>
-        <a href="{{ site.baseurl }}/genetic/" class="btn btn-primary">Acceder</a>
-      </div>
+  <a class="edition-choice" href="{{ site.baseurl }}/genetic/">
+    <span class="edition-choice-label">Escritura del autógrafo</span>
+    <h2>Edición genético-evolutiva</h2>
+    <p>
+      Reconstrucción de las fases de escritura del manuscrito autógrafo, con
+      visualización de los estratos A0, A1, A2 y B y consulta sincronizada del facsímil.
+    </p>
+    <div class="edition-choice-meta" aria-hidden="true">
+      <span>A0 · A1 · A2 · B</span>
+      <span>Facsímil</span>
+      <span>Fases de escritura</span>
     </div>
-  </div>
-
+    <span class="edition-choice-action">Explorar la génesis <span>→</span></span>
+  </a>
 </div>
