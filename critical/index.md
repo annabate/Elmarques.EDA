@@ -571,23 +571,36 @@ edition_label: Edición crítica · prototipo
   }
 
   function alignSplitVerses(root) {
-    const lines = root.querySelectorAll("tei-l, l");
+    const lines = Array.from(root.querySelectorAll("tei-l, l"));
+
+    // The function can be called again after a pane/layout change.
+    // Always clear the previous calculation first.
+    lines.forEach((line) => {
+      const text = line.querySelector(".line-text");
+      if (!text) return;
+      text.style.removeProperty("--split-indent");
+      line.removeAttribute("data-split-indent");
+    });
+
     lines.forEach((line, index) => {
       const part = line.getAttribute("part");
-      const container = line.querySelector(".line-text");
-      if (!part || !container) return;
+      const text = line.querySelector(".line-text");
+      if (!part || !text) return;
+
       const prev = lines[index - 1];
       const prevPart = prev?.getAttribute("part");
-      const prevLineText = prev?.querySelector(".line-text");
-      if (
+      const prevText = prev?.querySelector(".line-text");
+      const continuesPrevious =
         (part === "M" && prevPart === "I") ||
-        (part === "F" && (prevPart === "M" || prevPart === "I"))
-      ) {
-        if (prevLineText) {
-          const indent = prevLineText.getBoundingClientRect().width;
-          container.style.paddingLeft = `${indent}px`;
-        }
-      }
+        (part === "F" && (prevPart === "M" || prevPart === "I"));
+
+      if (!continuesPrevious || !prevText) return;
+
+      // .line-text is content-sized, so this is the width of the preceding
+      // fragment itself (including an earlier split indent), not the grid cell.
+      const indent = Math.max(0, prevText.getBoundingClientRect().width);
+      text.style.setProperty("--split-indent", `${indent}px`);
+      line.setAttribute("data-split-indent", String(Math.round(indent)));
     });
   }
 
