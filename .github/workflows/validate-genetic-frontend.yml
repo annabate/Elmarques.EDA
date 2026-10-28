@@ -8,6 +8,8 @@ on:
       - 'assets/genetic/**'
       - 'css/genetic-edition.css'
       - 'edition/index.md'
+      - 'edition/prototype/EMN_mod_act1_pilot.xml'
+      - 'edition/EMN_dip.xml'
       - '_layouts/edition.html'
       - 'Gemfile'
       - 'vercel.json'
@@ -44,6 +46,63 @@ jobs:
           node --check assets/genetic/model.js
           node --check assets/genetic/facsimile.js
           node --check assets/genetic/app.js
+
+      - name: Check genetic verse numbering
+        run: |
+          python - <<'PY'
+          import re
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          path = Path('edition/prototype/EMN_mod_act1_pilot.xml')
+          ET.parse(path)
+          text = path.read_text(encoding='utf-8')
+
+          lines = []
+          for match in re.finditer(r'<l\b([^>]*)>', text):
+              attrs = match.group(1)
+              n_match = re.search(r'\bn="([^"]+)"', attrs)
+              part_match = re.search(r'\bpart="([^"]+)"', attrs)
+              lines.append({
+                  'n': n_match.group(1) if n_match else None,
+                  'part': part_match.group(1) if part_match else '',
+              })
+
+          if len(lines) != 908:
+              raise SystemExit(f'Expected 908 genetic line elements, found {len(lines)}')
+
+          missing = [i for i, line in enumerate(lines) if not line['n']]
+          if missing:
+              raise SystemExit(f'Genetic lines without @n: {missing[:20]}')
+
+          current = 0
+          for i, line in enumerate(lines):
+              value = int(line['n'])
+              if line['part'] in {'M', 'F'}:
+                  expected = current
+              else:
+                  expected = current + 1
+
+              if value != expected:
+                  raise SystemExit(
+                      f'Incoherent verse numbering at line index {i}: '
+                      f'found {value}, expected {expected}, part={line["part"]!r}'
+                  )
+              current = value
+
+          if current != 836:
+              raise SystemExit(f'Expected final genetic verse 836, found {current}')
+
+          verse_550 = [
+              line['part'] for line in lines if line['n'] == '550'
+          ]
+          if verse_550 != ['I', 'F']:
+              raise SystemExit(
+                  f'Verse 550 must be split I/F, found {verse_550}'
+              )
+
+          print('Genetic pilot: 908 line elements fully numbered through verse 836.')
+          PY
 
       - name: Check facsimile folio mapping
         run: |
