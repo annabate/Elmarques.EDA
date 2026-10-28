@@ -229,7 +229,8 @@
       if (seq) mod.dataset.seq = seq;
 
       const marker = document.createElement("span");
-      marker.className = "genetic-event-marker";
+      marker.className =
+        `genetic-event-marker marker-${layer.toLowerCase()}`;
 
       const markerLayer = document.createElement("span");
       markerLayer.className = "genetic-event-marker-layer";
@@ -252,7 +253,21 @@
       const markerLabel = seq ? `${layer}, fase ${seq}` : layer;
       marker.setAttribute("aria-label", markerLabel);
 
-      mod.prepend(marker);
+      const addReading = directChild(mod, "add");
+      const delReading = directChild(mod, "del");
+      const type = attr(mod, "type").toLowerCase();
+
+      // For additions and substitutions the marker identifies the
+      // reading produced by the intervention, so it belongs immediately
+      // before that reading. Pure deletions have no resulting reading:
+      // in that case the marker stays with the deleted text.
+      if (addReading && type !== "del") {
+        addReading.prepend(marker);
+      } else if (delReading) {
+        delReading.prepend(marker);
+      } else {
+        mod.prepend(marker);
+      }
     });
 
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
