@@ -928,16 +928,28 @@ tei-addspan::after {
 }
 
 .note-trigger {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.05em;
+  min-height: 1.05em;
   border: 0;
   background: transparent;
-  color: #8b8175;
-  padding: 0 0.03rem;
+  color: #6f6253;
+  padding: 0 0.05em;
   cursor: pointer;
-  font: 600 0.72rem/1 Georgia, "Times New Roman", serif;
+  font: 700 0.92em/1 Georgia, "Times New Roman", serif;
+  vertical-align: baseline;
 }
 
-.note-trigger:hover {
-  color: #3f3426;
+.note-trigger:hover,
+.note-trigger:focus-visible {
+  color: #2f2922;
+}
+
+.note-trigger:focus-visible {
+  outline: 1px solid #8f877d;
+  outline-offset: 2px;
+  border-radius: 50%;
 }
 
 .floating-note {
@@ -972,13 +984,13 @@ tei-addspan::after {
   padding: 0.42rem 0.5rem 0.42rem 0.7rem;
   border-bottom: 1px solid #d8d0c5;
   background: #f1ede5;
-  cursor: grab;
+  cursor: move;
   touch-action: none;
   user-select: none;
 }
 
 .floating-note.is-dragging .floating-note-header {
-  cursor: grabbing;
+  cursor: move;
 }
 
 .floating-note-title {
@@ -988,8 +1000,10 @@ tei-addspan::after {
 
 .floating-note-drag-hint {
   margin-right: auto;
-  color: #8b8378;
-  font-size: 0.64rem;
+  color: #9a9186;
+  font: 700 0.9rem/1 system-ui, sans-serif;
+  letter-spacing: -0.08em;
+  opacity: 0.82;
 }
 
 .floating-note-close {
