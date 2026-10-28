@@ -73,7 +73,7 @@ edition_label: Edición crítica · prototipo
     <div class="variants-modal-heading">
       <div>
         <span class="variants-kicker">Edición crítica</span>
-        <h3 id="variants-title">Aparato crítico</h3>
+        <h3 id="variants-title">Panorama del aparato</h3>
       </div>
       <span id="variants-scope" class="variants-scope"></span>
     </div>
@@ -103,7 +103,7 @@ edition_label: Edición crítica · prototipo
     <div class="characters-modal-heading">
       <div>
         <span class="characters-kicker">Tradición textual</span>
-        <h3 id="characters-title">Comparación de personajes</h3>
+        <h3 id="characters-title">Distribución textual por personaje</h3>
       </div>
       <span id="characters-scope" class="characters-scope"></span>
     </div>
