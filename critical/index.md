@@ -29,8 +29,8 @@ edition_label: Edición crítica · prototipo
         <path d="M4.75 6.5H4a2 2 0 0 0-2 2v9.75a2 2 0 0 0 2 2h8.75"></path>
       </svg>
     </button>
-    <button id="open-stats-btn" class="tool-button tool-button-secondary" type="button">
-      Estadísticas
+    <button id="open-variants-btn" class="tool-button tool-button-secondary" type="button">
+      Variantes
     </button>
   </div>
 </header>
@@ -64,26 +64,32 @@ edition_label: Edición crítica · prototipo
   </div>
 </div>
 
-<!-- Modal wrapper for centering and backdrop -->
-<div id="modal-wrapper" class="modal hidden">
-  <div id="stats-modal">
-    <!-- Close button -->
-    <button id="close-stats-btn">🗙</button>
-    <!-- Witness selection -->
-    <h3>Elige un testimonio</h3>
-    <div class="witness-controls">
-      <div id="witness-buttons"></div>
-      <button id="toggle-global-chart-btn">Ver gráficas</button>
+<div id="variants-modal-wrapper" class="modal hidden">
+  <div id="variants-modal" class="variants-modal" role="dialog" aria-modal="true" aria-labelledby="variants-title">
+    <button id="close-variants-btn" class="modal-close" type="button" aria-label="Cerrar">×</button>
+    <div class="variants-modal-heading">
+      <div>
+        <span class="variants-kicker">Aparato crítico</span>
+        <h3 id="variants-title">Variantes</h3>
+      </div>
+      <span id="variants-scope" class="variants-scope"></span>
     </div>
-    <!-- Stats panel (list + individual chart) -->
-    <div id="stats-panel">
-      <canvas id="stats-chart" width="800" height="300"></canvas>
+
+    <div id="variants-summary" class="variants-summary" aria-label="Resumen de variantes"></div>
+
+    <div class="variants-toolbar">
+      <div id="variants-filters" class="variants-filters" role="group" aria-label="Filtrar variantes"></div>
+      <span id="variants-result-count" class="variants-result-count"></span>
     </div>
-    <!-- Global charts (general + per-act) -->
-    <div id="global-chart-modal" class="hidden">
-      <button id="close-global-chart-btn">Cerrar</button>
-      <h3>Comparativa global entre testimonios</h3>
-      <div id="global-charts-container"></div>
+
+    <div class="variants-layout">
+      <div class="variants-list-panel">
+        <div id="variants-list" class="variants-list"></div>
+      </div>
+      <aside class="variants-distribution-panel">
+        <h4>Distribución por acto</h4>
+        <div id="variants-distribution" class="variants-distribution"></div>
+      </aside>
     </div>
   </div>
 </div>
@@ -134,6 +140,101 @@ edition_label: Edición crítica · prototipo
     return Array.from(el.children).filter(
       (c) => c.tagName && c.tagName.toLowerCase() === t,
     );
+  }
+
+  function assignLocusIds(root) {
+    root.querySelectorAll("tei-app").forEach((app, index) => {
+      if (!app.dataset.locusId) {
+        app.dataset.locusId = `locus-${String(index + 1).padStart(4, "0")}`;
+      }
+    });
+  }
+
+  function cleanReadingText(node) {
+    return (node?.textContent || "").trim().replace(/\s+/g, " ");
+  }
+
+  function nearestVerseNumber(app) {
+    const line = app.closest("tei-l");
+    if (line?.getAttribute("n")) return line.getAttribute("n");
+
+    let cursor = app;
+    while (cursor) {
+      const previous = cursor.previousElementSibling;
+      if (previous) {
+        const directN =
+          previous.tagName?.toLowerCase() === "tei-l"
+            ? previous.getAttribute("n")
+            : null;
+        if (directN) return directN;
+        const nested = Array.from(previous.querySelectorAll?.("tei-l[n]") || []).at(-1);
+        if (nested) return nested.getAttribute("n");
+        cursor = previous;
+        continue;
+      }
+      cursor = cursor.parentElement;
+      if (!cursor || cursor.tagName?.toLowerCase() === "tei-body") break;
+    }
+    return "";
+  }
+
+  function actForNode(node) {
+    const act = node.closest('tei-div[type="act"], tei-div[type="jornada"]');
+    if (!act) return "Sin acto";
+    const n = act.getAttribute("n");
+    return n ? `Acto ${n}` : "Acto";
+  }
+
+  function classifyLocus(app) {
+    const rdgs = directChildren(app, "tei-rdg");
+    const hasAddition =
+      app.getAttribute("type") === "addition" ||
+      rdgs.some((rdg) => !!rdg.querySelector("tei-add"));
+    const hasOmission = rdgs.some((rdg) => cleanReadingText(rdg) === "");
+    if (hasAddition) return "adiciones";
+    if (hasOmission) return "omisiones";
+    if (app.closest("tei-stage")) return "acotaciones";
+    if (app.closest("tei-speaker")) return "interlocutores";
+    return "texto";
+  }
+
+  function buildVariantInventory(root) {
+    return Array.from(root.querySelectorAll("tei-app")).map((app) => {
+      const lemma = directChildren(app, "tei-lem")[0] || null;
+      const readings = directChildren(app, "tei-rdg").map((rdg) => ({
+        text: cleanReadingText(rdg) || "om.",
+        witnesses: witnessTokens(rdg.getAttribute("wit")),
+      }));
+      const lemmaWitnesses = witnessTokens(lemma?.getAttribute("wit"));
+      const allWitnesses = new Set(lemmaWitnesses);
+      readings.forEach((reading) =>
+        reading.witnesses.forEach((wit) => allWitnesses.add(wit)),
+      );
+
+      const type = classifyLocus(app);
+      const verse = nearestVerseNumber(app);
+      const stage = app.closest("tei-stage");
+      const speaker = app.closest("tei-speaker");
+      const reference = verse
+        ? `v. ${verse}`
+        : stage
+          ? "Acotación"
+          : speaker
+            ? "Interlocutor"
+            : actForNode(app);
+
+      return {
+        id: app.dataset.locusId,
+        type,
+        act: actForNode(app),
+        verse,
+        reference,
+        lemma: cleanReadingText(lemma) || (type === "adiciones" ? "∅" : ""),
+        lemmaWitnesses,
+        readings,
+        witnesses: Array.from(allWitnesses),
+      };
+    });
   }
 
   // =========================
@@ -665,6 +766,7 @@ edition_label: Edición crítica · prototipo
 
       const wrapper = document.createElement("span");
       wrapper.className = "lem-wrapper lem-apparatus";
+      if (app.dataset.locusId) wrapper.dataset.locusId = app.dataset.locusId;
       wrapper.setAttribute("role", "button");
       wrapper.setAttribute("tabindex", "0");
       wrapper.setAttribute("aria-haspopup", "true");
@@ -843,6 +945,7 @@ edition_label: Edición crítica · prototipo
         const marker = document.createElement("button");
         marker.type = "button";
         marker.className = "transmission-note omission-note";
+        if (app.dataset.locusId) marker.dataset.locusId = app.dataset.locusId;
         marker.setAttribute(
           "aria-label",
           `${omissionLabel} en ${sigla.join(", ")}`,
@@ -906,6 +1009,7 @@ edition_label: Edición crítica · prototipo
         range.deleteContents();
         const wrapper = document.createElement("span");
         wrapper.className = "addition-marker-wrapper";
+        if (app.dataset.locusId) wrapper.dataset.locusId = app.dataset.locusId;
         const marker = document.createElement("span");
         marker.className = "addition-marker";
         marker.textContent = "✚";
@@ -991,6 +1095,7 @@ edition_label: Edición crítica · prototipo
 
       const slot = document.createElement("div");
       slot.className = "transmission-slot addition-slot";
+      if (app.dataset.locusId) slot.dataset.locusId = app.dataset.locusId;
       slot.dataset.additionWits = Array.from(witSet).join(" ");
       if (previousN) {
         slot.dataset.additionAfter = previousN;
