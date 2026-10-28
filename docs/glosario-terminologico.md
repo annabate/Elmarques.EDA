@@ -336,13 +336,19 @@ La interfaz debe privilegiar formulaciones descriptivas cuando la dirección his
 
 ---
 
+## Edición crítico-genética
+
+**Definición de proyecto.** Edición que integra la constitución crítica del texto a partir de su tradición con la reconstrucción y representación de la génesis del manuscrito autógrafo.
+
+**Decisión del proyecto.** **Edición crítico-genética** es la denominación oficial del proyecto editorial en su conjunto. Comprende dos niveles complementarios: **Edición crítica** y **Edición genética**.
+
+---
+
 ## Edición genética
 
 **Definición.** Representación editorial destinada a hacer legibles los procesos y estados de escritura documentados.
 
-**Decisión del proyecto.** Usar **Edición genética** en la interfaz. El sintagma *genético-evolutiva* queda descartado como etiqueta de navegación; solo podría emplearse en un desarrollo teórico si se definiera de forma expresa.
-
-**Denominación global del proyecto.** **Edición crítico-genética** es adecuada cuando se alude conjuntamente a los dos niveles editoriales.
+**Decisión del proyecto.** **Edición genética** designa exclusivamente el módulo dedicado a la génesis del autógrafo y a los estados A0, A1, A2 y B. El sintagma *genético-evolutiva* queda descartado como etiqueta del proyecto y del módulo.
 
 ---
 
