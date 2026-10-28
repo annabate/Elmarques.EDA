@@ -833,26 +833,28 @@ tei-unclear {
 .genetic-event-marker {
   display: inline-flex;
   align-items: flex-start;
-  gap: 0.02em;
-  margin: 0 0.2em 0 0.16em;
-  padding: 0.08em 0.28em 0.09em;
+  gap: 0.045em;
+  margin: 0 0.24em 0 0.18em;
+  padding: 0.09em 0.3em 0.11em;
   border: 1px solid currentColor;
   border-radius: 0.2em;
   background: transparent;
-  font: 760 0.76em/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 760 0.8em/1.08 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: 0.01em;
-  vertical-align: 0.28em;
+  vertical-align: 0.24em;
   cursor: help;
   white-space: nowrap;
+  overflow: visible;
 }
 
 .genetic-event-phase {
   position: relative;
-  top: -0.34em;
-  margin-left: 0.02em;
-  font-size: 0.76em;
+  top: -0.22em;
+  margin-left: 0.025em;
+  font-size: 0.88em;
   line-height: 1;
   font-weight: 800;
+  letter-spacing: 0;
 }
 
 .marker-a1 {
@@ -866,6 +868,10 @@ tei-unclear {
 .marker-b {
   color: var(--b);
   background: color-mix(in srgb, var(--b-soft) 52%, #fff);
+}
+
+.genetic-event-marker + .genetic-event-marker {
+  margin-left: 0.12em;
 }
 
 tei-mod > tei-del,
