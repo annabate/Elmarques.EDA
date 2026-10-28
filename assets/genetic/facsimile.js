@@ -81,6 +81,8 @@
     const stage = image.closest(".facsimile-stage");
     let scale = 1;
     let fittedWidth = 0;
+    let resetOnNextLoad = true;
+    let panState = null;
 
     function computeFittedWidth() {
       if (!stage || !image.naturalWidth || !image.naturalHeight) return 0;
@@ -124,22 +126,31 @@
       refit({ preserveZoom: true });
     }
 
-    function showFolio(folioN, { scrollText = true } = {}) {
+    function showFolio(
+      folioN,
+      { scrollText = true, resetView = true } = {},
+    ) {
       const option = Array.from(selector.options).find(
         (item) => item.value === folioN,
       );
       if (!option) return;
 
+      const sameFolio = selector.value === folioN && image.currentSrc;
       selector.value = folioN;
-      image.src = `${baseUrl}/facs/${option.dataset.image}`;
-      image.alt = `Facsímil: ${folioN}`;
+
+      if (!sameFolio) {
+        resetOnNextLoad = resetView;
+        image.src = `${baseUrl}/facs/${option.dataset.image}`;
+        image.alt = `Facsímil: ${folioN}`;
+      } else if (resetView) {
+        resetZoom();
+      }
 
       if (scrollText) {
         textContainers.forEach((container) =>
           scrollToFolio(container, folioN),
         );
       }
-      resetZoom();
     }
 
     selector.addEventListener("change", () => {
@@ -171,7 +182,12 @@
     resetZoomButton.addEventListener("click", resetZoom);
 
     image.addEventListener("load", () => {
-      refit({ preserveZoom: false });
+      refit({ preserveZoom: !resetOnNextLoad });
+      resetOnNextLoad = true;
+      if (stage) {
+        stage.scrollLeft = 0;
+        stage.scrollTop = 0;
+      }
     });
 
     if (stage && "ResizeObserver" in window) {
@@ -195,7 +211,74 @@
       { passive: false },
     );
 
-    image.addEventListener("dblclick", resetZoom);
+    image.draggable = false;
+
+    image.addEventListener("dblclick", (event) => {
+      if (!stage) return;
+
+      if (scale > 1.05) {
+        resetZoom();
+        stage.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const rect = image.getBoundingClientRect();
+      const relativeX = (event.clientX - rect.left) / rect.width;
+      const relativeY = (event.clientY - rect.top) / rect.height;
+
+      scale = 2;
+      applyZoom();
+
+      requestAnimationFrame(() => {
+        const targetX =
+          relativeX * image.offsetWidth - stage.clientWidth / 2;
+        const targetY =
+          relativeY * image.offsetHeight - stage.clientHeight / 2;
+        stage.scrollTo({
+          left: Math.max(0, targetX),
+          top: Math.max(0, targetY),
+          behavior: "smooth",
+        });
+      });
+    });
+
+    if (stage) {
+      stage.addEventListener("pointerdown", (event) => {
+        if (scale <= 1.05 || event.button !== 0) return;
+        if (event.target !== image) return;
+
+        event.preventDefault();
+        panState = {
+          pointerId: event.pointerId,
+          x: event.clientX,
+          y: event.clientY,
+          left: stage.scrollLeft,
+          top: stage.scrollTop,
+        };
+        stage.setPointerCapture(event.pointerId);
+        stage.classList.add("is-panning");
+      });
+
+      stage.addEventListener("pointermove", (event) => {
+        if (!panState || event.pointerId !== panState.pointerId) return;
+        stage.scrollLeft =
+          panState.left - (event.clientX - panState.x);
+        stage.scrollTop =
+          panState.top - (event.clientY - panState.y);
+      });
+
+      function endPan(event) {
+        if (!panState || event.pointerId !== panState.pointerId) return;
+        panState = null;
+        stage.classList.remove("is-panning");
+        if (stage.hasPointerCapture(event.pointerId)) {
+          stage.releasePointerCapture(event.pointerId);
+        }
+      }
+
+      stage.addEventListener("pointerup", endPan);
+      stage.addEventListener("pointercancel", endPan);
+    }
 
     textContainers.forEach((container) => {
       container.addEventListener("click", (event) => {
@@ -212,6 +295,7 @@
       folios,
       showFolio,
       resetZoom,
+      getScale: () => scale,
     };
   }
 
