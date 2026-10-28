@@ -1,193 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>El marqués de las Navas: Edición genética digital</title>
-
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
-      rel="stylesheet"
-    />
-
-    <style>
-      /* Reset & Base */
-      * {
-        box-sizing: border-box;
-      }
-
-      body.landing {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        
-        /* MODIFICA: Layout a colonna per gestire main + footer */
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        
-        /* Rimosso overflow:hidden per permettere la visualizzazione del footer */
-        position: relative;
-        background-color: #decfa2e3;
-      }
-
-      /* wrapper */
-      .landing-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding: 2rem 1rem;
-        position: relative;
-        z-index: 1; 
-        
-        /* MODIFICA: flex-grow fa sì che questo spazio occupi tutto il volume disponibile, */
-        /* spingendo il footer permanentemente in fondo alla pagina */
-        flex-grow: 1; 
-      }
-
-      /* landing card */
-      .landing-card {
-        background-color: #ffffff;
-        padding: 2rem 2.2rem 1.8rem 2.2rem;
-        margin-top: 2rem;
-        border-radius: 4px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); 
-        text-align: center;
-        max-width: 800px; 
-        width: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      /* label */
-      .project-label {
-        font-size: 1.02rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: #7a6a53;
-        margin-bottom: 0.6rem;
-        display: block;
-        font-weight: 600;
-      }
-
-      /* title */
-      .landing-card h1 {
-        font-family: 'EB Garamond', serif;
-        font-size: clamp(1.5rem, 4vw, 2.4rem);
-        font-weight: 500;
-        line-height: 1.2;
-        color: #2c1e15;
-        margin: 0 0 0.2rem 0;
-      }
-
-      .landing-card h1 em {
-        font-style: italic;
-        font-weight: 600;
-      }
-
-      /* sub */
-      .subtitle {
-        font-family: 'EB Garamond', serif;
-        font-size: clamp(1.05rem, 3vw, 1.2rem);
-        color: #8c1d1d;
-        margin-bottom: 1rem;
-        display: block;
-      }
-
-      /* quote container */
-      .quote-container {
-        margin: 0 auto 1.2rem auto;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        padding: 0.6rem 0;
-        max-width: 95%;
-      }
-
-      .quote-block {
-        font-family: 'EB Garamond', serif;
-        margin: 0;
-        color: #55483c;
-        font-size: clamp(0.82rem, 2vw, 1rem);
-        line-height: 1.45;
-        text-align: center;
-        text-justify: inter-word;
-      }
-
-      /* description */
-      .landing-card p.description {
-        font-size: clamp(0.82rem, 2vw, 1rem);
-        line-height: 1.5;
-        color: #333333;
-        margin-bottom: 1.4rem;
-        text-align: justify;
-        text-justify: inter-word;
-      }
-
-      /* landing button */
-      .landing-btn {
-        align-self: center;
-        display: inline-block;
-        background-color: #8c1d1d;
-        color: #ffffff;
-        padding: 0.55rem 2.5rem;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: 4px;
-        transition: background-color 0.2s ease;
-      }
-
-      .landing-btn:hover {
-        background-color: #c1a47a;
-      }
-
-      /* scroll options */
-      @media (max-height: 620px) or (max-width: 480px) {
-        .landing-wrapper {
-          padding: 1.5rem 1rem;
-        }
-        .landing-card {
-          padding: 1.5rem 1.2rem;
-        }
-      }
-    </style>
+    {% include head.html %}
   </head>
 
-  <body class="landing">
-    
-    <main class="landing-wrapper">
+  <body class="site-page landing">
+    <main class="landing-main">
       <article class="landing-card">
-        
-        <span class="project-label">Edición Digital Académica</span>
-        
+        <p class="site-eyebrow">Edición Digital Académica</p>
+
         <h1><em>El marqués de las Navas</em></h1>
-        
-        <span class="subtitle">de Lope de Vega Carpio</span>
+        <span class="landing-author">Lope de Vega Carpio</span>
 
-        <div class="quote-container">
-          <blockquote class="quote-block">
-            «Esta Comedia que Lope de Vega Carpio su autor intitula <em>El Marqués de las Navas</em> es una representación de aquel estraño suceso que tuvo con un difunto in la iglesia de San Martín de esta villa, donde se mostró el Marqués cristiano y piadoso, si en matarle había andado valiente y animoso caballero...»
-          </blockquote>
-        </div>
+        <blockquote class="landing-quote">
+          «Esta Comedia que Lope de Vega Carpio su autor intitula
+          <em>El Marqués de las Navas</em> es una representación de aquel estraño
+          suceso que tuvo con un difunto in la iglesia de San Martín de esta villa…»
+        </blockquote>
 
-        <p class="description">
-          <span style="display: block; font-weight: 600; margin-bottom: 0.8rem; text-align: center;">Bienvenidos.</span>
-          Este portal aloja la edición digital crítico-genética de <em>El marqués de las Navas</em>, fruto del proyecto de investigación desarrollado por <strong>Anna Abate</strong> en el marco de su tesis doctoral: «En el taller del Fénix: Estudio y edición de la comedia autógrafa <em>El marqués de las Navas</em> con una propuesta de codificación en el entorno digital».
+        <p class="landing-description">
+          Este portal aloja la edición digital crítico-genética de
+          <em>El marqués de las Navas</em>, desarrollada en el marco de una
+          investigación doctoral sobre el texto, su transmisión y el proceso de
+          escritura conservado en el manuscrito autógrafo.
         </p>
 
-        <a href="{{ site.baseurl }}/home" class="landing-btn">Entrar</a>
-
+        <a href="{{ site.baseurl }}/home/" class="landing-enter">Entrar al proyecto</a>
       </article>
     </main>
-    
-    {% include footer.html %}
 
+    {% include footer.html %}
   </body>
 </html>
