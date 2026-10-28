@@ -1174,561 +1174,374 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
-  // Statistiche (D3)
+  // Variant explorer
   // =========================
+  const variantFilterLabels = {
+    todos: "Todos",
+    texto: "Texto",
+    acotaciones: "Acotaciones",
+    interlocutores: "Interlocutores",
+    omisiones: "Omisiones",
+    adiciones: "Adiciones",
+  };
+
   function clearNode(node) {
-    while (node.firstChild) node.removeChild(node.firstChild);
+    while (node?.firstChild) node.removeChild(node.firstChild);
   }
 
-  function drawBarChartD3(container, rawStats, titleText) {
-    const draw = () => {
-      const old = container.querySelector("svg.d3-chart");
-      if (old) old.remove();
-      const data = Object.entries(rawStats)
-        .map(([name, v]) => ({ name, value: Math.round(v) }))
-        .sort((a, b) => b.value - a.value);
-
-      const width = container.clientWidth || 900;
-      const height = Math.max(360, 280 + Math.ceil(data.length / 12) * 28);
-      const margin = { top: 44, right: 20, bottom: 150, left: 64 };
-
-      const svg = d3
-        .select(container)
-        .append("svg")
-        .attr("class", "d3-chart")
-        .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("preserveAspectRatio", "xMidYMid meet");
-
-      if (titleText)
-        svg
-          .append("text")
-          .attr("x", width / 2)
-          .attr("y", margin.top - 18)
-          .attr("text-anchor", "middle")
-          .attr("font-weight", "600")
-          .attr("font-size", 16)
-          .text(titleText);
-
-      const maxVal = d3.max(data, (d) => d.value) || 1;
-      const step =
-        maxVal <= 80 ? 10 : maxVal <= 200 ? 25 : maxVal <= 400 ? 50 : 100;
-      const upper = Math.ceil(maxVal / step) * step;
-      const headroom = Math.max(6, Math.round(upper * 0.08));
-
-      const x = d3
-        .scaleBand()
-        .domain(data.map((d) => d.name))
-        .range([margin.left, width - margin.right])
-        .padding(0.1);
-      const y = d3
-        .scaleLinear()
-        .domain([0, upper + headroom])
-        .range([height - margin.bottom, margin.top])
-        .nice();
-      const narrow = x.bandwidth() < 16;
-
-      const xAxis = (g) =>
-        g
-          .attr("transform", `translate(0,${height - margin.bottom})`)
-          .call(d3.axisBottom(x))
-          .selectAll("text")
-          .attr("font-size", narrow ? 10 : 12)
-          .attr("transform", narrow ? "rotate(-75)" : "rotate(-60)")
-          .attr("text-anchor", "end")
-          .attr("dx", "-.5em")
-          .attr("dy", ".35em");
-      const yAxis = (g) =>
-        g
-          .attr("transform", `translate(${margin.left},0)`)
-          .call(d3.axisLeft(y).tickValues(d3.range(0, upper + step, step)))
-          .call((g) => g.select(".domain").remove())
-          .selectAll("text")
-          .attr("font-size", 12);
-
-      svg.append("g").call(xAxis);
-      svg.append("g").call(yAxis);
-
-      const g = svg.append("g");
-      const bars = g
-        .selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("x", (d) => x(d.name))
-        .attr("y", (d) => y(d.value))
-        .attr("width", x.bandwidth())
-        .attr("height", (d) => y(0) - y(d.value))
-        .attr("rx", 3)
-        .attr("ry", 3)
-        .attr("fill", "#69b3a2");
-
-      const labels = g
-        .selectAll("g.value-label")
-        .data(data)
-        .join("g")
-        .attr("class", "value-label")
-        .attr(
-          "transform",
-          (d) =>
-            `translate(${x(d.name) + x.bandwidth() / 2}, ${y(d.value) - 8})`,
-        );
-      labels.each(function (d) {
-        const group = d3.select(this);
-        const t = group
-          .append("text")
-          .attr("text-anchor", "middle")
-          .attr("font-size", 8)
-          .style("paint-order", "stroke")
-          .style("stroke", "#fff")
-          .style("stroke-width", "2px")
-          .style("stroke-opacity", 0.7)
-          .text(d.value);
-      });
-
-      bars.append("title").text((d) => `${d.name}: ${d.value}`);
-    };
-    draw();
-    const ro = new ResizeObserver(() => draw());
-    ro.observe(container);
-  }
-
-  function drawGroupedBarChartD3(
-    container,
-    globalStats,
-    allWitnesses,
-    titleText,
-  ) {
-    const controls = document.createElement("div");
-    controls.className = "witness-toggle-bar";
-    controls.style.margin = "8px 0 6px 0";
-    controls.style.display = "flex";
-    controls.style.flexWrap = "wrap";
-    controls.style.gap = "6px";
-    const makeBtn = (label) => {
-      const b = document.createElement("button");
-      b.textContent = label;
-      b.type = "button";
-      b.style.padding = "4px 8px";
-      b.style.borderRadius = "8px";
-      b.style.border = "1px solid #ccc";
-      b.style.background = "#f6f6f6";
-      b.style.cursor = "pointer";
-      b.style.fontSize = "12px";
-      return b;
-    };
-    const selected = new Set(allWitnesses);
-    const selectAllBtn = makeBtn("Seleccionar todos");
-    const clearAllBtn = makeBtn("Ninguno");
-    controls.appendChild(selectAllBtn);
-    controls.appendChild(clearAllBtn);
-    const color = d3
-      .scaleOrdinal()
-      .domain(allWitnesses)
-      .range(
-        allWitnesses.map(
-          (_, i) => `hsl(${(i * 360) / allWitnesses.length}, 70%, 55%)`,
-        ),
-      );
-    const witnessBtns = allWitnesses.map((w) => {
-      const b = makeBtn(w);
-      b.dataset.wit = w;
-      b.style.borderColor = color(w);
-      b.style.background = "#eaf3ff";
-      controls.appendChild(b);
-      return b;
-    });
-    container.appendChild(controls);
-    const refreshBtnStyles = () => {
-      witnessBtns.forEach((b) => {
-        const on = selected.has(b.dataset.wit);
-        b.style.background = on ? "#eaf3ff" : "#f6f6f6";
-        b.style.opacity = on ? "1" : "0.55";
-      });
-    };
-
-    const draw = () => {
-      const old = container.querySelector("svg.d3-chart");
-      if (old) old.remove();
-      const characters = Object.keys(globalStats);
-      const totals = (name) =>
-        allWitnesses.reduce((acc, w) => acc + (globalStats[name][w] || 0), 0);
-      const labels = characters.sort((a, b) => totals(b) - totals(a));
-      const active = allWitnesses.filter((w) => selected.has(w));
-
-      const width = container.clientWidth || 900;
-      const height = Math.max(440, 320 + Math.ceil(labels.length / 12) * 28);
-      const margin = { top: 56, right: 24, bottom: 180, left: 64 };
-
-      const svg = d3
-        .select(container)
-        .append("svg")
-        .attr("class", "d3-chart")
-        .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("preserveAspectRatio", "xMidYMid meet");
-
-      if (titleText)
-        svg
-          .append("text")
-          .attr("x", width / 2)
-          .attr("y", margin.top - 26)
-          .attr("text-anchor", "middle")
-          .attr("font-weight", "600")
-          .attr("font-size", 16)
-          .text(titleText);
-
-      if (active.length === 0) {
-        svg
-          .append("text")
-          .attr("x", width / 2)
-          .attr("y", height / 2)
-          .attr("text-anchor", "middle")
-          .text("Selecciona al menos un testimonio");
-        return;
-      }
-
-      const data = labels.map((name) => ({
-        name,
-        values: active.map((w) => ({
-          wit: w,
-          value: Math.round(globalStats[name][w] || 0),
-        })),
-      }));
-
-      const maxVal = d3.max(data, (d) => d3.max(d.values, (v) => v.value)) || 1;
-      const step =
-        maxVal <= 80 ? 10 : maxVal <= 200 ? 25 : maxVal <= 400 ? 50 : 100;
-      const upper = Math.ceil(maxVal / step) * step;
-      const headroom = Math.max(6, Math.round(upper * 0.1));
-
-      const x0 = d3
-        .scaleBand()
-        .domain(labels)
-        .range([margin.left, width - margin.right])
-        .padding(0.08);
-      const x1 = d3
-        .scaleBand()
-        .domain(active)
-        .range([0, x0.bandwidth()])
-        .padding(0.05);
-      const y = d3
-        .scaleLinear()
-        .domain([0, upper + headroom])
-        .range([height - margin.bottom, margin.top])
-        .nice();
-
-      const xTooNarrow = x0.bandwidth() < 22;
-      const xAxis = (g) =>
-        g
-          .attr("transform", `translate(0,${height - margin.bottom})`)
-          .call(d3.axisBottom(x0))
-          .selectAll("text")
-          .attr("font-size", xTooNarrow ? 10 : 12)
-          .attr("transform", xTooNarrow ? "rotate(-80)" : "rotate(-60)")
-          .attr("text-anchor", "end")
-          .attr("dx", "-.55em")
-          .attr("dy", ".35em");
-      const yAxis = (g) =>
-        g
-          .attr("transform", `translate(${margin.left},0)`)
-          .call(d3.axisLeft(y).tickValues(d3.range(0, upper + step, step)))
-          .call((g) => g.select(".domain").remove())
-          .selectAll("text")
-          .attr("font-size", 12);
-
-      svg.append("g").call(xAxis);
-      svg.append("g").call(yAxis);
-
-      const rows = svg
-        .append("g")
-        .selectAll("g.row")
-        .data(data)
-        .join("g")
-        .attr("class", "row")
-        .attr("transform", (d) => `translate(${x0(d.name)},0)`);
-
-      const bars = rows
-        .selectAll("rect")
-        .data((d) => d.values)
-        .join("rect")
-        .attr("x", (v) => x1(v.wit))
-        .attr("y", (v) => y(v.value))
-        .attr("width", x1.bandwidth())
-        .attr("height", (v) => y(0) - y(v.value))
-        .attr("fill", (v) => color(v.wit))
-        .attr("rx", 2)
-        .attr("ry", 2);
-
-      rows
-        .selectAll("g.value-label")
-        .data((d) => d.values)
-        .join("g")
-        .attr("class", "value-label")
-        .attr(
-          "transform",
-          (v) =>
-            `translate(${x1(v.wit) + x1.bandwidth() / 2}, ${y(v.value) - 7})`,
-        )
-        .each(function (v) {
-          const group = d3.select(this);
-          const t = group
-            .append("text")
-            .attr("text-anchor", "middle")
-            .attr("font-size", 7)
-            .attr("font-weight", "300")
-            .text(v.value);
-          const bb = t.node().getBBox();
-          group
-            .insert("rect", "text")
-            .attr("x", bb.x - 3)
-            .attr("y", bb.y - 1)
-            .attr("width", bb.width + 6)
-            .attr("height", bb.height + 2)
-            .attr("rx", 3)
-            .attr("ry", 3)
-            .attr("fill", "#fff")
-            .attr("opacity", 0.95);
-        });
-
-      bars.append("title").text((v) => `${v.wit}: ${v.value}`);
-
-      const legend = svg
-        .append("g")
-        .attr(
-          "transform",
-          `translate(${width - margin.right - 10}, ${margin.top - 10})`,
-        );
-      const lineH = 18;
-      allWitnesses.forEach((wit, i) => {
-        const y0 = i * lineH;
-        legend
-          .append("rect")
-          .attr("x", -16)
-          .attr("y", y0)
-          .attr("width", 12)
-          .attr("height", 12)
-          .attr("fill", color(wit))
-          .attr("opacity", selected.has(wit) ? 1 : 0.25);
-        legend
-          .append("text")
-          .attr("x", 2)
-          .attr("y", y0 + 10)
-          .attr("font-size", 12)
-          .attr("opacity", selected.has(wit) ? 1 : 0.5)
-          .text(wit);
-      });
-    };
-
-    witnessBtns.forEach((b) =>
-      b.addEventListener("click", () => {
-        const w = b.dataset.wit;
-        if (selected.has(w)) selected.delete(w);
-        else selected.add(w);
-        refreshBtnStyles();
-        draw();
-      }),
-    );
-    selectAllBtn.addEventListener("click", () => {
-      allWitnesses.forEach((w) => selected.add(w));
-      refreshBtnStyles();
-      draw();
-    });
-    clearAllBtn.addEventListener("click", () => {
-      selected.clear();
-      refreshBtnStyles();
-      draw();
-    });
-
-    refreshBtnStyles();
-    draw();
-    const ro = new ResizeObserver(() => draw());
-    ro.observe(container);
-  }
-
-  function calculateLineStats(container, witID, castMap) {
-    const stats = Object.create(null);
-    container.querySelectorAll("tei-sp").forEach((sp) => {
-      const speakers = resolveSpeakersForSp(sp, witID, castMap);
-      const k = speakers.length || 1,
-        weight = 1 / k;
-      let counted = 0;
-      sp.querySelectorAll("tei-l").forEach((line) => {
-        if (line.hasAttribute("data-witness-omitted")) return;
-        const txt = (line.textContent || "").trim();
-        if (!txt || /^\[\.+\]$/.test(txt)) return;
-        counted++;
-      });
-      if (counted > 0)
-        speakers.forEach((name) => {
-          if (!stats[name]) stats[name] = 0;
-          stats[name] += counted * weight;
-        });
-    });
-    return stats;
-  }
   function extractWitnessSigla(data) {
     const siglaSet = new Set();
-    data.querySelectorAll("tei-rdg[wit], tei-lem[wit]").forEach((rdg) => {
-      const witAttr = rdg.getAttribute("wit");
-      if (!witAttr) return;
-      witAttr
-        .split(/\s+/)
-        .forEach((wit) => siglaSet.add(wit.replace(/^#/, "")));
+    data.querySelectorAll("tei-rdg[wit], tei-lem[wit]").forEach((reading) => {
+      witnessTokens(reading.getAttribute("wit")).forEach((wit) =>
+        siglaSet.add(wit),
+      );
     });
     return Array.from(siglaSet).sort();
   }
-  function calculateGlobalStats(allWitnesses, baseTEI, castMap) {
-    const globalStats = Object.create(null);
-    allWitnesses.forEach((witID) => {
-      const dom = reconstructWitness(witID, baseTEI);
-      const local = calculateLineStats(dom, witID, castMap);
-      Object.entries(local).forEach(([name, count]) => {
-        if (!globalStats[name]) globalStats[name] = Object.create(null);
-        globalStats[name][witID] = (globalStats[name][witID] || 0) + count;
-      });
-    });
-    return globalStats;
+
+  function locusTags(app) {
+    const tags = new Set();
+    const rdgs = directChildren(app, "tei-rdg");
+    const hasAddition =
+      app.getAttribute("type") === "addition" ||
+      rdgs.some((rdg) => !!rdg.querySelector("tei-add"));
+    const hasOmission = rdgs.some((rdg) => cleanReadingText(rdg) === "");
+
+    if (hasAddition) tags.add("adiciones");
+    if (hasOmission) tags.add("omisiones");
+    if (app.closest("tei-stage")) tags.add("acotaciones");
+    else if (app.closest("tei-speaker")) tags.add("interlocutores");
+    else tags.add("texto");
+
+    return Array.from(tags);
   }
-  function calculateActStatsPerWitness(baseTEI, allWitnesses, castMap) {
-    const acts = Array.from(
-      baseTEI.querySelectorAll('tei-div[type="act"], tei-div[type="jornada"]'),
+
+  function buildVariantInventory(root) {
+    return Array.from(root.querySelectorAll("tei-app")).map((app) => {
+      const lemma = directChildren(app, "tei-lem")[0] || null;
+      const readings = directChildren(app, "tei-rdg").map((rdg) => ({
+        text: cleanReadingText(rdg) || "om.",
+        witnesses: witnessTokens(rdg.getAttribute("wit")),
+      }));
+      const lemmaWitnesses = witnessTokens(lemma?.getAttribute("wit"));
+      const allWitnesses = new Set(lemmaWitnesses);
+      readings.forEach((reading) =>
+        reading.witnesses.forEach((wit) => allWitnesses.add(wit)),
+      );
+
+      const verse = nearestVerseNumber(app);
+      const stage = app.closest("tei-stage");
+      const speaker = app.closest("tei-speaker");
+      const tags = locusTags(app);
+      const reference = verse
+        ? `v. ${verse}`
+        : stage
+          ? "Acotación"
+          : speaker
+            ? "Interlocutor"
+            : actForNode(app);
+
+      return {
+        id: app.dataset.locusId,
+        tags,
+        act: actForNode(app),
+        verse,
+        reference,
+        lemma: cleanReadingText(lemma) || (tags.includes("adiciones") ? "∅" : ""),
+        lemmaWitnesses,
+        readings,
+        witnesses: Array.from(allWitnesses),
+      };
+    });
+  }
+
+  function locusDiffersForWitness(locus, witID) {
+    const wanted = (witID || "").replace(/^#/, "");
+    if (!wanted) return true;
+    return locus.readings.some((reading) =>
+      reading.witnesses.includes(wanted),
     );
-    const allStats = {};
-    acts.forEach((actDiv, idx) => {
-      const actKey = actDiv.getAttribute("n")
-        ? `Acto ${actDiv.getAttribute("n")}`
-        : `Acto ${idx + 1}`;
-      allStats[actKey] = {};
-      allWitnesses.forEach((witID) => {
-        const dom = reconstructWitness(witID, actDiv.cloneNode(true));
-        allStats[actKey][witID] = calculateLineStats(dom, witID, castMap);
+  }
+
+  function readingsForScope(locus, witID) {
+    const wanted = (witID || "").replace(/^#/, "");
+    if (!wanted) return locus.readings;
+    return locus.readings.filter((reading) =>
+      reading.witnesses.includes(wanted),
+    );
+  }
+
+  function shortened(text, max = 170) {
+    const clean = (text || "").trim();
+    if (clean.length <= max) return clean;
+    return `${clean.slice(0, max - 1).trimEnd()}…`;
+  }
+
+  function countVariantTags(loci) {
+    const counts = {
+      todos: loci.length,
+      texto: 0,
+      acotaciones: 0,
+      interlocutores: 0,
+      omisiones: 0,
+      adiciones: 0,
+    };
+    loci.forEach((locus) => {
+      locus.tags.forEach((tag) => {
+        if (tag in counts) counts[tag] += 1;
       });
     });
-    return allStats;
+    return counts;
   }
-  function renderStatsPanel(stats, witID) {
-    const panel = document.getElementById("stats-panel");
-    clearNode(panel);
-    const entries = Object.entries(stats)
-      .map(([name, v]) => [name, Math.round(v)])
-      .sort((a, b) => b[1] - a[1]);
-    if (entries.length === 0) {
-      panel.innerHTML = `<h3>Sin líneas para ${witID}</h3>`;
+
+  function renderVariantSummary(loci) {
+    const summary = document.getElementById("variants-summary");
+    if (!summary) return;
+    clearNode(summary);
+
+    const counts = countVariantTags(loci);
+    [
+      ["Loci", counts.todos],
+      ["Omisiones", counts.omisiones],
+      ["Adiciones", counts.adiciones],
+      ["Acotaciones", counts.acotaciones],
+      ["Interlocutores", counts.interlocutores],
+    ].forEach(([label, value]) => {
+      const card = document.createElement("div");
+      card.className = "variant-summary-card";
+
+      const number = document.createElement("strong");
+      number.textContent = String(value);
+      const caption = document.createElement("span");
+      caption.textContent = label;
+
+      card.append(number, caption);
+      summary.appendChild(card);
+    });
+  }
+
+  function renderVariantDistribution(loci) {
+    const container = document.getElementById("variants-distribution");
+    if (!container) return;
+    clearNode(container);
+
+    const counts = new Map();
+    loci.forEach((locus) =>
+      counts.set(locus.act, (counts.get(locus.act) || 0) + 1),
+    );
+
+    const entries = Array.from(counts.entries());
+    const max = Math.max(1, ...entries.map(([, count]) => count));
+
+    if (!entries.length) {
+      const empty = document.createElement("p");
+      empty.className = "variants-empty";
+      empty.textContent = "No hay loci para este filtro.";
+      container.appendChild(empty);
       return;
     }
-    const table = document.createElement("table");
-    table.className = "stats-table";
-    table.innerHTML = `
-      <thead><tr><th style="font-variant: small-caps;">Personaje</th><th style="font-variant: small-caps;">Cantidad de líneas</th></tr></thead>
-      <tbody>${entries
-        .map(
-          ([label, count]) =>
-            `<tr><td><strong>${label}</strong></td><td>${count}</td></tr>`,
-        )
-        .join("")}</tbody>`;
-    const h3 = document.createElement("h3");
-    h3.textContent = `Estadísticas para testimonio #${witID}:`;
-    panel.append(h3, table);
-    const chartHolder = document.createElement("div");
-    chartHolder.style.marginTop = "16px";
-    panel.appendChild(chartHolder);
-    drawBarChartD3(
-      chartHolder,
-      Object.fromEntries(entries),
-      `Líneas habladas en ${witID}`,
+
+    entries.forEach(([act, count]) => {
+      const row = document.createElement("div");
+      row.className = "distribution-row";
+
+      const head = document.createElement("div");
+      head.className = "distribution-head";
+      const label = document.createElement("span");
+      label.textContent = act;
+      const value = document.createElement("strong");
+      value.textContent = String(count);
+      head.append(label, value);
+
+      const track = document.createElement("div");
+      track.className = "distribution-track";
+      const bar = document.createElement("span");
+      bar.className = "distribution-bar";
+      bar.style.width = `${(count / max) * 100}%`;
+      track.appendChild(bar);
+
+      row.append(head, track);
+      container.appendChild(row);
+    });
+  }
+
+  function openCriticalLocus(locus) {
+    const modal = document.getElementById("variants-modal-wrapper");
+    modal?.classList.add("hidden");
+
+    let target = document.querySelector(
+      `#critical-container [data-locus-id="${CSS.escape(locus.id)}"]`,
     );
+
+    if (!target && locus.verse) {
+      target = document.querySelector(
+        `#critical-container [data-critical-n="${CSS.escape(locus.verse)}"]`,
+      );
+    }
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    target.classList.remove("flash-highlight");
+    requestAnimationFrame(() => {
+      target.classList.add("flash-highlight");
+      setTimeout(() => target.classList.remove("flash-highlight"), 1700);
+    });
+
+    if (target.classList.contains("lem-apparatus")) {
+      setTimeout(() => {
+        if (!target.classList.contains("active")) target.click();
+      }, 350);
+    } else if (target.classList.contains("transmission-note")) {
+      setTimeout(() => target.click(), 350);
+    }
   }
-  function renderGlobalStatsChartD3(
-    globalStats,
-    allWitnesses,
-    container,
-    title,
-  ) {
-    drawGroupedBarChartD3(container, globalStats, allWitnesses, title);
-  }
-  function attachGlobalChartToggle() {
-    const toggleBtn = document.getElementById("toggle-global-chart-btn");
-    const globalChartModal = document.getElementById("global-chart-modal");
-    const closeBtn = document.getElementById("close-global-chart-btn");
-    if (toggleBtn)
-      toggleBtn.addEventListener("click", () => {
-        globalChartModal.classList.toggle("hidden");
-        if (!globalChartModal.classList.contains("hidden"))
-          globalChartModal.scrollIntoView({ behavior: "smooth" });
+
+  function renderVariantList(loci, witID) {
+    const list = document.getElementById("variants-list");
+    const count = document.getElementById("variants-result-count");
+    if (!list) return;
+    clearNode(list);
+    if (count) count.textContent = `${loci.length} loci`;
+
+    if (!loci.length) {
+      const empty = document.createElement("p");
+      empty.className = "variants-empty";
+      empty.textContent = "No hay variantes para este criterio.";
+      list.appendChild(empty);
+      return;
+    }
+
+    loci.forEach((locus) => {
+      const item = document.createElement("button");
+      item.type = "button";
+      item.className = "variant-locus-item";
+      item.dataset.locusId = locus.id;
+
+      const meta = document.createElement("span");
+      meta.className = "variant-locus-meta";
+
+      const reference = document.createElement("strong");
+      reference.textContent = `${locus.act} · ${locus.reference}`;
+
+      const badges = document.createElement("span");
+      badges.className = "variant-locus-badges";
+      locus.tags.forEach((tag) => {
+        const badge = document.createElement("span");
+        badge.className = `variant-type-badge variant-type-${tag}`;
+        badge.textContent = variantFilterLabels[tag] || tag;
+        badges.appendChild(badge);
       });
-    if (closeBtn)
-      closeBtn.addEventListener("click", () =>
-        globalChartModal.classList.add("hidden"),
-      );
+      meta.append(reference, badges);
+
+      const reading = document.createElement("span");
+      reading.className = "variant-locus-reading";
+
+      const lemma = document.createElement("span");
+      lemma.className = "variant-locus-lemma";
+      lemma.textContent = shortened(locus.lemma || "∅");
+
+      const arrow = document.createElement("span");
+      arrow.className = "variant-reading-arrow";
+      arrow.textContent = "→";
+
+      const rdgs = readingsForScope(locus, witID);
+      const variants = document.createElement("span");
+      variants.className = "variant-locus-rdgs";
+      variants.textContent = rdgs.length
+        ? rdgs
+            .map((rdg) => {
+              const sigla = witID ? "" : ` [${rdg.witnesses.join(" ")}]`;
+              return `${shortened(rdg.text)}${sigla}`;
+            })
+            .join(" · ")
+        : "—";
+
+      reading.append(lemma, arrow, variants);
+      item.append(meta, reading);
+      item.addEventListener("click", () => openCriticalLocus(locus));
+      list.appendChild(item);
+    });
   }
-  function setupStatsPopup(allWitnesses, castMap) {
-    const openBtn = document.getElementById("open-stats-btn");
-    const closeBtn = document.getElementById("close-stats-btn");
-    const modalWrapper = document.getElementById("modal-wrapper");
-    const witnessButtons = document.getElementById("witness-buttons");
-    const statsPanel = document.getElementById("stats-panel");
-    const globalChartsContainer = document.getElementById(
-      "global-charts-container",
-    );
 
-    openBtn.addEventListener("click", () => {
-      modalWrapper.classList.remove("hidden");
-      clearNode(statsPanel);
-      clearNode(globalChartsContainer);
+  function setupVariantExplorer(inventory) {
+    const openBtn = document.getElementById("open-variants-btn");
+    const closeBtn = document.getElementById("close-variants-btn");
+    const modal = document.getElementById("variants-modal-wrapper");
+    const filterContainer = document.getElementById("variants-filters");
+    const scopeLabel = document.getElementById("variants-scope");
+    let activeFilter = "todos";
 
-      const allW = allWitnesses;
-      const globalStats = calculateGlobalStats(allW, baseTEI, castMap);
-      const overallHolder = document.createElement("div");
-      globalChartsContainer.appendChild(overallHolder);
-      renderGlobalStatsChartD3(
-        globalStats,
-        allW,
-        overallHolder,
-        "Comparación general de líneas",
-      );
+    const scopedInventory = () => {
+      const wit = document.getElementById("witness-select")?.value || "";
+      return {
+        wit,
+        loci: wit
+          ? inventory.filter((locus) => locusDiffersForWitness(locus, wit))
+          : inventory,
+      };
+    };
 
-      const actStats = calculateActStatsPerWitness(baseTEI, allW, castMap);
-      Object.entries(actStats).forEach(([actName, witData]) => {
-        const actTitle = document.createElement("h4");
-        actTitle.textContent = `${actName}`;
-        globalChartsContainer.appendChild(actTitle);
-        const actHolder = document.createElement("div");
-        globalChartsContainer.appendChild(actHolder);
-        const actGlobalStats = {};
-        Object.entries(witData).forEach(([witID, speakerCounts]) => {
-          Object.entries(speakerCounts).forEach(([charName, count]) => {
-            if (!actGlobalStats[charName]) actGlobalStats[charName] = {};
-            actGlobalStats[charName][witID] = count;
-          });
-        });
-        renderGlobalStatsChartD3(
-          actGlobalStats,
-          allW,
-          actHolder,
-          `Líneas por personaje – ${actName}`,
+    const refresh = () => {
+      const { wit, loci } = scopedInventory();
+      if (scopeLabel) {
+        scopeLabel.textContent = wit
+          ? `Diferencias de ${wit} respecto al texto crítico`
+          : "Todos los testimonios";
+      }
+
+      renderVariantSummary(loci);
+
+      const filtered =
+        activeFilter === "todos"
+          ? loci
+          : loci.filter((locus) => locus.tags.includes(activeFilter));
+
+      filterContainer
+        ?.querySelectorAll(".variant-filter-btn")
+        .forEach((button) =>
+          button.classList.toggle(
+            "is-active",
+            button.dataset.filter === activeFilter,
+          ),
         );
+
+      renderVariantList(filtered, wit);
+      renderVariantDistribution(filtered);
+    };
+
+    clearNode(filterContainer);
+    Object.entries(variantFilterLabels).forEach(([key, label]) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "variant-filter-btn";
+      button.dataset.filter = key;
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        activeFilter = key;
+        refresh();
       });
+      filterContainer.appendChild(button);
     });
 
-    closeBtn.addEventListener("click", () => {
-      modalWrapper.classList.add("hidden");
-      clearNode(statsPanel);
-      clearNode(globalChartsContainer);
+    openBtn?.addEventListener("click", () => {
+      activeFilter = "todos";
+      refresh();
+      modal?.classList.remove("hidden");
     });
 
-    witnessButtons.innerHTML = "";
-    allWitnesses.forEach((witID) => {
-      const btn = document.createElement("button");
-      btn.textContent = witID;
-      btn.classList.add("witness-btn");
-      btn.addEventListener("click", () => {
-        const witnessDOM = reconstructWitness(witID, baseTEI);
-        const stats = calculateLineStats(witnessDOM, witID, castMap);
-        renderStatsPanel(stats, witID);
-        document.getElementById("global-chart-modal").classList.add("hidden");
-        document
-          .getElementById("stats-panel")
-          .scrollIntoView({ behavior: "smooth" });
-      });
-      witnessButtons.appendChild(btn);
+    closeBtn?.addEventListener("click", () => modal?.classList.add("hidden"));
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.add("hidden");
+    });
+
+    document.getElementById("witness-select")?.addEventListener("change", () => {
+      if (!modal?.classList.contains("hidden")) refresh();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+      }
     });
   }
 
@@ -1930,6 +1743,11 @@ edition_label: Edición crítica · prototipo
       baseTEI = data.cloneNode(true);
       originalData = data.cloneNode(true);
 
+      // Stable apparatus coordinates must match in source and rendered clones.
+      assignLocusIds(baseTEI);
+      assignLocusIds(originalData);
+      assignLocusIds(data);
+
       // 2) Monta nel DOM
       const criticalContainer = document.getElementById("critical-container");
       document.getElementById("critical-loading")?.remove();
@@ -1939,9 +1757,10 @@ edition_label: Edición crítica · prototipo
       // 3) Dati di supporto
       const castMap = buildCastMap(baseTEI);
       const allSigla = extractWitnessSigla(baseTEI);
+      const variantInventory = buildVariantInventory(baseTEI);
       populateWitnessSelect(allSigla);
       setupWitnessInfo(allSigla);
-      setupStatsPopup(allSigla, castMap);
+      setupVariantExplorer(variantInventory);
 
       // Delegated handler: click su chip → apri testimone (senza passare dal <select>)
       const wrapper = document.getElementById("tei-wrapper") || document;
@@ -1964,7 +1783,6 @@ edition_label: Edición crítica · prototipo
         decorateNotes(root);
         decorateEdition(root, { inWitnessView: false });
         attachNoteEvents(root);
-        attachGlobalChartToggle();
 
         // Logical verse ids include M/F fragments of split verses.
         assignLogicalLineNumbers(root);
