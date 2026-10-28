@@ -634,6 +634,7 @@ body.edition a {
   min-height: 0;
   display: block;
   overflow: auto;
+  scrollbar-gutter: stable;
   text-align: center;
   overscroll-behavior: contain;
 }
