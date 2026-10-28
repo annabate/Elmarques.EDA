@@ -1,43 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    {% include head.html %}
+  </head>
 
-  {% include head.html %}
-  {% include nav.html %}
-  <body>
-    <div class="container">
-      <div class="row" style="display: block;">
-        <div class="section-grid" id="contenidotexto">
-          <section class="home-box" id="presentation">
-            <img alt="presentation" class="home-image" src="{{ site.baseurl }}/images/presentation.png" />
-            <h2>
-              <a href="{{ site.baseurl }}/presentation.html">Presentación</a>
-            </h2>
-            <p>Bienvenidos al portal de <i>El marqués de las Navas</i>, comedia autógrafa de Lope de Vega. Esta plataforma proporciona acceso al texto editado y anotado críticamente. Igualmente, permite la visión sinóptica del facsímil del manuscrito, para apreciar en su totalidad el proceso de composición de la pieza.</p>
-          </section>
+  <body class="site-page site-home">
+    {% include nav.html %}
 
-          <section class="home-box" id="this-edition">
-            <img alt="this-edition" class="home-image" src="{{ site.baseurl }}/images/this_edition.png" />
-            <h2>
-              <a href="{{ site.baseurl }}/edition.html">Estudio</a>
-            </h2>
-            <p>En esta sección se presenta información adicional sobre la pieza, su contexto de escritura y transmisión. Se ofrece, además, detallada sobre los criterios editoriales que guiaron la elaboración de esta edición, así como el modelo de transcripción adoptado.</p>
-          </section>
-
-          <section class="home-box" id="access">
-            <img alt="access" class="home-image" src="{{ site.baseurl }}/images/access_text.png" />
-            <h2>
-              <a href="{{ site.baseurl }}/selection.html">Acceder al texto</a>
-            </h2>
-            <p>En esta sección se puede consultar tanto la edición crítica como la edición genética del texto. La primera permite seguir y reconstruir su proceso de escritura y variación interna, mientras que la segunda ofrece el texto fijado según criterios filológicos. Ambas ediciones están disponibles con sus respectivos recursos de consulta.</p>
-          </section>
-          
+    <main class="site-home-main">
+      <header class="home-intro">
+        <div>
+          <p class="site-eyebrow">Edición Digital Académica</p>
+          <h1><em>El marqués de las Navas</em></h1>
         </div>
-      </div>
-    </div>
+        <div class="home-intro-copy">
+          <p>
+            Edición crítico-genética de la comedia autógrafa de Lope de Vega:
+            texto, transmisión y proceso de escritura en un entorno digital de consulta.
+          </p>
+        </div>
+      </header>
+
+      <section class="home-section-grid" id="contenidotexto" aria-label="Secciones principales">
+        <a class="home-card" href="{{ site.baseurl }}/presentation">
+          <div class="home-card-media">
+            <img alt="" src="{{ site.baseurl }}/images/presentation.png" />
+          </div>
+          <div class="home-card-body">
+            <span class="home-card-number">01</span>
+            <h2>Presentación</h2>
+            <p>
+              El proyecto, sus objetivos filológicos y digitales y el lugar de la edición
+              en el estudio del autógrafo de <em>El marqués de las Navas</em>.
+            </p>
+            <span class="home-card-action">Conocer el proyecto →</span>
+          </div>
+        </a>
+
+        <a class="home-card" href="{{ site.baseurl }}/edition">
+          <div class="home-card-media">
+            <img alt="" src="{{ site.baseurl }}/images/this_edition.png" />
+          </div>
+          <div class="home-card-body">
+            <span class="home-card-number">02</span>
+            <h2>Estudio y criterios</h2>
+            <p>
+              Contexto, transmisión textual, criterios editoriales y modelo de codificación
+              adoptado para representar el texto y su génesis.
+            </p>
+            <span class="home-card-action">Consultar el estudio →</span>
+          </div>
+        </a>
+
+        <a class="home-card" href="{{ site.baseurl }}/selection">
+          <div class="home-card-media">
+            <img alt="" src="{{ site.baseurl }}/images/access_text.png" />
+          </div>
+          <div class="home-card-body">
+            <span class="home-card-number">03</span>
+            <h2>Acceder al texto</h2>
+            <p>
+              La edición crítica ofrece el texto fijado y su aparato de variantes; la
+              edición genético-evolutiva permite recorrer las fases de escritura del autógrafo.
+            </p>
+            <span class="home-card-action">Elegir una edición →</span>
+          </div>
+        </a>
+      </section>
+    </main>
 
     {% include footer.html %}
-
     <script src="{{ site.baseurl }}/assets/scripts.js"></script>
   </body>
-
 </html>
