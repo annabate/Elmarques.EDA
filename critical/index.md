@@ -17,6 +17,9 @@ edition_label: Edición crítica · prototipo
         <option value="">Selecciona testimonio</option>
       </select>
     </label>
+    <button id="open-witness-info-btn" class="tool-button tool-button-secondary" type="button">
+      Testimonios
+    </button>
     <button id="open-stats-btn" class="tool-button tool-button-secondary" type="button">
       Estadísticas
     </button>
@@ -25,12 +28,8 @@ edition_label: Edición crítica · prototipo
 
 <div id="tei-wrapper" class="synoptic-view" data-comparison="closed">
   <section id="critical-pane" class="edition-pane critical-pane" aria-label="Texto crítico">
-    <header class="pane-header">
-      <div>
-        <span class="pane-eyebrow">Texto crítico</span>
-        <h1>El marqués de las Navas</h1>
-      </div>
-      <span class="pane-meta">Numeración crítica</span>
+    <header class="pane-header pane-header-simple">
+      <h1>Texto crítico</h1>
     </header>
     <div id="critical-container" class="tei-column critical-column">
       <div class="edition-loading" id="critical-loading" role="status">Cargando la edición…</div>
@@ -38,19 +37,22 @@ edition_label: Edición crítica · prototipo
   </section>
 
   <section id="witness-pane" class="edition-pane witness-pane hidden" aria-label="Testimonio comparado">
-    <header class="pane-header">
-      <div>
-        <span class="pane-eyebrow">Testimonio</span>
-        <h2 id="witness-title">—</h2>
-        <p id="witness-description" class="pane-description"></p>
-        <span class="pane-numbering-note">Numeración propia del testimonio</span>
-      </div>
+    <header class="pane-header pane-header-simple">
+      <button id="witness-title" class="witness-title-button" type="button" aria-label="Ver información del testimonio">—</button>
       <button id="close-witness-btn" class="pane-close" type="button" aria-label="Cerrar comparación">
         Cerrar
       </button>
     </header>
     <div id="witness-container" class="tei-column witness-column"></div>
   </section>
+</div>
+
+<div id="witness-info-modal-wrapper" class="modal hidden">
+  <div id="witness-info-modal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="witness-info-title">
+    <button id="close-witness-info-btn" class="modal-close" type="button" aria-label="Cerrar">×</button>
+    <h3 id="witness-info-title">Testimonios</h3>
+    <div id="witness-info-content" class="witness-info-content"></div>
+  </div>
 </div>
 
 <!-- Modal wrapper for centering and backdrop -->
@@ -1646,14 +1648,12 @@ edition_label: Edición crítica · prototipo
     const wrapper = document.getElementById("tei-wrapper");
     const select = document.getElementById("witness-select");
     const title = document.getElementById("witness-title");
-    const description = document.getElementById("witness-description");
 
     pane?.classList.add("hidden");
     if (container) container.innerHTML = "";
     if (wrapper) wrapper.dataset.comparison = "closed";
     if (select) select.value = "";
     if (title) title.textContent = "—";
-    if (description) description.textContent = "";
     updateCriticalAdditionSlots(null);
   }
 
@@ -1683,6 +1683,75 @@ edition_label: Edición crítica · prototipo
     return (witness?.textContent || "").trim().replace(/\s+/g, " ");
   }
 
+  function witnessInfoRecord(witID) {
+    const id = (witID || "").replace(/^#/, "");
+    const description = getWitnessDescription(id);
+    return {
+      id,
+      description:
+        description || "Información bibliográfica pendiente de completar en listWit.",
+      isDefined: !!description,
+    };
+  }
+
+  function renderWitnessInfo(witnessIDs, title = "Testimonios") {
+    const modal = document.getElementById("witness-info-modal-wrapper");
+    const heading = document.getElementById("witness-info-title");
+    const content = document.getElementById("witness-info-content");
+    if (!modal || !heading || !content) return;
+
+    heading.textContent = title;
+    content.innerHTML = "";
+
+    witnessIDs.map(witnessInfoRecord).forEach((record) => {
+      const item = document.createElement("article");
+      item.className = "witness-info-item";
+      if (!record.isDefined) item.classList.add("is-incomplete");
+
+      const siglum = document.createElement("div");
+      siglum.className = "witness-info-siglum";
+      siglum.textContent = record.id;
+
+      const description = document.createElement("p");
+      description.className = "witness-info-description";
+      description.textContent = record.description;
+
+      item.append(siglum, description);
+      content.appendChild(item);
+    });
+
+    modal.classList.remove("hidden");
+  }
+
+  function setupWitnessInfo(allWitnesses) {
+    const openAll = document.getElementById("open-witness-info-btn");
+    const close = document.getElementById("close-witness-info-btn");
+    const modal = document.getElementById("witness-info-modal-wrapper");
+    const titleButton = document.getElementById("witness-title");
+
+    openAll?.addEventListener("click", () => {
+      renderWitnessInfo(allWitnesses, "Testimonios");
+    });
+
+    titleButton?.addEventListener("click", () => {
+      const wit = titleButton.dataset.wit || titleButton.textContent.trim();
+      if (wit && wit !== "—") {
+        renderWitnessInfo([wit], `Testimonio ${wit}`);
+      }
+    });
+
+    close?.addEventListener("click", () => modal?.classList.add("hidden"));
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.add("hidden");
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+      }
+    });
+  }
+
   function populateWitnessSelect(allWitnesses) {
     const select = document.getElementById("witness-select");
     select.innerHTML = '<option value="">Selecciona testimonio</option>';
@@ -1703,13 +1772,12 @@ edition_label: Edición crítica · prototipo
     const container = document.getElementById("witness-container");
     const wrapper = document.getElementById("tei-wrapper");
     const title = document.getElementById("witness-title");
-    const description = document.getElementById("witness-description");
 
     container.innerHTML = "";
     pane.classList.remove("hidden");
     wrapper.dataset.comparison = "open";
     title.textContent = witnessID;
-    description.textContent = getWitnessDescription(witnessID);
+    title.dataset.wit = witnessID;
     updateCriticalAdditionSlots(witnessID);
 
     const witnessDOM = reconstructWitness(witnessID, baseTEI);
@@ -1758,6 +1826,7 @@ edition_label: Edición crítica · prototipo
       const castMap = buildCastMap(baseTEI);
       const allSigla = extractWitnessSigla(baseTEI);
       populateWitnessSelect(allSigla);
+      setupWitnessInfo(allSigla);
       setupStatsPopup(allSigla, castMap);
 
       // Delegated handler: click su chip → apri testimone (senza passare dal <select>)
