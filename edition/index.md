@@ -52,39 +52,49 @@ permalink: /genetic/
       </label>
     </fieldset>
 
-    <fieldset class="toolbar-group toolbar-panels">
-      <legend class="toolbar-label">Paneles</legend>
-      <label class="pane-toggle">
-        <input type="checkbox" data-toggle-pane="facsimile-pane" checked>
-        <span>Facsímil</span>
-      </label>
-      <label class="pane-toggle">
-        <input type="checkbox" data-toggle-pane="genetic-pane" checked>
-        <span>Texto</span>
-      </label>
-      <label class="pane-toggle">
-        <input type="checkbox" data-toggle-pane="diplomatic-pane">
-        <span>Diplomática</span>
-      </label>
-    </fieldset>
+    <details class="toolbar-tools">
+      <summary>Herramientas</summary>
+      <div class="toolbar-tools-panel">
+        <fieldset class="toolbar-group toolbar-panels">
+          <legend class="toolbar-label">Paneles</legend>
+          <label class="pane-toggle">
+            <input type="checkbox" data-toggle-pane="facsimile-pane" checked>
+            <span>Facsímil</span>
+          </label>
+          <label class="pane-toggle">
+            <input type="checkbox" data-toggle-pane="genetic-pane" checked>
+            <span>Genética</span>
+          </label>
+          <label class="pane-toggle">
+            <input type="checkbox" data-toggle-pane="diplomatic-pane">
+            <span>Diplomática</span>
+          </label>
+        </fieldset>
 
-    <div class="toolbar-group toolbar-navigation">
-      <label for="verse-input" class="toolbar-label">Verso</label>
-      <div class="compact-control">
-        <input id="verse-input" type="number" min="1" inputmode="numeric" placeholder="n.º">
-      </div>
-    </div>
+        <label class="sync-toggle">
+          <input id="sync-views" type="checkbox" checked>
+          <span>Sincronizar las vistas</span>
+        </label>
 
-    <div class="toolbar-group toolbar-search">
-      <label for="search-input" class="toolbar-label">Buscar</label>
-      <div class="search-control">
-        <input id="search-input" type="text" placeholder="Buscar en los textos…">
-        <button id="search-prev" class="icon-button" type="button" title="Coincidencia anterior" aria-label="Coincidencia anterior">↑</button>
-        <button id="search-next" class="icon-button" type="button" title="Coincidencia siguiente" aria-label="Coincidencia siguiente">↓</button>
-        <button id="search-clear" class="icon-button" type="button" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">×</button>
-        <span id="search-count" aria-live="polite"></span>
+        <div class="toolbar-group toolbar-navigation">
+          <label for="verse-input" class="toolbar-label">Ir al verso</label>
+          <div class="compact-control">
+            <input id="verse-input" type="number" min="1" inputmode="numeric" placeholder="n.º · Intro">
+          </div>
+        </div>
+
+        <div class="toolbar-group toolbar-search">
+          <label for="search-input" class="toolbar-label">Buscar</label>
+          <div class="search-control">
+            <input id="search-input" type="text" placeholder="Palabra clave · Intro">
+            <button id="search-prev" class="icon-button" type="button" title="Coincidencia anterior" aria-label="Coincidencia anterior">↑</button>
+            <button id="search-next" class="icon-button" type="button" title="Coincidencia siguiente" aria-label="Coincidencia siguiente">↓</button>
+            <button id="search-clear" class="icon-button" type="button" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">×</button>
+            <span id="search-count" aria-live="polite"></span>
+          </div>
+        </div>
       </div>
-    </div>
+    </details>
   </div>
 
   <div class="edition-statusbar">
@@ -112,7 +122,7 @@ permalink: /genetic/
           <button id="folio-next" type="button" title="Folio siguiente" aria-label="Folio siguiente">→</button>
           <span class="control-divider" aria-hidden="true"></span>
           <button id="zoom-out" type="button" title="Reducir" aria-label="Reducir">−</button>
-          <button id="zoom-reset" type="button" title="Ajustar el facsímil al panel">Ajustar</button>
+          <button id="zoom-reset" type="button" title="Ajustar el facsímil al panel" aria-label="Ajustar el facsímil al panel">↺</button>
           <button id="zoom-in" type="button" title="Ampliar" aria-label="Ampliar">+</button>
         </div>
         </div>
@@ -132,6 +142,10 @@ permalink: /genetic/
         </div>
         <div class="pane-header-actions">
           <span class="pane-meta">A0 · A1 · A2 · B</span>
+          <div class="text-size-controls" data-text-target="genetic-scroll" aria-label="Tamaño del texto de la edición genética">
+            <button type="button" data-text-size="-1" title="Reducir texto" aria-label="Reducir texto">A−</button>
+            <button type="button" data-text-size="1" title="Aumentar texto" aria-label="Aumentar texto">A+</button>
+          </div>
         </div>
       </header>
       <div id="genetic-scroll" class="pane-scroll text-scroll"></div>
@@ -145,6 +159,10 @@ permalink: /genetic/
         </div>
         <div class="pane-header-actions">
           <span class="pane-meta">Acto I</span>
+          <div class="text-size-controls" data-text-target="diplomatic-scroll" aria-label="Tamaño del texto de la transcripción diplomática">
+            <button type="button" data-text-size="-1" title="Reducir texto" aria-label="Reducir texto">A−</button>
+            <button type="button" data-text-size="1" title="Aumentar texto" aria-label="Aumentar texto">A+</button>
+          </div>
         </div>
       </header>
       <div id="diplomatic-scroll" class="pane-scroll text-scroll"></div>
