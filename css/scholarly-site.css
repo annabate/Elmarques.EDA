@@ -20,7 +20,9 @@ html {
 }
 
 body.site-page {
+  display: flex;
   min-height: 100vh;
+  flex-direction: column;
   margin: 0;
   background: var(--sch-bg);
   color: var(--sch-text);
@@ -143,6 +145,7 @@ body.site-page a:hover {
 
 .site-main,
 .site-home-main {
+  flex: 1 0 auto;
   width: min(100% - 2rem, 1180px);
   margin: 0 auto;
 }
