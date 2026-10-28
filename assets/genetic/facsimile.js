@@ -50,7 +50,15 @@
   function scrollToFolio(container, folioN) {
     const pb = findPb(container, folioN);
     if (!pb) return;
-    pb.scrollIntoView({ block: "start", behavior: "smooth" });
+    const containerRect = container.getBoundingClientRect();
+    const pbRect = pb.getBoundingClientRect();
+    container.scrollTo({
+      top: Math.max(
+        0,
+        container.scrollTop + pbRect.top - containerRect.top - 24,
+      ),
+      behavior: "smooth",
+    });
   }
 
   function setup(options) {
@@ -106,6 +114,7 @@
       image.style.maxWidth = "none";
       image.style.transform = "none";
       image.dataset.zoom = scale.toFixed(2);
+      stage?.classList.toggle("is-pannable", scale > 1.05);
 
       const percentage = Math.round(scale * 100);
       resetZoomButton.textContent = `${percentage}%`;
@@ -216,17 +225,11 @@
     image.addEventListener("dblclick", (event) => {
       if (!stage) return;
 
-      if (scale > 1.05) {
-        resetZoom();
-        stage.scrollTo({ left: 0, top: 0, behavior: "smooth" });
-        return;
-      }
-
       const rect = image.getBoundingClientRect();
       const relativeX = (event.clientX - rect.left) / rect.width;
       const relativeY = (event.clientY - rect.top) / rect.height;
 
-      scale = 2;
+      scale = Math.min(4, scale <= 1.05 ? 2 : scale * 1.5);
       applyZoom();
 
       requestAnimationFrame(() => {
