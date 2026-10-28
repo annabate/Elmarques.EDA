@@ -1,0 +1,16 @@
+:root {
+  --sch-bg: #f3f1ec;
+  --sch-paper: #fffefa;
+  --sch-paper-strong: #fffdf8;
+  --sch-text: #26231f;
+  --sch-muted: #756e65;
+  --sch-border: #d9d3c8;
+  --sch-border-strong: #c7beb1;
+  --sch-accent: #3f4a46;
+  --sch-accent-dark: #303a36;
+  --sch-burgundy: #7b292d;
+  --sch-soft: #ebe7df;
+  --sch-serif: "Source Serif 4", "Iowan Old Style", Charter, "Palatino Linotype", Georgia, serif;
+  --sch-sans: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sch-shadow: 0 10px 30px rgba(45, 36, 26, 0.07);
+}
