@@ -1270,3 +1270,62 @@ tei-addspan::after {
   tei-l[part="M"] { padding-left: 1.25rem; }
   tei-l[part="F"] { padding-left: 2.5rem; }
 }
+
+
+/* Project identity in the edition shell */
+.edition-project-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  color: #403b35 !important;
+  text-decoration: none !important;
+}
+
+.edition-project-link em {
+  font-family: var(--reading-font);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.edition-project-link span {
+  color: var(--edition-muted);
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.edition-sitebar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edition-sitebar,
+.workspace-kicker,
+.workspace-subtitle,
+.workspace-status,
+.toolbar-label,
+.toolbar-tools,
+.sync-toggle,
+.layer-toggle,
+.pane-toggle,
+.edition-statusbar,
+.pane-header {
+  font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@media (max-width: 760px) {
+  .edition-project-link span,
+  .edition-sitebar-actions > span {
+    display: none;
+  }
+
+  .edition-sitebar-actions {
+    gap: 0.5rem;
+  }
+
+  .edition-project-link em {
+    font-size: 0.82rem;
+  }
+}
