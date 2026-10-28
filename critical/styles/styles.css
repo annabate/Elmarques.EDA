@@ -456,26 +456,22 @@ tei-l[part="F"] .line-text {
 
 .transmission-note {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.15rem;
-  height: 1.15rem;
-  margin-left: 0.32rem;
+  display: inline;
+  margin-left: 0.28rem;
   padding: 0;
-  border: 1px solid #c9c2b8;
-  border-radius: 999px;
-  background: #f5f2ec;
-  color: #756d64;
+  border: 0;
+  border-bottom: 1px dotted #a9a096;
+  background: transparent;
+  color: #786f65;
   cursor: pointer;
-  font: 650 0.72rem/1 var(--sch-sans);
+  font: italic 600 0.68rem/1 var(--sch-sans);
   vertical-align: super;
 }
 
 .transmission-note:hover,
 .transmission-note.active {
-  border-color: #a69c90;
-  background: #ece7df;
+  border-bottom-color: #6e655b;
+  background: transparent;
   color: var(--critical-text);
 }
 
@@ -557,17 +553,27 @@ tei-l[part="F"] .line-text {
   display: none;
 }
 
-/* Witness omissions keep the physical slots needed for parallel reading,
-   but only the first slot carries a label. */
-.omission-slot {
-  display: inline-block;
-  min-height: 1em;
-  color: #8f877e;
-  font: italic 500 0.72rem/1.35 var(--sch-sans);
+/* Witness omissions use an editorial placeholder for every omitted verse.
+   A small explanatory label appears only at the beginning of the omitted block. */
+.omission-placeholder-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.48rem;
+  min-width: 0;
 }
 
-.omission-slot:not(.omission-slot-label) {
-  visibility: hidden;
+.omission-placeholder {
+  color: #8d857b;
+  font-family: var(--sch-serif);
+  font-size: 0.92em;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+}
+
+.omission-kind-label {
+  color: #8a8177;
+  font: italic 500 0.68rem/1.3 var(--sch-sans);
+  white-space: nowrap;
 }
 
 .witness-column tei-l[data-witness-omitted="true"] .line-text {
