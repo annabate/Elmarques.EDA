@@ -309,10 +309,37 @@ tei-stage {
   text-align: center;
 }
 
+tei-sp {
+  display: grid;
+  grid-template-columns: minmax(5.4rem, 7.4rem) minmax(0, 1fr);
+  column-gap: 1rem;
+  margin: 0.16rem 0;
+}
+
 tei-speaker {
-  display: inline;
-  font-variant: small-caps;
-  font-weight: 650;
+  grid-column: 1;
+  min-width: 0;
+  padding: 0.15rem 0.55rem 0 0;
+  border-right: 1px solid rgba(125, 115, 102, 0.14);
+  color: #625b52;
+  font-family: var(--sch-sans);
+  font-size: 0.69em;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 0.025em;
+  overflow-wrap: anywhere;
+  text-align: right;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+tei-lg {
+  display: contents;
+}
+
+tei-sp > tei-stage {
+  grid-column: 1 / -1;
 }
 
 tei-ab,
@@ -322,34 +349,42 @@ tei-trailer {
   text-align: center;
 }
 
-/* Verse layout */
+/* Verse layout: speaker | text | number */
 tei-l {
+  grid-column: 2;
   display: block;
   position: relative;
+  min-width: 0;
   margin: 0;
 }
 
 .line-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.55rem;
   align-items: baseline;
   min-width: 0;
 }
 
+.line-text {
+  grid-column: 1;
+  display: inline-block;
+  min-width: 0;
+}
+
 .line-number {
-  flex: 0 0 2.55rem;
-  padding-right: 0.72rem;
+  grid-column: 2;
+  justify-self: end;
+  min-width: 2.2rem;
+  padding-left: 0.55rem;
   color: #81766b;
-  font-family: var(--sch-serif);
-  font-size: 0.77rem;
-  font-variant-numeric: oldstyle-nums;
+  font-family: var(--sch-sans);
+  font-size: 0.67rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
   line-height: inherit;
   text-align: right;
   user-select: none;
-}
-
-.line-text {
-  display: inline-block;
-  min-width: 0;
+  white-space: nowrap;
 }
 
 tei-l[part="M"] .line-text,
@@ -503,16 +538,13 @@ tei-l[part="F"] .line-text {
 /* A verse present in witnesses but absent from the critical text.
    Closed view: compact editorial notice. Comparison view: one full verse slot. */
 .transmission-slot {
-  display: flex;
-  align-items: baseline;
+  grid-column: 2;
+  display: block;
   min-width: 0;
   margin: 0.08rem 0;
+  padding-right: 2.55rem;
   color: var(--critical-muted);
   font-family: var(--sch-sans);
-}
-
-.transmission-slot-gutter {
-  flex: 0 0 2.55rem;
 }
 
 .transmission-slot-body {
@@ -541,6 +573,7 @@ tei-l[part="F"] .line-text {
 .addition-slot.is-alignment-active {
   min-height: 1.62em;
   margin: 0;
+  line-height: 1.62;
 }
 
 .addition-slot.is-alignment-active .transmission-slot-body {
@@ -583,7 +616,7 @@ tei-l[part="F"] .line-text {
 .speaker-alignment-slot {
   visibility: hidden;
   display: inline-block;
-  min-height: 1em;
+  min-height: 1.28em;
 }
 
 /* Witness additions are real witness text, marked only in the gutter. */
@@ -882,10 +915,28 @@ tei-l[data-addition="true"] .line-text {
     padding: 1.1rem 0.55rem 1.4rem;
   }
 
+  tei-sp {
+    grid-template-columns: minmax(4.3rem, 5.4rem) minmax(0, 1fr);
+    column-gap: 0.55rem;
+  }
+
+  tei-speaker {
+    padding-right: 0.4rem;
+    font-size: 0.64em;
+  }
+
+  .line-container {
+    grid-template-columns: minmax(0, 1fr) 2.1rem;
+  }
+
   .line-number {
-    flex-basis: 2.1rem;
-    padding-right: 0.45rem;
-    font-size: 0.7rem;
+    min-width: 1.85rem;
+    padding-left: 0.35rem;
+    font-size: 0.62rem;
+  }
+
+  .transmission-slot {
+    padding-right: 2.1rem;
   }
 
   .app-tooltip {
