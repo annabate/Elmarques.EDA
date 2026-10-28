@@ -114,10 +114,7 @@ button:focus-visible,
 
 .tool-button,
 .pane-close,
-#witness-buttons button,
-#toggle-global-chart-btn,
-#close-global-chart-btn,
-#close-stats-btn {
+#witness-buttons button {
   min-height: 2rem;
   margin: 0;
   padding: 0.38rem 0.7rem;
@@ -132,10 +129,7 @@ button:focus-visible,
 
 .tool-button:hover,
 .pane-close:hover,
-#witness-buttons button:hover,
-#toggle-global-chart-btn:hover,
-#close-global-chart-btn:hover,
-#close-stats-btn:hover {
+#witness-buttons button:hover:hover:hover:hover {
   border-color: #aaa194;
   background: var(--critical-hover);
   color: var(--critical-text);
