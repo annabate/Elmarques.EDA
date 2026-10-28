@@ -574,6 +574,12 @@ tei-l[part="F"] .line-text {
   min-height: 1em;
 }
 
+.speaker-alignment-slot {
+  visibility: hidden;
+  display: inline-block;
+  min-height: 1em;
+}
+
 /* Witness additions are real witness text, marked only in the gutter. */
 .witness-column tei-l[data-witness-addition="true"] .line-text {
   position: relative;
