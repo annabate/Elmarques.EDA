@@ -97,6 +97,10 @@
     });
   }
 
+  function clamp01(value) {
+    return Math.min(1, Math.max(0, value));
+  }
+
   function setup(options) {
     const {
       selector,
@@ -128,6 +132,7 @@
     let fittedWidth = 0;
     let resetOnNextLoad = true;
     let panState = null;
+    let zoomInteraction = false;
 
     function computeFittedWidth() {
       if (!stage || !image.naturalWidth || !image.naturalHeight) return 0;
@@ -171,6 +176,10 @@
     function resetZoom() {
       scale = 1;
       refit({ preserveZoom: true });
+      if (stage) {
+        stage.scrollLeft = 0;
+        stage.scrollTop = 0;
+      }
     }
 
     function showFolio(
@@ -244,6 +253,10 @@
 
     if (stage && "ResizeObserver" in window) {
       const observer = new ResizeObserver(() => {
+        // When zoomed, scrollbars alter the stage's client box by a few
+        // pixels. Re-fitting in response would create a visible feedback
+        // loop ("flicker"). Only recompute the fit in the base view.
+        if (zoomInteraction || scale > 1.05) return;
         refit({ preserveZoom: true });
       });
       observer.observe(stage);
@@ -268,10 +281,18 @@
     image.addEventListener("dblclick", (event) => {
       if (!stage) return;
 
-      const rect = image.getBoundingClientRect();
-      const relativeX = (event.clientX - rect.left) / rect.width;
-      const relativeY = (event.clientY - rect.top) / rect.height;
+      event.preventDefault();
+      event.stopPropagation();
 
+      const rect = image.getBoundingClientRect();
+      const relativeX = clamp01(
+        (event.clientX - rect.left) / rect.width,
+      );
+      const relativeY = clamp01(
+        (event.clientY - rect.top) / rect.height,
+      );
+
+      zoomInteraction = true;
       scale = Math.min(4, scale <= 1.05 ? 2 : scale * 1.5);
       applyZoom();
 
@@ -280,10 +301,14 @@
           relativeX * image.offsetWidth - stage.clientWidth / 2;
         const targetY =
           relativeY * image.offsetHeight - stage.clientHeight / 2;
-        stage.scrollTo({
-          left: Math.max(0, targetX),
-          top: Math.max(0, targetY),
-          behavior: "smooth",
+
+        // Instant repositioning avoids a second visual movement after
+        // the image itself has already changed size.
+        stage.scrollLeft = Math.max(0, targetX);
+        stage.scrollTop = Math.max(0, targetY);
+
+        requestAnimationFrame(() => {
+          zoomInteraction = false;
         });
       });
     });
