@@ -7,9 +7,9 @@
   --critical-accent: var(--sch-accent);
   --critical-burgundy: var(--sch-burgundy);
   --critical-soft: var(--sch-soft);
-  --critical-variant-bg: #f3e7e8;
-  --critical-variant-bg-active: #ead7d9;
-  --critical-variant-line: #9a666b;
+  --critical-variant-bg: #e9f2f7;
+  --critical-variant-bg-active: #dcecf4;
+  --critical-variant-line: #5f8da6;
   --critical-hover: #e8e4dc;
   --critical-omission: #f1efeb;
 }
@@ -422,7 +422,7 @@ tei-l[part="F"] .line-text {
 .lem-apparatus {
   display: inline;
   padding: 0 0.08em;
-  border-bottom: 1.5px solid var(--critical-variant-line);
+  border-bottom: 1.5px dashed var(--critical-variant-line);
   background:
     linear-gradient(
       to top,
@@ -442,7 +442,7 @@ tei-l[part="F"] .line-text {
 
 .lem-apparatus:hover,
 .lem-apparatus.active {
-  border-bottom-color: #7b4e53;
+  border-bottom-color: #3f748f;
   background:
     linear-gradient(
       to top,
@@ -450,7 +450,7 @@ tei-l[part="F"] .line-text {
       var(--critical-variant-bg-active) 58%,
       transparent 58%
     );
-  box-shadow: 0 1px 0 rgba(123, 78, 83, 0.08);
+  box-shadow: 0 1px 0 rgba(63, 116, 143, 0.08);
 }
 
 .app-tooltip,
