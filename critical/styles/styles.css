@@ -1323,7 +1323,82 @@ tei-l[data-addition="true"] .line-text {
 }
 
 .characters-table td span {
+  display: block;
+  margin-top: 0.08rem;
   color: var(--critical-muted);
+  font-size: 0.64rem;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.comparison-table {
+  min-width: 48rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  text-align: center;
+}
+
+.comparison-table th:first-child,
+.comparison-table tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  min-width: 8rem;
+  background: var(--critical-paper);
+  text-align: left;
+}
+
+.comparison-table thead th:first-child {
+  z-index: 4;
+}
+
+.character-stat-cell strong {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+
+.character-stat-cell.is-different {
+  background: rgba(95, 141, 166, 0.075);
+}
+
+.comparison-table .is-selected-witness {
+  box-shadow: inset 2px 0 0 #6c8795, inset -2px 0 0 #6c8795;
+}
+
+.comparison-table thead .is-selected-witness {
+  background: #eef4f7;
+  color: #315f77;
+}
+
+.attribution-witness-group {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--critical-border);
+}
+
+.attribution-witness-group:last-child {
+  border-bottom: 0;
+}
+
+.attribution-witness-group h5 {
+  margin: 0 0 0.12rem;
+  color: #4f4942;
+  font: 700 0.68rem/1.2 var(--sch-sans);
+}
+
+.attribution-witness-group.is-selected-witness {
+  margin-inline: -0.35rem;
+  padding-inline: 0.35rem;
+  background: rgba(95, 141, 166, 0.07);
+}
+
+.characters-empty {
+  margin: 0.5rem 0;
+  color: var(--critical-muted);
+  font: 500 0.68rem/1.4 var(--sch-sans);
 }
 
 .character-delta {
