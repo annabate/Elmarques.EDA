@@ -2,7 +2,7 @@
 layout: edition
 title: El marqués de las Navas - edición genética digital
 permalink: /genetic/
-edition_label: Edición genético-evolutiva · prototipo
+edition_label: Edición genética · prototipo
 ---
 
 <div
@@ -30,7 +30,7 @@ edition_label: Edición genético-evolutiva · prototipo
         <option value="A0">A0 · primera redacción</option>
         <option value="A1">A0 + A1 · correcciones inmediatas</option>
         <option value="A2">A0 + A1 + A2 · último estado autorial</option>
-        <option value="B">A0 + A1 + A2 + B · estado documental</option>
+        <option value="B">A0 + A1 + A2 + B · estado final del manuscrito</option>
       </select>
     </div>
 
@@ -39,7 +39,7 @@ edition_label: Edición genético-evolutiva · prototipo
       <label class="layer-toggle layer-a1">
         <input type="checkbox" name="intervention-layer" value="A1" checked>
         <span>A1</span>
-        <small>inmediatas</small>
+        <small>correcciones inmediatas</small>
       </label>
       <label class="layer-toggle layer-a2">
         <input type="checkbox" name="intervention-layer" value="A2" checked>
@@ -49,7 +49,7 @@ edition_label: Edición genético-evolutiva · prototipo
       <label class="layer-toggle layer-b">
         <input type="checkbox" name="intervention-layer" value="B" checked>
         <span>B</span>
-        <small>postautoriales</small>
+        <small>otras manos</small>
       </label>
     </fieldset>
 
