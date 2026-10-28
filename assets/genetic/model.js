@@ -230,12 +230,27 @@
 
       const marker = document.createElement("span");
       marker.className = "genetic-event-marker";
-      marker.textContent = layer;
+
+      const markerLayer = document.createElement("span");
+      markerLayer.className = "genetic-event-marker-layer";
+      markerLayer.textContent = layer;
+      marker.appendChild(markerLayer);
+
+      if (seq) {
+        const phase = document.createElement("sup");
+        phase.className = "genetic-event-phase";
+        phase.textContent = seq;
+        phase.setAttribute("aria-label", `fase ${seq}`);
+        marker.appendChild(phase);
+      }
 
       const details = [];
       if (fn) details.push(fn.replace(/^B-/, ""));
-      if (seq) details.push(`seq. ${seq}`);
+      if (seq) details.push(`fase ${seq}`);
       if (details.length) marker.title = details.join(" · ");
+
+      const markerLabel = seq ? `${layer}, fase ${seq}` : layer;
+      marker.setAttribute("aria-label", markerLabel);
 
       mod.prepend(marker);
     });
