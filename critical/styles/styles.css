@@ -1266,6 +1266,50 @@ tei-l[data-addition="true"] .line-text {
   font-size: 0.67rem;
 }
 
+.characters-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 0.75rem;
+}
+
+.characters-metric-toggle {
+  display: inline-flex;
+  padding: 0.16rem;
+  border: 1px solid var(--critical-border);
+  border-radius: 999px;
+  background: #f3f1ec;
+}
+
+.characters-metric-btn {
+  padding: 0.34rem 0.68rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--critical-muted);
+  cursor: pointer;
+  font: 650 0.67rem/1 var(--sch-sans);
+}
+
+.characters-metric-btn.is-active {
+  background: var(--critical-paper);
+  box-shadow: 0 1px 4px rgba(45,36,26,.08);
+  color: #315f77;
+}
+
+.characters-differences-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--critical-muted);
+  font: 600 0.67rem/1.2 var(--sch-sans);
+}
+
+.characters-differences-toggle input {
+  accent-color: #6c8795;
+}
+
 .characters-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.75fr);
@@ -1323,12 +1367,9 @@ tei-l[data-addition="true"] .line-text {
 }
 
 .characters-table td span {
-  display: block;
-  margin-top: 0.08rem;
   color: var(--critical-muted);
   font-size: 0.64rem;
-  line-height: 1.25;
-  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .comparison-table {
@@ -1355,12 +1396,44 @@ tei-l[data-addition="true"] .line-text {
 }
 
 .character-stat-cell strong {
-  display: block;
+  display: inline;
   font-variant-numeric: tabular-nums;
+}
+
+.character-inline-delta {
+  margin-left: 0.28rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.same-as-critical {
+  color: #aaa39a !important;
+  font-size: 0.78rem !important;
+}
+
+.table-metric-label {
+  display: block;
+  margin-top: 0.08rem;
+  color: var(--critical-muted);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.characters-empty-row {
+  padding: 1.2rem !important;
+  color: var(--critical-muted) !important;
+  font-style: italic;
+  text-align: center !important;
 }
 
 .character-stat-cell.is-different {
   background: rgba(95, 141, 166, 0.075);
+  color: #315f77;
+}
+
+.character-stat-cell.is-same {
+  background: transparent;
 }
 
 .comparison-table .is-selected-witness {
@@ -1703,6 +1776,11 @@ tei-l[data-addition="true"] .line-text {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.25rem;
+  }
+
+  .characters-controls {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .characters-scope {
