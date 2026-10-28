@@ -340,9 +340,7 @@ La interfaz debe privilegiar formulaciones descriptivas cuando la dirección his
 
 **Definición.** Representación editorial destinada a hacer legibles los procesos y estados de escritura documentados.
 
-**Etiqueta actual.** `Edición genético-evolutiva` → **revisar**.
-
-**Recomendación provisional.** Preferir **Edición genética** en la interfaz, por ser la denominación disciplinar más estable. El sintagma *genético-evolutiva* puede mantenerse en la documentación solo si se define explícitamente qué dimensión añade *evolutiva* al modelo.
+**Decisión del proyecto.** Usar **Edición genética** en la interfaz. El sintagma *genético-evolutiva* queda descartado como etiqueta de navegación; solo podría emplearse en un desarrollo teórico si se definiera de forma expresa.
 
 **Denominación global del proyecto.** **Edición crítico-genética** es adecuada cuando se alude conjuntamente a los dos niveles editoriales.
 
@@ -424,9 +422,9 @@ La interfaz debe privilegiar formulaciones descriptivas cuando la dirección his
 
 **Uso preferente.** *intervenciones autoriales*, *intervenciones no autoriales*.
 
-**Etiqueta actual.** `B · postautoriales` → **B · intervenciones de otra mano** o **B · intervenciones no autoriales**.
+**Decisión del proyecto.** En la interfaz, usar **B · otras manos**. En la documentación analítica puede desarrollarse como **intervenciones de otras manos** o **intervenciones no autoriales**, según el contexto.
 
-**Razón.** *Postautorial* introduce una afirmación cronológica más fuerte que «no autorial». Debe emplearse solo si la posterioridad está demostrada.
+**Razón.** *Postautorial* introduce una afirmación cronológica más fuerte que la evidencia paleográfica necesaria para identificar manos distintas.
 
 ---
 
@@ -466,9 +464,7 @@ La interfaz debe privilegiar formulaciones descriptivas cuando la dirección his
 
 **Definición.** Configuración documental resultante de todas las intervenciones conservadas en el manuscrito, incluidas las no autoriales.
 
-**Etiqueta actual.** `A0 + A1 + A2 + B · estado documental` → **revisar**.
-
-**Recomendación.** **Estado final conservado** o **Estado final del manuscrito** resulta más transparente para el usuario que *estado documental*. *Estado documental* puede mantenerse como término técnico en la documentación si se define.
+**Decisión del proyecto.** Usar **estado final del manuscrito** en la interfaz para A0 + A1 + A2 + B. La expresión *estado documental* puede conservarse en la documentación metodológica únicamente si se define.
 
 ---
 
@@ -499,29 +495,29 @@ La interfaz debe privilegiar formulaciones descriptivas cuando la dirección his
 | Crítica | Selecciona testimonio | Seleccionar testimonio | Ajuste de estilo |
 | Crítica | Aparato | Aparato | Mantener como botón |
 | Crítica | Aparato crítico | Aparato crítico | Mantener |
-| Crítica | Loci | Entradas / Entradas del aparato | Cambiar |
+| Crítica | Loci | Entradas / Entradas del aparato | Aplicado |
 | Crítica | Texto | Texto | Mantener provisionalmente |
 | Crítica | Acotaciones | Acotaciones | Mantener |
-| Crítica | Interlocutores | Atribuciones | Cambiar |
+| Crítica | Interlocutores | Atribuciones | Aplicado |
 | Crítica | Omisiones | Omisiones | Mantener |
 | Crítica | Adiciones | Adiciones | Mantener |
-| Crítica | Diferencias de atribución | Variantes de atribución | Cambiar |
-| Crítica | Cambios de atribución | Variantes de atribución | Cambiar |
+| Crítica | Diferencias de atribución | Variantes de atribución | Aplicado |
+| Crítica | Cambios de atribución | Variantes de atribución | Aplicado |
 | Crítica | Distribución por acto | Distribución por acto | Mantener |
-| Crítica | Comparación de personajes | Distribución del texto por personaje | Revisar |
+| Crítica | Comparación de personajes | Distribución textual por personaje | Aplicado |
 | Crítica | Líneas | Versos | Pendiente de corregir el cómputo |
-| Crítica | Intervenciones | Parlamentos | Cambiar |
+| Crítica | Intervenciones | Parlamentos | Aplicado |
 | Crítica | Solo diferencias | Solo diferencias | Mantener |
-| Genética | Edición genético-evolutiva | Edición genética | Revisar |
-| Genética | Vista textual | Estado textual | Cambiar |
+| Genética | Edición genético-evolutiva | Edición genética | Aplicado |
+| Genética | Vista textual | Estado textual | Aplicado |
 | Genética | Génesis del texto | Génesis del texto | Mantener |
-| Genética | Intervenciones [A1/A2/B] | Estratos / Estratos de escritura | Cambiar |
+| Genética | Intervenciones [A1/A2/B] | Estratos / Estratos de escritura | Aplicado |
 | Genética | A0 · primera redacción | A0 · primera redacción | Mantener |
 | Genética | A1 · correcciones inmediatas | A1 · correcciones inmediatas | Mantener provisionalmente |
-| Genética | A2 · revisión | A2 · revisión autorial | Cambiar |
-| Genética | B · postautoriales | B · intervenciones de otra mano | Cambiar |
+| Genética | A2 · revisión | A2 · revisión autorial | Aplicado |
+| Genética | B · postautoriales | B · otras manos | Aplicado |
 | Genética | último estado autorial | último estado autorial | Mantener |
-| Genética | estado documental | estado final conservado | Revisar |
+| Genética | estado documental | estado final del manuscrito | Aplicado |
 | Genética | Edición genética | Edición genética | Mantener |
 | Genética | Transcripción diplomática | Transcripción diplomática | Mantener |
 | Genética | Facsímil | Facsímil | Mantener |
@@ -535,28 +531,17 @@ La interfaz debe privilegiar formulaciones descriptivas cuando la dirección his
 
 No debe cambiarse la etiqueta hasta que el algoritmo de la estadística de personajes trate de forma filológicamente explícita los versos partidos entre parlamentos. La unidad TEI `<l>` no debe equipararse automáticamente a una unidad métrica.
 
-## 6.2. «Comparación de personajes»
+## 6.2. «Distribución textual por personaje»
 
-La herramienta no compara cualidades de los personajes: compara **la distribución del texto atribuido a cada personaje en los distintos testimonios**. El nombre definitivo debe reflejar esa función. Candidatos:
-
-- **Distribución del texto por personaje**;
-- **Parlamentos por personaje y testimonio**;
-- **Distribución de parlamentos entre testimonios**.
-
-La elección dependerá de si la herramienta ofrece como métrica principal versos, parlamentos o ambas.
+La herramienta no compara cualidades de los personajes, sino **la distribución del texto atribuido a cada personaje en los distintos testimonios**. La denominación normativa del panel es **Distribución textual por personaje**. Las métricas internas pueden variar —por ahora, líneas y parlamentos— sin alterar el nombre general del instrumento.
 
 ## 6.3. «Panorama del aparato»
 
-El aparato crítico y la herramienta que lo resume/navega no son exactamente la misma entidad. Si se desea nombrar específicamente el panel de exploración, **Panorama del aparato** parece la solución más transparente; **Exploración del aparato** enfatiza más su carácter interactivo.
+El aparato crítico y la herramienta que lo resume/navega no son exactamente la misma entidad. La denominación normativa del panel sintético e interactivo es **Panorama del aparato**. El botón de acceso puede conservar la forma breve **Aparato**.
 
-## 6.4. B y la cronología de las otras manos
+## 6.4. B y las otras manos
 
-Antes de sustituir definitivamente *postautoriales*, conviene fijar en la documentación paleográfica si B designa:
-- simplemente intervenciones de otra mano;
-- intervenciones no autoriales necesariamente posteriores;
-- uno o varios estratos correspondientes a manos distintas.
-
-La interfaz debe expresar solo el grado de certeza que permita la evidencia material.
+La interfaz adopta la formulación **B · otras manos**, que expresa la atribución paleográfica sin añadir una cronología no demostrada por la propia etiqueta. La documentación deberá distinguir, cuando sea pertinente, las manos concretas incluidas en B y su secuencia relativa.
 
 ---
 
