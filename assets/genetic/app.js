@@ -308,12 +308,161 @@
     );
   }
 
+  function numericVerse(value) {
+    const match = String(value || "").trim().match(/^\d+/);
+    return match ? Number.parseInt(match[0], 10) : Number.NaN;
+  }
+
+  function lineVerseNumber(line) {
+    return numericVerse(line?.getAttribute("n") || "");
+  }
+
   function lineForVerse(pane, verse) {
-    const value = String(verse || "").trim();
-    if (!value) return null;
-    return Array.from(pane.querySelectorAll("tei-l[n]")).find(
-      (line) => line.getAttribute("n") === value,
-    ) || null;
+    const target = numericVerse(verse);
+    if (!Number.isFinite(target)) return null;
+
+    return (
+      Array.from(pane.querySelectorAll("tei-l[n]")).find(
+        (line) => lineVerseNumber(line) === target,
+      ) || null
+    );
+  }
+
+  function alignmentText(element) {
+    if (!element) return "";
+
+    const clone = element.cloneNode(true);
+    clone
+      .querySelectorAll(
+        ".genetic-event-marker, tei-note, button, tei-pb",
+      )
+      .forEach((node) => node.remove());
+
+    return (clone.textContent || "")
+      .toLocaleLowerCase("es")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/ç/g, "c")
+      .replace(/[^a-z0-9]+/g, "");
+  }
+
+  function bigrams(value) {
+    if (value.length < 2) return value ? [value] : [];
+    const result = [];
+    for (let i = 0; i < value.length - 1; i += 1) {
+      result.push(value.slice(i, i + 2));
+    }
+    return result;
+  }
+
+  function diceSimilarity(a, b) {
+    if (!a || !b) return 0;
+    if (a === b) return 1;
+
+    const left = bigrams(a);
+    const right = bigrams(b);
+    const counts = new Map();
+
+    left.forEach((gram) => {
+      counts.set(gram, (counts.get(gram) || 0) + 1);
+    });
+
+    let overlap = 0;
+    right.forEach((gram) => {
+      const count = counts.get(gram) || 0;
+      if (!count) return;
+      overlap += 1;
+      counts.set(gram, count - 1);
+    });
+
+    return (2 * overlap) / (left.length + right.length);
+  }
+
+  function geneticLineForVerse(verse, diplomaticLine) {
+    const target = numericVerse(verse);
+    if (!Number.isFinite(target)) return null;
+
+    const geneticLines = Array.from(
+      geneticPane.querySelectorAll("tei-l"),
+    );
+    if (!geneticLines.length) return null;
+
+    // If the genetic text explicitly numbers this verse, keep it as a
+    // candidate but do not trust the number alone: a few pilot anchors
+    // are duplicated or displaced.
+    const explicitCandidates = geneticLines.filter(
+      (line) => lineVerseNumber(line) === target,
+    );
+
+    if (!diplomaticLine) {
+      return explicitCandidates[0] || null;
+    }
+
+    const maxGeneticVerse = Math.max(
+      0,
+      ...geneticLines
+        .map((line) => lineVerseNumber(line))
+        .filter(Number.isFinite),
+    );
+
+    const diplomaticActLines = Array.from(
+      diplomaticPane.querySelectorAll("tei-l[n]"),
+    ).filter((line) => lineVerseNumber(line) <= maxGeneticVerse);
+
+    const diplomaticIndex =
+      diplomaticActLines.indexOf(diplomaticLine);
+
+    if (diplomaticIndex < 0 || diplomaticActLines.length < 2) {
+      return explicitCandidates[0] || null;
+    }
+
+    const expectedIndex = Math.round(
+      (diplomaticIndex / (diplomaticActLines.length - 1)) *
+        (geneticLines.length - 1),
+    );
+
+    const referenceText = alignmentText(diplomaticLine);
+    const referencePart =
+      diplomaticLine.getAttribute("part") || "";
+    const radius = 24;
+    const from = Math.max(0, expectedIndex - radius);
+    const to = Math.min(
+      geneticLines.length - 1,
+      expectedIndex + radius,
+    );
+
+    let best = null;
+    let bestScore = Number.NEGATIVE_INFINITY;
+
+    for (let i = from; i <= to; i += 1) {
+      const candidate = geneticLines[i];
+      const candidateText = alignmentText(candidate);
+      let score =
+        diceSimilarity(referenceText, candidateText) -
+        Math.abs(i - expectedIndex) * 0.004;
+
+      if (lineVerseNumber(candidate) === target) {
+        score += 0.18;
+      }
+
+      const candidatePart =
+        candidate.getAttribute("part") || "";
+      if (
+        referencePart &&
+        candidatePart &&
+        referencePart === candidatePart
+      ) {
+        score += 0.06;
+      }
+
+      if (score > bestScore) {
+        best = candidate;
+        bestScore = score;
+      }
+    }
+
+    if (best && bestScore > 0.18) return best;
+    return explicitCandidates[0] || best;
   }
 
   function scrollElementIntoPane(element, pane, behavior = "smooth") {
@@ -369,14 +518,36 @@
 
   function goToVerse(verse) {
     const value = String(verse || "").trim();
-    if (!value) return;
+    const target = numericVerse(value);
+    if (!Number.isFinite(target)) return;
 
-    const geneticLine = alignPaneToVerse(geneticPane, value, "smooth");
-    const diplomaticLine = alignPaneToVerse(
+    // The diplomatic transcription carries complete verse numbering and
+    // is therefore the authoritative navigation reference.
+    const diplomaticLine = lineForVerse(
       diplomaticPane,
-      value,
-      "smooth",
+      target,
     );
+    const geneticLine = geneticLineForVerse(
+      target,
+      diplomaticLine,
+    );
+
+    syncScrollLock = true;
+
+    if (diplomaticLine) {
+      scrollElementIntoPane(
+        diplomaticLine,
+        diplomaticPane,
+        "auto",
+      );
+    }
+    if (geneticLine) {
+      scrollElementIntoPane(
+        geneticLine,
+        geneticPane,
+        "auto",
+      );
+    }
 
     [geneticLine, diplomaticLine].filter(Boolean).forEach((line) => {
       line.classList.add("verse-target");
@@ -386,11 +557,22 @@
       );
     });
 
-    if (geneticLine) {
+    // The folio is taken from the fully numbered diplomatic witness, so
+    // all three panes are driven by the same textual reference.
+    if (diplomaticLine) {
+      syncFacsimileToElement(
+        diplomaticPane,
+        diplomaticLine,
+      );
+    } else if (geneticLine) {
       syncFacsimileToElement(geneticPane, geneticLine);
-    } else if (diplomaticLine) {
-      syncFacsimileToElement(diplomaticPane, diplomaticLine);
     }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        syncScrollLock = false;
+      });
+    });
   }
 
   function unwrapSearchMarks() {
