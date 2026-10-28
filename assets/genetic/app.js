@@ -280,7 +280,7 @@
       );
       setLayerControlsDisabled(false);
       modeHint.textContent =
-        "Génesis del texto · intervenciones A1, A2 y B visibles.";
+        "Génesis del texto · estratos A1, A2 y B visibles.";
     } else {
       rendered = window.EMNGeneticModel.materializeStage(
         geneticSource,
