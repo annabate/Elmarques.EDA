@@ -54,7 +54,7 @@ body.edition a {
 .workspace-subtitle,
 .workspace-status {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sch-sans);
 }
 
 .workspace-kicker {
@@ -125,7 +125,7 @@ body.edition a {
   margin: 0 0 0.28rem;
   padding: 0;
   color: var(--edition-muted);
-  font: 650 0.67rem/1.1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 650 0.67rem/1.1 var(--sch-sans);
   letter-spacing: 0.045em;
   text-transform: uppercase;
 }
@@ -142,7 +142,7 @@ body.edition a {
   border-radius: 0.38rem;
   background: #fff;
   color: var(--edition-text);
-  font: 400 0.82rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 400 0.82rem/1 var(--sch-sans);
 }
 
 .toolbar-view select {
@@ -153,7 +153,7 @@ body.edition a {
 .toolbar-tools {
   position: relative;
   margin-left: auto;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sch-sans);
 }
 
 .toolbar-tools > summary {
@@ -233,7 +233,7 @@ body.edition a {
   border-radius: 0.38rem;
   background: #fff;
   cursor: pointer;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sch-sans);
   user-select: none;
 }
 
@@ -331,7 +331,7 @@ body.edition a {
   border-radius: 0.36rem;
   background: #fff;
   color: #403b35;
-  font: 500 0.76rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 500 0.76rem/1 var(--sch-sans);
   cursor: pointer;
 }
 
@@ -364,7 +364,7 @@ body.edition a {
 #search-count {
   min-width: 2.3rem;
   color: var(--edition-muted);
-  font: 500 0.72rem/1 system-ui, sans-serif;
+  font: 500 0.72rem/1 var(--sch-sans);
   text-align: center;
 }
 
@@ -380,7 +380,7 @@ body.edition a {
   border-bottom: 1px solid var(--edition-border);
   background: #f9f7f2;
   color: var(--edition-muted);
-  font: 400 0.74rem/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 400 0.74rem/1.35 var(--sch-sans);
 }
 
 .status-legend {
@@ -482,7 +482,7 @@ body.edition a {
   padding: 0.52rem 0.72rem;
   border-bottom: 1px solid var(--edition-border);
   background: #f3f0e9;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sch-sans);
 }
 
 .pane-title {
@@ -552,7 +552,7 @@ body.edition a {
   border-radius: 0.3rem;
   background: #fbfaf7;
   color: #5a544d;
-  font: 600 0.66rem/1 system-ui, sans-serif;
+  font: 600 0.66rem/1 var(--sch-sans);
   cursor: pointer;
 }
 
@@ -704,7 +704,7 @@ tei-speaker {
   border-right: 1px solid rgba(125, 115, 102, 0.14);
   text-align: right;
   color: #625b52;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sch-sans);
   font-size: 0.69em;
   font-weight: 700;
   line-height: 1.28;
@@ -740,7 +740,7 @@ tei-l[n$="5"]::after {
   right: 0.15rem;
   top: 0.2rem;
   color: #a29a8e;
-  font: 500 0.62rem/1 system-ui, sans-serif;
+  font: 500 0.62rem/1 var(--sch-sans);
 }
 
 tei-l[part="M"] { padding-left: 2rem; }
@@ -770,7 +770,7 @@ tei-pb {
   color: #938a7f;
   cursor: pointer;
   text-align: right;
-  font: 500 0.62rem/1 system-ui, sans-serif;
+  font: 500 0.62rem/1 var(--sch-sans);
   letter-spacing: 0.02em;
 }
 
@@ -813,7 +813,7 @@ tei-unclear {
   border: 1px solid currentColor;
   border-radius: 0.2em;
   background: transparent;
-  font: 760 0.8em/1.08 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: 760 0.8em/1.08 var(--sch-sans);
   letter-spacing: 0.01em;
   vertical-align: 0.24em;
   cursor: help;
@@ -897,7 +897,7 @@ tei-addspan {
   border-radius: 0.22rem;
   color: var(--b);
   background: #f1f6f2;
-  font: 650 0.62rem/1.2 system-ui, sans-serif;
+  font: 650 0.62rem/1.2 var(--sch-sans);
 }
 
 tei-delspan::after {
@@ -999,7 +999,7 @@ tei-addspan::after {
 .floating-note-drag-hint {
   margin-right: auto;
   color: #9a9186;
-  font: 700 0.9rem/1 system-ui, sans-serif;
+  font: 700 0.9rem/1 var(--sch-sans);
   letter-spacing: -0.08em;
   opacity: 0.82;
 }
