@@ -483,9 +483,8 @@ tei-l[part="F"] .line-text {
   top: calc(100% + 0.45rem);
   left: 50%;
   display: none;
-  width: min(32rem, calc(100vw - 2rem));
-  min-width: min(16rem, calc(100vw - 2rem));
-  max-width: 32rem;
+  width: max-content;
+  max-width: min(32rem, calc(100vw - 2rem));
   padding: 0.4rem;
   overflow: visible;
   transform: translateX(-50%);
@@ -494,10 +493,11 @@ tei-l[part="F"] .line-text {
 
 .apparatus-entry {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, auto) auto;
   align-items: start;
   gap: 0.9rem;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   min-width: 0;
   padding: 0.42rem 0.45rem;
 }
