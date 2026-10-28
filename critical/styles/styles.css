@@ -184,45 +184,36 @@ button:focus-visible,
   min-width: 0;
 }
 
-.pane-header h1,
-.pane-header h2 {
-  margin: 0.08rem 0 0;
-  color: var(--critical-text);
-  font-family: var(--sch-serif);
-  font-style: normal;
-  font-weight: 580;
-  line-height: 1.1;
+.pane-header-simple {
+  min-height: 3.15rem;
 }
 
 .pane-header h1 {
-  font-size: 1.02rem;
+  margin: 0;
+  color: var(--critical-text);
+  font-family: var(--sch-sans);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 650;
+  line-height: 1.1;
 }
 
-.pane-header h2 {
-  font-size: 1rem;
+.witness-title-button {
+  margin: 0;
+  padding: 0.1rem 0.18rem;
+  border: 0;
+  border-bottom: 1px dotted #9d9489;
+  background: transparent;
+  color: var(--critical-text);
+  cursor: pointer;
+  font: 700 0.9rem/1.1 var(--sch-sans);
+  letter-spacing: 0.03em;
 }
 
-.pane-description {
-  max-width: 34rem;
-  margin: 0.14rem 0 0;
-  overflow: hidden;
-  color: var(--critical-muted);
-  font: 500 0.68rem/1.25 var(--sch-sans);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.pane-numbering-note {
-  display: inline-block;
-  margin-top: 0.18rem;
-  color: #8a8177;
-  font: 500 0.64rem/1.15 var(--sch-sans);
-}
-
-.pane-meta {
-  color: var(--critical-muted);
-  font: 500 0.7rem/1 var(--sch-sans);
-  white-space: nowrap;
+.witness-title-button:hover,
+.witness-title-button:focus-visible {
+  border-bottom-color: #5f574f;
+  background: transparent;
 }
 
 .pane-close {
@@ -462,18 +453,22 @@ tei-l[part="F"] .line-text {
   top: calc(100% + 0.45rem);
   left: 50%;
   display: none;
-  min-width: 11rem;
-  max-width: min(28rem, 80vw);
+  width: max-content;
+  min-width: 0;
+  max-width: min(44rem, calc(100vw - 2rem));
   padding: 0.35rem;
+  overflow-x: auto;
   transform: translateX(-50%);
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .apparatus-entry {
-  display: grid;
-  grid-template-columns: minmax(5rem, 1fr) auto;
+  display: flex;
   align-items: baseline;
-  gap: 0.7rem;
+  justify-content: space-between;
+  gap: 1rem;
+  width: max-content;
+  min-width: 100%;
   padding: 0.35rem 0.4rem;
 }
 
@@ -483,6 +478,7 @@ tei-l[part="F"] .line-text {
 
 .rdg-text {
   min-width: 0;
+  white-space: nowrap;
 }
 
 .witness-label {
@@ -759,6 +755,80 @@ tei-l[data-addition="true"] .line-text {
   100% { background: transparent; }
 }
 
+/* Witness information */
+.info-modal {
+  position: relative;
+  width: min(42rem, 94vw);
+  max-height: 86vh;
+  padding: 1.35rem 1.35rem 1.5rem;
+  overflow: auto;
+  border: 1px solid var(--critical-border);
+  border-radius: 0.55rem;
+  background: var(--critical-paper);
+  box-shadow: 0 20px 55px rgba(24, 20, 17, 0.18);
+}
+
+.info-modal h3 {
+  margin: 0 2rem 1rem 0;
+  color: var(--critical-text);
+  font-family: var(--sch-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.72rem;
+  right: 0.72rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.3rem;
+  background: transparent;
+  color: var(--critical-muted);
+  cursor: pointer;
+  font: 500 1.2rem/1 var(--sch-sans);
+}
+
+.modal-close:hover {
+  background: var(--critical-hover);
+  color: var(--critical-text);
+}
+
+.witness-info-content {
+  display: grid;
+  gap: 0;
+}
+
+.witness-info-item {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.78rem 0;
+  border-top: 1px solid var(--critical-border);
+}
+
+.witness-info-item:first-child {
+  border-top: 0;
+}
+
+.witness-info-siglum {
+  color: var(--critical-text);
+  font: 700 0.82rem/1.4 var(--sch-sans);
+}
+
+.witness-info-description {
+  margin: 0;
+  color: #514b44;
+  font: 400 0.84rem/1.45 var(--sch-sans);
+}
+
+.witness-info-item.is-incomplete .witness-info-description {
+  color: var(--critical-muted);
+  font-style: italic;
+}
+
 /* Statistics modal */
 .modal {
   position: fixed;
@@ -971,12 +1041,15 @@ tei-l[data-addition="true"] .line-text {
     right: 0.6rem;
     bottom: 0.6rem;
     left: 0.6rem;
+    width: auto;
     max-width: none;
+    overflow-x: auto;
     transform: none;
   }
 
   .apparatus-entry {
-    grid-template-columns: 1fr auto;
+    width: max-content;
+    min-width: 100%;
   }
 
   #stats-modal {
