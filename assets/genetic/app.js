@@ -378,56 +378,32 @@
     return (2 * overlap) / (left.length + right.length);
   }
 
-  function geneticLineForVerse(verse, diplomaticLine) {
-    const target = numericVerse(verse);
-    if (!Number.isFinite(target)) return null;
+  function correspondingLine(sourceLine, sourcePane, targetPane) {
+    if (!sourceLine || !sourcePane || !targetPane) return null;
 
-    const geneticLines = Array.from(
-      geneticPane.querySelectorAll("tei-l"),
+    const sourceLines = Array.from(
+      sourcePane.querySelectorAll("tei-l[n]"),
     );
-    if (!geneticLines.length) return null;
-
-    // If the genetic text explicitly numbers this verse, keep it as a
-    // candidate but do not trust the number alone: a few pilot anchors
-    // are duplicated or displaced.
-    const explicitCandidates = geneticLines.filter(
-      (line) => lineVerseNumber(line) === target,
+    const targetLines = Array.from(
+      targetPane.querySelectorAll("tei-l[n]"),
     );
+    if (!sourceLines.length || !targetLines.length) return null;
 
-    if (!diplomaticLine) {
-      return explicitCandidates[0] || null;
-    }
-
-    const maxGeneticVerse = Math.max(
-      0,
-      ...geneticLines
-        .map((line) => lineVerseNumber(line))
-        .filter(Number.isFinite),
-    );
-
-    const diplomaticActLines = Array.from(
-      diplomaticPane.querySelectorAll("tei-l[n]"),
-    ).filter((line) => lineVerseNumber(line) <= maxGeneticVerse);
-
-    const diplomaticIndex =
-      diplomaticActLines.indexOf(diplomaticLine);
-
-    if (diplomaticIndex < 0 || diplomaticActLines.length < 2) {
-      return explicitCandidates[0] || null;
-    }
+    const sourceIndex = sourceLines.indexOf(sourceLine);
+    if (sourceIndex < 0) return null;
 
     const expectedIndex = Math.round(
-      (diplomaticIndex / (diplomaticActLines.length - 1)) *
-        (geneticLines.length - 1),
+      (sourceIndex / Math.max(1, sourceLines.length - 1)) *
+        Math.max(0, targetLines.length - 1),
     );
 
-    const referenceText = alignmentText(diplomaticLine);
-    const referencePart =
-      diplomaticLine.getAttribute("part") || "";
+    const referenceText = alignmentText(sourceLine);
+    const referencePart = sourceLine.getAttribute("part") || "";
+    const sourceVerse = lineVerseNumber(sourceLine);
     const radius = 24;
     const from = Math.max(0, expectedIndex - radius);
     const to = Math.min(
-      geneticLines.length - 1,
+      targetLines.length - 1,
       expectedIndex + radius,
     );
 
@@ -435,18 +411,13 @@
     let bestScore = Number.NEGATIVE_INFINITY;
 
     for (let i = from; i <= to; i += 1) {
-      const candidate = geneticLines[i];
+      const candidate = targetLines[i];
       const candidateText = alignmentText(candidate);
       let score =
         diceSimilarity(referenceText, candidateText) -
         Math.abs(i - expectedIndex) * 0.004;
 
-      if (lineVerseNumber(candidate) === target) {
-        score += 0.18;
-      }
-
-      const candidatePart =
-        candidate.getAttribute("part") || "";
+      const candidatePart = candidate.getAttribute("part") || "";
       if (
         referencePart &&
         candidatePart &&
@@ -455,14 +426,26 @@
         score += 0.06;
       }
 
+      if (
+        Number.isFinite(sourceVerse) &&
+        lineVerseNumber(candidate) === sourceVerse
+      ) {
+        // A matching number is useful as a tiebreaker, but textual
+        // correspondence remains primary because the two textual states
+        // do not always have identical verse counts.
+        score += 0.025;
+      }
+
       if (score > bestScore) {
         best = candidate;
         bestScore = score;
       }
     }
 
-    if (best && bestScore > 0.18) return best;
-    return explicitCandidates[0] || best;
+    // If the source line has no literal counterpart in the other state,
+    // keep the columns aligned by textual position rather than jumping to
+    // an unrelated equal verse number.
+    return best || targetLines[expectedIndex] || null;
   }
 
   function scrollElementIntoPane(element, pane, behavior = "smooth") {
@@ -517,34 +500,30 @@
   }
 
   function goToVerse(verse) {
-    const value = String(verse || "").trim();
-    const target = numericVerse(value);
+    const target = numericVerse(verse);
     if (!Number.isFinite(target)) return;
 
-    // The diplomatic transcription carries complete verse numbering and
-    // is therefore the authoritative navigation reference.
-    const diplomaticLine = lineForVerse(
-      diplomaticPane,
-      target,
-    );
-    const geneticLine = geneticLineForVerse(
-      target,
-      diplomaticLine,
-    );
+    // Verse navigation is anchored in the fully numbered genetic text.
+    // The diplomatic pane follows the corresponding textual locus, which
+    // can have a different local verse number when the states diverge.
+    const geneticLine = lineForVerse(geneticPane, target);
+    const diplomaticLine = geneticLine
+      ? correspondingLine(
+          geneticLine,
+          geneticPane,
+          diplomaticPane,
+        )
+      : lineForVerse(diplomaticPane, target);
 
     syncScrollLock = true;
 
+    if (geneticLine) {
+      scrollElementIntoPane(geneticLine, geneticPane, "auto");
+    }
     if (diplomaticLine) {
       scrollElementIntoPane(
         diplomaticLine,
         diplomaticPane,
-        "auto",
-      );
-    }
-    if (geneticLine) {
-      scrollElementIntoPane(
-        geneticLine,
-        geneticPane,
         "auto",
       );
     }
@@ -557,15 +536,13 @@
       );
     });
 
-    // The folio is taken from the fully numbered diplomatic witness, so
-    // all three panes are driven by the same textual reference.
-    if (diplomaticLine) {
+    if (geneticLine) {
+      syncFacsimileToElement(geneticPane, geneticLine);
+    } else if (diplomaticLine) {
       syncFacsimileToElement(
         diplomaticPane,
         diplomaticLine,
       );
-    } else if (geneticLine) {
-      syncFacsimileToElement(geneticPane, geneticLine);
     }
 
     requestAnimationFrame(() => {
@@ -853,12 +830,15 @@
       .forEach((line) => line.classList.remove("sync-reference"));
 
     reference.line.classList.add("sync-reference");
-    const targetLine = alignPaneToVerse(
+    const targetLine = correspondingLine(
+      reference.line,
+      sourcePane,
       targetPane,
-      reference.verse,
-      "auto",
     );
-    targetLine?.classList.add("sync-reference");
+    if (targetLine) {
+      scrollElementIntoPane(targetLine, targetPane, "auto");
+      targetLine.classList.add("sync-reference");
+    }
 
     if (facsimileController && reference.folio) {
       facsimileController.showFolio(reference.folio, {
