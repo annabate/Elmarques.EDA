@@ -542,26 +542,40 @@ tei-l[part="F"] .line-text {
 }
 
 .critical-omission-range .line-text {
-  padding-bottom: 0.02em;
-  border-bottom: 1.5px dashed var(--critical-variant-line);
+  position: relative;
+  padding-left: 0.42rem;
   background:
     linear-gradient(
-      to top,
-      var(--critical-variant-bg) 0,
-      var(--critical-variant-bg) 28%,
-      transparent 28%
+      to right,
+      rgba(95, 141, 166, 0.10) 0,
+      rgba(95, 141, 166, 0.045) 48%,
+      transparent 100%
     );
 }
 
+.critical-omission-range .line-text::before {
+  content: "";
+  position: absolute;
+  top: 0.08em;
+  bottom: 0.08em;
+  left: 0;
+  width: 2px;
+  border-radius: 999px;
+  background: #9bb7c5;
+}
+
 .critical-omission-range.flash-highlight .line-text {
-  border-bottom-color: #3f748f;
   background:
     linear-gradient(
-      to top,
-      var(--critical-variant-bg-active) 0,
-      var(--critical-variant-bg-active) 58%,
-      transparent 58%
+      to right,
+      rgba(95, 141, 166, 0.18) 0,
+      rgba(95, 141, 166, 0.08) 58%,
+      transparent 100%
     );
+}
+
+.critical-omission-range.flash-highlight .line-text::before {
+  background: #5f8da6;
 }
 
 .transmission-note {
