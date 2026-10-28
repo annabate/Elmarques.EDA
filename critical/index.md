@@ -491,7 +491,7 @@ edition_label: Edición crítica · prototipo
       lineText.className = "line-text";
       while (line.firstChild) lineText.appendChild(line.firstChild);
 
-      wrapper.append(lineNum, lineText);
+      wrapper.append(lineText, lineNum);
       line.appendChild(wrapper);
     });
   }
@@ -973,10 +973,6 @@ edition_label: Edición crítica · prototipo
         slot.dataset.syncKey = `add-after-${previousN}`;
       }
 
-      const gutter = document.createElement("span");
-      gutter.className = "transmission-slot-gutter";
-      gutter.setAttribute("aria-hidden", "true");
-
       const body = document.createElement("span");
       body.className = "transmission-slot-body";
 
@@ -989,7 +985,7 @@ edition_label: Edición crítica · prototipo
       label.textContent = `Verso añadido en ${Array.from(witSet).join(", ")}`;
 
       body.append(sign, label);
-      slot.append(gutter, body);
+      slot.append(body);
       app.replaceWith(slot);
     });
   }
