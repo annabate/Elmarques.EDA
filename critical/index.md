@@ -417,19 +417,25 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
-  // Line numbering (idempotente)
+  // Verse coordinates and displayed numbering
   // =========================
-  function insertLeftAlignedLineNumbers(root) {
+  function insertLeftAlignedLineNumbers(root, { mode = "critical" } = {}) {
     root.querySelectorAll("tei-l, l").forEach((line) => {
-      if (line.querySelector(".line-container")) return;
-      const num = line.getAttribute("n");
+      if (line.querySelector(":scope > .line-container")) return;
 
       const wrapper = document.createElement("div");
       wrapper.className = "line-container";
 
       const lineNum = document.createElement("span");
       lineNum.className = "line-number";
-      if (num && parseInt(num, 10) % 5 === 0) lineNum.textContent = num;
+      lineNum.setAttribute("aria-hidden", "true");
+
+      // Critical numbering comes from @n. Witness numbering is assigned later,
+      // after omissions/additions have been resolved.
+      if (mode === "critical") {
+        const num = line.getAttribute("n");
+        if (num && parseInt(num, 10) % 5 === 0) lineNum.textContent = num;
+      }
 
       const lineText = document.createElement("span");
       lineText.className = "line-text";
@@ -439,6 +445,9 @@ edition_label: Edición crítica · prototipo
       line.appendChild(wrapper);
     });
   }
+
+  // Stable critical coordinate used only for alignment/synchronisation.
+  // M/F fragments inherit the @n of the first fragment of the split verse.
   function assignLogicalLineNumbers(root) {
     let currentVerse = null;
     root.querySelectorAll("tei-l, l").forEach((line) => {
@@ -446,12 +455,62 @@ edition_label: Edición crítica · prototipo
       const part = line.getAttribute("part");
 
       if (own) currentVerse = own;
-      const logical = own || ((part === "M" || part === "F") ? currentVerse : null);
+      const logical =
+        own || ((part === "M" || part === "F") ? currentVerse : null);
 
       if (logical) {
         line.classList.add(`line-n-${logical}`);
         line.setAttribute("data-line-n", logical);
+        line.setAttribute("data-critical-n", logical);
       }
+    });
+  }
+
+  // Displayed numbering for a reconstructed witness.
+  // It counts only verses actually present in that witness:
+  // omitted verses do not count, additions do, and I/M/F fragments count once.
+  function assignWitnessLineNumbers(root) {
+    let localNumber = 0;
+    let previousPresentLine = null;
+
+    root.querySelectorAll("tei-l, l").forEach((line) => {
+      const numberEl = line.querySelector(":scope > .line-container > .line-number");
+      if (numberEl) numberEl.textContent = "";
+
+      const omitted = !!line.querySelector(".placeholder-block");
+      if (omitted) {
+        line.setAttribute("data-witness-omitted", "true");
+        line.removeAttribute("data-witness-n");
+        previousPresentLine = null;
+        return;
+      }
+
+      const part = line.getAttribute("part");
+      const previousPart = previousPresentLine?.getAttribute("part");
+      const continuesSplitVerse =
+        (part === "M" || part === "F") &&
+        previousPresentLine &&
+        (previousPart === "I" || previousPart === "M") &&
+        previousPresentLine.hasAttribute("data-witness-n");
+
+      if (!continuesSplitVerse) localNumber += 1;
+
+      const witnessNumber = continuesSplitVerse
+        ? previousPresentLine.getAttribute("data-witness-n")
+        : String(localNumber);
+
+      line.setAttribute("data-witness-n", witnessNumber);
+
+      // As in the critical text, print a number every five verses, once per verse.
+      if (
+        numberEl &&
+        !continuesSplitVerse &&
+        localNumber % 5 === 0
+      ) {
+        numberEl.textContent = String(localNumber);
+      }
+
+      previousPresentLine = line;
     });
   }
 
@@ -1539,16 +1598,19 @@ edition_label: Edición crítica · prototipo
       decorateApparatus(witnessDOM);
       makeApparatusSiglaClickable(witnessDOM);
 
-      insertLeftAlignedLineNumbers(witnessDOM);
-      alignSplitVerses(witnessDOM);
-      // aggiunte long-span per il testimone selezionato (funzione unificata)
+      // Resolve witness-specific additions before numbering.
       processAdditionSpans(witnessDOM, {
         mode: "witness",
         witID: witnessID,
       });
 
-      // Logical verse ids include M/F fragments of split verses.
+      // Critical coordinates stay hidden and stable for synchronisation.
       assignLogicalLineNumbers(witnessDOM);
+
+      // Visible numbering belongs to the reconstructed witness itself.
+      insertLeftAlignedLineNumbers(witnessDOM, { mode: "witness" });
+      assignWitnessLineNumbers(witnessDOM);
+      alignSplitVerses(witnessDOM);
       enableLineSyncHighlighting();
     });
   }
