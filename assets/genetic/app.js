@@ -24,8 +24,11 @@
   let geneticSource = null;
   let diplomaticSource = null;
   let facsimileController = null;
-  let searchMatches = [];
+  let searchGroups = [];
   let searchIndex = -1;
+  let syncScrollLock = false;
+  let syncScrollTimer = null;
+  const textScales = new Map();
   let floatingNoteZ = 200;
   let noteCounter = 0;
 
@@ -303,23 +306,88 @@
     );
   }
 
+  function lineForVerse(pane, verse) {
+    const value = String(verse || "").trim();
+    if (!value) return null;
+    return Array.from(pane.querySelectorAll("tei-l[n]")).find(
+      (line) => line.getAttribute("n") === value,
+    ) || null;
+  }
+
+  function scrollElementIntoPane(element, pane, behavior = "smooth") {
+    if (!element || !pane) return;
+    const paneRect = pane.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+    const target =
+      pane.scrollTop +
+      elementRect.top -
+      paneRect.top -
+      Math.min(90, pane.clientHeight * 0.18);
+
+    pane.scrollTo({
+      top: Math.max(0, target),
+      behavior,
+    });
+  }
+
+  function alignPaneToVerse(pane, verse, behavior = "auto") {
+    const line = lineForVerse(pane, verse);
+    if (!line) return null;
+    scrollElementIntoPane(line, pane, behavior);
+    return line;
+  }
+
+  function folioForElement(container, element) {
+    if (!container || !element) return "";
+    let current = "";
+
+    for (const pb of container.querySelectorAll("tei-pb")) {
+      const position = pb.compareDocumentPosition(element);
+      if (
+        pb === element ||
+        position & Node.DOCUMENT_POSITION_FOLLOWING
+      ) {
+        current = pb.getAttribute("n") || "";
+      } else {
+        break;
+      }
+    }
+    return current;
+  }
+
+  function syncFacsimileToElement(container, element) {
+    if (!facsimileController || !element) return;
+    const folio = folioForElement(container, element);
+    if (!folio) return;
+    facsimileController.showFolio(folio, {
+      scrollText: false,
+      resetView: false,
+    });
+  }
+
   function goToVerse(verse) {
     const value = String(verse || "").trim();
     if (!value) return;
 
-    [geneticPane, diplomaticPane].forEach((pane) => {
-      const line = Array.from(pane.querySelectorAll("tei-l[n]")).find(
-        (item) => item.getAttribute("n") === value,
+    const geneticLine = alignPaneToVerse(geneticPane, value, "smooth");
+    const diplomaticLine = alignPaneToVerse(
+      diplomaticPane,
+      value,
+      "smooth",
+    );
+
+    [geneticLine, diplomaticLine].filter(Boolean).forEach((line) => {
+      line.classList.add("verse-target");
+      window.setTimeout(
+        () => line.classList.remove("verse-target"),
+        1800,
       );
-      if (line) {
-        line.classList.add("verse-target");
-        line.scrollIntoView({ behavior: "smooth", block: "center" });
-        window.setTimeout(
-          () => line.classList.remove("verse-target"),
-          1800,
-        );
-      }
     });
+
+    syncFacsimileToElement(
+      geneticPane,
+      geneticLine || diplomaticLine,
+    );
   }
 
   function unwrapSearchMarks() {
@@ -332,18 +400,27 @@
   function updateSearchControls() {
     document
       .querySelector(".search-control")
-      ?.classList.toggle("has-results", searchMatches.length > 0);
+      ?.classList.toggle("has-results", searchGroups.length > 0);
   }
 
   function clearSearch() {
     unwrapSearchMarks();
-    searchMatches = [];
+    searchGroups = [];
     searchIndex = -1;
     document.getElementById("search-count").textContent = "";
     updateSearchControls();
   }
 
-  function markMatches(container, query) {
+  function verseForSearchNode(element) {
+    const directLine = element.closest("tei-l[n]");
+    if (directLine) return directLine.getAttribute("n") || "";
+
+    const speech = element.closest("tei-sp");
+    const speechLine = speech?.querySelector("tei-l[n]");
+    return speechLine?.getAttribute("n") || "";
+  }
+
+  function markMatches(container, query, source) {
     const matches = [];
     const walker = document.createTreeWalker(
       container,
@@ -355,7 +432,7 @@
           if (
             !parent ||
             parent.closest(
-              "button, script, style, .note-popover, .genetic-event-marker",
+              "button, script, style, .genetic-event-marker",
             )
           ) {
             return NodeFilter.FILTER_REJECT;
@@ -389,7 +466,9 @@
         const mark = document.createElement("mark");
         mark.className = "search-hit";
         mark.textContent = text.slice(index, index + query.length);
+        mark.dataset.searchSource = source;
         frag.appendChild(mark);
+
         matches.push(mark);
 
         cursor = index + query.length;
@@ -403,22 +482,120 @@
       node.replaceWith(frag);
     });
 
+    matches.forEach((mark) => {
+      mark.dataset.searchVerse = verseForSearchNode(mark);
+    });
+
     return matches;
   }
 
-  function showSearchMatch(index) {
-    if (!searchMatches.length) return;
-    searchMatches.forEach((item) =>
-      item.classList.remove("search-hit-current"),
+  function bucketSearchHits(hits) {
+    const byVerse = new Map();
+    const unaligned = [];
+
+    hits.forEach((hit) => {
+      const verse = hit.dataset.searchVerse || "";
+      if (!verse) {
+        unaligned.push(hit);
+        return;
+      }
+      if (!byVerse.has(verse)) byVerse.set(verse, []);
+      byVerse.get(verse).push(hit);
+    });
+
+    return { byVerse, unaligned };
+  }
+
+  function verseSortValue(value) {
+    const numeric = Number.parseFloat(value);
+    return Number.isFinite(numeric) ? numeric : Number.MAX_SAFE_INTEGER;
+  }
+
+  function buildSearchGroups(geneticHits, diplomaticHits) {
+    const genetic = bucketSearchHits(geneticHits);
+    const diplomatic = bucketSearchHits(diplomaticHits);
+
+    const verses = Array.from(
+      new Set([
+        ...genetic.byVerse.keys(),
+        ...diplomatic.byVerse.keys(),
+      ]),
+    ).sort((a, b) => {
+      const numeric = verseSortValue(a) - verseSortValue(b);
+      return numeric || a.localeCompare(b, "es");
+    });
+
+    const groups = [];
+
+    verses.forEach((verse) => {
+      const left = genetic.byVerse.get(verse) || [];
+      const right = diplomatic.byVerse.get(verse) || [];
+      const count = Math.max(left.length, right.length);
+
+      for (let i = 0; i < count; i += 1) {
+        groups.push({
+          verse,
+          genetic: left[i] || null,
+          diplomatic: right[i] || null,
+        });
+      }
+    });
+
+    const unalignedCount = Math.max(
+      genetic.unaligned.length,
+      diplomatic.unaligned.length,
     );
+
+    for (let i = 0; i < unalignedCount; i += 1) {
+      groups.push({
+        verse: "",
+        genetic: genetic.unaligned[i] || null,
+        diplomatic: diplomatic.unaligned[i] || null,
+      });
+    }
+
+    return groups;
+  }
+
+  function showSearchMatch(index) {
+    if (!searchGroups.length) return;
+
+    document
+      .querySelectorAll("mark.search-hit-current")
+      .forEach((mark) => mark.classList.remove("search-hit-current"));
+
     searchIndex =
-      ((index % searchMatches.length) + searchMatches.length) %
-      searchMatches.length;
-    const current = searchMatches[searchIndex];
-    current.classList.add("search-hit-current");
-    current.scrollIntoView({ behavior: "smooth", block: "center" });
+      ((index % searchGroups.length) + searchGroups.length) %
+      searchGroups.length;
+
+    const group = searchGroups[searchIndex];
+    const entries = [
+      [group.genetic, geneticPane],
+      [group.diplomatic, diplomaticPane],
+    ];
+
+    entries.forEach(([mark, pane]) => {
+      if (mark) {
+        mark.classList.add("search-hit-current");
+        scrollElementIntoPane(mark, pane, "smooth");
+      } else if (group.verse) {
+        alignPaneToVerse(pane, group.verse, "smooth");
+      }
+    });
+
+    const reference =
+      group.genetic || group.diplomatic;
+    if (reference) {
+      const pane =
+        reference.dataset.searchSource === "genetic"
+          ? geneticPane
+          : diplomaticPane;
+      syncFacsimileToElement(pane, reference);
+    }
+
+    const verseLabel = group.verse ? ` · v. ${group.verse}` : "";
     document.getElementById("search-count").textContent =
-      `${searchIndex + 1}/${searchMatches.length}`;
+      `${searchIndex + 1}/${searchGroups.length}${verseLabel}`;
   }
 
   function runSearch() {
@@ -426,14 +603,123 @@
     const query = document.getElementById("search-input").value.trim();
     if (!query) return;
 
-    searchMatches = [
-      ...markMatches(geneticPane, query),
-      ...markMatches(diplomaticPane, query),
-    ];
+    const geneticHits = markMatches(
+      geneticPane,
+      query,
+      "genetic",
+    );
+    const diplomaticHits = markMatches(
+      diplomaticPane,
+      query,
+      "diplomatic",
+    );
+
+    searchGroups = buildSearchGroups(geneticHits, diplomaticHits);
 
     updateSearchControls();
-    if (searchMatches.length) showSearchMatch(0);
+    if (searchGroups.length) showSearchMatch(0);
     else document.getElementById("search-count").textContent = "0";
+  }
+
+  function currentTextReference(pane) {
+    const lines = Array.from(pane.querySelectorAll("tei-l[n]"));
+    if (!lines.length) return null;
+
+    const paneRect = pane.getBoundingClientRect();
+    const targetY = paneRect.top + Math.min(90, pane.clientHeight * 0.18);
+
+    let best = null;
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    lines.forEach((line) => {
+      const rect = line.getBoundingClientRect();
+      if (rect.bottom < paneRect.top || rect.top > paneRect.bottom) return;
+
+      const distance = Math.abs(rect.top - targetY);
+      if (distance < bestDistance) {
+        best = line;
+        bestDistance = distance;
+      }
+    });
+
+    if (!best) return null;
+
+    return {
+      line: best,
+      verse: best.getAttribute("n") || "",
+      folio: folioForElement(pane, best),
+    };
+  }
+
+  function syncFromTextPane(sourcePane) {
+    const syncToggle = document.getElementById("sync-views");
+    if (!syncToggle?.checked || syncScrollLock) return;
+
+    const reference = currentTextReference(sourcePane);
+    if (!reference?.verse) return;
+
+    syncScrollLock = true;
+
+    const targetPane =
+      sourcePane === geneticPane ? diplomaticPane : geneticPane;
+
+    alignPaneToVerse(targetPane, reference.verse, "auto");
+
+    if (facsimileController && reference.folio) {
+      facsimileController.showFolio(reference.folio, {
+        scrollText: false,
+        resetView: false,
+      });
+    }
+
+    requestAnimationFrame(() => {
+      syncScrollLock = false;
+    });
+  }
+
+  function setupViewSynchronization() {
+    [geneticPane, diplomaticPane].forEach((pane) => {
+      pane.addEventListener(
+        "scroll",
+        () => {
+          if (syncScrollLock) return;
+          window.clearTimeout(syncScrollTimer);
+          syncScrollTimer = window.setTimeout(
+            () => syncFromTextPane(pane),
+            70,
+          );
+        },
+        { passive: true },
+      );
+    });
+  }
+
+  function setupTextSizing() {
+    document
+      .querySelectorAll(".text-size-controls")
+      .forEach((control) => {
+        const target = document.getElementById(
+          control.dataset.textTarget,
+        );
+        if (!target) return;
+
+        textScales.set(target.id, 1);
+
+        control.querySelectorAll("[data-text-size]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const delta = Number(button.dataset.textSize || "0");
+            const current = textScales.get(target.id) || 1;
+            const next = clamp(
+              Math.round((current + delta * 0.1) * 10) / 10,
+              0.8,
+              1.5,
+            );
+            textScales.set(target.id, next);
+            target.style.setProperty("--text-scale", String(next));
+            target.dataset.textScale = String(next);
+          });
+        });
+      });
   }
 
   const editionGrid = document.getElementById("edition-grid");
@@ -695,6 +981,8 @@
     });
 
     setupPaneDragging();
+    setupTextSizing();
+    setupViewSynchronization();
     updateSearchControls();
     updatePaneLayout({ equalize: true });
 
