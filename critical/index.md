@@ -273,34 +273,44 @@ edition_label: Edición crítica · prototipo
             readingMatchesWitness(rdg, witID) &&
             rdg.textContent.trim() === "",
         );
-        if (!omittedForThisWit) return;
+        if (omittedForThisWit) {
+          const startAnchor = resolveAnchor(clone, app.getAttribute("from"));
+          const endAnchor = resolveAnchor(clone, app.getAttribute("to"));
 
-        const startAnchor = resolveAnchor(clone, app.getAttribute("from"));
-        const endAnchor = resolveAnchor(clone, app.getAttribute("to"));
-        if (!startAnchor || !endAnchor) return;
+          if (startAnchor && endAnchor) {
+            const all = Array.from(clone.querySelectorAll("*"));
+            let inRange = false;
+            const affected = [];
+            for (const el of all) {
+              if (el === startAnchor) {
+                inRange = true;
+                continue;
+              }
+              if (el === endAnchor) break;
+              const tag = el.tagName?.toLowerCase();
+              if (inRange && (tag === "tei-l" || tag === "tei-speaker")) {
+                affected.push(el);
+              }
+            }
 
-        const all = Array.from(clone.querySelectorAll("*"));
-        let inRange = false;
-        const affected = [];
-        for (const el of all) {
-          if (el === startAnchor) {
-            inRange = true;
-            continue;
-          }
-          if (el === endAnchor) break;
-          const tag = el.tagName?.toLowerCase();
-          if (inRange && (tag === "tei-l" || tag === "tei-speaker")) {
-            affected.push(el);
+            affected.forEach((el) => {
+              const tag = el.tagName?.toLowerCase();
+              while (el.firstChild) el.removeChild(el.firstChild);
+
+              // Keep verse slots for synoptic alignment, but do not invent
+              // a speaker label for a passage absent from this witness.
+              if (tag === "tei-l") {
+                const ph = document.createElement("span");
+                ph.className = "placeholder-block";
+                ph.textContent = "[...........................................]";
+                el.appendChild(ph);
+              }
+            });
           }
         }
 
-        affected.forEach((el) => {
-          while (el.firstChild) el.removeChild(el.firstChild);
-          const ph = document.createElement("span");
-          ph.className = "placeholder-block";
-          ph.textContent = "[...........................................]";
-          el.appendChild(ph);
-        });
+        // A reconstructed witness should not retain critical range apparatus.
+        app.remove();
       });
 
     // Resolve only outermost inline apparatus. Nested apparatus is resolved
@@ -382,15 +392,13 @@ edition_label: Edición crítica · prototipo
     root.querySelectorAll("tei-l, l").forEach((line) => {
       if (line.querySelector(".line-container")) return;
       const num = line.getAttribute("n");
-      const part = line.getAttribute("part");
 
       const wrapper = document.createElement("div");
       wrapper.className = "line-container";
 
       const lineNum = document.createElement("span");
       lineNum.className = "line-number";
-      if (num && (!part || part === "F") && parseInt(num, 10) % 5 === 0)
-        lineNum.textContent = num;
+      if (num && parseInt(num, 10) % 5 === 0) lineNum.textContent = num;
 
       const lineText = document.createElement("span");
       lineText.className = "line-text";
@@ -400,6 +408,22 @@ edition_label: Edición crítica · prototipo
       line.appendChild(wrapper);
     });
   }
+  function assignLogicalLineNumbers(root) {
+    let currentVerse = null;
+    root.querySelectorAll("tei-l, l").forEach((line) => {
+      const own = line.getAttribute("n");
+      const part = line.getAttribute("part");
+
+      if (own) currentVerse = own;
+      const logical = own || ((part === "M" || part === "F") ? currentVerse : null);
+
+      if (logical) {
+        line.classList.add(`line-n-${logical}`);
+        line.setAttribute("data-line-n", logical);
+      }
+    });
+  }
+
   function alignSplitVerses(root) {
     const lines = root.querySelectorAll("tei-l, l");
     lines.forEach((line, index) => {
@@ -1448,23 +1472,14 @@ edition_label: Edición crítica · prototipo
 
       insertLeftAlignedLineNumbers(witnessDOM);
       alignSplitVerses(witnessDOM);
-      decorateOmissionSpans(witnessDOM);
-
       // aggiunte long-span per il testimone selezionato (funzione unificata)
       processAdditionSpans(witnessDOM, {
         mode: "witness",
         witID: witnessID,
       });
 
-      // data-line-n per evidenziazione sincronizzata
-      witnessDOM.querySelectorAll("tei-l[n]").forEach((line) => {
-        const n = line.getAttribute("n");
-        if (n) {
-          line.classList.add(`line-n-${n}`);
-          line.setAttribute("data-line-n", n);
-        }
-      });
-
+      // Logical verse ids include M/F fragments of split verses.
+      assignLogicalLineNumbers(witnessDOM);
       enableLineSyncHighlighting();
     });
   }
@@ -1515,14 +1530,8 @@ edition_label: Edición crítica · prototipo
         attachNoteEvents(root);
         attachGlobalChartToggle();
 
-        // Tagga le linee del BASE con data-line-n per la sync highlight
-        root.querySelectorAll("tei-l[n]").forEach((line) => {
-          const n = line.getAttribute("n");
-          if (n) {
-            line.classList.add(`line-n-${n}`);
-            line.setAttribute("data-line-n", n);
-          }
-        });
+        // Logical verse ids include M/F fragments of split verses.
+        assignLogicalLineNumbers(root);
 
         // Dopo che decorateApparatus ha creato i tooltip, rendi le sigle cliccabili
         makeApparatusSiglaClickable(root);
