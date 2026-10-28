@@ -1,13 +1,13 @@
 :root {
   /* Backgrounds */
-  --bg-base: #e8d9b9;          
-  --bg-pane: #fffdf8;
+  --bg-base: var(--sch-bg);          
+  --bg-pane: var(--sch-paper-strong);
   --bg-tooltip: #fff9f0;
 
   /* Text */
-  --text-primary: #2e2e2e;
-  --text-heading: #5b4b3b;
-  --text-subheading: #776a5c;
+  --text-primary: var(--sch-text);
+  --text-heading: var(--sch-text);
+  --text-subheading: var(--sch-muted);
   --text-muted: #888;
 
   /* Accents & Highlights */
@@ -17,7 +17,7 @@
 
   /* Borders & UI */
   --border-tooltip: #ccc;
-  --border-apparatus: #d8c8ae;
+  --border-apparatus: var(--sch-border);
 }
 
 body {
@@ -832,20 +832,20 @@ body.critical-edition {
   margin: 0;
   background: #f3f1ec;
   color: #26231f;
-  font-family: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-family: var(--sch-serif);
   line-height: 1.62;
   text-align: left;
   text-rendering: optimizeLegibility;
 }
 
 body.critical-edition #sticky-header {
-  top: 4rem;
+  top: 0;
   padding: 0.7rem 1.5rem;
   border-bottom: 1px solid #d9d3c8;
   background: rgba(255, 254, 250, 0.97);
   box-shadow: 0 1px 5px rgba(37, 31, 24, 0.05);
   backdrop-filter: blur(10px);
-  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-family: var(--sch-sans);
 }
 
 body.critical-edition #tei-wrapper {
@@ -884,7 +884,7 @@ body.critical-edition #floating-tools select {
   border-radius: 0.36rem;
   background: #fff;
   color: #403b35;
-  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-family: var(--sch-sans);
   font-size: 0.78rem;
 }
 
