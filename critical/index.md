@@ -364,6 +364,12 @@ edition_label: Edición crítica · prototipo
                   slot.innerHTML = "&nbsp;";
                 }
                 el.appendChild(slot);
+              } else if (tag === "tei-speaker") {
+                const slot = document.createElement("span");
+                slot.className = "speaker-alignment-slot";
+                slot.setAttribute("aria-hidden", "true");
+                slot.innerHTML = "&nbsp;";
+                el.appendChild(slot);
               }
             });
           }
@@ -1581,6 +1587,9 @@ edition_label: Edición crítica · prototipo
     processAdditionSpans(root, { mode: "base" }); // unificata (base)
     // 2) inline
     decorateInlineAdditionsWithoutAnchors(root);
+    updateCriticalAdditionSlots(
+      document.getElementById("witness-select")?.value || null,
+    );
     decorateApparatus(root);
     // 3) numerazione/impaginazione
     insertLeftAlignedLineNumbers(root);
