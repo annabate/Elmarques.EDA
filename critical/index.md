@@ -416,10 +416,23 @@ edition_label: Edición crítica · prototipo
   }
 
   // =========================
-  // Apparatus inline (tooltip in <span>)
+  // Inline apparatus
+  // Decorate deepest apparatus first so nested variants keep their structure.
   // =========================
   function decorateApparatus(data) {
-    const apps = data.querySelectorAll("tei-app:not([from])");
+    const depthOf = (el) => {
+      let depth = 0;
+      let current = el.parentElement;
+      while (current) {
+        depth += 1;
+        current = current.parentElement;
+      }
+      return depth;
+    };
+
+    const apps = Array.from(
+      data.querySelectorAll("tei-app:not([from]):not([to])"),
+    ).sort((a, b) => depthOf(b) - depthOf(a));
 
     if (!data.__apparatusClickAwayBound) {
       document.addEventListener(
@@ -427,7 +440,7 @@ edition_label: Edición crítica · prototipo
         () => {
           data.querySelectorAll(".lem-apparatus.active").forEach((el) => {
             el.classList.remove("active");
-            el.querySelector(".app-tooltip")?.style.setProperty(
+            el.querySelector(":scope > .app-tooltip")?.style.setProperty(
               "display",
               "none",
             );
@@ -440,24 +453,34 @@ edition_label: Edición crítica · prototipo
     }
 
     apps.forEach((app) => {
-      if (app.querySelector("tei-add")) return;
-      const lemma = app.querySelector("tei-lem");
-      if (!lemma) return;
+      // It may already have been removed with an enclosing apparatus.
+      if (!app.isConnected && !data.contains(app)) return;
+
+      const rdgs = directChildren(app, "tei-rdg");
+      const lemma = directChildren(app, "tei-lem")[0] || null;
+      const isAddition = rdgs.some(
+        (rdg) => directChildren(rdg, "tei-add").length > 0,
+      );
+      if (isAddition || !lemma) return;
 
       const wrapper = document.createElement("span");
       wrapper.className = "lem-wrapper lem-apparatus";
-      wrapper.textContent = lemma.textContent.trim();
       wrapper.setAttribute("role", "button");
       wrapper.setAttribute("tabindex", "0");
       wrapper.setAttribute("aria-haspopup", "true");
       wrapper.setAttribute("aria-expanded", "false");
+
+      // Move the lemma content instead of flattening textContent.
+      // If a nested <app> has already been decorated, its interactive wrapper
+      // is preserved here.
+      while (lemma.firstChild) wrapper.appendChild(lemma.firstChild);
 
       const tooltip = document.createElement("span");
       tooltip.className = "app-tooltip";
       tooltip.style.display = "none";
       tooltip.setAttribute("role", "listbox");
 
-      app.querySelectorAll("tei-rdg").forEach((rdg) => {
+      rdgs.forEach((rdg) => {
         const entry = document.createElement("span");
         entry.className = "apparatus-entry";
         entry.setAttribute("role", "option");
@@ -481,7 +504,7 @@ edition_label: Edición crítica · prototipo
         data.querySelectorAll(".lem-apparatus.active").forEach((el) => {
           if (el !== wrapper) {
             el.classList.remove("active");
-            el.querySelector(".app-tooltip")?.style.setProperty(
+            el.querySelector(":scope > .app-tooltip")?.style.setProperty(
               "display",
               "none",
             );
@@ -493,9 +516,13 @@ edition_label: Edición crítica · prototipo
         tooltip.style.display = open ? "block" : "none";
         wrapper.setAttribute("aria-expanded", String(open));
       };
+
       wrapper.addEventListener("click", toggle);
       wrapper.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") toggle(e);
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle(e);
+        }
       });
 
       app.replaceWith(wrapper);
