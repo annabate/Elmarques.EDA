@@ -42,6 +42,7 @@ edition_label: Edición crítica · prototipo
       <div>
         <span class="pane-eyebrow">Testimonio</span>
         <h2 id="witness-title">—</h2>
+        <p id="witness-description" class="pane-description"></p>
       </div>
       <button id="close-witness-btn" class="pane-close" type="button" aria-label="Cerrar comparación">
         Cerrar
@@ -1464,12 +1465,14 @@ edition_label: Edición crítica · prototipo
     const wrapper = document.getElementById("tei-wrapper");
     const select = document.getElementById("witness-select");
     const title = document.getElementById("witness-title");
+    const description = document.getElementById("witness-description");
 
     pane?.classList.add("hidden");
     if (container) container.innerHTML = "";
     if (wrapper) wrapper.dataset.comparison = "closed";
     if (select) select.value = "";
     if (title) title.textContent = "—";
+    if (description) description.textContent = "";
   }
 
   function setupFloatingControls() {
@@ -1490,13 +1493,23 @@ edition_label: Edición crítica · prototipo
     });
   }
 
+  function getWitnessDescription(witID) {
+    const id = (witID || "").replace(/^#/, "");
+    const witness =
+      baseTEI?.querySelector(`tei-witness[id="${CSS.escape(id)}"]`) ||
+      baseTEI?.querySelector(`tei-witness[xml\\:id="${CSS.escape(id)}"]`);
+    return (witness?.textContent || "").trim().replace(/\s+/g, " ");
+  }
+
   function populateWitnessSelect(allWitnesses) {
     const select = document.getElementById("witness-select");
     select.innerHTML = '<option value="">Selecciona testimonio</option>';
     allWitnesses.forEach((witID) => {
       const option = document.createElement("option");
+      const description = getWitnessDescription(witID);
       option.value = witID;
-      option.textContent = witID;
+      option.textContent = description ? `${witID} — ${description}` : witID;
+      option.title = description || witID;
       select.appendChild(option);
     });
   }
@@ -1508,11 +1521,13 @@ edition_label: Edición crítica · prototipo
     const container = document.getElementById("witness-container");
     const wrapper = document.getElementById("tei-wrapper");
     const title = document.getElementById("witness-title");
+    const description = document.getElementById("witness-description");
 
     container.innerHTML = "";
     pane.classList.remove("hidden");
     wrapper.dataset.comparison = "open";
     title.textContent = witnessID;
+    description.textContent = getWitnessDescription(witnessID);
 
     const witnessDOM = reconstructWitness(witnessID, baseTEI);
     witnessDOM.setAttribute("data-witness-id", witnessID);
