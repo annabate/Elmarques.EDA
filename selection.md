@@ -26,7 +26,7 @@ title: Acceder al texto
 
   <a class="edition-choice" href="{{ site.baseurl }}/genetic/">
     <span class="edition-choice-label">Escritura del autógrafo</span>
-    <h2>Edición genético-evolutiva</h2>
+    <h2>Edición genética</h2>
     <p>
       Reconstrucción de las fases de escritura del manuscrito autógrafo, con
       visualización de los estratos A0, A1, A2 y B y consulta sincronizada del facsímil.
