@@ -1458,17 +1458,35 @@ edition_label: Edición crítica · prototipo
   // =========================
   // UI
   // =========================
-  function setupFloatingControls() {
-    const btn = document.getElementById("add-witness-btn");
+  function closeWitness() {
+    const pane = document.getElementById("witness-pane");
+    const container = document.getElementById("witness-container");
+    const wrapper = document.getElementById("tei-wrapper");
     const select = document.getElementById("witness-select");
+    const title = document.getElementById("witness-title");
 
-    btn.addEventListener("click", () => {
-      select.classList.toggle("visible");
+    pane?.classList.add("hidden");
+    if (container) container.innerHTML = "";
+    if (wrapper) wrapper.dataset.comparison = "closed";
+    if (select) select.value = "";
+    if (title) title.textContent = "—";
+  }
+
+  function setupFloatingControls() {
+    const select = document.getElementById("witness-select");
+    const closeBtn = document.getElementById("close-witness-btn");
+
+    select.addEventListener("change", () => {
+      if (select.value) openWitness(select.value);
+      else closeWitness();
     });
 
-    // delega completamente su openWitness
-    select.addEventListener("change", () => {
-      openWitness(select.value);
+    closeBtn?.addEventListener("click", closeWitness);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !document.getElementById("witness-pane")?.classList.contains("hidden")) {
+        closeWitness();
+      }
     });
   }
 
@@ -1486,9 +1504,15 @@ edition_label: Edición crítica · prototipo
   function openWitness(witnessID) {
     if (!witnessID) return;
 
+    const pane = document.getElementById("witness-pane");
     const container = document.getElementById("witness-container");
+    const wrapper = document.getElementById("tei-wrapper");
+    const title = document.getElementById("witness-title");
+
     container.innerHTML = "";
-    container.classList.remove("hidden");
+    pane.classList.remove("hidden");
+    wrapper.dataset.comparison = "open";
+    title.textContent = witnessID;
 
     const witnessDOM = reconstructWitness(witnessID, baseTEI);
     witnessDOM.setAttribute("data-witness-id", witnessID);
@@ -1525,6 +1549,7 @@ edition_label: Edición crítica · prototipo
 
       // 2) Monta nel DOM
       const criticalContainer = document.getElementById("critical-container");
+      document.getElementById("critical-loading")?.remove();
       criticalContainer.appendChild(data);
       const root = criticalContainer;
 
@@ -1547,10 +1572,7 @@ edition_label: Edición crítica · prototipo
 
         // (opzionale) sincronizza il select, anche se è nascosto
         const sel = document.getElementById("witness-select");
-        if (sel) {
-          sel.value = wit;
-          sel.classList.add("visible");
-        }
+        if (sel) sel.value = wit;
       });
 
       // 4) Decora il testo base (una volta pronto nel DOM)
