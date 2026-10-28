@@ -1003,6 +1003,15 @@ tei-addspan::after {
   background: #f5c968;
 }
 
+.sync-reference {
+  background: linear-gradient(
+    90deg,
+    rgba(120, 110, 96, 0.08),
+    rgba(120, 110, 96, 0.02) 70%,
+    transparent
+  );
+}
+
 .verse-target {
   animation: verseFlash 1.65s ease;
 }
