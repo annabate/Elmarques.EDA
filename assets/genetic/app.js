@@ -664,7 +664,17 @@
     const targetPane =
       sourcePane === geneticPane ? diplomaticPane : geneticPane;
 
-    alignPaneToVerse(targetPane, reference.verse, "auto");
+    document
+      .querySelectorAll(".sync-reference")
+      .forEach((line) => line.classList.remove("sync-reference"));
+
+    reference.line.classList.add("sync-reference");
+    const targetLine = alignPaneToVerse(
+      targetPane,
+      reference.verse,
+      "auto",
+    );
+    targetLine?.classList.add("sync-reference");
 
     if (facsimileController && reference.folio) {
       facsimileController.showFolio(reference.folio, {
@@ -679,6 +689,15 @@
   }
 
   function setupViewSynchronization() {
+    document
+      .getElementById("sync-views")
+      ?.addEventListener("change", (event) => {
+        if (event.currentTarget.checked) return;
+        document
+          .querySelectorAll(".sync-reference")
+          .forEach((line) => line.classList.remove("sync-reference"));
+      });
+
     [geneticPane, diplomaticPane].forEach((pane) => {
       pane.addEventListener(
         "scroll",
