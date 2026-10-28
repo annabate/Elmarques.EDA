@@ -587,7 +587,6 @@ body.edition a {
   flex: 1 1 auto;
   min-height: 0;
   overflow: auto;
-  scroll-behavior: smooth;
 }
 
 .text-scroll {
@@ -599,6 +598,7 @@ body.edition a {
 
 .facsimile-pane .pane-scroll {
   padding: 0.7rem;
+  overflow: hidden;
   background: #dfdbd3;
 }
 
@@ -629,7 +629,9 @@ body.edition a {
 }
 
 .facsimile-stage {
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   display: block;
   overflow: auto;
   text-align: center;
