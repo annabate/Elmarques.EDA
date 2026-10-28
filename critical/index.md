@@ -839,8 +839,12 @@ edition_label: Edición crítica · prototipo
               ? "Pasaje omitido"
               : "Versos omitidos";
 
-        affectedLines.forEach((line) => {
+        affectedLines.forEach((line, index) => {
           line.classList.add("critical-omission-range");
+          if (index === 0) line.classList.add("omission-range-start");
+          if (index === affectedLines.length - 1) {
+            line.classList.add("omission-range-end");
+          }
           line.dataset.omittedIn = sigla.join(" ");
           if (app.dataset.locusId) {
             const loci = new Set(
