@@ -278,7 +278,7 @@
       );
       setLayerControlsDisabled(false);
       modeHint.textContent =
-        "Vista genética: se muestran únicamente los eventos seleccionados; las demás capas se reconstruyen silenciosamente para conservar su contexto.";
+        "Génesis del texto · intervenciones A1, A2 y B visibles.";
     } else {
       rendered = window.EMNGeneticModel.materializeStage(
         geneticSource,
@@ -291,7 +291,7 @@
         A2: "A0 + A1 + A2 · último estado autorial",
         B: "A0 + A1 + A2 + B · estado documental",
       };
-      modeHint.textContent = `Reconstrucción: ${labels[mode]}`;
+      modeHint.textContent = labels[mode];
     }
 
     clearPane(geneticPane);
@@ -384,10 +384,11 @@
       );
     });
 
-    syncFacsimileToElement(
-      geneticPane,
-      geneticLine || diplomaticLine,
-    );
+    if (geneticLine) {
+      syncFacsimileToElement(geneticPane, geneticLine);
+    } else if (diplomaticLine) {
+      syncFacsimileToElement(diplomaticPane, diplomaticLine);
+    }
   }
 
   function unwrapSearchMarks() {
@@ -1027,6 +1028,7 @@
     const counts = window.EMNGeneticModel.layerCounts(geneticSource);
     modelStatus.textContent =
       `Acto I validado · A1: ${counts.A1} · A2: ${counts.A2} · B: ${counts.B}`;
+    modelStatus.hidden = true;
 
     renderGenetic();
     renderDiplomatic();
@@ -1051,6 +1053,7 @@
 
   boot().catch((error) => {
     console.error(error);
+    modelStatus.hidden = false;
     modelStatus.textContent =
       "No se ha podido cargar la edición genética.";
     app.classList.add("has-error");
