@@ -541,28 +541,44 @@ tei-l[part="F"] .line-text {
   position: relative;
 }
 
-.critical-omission-range .line-text {
+.critical-omission-range .line-container {
   position: relative;
+}
+
+.critical-omission-range .line-text {
   padding-left: 0.42rem;
   background: transparent;
 }
 
-.critical-omission-range .line-text::before {
+.critical-omission-range .line-container::before {
   content: "";
   position: absolute;
-  top: 0.08em;
-  bottom: 0.08em;
+  top: -0.24rem;
+  bottom: -0.24rem;
   left: 0;
   width: 2px;
-  border-radius: 999px;
   background: #9bb7c5;
+}
+
+.critical-omission-range.omission-range-start .line-container::before {
+  top: 0.08em;
+  border-radius: 999px 999px 0 0;
+}
+
+.critical-omission-range.omission-range-end .line-container::before {
+  bottom: 0.08em;
+  border-radius: 0 0 999px 999px;
+}
+
+.critical-omission-range.omission-range-start.omission-range-end .line-container::before {
+  border-radius: 999px;
 }
 
 .critical-omission-range.flash-highlight .line-text {
   background: transparent;
 }
 
-.critical-omission-range.flash-highlight .line-text::before {
+.critical-omission-range.flash-highlight .line-container::before {
   background: #5f8da6;
 }
 
