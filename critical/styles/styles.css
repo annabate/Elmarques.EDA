@@ -367,7 +367,10 @@ tei-l {
 
 .line-text {
   grid-column: 1;
+  justify-self: start;
   display: inline-block;
+  width: fit-content;
+  max-width: 100%;
   min-width: 0;
 }
 
@@ -389,6 +392,8 @@ tei-l {
 
 tei-l[part="M"] .line-text,
 tei-l[part="F"] .line-text {
+  padding-left: var(--split-indent, 0px);
+  max-width: calc(100% - var(--split-indent, 0px));
   text-indent: 0;
 }
 
