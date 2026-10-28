@@ -10,14 +10,44 @@
     );
   }
 
+  function canonicalFolio(label) {
+    return String(label || "")
+      .toLocaleLowerCase("es")
+      .replace(/[\[\]]/g, "")
+      .replace(/^fol\.?\s*/i, "")
+      .replace(/\s+/g, "")
+      .replace(/\.+/g, ".")
+      .replace(/^n\.n\.([rv])\.?$/, "nn$1")
+      .replace(/^guarda([rv])\.?$/, "guarda$1")
+      .replace(/^(\d+)([rv])\.?$/, "$1$2");
+  }
+
+  function folioLabel(canonical) {
+    if (/^\d+[rv]$/.test(canonical)) {
+      return `Fol. ${canonical}`;
+    }
+    if (canonical === "nnr") return "Fol. n. n. r.";
+    if (canonical === "nnv") return "Fol. n. n. v.";
+    if (canonical === "guardar") return "Fol. guarda r.";
+    if (canonical === "guardav") return "Fol. guarda v.";
+    return canonical || "Folio";
+  }
+
   function folioImageName(label) {
-    return (
-      (label || "")
-        .replace(/[\[\]]/g, "")
-        .replace(/^Fol\.?\s*/i, "fol")
-        .replace(/\s+/g, "")
-        .toLowerCase() + ".jpg"
-    );
+    const canonical = canonicalFolio(label);
+
+    if (/^\d+[rv]$/.test(canonical)) {
+      return `fol${canonical}.jpg`;
+    }
+
+    const special = {
+      nnr: "foln.n.r..jpg",
+      nnv: "foln.n.v..jpg",
+      guardar: "folguarda.jpg",
+      guardav: "folguardav..jpg",
+    };
+
+    return special[canonical] || "placeholder.jpg";
   }
 
   function collectFolios(roots) {
@@ -27,12 +57,16 @@
     roots.forEach((root) => {
       if (!root) return;
       root.querySelectorAll("tei-pb").forEach((pb) => {
-        const n = attr(pb, "n");
-        if (!n || seen.has(n)) return;
-        seen.add(n);
+        const raw = attr(pb, "n");
+        const canonical = canonicalFolio(raw);
+        if (!canonical || seen.has(canonical)) return;
+
+        seen.add(canonical);
         folios.push({
-          n,
-          image: folioImageName(n),
+          key: canonical,
+          n: raw,
+          label: folioLabel(canonical),
+          image: folioImageName(canonical),
         });
       });
     });
@@ -42,9 +76,11 @@
 
   function findPb(container, folioN) {
     if (!container) return null;
+    const target = canonicalFolio(folioN);
+
     return Array.from(container.querySelectorAll("tei-pb")).find(
-      (pb) => attr(pb, "n") === folioN,
-    );
+      (pb) => canonicalFolio(attr(pb, "n")) === target,
+    ) || null;
   }
 
   function scrollToFolio(container, folioN) {
@@ -80,8 +116,9 @@
 
     folios.forEach((folio) => {
       const option = document.createElement("option");
-      option.value = folio.n;
-      option.textContent = folio.n;
+      option.value = folio.key;
+      option.textContent = folio.label;
+      option.dataset.rawFolio = folio.n;
       option.dataset.image = folio.image;
       selector.appendChild(option);
     });
@@ -140,25 +177,30 @@
       folioN,
       { scrollText = true, resetView = true } = {},
     ) {
+      const canonical = canonicalFolio(folioN);
       const option = Array.from(selector.options).find(
-        (item) => item.value === folioN,
+        (item) => item.value === canonical,
       );
       if (!option) return;
 
-      const sameFolio = selector.value === folioN && image.currentSrc;
-      selector.value = folioN;
+      const currentFolio = image.dataset.currentFolio || "";
+      const sameFolio =
+        currentFolio === canonical && Boolean(image.currentSrc);
+
+      selector.value = canonical;
 
       if (!sameFolio) {
         resetOnNextLoad = resetView;
+        image.dataset.currentFolio = canonical;
         image.src = `${baseUrl}/facs/${option.dataset.image}`;
-        image.alt = `Facsímil: ${folioN}`;
+        image.alt = `Facsímil: ${option.textContent}`;
       } else if (resetView) {
         resetZoom();
       }
 
       if (scrollText) {
         textContainers.forEach((container) =>
-          scrollToFolio(container, folioN),
+          scrollToFolio(container, canonical),
         );
       }
     }
@@ -168,15 +210,15 @@
     });
 
     prevButton.addEventListener("click", () => {
-      if (selector.selectedIndex <= 0) return;
-      selector.selectedIndex -= 1;
-      showFolio(selector.value);
+      const nextIndex = selector.selectedIndex - 1;
+      if (nextIndex < 0) return;
+      showFolio(selector.options[nextIndex].value);
     });
 
     nextButton.addEventListener("click", () => {
-      if (selector.selectedIndex >= selector.options.length - 1) return;
-      selector.selectedIndex += 1;
-      showFolio(selector.value);
+      const nextIndex = selector.selectedIndex + 1;
+      if (nextIndex >= selector.options.length) return;
+      showFolio(selector.options[nextIndex].value);
     });
 
     zoomInButton.addEventListener("click", () => {
@@ -292,7 +334,7 @@
       });
     });
 
-    if (folios.length) showFolio(folios[0].n, { scrollText: false });
+    if (folios.length) showFolio(folios[0].key, { scrollText: false });
 
     return {
       folios,
@@ -304,6 +346,8 @@
 
   global.EMNFacsimile = {
     setup,
+    canonicalFolio,
+    folioLabel,
     folioImageName,
     collectFolios,
     scrollToFolio,
