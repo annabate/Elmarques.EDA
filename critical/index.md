@@ -797,6 +797,13 @@ edition_label: Edición crítica · prototipo
         affectedLines.forEach((line) => {
           line.classList.add("critical-omission-range");
           line.dataset.omittedIn = sigla.join(" ");
+          if (app.dataset.locusId) {
+            const loci = new Set(
+              (line.dataset.omissionLoci || "").split(/\s+/).filter(Boolean),
+            );
+            loci.add(app.dataset.locusId);
+            line.dataset.omissionLoci = Array.from(loci).join(" ");
+          }
         });
 
         const first = affectedLines[0];
@@ -1227,9 +1234,19 @@ edition_label: Edición crítica · prototipo
     const modal = document.getElementById("variants-modal-wrapper");
     modal?.classList.add("hidden");
 
-    let target = document.querySelector(
-      `#critical-container [data-locus-id="${CSS.escape(locus.id)}"]`,
+    const omissionLines = Array.from(
+      document.querySelectorAll("#critical-container [data-omission-loci]"),
+    ).filter((line) =>
+      (line.dataset.omissionLoci || "")
+        .split(/\s+/)
+        .includes(locus.id),
     );
+
+    let target =
+      omissionLines[0] ||
+      document.querySelector(
+        `#critical-container [data-locus-id="${CSS.escape(locus.id)}"]`,
+      );
 
     if (!target && locus.verse) {
       target = document.querySelector(
@@ -1239,18 +1256,35 @@ edition_label: Edición crítica · prototipo
     if (!target) return;
 
     target.scrollIntoView({ behavior: "smooth", block: "center" });
-    target.classList.remove("flash-highlight");
+
+    const highlightTargets = omissionLines.length ? omissionLines : [target];
+    highlightTargets.forEach((el) => el.classList.remove("flash-highlight"));
     requestAnimationFrame(() => {
-      target.classList.add("flash-highlight");
-      setTimeout(() => target.classList.remove("flash-highlight"), 1700);
+      highlightTargets.forEach((el) => el.classList.add("flash-highlight"));
+      setTimeout(
+        () =>
+          highlightTargets.forEach((el) =>
+            el.classList.remove("flash-highlight"),
+          ),
+        1800,
+      );
     });
 
-    if (target.classList.contains("lem-apparatus")) {
+    const interactiveTarget =
+      target.matches?.("[data-locus-id]")
+        ? target
+        : target.querySelector?.(
+            `[data-locus-id="${CSS.escape(locus.id)}"]`,
+          );
+
+    if (interactiveTarget?.classList.contains("lem-apparatus")) {
       setTimeout(() => {
-        if (!target.classList.contains("active")) target.click();
+        if (!interactiveTarget.classList.contains("active")) {
+          interactiveTarget.click();
+        }
       }, 350);
-    } else if (target.classList.contains("transmission-note")) {
-      setTimeout(() => target.click(), 350);
+    } else if (interactiveTarget?.classList.contains("transmission-note")) {
+      setTimeout(() => interactiveTarget.click(), 350);
     }
   }
 
