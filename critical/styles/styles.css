@@ -201,6 +201,16 @@ button:focus-visible,
   font-size: 1rem;
 }
 
+.pane-description {
+  max-width: 34rem;
+  margin: 0.14rem 0 0;
+  overflow: hidden;
+  color: var(--critical-muted);
+  font: 500 0.68rem/1.25 var(--sch-sans);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .pane-meta {
   color: var(--critical-muted);
   font: 500 0.7rem/1 var(--sch-sans);
