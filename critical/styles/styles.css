@@ -248,6 +248,11 @@ tei-head {
   text-align: center;
 }
 
+/* The work title belongs to the page, not to each synoptic column. */
+.tei-column tei-body > tei-head:not([type]) {
+  display: none;
+}
+
 tei-head:not([type]) {
   color: var(--critical-text);
   font-size: 1.55em;
