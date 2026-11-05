@@ -141,8 +141,8 @@
 <sp>
 <speaker>Feli</speaker>
 <lg>
-<l n="5">Tus obras siempre tan <mod xml:id="g031" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1" corresp="#critical-reading"><del ana="#layer-A0">m</del></mod> malas</l>
-<l n="6"><mod xml:id="g032" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1" corresp="#critical-reading"><del ana="#layer-A0">para mi</del></mod>a quien las debes tan buenas.</l>
+<l n="5">Tus obras siempre tan <mod xml:id="g031" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">m</del></mod> malas<note type="genetic-phase" n="2" ana="#layer-A1" resp="#critical-editor">La lección final del verso corresponde al estado 2T del aparato genético.</note></l>
+<l n="6"><mod xml:id="g032" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">para mi</del></mod>a quien las debes tan buenas.<note type="genetic-phase" n="2" ana="#layer-A1" resp="#critical-editor">La lección final del verso corresponde al estado 2T del aparato genético.</note></l>
 <l n="7">Leonardo, a mi fin ordenas</l>
 <l n="8">de que te vengo a deber</l>
 <l n="9">quererle agora poner</l>
