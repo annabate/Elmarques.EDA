@@ -248,10 +248,18 @@
       const layer = window.EMNGeneticModel.eventLayer(span);
       if (!layer) return;
       span.dataset.eventLayer = layer;
-      span.title =
-        span.tagName.toLowerCase() === "tei-delspan"
-          ? `${layer}: supresión extensa`
-          : `${layer}: adición extensa`;
+      const place = (span.getAttribute("place") || "").toLowerCase();
+      const isMaterialGroup = span.getAttribute("type") === "material-group";
+      if (isMaterialGroup && (place === "left" || place === "right")) {
+        span.title = place === "left"
+          ? "Añadido en el margen izquierdo"
+          : "Añadido en el margen derecho";
+      } else {
+        span.title =
+          span.tagName.toLowerCase() === "tei-delspan"
+            ? `${layer}: supresión extensa`
+            : `${layer}: adición extensa`;
+      }
     });
   }
 
