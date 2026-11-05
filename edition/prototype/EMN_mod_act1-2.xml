@@ -194,7 +194,7 @@
 <l n="34">o por ventura lo estás.</l>
 <l n="35">No hay otro pleito que más</l>
 <l n="36"><mod xml:id="g036" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">que aun</del></mod>procure un hombre vencer.</l>
-<l n="37">Muchos buenos suele haber</l>
+<l n="37"><mod xml:id="g037a" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">q aun</del></mod><seg n="2T">Muchos buenos suele haber</seg></l>
 <l n="38">mas ninguno oí decir</l>
 <l n="39">que desease morir</l>
 <l n="40">primero que su mujer.</l>
