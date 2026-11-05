@@ -185,6 +185,12 @@ edition_label: Edición crítica · prototipo
     );
   }
 
+  function stripCriticalReviewStandOff(root) {
+    root
+      .querySelectorAll('tei-standoff[type="critical-review"]')
+      .forEach((node) => node.remove());
+  }
+
   function assignLocusIds(root) {
     root.querySelectorAll("tei-app").forEach((app, index) => {
       if (!app.dataset.locusId) {
@@ -2178,7 +2184,12 @@ edition_label: Edición crítica · prototipo
   // =========================
   window.onload = function () {
     CETEIcean.getHTML5("el_marques.xml", function (data) {
-      // 1) Clona prima di montare
+      // 1) Los loci todavía pendientes de revisión permanecen en el TEI fuente,
+      // pero no deben entrar en la visualización ni en las estadísticas hasta
+      // que se resuelvan e integren en el aparato crítico.
+      stripCriticalReviewStandOff(data);
+
+      // 2) Clona después de excluir únicamente el standOff de revisión.
       baseTEI = data.cloneNode(true);
       originalData = data.cloneNode(true);
 
@@ -2187,13 +2198,13 @@ edition_label: Edición crítica · prototipo
       assignLocusIds(originalData);
       assignLocusIds(data);
 
-      // 2) Monta nel DOM
+      // 3) Monta nel DOM
       const criticalContainer = document.getElementById("critical-container");
       document.getElementById("critical-loading")?.remove();
       criticalContainer.appendChild(data);
       const root = criticalContainer;
 
-      // 3) Dati di supporto
+      // 4) Dati di supporto
       const allSigla = extractWitnessSigla(baseTEI);
       const variantInventory = buildVariantInventory(baseTEI);
       populateWitnessSelect(allSigla);
@@ -2217,7 +2228,7 @@ edition_label: Edición crítica · prototipo
         if (sel) sel.value = wit;
       });
 
-      // 4) Decora il testo base (una volta pronto nel DOM)
+      // 5) Decora il testo base (una volta pronto nel DOM)
       requestAnimationFrame(() => {
         decorateNotes(root);
         decorateEdition(root, { inWitnessView: false });
