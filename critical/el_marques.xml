@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se resuelven la variante «a tormentarme/a atormentarme», la variante «agora/ahora» y el bloque de transmisión 1394–1401, modelado por verso para representar la omisión más extensa de M sin solapar intervalos; se retira asimismo un locus duplicado ya codificado inline.</change>
       <change when="2026-11-05">Se resuelven cinco loci escénicos del acto II: dos acotaciones añadidas en la tradición impresa, la acotación nocturna, la variante «luego/presto» con «Meten mano» y el cierre del acto con «Vanse» y variantes de colofón.</change>
       <change when="2026-11-05">Se integran dieciséis variantes textuales simples, seis variantes de atribución y una omisión adicional del acto II; se elimina además del registro de revisión un locus de atribución ya codificado inline.</change>
       <change when="2026-11-05">Se resuelven trece loci de omisión del acto II mediante apparatus por intervalo con anchors, preservando la reconstrucción diferenciada de los testimonios y retirándolos del standOff de revisión.</change>
@@ -2668,7 +2669,7 @@
           <speaker>Laurencia</speaker>
           <l n="1138" xml:id="l_1138_x_319" corresp="#fn65 #fn66">Inquieta estoy de escuchalle.</l>
           <l n="1139" xml:id="l_1139_x_320">Esta no es silla, que es potro</l>
-          <l n="1140" xml:id="l_1140_x_321">donde viene atormentarme</l>
+          <l n="1140" xml:id="l_1140_x_321">donde viene <app n="1141"><lem wit="#O">a tormentarme</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a atormentarme</rdg></app></l>
           <l n="1141" xml:id="l_1141_x_322">este verdugo <app n="1142" corresp="#fn69"><lem wit="#O">crüel</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de amor</rdg></app>.</l>
         </sp>
         <sp who="#Leonardo">
@@ -3236,7 +3237,7 @@
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l n="1348" xml:id="l_1348_x_547">Antes de agora me robaron.</l>
+          <l n="1348" xml:id="l_1348_x_547">Antes de <app n="1347"><lem wit="#O">agora</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">ahora</rdg></app> me robaron.</l>
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
@@ -3339,14 +3340,14 @@
           <l n="1392" xml:id="l_1392_x_594">mi valor a su deseo,</l>
           <l n="1393" xml:id="l_1393_x_595">toda mi vida a su amparo,</l>
           <l n="1394" xml:id="l_1394_x_596">todo mi <app n="1393" corresp="#fn99"><lem wit="#O">amor</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">honor</rdg></app> a su pecho.</l>
-          <l n="1395" xml:id="l_1395_x_597">Diome este engaño una hija</l>
-          <l n="1396" xml:id="l_1396_x_598">que hoy tengo viva, aunque tengo</l>
-          <l n="1397" xml:id="l_1397_x_599" corresp="#fn96 #fn97 #fn98">más crédito en el juez</l>
-          <l n="1398" xml:id="l_1398_x_600">a quien de mi agravio apelo.</l>
-          <l n="1399" xml:id="l_1399_x_601">Pasaron tiempos, que pasa</l>
-          <l n="1400" xml:id="l_1400_x_602" corresp="#fn99">amando más presto el tiempo,</l>
-          <l n="1401" xml:id="l_1401_x_603">las horas <app n="1400" corresp="#fn99"><lem wit="#O">hurta a las noches</lem><rdg wit="#Z #S1 #S2 #S3 #Har">hurté a la noche</rdg></app>,</l>
-          <l n="1402" xml:id="l_1402_x_604">los días a los deseos.</l>
+          <l n="1395" xml:id="l_1395_x_597"><app type="omission"><lem wit="#O">Diome este engaño una hija</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
+          <l n="1396" xml:id="l_1396_x_598"><app type="omission"><lem wit="#O">que hoy tengo viva, aunque tengo</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
+          <l n="1397" xml:id="l_1397_x_599" corresp="#fn96 #fn97 #fn98"><app type="omission"><lem wit="#O">más crédito en el juez</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
+          <l n="1398" xml:id="l_1398_x_600"><app type="omission"><lem wit="#O">a quien de mi agravio apelo.</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
+          <l n="1399" xml:id="l_1399_x_601"><app type="omission"><lem wit="#O #Z #S1 #S2 #S3 #Har">Pasaron tiempos, que <app n="1398"><lem wit="#O">paso</lem><rdg wit="#Z #S1 #S2 #S3 #Har">pasan</rdg></app></lem><rdg wit="#M"/></app></l>
+          <l n="1400" xml:id="l_1400_x_602" corresp="#fn99"><app type="omission"><lem wit="#O #Z #S1 #S2 #S3 #Har"><app n="1399"><lem wit="#O">amando, mas presto</lem><rdg wit="#Z #S1 #S2 #S3 #Har">amándome avivé</rdg></app> el tiempo,</lem><rdg wit="#M"/></app></l>
+          <l n="1401" xml:id="l_1401_x_603"><app type="omission"><lem wit="#O #Z #S1 #S2 #S3 #Har">las horas <app n="1400" corresp="#fn99"><lem wit="#O">hurta a las noches</lem><rdg wit="#Z #S1 #S2 #S3 #Har">hurté a la noche</rdg></app>,</lem><rdg wit="#M"/></app></l>
+          <l n="1402" xml:id="l_1402_x_604"><app type="omission"><lem wit="#O #Z #S1 #S2 #S3 #Har">los días a los deseos.</lem><rdg wit="#M"/></app></l>
           <l n="1403" xml:id="l_1403_x_605">Y sin <app n="1402" corresp="#fn104"><lem wit="#O #M #S2 #S3 #Har">haberle</lem><rdg wit="#Z #S1">haberla</rdg></app> ofendido</l>
           <anchor xml:id="act2-capp238-start"/>
         <l n="1404" xml:id="l_1404_x_606"><app n="1403" corresp="#fn104"><lem wit="#O">ni</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">ni aun</rdg></app> con solo el pensamiento,</l>
@@ -4004,9 +4005,6 @@
       <app xml:id="capp108" n="1113-1114" type="text" corresp="#fn60">
         <note type="conversion-review">en M forman parte del parlamento de Ludovico (Padre)</note>
       </app>
-      <app xml:id="capp124" n="1141" type="text" corresp="#fn69">
-        <note type="conversion-review">a tormentarme O : a atormentarme ZMS1S2S3 Har</note>
-      </app>
       <app xml:id="capp161" n="1234" type="text" corresp="#fn78">
         <note type="conversion-review">Pastrana es príncipe insigne O : Pastrana príncipe ilustre ZMS2 Har : Pastrana príncipe S1S3;  en ZMS1 Har este verso se atribuye a Ludovico (Padre)</note>
       </app>
@@ -4019,26 +4017,8 @@
       <app xml:id="capp198" n="1336" type="text" corresp="#fn91">
         <note type="conversion-review">tu engaño? Feliciana ¡Oh, cruel Leonardo! O : Oye, cruel Leonardo ZMS1S2S3 Har  atribuido por entero a Feliciana</note>
       </app>
-      <app xml:id="capp207" n="1547" type="text" corresp="#fn95">
-        <note type="conversion-review">agora O : ahora ZMS1S2S3 Har</note>
-      </app>
       <app xml:id="capp213" n="1353-1355" type="text" corresp="#fn95">
         <note type="conversion-review">Sola… desdicha?  en ZMS1S2S3 Har este fragmento es pronunciado por Ludovico (Padre)</note>
-      </app>
-      <app xml:id="capp231" n="1394-1397" type="text" corresp="#fn99">
-        <note type="conversion-review">versos omitidos en ZS1S2S3 Har; M omite hasta al v.</note>
-      </app>
-      <app xml:id="capp232" n="1401" type="text" corresp="#fn99">
-        <note type="conversion-review"/>
-      </app>
-      <app xml:id="capp233" n="1398" type="text" corresp="#fn99">
-        <note type="conversion-review">paso O : pasan ZS1S2S3 Har</note>
-      </app>
-      <app xml:id="capp234" n="1399" type="text" corresp="#fn99">
-        <note type="conversion-review">amando, mas presto O : amándome avivé ZS1S2S3 Har</note>
-      </app>
-      <app xml:id="capp268" n="1463" type="text" corresp="#fn105">
-        <note type="conversion-review">parte O : partes ZMS1S2S3 Har</note>
       </app>
       <app xml:id="capp312" n="1580" type="text" corresp="#fn145">
         <note type="conversion-review">¿Cómo ansí? O : ¿Cómo así?  ZMS1S2S3 Har; pronunciado por Filipe</note>
