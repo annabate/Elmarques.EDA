@@ -10,6 +10,12 @@ edition_label: Edición crítica · prototipo
   </div>
 
   <div id="floating-tools" class="critical-toolbar-actions">
+    <label class="witness-picker act-picker" for="act-select">
+      <span>Atto</span>
+      <select id="act-select" aria-label="Seleziona atto">
+        <option value="">Seleziona atto</option>
+      </select>
+    </label>
     <label class="witness-picker" for="witness-select">
       <span>Cotejar con</span>
       <select id="witness-select">
@@ -2073,6 +2079,64 @@ edition_label: Edición crítica · prototipo
     updateCriticalAdditionSlots(null);
   }
 
+  function setupActNavigation(root) {
+    const select = document.getElementById("act-select");
+    if (!select || !root) return;
+
+    const acts = Array.from(
+      root.querySelectorAll('tei-div[type="act"], tei-div[type="jornada"]'),
+    );
+
+    select.innerHTML = '<option value="">Seleziona atto</option>';
+    acts.forEach((act, index) => {
+      const n = act.getAttribute("n") || String(index + 1);
+      const option = document.createElement("option");
+      option.value = n;
+      option.textContent = `Atto ${n}`;
+      select.appendChild(option);
+      act.setAttribute("data-act-n", n);
+    });
+
+    const updateFromScroll = () => {
+      if (!acts.length) return;
+      const headerOffset = 130;
+      let current = acts[0];
+      acts.forEach((act) => {
+        if (act.getBoundingClientRect().top <= headerOffset) current = act;
+      });
+      select.value = current?.getAttribute("data-act-n") || "";
+    };
+
+    select.addEventListener("change", () => {
+      if (!select.value) return;
+      const target = acts.find(
+        (act) => act.getAttribute("data-act-n") === select.value,
+      );
+      if (!target) return;
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        118;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          updateFromScroll();
+          ticking = false;
+        });
+      },
+      { passive: true },
+    );
+
+    updateFromScroll();
+  }
+
   function setupFloatingControls() {
     const select = document.getElementById("witness-select");
     const closeBtn = document.getElementById("close-witness-btn");
@@ -2257,6 +2321,7 @@ edition_label: Edición crítica · prototipo
       const variantInventory = buildVariantInventory(baseTEI);
       populateWitnessSelect(allSigla);
       setupWitnessInfo(allSigla);
+      setupActNavigation(root);
       setupVariantExplorer(variantInventory);
       setupCharacterExplorer(allSigla);
 
