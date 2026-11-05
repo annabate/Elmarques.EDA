@@ -30,6 +30,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Tercera pasada del audit del acto II: se recolocan cuatro variantes incrustadas erróneamente dentro de palabras (848, 926, 1009 y 1617), restituyendo «Majestad», «pienso», «caballero» y «con» y situando el aparato en su locus textual efectivo.</change>
       <change when="2026-11-05">Segunda pasada del audit del acto II: se corrigen ocho aparatos invertidos o desplazados por la conversión automática (965, 1070, 1144, 1283Acot, 1378, 1530, 1575 y 1674). Se conserva deliberadamente 1444 con «quites» como lemma crítico frente a «quita» de O.</change>
       <change when="2026-11-05">Audit del aparato inline del acto II: se corrigen 13 loci corrompidos por fusión automática de entradas independientes (1216, 1258, 1313, 1345, 1351, 1432, 1480, 1544, 1548, 1600, 1621 y las atribuciones 1686-1687). Las variantes se redistribuyen en aparatos separados y, cuando la conversión las había desplazado, se restituyen al verso correspondiente.</change>
       <change when="2026-11-05">Tras la normalización integral del acto I, se retiran del listWit las siglas legacy E y P, ya sin referencias en el aparato. La siglatura crítica queda unificada en O, Z, M, S1, S2, S3 y Har.</change>
@@ -1971,7 +1972,7 @@
         <sp who="#Enrique">
           <speaker corresp="#fn8">Enrique</speaker>
           <l n="847" xml:id="l_847_x_10" corresp="#fn8">Mucho dicen que <app n="847" corresp="#fn13"><lem wit="#O #Har">la</lem><rdg wit="#Z #M #S1 #S2 #S3">lo</rdg></app> alaba</l>
-          <l n="848" xml:id="l_848_x_11">su M<app n="848" corresp="#fn13"><lem wit="#O">a</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y</rdg></app>jestad a su Alteza.</l>
+          <l n="848" xml:id="l_848_x_11">su Majestad <app n="848" corresp="#fn13"><lem wit="#O">a</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y</rdg></app> su Alteza.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -2127,8 +2128,8 @@
           <l n="922" xml:id="l_922_x_88">¡Lindo <app n="923" corresp="#fn33"><lem wit="#O">ingenio, linda</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">ingenio y linda</rdg></app> traza!</l>
           <l n="923" xml:id="l_923_x_89"><app n="924" corresp="#fn33"><lem wit="#O">Vi</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">que</rdg></app> lo bueno de la plaza,</l>
           <l n="924" xml:id="l_924_x_90">y todo lo bueno excede.</l>
-          <l n="925" xml:id="l_925_x_91">Habla bien en don Filipe,</l>
-          <l n="926" xml:id="l_926_x_92">y pi<app n="926" corresp="#fn33"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de</rdg></app>so que habla tan bien</l>
+          <l n="925" xml:id="l_925_x_91">Habla bien <app n="926" corresp="#fn33"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de</rdg></app> don Filipe,</l>
+          <l n="926" xml:id="l_926_x_92">y pienso que habla tan bien</l>
           <l n="927" xml:id="l_927_x_93">que no hay bien de que más bien</l>
           <l n="928" xml:id="l_928_x_94">su voluntad participe.</l>
           <l n="929" xml:id="l_929_x_95"><app n="930" corresp="#fn33"><lem wit="#O">Debéisle</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Debéisla</rdg></app> notable amor.</l>
@@ -2301,10 +2302,10 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="1005" xml:id="l_1005_x_174">Cuando yo no le adorara,</l>
-          <l n="1006" xml:id="l_1006_x_175">si hoy en la plaza le viera,</l>
+          <l n="1006" xml:id="l_1006_x_175">si hoy en la plaza <app n="1009" corresp="#fn50"><lem wit="#O #M #S1 #S3 #Har">le</lem><rdg wit="#Z #S2">la</rdg></app> viera,</l>
           <l n="1007" xml:id="l_1007_x_176">presumo que no tuviera</l>
           <l n="1008" xml:id="l_1008_x_177">voluntad que le negara.</l>
-          <l n="1009" xml:id="l_1009_x_178">¿Hase visto cabal<app n="1009" corresp="#fn50"><lem wit="#O #M #S1 #S3 #Har">le</lem><rdg wit="#Z #S2">la</rdg></app>ro</l>
+          <l n="1009" xml:id="l_1009_x_178">¿Hase visto caballero</l>
           <l n="1010" xml:id="l_1010_x_179"><app n="1011" corresp="#fn50"><lem wit="#O">de más alma, de más brío</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de tal alma, de tal brío</rdg></app>?</l>
           <l n="1011" xml:id="l_1011_x_180">Justamente, dueño mío,</l>
           <l n="1012" xml:id="l_1012_x_181" corresp="#fn48">como a mis ojos te quiero.</l>
@@ -3771,8 +3772,8 @@
         </sp>
         <sp who="#El_marqués">
           <speaker corresp="#fn149">Marqués</speaker>
-          <l n="1617" xml:id="l_1617_x_824" corresp="#fn149">Id c<app n="1617" corresp="#fn153"><lem wit="#O">o</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y</rdg></app>n Dios, que ya sabéis</l>
-          <l n="1618" xml:id="l_1618_x_825">lo que valgo o lo que puedo.</l>
+          <l n="1617" xml:id="l_1617_x_824" corresp="#fn149">Id con Dios, que ya sabéis</l>
+          <l n="1618" xml:id="l_1618_x_825">lo que valgo <app n="1617" corresp="#fn153"><lem wit="#O">o</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y</rdg></app> lo que puedo.</l>
           <l n="1619" xml:id="l_1619_x_826">Noche, de <app n="1618" corresp="#fn153"><lem wit="#O #Z #M #S2 #S3 #Har">estrellas</lem><rdg wit="#S1">estrella</rdg></app> vestida,</l>
           <l n="1620" xml:id="l_1620_x_827">cuyo manto escuro y negro</l>
           <l n="1621" xml:id="l_1621_x_828" corresp="#fn150">más hurtos que tiene luces</l>
