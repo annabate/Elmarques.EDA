@@ -2556,7 +2556,7 @@
             <rdg wit="#Z #M #S1 #S2 #S3 #Har"/>
           </app>
         </stage>
-        <sp who="#Dentro">
+        <sp>
           <speaker>Dentro</speaker>
           <l n="1111" xml:id="l_1111_x_288">¡Aparta, aparta, aparta!</l>
         </sp>
@@ -2603,7 +2603,7 @@
           <speaker>Laurencia</speaker>
           <l n="1122" xml:id="l_1122_F_301" part="F">Estoy por matarme.)</l>
         </sp>
-        <sp who="#Dentro">
+        <sp>
           <speaker>Dentro</speaker>
           <l n="1123" xml:id="l_1123_x_302"><app n="1124" corresp="#fn66"><lem wit="#O">¡Aparta, aparta, aparta!</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">¡Aparta, aparta! Padre ¿Otra vez?</rdg></app></l>
         </sp>
