@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 521-600. Se modelan como omisiones por intervalo los vv. 523-532 (Z, M, S1, S3) y 563-572 (Z, M, S1, S2, S3), se actualizan las variantes de los vv. 538-585 y se divide estructuralmente el parlamento de Gerarda para representar la atribución de los vv. 593-594 a Laurencia en la tradición impresa.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 421-520, contrastando también el lemma con AA_TEXTO_APARATO_2(4).docx. Se corrigen lecturas de base («andarse», «que sólo», «ausencia», «y si ella», «aposentos»), se modelan las omisiones 473-475 (M) y 479-496 (tradición impresa), y se integran variantes textuales, escénicas y de distribución versal. El locus de atribución 453, cuyo registro asigna Z simultáneamente a ambas lecturas, queda pendiente de resolución específica.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 261-420, desde AA_TEXTO_APARATO_2(4).docx. Se elimina la antigua omisión 351-359 vinculada a P, se actualizan las redistribuciones de parlamentos y las variantes de Z, M, S1, S2 y S3, y se codifica la acotación añadida tras el v. 295.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 120-260, a partir de AA_TEXTO_APARATO_2(4).docx. Se codifican variantes textuales y de atribución, omisiones en 176-177, 201-204 y 236, la adición tras 235 y las variantes escénicas. Los loci 251 «en/de» y 260 «se tiende/se entiende» quedan sin codificar hasta identificar la sigla ausente en la fuente editorial.</change>
@@ -1176,8 +1177,9 @@
           <l n="518">que me ha quitado el sosiego,</l>
           <l n="519"><app n="519"><lem wit="#O">pues, cuando a pensarla</lem><rdg wit="#Z #M #S1 #S2 #S3">que cuando a pensarlo</rdg></app> llego</l>
           <l n="520">me corro en ver que se atreve</l>
-          <l n="521">a todo un mundo de nieve</l>
+          <l n="521">a todo un <app n="521"><lem wit="#O">mundo</lem><rdg wit="#Z #M #S1 #S2 #S3">monte</rdg></app> de nieve</l>
           <l n="522">tan poca parte de fuego.</l>
+          <anchor xml:id="act1-523-start"/>
           <l n="523">Yo no debo de ser yo,</l>
           <l n="524">hablemos en otra cosa,</l>
           <l n="525">pero no que es tan gustosa</l>
@@ -1188,14 +1190,16 @@
           <l n="530">lo que ya no se ha de ver?</l>
           <l n="531">Mas tampoco puede ser</l>
           <l n="532">pensar, callar y vivir.</l>
+          <anchor xml:id="act1-532-end"/>
+          <app type="omission" n="523-532" from="#act1-523-start" to="#act1-532-end"><rdg wit="#Z #M #S1 #S3"/></app>
           <l n="533">Pienso en lo que estoy callando,</l>
           <l n="534">callo lo que estoy sintiendo,</l>
           <l n="535">siento lo que estoy sufriendo,</l>
           <l n="536">sufro lo que estoy pensando;</l>
           <l n="537">y con pensar que dejando</l>
-          <l n="538">de pensar podré callar,</l>
+          <l n="538">de pensar podré <app n="538"><lem wit="#O #Z #M #S2 #S3">callar</lem><rdg wit="#S1">casa</rdg></app>,</l>
           <l n="539">me dan más ansias de hablar,</l>
-          <l n="540">y es el rigor tan intenso</l>
+          <l n="540">y es <app n="540"><lem wit="#O">el</lem><rdg wit="#Z #M #S1 #S2 #S3">mi</rdg></app> rigor tan intenso</l>
           <l n="541">que, pensando en que no pienso,</l>
           <l n="542">nunca acabo de pensar.</l>
         </sp>
@@ -1203,7 +1207,7 @@
           <speaker>Gerarda</speaker>
           <l n="543">No me ha parecido a mí</l>
           <l n="544">enfermedad de mujer</l>
-          <l n="545">la que debes de tener.</l>
+          <l n="545">la que <app n="545"><lem wit="#O">debes de tener</lem><rdg wit="#Z #M #S1 #S2 #S3">ahora llego a ver</rdg></app>.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
@@ -1211,7 +1215,7 @@
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
-          <l n="547">Tal desasosiego en ti</l>
+          <l n="547"><app n="547"><lem wit="#O">Tal desasosiego</lem><rdg wit="#Z #M #S1 #S2 #S3">Gran descanso tengo</rdg></app> en ti</l>
           <l n="548">yo jurara que era amor,</l>
           <l n="549">pero ¿en tan breve rigor</l>
           <l part="I" n="550">tanto mal?</l>
@@ -1230,49 +1234,58 @@
           <l n="552">querer, por querer mejor.</l>
           <l n="553">Maldiga Dios —¡ay, Gerarda! —</l>
           <l n="554">quien la pólvora inventó</l>
-          <l n="555">que al plomo tal fuerza dio,</l>
+          <l n="555"><app n="555"><lem wit="#O">que al plomo tal fuerza dio</lem><rdg wit="#Z #M #S1 #S2 #S3">con que tal fuerza le dio</rdg></app>,</l>
           <l n="556">al cañón y a la bombarda,</l>
           <l n="557">antes con mano gallarda</l>
-          <l n="558">una flecha, un pasador</l>
-          <l n="559">tiraba amor, que rigor</l>
+          <l n="558"><app n="558"><lem wit="#O">una flecha, un</lem><rdg wit="#Z #M #S1 #S2 #S3">viva flecha o</rdg></app> pasador</l>
+          <l n="559"><app n="559a"><lem wit="#O #Z #M #S2 #S3">tiraba</lem><rdg wit="#S1">tirano</rdg></app> amor, <app n="559b"><lem wit="#O">que rigor</lem><rdg wit="#Z #M #S1 #S2 #S3">que es rigor</rdg></app></l>
           <l n="560">ya con arcabuces tira,</l>
           <l n="561">que apenas pone la mira</l>
           <l n="562">cuando ya mata de amor.</l>
+          <anchor xml:id="act1-563-start"/>
           <l n="563">¡Qué traidor, Gerarda, fue</l>
           <l n="564">para mí! De noche vino.</l>
           <l n="565">¿Qué salteador en camino</l>
           <l n="566">hay que tan oculto esté?</l>
           <l n="567">Al principio me burlé</l>
-          <l n="568">de un hombre que a penas vía,</l>
+          <l n="568">de un hombre que apenas vía,</l>
           <l n="569">pero no sé qué tenía,</l>
           <l n="570">que tal blandura y donaire</l>
           <l n="571">me mataron con el aire</l>
           <l n="572">que el mismo fuego encendía.</l>
+          <anchor xml:id="act1-572-end"/>
+          <app type="omission" n="563-572" from="#act1-563-start" to="#act1-572-end"><rdg wit="#Z #M #S1 #S2 #S3"/></app>
           <l n="573">Don Filipe (que ya vengo</l>
-          <l n="574">a hablar claro y no fingir,</l>
-          <l n="575">pues no le puede sufrir</l>
+          <l n="574">a hablar claro y no <app n="574"><lem wit="#O">fingir</lem><rdg wit="#Z #M #S2 #S3">mentir</rdg><rdg wit="#S1">sentir</rdg></app>,</l>
+          <l n="575">pues no le puede <app n="575"><lem wit="#O">sufrir</lem><rdg wit="#Z #M #S1 #S2 #S3">encubrir</rdg></app></l>
           <l n="576">el alma donde le tengo;</l>
-          <l n="577">pues te agravio si detengo</l>
-          <l n="578">su nombre y también le agravio</l>
+          <l n="577">pues <app n="577"><lem wit="#O">te</lem><rdg wit="#Z #M #S1 #S2 #S3">le</rdg></app> agravio si detengo</l>
+          <l n="578">su nombre, y también <app n="578"><lem wit="#O">le</lem><rdg wit="#Z #M #S1 #S2 #S3">me</rdg></app> agravio</l>
           <l n="579">porque desde el alma al labio</l>
           <l n="580">sale como todo es fuego)</l>
-          <l n="581">causó mi desasosiego,</l>
-          <l n="582">galán gentilhombre y sabio.</l>
+          <l n="581"><app n="581"><lem wit="#O">causó mi</lem><rdg wit="#Z #M #S1 #S2 #S3">causame</rdg></app> desasosiego,</l>
+          <l n="582"><app n="582"><lem wit="#O">galán</lem><rdg wit="#Z #M #S1 #S2 #S3">y es tan</rdg></app> gentilhombre y sabio.</l>
           <l n="583">Hame venido muy bien</l>
           <l n="584">para tratar de casarme</l>
-          <l n="585">nuestro padre, que es matarme</l>
+          <l n="585">nuestro padre, <app n="585"><lem wit="#O">que</lem><rdg wit="#Z #M #S1 #S2 #S3">y</rdg></app> es matarme</l>
           <l n="586">sin haber visto con quien.</l>
           <l n="587">No hay remedio que me den</l>
           <l n="588">mis males, si no es morir.</l>
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
-          <l n="589">Si piensas de resistir</l>
-          <l n="590">verte en tanto mal, no seas</l>
+          <l n="589"><app n="589"><lem wit="#O">Si piensas de</lem><rdg wit="#Z #M #S1 #S2 #S3">Si no piensas</rdg></app> resistir</l>
+          <l n="590"><app n="590"><lem wit="#O">verte en tanto mal</lem><rdg wit="#Z #M #S1 #S2 #S3">esa inclinación</rdg></app>, no seas</l>
           <l n="591">necia en el bien que deseas,</l>
-          <l n="592">sino procura vivir.</l>
-          <l n="593">Hasta agora no has ligado</l>
+          <l n="592">sino <app n="592"><lem wit="#O">procura</lem><rdg wit="#Z #M #S1 #S2 #S3">procuras</rdg></app> vivir.</l>
+        </sp>
+        <sp who="#Gerarda">
+          <speaker><app n="593-594Per"><lem wit="#O">Gerarda</lem><rdg wit="#Z #M #S1 #S2 #S3">Laurencia</rdg></app></speaker>
+          <l n="593">Hasta agora <app n="593"><lem wit="#O">no has ligado</lem><rdg wit="#Z #M #S1 #S2 #S3">no ha llegado</rdg></app></l>
           <l n="594">al matrimonio la fe;</l>
+        </sp>
+        <sp who="#Gerarda">
+          <speaker>Gerarda</speaker>
           <l part="I" n="595">háblale.</l>
         </sp>
         <sp who="#Laurencia">
@@ -1283,7 +1296,7 @@
           <speaker>Gerarda</speaker>
           <l n="596">El tiempo ocasión te ha dado:</l>
           <l n="597">escríbele que has pensado</l>
-          <l n="598">ir con secreto a la fiesta,</l>
+          <l n="598"><app n="598"><lem wit="#O #Z #M #S2 #S3">ir</lem><rdg wit="#S1">ya</rdg></app> con secreto a la fiesta,</l>
           <l n="599">que te envíe un coche, que esta</l>
           <l n="600">es la mejor invención</l>
           <l n="601">para que tome ocasión</l>
