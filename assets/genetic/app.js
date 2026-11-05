@@ -282,15 +282,19 @@
       active.lines.forEach((line) => {
         line.style.removeProperty("background-color");
         line.style.removeProperty("border-radius");
+        line.removeAttribute("title");
       });
-      active.lines[0]?.removeAttribute("title");
       active = null;
     };
     root.addEventListener("mouseover", (event) => {
       const line = event.target.closest?.("tei-l.marginal-group-line");
       if (!line || !root.contains(line)) { clear(); return; }
       const id = line.dataset.marginGroup;
-      if (active?.id === id) return;
+      if (active?.id === id) {
+        active.lines.forEach((item) => item.removeAttribute("title"));
+        line.title = line.dataset.marginLabel || "";
+        return;
+      }
       clear();
       const lines = groups.get(id) || [];
       lines.forEach((item) => {
