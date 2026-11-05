@@ -345,6 +345,38 @@ edition_label: Edición crítica · prototipo
     return copy;
   }
 
+  function mergeAdjacentWitnessSpeeches(root) {
+    const normalizeSpeaker = (sp) => {
+      const speaker = directChildren(sp, "tei-speaker")[0] || null;
+      return (speaker?.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+    };
+
+    let changed = true;
+    while (changed) {
+      changed = false;
+      const speeches = Array.from(root.querySelectorAll("tei-sp"));
+      for (const current of speeches) {
+        const next = current.nextElementSibling;
+        if (!next || next.tagName?.toLowerCase() !== "tei-sp") continue;
+
+        const currentSpeaker = normalizeSpeaker(current);
+        const nextSpeaker = normalizeSpeaker(next);
+        if (!currentSpeaker || currentSpeaker !== nextSpeaker) continue;
+
+        const nextSpeakerEl = directChildren(next, "tei-speaker")[0] || null;
+        if (nextSpeakerEl) nextSpeakerEl.remove();
+
+        while (next.firstChild) current.appendChild(next.firstChild);
+        next.remove();
+        changed = true;
+        break;
+      }
+    }
+  }
+
   function reconstructWitness(witID, originalData) {
     const clone = originalData.cloneNode(true);
 
@@ -484,6 +516,7 @@ edition_label: Edición crítica · prototipo
       }
     });
 
+    mergeAdjacentWitnessSpeeches(clone);
     return clone;
   }
 
