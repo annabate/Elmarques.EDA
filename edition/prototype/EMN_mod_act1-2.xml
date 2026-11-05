@@ -328,7 +328,7 @@
 <l n="104">por muchas cartas Leonora.</l>
 <l n="105">¡Cuánta riqueza atesora, </l>
 <l n="106">lustre, gala y valentía!</l>
-<l n="107">Dicen que <mod xml:id="g039" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">sale aquel día</del><add ana="#layer-A1">salir porfía</add></mod><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
+<l n="107">Dicen que <mod xml:id="g039" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">sale aquel día</del><add ana="#layer-A1" n="2T">salir porfía</add></mod><note>enmienda in itinere sin incidencia en el sentido del pasaje, dado que la lección primitiva también resulta plenamente coherente y aceptable desde el punto de vista semántico. La intervención parece obedecer, por tanto, a criterios de ajuste estilístico.
 </note></l>
 <l n="108">y que ha de ser el espacio</l>
 <l n="109">de la plaza de palacio,</l>
@@ -368,7 +368,7 @@
 <speaker>Fel</speaker>
 <lg>
 <l n="129">No lo seré yo pequeño;</l>
-<l n="130"><mod xml:id="g040" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">llévame</unclear></del></mod>si quieres, contigo iré,<note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note></l>
+<l n="130"><mod xml:id="g040" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><unclear cert="low">llévame</unclear></del></mod>si quieres, contigo iré,<note>a lectura bajo la tachadura no puede establecerse con seguridad. De ser cierta la conjetura propuesta, la enmienda respondería a un ajuste estilístico realizado sobre la marcha.</note></l>
 <l n="131">donde hasta el fin no tendré</l>
 <l n="132">gusto, descanso, ni sueño.</l>
 <l met="stanza" n="133"> Haz esto, primo, por mí,</l>
