@@ -612,9 +612,9 @@
 <speaker>Me</speaker>
 <lg>    
 <l n="189">¿Y qué importa que una dama</l>
-<l n="190">tenga el cuerpo <mod xml:id="g049" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">de Olofernes</del><add ana="#layer-A1">diligente</add></mod>,</l>
+<l n="190">tenga el cuerpo <mod xml:id="g049" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">de Olofernes</del><add ana="#layer-A1" n="1T">diligente</add></mod>,</l>
 <l n="191">derecho como una lanza,</l>
-<l n="192"><mod xml:id="g050" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">en la entrada de un ginete</del><add ana="#layer-A1">bizarro como un alférez</add></mod>,</l>
+<l n="192"><mod xml:id="g050" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">en la entrada de un ginete</del><add ana="#layer-A1" n="1T">bizarro como un alférez</add></mod>,</l>
 <l n="193">la cintura que en un puño</l>
 <l n="194">puede apretarse y cogerse,</l>
 <l n="195">las caderas como en Flandes,</l>
@@ -648,8 +648,8 @@
 <l n="216">Mendoza, para que alegues</l>
 <l n="217">aforismos por la cara,</l>
 <l n="218">mas porque estas damas vienen</l>
-<l n="219">de noche al Prado y <mod xml:id="g054" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">las caras</del><add ana="#layer-A2">de noche</add></mod></l>
-<l n="220"><mod xml:id="g055" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">de noche</del><add ana="#layer-A2">las caras</add></mod> no pueden verse;<note>esta intervención, junto con la que la precede, parece formar parte de una misma operación de reajuste estilístico llevada a cabo, al parecer, en un segundo momento, como sugieren el trazo ligeramente más grueso y la tinta más diluida.</note></l>
+<l n="219">de noche al Prado y <mod xml:id="g054" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2" seq="1"><del ana="#layer-A0">las caras</del><add ana="#layer-A2" n="1T">de noche</add></mod></l>
+<l n="220"><mod xml:id="g055" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2" seq="1"><del ana="#layer-A0">de noche</del><add ana="#layer-A2" n="1T">las caras</add></mod> no pueden verse;<note>esta intervención, junto con la que la precede, parece formar parte de una misma operación de reajuste estilístico llevada a cabo, al parecer, en un segundo momento, como sugieren el trazo ligeramente más grueso y la tinta más diluida.</note></l>
 <l n="221">por eso habló de los talles.</l>
 </lg>
 </sp>
