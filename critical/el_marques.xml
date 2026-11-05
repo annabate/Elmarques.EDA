@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se inicia la normalización crítica del acto I a partir de AA_TEXTO_APARATO_2(4).docx. En los vv. 1-119 se elimina el aparato legacy E/P, se restituye el lemma crítico y se reintegran únicamente las variantes de la recensio actual O, Z, M, S1, S2 y S3.</change>
       <change when="2026-11-05">Se completa la resolución del registro de revisión del acto II. El locus 950 «de/en» se descarta por contradicción con el texto crítico y con la propia nota genética, que confirma «en» como lectura final de O. El locus 1112 se codifica mediante aparato estructural para la respuesta añadida de Padre y la acotación «Dentro el Marqués». La transposición final de los vv. 1689-1692 tras el v. 1700 en la tradición impresa se modela mediante un app estructural con orden alternativo de los parlamentos.</change>
       <change when="2026-11-05">Se resuelven diecisiete loci estructurales del acto II mediante variantes de speaker y redistribución controlada de versos partidos. La reconstrucción de testigos fusiona ahora parlamentos consecutivos del mismo personaje.</change>
       <change when="2026-11-05">Se resuelven la variante «a tormentarme/a atormentarme», la variante «agora/ahora» y el bloque de transmisión 1394–1401, modelado por verso para representar la omisión más extensa de M sin solapar intervalos; se retira asimismo un locus duplicado ya codificado inline.</change>
@@ -95,8 +96,8 @@
         </castList>
       </div>
       <div type="act" n="1">
-        <head type="subtitle1">Acto primero</head>
-        <stage><app><lem wit="#O">Leonardo y Feliciana</lem><rdg wit="#E #M #S1 #P">Salen Leonardo y Feliciana</rdg></app></stage>
+        <head type="subtitle1"><app n="Acot inicial"><lem wit="#O">Acto primero</lem><rdg wit="#M #Z #S2 #S3">Jornada primera</rdg><rdg wit="#S1">Jonada primera</rdg></app></head>
+        <stage><app n="Acot inicial"><lem wit="#O">Leonardo y Feliciana</lem><rdg wit="#M #Z #S1 #S2">Salen Leonardo y Feliciana</rdg><rdg wit="#S3">Salen Leonardo y Feliciano</rdg></app></stage>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
           <l n="1">Al mismo Nerón te igualas.</l>
@@ -111,17 +112,17 @@
           <speaker>Feliciana</speaker>
           <l n="5">Tus obras siempre tan malas</l>
           <l n="6">a quien las debes tan buenas.</l>
-          <l n="7">Leonardo, <app><lem wit="#O">a mi fin ordenas</lem><rdg wit="#E #M #S1 #P">mi fin ordenas</rdg></app></l>
-          <l n="8"><app><lem wit="#O">de que te vengo a deber</lem><rdg wit="#E #M #S1 #P">di que te llego a deber</rdg></app></l>
-          <l n="9"><app><lem wit="#O">quererte agora poner</lem><rdg wit="#E #M #S1 #P">si ahora me haces poner</rdg></app></l>
-          <l n="10">a tantas <app><lem wit="#O">injustas</lem><rdg wit="#S1">inciertas</rdg><rdg wit="#E #M #P">y inciertas</rdg></app> penas.</l>
+          <l n="7">Leonardo, <app n="7"><lem wit="#O">a</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> mi fin ordenas</l>
+          <l n="8"><app n="8"><lem wit="#O">de que te vengo</lem><rdg wit="#M #Z #S1 #S2 #S3">di que te llego</rdg></app> a deber</l>
+          <l n="9"><app n="9"><lem wit="#O">quererle agora poner</lem><rdg wit="#Z #S1 #S2 #S3">si ahora me haces poner</rdg></app></l>
+          <l n="10">a tantas <app n="10"><lem wit="#O">injustas</lem><rdg wit="#S1">inciertas</rdg><rdg wit="#Z #M #S2 #S3">y inciertas</rdg></app> penas.</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
           <l n="11">¡Suéltame la capa! ¡Suelta!</l>
-          <l n="12">Suelta en paz, que <app><lem wit="#O">una</lem><rdg wit="#E #M #S1 #P">no</rdg></app> porfía</l>
-          <l n="13">convierte en <app><lem wit="#O">descortesía</lem><rdg wit="#S1">descorresía</rdg></app></l>
-          <l n="14"><app><lem wit="#O">determinación</lem><rdg wit="#E #M #S1 #P">imaginación</rdg></app> resuelta.</l>
+          <l n="12">Suelta en paz, que <app n="12"><lem wit="#O">una</lem><rdg wit="#Z #M #S1 #S2 #S3">no</rdg></app> porfía</l>
+          <l n="13">convierte en descortesía</l>
+          <l n="14"><app n="14"><lem wit="#O">determinación</lem><rdg wit="#Z #M #S1 #S2 #S3">imaginación</rdg></app> resuelta.</l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
@@ -130,13 +131,13 @@
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
           <l n="16">Luego que este pleito acabe,</l>
-          <l n="17"><app><lem wit="#O">que en pleitos —y más, tan grave—</lem><rdg wit="#E #M #S1 #P">que pleitos, y en un mal grave</rdg></app></l>
+          <l n="17"><app n="16"><lem wit="#O">que en pleitos —y más, tan grave—</lem><rdg wit="#Z #M #S1 #S2 #S3">que pleitos y en un mal grave</rdg></app></l>
           <l n="18">por más que abreviarle importe,</l>
           <l n="19">el almanac de la corte</l>
           <l n="20">ningún pronóstico sabe.</l>
           <l n="21">A Madrid voy; que no voy</l>
-          <l n="22"><app><lem wit="#O">a Manila</lem><rdg wit="#E #M #S1 #P">a las Indias</rdg></app>, o a la China,</l>
-          <l n="23">en cuya mar <app><lem wit="#O">filipina</lem><rdg wit="#S1">felipina</rdg></app></l>
+          <l n="22"><app n="22"><lem wit="#O">a Manila, o a la China</lem><rdg wit="#Z #M #S1 #S2 #S3">a las Indias, ni a la China</rdg></app>,</l>
+          <l n="23">en cuya mar filipina</l>
           <l n="24">nuevo navegante soy.</l>
           <l n="25">Presto sabrás que allí estoy,</l>
           <l n="26">si otra jornada recelas.</l>
@@ -155,16 +156,16 @@
           <l n="36">procure un hombre vencer.</l>
           <l n="37">Muchos buenos suele haber,</l>
           <l n="38">mas ninguno oí decir</l>
-          <l n="39">que <app><lem wit="#O">desease</lem><rdg wit="#E #M #S1 #P">se dejase</rdg></app> morir</l>
+          <l n="39">que <app n="39"><lem wit="#O">desease</lem><rdg wit="#Z #M #S1 #S2 #S3">se dejase</rdg></app> morir</l>
           <l n="40">primero que su mujer.</l>
           <l n="41">Buen pleito llevas: procura</l>
           <l n="42">vencer tan gran diferencia,</l>
           <l n="43">que ha de tener la sentencia</l>
           <l n="44">en la misma sepultura;</l>
-          <l n="45"><app><lem wit="#O">pero yo quedo segura</lem><rdg wit="#E #M #S1 #P">porque estoy yo muy segura</rdg></app></l>
+          <l n="45"><app n="45"><lem wit="#O">pero quedo yo segura</lem><rdg wit="#Z #M #S1 #S2 #S3">porque estoy yo muy segura</rdg></app></l>
           <l n="46">que la palabra que aquí</l>
-          <l n="47"><app><lem wit="#O">me quiebras, Leonardo, ansí</lem><rdg wit="#E #M #S1 #P">me niegas, ingrato, a mí</rdg></app></l>
-          <l n="48">—sin que el <app><lem wit="#O">ser noble me</lem><rdg wit="#E #M #S1 #P">renombre te</rdg></app> valga—</l>
+          <l n="47"><app n="47"><lem wit="#O">me quiebras, Leonardo, ansí</lem><rdg wit="#Z #M #S1 #S2 #S3">me niegas ingrato a mí</rdg></app></l>
+          <l n="48">—sin que <app n="48"><lem wit="#O">el ser noble me</lem><rdg wit="#Z #M #S1 #S2 #S3">el renombre te</rdg></app> valga—</l>
           <l n="49">hará que muy presto salga</l>
           <l n="50">la sentencia contra ti.</l>
           <l n="51">Engañásteme, villano,</l>
@@ -177,18 +178,18 @@
           <l n="58">porque es razón que presuma</l>
           <l n="59">que le estás dando la pluma</l>
           <l n="60">para firmar la sentencia.</l>
-          <l n="61">No <app><lem wit="#O">lograrás</lem><rdg wit="#E #M #S1 #P">gozarás</rdg></app> la mujer</l>
-          <l n="62"><app><lem wit="#O">de quien vas</lem><rdg wit="#E #M #S1 #P">de que estás</rdg></app> enamorado,</l>
-          <l n="63"><app><lem wit="#O">o</lem><rdg wit="#E #M #S1 #P">y</rdg></app> has de ser tan desdichado</l>
+          <l n="61">No lograrás la mujer</l>
+          <l n="62">de quien vas enamorado,</l>
+          <l n="63">o has de ser tan desdichado</l>
           <l n="64">que aun honra no has de tener;</l>
           <l n="65">que si os llegan a ofender</l>
-          <l n="66">las propias —como lo <app><lem wit="#O">esperes</lem><rdg wit="#E #M #S1 #P">infieres</rdg></app>,</l>
+          <l n="66">las propias —como lo esperes,</l>
           <l n="67">aunque tan honrado eres—</l>
-          <l n="68"><app><lem wit="#O">y</lem><rdg wit="#E #M #S1 #P"/></app> a los más nobles y sabios,</l>
+          <l n="68">y a los más nobles y sabios,</l>
           <l n="69">es por vengar los agravios</l>
-          <l n="70">que habéis hecho a <app><lem wit="#O">otras</lem><rdg wit="#E #M #S1 #P">las</rdg></app> mujeres.</l>
-          <l n="71"><app><lem wit="#O">Yo te he servido, y de ti</lem><rdg wit="#S1">yo que te he querido así</rdg><rdg wit="#E #M #P">yo que te he creído</rdg></app></l>
-          <l n="72">llevo tan <app><lem wit="#O">buen</lem><rdg wit="#E #M #S1 #P">mal</rdg></app> galardón</l>
+          <l n="70">que habéis hecho a otras mujeres.</l>
+          <l n="71">Yo te he servido, y de ti</l>
+          <l n="72">llevo tan buen galardón</l>
           <l n="73">que espero que una traición</l>
           <l n="74">te infame, y me vengue a mí.</l>
           <l n="75">Vete, pues ya te perdí,</l>
@@ -200,25 +201,25 @@
           <l part="F">No me des voces</l>
           <l n="78">que aun sola tu voz me enfada.</l>
         </sp>
-        <stage><app><lem wit="#O #P">Vase</lem><rdg wit="#E #M #S1 #P">vase Leonardo</rdg></app></stage>
+        <stage>Vase</stage>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
           <l n="79">¡Mueras de mala estocada</l>
           <l n="80">antes que sus brazos goces!</l>
-          <l n="81">¡<app><lem wit="#O">Plega</lem><rdg wit="#E #M #S1 #P">Plegue</rdg></app> al cielo —pues el cielo</l>
+          <l n="81">¡Plega al cielo —pues el cielo</l>
           <l n="82">fue de tu maldad testigo—</l>
           <l n="83">que a sus puertas, enemigo,</l>
           <l n="84">bañes con tu sangre el suelo!</l>
         </sp>
-        <stage><app><lem wit="#O">Bernardo entre</lem><rdg wit="#E #M #S1 #P">Sale Bernardo</rdg></app></stage>
+        <stage>Bernardo entre</stage>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
-          <l part="I" n="85">¿Qué <app><lem wit="#O">es</lem><rdg wit="#E"/></app> esto, prima?</l>
+          <l part="I" n="85">¿Qué es esto, prima?</l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l part="F"><app><lem wit="#O">Que</lem><rdg wit="#E #M #S1 #P"/></app> <app><lem wit="#O">apelo</lem><rdg wit="#E #M #S1 #P">Apelo</rdg></app></l>
-          <l n="86"><app><lem wit="#O">de un casamiento traidor</lem><rdg wit="#E #M #S1 #P">en tan notable dolor</rdg></app></l>
+          <l part="F">Que apelo</l>
+          <l n="86">de un casamiento traidor</l>
           <l n="87">al cielo, alcalde mayor.</l>
         </sp>
         <sp who="#Bernardo">
@@ -226,9 +227,9 @@
           <l n="88">¿Has reñido con Leonardo?</l>
         </sp>
         <sp who="#Feliciana">
-          <speaker><app><lem wit="#O #E #M #S1">Feliciana</lem><rdg wit="#P">Fer.</rdg></app></speaker>
+          <speaker>Feliciana</speaker>
           <l n="89">Nací con honra, Bernardo,</l>
-          <l n="90">que <app><lem wit="#O">ya</lem><rdg wit="#E #M #S1 #P">yo</rdg></app> no trato de amor.</l>
+          <l n="90">que <app n="90"><lem wit="#O">ya</lem><rdg wit="#Z #M #S1 #S2 #S3">yo</rdg></app> no trato de amor.</l>
           <l n="91">De aquí se parte a casar</l>
           <l part="I" n="92">a Madrid.</l>
         </sp>
@@ -243,12 +244,7 @@
           <l n="94">de quien más suele fiar.</l>
         </sp>
         <sp who="#Bernardo">
-          <speaker>
-            <app>
-              <lem wit="#O #M #S1 #P">Bernardo</lem>
-              <rdg wit="#E">Feliciana</rdg>
-            </app>
-          </speaker>
+          <speaker>Bernardo</speaker>
           <l n="95">¡Buen pago te viene a dar</l>
           <l n="96">tras tantas obligaciones!</l>
         </sp>
@@ -256,33 +252,33 @@
           <speaker>Feliciana</speaker>
           <l n="97">En llegando a sin razones</l>
           <l n="98">se pierde todo el amor;</l>
-          <l n="99"><app><lem wit="#O">tú verás como al traidor</lem><rdg wit="#E #M #S1 #P">que, tras celos, al traidor</rdg></app></l>
-          <l n="100">le alcanzan <app><lem wit="#O">mis</lem><rdg wit="#E #M #S1 #P">mil</rdg></app> maldiciones.</l>
+          <l n="99"><app n="99"><lem wit="#O">tú verás como</lem><rdg wit="#Z #M #S1 #S2 #S3">que tras celos</rdg></app> al traidor</l>
+          <l n="100">le alcanzan <app n="100"><lem wit="#O">mis</lem><rdg wit="#Z #M #S1 #S2 #S3">mil</rdg></app> maldiciones.</l>
         </sp> 
         <sp who="#Bernardo"> 
           <speaker>Bernardo</speaker>  
           <l n="101">Yo estoy, Feliciana, agora</l>
           <l n="102">para Madrid de camino,</l>
           <l n="103">que a sus fiestas me previno</l>
-          <l n="104"><app><lem wit="#O">por muchas cartas</lem><rdg wit="#E #M #S1 #P">con una carta</rdg></app> Leonora.</l>
-          <l n="105">¡Cuánta riqueza <app><lem wit="#O">atesora</lem><rdg wit="#E #M #S1 #P">ahora</rdg></app>,</l>
-          <l n="106"><app><lem wit="#O">lustre, gala y valentía!</lem><rdg wit="#E #M #S1 #P">le entrega a la bizarría</rdg></app></l>
+          <l n="104"><app n="104"><lem wit="#O">por muchas cartas</lem><rdg wit="#Z #M #S1 #S2 #S3">con una carta</rdg></app> Leonora.</l>
+          <l n="105">¡<app n="105"><lem wit="#O">Cuánta riqueza atesora</lem><rdg wit="#Z #M #S1 #S2 #S3">Cuántas riquezas ahora</rdg></app>,</l>
+          <l n="106"><app n="106"><lem wit="#O">lustre, gala y valentía</lem><rdg wit="#Z #M #S1 #S2 #S3">le entrega a la bizarría</rdg></app>!</l>
           <l n="107">Dicen que salir porfía,</l>
           <l n="108">y que ha de ser el espacio</l>
           <l n="109">de la plaza de palacio,</l>
           <l n="110">cielo de Marte aquel día.</l>
           <l n="111">Esta sola ocupación</l>
-          <l n="112">poco me puede <app><lem wit="#O">impedir</lem><rdg wit="#E #M #S1 #P">estorbar</rdg></app></l>
-          <l n="113">que no te pueda <app><lem wit="#O">servir</lem><rdg wit="#E #M #S1 #P">ayudar</rdg></app>,</l>
-          <l n="114"><app><lem wit="#O">prima, en aquesta ocasión.</lem><rdg wit="#E #M #S1 #P">en tan justa prentensión</rdg></app></l>
-          <l n="115">Si suele la dilación</l>
+          <l n="112">poco me puede <app n="112"><lem wit="#O">impedir</lem><rdg wit="#Z #M #S1 #S2 #S3">estorbar</rdg></app></l>
+          <l n="113"><app n="113"><lem wit="#O">que no te pueda servir</lem><rdg wit="#Z #M #S1 #S2 #S3">cuando te puedo ayudar</rdg></app>,</l>
+          <l n="114"><app n="114"><lem wit="#O">prima, en aquesta ocasión</lem><rdg wit="#Z #M #S1 #S2 #S3">en tan justa pretensión</rdg></app>.</l>
+          <l n="115"><app n="115"><lem wit="#O">Si</lem><rdg wit="#Z #M #S1 #S2 #S3">Que</rdg></app> suele la dilación</l>
           <l n="116">deshacer los casamientos,</l>
-          <l n="117"><app><lem wit="#O">ponle</lem><rdg wit="#E #M #S1 #P">por un</rdg></app> pleito, y sus intentos</l>
-          <l n="118">no <app><lem wit="#O">lleguen</lem><rdg wit="#E #M #S1 #P">llegar</rdg></app> a ejecutarse.</l>
+          <l n="117"><app n="117"><lem wit="#O">ponle</lem><rdg wit="#Z #M #S1 #S2 #S3">por un</rdg></app> pleito, y sus intentos</l>
+          <l n="118"><app n="118"><lem wit="#O">no lleguen</lem><rdg wit="#Z #M #S1 #S2 #S3">no llegar</rdg></app> a ejecutarse.</l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l n="119">Bien sé yo que <app><lem wit="#O">es</lem><rdg wit="#E #M #S1 #P">el</rdg></app> dilatarse</l>
+          <l n="119">Bien sé yo que <app n="119"><lem wit="#O">es</lem><rdg wit="#Z #M #S1 #S2 #S3">el</rdg></app> dilatarse</l>
           <l n="120"><app><lem wit="#O">malograr</lem><rdg wit="#E #M #S1 #P">malogre</rdg></app> los pensamientos; </l>
           <l n="121">pero tú solo te pones</l>
           <l n="122">a peligro de tener</l>
