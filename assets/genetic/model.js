@@ -97,6 +97,7 @@
     );
 
     spans.forEach((span) => {
+      if (attr(span, "type") === "material-group") { span.remove(); return; }
       const layer = eventLayer(span);
       const layerRank = LAYER_RANK[layer];
       const pointer = attr(span, "spanTo") || attr(span, "spanto");
@@ -125,6 +126,7 @@
     );
 
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
+      if (attr(span, "type") === "material-group") return;
       const layer = eventLayer(span);
       if (!layer || active.has(layer)) return;
 
@@ -214,6 +216,35 @@
     });
   }
 
+  function decorateMarginalGroups(root) {
+    root.querySelectorAll('tei-addspan[type="material-group"]').forEach((span) => {
+      const target = getTargetAnchor(root, attr(span, "spanTo") || attr(span, "spanto"));
+      if (!target) return;
+      const place = attr(span, "place").toLowerCase();
+      const side = place === "right" ? "derecho" : place === "left" ? "izquierdo" : "";
+      if (!side) return;
+      const label = `Añadido en el margen ${side}`;
+      let current = span.nextElementSibling;
+      while (current && current !== target && !current.contains(target)) {
+        current.querySelectorAll("tei-add").forEach((add) => {
+          add.classList.add("marginal-addition");
+          add.dataset.marginSide = place;
+          add.setAttribute("title", label);
+          add.setAttribute("aria-label", label);
+        });
+        current = current.nextElementSibling;
+      }
+      if (current && current.contains(target)) {
+        current.querySelectorAll("tei-add").forEach((add) => {
+          add.classList.add("marginal-addition");
+          add.dataset.marginSide = place;
+          add.setAttribute("title", label);
+          add.setAttribute("aria-label", label);
+        });
+      }
+    });
+  }
+
   function decorateVisibleEvents(root) {
     root.querySelectorAll("tei-mod").forEach((mod) => {
       const layer = eventLayer(mod);
@@ -288,6 +319,7 @@
       }
     });
 
+    decorateMarginalGroups(root);
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
       const layer = eventLayer(span);
       if (!layer) return;
