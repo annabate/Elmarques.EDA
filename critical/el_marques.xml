@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se resuelven cinco loci escénicos del acto II: dos acotaciones añadidas en la tradición impresa, la acotación nocturna, la variante «luego/presto» con «Meten mano» y el cierre del acto con «Vanse» y variantes de colofón.</change>
       <change when="2026-11-05">Se integran dieciséis variantes textuales simples, seis variantes de atribución y una omisión adicional del acto II; se elimina además del registro de revisión un locus de atribución ya codificado inline.</change>
       <change when="2026-11-05">Se resuelven trece loci de omisión del acto II mediante apparatus por intervalo con anchors, preservando la reconstrucción diferenciada de los testimonios y retirándolos del standOff de revisión.</change>
       <change when="2026-11-05">Se integra el acto II crítico en el mismo archivo TEI del acto I. Los 296 loci susceptibles de integración automática se conservan inline; 70 loci estructurales o ambiguos se mantienen en standOff de revisión para resolución manual. Las siglas heredadas E y P del acto I se conservan provisionalmente y no se remapean sin revisión filológica.</change>
@@ -3170,6 +3171,7 @@
           <speaker>Bernardo</speaker>
           <l n="1332" xml:id="l_1332_x_527">Saco la daga y digo,</l>
           <l n="1333" xml:id="l_1333_x_528" corresp="#fn89">—figura que ha ensayado tu tragedia—:</l>
+          <app type="addition" n="1333Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Saca la daga</stage></add></rdg></app>
           <l n="1334" xml:id="l_1334_x_529">¿Tú, infame? ¿Tú conmigo?</l>
           <l n="1335" xml:id="l_1335_x_530">¿Piensas que <app n="1335" corresp="#fn91"><lem wit="#O">de esa suerte</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">así tu agravio</rdg></app> se remedia</l>
           <l n="1336" xml:id="l_1336_I_531" part="I">tu engaño?</l>
@@ -3190,6 +3192,7 @@
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
           <l n="1338" xml:id="l_1338_x_535">En la posada espero.</l>
+          <app type="addition" n="1338Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3"><add><stage>Vase Bernardo</stage></add></rdg><rdg wit="#Har"><add><stage>Vanse</stage></add></rdg></app>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
@@ -3777,7 +3780,7 @@
           <l n="1642" xml:id="l_1642_x_849">más su <app n="1641" corresp="#fn159"><lem wit="#O">voz</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">luz</rdg></app> que tu silencio…</l>
           <l n="1643" xml:id="l_1643_x_850">Gente parece que suena.</l>
         </sp>
-        <stage>Antonio y Leonardo de noche</stage>
+        <stage><app n="1642Acot"><lem wit="#O">Antonio y Leonardo de noche</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Salen Leonardo y Antonio</rdg></app></stage>
         <sp who="#Antonio">
           <speaker>Antonio</speaker>
           <l n="1644" xml:id="l_1644_x_851" corresp="#fn156">¿Agora os falta sosiego?</l>
@@ -3901,7 +3904,8 @@
         </sp>
         <sp who="#El_marqués">
           <speaker corresp="#fn168">Marqués</speaker>
-          <l n="1686" xml:id="l_1686_x_896" corresp="#fn168">Saquen las espadas luego.</l>
+          <l n="1686" xml:id="l_1686_x_896" corresp="#fn168">Saquen las espadas <app n="1685"><lem wit="#O">luego</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">presto</rdg></app>.</l>
+          <app type="addition" n="1685Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Meten mano</stage></add></rdg></app>
         </sp>
         <sp who="#Leonardo">
           <speaker>
@@ -3955,8 +3959,9 @@
           <l n="1698" xml:id="l_1698_x_910">¡Ay, Feliciana, que creo</l>
           <l n="1699" xml:id="l_1699_x_911">que <app n="1699" corresp="#fn171"><lem wit="#O">oyeron</lem><rdg wit="#Z #M #S1 #S2 #S3">hierran</rdg><rdg wit="#Har">hieren</rdg></app> tus maldiciones</l>
           <l n="1700" xml:id="l_1700_x_912">y me castigan los cielos!</l>
+          <app type="addition" n="1700Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Vanse</stage></add></rdg></app>
         </sp>
-        <closer corresp="#fn171">Fin del segundo acto del estraño suceso.</closer>
+        <closer corresp="#fn171"><app n="Colofón"><lem wit="#O">Fin del segundo acto del estraño suceso.</lem><rdg wit="#Z">Fin del acto segundo</rdg><rdg wit="#M #S1 #S2 #S3 #Har"/></app></closer>
         <signed>[rúbrica]</signed>
       </div>
 </body>
@@ -4011,14 +4016,8 @@
       <app xml:id="capp177" n="1276" type="text" corresp="#fn81">
         <note type="conversion-review">Gerarda, señor. Ludovico  Adiós O : señor, Gerarda. Gerarda  Sí haré. ZMS1S2S3 Har  sigue en los impresos la acotación «Sale Clara»</note>
       </app>
-      <app xml:id="capp196" n="1333" type="text" corresp="#fn91">
-        <note type="conversion-review">en ZMS1S2S3 Har sigue a este verso una acotación «Saca la daga»</note>
-      </app>
       <app xml:id="capp198" n="1336" type="text" corresp="#fn91">
         <note type="conversion-review">tu engaño? Feliciana ¡Oh, cruel Leonardo! O : Oye, cruel Leonardo ZMS1S2S3 Har  atribuido por entero a Feliciana</note>
-      </app>
-      <app xml:id="capp200" n="1338" type="text" corresp="#fn91">
-        <note type="conversion-review">en ZMS1S2S3 sigue a este verso la acotación «Vase Bernardo» : «Vanse»  Har</note>
       </app>
       <app xml:id="capp207" n="1547" type="text" corresp="#fn95">
         <note type="conversion-review">agora O : ahora ZMS1S2S3 Har</note>
@@ -4044,23 +4043,14 @@
       <app xml:id="capp312" n="1580" type="text" corresp="#fn145">
         <note type="conversion-review">¿Cómo ansí? O : ¿Cómo así?  ZMS1S2S3 Har; pronunciado por Filipe</note>
       </app>
-      <app xml:id="capp340" n="1642" type="Acot" corresp="#fn159">
-        <note type="conversion-review">Antonio y Leonardo de noche O : Salen Leonardo y Antonio</note>
-      </app>
       <app xml:id="capp351" n="1673" type="text" corresp="#fn169">
         <note type="conversion-review">Antonio ¿Cómo dijo? Leonardo ¡Bueno es esto! O : en ZMS1S2S3 Har el verso es pronunciado enteramente por Leonardo</note>
-      </app>
-      <app xml:id="capp357" n="1685" type="text" corresp="#fn169">
-        <note type="conversion-review">luego O : presto ZMS1S2S3 Har  en los impresos sigue a este verso la acotación «Meten mano»</note>
       </app>
       <app xml:id="capp360" n="1689-1692" type="text" corresp="#fn171">
         <note type="conversion-review">en ZMS1S2S3 Har estos versos aparecen tras el v.</note>
       </app>
       <app xml:id="capp361" n="1700" type="text" corresp="#fn171">
         <note type="conversion-review">y cierran el acto</note>
-      </app>
-      <app xml:id="capp366" n="1700" type="text" corresp="#fn171">
-        <note type="conversion-review">en ZMS1S2S3 Har sigue a este verso la acotación «Vanse»  Colofón Fin del segundo acto del estraño suceso O : Fin del acto segundo Z : om MS1S2S3  Har</note>
       </app></listApp>
     <list type="source-footnotes">
       <item xml:id="fn1">Dramatis personae  om OZMS1S2S3Har</item>
