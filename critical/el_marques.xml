@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se completa la normalización del aparato crítico del acto I hasta el v. 836. Se integran las variantes de los vv. 702-831, la omisión 733-736, las variantes de la carta tras el v. 778, la redistribución estructural del v. 830 y el colofón. Cuatro loci (251, 260, 453 y 740) se conservan en standOff de revisión por insuficiencia o contradicción de la fuente editorial.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 601-700. Se integran las variantes textuales y escénicas de la recensio O, Z, M, S1, S2 y S3 y se representan mediante aparatos de speaker las redistribuciones de parlamentos en 649, 661, 669, 674-679 y 688. Las lecturas de Palatina indicadas aisladamente en la fuente no se incorporan al aparato crítico.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 521-600. Se modelan como omisiones por intervalo los vv. 523-532 (Z, M, S1, S3) y 563-572 (Z, M, S1, S2, S3), se actualizan las variantes de los vv. 538-585 y se divide estructuralmente el parlamento de Gerarda para representar la atribución de los vv. 593-594 a Laurencia en la tradición impresa.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 421-520, contrastando también el lemma con AA_TEXTO_APARATO_2(4).docx. Se corrigen lecturas de base («andarse», «que sólo», «ausencia», «y si ella», «aposentos»), se modelan las omisiones 473-475 (M) y 479-496 (tradición impresa), y se integran variantes textuales, escénicas y de distribución versal. El locus de atribución 453, cuyo registro asigna Z simultáneamente a ambas lecturas, queda pendiente de resolución específica.</change>
@@ -1588,7 +1589,7 @@
           <speaker>Enrique</speaker>
           <l n="702">Mendozilla viene aquí.</l>
         </sp>
-        <stage>Mendoza con un lacayo vestido de livrea de juego de cañas con cuatro rejones</stage>
+        <stage><app n="702Acot"><lem wit="#O">Mendoza con un lacayo vestido de librea de juego de cañas con cuatro rejones</lem><rdg wit="#Z #M #S1 #S2 #S3">Salen Mendoza, y Pedro lacayos, con rejones</rdg></app></stage>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="703">Aquí están ya los rejones</l>
@@ -1604,7 +1605,7 @@
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="709">Por los brazos yo lo juro,</l>
-          <l n="710">porque son de Aquiles y Hétor.</l>
+          <l n="710"><app n="710"><lem wit="#O">porque son de Aquiles y Hétor</lem><rdg wit="#Z #M #S1 #S2 #S3">que son Achiles y Héctor</rdg></app>.</l>
           <l n="711">Llegad, Pedro, esos rejones.</l>
         </sp>
         <sp who="#Filipe">
@@ -1614,7 +1615,7 @@
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="713">Tú lo has de hacer, señor,</l>
-          <l n="714">que ellos son de pino y fresno.</l>
+          <l n="714">que ellos son de pino <app n="714"><lem wit="#O">y</lem><rdg wit="#Z #M #S1 #S2 #S3">o</rdg></app> fresno.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -1624,7 +1625,7 @@
           <speaker>Pedro</speaker>
           <l n="716">Yo salgo, y vos estad cierto</l>
           <l n="717">que no habrá dado en la plaza,</l>
-          <l n="718">de vuestro rejón, el eco,</l>
+          <l n="718">de vuestro rejón, el <app n="718"><lem wit="#O">eco</lem><rdg wit="#Z #M #S1 #S2 #S3">yerro</rdg></app>,</l>
           <l n="719">cuando las piernas del toro</l>
           <l n="720">midan a palmos el suelo.</l>
         </sp>
@@ -1640,19 +1641,22 @@
           <speaker>Mendoza</speaker>
           <l n="722">Es Pedro un hombre muy diestro,</l>
           <l n="723">aunque en las fiestas pasadas</l>
-          <l n="724">un torillo jarameño</l>
+          <l n="724">un torillo <app n="724"><lem wit="#O">jarameño</lem><rdg wit="#Z #M #S1 #S2 #S3">jaramello</rdg></app></l>
           <l n="725">le asió de unas calzas verdes</l>
           <l n="726">hasta el aforro de lienzo.</l>
           <l n="727">Y dicen que por alzar</l>
-          <l n="728">las cuchilladas más presto,</l>
-          <l n="729">alzó la misma camisa</l>
+          <l n="728"><app n="728"><lem wit="#O">las cuchilladas más presto</lem><rdg wit="#Z #M #S2 #S3">las cuchilladas de presto</rdg><rdg wit="#S1">las cuchillas de presto</rdg></app>,</l>
+          <l n="729">alzó <app n="729"><lem wit="#O">la misma</lem><rdg wit="#Z #M #S1 #S2 #S3">también la</rdg></app> camisa</l>
           <l n="730">y en las ventanas dijeron</l>
-          <l n="731">que era muy hombre, y que había</l>
+          <l n="731">que era muy hombre,<app n="731"><lem wit="#O"> y</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> que había</l>
           <l n="732">todo su honor satisfecho.</l>
+          <anchor xml:id="act1-733-start"/>
           <l n="733">Verdad es que algunas damas</l>
           <l n="734">que se tardó previnieron</l>
           <l n="735">en componer su negocio,</l>
           <l n="736">así estaba descompuesto.</l>
+          <anchor xml:id="act1-736-end"/>
+          <app type="omission" n="733-736" from="#act1-733-start" to="#act1-736-end"><rdg wit="#Z #M #S1 #S2 #S3"/></app>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
@@ -1664,14 +1668,14 @@
           <speaker>Mendoza</speaker>
           <l n="740">Aquí dama, aquí ceceo.</l>
         </sp>
-        <stage>Clara ente</stage>
+        <stage>Clara entre</stage>
         <sp who="#Mendoza">
-          <speaker>mendoza</speaker>
+          <speaker>Mendoza</speaker>
           <l n="741">Vuesa merced sea servida,</l>
           <l n="742">pues ya está en el aposento</l>
           <l n="743">de aliviar la sobrevaina</l>
-          <l n="744">a los azules o negros;</l>
-          <l n="745">saque de la nube el sol</l>
+          <l n="744">a los azules <app n="744"><lem wit="#O">o</lem><rdg wit="#Z #M #S1 #S2 #S3">y</rdg></app> negros;</l>
+          <l n="745">saque de la <app n="745"><lem wit="#O">nube</lem><rdg wit="#Z #M #S1 #S2 #S3">nieve</rdg></app> el sol</l>
           <l part="I" n="746">y diga qué quiere.</l>
         </sp>
         <sp who="#Clara">
@@ -1681,7 +1685,7 @@
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="748">Llamo a don Filipo luego,</l>
+          <l n="748"><app n="748"><lem wit="#O">Llamo</lem><rdg wit="#Z #M #S1 #S2 #S3">Llama</rdg></app> a don Filipo luego,</l>
           <l n="749">pero dígame quién es</l>
           <l n="750">que sin saberlo primero</l>
           <l n="751">no me atreveré a llamarle.</l>
@@ -1703,7 +1707,7 @@
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="757">¡Válate Dios por borrica!</l>
+          <l n="757">¡<app n="757"><lem wit="#O">Válate</lem><rdg wit="#Z #M #S1 #S2 #S3">Válgate</rdg></app> Dios por borrica!</l>
           <l n="758">¿Tú en San Martín? ¿Qué hay de nuevo?</l>
         </sp>
         <sp who="#Clara">
@@ -1714,10 +1718,10 @@
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="762">Voy como un uso derecho</l>
+          <l n="762">Voy como un <app n="762"><lem wit="#O">huso</lem><rdg wit="#Z #M #S1 #S2 #S3">sacre</rdg></app> derecho</l>
           <l n="763">a decirlo a don Filipe.</l>
           <l n="764">Señor, escucha, que pienso</l>
-          <l n="765">que dio la sopa en la miel</l>
+          <l n="765">que dio la <app n="765"><lem wit="#O">sopa</lem><rdg wit="#Z #M #S1 #S2 #S3">zorra</rdg></app> en la miel</l>
           <l n="766">por hüir de los buñuelos.</l>
         </sp>
         <sp who="#Filipe">
@@ -1735,16 +1739,16 @@
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l part="F">La de aquel güevo</l>
-          <l n="769">que te sorbías anoche.</l>
+          <l n="769">que <app n="769"><lem wit="#O">te</lem><rdg wit="#Z #M #S1 #S2 #S3">tú</rdg></app> sorbías anoche.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="770">Quedo, no más, ya te entiendo.</l>
-          <l part="I" n="771">Clara hermosa...</l>
+          <l part="I" n="771">Clara <app n="771a"><lem wit="#O">hermosa</lem><rdg wit="#Z #M #S1 #S2 #S3">hermana</rdg></app>...</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l part="F">Señor mío...</l>
+          <l part="F"><app n="771b"><lem wit="#O #Z #M #S2 #S3">Señor</lem><rdg wit="#S1">Sonor</rdg></app> mío...</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -1756,23 +1760,23 @@
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="774">De cualquier suerte, agradezco</l>
-          <l n="775">aquel ángel la memoria.</l>
+          <l n="774">De cualquier <app n="774"><lem wit="#O">suerte</lem><rdg wit="#Z #M #S1 #S2 #S3">modo</rdg></app>, agradezco</l>
+          <l n="775"><app n="775"><lem wit="#O">aquel</lem><rdg wit="#Z #M #S1 #S2 #S3">a aquel</rdg></app> ángel la memoria.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="776">No sé yo si es ángel bueno,</l>
-          <l n="777">que ángel que viene de noche</l>
+          <l n="777"><app n="777"><lem wit="#O #Z #M #S2 #S3">que ángel</lem><rdg wit="#S1">de ángel</rdg></app> que viene de noche</l>
           <l n="778">no debe de ser del cielo.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
         </sp>
-        <stage>Lea</stage>
-        <p>Oy no viene mi padre y habemos determinado mi hermana y yo ver a V. S. tan valiente en la plaza como galán en el Prado. Si tenemos ventanas y coche, que las de nuestra casa caen en Lavapies y en los nuestros no podemos ir donde quisiera el deseo.</p>
+        <stage><app n="778Acot"><lem wit="#O">Filipe lea</lem><rdg wit="#Z #M #S1 #S2 #S3">Lea don Filipe</rdg></app></stage>
+        <p><app n="778Carta-a"><lem wit="#O">Hoy no viene mi padre y habemos</lem><rdg wit="#Z #M #S1 #S2 #S3">Hoy no viene mi padre y hemos</rdg></app> determinado mi hermana y yo ver a V. S.<app n="778Carta-b"><lem wit="#O"> tan</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> valiente en la plaza como galán en el Prado. Si tenemos <app n="778Carta-c"><lem wit="#O">ventanas y coche</lem><rdg wit="#Z #M #S1 #S2 #S3">coche y ventana</rdg></app>, que las de nuestra casa caen <app n="778Carta-d"><lem wit="#O">en Lavapiés</lem><rdg wit="#Z #M #S1 #S2 #S3">a las tapias</rdg></app> y en <app n="778Carta-e"><lem wit="#O">los nuestros</lem><rdg wit="#Z #M #S1 #S2 #S3">el nuestro</rdg></app> no podemos ir donde quisiera el deseo.</p>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="779">Basta, ¡qué letra tan linda!</l>
+          <l n="779">Basta, <app n="779"><lem wit="#O">¡qué letra tan linda!</lem><rdg wit="#Z #M #S1 #S2 #S3">que la letra es linda</rdg></app></l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
@@ -1782,7 +1786,7 @@
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="783">¡Qué bien que sabe la Clara</l>
+          <l n="783"><app n="783"><lem wit="#O">¡Qué bien que sabe la Clara</lem><rdg wit="#Z #M #S1 #S2 #S3">Qué bien sabe la Clarilla</rdg></app></l>
           <l n="784">socorrer con agua al fuego.</l>
           <l n="785">No encajara Celestina</l>
           <l n="786">mejor aquellos dos versos.</l>
@@ -1790,13 +1794,13 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="787">Marqués, dadme vuestro coche,</l>
-          <l n="788">que desde agora os advierto</l>
-          <l n="789">que tenéis dos convidados.</l>
+          <l n="788"><app n="788"><lem wit="#O">que</lem><rdg wit="#Z #M #S1 #S2 #S3">y</rdg></app> desde agora os advierto</l>
+          <l n="789">que tenéis dos <app n="789"><lem wit="#O">convidados</lem><rdg wit="#Z #M #S1 #S2 #S3">convidadas</rdg></app>.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
           <l n="790">Pedro, avisad al cochero,</l>
-          <l n="791">que yo las pondré en mis ojos.</l>
+          <l n="791">que yo <app n="790"><lem wit="#O">los</lem><rdg wit="#Z #M #S1 #S2 #S3">las</rdg></app> pondré en mis ojos.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -1804,8 +1808,8 @@
           <l n="793">de tal manera ocupado</l>
           <l n="794">con galas y caballeros</l>
           <l n="795">que no puedo responderla</l>
-          <l n="796">por papel, mas que le ruego</l>
-          <l n="797">que alguna prenda me envíe,</l>
+          <l n="796">por papel, mas que <app n="796"><lem wit="#O">le</lem><rdg wit="#Z #M #S1 #S2 #S3">la</rdg></app> ruego</l>
+          <l n="797">que alguna <app n="797"><lem wit="#O">prenda</lem><rdg wit="#Z #M #S1 #S2 #S3">randa</rdg></app> me envíe,</l>
           <l n="798">de amor digo, no de precio,</l>
           <l n="799">para que saque esta tarde.</l>
         </sp>
@@ -1818,7 +1822,7 @@
           <l n="804">Laurencia con mil deseos,</l>
           <l n="805">con mil ansias, con mil penas,</l>
           <l n="806">todo por volver a veros.</l>
-          <l n="807">Pero advertid que os lo digo</l>
+          <l n="807">Pero advertid que<app n="807"><lem wit="#O"> os</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> lo digo</l>
           <l n="808">debajo de aquel secreto</l>
           <l n="809">que debeis a ser quien sois.</l>
         </sp>
@@ -1829,7 +1833,7 @@
         <sp who="#Clara">
           <speaker>Clara</speaker>
           <l n="811">Si de noche vais allá,</l>
-          <l n="812">hacer de suerte os prometo</l>
+          <l n="812">hacer de suerte<app n="812a"><lem wit="#O"> os</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> <app n="812b"><lem wit="#O #Z #M #S2 #S3">prometo</lem><rdg wit="#S1">prevengo</rdg></app></l>
           <l n="813">que la podáis ver y hablar.</l>
         </sp>
         <sp who="#Filipe">
@@ -1845,17 +1849,17 @@
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l part="F">Y agarrola.</l>
-          <l n="818">No trae muy mal los dedos</l>
+          <l n="818">No trae muy <app n="818"><lem wit="#O">mal los</lem><rdg wit="#Z #M #S1 #S2 #S3">malos</rdg></app> dedos</l>
           <l n="819">para organista, la dama.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="820">Si vais, como ya os espero,</l>
+          <l n="820">Si vais, como <app n="820"><lem wit="#O">ya os espero</lem><rdg wit="#Z #M #S1 #S2 #S3">yo deseo</rdg></app>,</l>
           <l n="821">llevaos con vos a Mendoza.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="822">Encajome, ya lo entiendo.</l>
+          <l n="822"><app n="822"><lem wit="#O">Encajome</lem><rdg wit="#Z #M #S1 #S2 #S3">Encargome</rdg></app>, ya lo entiendo.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -1867,8 +1871,8 @@
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="824">Vamos, marqués, que hoy tenemos</l>
-          <l n="825">Enrique y yo brava causa</l>
+          <l n="824">Vamos, marqués,<app n="824"><lem wit="#O"> que</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> hoy tenemos</l>
+          <l n="825">Enrique y yo <app n="825"><lem wit="#O">brava</lem><rdg wit="#Z #M #S1 #S2 #S3">buena</rdg></app> causa</l>
           <l n="826">de dar rejones al viento.</l>
         </sp>
         <sp who="#Enrique">
@@ -1878,23 +1882,24 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l part="F">¿Pues no?</l>
-          <l n="828">Y aun Mendoza, a lo que creo.</l>
+          <l n="828">Y aun Mendoza, <app n="828"><lem wit="#O #Z #M #S2 #S3">a lo que creo</lem><rdg wit="#S1">a lo creo</rdg></app>.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="829">Más quisiera la sortija.</l>
         </sp>
+        <app type="structure" n="830">
+          <lem wit="#O">
+            <sp who="#Filipe"><speaker>Filipe</speaker><l part="I" n="830">Envidioso estás.</l></sp>
+            <sp who="#Mendoza"><speaker>Mendoza</speaker><l part="F">Soy necio.</l></sp>
+          </lem>
+          <rdg wit="#Z #M #S1 #S2 #S3">
+            <sp who="#Filipe"><speaker>Filipe</speaker><l n="830">Que envidioso estás sospecho.</l></sp>
+          </rdg>
+        </app>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l part="I" n="830">Envidioso estás.</l>
-        </sp>
-        <sp who="#Mendoza">
-          <speaker>Mendoza</speaker>
-          <l part="F">Soy necio.</l>
-        </sp>
-        <sp who="#Filipe">
-          <speaker>Filipe</speaker>
-          <l n="831">Un vestido tendrás hoy.</l>
+          <l n="831">Un vestido <app n="831"><lem wit="#O #Z #M #S2 #S3">tendrás</lem><rdg wit="#S1">trendras</rdg></app> hoy.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -1907,7 +1912,9 @@
           <l n="835">que los que empiezan ganando</l>
           <l n="836">suelen acabar perdiendo.</l>
        </sp>
-    </div>
+            <closer><app n="Colofón"><lem wit="#O">Fin del primer acto</lem><rdg wit="#Z #S3">Fin del acto primero</rdg><rdg wit="#M #S1 #S2"/></app></closer>
+        <signed>[rúbrica]</signed>
+</div>
 <div type="act" n="2">
         <head type="subtitle1">
           <app n="837" corresp="#fn13">
@@ -4004,6 +4011,14 @@
       </div>
 </body>
 </text>
+<standOff type="critical-review" xml:id="act1-critical-review">
+  <listApp>
+    <app xml:id="act1-review-251" n="251" type="text"><note type="conversion-review">AA_TEXTO_APARATO_2(4).docx registra «en OZMS1S2S3 : de» senza sigla per la seconda lezione.</note></app>
+    <app xml:id="act1-review-260" n="260" type="text"><note type="conversion-review">AA_TEXTO_APARATO_2(4).docx registra «se tiende OZMS1S2S3 : se entiende» senza sigla per la seconda lezione.</note></app>
+    <app xml:id="act1-review-453" n="453" type="attribution"><note type="conversion-review">La nota assegna Z sia a «Mendoza ¡Qué fregatriz!» sia alla variante «Mendoza ¡Qué insolente!»; occorre ricontrollo sul testimone.</note></app>
+    <app xml:id="act1-review-740" n="740" type="structure"><note type="conversion-review">Locus complesso: «ceceo» è la lezione critica attribuita a Montesinos; O legge «caçeo»; ZMS1S2S3 «cece», in verso partito con un «Ce» pronunciato da Clara. Negli stampati «Sale Clara con manto» precede il v. 740, mentre in O «Clara entre» segue il verso.</note></app>
+  </listApp>
+</standOff>
 <standOff type="source-material" xml:id="act2-source-material">
     <list type="source-footnotes">
       <item xml:id="fn1">Dramatis personae  om OZMS1S2S3Har</item>
