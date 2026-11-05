@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 120-260, a partir de AA_TEXTO_APARATO_2(4).docx. Se codifican variantes textuales y de atribución, omisiones en 176-177, 201-204 y 236, la adición tras 235 y las variantes escénicas. Los loci 251 «en/de» y 260 «se tiende/se entiende» quedan sin codificar hasta identificar la sigla ausente en la fuente editorial.</change>
       <change when="2026-11-05">Se inicia la normalización crítica del acto I a partir de AA_TEXTO_APARATO_2(4).docx. En los vv. 1-119 se elimina el aparato legacy E/P, se restituye el lemma crítico y se reintegran únicamente las variantes de la recensio actual O, Z, M, S1, S2 y S3.</change>
       <change when="2026-11-05">Se completa la resolución del registro de revisión del acto II. El locus 950 «de/en» se descarta por contradicción con el texto crítico y con la propia nota genética, que confirma «en» como lectura final de O. El locus 1112 se codifica mediante aparato estructural para la respuesta añadida de Padre y la acotación «Dentro el Marqués». La transposición final de los vv. 1689-1692 tras el v. 1700 en la tradición impresa se modela mediante un app estructural con orden alternativo de los parlamentos.</change>
       <change when="2026-11-05">Se resuelven diecisiete loci estructurales del acto II mediante variantes de speaker y redistribución controlada de versos partidos. La reconstrucción de testigos fusiona ahora parlamentos consecutivos del mismo personaje.</change>
@@ -279,18 +280,18 @@
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
           <l n="119">Bien sé yo que <app n="119"><lem wit="#O">es</lem><rdg wit="#Z #M #S1 #S2 #S3">el</rdg></app> dilatarse</l>
-          <l n="120"><app><lem wit="#O">malograr</lem><rdg wit="#E #M #S1 #P">malogre</rdg></app> los pensamientos; </l>
+          <l n="120"><app n="120"><lem wit="#O">malograr los</lem><rdg wit="#Z #M #S1 #S2 #S3">malogre sus</rdg></app> pensamientos; </l>
           <l n="121">pero tú solo te pones</l>
           <l n="122">a peligro de tener</l>
           <l n="123">disgustos, y una mujer,</l>
           <l n="124">con lágrimas y razones</l>
           <l n="125">ablanda los corazones</l>
-          <l n="126"><app><lem wit="#O #E #M #P">de los jueces mejor</lem><rdg wit="#S1">y de los jueces mejor</rdg></app>.</l>
+          <l n="126"><app n="126"><lem wit="#O #Z #M #S2 #S3">de los</lem><rdg wit="#S1">y de los</rdg></app> jueces mejor.</l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
           <l n="127">El mejor procurador</l>
-          <l n="128">de un pleito es el <app><lem wit="#O">mismo</lem><rdg wit="#E #M #S1 #P">propio</rdg></app> dueño.</l>
+          <l n="128">de un pleito es el <app n="128"><lem wit="#O">mismo</lem><rdg wit="#Z #M #S1 #S2 #S3">propio</rdg></app> dueño.</l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
@@ -298,8 +299,8 @@
           <l n="130">si quieres, contigo iré,</l>
           <l n="131">donde hasta el fin no tendré</l>
           <l n="132">gusto, descanso, ni sueño.</l>
-          <l n="133">Haz esto, primo, por mí,</l>
-          <l n="134"><app><lem wit="#O">por mi inocencia, por ser</lem><rdg wit="#E #M #S1 #P">por se tu sangre y por ser</rdg></app></l>
+          <l n="133">Haz esto, <app n="133"><lem wit="#O #Z #M #S1 #S2">primo</lem><rdg wit="#S3">primero</rdg></app>, por mí,</l>
+          <l n="134"><app n="134"><lem wit="#O">por mi inocencia</lem><rdg wit="#Z #M #S1 #S2 #S3">por ser tu sangre, y</rdg></app> por ser</l>
           <l part="I" n="135">mujer.</l>
         </sp>
         <sp who="#Bernardo">
@@ -321,103 +322,103 @@
           <l n="139">jüez riguroso alcanza.</l>
           <l n="140">Mira que ofendida estoy,</l>
           <l n="141">y mira que mujer soy,</l>
-          <l n="142">donde es <app><lem wit="#O">mayor</lem><rdg wit="#E #M #S1 #P">rayo</rdg></app> la venganza.</l>
+          <l n="142">donde es <app n="142"><lem wit="#O">mayor</lem><rdg wit="#Z #M #S1 #S2 #S3">rayo</rdg></app> la venganza.</l>
         </sp>
-        <stage><app><lem wit="#O">Don Luis y don Juan de noche</lem><rdg wit="#E #M #S1 #P">Vanse y salen dos cortesanos de noche</rdg></app></stage>
+        <stage><app n="142Acot"><lem wit="#O">Don Luis y don Juan de noche</lem><rdg wit="#Z #M #S1 #S2 #S3">Vanse y salen dos cortesanos de noche</rdg></app></stage>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
+          <speaker><app n="143Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
           <l part="I" n="143">Bueno está el prado.</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
+          <speaker><app n="143Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
           <l part="F">¡Famoso!</l>
           <l n="144">Aunque menos gente viene</l>
-          <l n="145">como <app><lem wit="#O">ya va</lem><rdg wit="#E #M #S1 #P">va ya</rdg></app> refrescando.</l>
+          <l n="145">como <app n="145"><lem wit="#O">ya va</lem><rdg wit="#Z #M #S1 #S2 #S3">va ya</rdg></app> refrescando.</l>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
+          <speaker><app n="146Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
           <l part="I" n="146">¿Qué hay de Fénis?</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
+          <speaker><app n="146Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
           <l part="F">Voló Fénis.</l>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
-          <l part="I" n="147">¿Qué me <app><lem wit="#O">decís</lem><rdg wit="#E #M #S1 #P">dices</rdg></app>?</l>
+          <speaker><app n="147Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
+          <l part="I" n="147">¿Qué me <app n="147"><lem wit="#O">decís</lem><rdg wit="#Z #M #S1 #S2 #S3">dices</rdg></app>?</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
+          <speaker><app n="147Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
           <l part="F">A otro nido,</l>
-          <l n="148">donde se dice que miente</l>
+          <l n="148"><app n="148"><lem wit="#O">donde se dice</lem><rdg wit="#Z #M #S1 #S2 #S3">en que se ha visto</rdg></app> que miente</l>
           <l n="149">la fama en llamarla sola,</l>
           <l n="150">pues otro pájaro tiene.</l>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
+          <speaker><app n="151Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
           <l n="151">No hay seguridad de brazos,</l>
-          <l n="152">ni aun de las <app><lem wit="#O">almas</lem><rdg wit="#E #M #S1 #P">palmas</rdg></app> a veces,</l>
+          <l n="152">ni aun de las <app n="152"><lem wit="#O">almas</lem><rdg wit="#Z #M #S1 #S2 #S3">palmas</rdg></app> a veces,</l>
           <l n="153">sin contradicción del oro.</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
+          <speaker><app n="154Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
           <l n="154">Oro come y oro bebe.</l>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
+          <speaker><app n="155Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
           <l n="155">Alas le saldrán doradas.</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
+          <speaker><app n="156Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
           <l n="156">Los manteos lo parecen.</l>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
+          <speaker><app n="157Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
           <l n="157">Músicos vienen al Prado.</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
-          <l n="158">No puede ser que me <app><lem wit="#O">alegren</lem><rdg wit="#E #M #S1 #P">alegre</rdg></app>.</l>
+          <speaker><app n="158Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
+          <l n="158">No puede ser que me <app n="158"><lem wit="#O">alegren</lem><rdg wit="#Z #M #S1 #S2 #S3">alegre</rdg></app>.</l>
         </sp>
-        <stage><app><lem wit="#O">Asián, músico, y detrás Clara, criada, Laurencia y Gerarda de sombreros y rebociños.</lem><rdg wit="#E #M #S1 #P">Salen un músico cantando, Laurencia, Gerarda, Clara, con mantos, don Felipe de Córdoba, don Enrique, y el Marqués; ellas se sientan, y el músico a otra parte, y Mendoza.</rdg></app></stage>
+        <stage><app n="158Acot"><lem wit="#O">Asián, músico, y detrás Clara, criada, Laurencia y Gerarda de sombreros y rebociños.</lem><rdg wit="#Z #M #S1 #S2 #S3">Salen un músico cantando, Laurencia, Gerarda, Clara con mantos; don Felipe de Córdoba, don Enrique y el Marqués. Ellas se sientan, y el músico a otra parte, y Mendoza.</rdg></app></stage>
         <sp who="#Laurencia">
-          <speaker><app><lem wit="#O">Laurencia</lem><rdg wit="#E #M #S1 #P">Gerarda</rdg></app></speaker>
+          <speaker><app n="159Per"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3">Gerarda</rdg></app></speaker>
           <l n="159">Suspensa me lleva el alma.</l>
         </sp>
         <sp who="#Gerarda">
-          <speaker><app><lem wit="#O">Gerarda</lem><rdg wit="#E #M #S1 #P">Laurencia</rdg></app></speaker>
-          <l n="160">¿No ves <app><lem wit="#O">que Asián</lem><rdg wit="#E #M #S1 #P">Gerarda que</rdg></app> es este?</l>
+          <speaker><app n="160Per"><lem wit="#O">Gerarda</lem><rdg wit="#Z #M #S1 #S2 #S3">Laurencia</rdg></app></speaker>
+          <l n="160">¿No ves <app n="160"><lem wit="#O">que Asián</lem><rdg wit="#Z #M #S1 #S2 #S3">Gerarda que</rdg></app> es este?</l>
           <l n="161">Un hidalgo de Navarra</l>
           <l n="162">que canta celestialmente.</l>
         </sp>
         <sp who="#Laurencia">
-          <speaker><app><lem wit="#O">Laurencia</lem><rdg wit="#E #M #S1 #P">Gerarda</rdg></app></speaker>
+          <speaker><app n="163Per-a"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3">Gerarda</rdg></app></speaker>
           <l part="I" n="163">¿Vive en Madrid?</l>
         </sp>
         <sp who="#Gerarda">
-          <speaker><app><lem wit="#O">Gerarda</lem><rdg wit="#E #M #S1 #P">Laurencia</rdg></app></speaker>
-          <l part="F">Aquí vive,</l>
+          <speaker><app n="163Per-b"><lem wit="#O">Gerarda</lem><rdg wit="#Z #M #S1 #S2 #S3">Laurencia</rdg></app></speaker>
+          <l part="F">Aquí <app n="163"><lem wit="#O #Z #M #S1 #S2">vive</lem><rdg wit="#S3">viene</rdg></app>,</l>
           <l n="164">que sirviendo se entretiene</l>
           <l n="165">al gran cardenal Quiroga.</l>
         </sp>
         <sp who="#Laurencia">
-          <speaker><app><lem wit="#O">Laurencia</lem><rdg wit="#E #M #S1 #P">Gerarda</rdg></app></speaker>
+          <speaker><app n="166Per-a"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3">Gerarda</rdg></app></speaker>
           <l part="I" n="166">¿De qué le sirve?</l>
         </sp>
         <sp who="#Gerarda">
-          <speaker><app><lem wit="#O">Gerarda</lem><rdg wit="#E #M #S1 #P">Laurencia</rdg></app></speaker>
+          <speaker><app n="166Per-b"><lem wit="#O">Gerarda</lem><rdg wit="#Z #M #S1 #S2 #S3">Laurencia</rdg></app></speaker>
           <l part="F">Parece</l>
           <l n="167">que preguntas con cuidado.</l>
         </sp>
         <sp who="#Laurencia">
-          <speaker><app><lem wit="#O">Laurencia</lem><rdg wit="#E #M #S1 #P">Gerarda</rdg></app></speaker>
+          <speaker><app n="168Per"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3">Gerarda</rdg></app></speaker>
           <l n="168">Ninguno pudo moverme.</l>
         </sp>
         <sp who="#Gerarda">
-          <speaker><app><lem wit="#O">Gerarda</lem><rdg wit="#E #M #S1 #P">Laurencia</rdg></app></speaker>
+          <speaker><app n="169Per"><lem wit="#O">Gerarda</lem><rdg wit="#Z #M #S1 #S2 #S3">Laurencia</rdg></app></speaker>
           <l n="169">De maestresala le sirve.</l>
         </sp>
-        <stage><app><lem wit="#O">Entren galanes de noche, el marqués, don Filipe y don Enrique y Mendoza, paje de espada.</lem><rdg wit="#E #M #S1 #P"/></app></stage>
+        <stage><app n="169Acot"><lem wit="#O">Entren galanes de noche, el marqués, don Filipe y don Enrique y Mendoza, paje de espada.</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></stage>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="170">Gallardas son las mujeres.</l>
@@ -437,38 +438,33 @@
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="174">Cara que no <app><lem wit="#O">se apetece</lem><rdg wit="#E #M #S1 #P">puede verse</rdg></app></l>
-          <l n="175">¿qué ha de llamar <app><lem wit="#O">con</lem><rdg wit="#E #M #S1 #P">por</rdg></app> el talle?</l>
+          <l n="174">Cara que no <app n="174"><lem wit="#O">se apetece</lem><rdg wit="#Z #M #S1 #S2 #S3">puede verse</rdg></app></l>
+          <l n="175">¿qué ha de llamar <app n="175"><lem wit="#O">con</lem><rdg wit="#Z #M #S1 #S2 #S3">por</rdg></app> el talle?</l>
         </sp>
-        <anchor xml:id="l_176"/>
-            <sp who="#Filipe">
+<sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="176">Es <app><lem>Mendozilla</lem><rdg wit="#E">Mendoza</rdg></app> excelente</l>
-          <l n="177">filósofo de estas cosas.</l>
+          <l n="176"><app type="omission" n="176"><lem wit="#O">Es Mendozilla excelente</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
+          <l n="177"><app type="omission" n="177"><lem wit="#O">filósofo de estas cosas.</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
         </sp>
-        <anchor xml:id="l_177"/>
-        <app from="#l_176" to="#l_177">
-          <rdg wit="#M #S1 #P"/>
-        </app>
-        <sp who="#El_marqués">
+<sp who="#El_marqués">
           <speaker>Marqués</speaker>
           <l n="178">No, es el que menos entiende.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="179"><app><lem wit="#O">Siempre vuestras señorías</lem><rdg wit="#E #M #S1 #P">Que siempre vuestra señoría</rdg></app></l>
-          <l n="180">por lo singular se <app><lem wit="#O">pierden</lem><rdg wit="#E #M #S1 #P">pierde</rdg></app>.</l>
+          <l n="179"><app n="179"><lem wit="#O">Siempre vuestras señorías</lem><rdg wit="#Z #M #S1 #S2 #S3">Que siempre vuseñoría</rdg></app></l>
+          <l n="180">por lo singular se <app n="180"><lem wit="#O">pierden</lem><rdg wit="#Z #M #S1 #S2 #S3">pierde</rdg></app>.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="181">La <app><lem wit="#O">disposición</lem><rdg wit="#E #M #S1 #P">bizarría</rdg></app> del cuerpo</l>
+          <l n="181">La <app n="181"><lem wit="#O">disposición</lem><rdg wit="#Z #M #S1 #S2 #S3">bizarría</rdg></app> del cuerpo</l>
           <l n="182">muestra que el alma contiene</l>
           <l n="183">todas las partes iguales,</l>
           <l n="184">no el rostro, que el rostro puede</l>
           <l n="185">ser hermoso y no tener</l>
-          <l n="186">la <app><lem wit="#O">proporción</lem><rdg wit="#E #M #S1 #P">perfección</rdg></app> que se debe</l>
-          <l n="187"><app><lem wit="#O">a sí mismo</lem><rdg wit="#E #M #S1 #P">así mismo</rdg></app> en las demás</l>
-          <l n="188">partes que el cuerpo <app><lem wit="#O">ennoblecen</lem><rdg wit="#E #M #S1 #P">guarnecen</rdg></app>.</l>
+          <l n="186">la <app n="186"><lem wit="#O">proporción</lem><rdg wit="#Z #M #S1 #S2 #S3">perfección</rdg></app> que se debe</l>
+          <l n="187"><app n="187"><lem wit="#O">a sí mismo</lem><rdg wit="#Z #M #S1 #S2 #S3">asimismo</rdg></app> en las demás</l>
+          <l n="188">partes que el cuerpo <app n="188"><lem wit="#O">ennoblecen</lem><rdg wit="#Z #M #S1 #S2 #S3">contiene</rdg></app>.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -476,24 +472,19 @@
           <l n="190">tenga el cuerpo diligente,</l>
           <l n="191">derecho como una lanza,</l>
           <l n="192">bizarro como un alférez,</l>
-          <l n="193">la cintura que en un <app><lem wit="#O #M #S1 #P">puño</lem><rdg wit="#E">paño</rdg></app></l>
-          <l n="194">puede apretarse y cogerse,</l>
+          <l n="193">la cintura que en un puño</l>
+          <l n="194"><app n="194"><lem wit="#O">puede</lem><rdg wit="#Z #M #S1 #S2 #S3">pueda</rdg></app> apretarse y cogerse,</l>
           <l n="195">las caderas como en Flandes,</l>
           <l n="196">las piernas como un jinete,</l>
           <l n="197">si el rostro puede ser molde</l>
-          <l n="198">de hacer diablos <app><lem wit="#O #E #M #P">para</lem><rdg wit="#S1">por</rdg></app> el jueves</l>
+          <l n="198">de hacer diablos <app n="198"><lem wit="#O #Z #M #S2">para</lem><rdg wit="#S1 #S3">por</rdg></app> el jueves</l>
           <l n="199">en que al despensero cuelgan</l>
-          <l n="200">que <app><lem wit="#O">afrenta</lem><rdg wit="#E #M #S1 #P">afrentó</rdg></app> los calabreses?</l>
-          <anchor xml:id="l_201"/>
-          <l n="201">Mayormente si es tan Roma</l>
-          <l n="202">que parece que Holofernes</l>
-          <l n="203">de dos mamonas la hizo</l>
-          <l n="204">sepulturas y juanetes.</l>
-          <anchor xml:id="l_204"/>
-          <app from="#l_201" to="#l_204">
-            <rdg wit="#E #M #S1 #P"/>
-          </app>
-          <l n="205">¡Vive Dios, que es de mal gusto</l>
+          <l n="200">que <app n="200"><lem wit="#O">afrenta</lem><rdg wit="#Z #M #S1 #S2 #S3">afrentó</rdg></app> los calabreses?</l>
+<l n="201"><app type="omission" n="201"><lem wit="#O">Mayormente si es tan Roma</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
+          <l n="202"><app type="omission" n="202"><lem wit="#O">que parece que Holofernes</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
+          <l n="203"><app type="omission" n="203"><lem wit="#O">de dos mamonas la hizo</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
+          <l n="204"><app type="omission" n="204"><lem wit="#O">sepulturas y juanetes.</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
+<l n="205">¡Vive Dios, que es de mal gusto</l>
           <l n="206">quien tal opinión tuviere!</l>
           <l n="207">Que no puede enamorar</l>
           <l n="208">la boca donde los dientes</l>
@@ -502,58 +493,59 @@
           <l n="211">La cara es mayor indicio</l>
           <l n="212">del alma, que en ella vense</l>
           <l n="213">las costumbres como en mapa;</l>
-          <l n="214">luego, ¿a los cuerpos <app><lem wit="#O">prefieren?</lem><rdg wit="#E #M #S1 #P">prefiere.</rdg></app></l>
+          <l n="214">luego, ¿a los cuerpos <app n="214"><lem wit="#O">prefieren</lem><rdg wit="#Z #S1 #S2 #S3">prefiere</rdg></app>?</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
           <l n="215">No lo dice don Filipe,</l>
-          <l n="216">Mendoza, para que alegues</l>
+          <l n="216"><app n="216"><lem wit="#O #Z #S1 #S2 #S3">Mendoza</lem><rdg wit="#M">de Mendoza</rdg></app>, para que alegues</l>
           <l n="217">aforismos por la cara,</l>
           <l n="218">mas porque estas damas vienen</l>
           <l n="219">de noche al Prado y de noche</l>
           <l n="220">las caras no pueden verse:</l>
-          <l n="221">por eso habló de los talles.</l>
+          <l n="221">por eso habló de los <app n="221"><lem wit="#O #S1 #S2 #S3">talles</lem><rdg wit="#Z">tales</rdg></app>.</l>
         </sp>
-        <stage><app><lem wit="#O">Siéntanse</lem><rdg wit="#E #M #S1">Siéntense</rdg><rdg wit="#P">Siéntase</rdg></app></stage>
+        <stage>Siéntanse</stage>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="222">Ellas se sientan en frente</l>
-          <l n="223">de <app><lem wit="#O">este</lem><rdg wit="#E #M #S1 #P">aquel</rdg></app> cristal, cuyas venas</l>
-          <l n="224">sangran seis <app><lem wit="#O #E #M #P">puntas</lem><rdg wit="#S1">murtas</rdg></app> o siete</l>
+          <l n="223">de <app n="223"><lem wit="#O">este</lem><rdg wit="#Z #M #S1 #S2 #S3">aquel</rdg></app> cristal, cuyas venas</l>
+          <l n="224">sangran seis <app n="224"><lem wit="#O #M #Z #S1 #S2">puntas</lem><rdg wit="#S3">murtas</rdg></app> o siete</l>
           <l n="225">para escuchar al que canta.</l>
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="226">¡Quiera el cielo que no tiemple!</l>
+          <l n="226">¡Quiera el cielo que no <app n="226"><lem wit="#O #M #Z #S1 #S2">tiemple</lem><rdg wit="#S3">tiemble</rdg></app>!</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><app><lem wit="#O">Marqués</lem><rdg wit="#E #M #S1 #P">Mendoza</rdg></app></speaker>
-          <l n="227">Si él templare, yo me <app><lem wit="#O">acojo</lem><rdg wit="#M #S1 #P">colo</rdg><rdg wit="#E">cuelo</rdg></app></l>
-          <l n="228">por estos álamos verdes,</l>
-          <l n="229">donde él y el <app><lem wit="#O">aire se escuchen</lem><rdg wit="#E #M #S1 #P">viento se escuchan</rdg></app>.</l>
+          <speaker><app n="227Per"><lem wit="#O">Marqués</lem><rdg wit="#Z #S1 #S2 #S3">Mendoza</rdg></app></speaker>
+          <l n="227">Si él templare, yo me <app n="227"><lem wit="#O">acojo</lem><rdg wit="#Z #S1 #S2 #S3">colo</rdg><rdg wit="#M">cuelo</rdg></app></l>
+          <l n="228">por <app n="228"><lem wit="#O">estos</lem><rdg wit="#Z #S1 #S2 #S3">esos</rdg></app> álamos verdes,</l>
+          <l n="229">donde él <app n="229"><lem wit="#O">y el aire se escuchen</lem><rdg wit="#Z #M #S1 #S2 #S3">y el viento se escuchan</rdg></app>.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="230"><app><lem wit="#O">Harás</lem><rdg wit="#E #M #S1 #P">No harás</rdg></app> que te oiga y <app><lem wit="#O">lo</lem><rdg wit="#E #M #S1 #P">nos</rdg></app> deje.</l>
+          <l n="230"><app n="230"><lem wit="#O">Harás que te oiga y lo deje</lem><rdg wit="#Z #M #S1 #S2 #S3">No harás que te oiga y nos deje</rdg></app>.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="231">Templar mucho y mala voz</l>
           <l n="232">es lo mismo que sucede</l>
           <l n="233">a un largo brujulear,</l>
-          <l n="234">salir sota y <app><lem wit="#O">hacer</lem><rdg wit="#E #M #S1 #P">echar</rdg></app> veinte.</l>
+          <l n="234">salir sota y <app n="234"><lem wit="#O">hacer</lem><rdg wit="#Z #S1 #S2 #S3">echar</rdg></app> veinte.</l>
           <l n="235">Con la criada me acojo.</l>
-          <app><rdg wit="#E #M #S1 #P"><add><l>la parte que me cupiere</l></add></rdg></app>
+          <app type="addition" n="235bis"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3"><add><l n="235bis">la parte que me cupiere</l></add></rdg></app>
+          
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="236"><app><lem wit="#O">Pues las Juanas o Isabeles</lem><rdg wit="#E #M #S1 #P"/></app></l>
-          <l n="237"><app><lem wit="#O">a</lem><rdg wit="#E #M #S1 #P">A</rdg></app> don Felipe y mi hermano</l>
+          <l n="236"><app type="omission" n="236"><lem wit="#O">Pues las Juanas o Isabeles</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></l>
+          <l n="237">a <app n="237"><lem wit="#O #Z #M #S2 #S3">don</lem><rdg wit="#S1">donde</rdg></app> Felipe y mi hermano</l>
           <l n="238">alargo liberalmente,</l>
           <l n="239">que un preso no ha de tratar</l>
-          <l n="240">de amor, pues <app><lem wit="#O">no le consienten</lem><rdg wit="#E #M #S1 #P">darle no puede</rdg></app></l>
-          <l n="241"><app><lem wit="#O">libertad que le ofrecen</lem><rdg wit="#E #M #S1 #P">él a dama que le habla</rdg></app></l>
-          <l n="242"><app><lem wit="#O">a la dama que tuviere</lem><rdg wit="#E #M #S1 #P">la libertad que no tiene</rdg></app>.</l>
+          <l n="240">de amor, pues <app n="240"><lem wit="#O">no le consienten</lem><rdg wit="#Z #M #S1 #S2 #S3">darle no puede</rdg></app></l>
+          <l n="241"><app n="241"><lem wit="#O">libertad que le ofrecen</lem><rdg wit="#Z #M #S1 #S2 #S3">él a dama que le habla</rdg></app></l>
+          <l n="242"><app n="242"><lem wit="#O">a la dama que tuviere</lem><rdg wit="#Z #M #S1 #S2 #S3">la libertad que no tiene</rdg></app>.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -572,16 +564,16 @@
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
-          <l n="249"><app><lem wit="#O">Podréis</lem><rdg wit="#E #M #S1 #P">Podéis</rdg></app> al ejemplo suyo</l>
+          <l n="249"><app n="249"><lem wit="#O">Podréis</lem><rdg wit="#Z #M #S1 #S2 #S3">Podéis</rdg></app> al ejemplo suyo</l>
           <l n="250">sentaros seguramente,</l>
           <l n="251">que soy la menor en casa</l>
-          <l n="252">y nunca <app><lem wit="#O">los</lem><rdg wit="#E #M #S1 #P">las</rdg></app> grandes suelen</l>
+          <l n="252">y nunca <app n="252"><lem wit="#O">los</lem><rdg wit="#Z #S1 #S2 #S3">las</rdg></app> grandes suelen</l>
           <l n="253">reñir por lo que ellas hacen.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="254">Si Vuesa merced <app><lem wit="#O #M #S1 #P">no</lem><rdg wit="#E">lo</rdg></app> huele,</l>
-          <l n="255">―que tal vez, <app><lem wit="#O">húmido, el Prado</lem><rdg wit="#E #M #S1 #P">unido al Prado</rdg></app></l>
+          <l n="254">Si Vuesa merced no huele,</l>
+          <l n="255">―que tal vez, <app n="255"><lem wit="#O">húmido, el</lem><rdg wit="#Z #S1 #S2 #S3">unido al</rdg></app> Prado</l>
           <l n="256">el mejor olfato ofende―</l>
           <l n="257">deme lugar junto a sí</l>
           <l n="258">y, por Dios, que no le pese</l>
