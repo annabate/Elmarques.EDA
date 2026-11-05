@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 261-420, desde AA_TEXTO_APARATO_2(4).docx. Se elimina la antigua omisión 351-359 vinculada a P, se actualizan las redistribuciones de parlamentos y las variantes de Z, M, S1, S2 y S3, y se codifica la acotación añadida tras el v. 295.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 120-260, a partir de AA_TEXTO_APARATO_2(4).docx. Se codifican variantes textuales y de atribución, omisiones en 176-177, 201-204 y 236, la adición tras 235 y las variantes escénicas. Los loci 251 «en/de» y 260 «se tiende/se entiende» quedan sin codificar hasta identificar la sigla ausente en la fuente editorial.</change>
       <change when="2026-11-05">Se inicia la normalización crítica del acto I a partir de AA_TEXTO_APARATO_2(4).docx. En los vv. 1-119 se elimina el aparato legacy E/P, se restituye el lemma crítico y se reintegran únicamente las variantes de la recensio actual O, Z, M, S1, S2 y S3.</change>
       <change when="2026-11-05">Se completa la resolución del registro de revisión del acto II. El locus 950 «de/en» se descarta por contradicción con el texto crítico y con la propia nota genética, que confirma «en» como lectura final de O. El locus 1112 se codifica mediante aparato estructural para la respuesta añadida de Padre y la acotación «Dentro el Marqués». La transposición final de los vv. 1689-1692 tras el v. 1700 en la tradición impresa se modela mediante un app estructural con orden alternativo de los parlamentos.</change>
@@ -582,7 +583,7 @@
         <sp who="#Clara">
           <speaker>Clara</speaker>
           <l n="260">¡Arre allá! ¡Cómo se tiende!</l>
-          <l n="261"><app><lem wit="#O">¿Hiciera</lem><rdg wit="#E #M #S1 #P">Si hiciera</rdg></app> más un borrico?</l>
+          <l n="261">¿<app n="261"><lem wit="#O">Hiciera</lem><rdg wit="#Z #M #S1 #S2 #S3">Si hiciera</rdg></app> más un borrico?</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -599,29 +600,29 @@
           <l n="266">Por tus palabras crueles</l>
           <l n="267">conozco que eres hermosa,</l>
           <l n="268">que las feas no defienden</l>
-          <l n="269">con tanto rigor <app><lem wit="#O">sus</lem><rdg wit="#E #M #S1 #P">las</rdg></app> caras,</l>
+          <l n="269">con tanto rigor <app n="269"><lem wit="#O">sus</lem><rdg wit="#Z #M #S1 #S2 #S3">las</rdg></app> caras,</l>
           <l n="270">y esta es la causa que siempre</l>
           <l n="271">casan las hermosas tarde,</l>
           <l n="272">juzgando que más merecen.</l>
           <l n="273">No han dicho a una fea envido</l>
-          <l n="274">cuando con <app><lem wit="#O #E #M #S1">el</lem><rdg wit="#P">su</rdg></app> resto quiere,</l>
+          <l n="274">cuando con el resto quiere,</l>
           <l n="275">que piensa que no ha de haber</l>
-          <l n="276"><app><lem wit="#O">hombre que a la</lem><rdg wit="#E #M #S1 #P">otro que a su</rdg></app> tienda llegue.</l>
+          <l n="276"><app n="276"><lem wit="#O">hombre que a la</lem><rdg wit="#Z #M #S1 #S2 #S3">otro que a su</rdg></app> tienda llegue.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="277"><app><lem wit="#O #E #M #P">Óigase</lem><rdg wit="#S1">Óiganse</rdg></app> <app><lem wit="#O">y</lem><rdg wit="#E #M #S1 #P"/></app> <app><lem wit="#O #E #M #P">mire</lem><rdg wit="#S1">miren</rdg></app> que cantan,</l>
-          <l part="I" n="278">y téngase <app><lem wit="#O">en sí</lem><rdg wit="#E #M #S1 #P">allá</rdg></app>.</l>
+          <l n="277"><app n="277"><lem wit="#O #Z">Óigase y mire</lem><rdg wit="#M #S2 #S3">Óigase, mire</rdg><rdg wit="#S1">Óiganse, miren</rdg></app> que cantan,</l>
+          <l part="I" n="278">y téngase <app n="278"><lem wit="#O">en sí</lem><rdg wit="#Z #M #S1 #S2 #S3">allá</rdg></app>.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l part="F">Tendréme</l>
-          <l n="279">por tenerla por hermosa,</l>
-          <l n="280">que no porque me sustente.</l>
+          <l n="279">por <app n="279"><lem wit="#O #M">tenerla</lem><rdg wit="#Z #S1 #S2 #S3">tenella</rdg></app> por hermosa,</l>
+          <l n="280"><app n="280"><lem wit="#O">que</lem><rdg wit="#Z #M #S1 #S2 #S3">y</rdg></app> no porque me sustente.</l>
         </sp>
-        <stage><app><lem wit="#O">Cante</lem><rdg wit="#E #M #S1">Canta</rdg><rdg wit="#P">Cant.</rdg></app></stage>
+        <stage><app n="280Acot"><lem wit="#O">Cante</lem><rdg wit="#Z #M #S1 #S2 #S3">Canta</rdg></app></stage>
         <sp who="#Asián">
-          <speaker><app><lem wit="#O">Asián</lem><rdg wit="#E #M #S1 #P"/></app></speaker>
+          <speaker><app n="281Per"><lem wit="#O">Asián</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></speaker>
           <l n="281">Por la plaza de San Lúcar</l>
           <l n="282">galán paseando viene,</l>
           <l n="283">el valeroso Gazul,</l>
@@ -635,47 +636,48 @@
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="288">¿<app><lem wit="#O">Quieres</lem><rdg wit="#E #M #S1 #P">Quiere</rdg></app> callar, insolente?</l>
+          <l n="288">¿<app n="288"><lem wit="#O">Quieres</lem><rdg wit="#Z #M #S1 #S2 #S3">Quiere</rdg></app> callar, insolente?</l>
         </sp>
-        <stage><app><lem wit="#O">Cante</lem><rdg wit="#E #M #S1">Canta</rdg><rdg wit="#P">Cant.</rdg></app></stage>
+        <stage><app n="289Acot"><lem wit="#O">Cante</lem><rdg wit="#Z #M #S2 #S3">Canta</rdg><rdg wit="#S1">Canten</rdg></app></stage>
         <sp who="#Asián">
-          <speaker><app><lem wit="#O">Asián</lem><rdg wit="#E #M #S1 #P"/></app></speaker>
-          <l n="289"><app><lem wit="#O">Quiérese</lem><rdg wit="#E #M #S1 #P">Quería</rdg></app> el moro <app><lem wit="#O">partir</lem><rdg wit="#E #M #S1 #P">partirse</rdg></app></l>
+          <speaker><app n="289Per"><lem wit="#O">Asián</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app></speaker>
+          <l n="289"><app n="289"><lem wit="#O">Quiérese el moro partir</lem><rdg wit="#Z #M #S1 #S2 #S3">Quería el moro partirse</rdg></app></l>
           <l n="290">a jugar cañas a Gelves.</l>
         </sp>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">Mendoza</rdg></app></speaker>
+          <speaker><app n="291Per"><lem wit="#O">Juan</lem><rdg wit="#Z #S1 #S2 #S3">Mendoza</rdg></app></speaker>
           <l n="291">No se parta agora el moro,</l>
           <l n="292">que hace calor y le puede</l>
           <l n="293">dar alguna calentura.</l>
         </sp>
         <sp who="#Asián">
-           <speaker><app><lem wit="#O">Asián</lem><rdg wit="#E #M #S1 #P">Músico</rdg></app></speaker>
-          <l n="294">No se parta, si no <app><lem wit="#O">quieren</lem><rdg wit="#E #M #S1 #P">quiere</rdg></app>,</l>
+           <speaker><app n="294Per"><lem wit="#O">Asián</lem><rdg wit="#Z #M #S1 #S2 #S3">Músico</rdg></app></speaker>
+          <l n="294">No se parta, si no <app n="294"><lem wit="#O">quieren</lem><rdg wit="#Z #M #S1 #S2 #S3">quiere</rdg></app>,</l>
           <l n="295">que yo cantaré otra cosa.</l>
+          <app type="addition" n="295Acot"><lem wit="#O"/><rdg wit="#Z #M #S2 #S3"><add><stage>Péguele</stage></add></rdg><rdg wit="#S1"><add><stage>Pégale</stage></add></rdg></app>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">1</rdg></app></speaker>
+          <speaker><app n="296Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">1</rdg></app></speaker>
           <l n="296">Canta alguna cosa alegre.</l>
         </sp>
         <sp who="#Asián">
-          <speaker><app><lem wit="#O">Asián</lem><rdg wit="#E #M #S1 #P">Músico</rdg></app></speaker>
-          <l n="297">En haciéndolo <app><lem wit="#O">chacota</lem><rdg wit="#E #M #S1 #P">en chacota</rdg></app>,</l>
+          <speaker><app n="297Per"><lem wit="#O">Asián</lem><rdg wit="#Z #M #S1 #S2 #S3">Músico</rdg></app></speaker>
+          <l n="297">En haciéndolo <app n="297"><lem wit="#O">chacota</lem><rdg wit="#Z #M #S1 #S2 #S3">en chacota</rdg></app>,</l>
           <l n="298">perdonen vuesas mercedes.</l>
         </sp>
-        <stage><app><lem wit="#O">Vaya</lem><rdg wit="#E #M #S1 #P">Vase</rdg></app></stage>
+        <stage><app n="298Acot"><lem wit="#O">Vaya</lem><rdg wit="#Z #M #S1 #S2 #S3">Vase</rdg></app></stage>
         <sp who="#Juan">
-          <speaker><app><lem wit="#O">Juan</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
-          <l n="299">Mal <app><lem wit="#O">hicistes</lem><rdg wit="#E #M #S1 #P">hicísteis</rdg></app>, vive Dios,</l>
+          <speaker><app n="299Per"><lem wit="#O">Juan</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
+          <l n="299">Mal <app n="299"><lem wit="#O">hicistes</lem><rdg wit="#Z #M #S1 #S2 #S3">hicisteis</rdg></app>, vive Dios,</l>
           <l n="300">que sus palabras corteses</l>
           <l n="301">más término merecían.</l>
         </sp>
         <sp who="#Luis">
-          <speaker><app><lem wit="#O">Luis</lem><rdg wit="#E #M #S1 #P">2</rdg></app></speaker>
-          <l n="302"><app><lem wit="#O">Pues yo parto a conocerle</lem><rdg wit="#E #M #S1 #P">Yo voy a reconocerle</rdg></app></l>
-          <l n="303">y <app><lem wit="#O">darle</lem><rdg wit="#E #M #S1 #P">a darle</rdg></app> satisfacción.</l>
+          <speaker><app n="302Per"><lem wit="#O">Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">2</rdg></app></speaker>
+          <l n="302"><app n="302"><lem wit="#O">Pues yo parto a conocerle</lem><rdg wit="#Z #M #S1 #S2 #S3">yo voy a reconocerle</rdg></app></l>
+          <l n="303"><app n="303"><lem wit="#O">y darle</lem><rdg wit="#Z #M #S1 #S2 #S3">y a darle</rdg></app> satisfacción.</l>
         </sp>
-        <stage><app><lem wit="#O">Váyanse don Juan y don Luis</lem><rdg wit="#E #M #S1 #P">Vanse los dos</rdg></app></stage>
+        <stage><app n="303Acot"><lem wit="#O">Váyanse don Juan y don Luis</lem><rdg wit="#Z #M #S1 #S2 #S3">Vanse los dos</rdg></app></stage>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="304">Mujer celestial, ¿quién eres</l>
@@ -683,39 +685,39 @@
           <l n="306">con talle tan excelente</l>
           <l n="307">y con tan hermosa cara?</l>
           <l n="308">Que, aunque la noche escurece</l>
-          <l n="309">el cielo en que <app><lem wit="#O">le</lem><rdg wit="#E #M #S1 #P">la</rdg></app> retratas,</l>
+          <l n="309">el cielo en que <app n="309"><lem wit="#O">te</lem><rdg wit="#Z #M #S1 #S2 #S3">la</rdg></app> retratas,</l>
           <l n="310">sus estrellas resplandecen.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="311">Suplico a vuesa merced</l>
           <l n="312">no trate de conocerme,</l>
-          <l n="313">que no soy <app><lem wit="#O">lo</lem><rdg wit="#E #M #S1 #P">la</rdg></app> que parezco,</l>
+          <l n="313">que no soy <app n="313"><lem wit="#O">lo</lem><rdg wit="#Z #M #S1 #S2 #S3">la</rdg></app> que parezco,</l>
           <l n="314">porque sólo un padre ausente</l>
           <l n="315">que mañana ha de venir</l>
-          <l n="316">causa <app><lem wit="#O">me dio</lem><rdg wit="#E #M #S1 #P">ha sido</rdg></app> de atreverme</l>
+          <l n="316">causa <app n="316"><lem wit="#O">me dio</lem><rdg wit="#Z #M #S1 #S2 #S3">ha sido</rdg></app> de atreverme</l>
           <l n="317">a ver el Prado, que somos</l>
           <l n="318">codiciosas las mujeres</l>
           <l n="319">de ver lo que nos alaban,</l>
           <l n="320">y mucho más las que tienen</l>
-          <l n="321">una madre que las <app><lem wit="#E #M #S1 #P">riñe</lem><rdg wit="#O">riña</rdg></app></l>
+          <l n="321">una madre que las <app n="321"><lem wit="#O">riña</lem><rdg wit="#Z #M #S1 #S2 #S3">riñe</rdg></app></l>
           <l n="322">y un padre que las encierre.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="323">Quien sois dice vuestro <app><lem wit="#O">estilo</lem><rdg wit="#E #M #S1 #P">brío</rdg></app></l>
+          <l n="323">Quien sois dice vuestro <app n="323"><lem wit="#O">estilo</lem><rdg wit="#Z #M #S1 #S2 #S3">brío</rdg></app></l>
           <l n="324">y me obliga a que os respete,</l>
           <l n="325">pero, por Dios, que estoy loco</l>
           <l n="326">de ver entre dos claveles</l>
-          <l n="327">la armonía de <app><lem wit="#O #E #M #S1">esa</lem><rdg wit="#P">esta</rdg></app> voz</l>
+          <l n="327">la armonía de esa voz</l>
           <l n="328">que me desmaya y suspende.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="329">¿Sois acaso portugués?</l>
           <l n="330">Que sólo a los portugueses</l>
-          <l n="331">para <app><lem wit="#O">enamorarse</lem><rdg wit="#E #M #S1 #P">derretirse</rdg></app> amor</l>
-          <l n="332">les <app><lem wit="#O">dio</lem><rdg wit="#E #M #S1 #P">da</rdg></app> término tan breve.</l>
+          <l n="331">para <app n="331"><lem wit="#O">enamorarse</lem><rdg wit="#M #S2">derretirse</rdg><rdg wit="#Z #S1 #S3">derritirse</rdg></app> amor</l>
+          <l n="332">les <app n="332"><lem wit="#O">dio</lem><rdg wit="#Z #M #S1 #S2 #S3">da</rdg></app> término tan breve.</l>
           <l n="333">¿Cómo os derretís ansí?</l>
         </sp>
         <sp who="#Filipe">
@@ -731,54 +733,41 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="338">Antes, señora, que os viese;</l>
-          <l n="339">ya fuego después que os vi.</l>
+          <l n="339"><app n="339"><lem wit="#O">ya fuego</lem><rdg wit="#Z #M #S1 #S2 #S3">ya es fuego</rdg></app> después que os vi.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l n="340">¿Que haya <app><lem wit="#O #E #M #P">un</lem><rdg wit="#S1"/></app> hombre que requiebre</l>
-          <l n="341">a scuras una mujer?</l>
+          <l n="340">¿Que haya <app n="340"><lem wit="#O #Z #M #S2 #S3">un</lem><rdg wit="#S1"/></app> hombre que requiebre</l>
+          <l n="341"><app n="341"><lem wit="#O">a scuras una</lem><rdg wit="#Z #M #S1 #S2 #S3">a escuras a una</rdg></app> mujer?</l>
           <l n="342">Debéis de haber sido duende.</l>
           <l n="343">¡Oh libertad de los hombres,</l>
           <l n="344">cuanto miran, apetecen,</l>
-          <l n="345"><app><lem wit="#O">cuanto hablan, tanto engañan</lem><rdg wit="#E #M #S1 #P">de todo lo nuevo gustan</rdg></app>,</l>
+          <l n="345"><app n="345"><lem wit="#O">cuanto hablan, tanto engañan</lem><rdg wit="#Z #M #S1 #S2 #S3">de todo lo nuevo gustan</rdg></app>,</l>
           <l n="346">cuanto encuentran, tanto quieren!</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="347">Pues yo os prometo que he sido</l>
-          <l n="348">tan <app><lem wit="#O">diamante</lem><rdg wit="#E #M #S1 #P">ingrato</rdg></app> algunas veces</l>
+          <l n="348">tan <app n="348"><lem wit="#O">diamante</lem><rdg wit="#Z #M #S1 #S2 #S3">ingrato</rdg></app> algunas veces</l>
           <l n="349">que no han podido unos ojos</l>
           <l n="350">con sus lágrimas moverme.</l>
         </sp>
-        <anchor xml:id="l_351"/>
-        <sp who="#Laurencia">
+<sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-           <l n="351">¿Y yo a oscuras pude tanto</l>
-            <l xml:id="l_352" n="352">
-              <app xml:id="app352_line">
-                <lem wit="#O #E #M">
-                  ¿con un <app xml:id="app352a">
-                          <lem wit="#O">pecho</lem>
-                          <rdg wit="#E #M">puño</rdg>
-                        </app> tan rebelde?
-                </lem>
-                <rdg wit="#S1">¿no viendo en mí perfección?</rdg>
-              </app>
-            </l>
+           <l n="351">¿Y yo <app n="351"><lem wit="#O">a scuras pude</lem><rdg wit="#Z #M #S1 #S2 #S3">a escuras puedo</rdg></app> tanto</l>
+            <l xml:id="l_352" n="352"><app n="352"><lem wit="#O">¿con un pecho tan rebelde?</lem><rdg wit="#Z #M #S2 #S3">¿con un puño tan rebelde?</rdg><rdg wit="#S1">¿no viendo en mí perfección?</rdg></app></l>
           <l n="353">¡Oh gran milagro de amor!</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="354">Muchas veces acontece</l>
-          <l n="355">que un vidrio que sirvió un año</l>
+          <l n="355">que un vidrio que <app n="355"><lem wit="#O">sirvió</lem><rdg wit="#Z #M #S1 #S2 #S3">sirve</rdg></app> un año</l>
           <l n="356">por irse a sacar se quiebre.</l>
           <l n="357">Sin estrellas no hay amor,</l>
-          <l n="358">y como ellas le concierten</l>
+          <l n="358">y como ellas <app n="358"><lem wit="#O">le</lem><rdg wit="#Z #M #S1 #S2 #S3">se</rdg></app> concierten</l>
           <l n="359">basta el ver, basta el oír.</l>
         </sp>
-        <anchor xml:id="l_359"/>
-        <app from="#l_351" to="#l_359"><rdg wit="#P"/></app>
-        <sp who="#Laurencia">
+<sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="360">¿Voluntades diferentes</l>
           <l part="I" n="361">conciertan estrellas?</l>
@@ -801,16 +790,16 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="366">¿Que sois tan noble y valiente?</l>
-          <l n="367">¡Oh quién tuviera ventanas!</l>
+          <l n="367">¡<app n="367a"><lem wit="#O">Oh</lem><rdg wit="#Z #M #S1 #S2 #S3">Ha</rdg></app> quién tuviera <app n="367b"><lem wit="#O">ventanas</lem><rdg wit="#Z #M #S1 #S2 #S3">ventana</rdg></app>!</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="368">Por las ventanas no quede;</l>
-          <l n="369">coche y ventanas tendréis.</l>
+          <l n="368">Por <app n="368"><lem wit="#O">las ventanas</lem><rdg wit="#Z #M #S2 #S3">la ventana</rdg><rdg wit="#S1">la ventura</rdg></app> no quede;</l>
+          <l n="369"><app n="369"><lem wit="#O">coche y ventanas tendréis</lem><rdg wit="#Z #M #S2 #S3">coche tendréis y ventana</rdg><rdg wit="#S1">coche tendréis y ventura</rdg></app>.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l n="370">No querrán que las acete.</l>
+          <l n="370">No querrán que <app n="370"><lem wit="#O">las acete</lem><rdg wit="#Z #M #S2 #S3">yo lo acete</rdg><rdg wit="#S1">yo lo acierte</rdg></app>.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -825,15 +814,15 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="374">A mí solo, solamente,</l>
-          <l n="375">sucediera tal desdicha.</l>
+          <l n="375">sucediera <app n="375"><lem wit="#O">tal</lem><rdg wit="#Z #M #S1 #S2 #S3">esta</rdg></app> desdicha.</l>
           <l n="376">¡Vive Dios, que me atraviese</l>
           <l part="I" n="377">esta daga!</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l part="F">Quedo, quedo,</l>
+          <l part="F"><app n="377"><lem wit="#O #Z #M #S2 #S3">Quedo, quedo</lem><rdg wit="#S1">Quando quedo</rdg></app>,</l>
           <l n="378">que no soy de las que creen</l>
-          <l n="379">en madalenas de amor.</l>
+          <l n="379"><app n="379"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3">de</rdg></app> madalenas de amor.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -848,7 +837,7 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="383">Yo os daré treinta diamantes</l>
-          <l n="384">que aquesta joya enriquecen</l>
+          <l n="384">que aquesta joya <app n="384"><lem wit="#O">enriquecen</lem><rdg wit="#Z #M #S1 #S2 #S3">guarnecen</rdg></app></l>
           <l part="I" n="385">por esa mano.</l>
         </sp>
         <sp who="#Gerarda">
@@ -875,8 +864,8 @@
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="394">¿El de las Navas es este?</l>
-          <l n="395">¿Que este el de las Navas es?</l>
+          <l n="394">¿<app n="394"><lem wit="#O">El</lem><rdg wit="#Z #M #S1 #S2 #S3">Que el</rdg></app> de las Navas es este?</l>
+          <l n="395"><app n="395"><lem wit="#O">¿Que este el de las Navas es?</lem><rdg wit="#Z #M #S1 #S2 #S3">¿Que aqueste es el de las Navas?</rdg></app></l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -886,14 +875,14 @@
         <sp who="#Clara">
           <speaker>Clara</speaker>
           <l n="398">Es por el nombre que tiene</l>
-          <l n="399">de bizarro y liberal,</l>
+          <l n="399">de <app n="399"><lem wit="#O">bizarro</lem><rdg wit="#Z #M #S2 #S3">gallardo</rdg><rdg wit="#S1">gallarda</rdg></app> y liberal,</l>
           <l n="400">galán discreto y valiente.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="401">Es su hermano don Enrique</l>
           <l n="402">de Guzmán, el que entretiene</l>
-          <l n="403">esa tu menor señora.</l>
+          <l n="403"><app n="403"><lem wit="#O">esa</lem><rdg wit="#Z #M #S1 #S2 #S3">a esa</rdg></app> tu menor señora.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
@@ -914,10 +903,10 @@
           <l n="407">la corte en esta ocasión</l>
           <l n="408">con gentileza eminente</l>
           <l n="409">a cuantas celebra España.</l>
-          <l n="410">Ya habrás oído mil veces</l>
+          <l n="410"><app n="410"><lem wit="#O">Ya</lem><rdg wit="#Z #M #S1 #S2 #S3">Y</rdg></app> habrás oído mil veces</l>
           <l n="411">que es hijo del gran don Diego</l>
           <l n="412">de Córdoba, nuevo Orestes,</l>
-          <l n="413">nuevo Acates de Filipe</l>
+          <l n="413">nuevo <app n="413"><lem wit="#O">Acates de Filipe</lem><rdg wit="#Z #M #S1 #S2 #S3">Atlante de Filipo</rdg></app></l>
           <l n="414">Segundo, mas tú no entiendes</l>
           <l n="415">antigüedades ni historia.</l>
         </sp>
@@ -927,14 +916,14 @@
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l part="F">Tenme</l>
+          <l part="F"><app n="416"><lem wit="#O #Z #M #S2 #S3">Tenme</lem><rdg wit="#S1">Tente</rdg></app></l>
           <l n="417">por tuyo. ¿Dónde vivís,</l>
           <l n="418">que quiero servirte y verte?</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="419">Al Lavapiés, en la calle</l>
-          <l part="I" n="420">de la Cabeza.</l>
+          <l n="419"><app n="419"><lem wit="#O #M #S1 #S2">Al Lavapiés</lem><rdg wit="#Z #S3">Alaba pies</rdg></app>, en la calle</l>
+          <l part="I" n="420"><app n="420"><lem wit="#O #Z #M #S2 #S3">de la Cabeza</lem><rdg wit="#S1">de Cabeza</rdg></app>.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
