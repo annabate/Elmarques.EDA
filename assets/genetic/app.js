@@ -1206,11 +1206,11 @@
     geneticSource =
       window.EMNGeneticModel.normalizeXmlIds(genetic.cloneNode(true));
     diplomaticSource =
-      window.EMNGeneticModel.normalizeXmlIds(keepFirstAct(diplomatic));
+      window.EMNGeneticModel.normalizeXmlIds(diplomatic.cloneNode(true));
 
     const counts = window.EMNGeneticModel.layerCounts(geneticSource);
     modelStatus.textContent =
-      `Acto I validado · A1: ${counts.A1} · A2: ${counts.A2} · B: ${counts.B}`;
+      `Edición genética cargada · A1: ${counts.A1} · A2: ${counts.A2} · B: ${counts.B}`;
     modelStatus.hidden = true;
 
     renderGenetic();
