@@ -8,14 +8,14 @@ edition_label: Edición genética · prototipo
 <div
   id="genetic-app"
   data-baseurl="{{ site.baseurl }}"
-  data-genetic-source="{{ site.baseurl }}/edition/prototype/EMN_mod_act1_pilot.xml"
+  data-genetic-source="{{ site.baseurl }}/edition/prototype/EMN_mod_act1-2.xml"
   data-diplomatic-source="{{ site.baseurl }}/edition/EMN_dip.xml"
 >
   <header class="edition-workspace-header">
     <div>
       <p class="workspace-kicker">Edición genética · prototipo</p>
       <h1><em>El marqués de las Navas</em></h1>
-      <p class="workspace-subtitle">Acto I · manuscrito autógrafo de Lope de Vega</p>
+      <p class="workspace-subtitle">Actos I y II · manuscrito autógrafo de Lope de Vega</p>
     </div>
     <div id="model-status" class="workspace-status" aria-live="polite">
       Preparando edición…
