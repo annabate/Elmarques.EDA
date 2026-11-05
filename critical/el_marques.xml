@@ -30,6 +30,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Audit estructural del acto II: se incorpora la variante de atribución 1467Per (Ludovico O : Padre ZMS1S2S3 Har). El locus 950 se conserva en standOff de revisión por contradicción entre el texto/historia genética de O y el aparato de tradición.</change>
       <change when="2026-11-05">Tercera pasada del audit del acto II: se recolocan cuatro variantes incrustadas erróneamente dentro de palabras (848, 926, 1009 y 1617), restituyendo «Majestad», «pienso», «caballero» y «con» y situando el aparato en su locus textual efectivo.</change>
       <change when="2026-11-05">Segunda pasada del audit del acto II: se corrigen ocho aparatos invertidos o desplazados por la conversión automática (965, 1070, 1144, 1283Acot, 1378, 1530, 1575 y 1674). Se conserva deliberadamente 1444 con «quites» como lemma crítico frente a «quita» de O.</change>
       <change when="2026-11-05">Audit del aparato inline del acto II: se corrigen 13 loci corrompidos por fusión automática de entradas independientes (1216, 1258, 1313, 1345, 1351, 1432, 1480, 1544, 1548, 1600, 1621 y las atribuciones 1686-1687). Las variantes se redistribuyen en aparatos separados y, cuando la conversión las había desplazado, se restituyen al verso correspondiente.</change>
@@ -3498,7 +3499,7 @@
           <l n="1467" xml:id="l_1467_F_670" part="F">Pues claro está.</l>
         </sp>
         <sp who="#Ludovico">
-          <speaker>Ludovico</speaker>
+          <speaker><app n="1467Per" corresp="#fn105"><lem wit="#O">Ludovico</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Padre</rdg></app></speaker>
           <l n="1468" xml:id="l_1468_x_671" corresp="#fn105">Ni yo, Laurencia, querré.</l>
           <l n="1469" xml:id="l_1469_x_672"><app n="1468" corresp="#fn105"><lem wit="#O">Hija y juramento guarda</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">No hay juramento, Gerarda</rdg></app>,</l>
           <l n="1470" xml:id="l_1470_x_673">aunque estas razones son</l>
@@ -3995,6 +3996,13 @@
       </div>
 </body>
 </text>
+<standOff type="critical-review" xml:id="act2-critical-review">
+  <listApp>
+    <app xml:id="act2-review-950" n="950" type="text">
+      <note type="conversion-review">Locus contradictorio en la fuente editorial: el texto crítico y la historia genética de O ofrecen «en vuestro donaire y talle» (A0 «de las vuestras y del talle» &gt; A2 «en vuestro donaire y»), mientras el aparato de tradición registra «de O : en ZMS1S2S3 Har». Requiere cotejo directo antes de codificar la variante.</note>
+    </app>
+  </listApp>
+</standOff>
 <standOff type="critical-review" xml:id="act1-critical-review">
   <listApp>
     <app xml:id="act1-review-251" n="251" type="text"><note type="conversion-review">AA_TEXTO_APARATO_2(4).docx registra «en OZMS1S2S3 : de» senza sigla per la seconda lezione.</note></app>
