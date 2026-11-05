@@ -247,6 +247,10 @@
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
       const layer = window.EMNGeneticModel.eventLayer(span);
       if (!layer) return;
+      if (span.getAttribute("type") === "material-group") {
+        span.removeAttribute("title");
+        return;
+      }
       span.dataset.eventLayer = layer;
       const place = (span.getAttribute("place") || "").toLowerCase();
       const isMaterialGroup = span.getAttribute("type") === "material-group";
@@ -263,10 +267,49 @@
     });
   }
 
+  function enableMarginalHover(root) {
+    const groups = new Map();
+    root.querySelectorAll("tei-l.marginal-group-line").forEach((line) => {
+      const id = line.dataset.marginGroup;
+      if (!groups.has(id)) groups.set(id, []);
+      groups.get(id).push(line);
+      line.removeAttribute("title");
+      line.querySelectorAll("tei-add").forEach((add) => add.removeAttribute("title"));
+    });
+    let active = null;
+    const clear = () => {
+      if (!active) return;
+      active.lines.forEach((line) => {
+        line.style.removeProperty("background-color");
+        line.style.removeProperty("border-radius");
+      });
+      active.lines[0]?.removeAttribute("title");
+      active = null;
+    };
+    root.addEventListener("mouseover", (event) => {
+      const line = event.target.closest?.("tei-l.marginal-group-line");
+      if (!line || !root.contains(line)) { clear(); return; }
+      const id = line.dataset.marginGroup;
+      if (active?.id === id) return;
+      clear();
+      const lines = groups.get(id) || [];
+      lines.forEach((item) => {
+        item.style.backgroundColor = "rgba(235, 189, 82, 0.22)";
+        item.style.borderRadius = "3px";
+      });
+      line.title = line.dataset.marginLabel || "";
+      active = { id, lines };
+    });
+    root.addEventListener("mouseout", (event) => {
+      if (!event.relatedTarget || !root.contains(event.relatedTarget)) clear();
+    });
+  }
+
   function prepareRenderedRoot(root) {
     decorateNotes(root);
     decorateLines(root);
     decorateLongSpans(root);
+    enableMarginalHover(root);
     return root;
   }
 
