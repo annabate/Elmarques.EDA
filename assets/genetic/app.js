@@ -244,26 +244,10 @@
   }
 
   function decorateLongSpans(root) {
+    // Span markers are structural TEI delimiters, not visible annotations.
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
-      const layer = window.EMNGeneticModel.eventLayer(span);
-      if (!layer) return;
-      if (span.getAttribute("type") === "material-group") {
-        span.removeAttribute("title");
-        return;
-      }
-      span.dataset.eventLayer = layer;
-      const place = (span.getAttribute("place") || "").toLowerCase();
-      const isMaterialGroup = span.getAttribute("type") === "material-group";
-      if (isMaterialGroup && (place === "left" || place === "right")) {
-        span.title = place === "left"
-          ? "Añadido en el margen izquierdo"
-          : "Añadido en el margen derecho";
-      } else {
-        span.title =
-          span.tagName.toLowerCase() === "tei-delspan"
-            ? `${layer}: supresión extensa`
-            : `${layer}: adición extensa`;
-      }
+      span.removeAttribute("title");
+      span.removeAttribute("aria-label");
     });
   }
 
@@ -298,7 +282,9 @@
       clear();
       const lines = groups.get(id) || [];
       lines.forEach((item) => {
-        item.style.backgroundColor = "rgba(235, 189, 82, 0.22)";
+        const layer = item.dataset.marginLayer || "A2";
+        const layerColor = getComputedStyle(item).getPropertyValue(`--genetic-${layer.toLowerCase()}-highlight`).trim();
+        item.style.backgroundColor = layerColor || (layer === "A1" ? "rgba(70, 140, 210, 0.18)" : layer === "B" ? "rgba(130, 100, 170, 0.18)" : "rgba(220, 130, 70, 0.18)");
         item.style.borderRadius = "3px";
       });
       line.title = line.dataset.marginLabel || "";
