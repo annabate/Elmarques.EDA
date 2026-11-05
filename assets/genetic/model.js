@@ -224,24 +224,18 @@
       const side = place === "right" ? "derecho" : place === "left" ? "izquierdo" : "";
       if (!side) return;
       const label = `Añadido en el margen ${side}`;
+      const groupId = attr(span, "xml:id") || span.id;
       let current = span.nextElementSibling;
-      while (current && current !== target && !current.contains(target)) {
-        current.querySelectorAll("tei-add").forEach((add) => {
-          add.classList.add("marginal-addition");
-          add.dataset.marginSide = place;
-          add.setAttribute("title", label);
-          add.setAttribute("aria-label", label);
-        });
+      while (current) {
+        if (current.matches("tei-l[n]")) {
+          current.classList.add("marginal-group-line");
+          current.dataset.marginGroup = groupId;
+          current.dataset.marginLabel = label;
+        }
+        if (current === target || current.contains(target)) break;
         current = current.nextElementSibling;
       }
-      if (current && current.contains(target)) {
-        current.querySelectorAll("tei-add").forEach((add) => {
-          add.classList.add("marginal-addition");
-          add.dataset.marginSide = place;
-          add.setAttribute("title", label);
-          add.setAttribute("aria-label", label);
-        });
-      }
+      span.removeAttribute("title");
     });
   }
 
