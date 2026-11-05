@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se completa la resolución del registro de revisión del acto II. El locus 950 «de/en» se descarta por contradicción con el texto crítico y con la propia nota genética, que confirma «en» como lectura final de O. El locus 1112 se codifica mediante aparato estructural para la respuesta añadida de Padre y la acotación «Dentro el Marqués». La transposición final de los vv. 1689-1692 tras el v. 1700 en la tradición impresa se modela mediante un app estructural con orden alternativo de los parlamentos.</change>
       <change when="2026-11-05">Se resuelven diecisiete loci estructurales del acto II mediante variantes de speaker y redistribución controlada de versos partidos. La reconstrucción de testigos fusiona ahora parlamentos consecutivos del mismo personaje.</change>
       <change when="2026-11-05">Se resuelven la variante «a tormentarme/a atormentarme», la variante «agora/ahora» y el bloque de transmisión 1394–1401, modelado por verso para representar la omisión más extensa de M sin solapar intervalos; se retira asimismo un locus duplicado ya codificado inline.</change>
       <change when="2026-11-05">Se resuelven cinco loci escénicos del acto II: dos acotaciones añadidas en la tradición impresa, la acotación nocturna, la variante «luego/presto» con «Meten mano» y el cierre del acto con «Vanse» y variantes de colofón.</change>
@@ -2575,8 +2576,9 @@
         </stage>
         <sp>
           <speaker>Dentro</speaker>
-          <l n="1111" xml:id="l_1111_x_288">¡Aparta, aparta, aparta!</l>
+          <l n="1111" xml:id="l_1111_x_288"><app n="1112a"><lem wit="#O #M">¡Aparta, aparta, aparta!</lem><rdg wit="#Z #S1 #S2 #S3 #Har">¡Aparta, aparta!</rdg></app></l>
         </sp>
+        <app type="structure" n="1112b"><lem wit="#O #M"/><rdg wit="#Z #S1 #S2 #S3 #Har"><sp who="#Ludovico"><speaker>Padre</speaker><l n="1111" part="F">¿Qué es esto?</l></sp><stage>Dentro el Marqués</stage></rdg></app>
         <sp who="#El_marqués">
           <speaker corresp="#fn59"><app n="1113-1114Per"><lem wit="#O #Z #S1 #S2 #S3 #Har">Marqués</lem><rdg wit="#M">Padre</rdg></app></speaker>
           <l n="1112" xml:id="l_1112_x_289" corresp="#fn59 #fn60">Más que en la tierra, en el aire</l>
@@ -3948,7 +3950,7 @@
           <speaker>Antonio</speaker>
           <l n="1688" xml:id="l_1688_F_900" part="F">¡Ay, que me ha muerto!</l>
         </sp>
-        <sp who="#El_marqués">
+        <app type="structure" n="1689-1700-order"><lem wit="#O"><sp who="#El_marqués">
           <speaker>Marqués</speaker>
           <l n="1689" xml:id="l_1689_x_901" corresp="#fn170">Por otra parte les dije</l>
           <l n="1690" xml:id="l_1690_x_902">que echasen, y no quisieron,</l>
@@ -3981,24 +3983,28 @@
           <app type="addition" n="1700Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Vanse</stage></add></rdg></app>
         </sp>
         <closer corresp="#fn171"><app n="Colofón"><lem wit="#O">Fin del segundo acto del estraño suceso.</lem><rdg wit="#Z">Fin del acto segundo</rdg><rdg wit="#M #S1 #S2 #S3 #Har"/></app></closer>
-        <signed>[rúbrica]</signed>
+        <signed>[rúbrica]</signed></lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"><sp who="#Antonio">
+          <speaker>Antonio</speaker>
+          <l n="1697"><app n="1697" corresp="#fn171"><lem wit="#O">Caminad</lem><rdg wit="#Z #M #S2 #Har">Vamonos</rdg><rdg wit="#S1 #S3">Vamos</rdg></app> a la posada.</l>
+        </sp><sp who="#Leonardo">
+          <speaker>Leonardo</speaker>
+          <l n="1698">¡Ay, Feliciana, que creo</l>
+          <l n="1699">que <app n="1699" corresp="#fn171"><lem wit="#O">oyeron</lem><rdg wit="#Z #M #S1 #S2 #S3">hierran</rdg><rdg wit="#Har">hieren</rdg></app> tus maldiciones</l>
+          <l n="1700">y me castigan los cielos!</l>
+          <app type="addition" n="1700Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Vanse</stage></add></rdg></app>
+        </sp><sp who="#El_marqués">
+          <speaker>Marqués</speaker>
+          <l n="1689" corresp="#fn170">Por otra parte les dije</l>
+          <l n="1690">que echasen, y no quisieron,</l>
+          <l n="1691"><app n="1690" corresp="#fn171"><lem wit="#O">y ya</lem><rdg wit="#Z #M #S1 #S2 #Har">y ahora</rdg><rdg wit="#S3">y ora</rdg></app> es fuerza rodear,</l>
+          <l n="1692">si es que han de ir por el barbero.</l>
+        </sp>
+        <stage>Vase</stage><closer corresp="#fn171"><app n="Colofón"><lem wit="#O">Fin del segundo acto del estraño suceso.</lem><rdg wit="#Z">Fin del acto segundo</rdg><rdg wit="#M #S1 #S2 #S3 #Har"/></app></closer>
+        <signed>[rúbrica]</signed></rdg></app>
       </div>
 </body>
 </text>
-<standOff type="critical-review" xml:id="act2-critical-review">
-    <listApp>
-      <app xml:id="capp044" n="950" type="text" corresp="#fn42">
-        <note type="conversion-review">de O : en ZMS1S2S3 Har</note>
-      </app>
-      <app xml:id="capp107" n="1112" type="text" corresp="#fn60">
-        <note type="conversion-review">¡Aparta, aparta, aparta! O : ¡Aparta, aparta! Padre  ¿Qué es esto? ZS1S2S3 Har  sigue a este verso la acotación «Dentro el Marqués»</note>
-      </app>
-      <app xml:id="capp360" n="1689-1692" type="text" corresp="#fn171">
-        <note type="conversion-review">en ZMS1S2S3 Har estos versos aparecen tras el v.</note>
-      </app>
-      <app xml:id="capp361" n="1700" type="text" corresp="#fn171">
-        <note type="conversion-review">y cierran el acto</note>
-      </app></listApp>
+<standOff type="source-material" xml:id="act2-source-material">
     <list type="source-footnotes">
       <item xml:id="fn1">Dramatis personae  om OZMS1S2S3Har</item>
       <item xml:id="fn13">____________________________837Epígrafe  Acto segundo O Har : Acto segundo del Marqués de las Navas Z : Jornada segunda MS1S2S3    837Acot Don Enrique y don Filipe con libreas de las cañas y tocados de pluma O :  Salen don Filipe y don Enrique ZMS1S2S3 Har    839 valor OZ : honor MS1S2S3 Har    840 se ha lucido O : lo ha sufrido ZMS2S3 : ha conseguido S1 Har    839-840  en ZMS1S2S3 Har forman parte del parlamento anterior atribuido a Filipe    841Per  Filipe O : Enrique ZMS1S2S3 Har     841 Notable O : Bizarra ZMS1S2S3 Har   842Per Enrique O : Filipe ZMS1S2S3 Har    845-846  en ZMS1S2S3 Har forman parte del parlamento anterior atribuido a Filipe    847 la O Har : lo ZMS1S2S3    848 a O : y ZMS1S2S3 Har    849  Puede O : Pueden ZMS1S2S3 Har    850  en ZMS1S2S3 Har forma parte del parlamento anterior atribuido a Filipe    850Acot  El Marqués y Mendoza O : Sale el Marqués, y Mendoza ZMS1S2S3 : Salen el Marqués y Mendoza Har</item>
