@@ -187,7 +187,7 @@ edition_label: Edición crítica · prototipo
 
   function stripCriticalReviewStandOff(root) {
     root
-      .querySelectorAll('tei-standoff[type="critical-review"]')
+      .querySelectorAll('tei-standoff[type="critical-review"], tei-standoff[type="source-material"]')
       .forEach((node) => node.remove());
   }
 
