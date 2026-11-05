@@ -30,6 +30,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Limpieza semántica del acto II crítico: se eliminan 168 referencias corresp huérfanas hacia notas genéticas no conservadas en este flujo. Se mantienen únicamente los enlaces a las notas de tradición efectivamente presentes en act2-source-material, preservando la separación entre edición crítica y edición genética.</change>
       <change when="2026-11-05">Audit de acotaciones del acto II: se corrige el aparato 1575Acot, que la conversión había duplicado erróneamente junto a 1159Acot. Se elimina la copia desplazada y se integra «Mendoza entre O : Sale Mendoza ZMS1S2S3 Har» en su locus efectivo.</change>
       <change when="2026-11-05">Audit estructural del acto II: se incorpora la variante de atribución 1467Per (Ludovico O : Padre ZMS1S2S3 Har). El locus 950 se conserva en standOff de revisión por contradicción entre el texto/historia genética de O y el aparato de tradición.</change>
       <change when="2026-11-05">Tercera pasada del audit del acto II: se recolocan cuatro variantes incrustadas erróneamente dentro de palabras (848, 926, 1009 y 1617), restituyendo «Majestad», «pienso», «caballero» y «con» y situando el aparato en su locus textual efectivo.</change>
@@ -1927,7 +1928,7 @@
             <rdg wit="#M #S1 #S2 #S3">Jornada segunda</rdg>
           </app>
         </head>
-        <stage corresp="#fn2">
+        <stage>
           <app n="837" corresp="#fn13">
             <lem wit="#O">Don Enrique y don Filipe con libreas de las cañas y tocados de pluma</lem>
             <rdg wit="#Z #M #S1 #S2 #S3 #Har">Salen don Filipe y don Enrique</rdg>
@@ -1935,15 +1936,15 @@
         </stage>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="837" xml:id="l_837_x_0" corresp="#fn3">Estremada fiesta ha sido.</l>
+          <l n="837" xml:id="l_837_x_0">Estremada fiesta ha sido.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="838" xml:id="l_838_x_1">Yo no la he visto mejor.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn4"><app n="839-840Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
-          <l n="839" xml:id="l_839_x_2" corresp="#fn4">Cuanto ha querido el <app n="839" corresp="#fn13"><lem wit="#O #Z">valor</lem><rdg wit="#M #S1 #S2 #S3 #Har">honor</rdg></app>,</l>
+          <speaker><app n="839-840Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
+          <l n="839" xml:id="l_839_x_2">Cuanto ha querido el <app n="839" corresp="#fn13"><lem wit="#O #Z">valor</lem><rdg wit="#M #S1 #S2 #S3 #Har">honor</rdg></app>,</l>
           <l n="840" xml:id="l_840_x_3">la esperanza <app n="840" corresp="#fn13"><lem wit="#O">se ha lucido</lem><rdg wit="#Z #M #S2 #S3">lo ha sufrido</rdg><rdg wit="#S1 #Har">ha conseguido</rdg></app>.</l>
         </sp>
         <sp who="#Filipe">
@@ -1953,17 +1954,17 @@
               <rdg wit="#Z #M #S1 #S2 #S3 #Har">Enrique</rdg>
             </app>
           </speaker>
-          <l n="841" xml:id="l_841_x_4" corresp="#fn5"><app n="841" corresp="#fn13"><lem wit="#O">Notable</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Bizarra</rdg></app> ha estado la plaza.</l>
+          <l n="841" xml:id="l_841_x_4"><app n="841" corresp="#fn13"><lem wit="#O">Notable</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Bizarra</rdg></app> ha estado la plaza.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn6">
+          <speaker>
             <app n="842" corresp="#fn13">
               <lem wit="#O">Enrique</lem>
               <rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg>
             </app>
           </speaker>
-          <l n="842" xml:id="l_842_x_5" corresp="#fn6">No la vio con más decoro</l>
-          <l n="843" xml:id="l_843_x_6" corresp="#fn7">cuanto el sol, con rayos de oro,</l>
+          <l n="842" xml:id="l_842_x_5">No la vio con más decoro</l>
+          <l n="843" xml:id="l_843_x_6">cuanto el sol, con rayos de oro,</l>
           <l n="844" xml:id="l_844_x_7">por los dos polos abraza.</l>
         </sp>
         <sp who="#Filipe">
@@ -1972,8 +1973,8 @@
           <l n="846" xml:id="l_846_x_9">parece que en ella estaba.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn8">Enrique</speaker>
-          <l n="847" xml:id="l_847_x_10" corresp="#fn8">Mucho dicen que <app n="847" corresp="#fn13"><lem wit="#O #Har">la</lem><rdg wit="#Z #M #S1 #S2 #S3">lo</rdg></app> alaba</l>
+          <speaker>Enrique</speaker>
+          <l n="847" xml:id="l_847_x_10">Mucho dicen que <app n="847" corresp="#fn13"><lem wit="#O #Har">la</lem><rdg wit="#Z #M #S1 #S2 #S3">lo</rdg></app> alaba</l>
           <l n="848" xml:id="l_848_x_11">su Majestad <app n="848" corresp="#fn13"><lem wit="#O">a</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y</rdg></app> su Alteza.</l>
         </sp>
         <sp who="#Filipe">
@@ -1981,10 +1982,10 @@
           <l n="849" xml:id="l_849_x_12"><app n="849"><lem wit="#O">Puede</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Pueden</rdg></app> con mucha razón.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn9"><app n="850Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
-          <l n="850" xml:id="l_850_x_13" corresp="#fn9">El Marqués pienso que viene.</l>
+          <speaker><app n="850Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
+          <l n="850" xml:id="l_850_x_13">El Marqués pienso que viene.</l>
         </sp>
-        <stage corresp="#fn10">
+        <stage>
           <app n="850" corresp="#fn13">
             <lem wit="#O">El Marqués y Mendoza</lem>
             <rdg wit="#Z #M #S1 #S2 #S3">Sale el Marqués, y Mendoza</rdg>
@@ -1992,8 +1993,8 @@
           </app>
         </stage>
         <sp who="#El_marqués">
-          <speaker corresp="#fn11">Marqués</speaker>
-          <l n="851" xml:id="l_851_I_14" part="I" corresp="#fn11 #fn12">¡Brava fiesta!</l>
+          <speaker>Marqués</speaker>
+          <l n="851" xml:id="l_851_I_14" part="I">¡Brava fiesta!</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -2010,8 +2011,8 @@
           <pb type="folio" n="1v"/>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn14">Marqués</speaker>
-          <l n="855" xml:id="l_855_x_19" corresp="#fn14">Ojos de quien quiere bien</l>
+          <speaker>Marqués</speaker>
+          <l n="855" xml:id="l_855_x_19">Ojos de quien quiere bien</l>
           <l n="856" xml:id="l_856_x_20">nunca <app n="856" corresp="#fn21"><lem wit="#O">son</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">fueron</rdg></app> buenos jüeces;</l>
           <l n="857" xml:id="l_857_x_21">mas, por Dios, que para mí,</l>
           <l n="858" xml:id="l_858_x_22">y aun para todos, sospecho,</l>
@@ -2025,7 +2026,7 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="862" xml:id="l_862_F_27" part="F" corresp="#fn15">No hay que <app n="862" corresp="#fn21"><lem wit="#O #Z #M #S2">alabar</lem><rdg wit="#S1 #S3 #Har">hablar</rdg></app>,</l>
+          <l n="862" xml:id="l_862_F_27" part="F">No hay que <app n="862" corresp="#fn21"><lem wit="#O #Z #M #S2">alabar</lem><rdg wit="#S1 #S3 #Har">hablar</rdg></app>,</l>
           <l n="863" xml:id="l_863_x_28">los dos os podéis alzar</l>
           <l n="864" xml:id="l_864_x_29">con palacio y con la villa.</l>
         </sp>
@@ -2036,23 +2037,23 @@
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="866" xml:id="l_866_x_31">Que en esta ocasión, señor,</l>
-          <l n="867" xml:id="l_867_x_32" corresp="#fn16"><app n="867" corresp="#fn21"><lem wit="#O">el blasón</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">la fama</rdg></app> de tu valor</l>
+          <l n="867" xml:id="l_867_x_32"><app n="867" corresp="#fn21"><lem wit="#O">el blasón</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">la fama</rdg></app> de tu valor</l>
           <l n="868" xml:id="l_868_x_33">debidos aplausos goza.</l>
           <l n="869" xml:id="l_869_x_34">Igualó la valentía</l>
           <l n="870" xml:id="l_870_x_35">a <app n="870" corresp="#fn21"><lem wit="#O #Z #M #S2">la</lem><rdg wit="#S1 #S3 #Har">tu</rdg></app> fortuna, de modo</l>
           <l n="871" xml:id="l_871_x_36">que la tuvistes en todo.</l>
-          <l n="872" xml:id="l_872_x_37" corresp="#fn17">¡Brava gala y bizarría!</l>
+          <l n="872" xml:id="l_872_x_37">¡Brava gala y bizarría!</l>
           <l n="873" xml:id="l_873_x_38">Cuantos os han visto van</l>
           <l n="874" xml:id="l_874_x_39">sin ojos y sin enojos,</l>
           <l n="875" xml:id="l_875_x_40">que les <app n="876" corresp="#fn21"><lem wit="#O">llevastes</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">llevasteis</rdg></app> los ojos.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn18">Enrique</speaker>
-          <l n="876" xml:id="l_876_x_41" corresp="#fn18 #fn19">Luego, ¿sin ojos están?</l>
+          <speaker>Enrique</speaker>
+          <l n="876" xml:id="l_876_x_41">Luego, ¿sin ojos están?</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="877" xml:id="l_877_x_42" corresp="#fn20 #fn21">Córdoba y Ávila han sido</l>
+          <l n="877" xml:id="l_877_x_42" corresp="#fn21">Córdoba y Ávila han sido</l>
           <l n="878" xml:id="l_878_x_43"><app n="879" corresp="#fn27"><lem wit="#O #Z #S2 #Har">los que hoy la plaza laurea</lem><rdg wit="#M #S3">los que hoy la plaza laurean</rdg><rdg wit="#S1">los que la plaza han laureado</rdg></app>.</l>
         </sp>
         <sp who="#Filipe">
@@ -2065,7 +2066,7 @@
           <l n="881" xml:id="l_881_x_46">y lució tanto su dueño</l>
           <l n="882" xml:id="l_882_x_47">méritos más que ventura,</l>
           <l n="883" xml:id="l_883_x_48">que a más de alguna hermosura</l>
-          <l n="884" xml:id="l_884_x_49" corresp="#fn22">quitará esta noche el sueño.</l>
+          <l n="884" xml:id="l_884_x_49">quitará esta noche el sueño.</l>
           <pb type="folio" n="2r"/>
         </sp>
         <sp who="#Filipe">
@@ -2082,34 +2083,34 @@
           <l n="890" xml:id="l_890_x_56">aunque en <app n="890" corresp="#fn27"><lem wit="#O #Z #M #S2 #Har">calzas</lem><rdg wit="#S1 #S3">cosas</rdg></app> desgraciado,</l>
           <l n="891" xml:id="l_891_x_57">pues descubrió lo encarnado</l>
           <l n="892" xml:id="l_892_x_58">de los aforros también.</l>
-          <l n="893" xml:id="l_893_x_59" corresp="#fn23">No <app n="893" corresp="#fn27"><lem wit="#O">valieron</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">le valió</rdg></app> resistencias,</l>
+          <l n="893" xml:id="l_893_x_59">No <app n="893" corresp="#fn27"><lem wit="#O">valieron</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">le valió</rdg></app> resistencias,</l>
           <l n="894" xml:id="l_894_x_60">porque le asió por detrás,</l>
           <l n="895" xml:id="l_895_x_61">y así le disculpan más</l>
           <l n="896" xml:id="l_896_x_62">los que vieron sus ausencias.</l>
-          <l n="897" xml:id="l_897_x_63" corresp="#fn24">Las dos manos, se me acuerda,</l>
+          <l n="897" xml:id="l_897_x_63">Las dos manos, se me acuerda,</l>
           <l n="898" xml:id="l_898_x_64"><app n="898" corresp="#fn27"><lem wit="#O #Z #M #S2 #S3 #Har">llevó</lem><rdg wit="#S1">llenó</rdg></app> con gracia estremada:</l>
           <l n="899" xml:id="l_899_x_65">en la derecha la espada</l>
           <l n="900" xml:id="l_900_x_66">y las calzas en la izquierda.</l>
-          <l n="901" xml:id="l_901_x_67" corresp="#fn25">Así discurrió la plaza,</l>
+          <l n="901" xml:id="l_901_x_67">Así discurrió la plaza,</l>
           <l n="902" xml:id="l_902_x_68">volvió el toro la tramoya,</l>
           <l n="903" xml:id="l_903_x_69">soltolas, y <app n="904" corresp="#fn27"><lem wit="#O #Z #S1 #S2 #S3 #Har">aquí</lem><rdg wit="#M">así</rdg></app> fue Troya,</l>
           <l n="904" xml:id="l_904_x_70"><app n="905" corresp="#fn27"><lem wit="#O">otra vez</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y otra vez</rdg></app> la plaza emplaza.</l>
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="905" xml:id="l_905_x_71" corresp="#fn26 #fn27">¿No preguntáis al Marqués</l>
-          <l n="906" xml:id="l_906_x_72" corresp="#fn28">por <app n="906" corresp="#fn33"><lem wit="#O">las güespedas</lem><rdg wit="#Z #M #S1 #S2 #S3">los huéspedes</rdg><rdg wit="#Har">las huéspedas</rdg></app> que tuvo?</l>
+          <l n="905" xml:id="l_905_x_71" corresp="#fn27">¿No preguntáis al Marqués</l>
+          <l n="906" xml:id="l_906_x_72">por <app n="906" corresp="#fn33"><lem wit="#O">las güespedas</lem><rdg wit="#Z #M #S1 #S2 #S3">los huéspedes</rdg><rdg wit="#Har">las huéspedas</rdg></app> que tuvo?</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="907" xml:id="l_907_x_73">Ya vi cuán galán estuvo,</l>
           <l n="908" xml:id="l_908_x_74">puesto que siempre lo es.</l>
-          <l n="909" xml:id="l_909_x_75" corresp="#fn29"><app n="910" corresp="#fn33"><lem wit="#O">Dadnos algo</lem><rdg wit="#Z #M #S2">Dadnos parte</rdg><rdg wit="#S1 #S3 #Har">Danos parte</rdg></app> a mí y a Enrique</l>
+          <l n="909" xml:id="l_909_x_75"><app n="910" corresp="#fn33"><lem wit="#O">Dadnos algo</lem><rdg wit="#Z #M #S2">Dadnos parte</rdg><rdg wit="#S1 #S3 #Har">Danos parte</rdg></app> a mí y a Enrique</l>
           <l n="910" xml:id="l_910_x_76">de lo que hoy habéis gozado.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn30">Marqués</speaker>
-          <l n="911" xml:id="l_911_x_77" corresp="#fn30">¿Tanto me habéis envidiado?</l>
+          <speaker>Marqués</speaker>
+          <l n="911" xml:id="l_911_x_77">¿Tanto me habéis envidiado?</l>
           <pb type="folio" n="2v"/>
         </sp>
         <sp who="#Filipe">
@@ -2119,8 +2120,8 @@
           <l n="914" xml:id="l_914_x_80">tan ocupado en Laurencia.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn31">Marqués</speaker>
-          <l n="915" xml:id="l_915_x_81" corresp="#fn31">Los dos tenéis esperiencia</l>
+          <speaker>Marqués</speaker>
+          <l n="915" xml:id="l_915_x_81">Los dos tenéis esperiencia</l>
           <l n="916" xml:id="l_916_x_82">de mi lealtad y de mí.</l>
           <l n="917" xml:id="l_917_x_83">Pero aseguraros <app n="918" corresp="#fn33"><lem wit="#O">puedo</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">quiero</rdg></app></l>
           <l n="918" xml:id="l_918_x_84">que es Laurencia un serafín,</l>
@@ -2144,22 +2145,22 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="933" xml:id="l_933_x_99" corresp="#fn32">Gerarda no sabe tanto,</l>
+          <l n="933" xml:id="l_933_x_99">Gerarda no sabe tanto,</l>
           <l n="934" xml:id="l_934_x_100">pero es <app n="935" corresp="#fn33"><lem wit="#O">gallarda</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">bizarra</rdg></app> mujer,</l>
           <l n="935" xml:id="l_935_x_101">y que debe de querer,</l>
           <l n="936" xml:id="l_936_x_102" corresp="#fn33">—si no <app n="937" corresp="#fn33"><lem wit="#O #Z #M #S2">es</lem><rdg wit="#S1 #S3 #Har"/></app> que se lo levanto—</l>
-          <l n="937" xml:id="l_937_x_103" corresp="#fn34">a Enrique notablemente.</l>
+          <l n="937" xml:id="l_937_x_103">a Enrique notablemente.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn35">Enrique</speaker>
-          <l n="938" xml:id="l_938_x_104" corresp="#fn35">Para el tiempo que ha costado,</l>
+          <speaker>Enrique</speaker>
+          <l n="938" xml:id="l_938_x_104">Para el tiempo que ha costado,</l>
           <pb type="folio" n="3r"/>
           <l n="939" xml:id="l_939_x_105">yo me doy por bien <app n="940" corresp="#fn42"><lem wit="#O #Z #M #S2 #S3 #Har">pagado</lem><rdg wit="#S1">pagada</rdg></app></l>
           <l n="940" xml:id="l_940_x_106">cuando no quererme intente.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="941" xml:id="l_941_x_107" corresp="#fn36"><app n="942" corresp="#fn42"><lem wit="#O #Har">Inquietas están las</lem><rdg wit="#Z #M #S1 #S2 #S3">Inquietos están los</rdg></app> dos.</l>
+          <l n="941" xml:id="l_941_x_107"><app n="942" corresp="#fn42"><lem wit="#O #Har">Inquietas están las</lem><rdg wit="#Z #M #S1 #S2 #S3">Inquietos están los</rdg></app> dos.</l>
           <l n="942" xml:id="l_942_x_108">Seguid la empresa, que creo</l>
           <l n="943" xml:id="l_943_x_109">que tendrá dicha el deseo.</l>
         </sp>
@@ -2169,23 +2170,23 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="944" xml:id="l_944_F_111" part="F" corresp="#fn37">Es verdad, por Dios.</l>
+          <l n="944" xml:id="l_944_F_111" part="F">Es verdad, por Dios.</l>
           <l n="945" xml:id="l_945_x_112">No me han dejado alabar</l>
           <l n="946" xml:id="l_946_x_113">a caballero que hiciese</l>
           <l n="947" xml:id="l_947_x_114">suerte, aunque lo mereciese;</l>
           <l n="948" xml:id="l_948_x_115">solo se había de hablar</l>
-          <l n="949" xml:id="l_949_x_116" corresp="#fn38">en vuestro donaire y talle.</l>
+          <l n="949" xml:id="l_949_x_116">en vuestro donaire y talle.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="950" xml:id="l_950_x_117">Hachas tomo, vive Dios,</l>
           <l n="951" xml:id="l_951_x_118">con que esta noche los dos</l>
           <l n="952" xml:id="l_952_x_119">hacemos fiesta en su calle.</l>
-          <l n="953" xml:id="l_953_x_120" corresp="#fn39"><app n="953" corresp="#fn42"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a</rdg></app>rique, ¿no <app n="954" corresp="#fn42"><lem wit="#O">irás</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">iréis</rdg></app> conmigo?</l>
+          <l n="953" xml:id="l_953_x_120"><app n="953" corresp="#fn42"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a</rdg></app>rique, ¿no <app n="954" corresp="#fn42"><lem wit="#O">irás</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">iréis</rdg></app> conmigo?</l>
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="954" xml:id="l_954_x_121" corresp="#fn40">No estoy tan enamorado.</l>
+          <l n="954" xml:id="l_954_x_121">No estoy tan enamorado.</l>
           <l n="955" xml:id="l_955_x_122">Seguiré vuestro cuidado,</l>
           <anchor xml:id="act2-capp047-start"/>
         <l n="956" xml:id="l_956_x_123">si mi esperanza no <app n="957" corresp="#fn42"><lem wit="#O">sigo</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">os digo</rdg></app>,</l>
@@ -2195,8 +2196,8 @@
           <l n="958" xml:id="l_958_x_125">de platicante con vos.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn41">Marqués</speaker>
-          <l n="959" xml:id="l_959_x_126" corresp="#fn41">Yo tengo de ir con los dos.</l>
+          <speaker>Marqués</speaker>
+          <l n="959" xml:id="l_959_x_126">Yo tengo de ir con los dos.</l>
           <l n="960" xml:id="l_960_x_127">Mendoza, <app n="960" corresp="#fn42"><lem wit="#O">haz poner dos</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a poner los</rdg></app> frenos</l>
           <l n="961" xml:id="l_961_x_128">a los rocines de caza,</l>
           <l n="962" xml:id="l_962_x_129">porque <app n="963" corresp="#fn42"><lem wit="#O">a lo catarribera</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">en aquesta ribera</rdg></app></l>
@@ -2227,7 +2228,7 @@
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="979" xml:id="l_979_x_146"><app n="980" corresp="#fn46"><lem wit="#O">Díjome</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Dizenme</rdg></app> que el desposado</l>
-          <l n="980" xml:id="l_980_x_147" corresp="#fn43">viene a ser novio o novillo,</l>
+          <l n="980" xml:id="l_980_x_147">viene a ser novio o novillo,</l>
           <l n="981" xml:id="l_981_x_148">si bien a vuseñoría</l>
           <l n="982" xml:id="l_982_x_149">le estará mucho mejor</l>
           <l n="983" xml:id="l_983_x_150">que delante un gastador</l>
@@ -2262,7 +2263,7 @@
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="993" xml:id="l_993_F_161" part="F" corresp="#fn44"><app n="994b"><lem wit="#O">Ahora bien, vamos,</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">vamos,</rdg></app></l>
+          <l n="993" xml:id="l_993_F_161" part="F"><app n="994b"><lem wit="#O">Ahora bien, vamos,</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">vamos,</rdg></app></l>
           <l n="994" xml:id="l_994_x_162">que este novio no vendrá</l>
           <l n="995" xml:id="l_995_I_163" part="I">tan presto.</l>
         </sp>
@@ -2271,8 +2272,8 @@
           <l n="995" xml:id="l_995_F_164" part="F">Pena me da.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn45">Enrique</speaker>
-          <l n="996" xml:id="l_996_x_165" corresp="#fn45">Hoy <app n="997" corresp="#fn46"><lem wit="#O">sus</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">las</rdg></app> bodas celebramos.</l>
+          <speaker>Enrique</speaker>
+          <l n="996" xml:id="l_996_x_165">Hoy <app n="997" corresp="#fn46"><lem wit="#O">sus</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">las</rdg></app> bodas celebramos.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -2281,8 +2282,8 @@
           <l n="998" xml:id="l_998_x_167">ya está en casa el serafín.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn47">Marqués</speaker>
-          <l n="999" xml:id="l_999_x_168" corresp="#fn47">Haz que me den el rocín</l>
+          <speaker>Marqués</speaker>
+          <l n="999" xml:id="l_999_x_168">Haz que me den el rocín</l>
           <l n="1000" xml:id="l_1000_x_169">y un herreruelo de noche.</l>
         </sp>
         <stage>
@@ -2310,11 +2311,11 @@
           <l n="1009" xml:id="l_1009_x_178">¿Hase visto caballero</l>
           <l n="1010" xml:id="l_1010_x_179"><app n="1011" corresp="#fn50"><lem wit="#O">de más alma, de más brío</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de tal alma, de tal brío</rdg></app>?</l>
           <l n="1011" xml:id="l_1011_x_180">Justamente, dueño mío,</l>
-          <l n="1012" xml:id="l_1012_x_181" corresp="#fn48">como a mis ojos te quiero.</l>
+          <l n="1012" xml:id="l_1012_x_181">como a mis ojos te quiero.</l>
           <l n="1013" xml:id="l_1013_x_182">Y no es poco encarecerte,</l>
           <l n="1014" xml:id="l_1014_x_183">puesto que me han dado enojos,</l>
           <l n="1015" xml:id="l_1015_x_184">que quiero bien a mis ojos</l>
-          <l n="1016" xml:id="l_1016_x_185" corresp="#fn49">después que supieron verte.</l>
+          <l n="1016" xml:id="l_1016_x_185">después que supieron verte.</l>
           <l n="1017" xml:id="l_1017_x_186">No digan que es menester</l>
           <l n="1018" xml:id="l_1018_x_187">mucho tiempo para amar,</l>
           <l n="1019" xml:id="l_1019_x_188">que el amor que ha de matar</l>
@@ -2333,7 +2334,7 @@
           <l n="1031" xml:id="l_1031_x_200">es <app n="1032" corresp="#fn50"><lem wit="#O #Har">tener</lem><rdg wit="#Z #M #S1 #S2 #S3">hacer</rdg></app> amor con ama,</l>
           <l n="1032" xml:id="l_1032_x_201">que se <app n="1033" corresp="#fn56"><lem wit="#O">le</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">lo</rdg></app> han dado a criar.</l>
           <l n="1033" xml:id="l_1033_x_202"><app n="1034" corresp="#fn56"><lem wit="#O #Har">Hombre ha de nacer amor</lem><rdg wit="#Z #M #S2">Hombre han de hacer a amor</rdg><rdg wit="#S1 #S3">Hombres han de hacer amor</rdg></app>,</l>
-          <l n="1034" xml:id="l_1034_x_203" corresp="#fn51">luego andar y ser galán,</l>
+          <l n="1034" xml:id="l_1034_x_203">luego andar y ser galán,</l>
           <l n="1035" xml:id="l_1035_x_204">que el amor que no es Adán,</l>
           <l n="1036" xml:id="l_1036_x_205">no puede tener <app n="1037" corresp="#fn56"><lem wit="#O #Har">valor</lem><rdg wit="#Z #M #S1 #S2 #S3">amor</rdg></app>.</l>
         </sp>
@@ -2345,7 +2346,7 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="1039" xml:id="l_1039_x_208">¿Sabes tú cómo han de amar</l>
-          <l n="1040" xml:id="l_1040_x_209" corresp="#fn52">dos que se llegan a ver?</l>
+          <l n="1040" xml:id="l_1040_x_209">dos que se llegan a ver?</l>
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
@@ -2366,7 +2367,7 @@
           <l n="1044" xml:id="l_1044_x_215">en un punto luz y vida?</l>
           <l n="1045" xml:id="l_1045_x_216">Pues las almas, en partiendo</l>
           <l n="1046" xml:id="l_1046_x_217">a encenderse y a querer,</l>
-          <l n="1047" xml:id="l_1047_x_218" corresp="#fn53">aun apenas se han de ver</l>
+          <l n="1047" xml:id="l_1047_x_218">aun apenas se han de ver</l>
           <l n="1048" xml:id="l_1048_x_219">cuando han de quedar ardiendo.</l>
         </sp>
         <sp who="#Gerarda">
@@ -2375,7 +2376,7 @@
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l n="1050" xml:id="l_1050_x_221" corresp="#fn54">Luego, ¿tú a Enrique no quieres?</l>
+          <l n="1050" xml:id="l_1050_x_221">Luego, ¿tú a Enrique no quieres?</l>
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
@@ -2542,7 +2543,7 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="1098" xml:id="l_1098_x_275">Señor, no <app n="1099" corresp="#fn60"><lem wit="#O">está</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">hay</rdg></app> en casa nadie,</l>
-          <l n="1099" xml:id="l_1099_x_276" corresp="#fn58">que ha sido día de toros.</l>
+          <l n="1099" xml:id="l_1099_x_276">que ha sido día de toros.</l>
         </sp>
         <sp who="#Ludovico">
           <speaker>
@@ -2591,8 +2592,8 @@
         </sp>
         <app type="structure" n="1112b"><lem wit="#O #M"/><rdg wit="#Z #S1 #S2 #S3 #Har"><sp who="#Ludovico"><speaker>Padre</speaker><l n="1111" part="F">¿Qué es esto?</l></sp><stage>Dentro el Marqués</stage></rdg></app>
         <sp who="#El_marqués">
-          <speaker corresp="#fn59"><app n="1113-1114Per"><lem wit="#O #Z #S1 #S2 #S3 #Har">Marqués</lem><rdg wit="#M">Padre</rdg></app></speaker>
-          <l n="1112" xml:id="l_1112_x_289" corresp="#fn59 #fn60">Más que en la tierra, en el aire</l>
+          <speaker><app n="1113-1114Per"><lem wit="#O #Z #S1 #S2 #S3 #Har">Marqués</lem><rdg wit="#M">Padre</rdg></app></speaker>
+          <l n="1112" xml:id="l_1112_x_289" corresp="#fn60">Más que en la tierra, en el aire</l>
           <l n="1113" xml:id="l_1113_x_290">pone los pies Pensamiento.</l>
         </sp>
         <sp who="#Mendoza">
@@ -2601,7 +2602,7 @@
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l n="1115" xml:id="l_1115_x_292" corresp="#fn61">(El Marqués y Mendocilla</l>
+          <l n="1115" xml:id="l_1115_x_292">(El Marqués y Mendocilla</l>
           <stage type="aside">Aparte</stage>
           <l n="1116" xml:id="l_1116_x_293"><app n="1117" corresp="#fn66"><lem wit="#O">hablan, Gerarda</lem><rdg wit="#Z #M #S1 #S2 #Har">andan, Gerarda</rdg><rdg wit="#S3">andan, Gerardo</rdg></app>, en la calle.)</l>
         </sp>
@@ -2638,8 +2639,8 @@
           <l n="1123" xml:id="l_1123_x_302"><app n="1124" corresp="#fn66"><lem wit="#O">¡Aparta, aparta, aparta!</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">¡Aparta, aparta! Padre ¿Otra vez?</rdg></app></l>
         </sp>
         <sp who="#Ludovico">
-          <speaker corresp="#fn62">Ludovico</speaker>
-          <l n="1124" xml:id="l_1124_x_303" corresp="#fn62">¡<app n="1125" corresp="#fn66"><lem wit="#O">Plega</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Plegue</rdg></app> el cielo que te aparte</l>
+          <speaker>Ludovico</speaker>
+          <l n="1124" xml:id="l_1124_x_303">¡<app n="1125" corresp="#fn66"><lem wit="#O">Plega</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Plegue</rdg></app> el cielo que te aparte</l>
           <l n="1125" xml:id="l_1125_x_304"><app n="1126" corresp="#fn66"><lem wit="#O">de esta calle treinta</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de aquesta calle mil</rdg></app> leguas!</l>
           <pb type="folio" n="6v"/>
         </sp>
@@ -2647,12 +2648,12 @@
           <speaker>Leonardo</speaker>
           <l n="1126" xml:id="l_1126_x_305"><app n="1127"><lem wit="#O">No hayáis miedo que se canse</lem><rdg wit="#Z #M #S1 #S2 #S3">No hayas miedo que se cansen</rdg><rdg wit="#Har">no hayáis miedo que se cansen</rdg></app>,</l>
           <l n="1127" xml:id="l_1127_x_306"><app n="1128"><lem wit="#O">si él tiene</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">si tienen</rdg></app> por quien correr,</l>
-          <l n="1128" xml:id="l_1128_x_307" corresp="#fn63">hasta que el rocín <app n="1129" corresp="#fn66"><lem wit="#O #Har">le hable</lem><rdg wit="#Z #M #S1 #S2 #S3">les halle</rdg></app>,</l>
+          <l n="1128" xml:id="l_1128_x_307">hasta que el rocín <app n="1129" corresp="#fn66"><lem wit="#O #Har">le hable</lem><rdg wit="#Z #M #S1 #S2 #S3">les halle</rdg></app>,</l>
           <l n="1129" xml:id="l_1129_x_308">como <app n="1130" corresp="#fn66"><lem wit="#O">su</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">la</rdg></app> burra a Balán.</l>
         </sp>
         <sp who="#Gerarda">
-          <speaker corresp="#fn64">Gerarda</speaker>
-          <l n="1130" xml:id="l_1130_I_309" part="I" corresp="#fn64">(¡Bravo novio!</l>
+          <speaker>Gerarda</speaker>
+          <l n="1130" xml:id="l_1130_I_309" part="I">(¡Bravo novio!</l>
           <stage type="aside">Aparte</stage>
         </sp>
         <sp who="#Laurencia">
@@ -2687,7 +2688,7 @@
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l n="1138" xml:id="l_1138_x_319" corresp="#fn65 #fn66">Inquieta estoy de escuchalle.</l>
+          <l n="1138" xml:id="l_1138_x_319" corresp="#fn66">Inquieta estoy de escuchalle.</l>
           <l n="1139" xml:id="l_1139_x_320">Esta no es silla, que es potro</l>
           <l n="1140" xml:id="l_1140_x_321">donde viene <app n="1141"><lem wit="#O">a tormentarme</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a atormentarme</rdg></app></l>
           <l n="1141" xml:id="l_1141_x_322">este verdugo <app n="1142" corresp="#fn69"><lem wit="#O">crüel</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">de amor</rdg></app>.</l>
@@ -2701,7 +2702,7 @@
           <l n="1145" xml:id="l_1145_x_326">Si antes de <app n="1146" corresp="#fn69"><lem wit="#O #Z #M #S2 #Har">casar me</lem><rdg wit="#S1 #S3">casarme</rdg></app> corren,</l>
           <l n="1146" xml:id="l_1146_x_327">¿qué harán después que me case?</l>
           <l n="1147" xml:id="l_1147_x_328">Pero, pues «aparta» dicen,</l>
-          <l n="1148" xml:id="l_1148_x_329" corresp="#fn67">no será yerro apartarme.</l>
+          <l n="1148" xml:id="l_1148_x_329">no será yerro apartarme.</l>
         </sp>
         <sp who="#Antonio">
           <speaker>Antonio</speaker>
@@ -2713,7 +2714,7 @@
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
-          <l n="1153" xml:id="l_1153_x_334" corresp="#fn68">(Habla con él, no seas necia.</l>
+          <l n="1153" xml:id="l_1153_x_334">(Habla con él, no seas necia.</l>
         <anchor xml:id="act2-capp128-end"/>
         <app type="omission" n="1150-1153" from="#act2-capp128-start" to="#act2-capp128-end"><lem wit="#O">[texto presente]</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app>
           <stage type="aside">Aparte</stage>
@@ -2826,7 +2827,7 @@
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="1195" xml:id="l_1195_x_380" corresp="#fn70">Nunca los diablos le <app n="1195" corresp="#fn71"><lem wit="#O #Z #M #S2 #S3 #Har">casen</lem><rdg wit="#S1">cansen</rdg></app>.</l>
+          <l n="1195" xml:id="l_1195_x_380">Nunca los diablos le <app n="1195" corresp="#fn71"><lem wit="#O #Z #M #S2 #S3 #Har">casen</lem><rdg wit="#S1">cansen</rdg></app>.</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -2926,7 +2927,7 @@
         <sp who="#Laurencia">
           <speaker><app n="1229Per"><lem wit="#O">Laurencia</lem><rdg wit="#M #Z #S1 #S2 #S3 #Har">Antonio</rdg></app></speaker>
           <l n="1229" xml:id="l_1229_x_418">De tan altos cielos nace</l>
-          <l n="1230" xml:id="l_1230_x_419" corresp="#fn72">para ser sol de su casa.</l>
+          <l n="1230" xml:id="l_1230_x_419">para ser sol de su casa.</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
@@ -2980,7 +2981,7 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="1250" xml:id="l_1250_x_440">¿Andaba allá don Filipe</l>
-          <l n="1251" xml:id="l_1251_I_441" part="I" corresp="#fn74">de Córdoba?</l>
+          <l n="1251" xml:id="l_1251_I_441" part="I">de Córdoba?</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
@@ -2988,7 +2989,7 @@
           <l n="1252" xml:id="l_1252_x_443">del <app n="1252" corresp="#fn78"><lem wit="#O">oro</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">corro</rdg></app> de aquella fiesta,</l>
           <l n="1253" xml:id="l_1253_x_444">fue envidia de los galanes,</l>
           <l n="1254" xml:id="l_1254_x_445">fue de las damas el blanco,</l>
-          <l n="1255" xml:id="l_1255_x_446" corresp="#fn75">y fue español Durandarte.</l>
+          <l n="1255" xml:id="l_1255_x_446">y fue español Durandarte.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
@@ -3001,8 +3002,8 @@
           <speaker>Gerarda</speaker>
           <l n="1258" xml:id="l_1258_F_450" part="F">¿<app n="1258b" corresp="#fn78"><lem wit="#O">Y</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app> anduvo</l>
           <l n="1259" xml:id="l_1259_x_451">en estas fiestas reales</l>
-          <l n="1260" xml:id="l_1260_x_452" corresp="#fn76">don Enrique de Guzmán,</l>
-          <l n="1261" xml:id="l_1261_x_453" corresp="#fn77 #fn78">con aquel valor que sabe</l>
+          <l n="1260" xml:id="l_1260_x_452">don Enrique de Guzmán,</l>
+          <l n="1261" xml:id="l_1261_x_453" corresp="#fn78">con aquel valor que sabe</l>
           <l n="1262" xml:id="l_1262_x_454">de su gentileza el mundo</l>
           <l n="1263" xml:id="l_1263_x_455">y de sus heroicas partes?</l>
         </sp>
@@ -3010,7 +3011,7 @@
           <speaker>Leonardo</speaker>
           <l n="1264" xml:id="l_1264_x_456">Él y don Filipe hicieron</l>
           <l n="1265" xml:id="l_1265_x_457">cosas dignas de sus talles</l>
-          <l n="1266" xml:id="l_1266_x_458" corresp="#fn79">y de su valor y fama.</l>
+          <l n="1266" xml:id="l_1266_x_458">y de su valor y fama.</l>
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
@@ -3051,7 +3052,7 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="1275" xml:id="l_1275_x_468">Solicita que descanse</l>
-          <l n="1276" xml:id="l_1276_I_469" part="I" corresp="#fn80"><app n="1276a"><lem wit="#O">Gerarda, señor.</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">señor, Gerarda.</rdg></app></l>
+          <l n="1276" xml:id="l_1276_I_469" part="I"><app n="1276a"><lem wit="#O">Gerarda, señor.</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">señor, Gerarda.</rdg></app></l>
         </sp>
         <sp who="#Ludovico">
           <speaker><app n="1276Per"><lem wit="#O">Ludovico</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Gerarda</rdg></app></speaker>
@@ -3091,12 +3092,12 @@
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
           <l n="1290" xml:id="l_1290_x_484">¡Qué fortunas crüeles,</l>
-          <l n="1291" xml:id="l_1291_x_485" corresp="#fn82">ansias, fatigas, dudas y traiciones!</l>
+          <l n="1291" xml:id="l_1291_x_485">ansias, fatigas, dudas y traiciones!</l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
           <l n="1292" xml:id="l_1292_x_486">¡Qué heroicos Pimenteles,</l>
-          <l n="1293" xml:id="l_1293_x_487" corresp="#fn83">Mendozas, Leivas, Córdobas, Girones,</l>
+          <l n="1293" xml:id="l_1293_x_487">Mendozas, Leivas, Córdobas, Girones,</l>
           <l n="1294" xml:id="l_1294_x_488">Ávilas y Toledos!</l>
         </sp>
         <sp who="#Feliciana">
@@ -3136,11 +3137,11 @@
         <anchor xml:id="act2-capp186-end"/>
         <app type="omission" n="1288-1307" from="#act2-capp186-start" to="#act2-capp186-end"><lem wit="#O">[texto presente]</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app>
           <l n="1308" xml:id="l_1308_x_502">Las damas de Leonardo</l>
-          <l n="1309" xml:id="l_1309_x_503" corresp="#fn84">son las que <app n="1309" corresp="#fn87"><lem wit="#O #Z #M #S1 #S2 #Har">viven</lem><rdg wit="#S3">vienen</rdg></app> en aquesta casa.</l>
+          <l n="1309" xml:id="l_1309_x_503">son las que <app n="1309" corresp="#fn87"><lem wit="#O #Z #M #S1 #S2 #Har">viven</lem><rdg wit="#S3">vienen</rdg></app> en aquesta casa.</l>
           <l n="1310" xml:id="l_1310_x_504">Siguiéndolas, Bernardo,</l>
           <l n="1311" xml:id="l_1311_x_505">con la luz de la llama que me abrasa,</l>
           <l n="1312" xml:id="l_1312_x_506">desesperada vengo</l>
-          <l n="1313" xml:id="l_1313_x_507" corresp="#fn85">por ver si en <app n="1313a" corresp="#fn87"><lem wit="#O">ella</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">esta</rdg></app> algún remedio <app n="1313b" corresp="#fn87"><lem wit="#O #Z #M #S1 #S2 #Har">tengo</lem><rdg wit="#S3">tiene</rdg></app>.</l>
+          <l n="1313" xml:id="l_1313_x_507">por ver si en <app n="1313a" corresp="#fn87"><lem wit="#O">ella</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">esta</rdg></app> algún remedio <app n="1313b" corresp="#fn87"><lem wit="#O #Z #M #S1 #S2 #Har">tengo</lem><rdg wit="#S3">tiene</rdg></app>.</l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
@@ -3152,7 +3153,7 @@
           <l n="1316" xml:id="l_1316_x_510">me quiere dar la mano.</l>
           <l n="1317" xml:id="l_1317_x_511"><app n="1317" corresp="#fn87"><lem wit="#O">Saca</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Daca</rdg></app> esa daga tú, y el riguroso</l>
           <l n="1318" xml:id="l_1318_x_512">acero ponme al pecho,</l>
-          <l n="1319" xml:id="l_1319_x_513" corresp="#fn86">a tantas pruebas de tormentos hecho;</l>
+          <l n="1319" xml:id="l_1319_x_513">a tantas pruebas de tormentos hecho;</l>
           <anchor xml:id="act2-capp191-start"/>
         <l n="1320" xml:id="l_1320_x_514">di que quieres matarme...</l>
           <l n="1321" xml:id="l_1321_I_515" part="I" corresp="#fn87">¡Ay si quisieras tú!</l>
@@ -3166,7 +3167,7 @@
           <l n="1322" xml:id="l_1322_x_517">Quiero a voces quejarme,</l>
           <l n="1323" xml:id="l_1323_x_518">por que salgan a verme. Tú, Bernardo,</l>
           <l n="1324" xml:id="l_1324_x_519">huirás a la posada</l>
-          <l n="1325" xml:id="l_1325_x_520" corresp="#fn88">donde me aguardarás muerta o vengada.</l>
+          <l n="1325" xml:id="l_1325_x_520">donde me aguardarás muerta o vengada.</l>
         <anchor xml:id="act2-capp191-end"/>
         <app type="omission" n="1320-1325" from="#act2-capp191-start" to="#act2-capp191-end"><lem wit="#O">[texto presente]</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app>
         </sp>
@@ -3192,7 +3193,7 @@
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
           <l n="1332" xml:id="l_1332_x_527">Saco la daga y digo,</l>
-          <l n="1333" xml:id="l_1333_x_528" corresp="#fn89">—figura que ha ensayado tu tragedia—:</l>
+          <l n="1333" xml:id="l_1333_x_528">—figura que ha ensayado tu tragedia—:</l>
           <app type="addition" n="1333Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Saca la daga</stage></add></rdg></app>
           <l n="1334" xml:id="l_1334_x_529">¿Tú, infame? ¿Tú conmigo?</l>
           <l n="1335" xml:id="l_1335_x_530">¿Piensas que <app n="1335" corresp="#fn91"><lem wit="#O">de esa suerte</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">así tu agravio</rdg></app> se remedia</l>
@@ -3203,7 +3204,7 @@
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l n="1336" xml:id="l_1336_F_532" part="F" corresp="#fn90"><app n="1336b"><lem wit="#O">¡Oh, crüel Leonardo!</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></l>
+          <l n="1336" xml:id="l_1336_F_532" part="F"><app n="1336b"><lem wit="#O">¡Oh, crüel Leonardo!</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
@@ -3278,12 +3279,12 @@
               <rdg wit="#Z #M #S1 #S2 #S3 #Har">Padre</rdg>
             </app>
           </speaker>
-          <l n="1351" xml:id="l_1351_x_550" corresp="#fn92">Mujer que sola sale</l>
+          <l n="1351" xml:id="l_1351_x_550">Mujer que sola sale</l>
           <l n="1352" xml:id="l_1352_I_551" part="I">cualquier daño merece.</l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l n="1352" xml:id="l_1352_F_552" part="F" corresp="#fn93"><app n="1351a" corresp="#fn95"><lem wit="#O #Z #M #S2 #S3 #Har">Si no fuera</lem><rdg wit="#S1">Si no</rdg></app></l>
+          <l n="1352" xml:id="l_1352_F_552" part="F"><app n="1351a" corresp="#fn95"><lem wit="#O #Z #M #S2 #S3 #Har">Si no fuera</lem><rdg wit="#S1">Si no</rdg></app></l>
           <l n="1353" xml:id="l_1353_x_553"><app n="1351b" corresp="#fn95"><lem wit="#O #Z #M #S1 #S2 #S3">que por disculpa</lem><rdg wit="#Har">por disculpa que</rdg></app> vale,</l>
         </sp>
         <sp who="#Feliciana">
@@ -3314,7 +3315,7 @@
           <l n="1358" xml:id="l_1358_x_559"><app n="1357" corresp="#fn95"><lem wit="#O">Oídme por mujer</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Óyeme pues, señor,</rdg></app> atentamente,</l>
           <l n="1359" xml:id="l_1359_x_560"><app n="1358" corresp="#fn95"><lem wit="#O #Har">y</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> el fuego que me abrasa,</l>
           <l n="1360" xml:id="l_1360_x_561"><app n="1359"><lem wit="#O">en quejas tristes, respirar</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">en llamas vivas y aspirar</rdg></app> intente</l>
-          <l n="1361" xml:id="l_1361_x_562" corresp="#fn94">del tormento que paso.</l>
+          <l n="1361" xml:id="l_1361_x_562">del tormento que paso.</l>
         </sp>
         <sp who="#Ludovico">
           <speaker>
@@ -3369,7 +3370,7 @@
           <l n="1394" xml:id="l_1394_x_596">todo mi <app n="1393" corresp="#fn99"><lem wit="#O">amor</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">honor</rdg></app> a su pecho.</l>
           <l n="1395" xml:id="l_1395_x_597"><app type="omission"><lem wit="#O">Diome este engaño una hija</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
           <l n="1396" xml:id="l_1396_x_598"><app type="omission"><lem wit="#O">que hoy tengo viva, aunque tengo</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
-          <l n="1397" xml:id="l_1397_x_599" corresp="#fn96 #fn97 #fn98"><app type="omission"><lem wit="#O">más crédito en el juez</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
+          <l n="1397" xml:id="l_1397_x_599"><app type="omission"><lem wit="#O">más crédito en el juez</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
           <l n="1398" xml:id="l_1398_x_600"><app type="omission"><lem wit="#O">a quien de mi agravio apelo.</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app></l>
           <l n="1399" xml:id="l_1399_x_601"><app type="omission"><lem wit="#O #Z #S1 #S2 #S3 #Har">Pasaron tiempos, que <app n="1398"><lem wit="#O">paso</lem><rdg wit="#Z #S1 #S2 #S3 #Har">pasan</rdg></app></lem><rdg wit="#M"/></app></l>
           <l n="1400" xml:id="l_1400_x_602" corresp="#fn99"><app type="omission"><lem wit="#O #Z #S1 #S2 #S3 #Har"><app n="1399"><lem wit="#O">amando, mas presto</lem><rdg wit="#Z #S1 #S2 #S3 #Har">amándome avivé</rdg></app> el tiempo,</lem><rdg wit="#M"/></app></l>
@@ -3381,7 +3382,7 @@
           <l n="1405" xml:id="l_1405_x_607">sin asomarse a mis ojos</l>
           <l n="1406" xml:id="l_1406_x_608">cosa que le diese celos,</l>
           <l n="1407" xml:id="l_1407_x_609">—porque a mí me parecía</l>
-          <l n="1408" xml:id="l_1408_x_610" corresp="#fn100">que cuantos hombres nacieron</l>
+          <l n="1408" xml:id="l_1408_x_610">que cuantos hombres nacieron</l>
           <l n="1409" xml:id="l_1409_x_611">se cifraban todos juntos</l>
         <anchor xml:id="act2-capp238-end"/>
         <app type="omission" n="1404-1409" from="#act2-capp238-start" to="#act2-capp238-end"><lem wit="#O">[texto presente]</lem><rdg wit="#M"/></app>
@@ -3400,16 +3401,16 @@
           <l n="1418" xml:id="l_1418_x_620">tan injusto de por medio.</l>
           <anchor xml:id="act2-capp242-start"/>
         <l n="1419" xml:id="l_1419_x_621"><app n="1418" corresp="#fn104"><lem wit="#O">Partió</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Llegó</rdg></app> a Madrid y seguile</l>
-          <l n="1420" xml:id="l_1420_x_622" corresp="#fn101">con ánimo de que luego</l>
+          <l n="1420" xml:id="l_1420_x_622">con ánimo de que luego</l>
         <anchor xml:id="act2-capp242-end"/>
         <app type="omission" n="1419-1420" from="#act2-capp242-start" to="#act2-capp242-end"><lem wit="#O">[texto presente]</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app>
           <l n="1421" xml:id="l_1421_x_623">se impida su pretensión,</l>
           <l n="1422" xml:id="l_1422_x_624">favorecida de un deudo</l>
           <l n="1423" xml:id="l_1423_x_625">que el pleito me aconsejaba,</l>
           <l n="1424" xml:id="l_1424_x_626">aunque <app n="1423" corresp="#fn104"><lem wit="#O">ponelle no pienso</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">ponerle no quiero</rdg></app>,</l>
-          <l n="1425" xml:id="l_1425_x_627" corresp="#fn102">porque el favor <app n="1424"><lem wit="#O #Z #M #S2 #Har">son</lem><rdg wit="#S1">en</rdg><rdg wit="#S3">con</rdg></app> sus manos</l>
+          <l n="1425" xml:id="l_1425_x_627">porque el favor <app n="1424"><lem wit="#O #Z #M #S2 #Har">son</lem><rdg wit="#S1">en</rdg><rdg wit="#S3">con</rdg></app> sus manos</l>
           <l n="1426" xml:id="l_1426_x_628">y sus pies son los dineros.</l>
-          <l n="1427" xml:id="l_1427_x_629" corresp="#fn103">Tendré quien me <app n="1426" corresp="#fn104"><lem wit="#O">ayude</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">acuda</rdg></app> mal</l>
+          <l n="1427" xml:id="l_1427_x_629">Tendré quien me <app n="1426" corresp="#fn104"><lem wit="#O">ayude</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">acuda</rdg></app> mal</l>
           <l n="1428" xml:id="l_1428_x_630">con pluma y lengua, sin ellos,</l>
           <l n="1429" xml:id="l_1429_x_631">y un inorante letrado</l>
           <l n="1430" xml:id="l_1430_x_632">es puñalada de un pleito.</l>
@@ -3506,7 +3507,7 @@
           <l n="1473" xml:id="l_1473_x_676">a oír <app n="1472" corresp="#fn105"><lem wit="#O">la parte</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">las partes</rdg></app>, no quiero</l>
           <l n="1474" xml:id="l_1474_x_677">más parte que esta mujer,</l>
           <l n="1475" xml:id="l_1475_x_678">porque yo no he de tener</l>
-          <l n="1476" xml:id="l_1476_x_679" corresp="#fn106">yerno con tal mal agüero.</l>
+          <l n="1476" xml:id="l_1476_x_679">yerno con tal mal agüero.</l>
           <l n="1477" xml:id="l_1477_x_680"><app n="1476" corresp="#fn105"><lem wit="#O">Recogeos</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Y recogeos</rdg></app>, que ya es hora,</l>
           <l n="1478" xml:id="l_1478_x_681">y no haya más casamiento.</l>
         </sp>
@@ -3536,7 +3537,7 @@
           <l n="1494" xml:id="l_1494_x_697">¡Oh, quién otra alma tuviera</l>
           <l n="1495" xml:id="l_1495_x_698">que por albricias os diera!</l>
           <l n="1496" xml:id="l_1496_x_699"><app n="1495"><lem wit="#O">Ni aun os tengo que ya os di</lem><rdg wit="#Z #M #S1 #S2 #Har">una tengo que ya os di</rdg><rdg wit="#S3">yna tengo, que ya os di</rdg></app>.</l>
-          <l n="1497" xml:id="l_1497_x_700" corresp="#fn107 #fn108">Vamos, Gerarda, a saber</l>
+          <l n="1497" xml:id="l_1497_x_700" corresp="#fn108">Vamos, Gerarda, a saber</l>
           <l n="1498" xml:id="l_1498_x_701">si he de <app n="1497" corresp="#fn108"><lem wit="#O #Har">hablar aquel</lem><rdg wit="#Z #M #S1 #S2 #S3">hablar a aquel</rdg></app> mi dueño,</l>
           <l n="1499" xml:id="l_1499_x_702">que ya no hay tratar de sueño</l>
           <l n="1500" xml:id="l_1500_x_703">sino de sólo querer.</l>
@@ -3556,7 +3557,7 @@
           <l n="1507" xml:id="l_1507_x_710">o en su vida ha de querer</l>
           <l n="1508" xml:id="l_1508_x_711">o ha de querer locamente.</l>
         </sp>
-        <stage corresp="#fn109">
+        <stage>
           <app n="1507" corresp="#fn117">
             <lem wit="#O">Entren en hábito de noche el Marqués y don Filipe y don Enrique</lem>
             <rdg wit="#Z #M #S1 #S2 #S3 #Har">Vanse y sale el Marqués y don Felipe y don Enrique</rdg>
@@ -3572,8 +3573,8 @@
           <l n="1510" xml:id="l_1510_x_714">A saber cuándo abrirán.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn110">Marqués</speaker>
-          <l n="1511" xml:id="l_1511_x_715" corresp="#fn110">Notable cuidado os dan.</l>
+          <speaker>Marqués</speaker>
+          <l n="1511" xml:id="l_1511_x_715">Notable cuidado os dan.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
@@ -3582,7 +3583,7 @@
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="1513" xml:id="l_1513_x_717" corresp="#fn111">No se quitará de allí</l>
+          <l n="1513" xml:id="l_1513_x_717">No se quitará de allí</l>
           <l n="1514" xml:id="l_1514_x_718">hasta ver si abren la puerta.</l>
         </sp>
         <sp who="#Filipe">
@@ -3594,12 +3595,12 @@
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="1517" xml:id="l_1517_x_721" corresp="#fn112 #fn113">¡Qué libre <app n="1516" corresp="#fn117"><lem wit="#O">vive</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">viene</rdg></app> el Marqués!</l>
+          <l n="1517" xml:id="l_1517_x_721">¡Qué libre <app n="1516" corresp="#fn117"><lem wit="#O">vive</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">viene</rdg></app> el Marqués!</l>
           <l n="1518" xml:id="l_1518_x_722">No hay mujer a quien se aplique.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn114">Marqués</speaker>
-          <l n="1519" xml:id="l_1519_x_723" corresp="#fn114 #fn115">Sola una vez quise, <app n="1518" corresp="#fn117"><lem wit="#O #Z #M #S2 #Har">Enrique</lem><rdg wit="#S1 #S3">a Enrique</rdg></app>,</l>
+          <speaker>Marqués</speaker>
+          <l n="1519" xml:id="l_1519_x_723">Sola una vez quise, <app n="1518" corresp="#fn117"><lem wit="#O #Z #M #S2 #Har">Enrique</lem><rdg wit="#S1 #S3">a Enrique</rdg></app>,</l>
           <l n="1520" xml:id="l_1520_x_724">no he querido más después,</l>
           <l n="1521" xml:id="l_1521_x_725"><app n="1520" corresp="#fn117"><lem wit="#O">ni</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app> hasta casarme estoy cierto</l>
           <l n="1522" xml:id="l_1522_x_726">de no volver a querer.</l>
@@ -3610,16 +3611,16 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="1523" xml:id="l_1523_F_728" part="F" corresp="#fn116 #fn117"><app n="1522" corresp="#fn117"><lem wit="#O">Ansí</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Así</rdg></app> ha de ser,</l>
+          <l n="1523" xml:id="l_1523_F_728" part="F" corresp="#fn117"><app n="1522" corresp="#fn117"><lem wit="#O">Ansí</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Así</rdg></app> ha de ser,</l>
           <l n="1524" xml:id="l_1524_x_729">en siendo amor descubierto.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn118">Enrique</speaker>
-          <l n="1525" xml:id="l_1525_x_730" corresp="#fn118">¿Que aun dura la voluntad?</l>
+          <speaker>Enrique</speaker>
+          <l n="1525" xml:id="l_1525_x_730">¿Que aun dura la voluntad?</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn119">Marqués</speaker>
-          <l n="1526" xml:id="l_1526_x_731" corresp="#fn119">Mientras que Mendoza viene,</l>
+          <speaker>Marqués</speaker>
+          <l n="1526" xml:id="l_1526_x_731">Mientras que Mendoza viene,</l>
           <l n="1527" xml:id="l_1527_x_732">oíd la causa que tiene.</l>
         </sp>
         <sp who="#Filipe">
@@ -3628,9 +3629,9 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="1528" xml:id="l_1528_F_734" part="F" corresp="#fn120">Escuchad.</l>
+          <l n="1528" xml:id="l_1528_F_734" part="F">Escuchad.</l>
           <l n="1529" xml:id="l_1529_x_735"><app n="1528"><lem wit="#O">Yacen</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Nacen</rdg></app> al pie de Guadarrama helado</l>
-          <l n="1530" xml:id="l_1530_x_736" corresp="#fn121">las Navas del Marqués —este es su nombre—,</l>
+          <l n="1530" xml:id="l_1530_x_736">las Navas del Marqués —este es su nombre—,</l>
           <l n="1531" xml:id="l_1531_x_737">donde el florido mayo viste <app n="1530" corresp="#fn127"><lem wit="#O">un</lem><rdg wit="#Z #M #S1 #S2 #Har">el</rdg><rdg wit="#S3">en</rdg></app> prado</l>
           <l n="1532" xml:id="l_1532_x_738">que no hay escarcha o nieve que le asombre;</l>
           <pb type="folio" n="13v"/>
@@ -3649,35 +3650,35 @@
         <anchor xml:id="act2-capp291-end"/>
         <app type="omission" n="1536-1543" from="#act2-capp291-start" to="#act2-capp291-end"><lem wit="#O">[texto presente]</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app>
           <l n="1544" xml:id="l_1544_x_750">a deidades de nieve dedicado.</l>
-          <l n="1545" xml:id="l_1545_x_751" corresp="#fn122"><app n="1544a" corresp="#fn127"><lem wit="#O">Y</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app> en esta parte tan <app n="1544b" corresp="#fn127"><lem wit="#O">helada</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">nevada</rdg></app> y fría,</l>
-          <l n="1546" xml:id="l_1546_x_752" corresp="#fn123">de un aldeana vi los ojos bellos,</l>
-          <l n="1547" xml:id="l_1547_x_753" corresp="#fn124">fuego del alma venturosa mía,</l>
+          <l n="1545" xml:id="l_1545_x_751"><app n="1544a" corresp="#fn127"><lem wit="#O">Y</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app> en esta parte tan <app n="1544b" corresp="#fn127"><lem wit="#O">helada</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">nevada</rdg></app> y fría,</l>
+          <l n="1546" xml:id="l_1546_x_752">de un aldeana vi los ojos bellos,</l>
+          <l n="1547" xml:id="l_1547_x_753">fuego del alma venturosa mía,</l>
           <l n="1548" xml:id="l_1548_x_754"><app n="1547" corresp="#fn127"><lem wit="#O">y aquí</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">ya que</rdg></app> supe morir y arder por ellos.</l>
-          <l n="1549" xml:id="l_1549_x_755" corresp="#fn125"><app n="1548a" corresp="#fn127"><lem wit="#O">Viví</lem><rdg wit="#Z #M #S1 #S2 #S3">Si vi</rdg><rdg wit="#Har">sufrí</rdg></app>, mientras la edad lo <app n="1548b" corresp="#fn127"><lem wit="#O">permitía</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">prometía</rdg></app>,</l>
+          <l n="1549" xml:id="l_1549_x_755"><app n="1548a" corresp="#fn127"><lem wit="#O">Viví</lem><rdg wit="#Z #M #S1 #S2 #S3">Si vi</rdg><rdg wit="#Har">sufrí</rdg></app>, mientras la edad lo <app n="1548b" corresp="#fn127"><lem wit="#O">permitía</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">prometía</rdg></app>,</l>
           <l n="1550" xml:id="l_1550_x_756">sin sentir la prisión de sus cabellos;</l>
-          <l n="1551" xml:id="l_1551_x_757" corresp="#fn126 #fn127"><app n="1549" corresp="#fn127"><lem wit="#O">mas, como en pocos años hay engaños</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">crecieron los deseos, y esperanzas</rdg></app>,</l>
+          <l n="1551" xml:id="l_1551_x_757" corresp="#fn127"><app n="1549" corresp="#fn127"><lem wit="#O">mas, como en pocos años hay engaños</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">crecieron los deseos, y esperanzas</rdg></app>,</l>
           <l n="1552" xml:id="l_1552_x_758"><app n="1550" corresp="#fn127"><lem wit="#O">crecieron los deseos con los años</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">esperando en el mar quietas bonanzas</rdg></app>.</l>
           <l n="1553" xml:id="l_1553_x_759">Salíamos al prado, <app n="1552" corresp="#fn138"><lem wit="#O">y de sus</lem><rdg wit="#Z #M #S1 #S2 #S3">de esas</rdg><rdg wit="#Har">de sus</rdg></app> flores</l>
-          <l n="1554" xml:id="l_1554_x_760" corresp="#fn128">ceñí tal vez <app n="1554" corresp="#fn138"><lem wit="#O">sus</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">las</rdg></app> cándidos <app n="1553" corresp="#fn138"><lem wit="#O">marfiles</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">abriles</rdg></app>,</l>
-          <l n="1555" xml:id="l_1555_x_761" corresp="#fn129">donde la variedad de sus colores</l>
-          <l n="1556" xml:id="l_1556_x_762" corresp="#fn130">en el cielo de amor fueron <app n="1555" corresp="#fn138"><lem wit="#O">pensiles</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">perfiles</rdg></app>.</l>
-          <l n="1557" xml:id="l_1557_x_763" corresp="#fn131"><app n="1556" corresp="#fn138"><lem wit="#O">Tal vez también los pájaros</lem><rdg wit="#Z #M #S2 #Har">Allí tal vez los pájaros</rdg><rdg wit="#S1 #S3">Allí tal vez pájaros</rdg></app> cantores,</l>
+          <l n="1554" xml:id="l_1554_x_760">ceñí tal vez <app n="1554" corresp="#fn138"><lem wit="#O">sus</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">las</rdg></app> cándidos <app n="1553" corresp="#fn138"><lem wit="#O">marfiles</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">abriles</rdg></app>,</l>
+          <l n="1555" xml:id="l_1555_x_761">donde la variedad de sus colores</l>
+          <l n="1556" xml:id="l_1556_x_762">en el cielo de amor fueron <app n="1555" corresp="#fn138"><lem wit="#O">pensiles</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">perfiles</rdg></app>.</l>
+          <l n="1557" xml:id="l_1557_x_763"><app n="1556" corresp="#fn138"><lem wit="#O">Tal vez también los pájaros</lem><rdg wit="#Z #M #S2 #Har">Allí tal vez los pájaros</rdg><rdg wit="#S1 #S3">Allí tal vez pájaros</rdg></app> cantores,</l>
           <l n="1558" xml:id="l_1558_x_764"><app n="1557"><lem wit="#O">ya con nudosa red</lem><rdg wit="#Z #M #S2 #S3">hacen nidos a red</rdg><rdg wit="#S1">hacen nidos de red</rdg><rdg wit="#Har">hacen nidos: ya en red</rdg></app>, ya con sutiles</l>
-          <l n="1559" xml:id="l_1559_x_765" corresp="#fn132">lazos <app n="1558"><lem wit="#O">le presenté; tal la pintada</lem><rdg wit="#Z #M #S1 #S2 #S3">prendí tal vez a la apretada</rdg><rdg wit="#Har">prendí tal vez a la pesada</rdg></app></l>
+          <l n="1559" xml:id="l_1559_x_765">lazos <app n="1558"><lem wit="#O">le presenté; tal la pintada</lem><rdg wit="#Z #M #S1 #S2 #S3">prendí tal vez a la apretada</rdg><rdg wit="#Har">prendí tal vez a la pesada</rdg></app></l>
           <l n="1560" xml:id="l_1560_x_766">perdiz del plomo ardiente <app n="1559" corresp="#fn138"><lem wit="#O">derribada</lem><rdg wit="#Z #M #S1 #S2 #S3">dedicada</rdg><rdg wit="#Har">descuidada</rdg></app>.</l>
           <l n="1561" xml:id="l_1561_x_767">Gustaba alguna vez de que en la silla</l>
           <l n="1562" xml:id="l_1562_x_768">del fogoso bridón diese escarceos,</l>
           <l n="1563" xml:id="l_1563_x_769">estampando en la arena de la orilla</l>
           <l n="1564" xml:id="l_1564_x_770">sus pies, como en <app n="1563" corresp="#fn138"><lem wit="#O">sus ojos</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">mis ojos</rdg></app> mis deseos.</l>
           <l n="1565" xml:id="l_1565_x_771">Tal vez, corriendo toros en la villa,</l>
-          <l n="1566" xml:id="l_1566_x_772" corresp="#fn133">ganaba aplausos para dar trofeos,</l>
-          <l n="1567" xml:id="l_1567_x_773" corresp="#fn134">cortando las cervices arrugadas,</l>
-          <l n="1568" xml:id="l_1568_x_774" corresp="#fn135">más de los años que del sol <app n="1567" corresp="#fn138"><lem wit="#O">curadas</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">cifradas</rdg></app>.</l>
+          <l n="1566" xml:id="l_1566_x_772">ganaba aplausos para dar trofeos,</l>
+          <l n="1567" xml:id="l_1567_x_773">cortando las cervices arrugadas,</l>
+          <l n="1568" xml:id="l_1568_x_774">más de los años que del sol <app n="1567" corresp="#fn138"><lem wit="#O">curadas</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">cifradas</rdg></app>.</l>
           <l n="1569" xml:id="l_1569_x_775">Pero en aquesta vida generosa,</l>
           <l n="1570" xml:id="l_1570_x_776"><app n="1569" corresp="#fn138"><lem wit="#O">como no era mi igual para ser mía</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">cuando pensaba  yo que fuese mía</rdg></app>,</l>
           <l n="1571" xml:id="l_1571_x_777">la casaron sus padres y fue esposa</l>
-          <l n="1572" xml:id="l_1572_x_778" corresp="#fn136">de quien <app n="1571" corresp="#fn138"><lem wit="#O">por ser su igual</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">mejor que yo</rdg></app> la merecía.</l>
-          <l n="1573" xml:id="l_1573_x_779" corresp="#fn137">Entonces, con el alma lastimosa</l>
+          <l n="1572" xml:id="l_1572_x_778">de quien <app n="1571" corresp="#fn138"><lem wit="#O">por ser su igual</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">mejor que yo</rdg></app> la merecía.</l>
+          <l n="1573" xml:id="l_1573_x_779">Entonces, con el alma lastimosa</l>
           <l n="1574" xml:id="l_1574_x_780" corresp="#fn138">que las heladas nieves encendía,</l>
           <l n="1575" xml:id="l_1575_x_781">hice locuras, y llamé la muerte…</l>
           <l n="1576" xml:id="l_1576_x_782">pero jamás <app n="1575" corresp="#fn138"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a</rdg></app> quien la llama advierte.</l>
@@ -3685,20 +3686,20 @@
         <stage><app n="1575Acot" corresp="#fn145"><lem wit="#O">Mendoza entre</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Sale Mendoza</rdg></app></stage>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
-          <l n="1577" xml:id="l_1577_x_783" corresp="#fn139">Bien me podéis dar mil palos</l>
+          <l n="1577" xml:id="l_1577_x_783">Bien me podéis dar mil palos</l>
           <l n="1578" xml:id="l_1578_x_784">de albricias de mal sucesos.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="1579" xml:id="l_1579_x_785" corresp="#fn140">Pues ¿qué tenemos, Mendoza?</l>
+          <l n="1579" xml:id="l_1579_x_785">Pues ¿qué tenemos, Mendoza?</l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="1580" xml:id="l_1580_x_786"><app n="1579" corresp="#fn145"><lem wit="#O">Tenemos que no tenemos</lem><rdg wit="#Z #M #S1 #S2 #S3">Tenemos que más queremos</rdg><rdg wit="#Har">Tenemos más que queremos</rdg></app>.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn141"><app n="1580Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
-          <l n="1581" xml:id="l_1581_I_787" part="I" corresp="#fn141"><app n="1580"><lem wit="#O">¿Cómo ansí?</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">¿Cómo así?</rdg></app></l>
+          <speaker><app n="1580Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
+          <l n="1581" xml:id="l_1581_I_787" part="I"><app n="1580"><lem wit="#O">¿Cómo ansí?</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">¿Cómo así?</rdg></app></l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -3715,14 +3716,14 @@
           <l n="1587" xml:id="l_1587_x_794">¿Hay <app n="1586" corresp="#fn145"><lem wit="#O">hombre más desdichado</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">desdicha semejante</rdg></app>?</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn142">Enrique</speaker>
-          <l n="1588" xml:id="l_1588_x_795" corresp="#fn142">Que no importa, volveremos</l>
+          <speaker>Enrique</speaker>
+          <l n="1588" xml:id="l_1588_x_795">Que no importa, volveremos</l>
           <l n="1589" xml:id="l_1589_x_796">otra noche y otras mil.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="1590" xml:id="l_1590_x_797">¿Cómo, si está en casa el <app n="1589" corresp="#fn145"><lem wit="#O">yerno</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">dueño</rdg></app>,</l>
-          <l n="1591" xml:id="l_1591_x_798" corresp="#fn143">y <app n="1590" corresp="#fn145"><lem wit="#O #M #S2 #S3">le han</lem><rdg wit="#Z">la han</rdg><rdg wit="#S1 #Har">se han</rdg></app> de querer casar</l>
+          <l n="1591" xml:id="l_1591_x_798">y <app n="1590" corresp="#fn145"><lem wit="#O #M #S2 #S3">le han</lem><rdg wit="#Z">la han</rdg><rdg wit="#S1 #Har">se han</rdg></app> de querer casar</l>
           <l n="1592" xml:id="l_1592_x_799">la hermosura y el deseo?</l>
         </sp>
         <sp who="#Mendoza">
@@ -3733,7 +3734,7 @@
           <l n="1596" xml:id="l_1596_x_803">Filipe, Alejandro nuevo,</l>
           <l n="1597" xml:id="l_1597_x_804">que hoy has de ganar el mundo,</l>
           <l n="1598" xml:id="l_1598_x_805">y a ti Gerarda, que <app n="1597" corresp="#fn145"><lem wit="#O #Z #M #S2 #S3 #Har">un cielo</lem><rdg wit="#S1">un un cielo</rdg></app></l>
-          <l n="1599" xml:id="l_1599_x_806" corresp="#fn144">tiene, Enrique, para ti,</l>
+          <l n="1599" xml:id="l_1599_x_806">tiene, Enrique, para ti,</l>
           <l n="1600" xml:id="l_1600_x_807">de nieve y claveles hecho.</l>
           <l n="1601" xml:id="l_1601_x_808"><app n="1600a" corresp="#fn145"><lem wit="#O #Z #M #S1 #S2 #S3">Que</lem><rdg wit="#Har">Y</rdg></app> a mí la <app n="1600b" corresp="#fn145"><lem wit="#O #S1 #S3">fragante</lem><rdg wit="#Z #M #S2 #Har">fregante</rdg></app> Clara</l>
           <l n="1602" xml:id="l_1602_x_809" corresp="#fn145">también <app n="1601" corresp="#fn145"><lem wit="#O">me aguarda a lo</lem><rdg wit="#Z #M #S2 #Har">me esperará al</rdg><rdg wit="#S1 #S3">me esperaba al</rdg></app> fresco,</l>
@@ -3751,38 +3752,38 @@
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="1608" xml:id="l_1608_x_815" corresp="#fn146">Marqués amigo, don Pedro,</l>
+          <l n="1608" xml:id="l_1608_x_815">Marqués amigo, don Pedro,</l>
           <l n="1609" xml:id="l_1609_x_816">aquí os habéis de quedar</l>
           <l n="1610" xml:id="l_1610_x_817">por si acaso el de Toledo</l>
           <l n="1611" xml:id="l_1611_x_818"><app n="1610" corresp="#fn153"><lem wit="#O">volviere</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">viniere</rdg></app> a ver a la novia.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn147">Marqués</speaker>
-          <l n="1612" xml:id="l_1612_x_819" corresp="#fn147">Id con Dios, que en este puesto</l>
+          <speaker>Marqués</speaker>
+          <l n="1612" xml:id="l_1612_x_819">Id con Dios, que en este puesto</l>
           <pb type="folio" n="15r"/>
           <l n="1613" xml:id="l_1613_x_820"><app n="1612" corresp="#fn153"><lem wit="#O">estaré</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">sufriré</rdg></app> como español,</l>
           <l n="1614" xml:id="l_1614_x_821"><app n="1613" corresp="#fn153"><lem wit="#O">sufriré</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y estaré</rdg></app> como tudesco.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn148">Enrique</speaker>
-          <l n="1615" xml:id="l_1615_x_822" corresp="#fn148">Él sabe lo que ha de hacer,</l>
+          <speaker>Enrique</speaker>
+          <l n="1615" xml:id="l_1615_x_822">Él sabe lo que ha de hacer,</l>
           <l n="1616" xml:id="l_1616_x_823">no hay <app n="1615" corresp="#fn153"><lem wit="#O">de qué tener recelos</lem><rdg wit="#Z #M #S2 #S3 #Har">de que tenerle miedo</rdg><rdg wit="#S1">que tenerle miedo</rdg></app>.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn149">Marqués</speaker>
-          <l n="1617" xml:id="l_1617_x_824" corresp="#fn149">Id con Dios, que ya sabéis</l>
+          <speaker>Marqués</speaker>
+          <l n="1617" xml:id="l_1617_x_824">Id con Dios, que ya sabéis</l>
           <l n="1618" xml:id="l_1618_x_825">lo que valgo <app n="1617" corresp="#fn153"><lem wit="#O">o</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">y</rdg></app> lo que puedo.</l>
           <l n="1619" xml:id="l_1619_x_826">Noche, de <app n="1618" corresp="#fn153"><lem wit="#O #Z #M #S2 #S3 #Har">estrellas</lem><rdg wit="#S1">estrella</rdg></app> vestida,</l>
           <l n="1620" xml:id="l_1620_x_827">cuyo manto escuro y negro</l>
-          <l n="1621" xml:id="l_1621_x_828" corresp="#fn150">más hurtos que tiene luces</l>
+          <l n="1621" xml:id="l_1621_x_828">más hurtos que tiene luces</l>
           <anchor xml:id="act2-capp335-start"/>
         <l n="1622" xml:id="l_1622_x_829"><app n="1621a" corresp="#fn153"><lem wit="#O #Z #S1 #S2 #S3 #Har">ha</lem><rdg wit="#M">va</rdg></app> concertado y <app n="1621b" corresp="#fn153"><lem wit="#O">cubierto</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">abierto</rdg></app>;</l>
-          <l n="1623" xml:id="l_1623_x_830" corresp="#fn151">noble tercera de amor,</l>
+          <l n="1623" xml:id="l_1623_x_830">noble tercera de amor,</l>
           <l n="1624" xml:id="l_1624_x_831">a cuyo grave silencio</l>
           <l n="1625" xml:id="l_1625_x_832">tiene el honor de los hombres</l>
         <anchor xml:id="act2-capp335-end"/>
         <app type="omission" n="1622-1625" from="#act2-capp335-start" to="#act2-capp335-end"><lem wit="#O">[texto presente]</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har"/></app>
-          <l n="1626" xml:id="l_1626_x_833" corresp="#fn152">reservado su secreto:</l>
+          <l n="1626" xml:id="l_1626_x_833">reservado su secreto:</l>
           <l n="1627" xml:id="l_1627_x_834">¡qué bien te <app n="1626"><lem wit="#O">pintó Liñán</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">pienso llenar</rdg></app></l>
           <l n="1628" xml:id="l_1628_x_835">en aquellos dulces versos!</l>
           <l n="1629" xml:id="l_1629_x_836">Mas todo es poco si miro</l>
@@ -3790,9 +3791,9 @@
           <l n="1631" xml:id="l_1631_x_838">Tú serás, noche, mi dama,</l>
           <l n="1632" xml:id="l_1632_x_839" corresp="#fn153">a ti te diré requiebros,</l>
           <l n="1633" xml:id="l_1633_x_840">pues no tengo a quien decillos</l>
-          <l n="1634" xml:id="l_1634_x_841" corresp="#fn154">y tengo ocasión y tiempo.</l>
+          <l n="1634" xml:id="l_1634_x_841">y tengo ocasión y tiempo.</l>
           <l n="1635" xml:id="l_1635_x_842">Pero si la <app n="1634" corresp="#fn159"><lem wit="#O">clara</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">blanca</rdg></app> aurora</l>
-          <l n="1636" xml:id="l_1636_x_843" corresp="#fn155"><app n="1635" corresp="#fn159"><lem wit="#O">corre</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">saca</rdg></app> el argentado velo,</l>
+          <l n="1636" xml:id="l_1636_x_843"><app n="1635" corresp="#fn159"><lem wit="#O">corre</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">saca</rdg></app> el argentado velo,</l>
           <l n="1637" xml:id="l_1637_x_844">con las manos de jazmines,</l>
           <l n="1638" xml:id="l_1638_x_845">al rey del cuarto elemento,</l>
           <l n="1639" xml:id="l_1639_x_846">perdona, que he de querer</l>
@@ -3805,7 +3806,7 @@
         <stage><app n="1642Acot"><lem wit="#O">Antonio y Leonardo de noche</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Salen Leonardo y Antonio</rdg></app></stage>
         <sp who="#Antonio">
           <speaker>Antonio</speaker>
-          <l n="1644" xml:id="l_1644_x_851" corresp="#fn156">¿Agora os falta sosiego?</l>
+          <l n="1644" xml:id="l_1644_x_851">¿Agora os falta sosiego?</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
@@ -3826,10 +3827,10 @@
           <l n="1650" xml:id="l_1650_x_857">Hermosa por todo estremo,</l>
           <l n="1651" xml:id="l_1651_x_858">y para mujer, más linda</l>
           <l n="1652" xml:id="l_1652_x_859"><app n="1652" corresp="#fn159"><lem wit="#O #Z #M #S1 #S2 #Har">de</lem><rdg wit="#S3"/></app> lo que <app n="1650" corresp="#fn159"><lem wit="#O #Z #M #S1 #S2 #S3">dice</lem><rdg wit="#Har">pide</rdg></app> un discreto.</l>
-          <l n="1653" xml:id="l_1653_x_860" corresp="#fn157">Pero si de la belleza</l>
+          <l n="1653" xml:id="l_1653_x_860">Pero si de la belleza</l>
           <l n="1654" xml:id="l_1654_x_861">es la virtud fundamento,</l>
           <l n="1655" xml:id="l_1655_x_862">por el camino real</l>
-          <l n="1656" xml:id="l_1656_x_863" corresp="#fn158">se <app n="1655" corresp="#fn159"><lem wit="#O">va</lem><rdg wit="#Z #M #S1 #S2 #Har">irá</rdg><rdg wit="#S3">ya</rdg></app> su marido al cielo.</l>
+          <l n="1656" xml:id="l_1656_x_863">se <app n="1655" corresp="#fn159"><lem wit="#O">va</lem><rdg wit="#Z #M #S1 #S2 #Har">irá</rdg><rdg wit="#S3">ya</rdg></app> su marido al cielo.</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
@@ -3851,8 +3852,8 @@
           <l n="1663" xml:id="l_1663_x_870">Es la Corte cortesía.</l>
         </sp>
         <sp who="#Leonardo">
-          <speaker corresp="#fn160">Leonardo</speaker>
-          <l n="1664" xml:id="l_1664_x_871" corresp="#fn160"><app n="1663" corresp="#fn169"><lem wit="#O">Es corte con mucho</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Cortes son con nuevo</rdg></app> acero,</l>
+          <speaker>Leonardo</speaker>
+          <l n="1664" xml:id="l_1664_x_871"><app n="1663" corresp="#fn169"><lem wit="#O">Es corte con mucho</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Cortes son con nuevo</rdg></app> acero,</l>
           <l n="1665" xml:id="l_1665_x_872">y no <app n="1664" corresp="#fn169"><lem wit="#O #Z #M #S2 #Har">querría</lem><rdg wit="#S1 #S3">querrá</rdg></app> cortarme.</l>
         </sp>
         <sp who="#Antonio">
@@ -3863,7 +3864,7 @@
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
-          <l n="1668" xml:id="l_1668_x_875" corresp="#fn161">No sé, <app n="1667" corresp="#fn169"><lem wit="#O">Antonio</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">por Dios</rdg></app>, qué me tengo.</l>
+          <l n="1668" xml:id="l_1668_x_875">No sé, <app n="1667" corresp="#fn169"><lem wit="#O">Antonio</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">por Dios</rdg></app>, qué me tengo.</l>
         </sp>
         <sp who="#Antonio">
           <speaker>Antonio</speaker>
@@ -3877,12 +3878,12 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="1672" xml:id="l_1672_F_880" part="F" corresp="#fn162"><app n="1671" corresp="#fn169"><lem wit="#O">Caballeros</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Ah caballeros</rdg></app>,</l>
+          <l n="1672" xml:id="l_1672_F_880" part="F"><app n="1671" corresp="#fn169"><lem wit="#O">Caballeros</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Ah caballeros</rdg></app>,</l>
           <l n="1673" xml:id="l_1673_x_881">echen por esotra parte.</l>
         </sp>
         <sp who="#Antonio">
-          <speaker corresp="#fn163"><app n="1673Per"><lem wit="#O">Antonio</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></speaker>
-          <l n="1674" xml:id="l_1674_I_882" part="I" corresp="#fn163 #fn164">¿Cómo dijo?</l>
+          <speaker><app n="1673Per"><lem wit="#O">Antonio</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></speaker>
+          <l n="1674" xml:id="l_1674_I_882" part="I">¿Cómo dijo?</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
@@ -3899,11 +3900,11 @@
           <l n="1678" xml:id="l_1678_x_887">Pues ¿por qué no pasaremos?</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn165">Marqués</speaker>
-          <l n="1679" xml:id="l_1679_x_888" corresp="#fn165">Porque estoy por <app n="1679" corresp="#fn169"><lem wit="#O #Z #M #S1 #S2 #S3">hombre</lem><rdg wit="#Har">otro</rdg></app> aquí,</l>
+          <speaker>Marqués</speaker>
+          <l n="1679" xml:id="l_1679_x_888">Porque estoy por <app n="1679" corresp="#fn169"><lem wit="#O #Z #M #S1 #S2 #S3">hombre</lem><rdg wit="#Har">otro</rdg></app> aquí,</l>
           <l n="1680" xml:id="l_1680_x_889">y pienso que me dijeron</l>
           <l n="1681" xml:id="l_1681_x_890">que no <app n="1680" corresp="#fn169"><lem wit="#O">dejase</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">dejara</rdg></app> pasar;</l>
-          <l n="1682" xml:id="l_1682_x_891" corresp="#fn166"><app n="1681" corresp="#fn169"><lem wit="#O">calles hay, vuélvanse luego,</lem><rdg wit="#Z #S1 #S2">las calles vuélvanse presto</rdg><rdg wit="#M #S3 #Har">la calle, vuélvanse presto</rdg></app></l>
+          <l n="1682" xml:id="l_1682_x_891"><app n="1681" corresp="#fn169"><lem wit="#O">calles hay, vuélvanse luego,</lem><rdg wit="#Z #S1 #S2">las calles vuélvanse presto</rdg><rdg wit="#M #S3 #Har">la calle, vuélvanse presto</rdg></app></l>
           <l n="1683" xml:id="l_1683_x_892">o haré que se vuelvan yo.</l>
         </sp>
         <sp who="#Leonardo">
@@ -3912,15 +3913,15 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="1684" xml:id="l_1684_F_894" part="F" corresp="#fn167"><app n="1683" corresp="#fn169"><lem wit="#O">Y aun a otros ciento</lem><rdg wit="#Z #M #S2 #Har">Y a otros ciento</rdg><rdg wit="#S1 #S3">Y todos ciento</rdg></app>.</l>
+          <l n="1684" xml:id="l_1684_F_894" part="F"><app n="1683" corresp="#fn169"><lem wit="#O">Y aun a otros ciento</lem><rdg wit="#Z #M #S2 #Har">Y a otros ciento</rdg><rdg wit="#S1 #S3">Y todos ciento</rdg></app>.</l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
           <l n="1685" xml:id="l_1685_x_895">Eso quiero yo probar.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn168">Marqués</speaker>
-          <l n="1686" xml:id="l_1686_x_896" corresp="#fn168">Saquen las espadas <app n="1685"><lem wit="#O">luego</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">presto</rdg></app>.</l>
+          <speaker>Marqués</speaker>
+          <l n="1686" xml:id="l_1686_x_896">Saquen las espadas <app n="1685"><lem wit="#O">luego</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">presto</rdg></app>.</l>
           <app type="addition" n="1685Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Meten mano</stage></add></rdg></app>
         </sp>
         <sp who="#Leonardo">
@@ -3941,7 +3942,7 @@
         </sp>
         <app type="structure" n="1689-1700-order"><lem wit="#O"><sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="1689" xml:id="l_1689_x_901" corresp="#fn170">Por otra parte les dije</l>
+          <l n="1689" xml:id="l_1689_x_901">Por otra parte les dije</l>
           <l n="1690" xml:id="l_1690_x_902">que echasen, y no quisieron,</l>
           <l n="1691" xml:id="l_1691_x_903"><app n="1690" corresp="#fn171"><lem wit="#O">y ya</lem><rdg wit="#Z #M #S1 #S2 #Har">y ahora</rdg><rdg wit="#S3">y ora</rdg></app> es fuerza rodear,</l>
           <l n="1692" xml:id="l_1692_x_904">si es que han de ir por el barbero.</l>
@@ -3983,7 +3984,7 @@
           <app type="addition" n="1700Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Vanse</stage></add></rdg></app>
         </sp><sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="1689" corresp="#fn170">Por otra parte les dije</l>
+          <l n="1689">Por otra parte les dije</l>
           <l n="1690">que echasen, y no quisieron,</l>
           <l n="1691"><app n="1690" corresp="#fn171"><lem wit="#O">y ya</lem><rdg wit="#Z #M #S1 #S2 #Har">y ahora</rdg><rdg wit="#S3">y ora</rdg></app> es fuerza rodear,</l>
           <l n="1692">si es que han de ir por el barbero.</l>
