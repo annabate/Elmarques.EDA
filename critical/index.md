@@ -191,6 +191,17 @@ edition_label: Edición crítica · prototipo
       .forEach((node) => node.remove());
   }
 
+  function renderCriticalStructuralApps(root) {
+    root.querySelectorAll('tei-app[type="structure"]').forEach((app) => {
+      const lemma = directChildren(app, "tei-lem")[0] || null;
+      const frag = document.createDocumentFragment();
+      if (lemma) {
+        while (lemma.firstChild) frag.appendChild(lemma.firstChild);
+      }
+      app.replaceWith(frag);
+    });
+  }
+
   function assignLocusIds(root) {
     root.querySelectorAll("tei-app").forEach((app, index) => {
       if (!app.dataset.locusId) {
@@ -1213,7 +1224,7 @@ edition_label: Edición crítica · prototipo
   }
 
   function buildVariantInventory(root) {
-    return Array.from(root.querySelectorAll("tei-app")).map((app) => {
+    return Array.from(root.querySelectorAll('tei-app:not([type="structure"])')).map((app) => {
       const lemma = directChildren(app, "tei-lem")[0] || null;
       const readings = directChildren(app, "tei-rdg").map((rdg) => ({
         text: cleanReadingText(rdg) || "om.",
@@ -2230,6 +2241,10 @@ edition_label: Edición crítica · prototipo
       assignLocusIds(baseTEI);
       assignLocusIds(originalData);
       assignLocusIds(data);
+
+      // Structural apparatus remains in the source clones for witness
+      // reconstruction; the critical pane displays only the lemma.
+      renderCriticalStructuralApps(data);
 
       // 3) Monta nel DOM
       const criticalContainer = document.getElementById("critical-container");
