@@ -30,6 +30,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Audit de acotaciones del acto II: se corrige el aparato 1575Acot, que la conversión había duplicado erróneamente junto a 1159Acot. Se elimina la copia desplazada y se integra «Mendoza entre O : Sale Mendoza ZMS1S2S3 Har» en su locus efectivo.</change>
       <change when="2026-11-05">Audit estructural del acto II: se incorpora la variante de atribución 1467Per (Ludovico O : Padre ZMS1S2S3 Har). El locus 950 se conserva en standOff de revisión por contradicción entre el texto/historia genética de O y el aparato de tradición.</change>
       <change when="2026-11-05">Tercera pasada del audit del acto II: se recolocan cuatro variantes incrustadas erróneamente dentro de palabras (848, 926, 1009 y 1617), restituyendo «Majestad», «pienso», «caballero» y «con» y situando el aparato en su locus textual efectivo.</change>
       <change when="2026-11-05">Segunda pasada del audit del acto II: se corrigen ocho aparatos invertidos o desplazados por la conversión automática (965, 1070, 1144, 1283Acot, 1378, 1530, 1575 y 1674). Se conserva deliberadamente 1444 con «quites» como lemma crítico frente a «quita» de O.</change>
@@ -2731,10 +2732,6 @@
             <lem wit="#O">Mendoza entre</lem>
             <rdg wit="#Z #M #S1 #S2 #S3 #Har">Sale Mendoza</rdg>
           </app>
-          <app n="1575" corresp="#fn145">
-            <lem wit="#O">Mendoza entre</lem>
-            <rdg wit="#Z #M #S1 #S2 #S3 #Har">Sale Mendoza</rdg>
-          </app>
         </stage>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -3685,7 +3682,7 @@
           <l n="1575" xml:id="l_1575_x_781">hice locuras, y llamé la muerte…</l>
           <l n="1576" xml:id="l_1576_x_782">pero jamás <app n="1575" corresp="#fn138"><lem wit="#O">en</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">a</rdg></app> quien la llama advierte.</l>
         </sp>
-        <stage>Mendoza entre</stage>
+        <stage><app n="1575Acot" corresp="#fn145"><lem wit="#O">Mendoza entre</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Sale Mendoza</rdg></app></stage>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
           <l n="1577" xml:id="l_1577_x_783" corresp="#fn139">Bien me podéis dar mil palos</l>
