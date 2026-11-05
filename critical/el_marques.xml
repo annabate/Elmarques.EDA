@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 601-700. Se integran las variantes textuales y escénicas de la recensio O, Z, M, S1, S2 y S3 y se representan mediante aparatos de speaker las redistribuciones de parlamentos en 649, 661, 669, 674-679 y 688. Las lecturas de Palatina indicadas aisladamente en la fuente no se incorporan al aparato crítico.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 521-600. Se modelan como omisiones por intervalo los vv. 523-532 (Z, M, S1, S3) y 563-572 (Z, M, S1, S2, S3), se actualizan las variantes de los vv. 538-585 y se divide estructuralmente el parlamento de Gerarda para representar la atribución de los vv. 593-594 a Laurencia en la tradición impresa.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 421-520, contrastando también el lemma con AA_TEXTO_APARATO_2(4).docx. Se corrigen lecturas de base («andarse», «que sólo», «ausencia», «y si ella», «aposentos»), se modelan las omisiones 473-475 (M) y 479-496 (tradición impresa), y se integran variantes textuales, escénicas y de distribución versal. El locus de atribución 453, cuyo registro asigna Z simultáneamente a ambas lecturas, queda pendiente de resolución específica.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 261-420, desde AA_TEXTO_APARATO_2(4).docx. Se elimina la antigua omisión 351-359 vinculada a P, se actualizan las redistribuciones de parlamentos y las variantes de Z, M, S1, S2 y S3, y se codifica la acotación añadida tras el v. 295.</change>
@@ -1300,29 +1301,29 @@
           <l n="599">que te envíe un coche, que esta</l>
           <l n="600">es la mejor invención</l>
           <l n="601">para que tome ocasión</l>
-          <l n="602">y te la de su respuesta.</l>
+          <l n="602">y <app n="602"><lem wit="#O">te la</lem><rdg wit="#Z #M #S2 #S3">se la</rdg><rdg wit="#S1">se le</rdg></app> de su respuesta.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="603">Es notable atrevimiento</l>
           <l n="604">para una mujer que está</l>
           <l n="605">como en las vísperas ya</l>
-          <l n="606">de este necio casamiento;</l>
-          <l n="607">y bien sé yo que tu intento</l>
+          <l n="606">de este <app n="606"><lem wit="#O">necio</lem><rdg wit="#Z #M #S1 #S2 #S3">negro</rdg></app> casamiento;</l>
+          <l n="607"><app n="607"><lem wit="#O">y</lem><rdg wit="#Z #M #S1 #S2 #S3">Que</rdg></app> bien sé yo que tu intento</l>
           <l n="608">de ver la fiesta ha nacido...</l>
         </sp>
         <sp who="#Gerarda">
           <speaker>Gerarda</speaker>
           <l n="609">Engáñaste, que no ha sido</l>
-          <l n="610">más que la pena de verte.</l>
+          <l n="610">más <app n="610"><lem wit="#O">que</lem><rdg wit="#Z #M #S1 #S2 #S3">de</rdg></app> la pena de verte.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="611">Ahora bien, yo estoy de suerte</l>
-          <l n="612">que de cuanto soy me olvido.</l>
+          <l n="612">que de cuanto soy me <app n="612"><lem wit="#O #Z #M #S2 #S3">olvido</lem><rdg wit="#S1">obligo</rdg></app>.</l>
           <l part="I" n="613">Clara...</l>
         </sp>
-        <stage>Clara entre</stage>
+        <stage><app n="613Acot"><lem wit="#O">Clara entre</lem><rdg wit="#Z #M #S1 #S2 #S3">Sale Clara</rdg></app></stage>
         <sp who="#Clara">
           <speaker>Clara</speaker>
           <l part="M">Señora...</l>
@@ -1338,21 +1339,21 @@
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
-          <l n="615">Tú respondiste más bien.</l>
+          <l n="615">Tú respondiste <app n="615"><lem wit="#O">más</lem><rdg wit="#Z #M #S1 #S2 #S3">muy</rdg></app> bien.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="616">Deseo servirte en más.</l>
+          <l n="616">Deseo servirte<app n="616"><lem wit="#O"> en</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> más.</l>
         </sp>
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="617">A buscar un coche vas</l>
-          <l part="I" n="618">para ver las fiestas.</l>
+          <l part="I" n="618">para ver <app n="618"><lem wit="#O">las fiestas</lem><rdg wit="#Z #M #S1 #S2 #S3">la fiesta</rdg></app>.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
           <l part="F">Creo</l>
-          <l n="619">que me has hurtado el deseo.</l>
+          <l n="619">que me has <app n="619"><lem wit="#O">hurtado</lem><rdg wit="#Z #M #S1 #S2 #S3">leído</rdg></app> el deseo.</l>
           <l part="I" n="620">¿Es a don Filipe?</l>
         </sp>
         <sp who="#Laurencia">
@@ -1367,7 +1368,7 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="623">Pero pienso que es locura;</l>
-          <l part="I" n="624">no le pongas.</l>
+          <l part="I" n="624">no <app n="624"><lem wit="#O">le</lem><rdg wit="#Z #M #S1 #S2 #S3">lo</rdg></app> pongas.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
@@ -1377,7 +1378,7 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l part="F">Pienso yo</l>
-          <l n="626">que es mucha descompostura.</l>
+          <l n="626">que es mucha <app n="626"><lem wit="#O">descompostura</lem><rdg wit="#Z #M #S1 #S2 #S3">desenvoltura</rdg></app>.</l>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
@@ -1390,8 +1391,8 @@
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l n="630">Que tú le puedes honrar</l>
-          <l n="631">y el sol se le puede dar</l>
+          <l n="630"><app n="630"><lem wit="#O">Que</lem><rdg wit="#Z #M #S1 #S2 #S3">Y</rdg></app> tú le puedes honrar</l>
+          <l n="631"><app n="631"><lem wit="#O">y</lem><rdg wit="#Z #M #S1 #S2 #S3">que</rdg></app> el sol se le puede dar</l>
           <l n="632">a una principal mujer.</l>
         </sp>
         <sp who="#Laurencia">
@@ -1400,17 +1401,17 @@
           <l n="634">que me has tener en poco!</l>
           <l n="635">Mira, pensamiento loco,</l>
           <l n="636">que te vas tras el deseo.</l>
-          <l n="637">Pero tan dichoso empleo</l>
-          <l n="638">hace el error en que he dado</l>
+          <l n="637"><app n="637"><lem wit="#O">Pero tan dichoso</lem><rdg wit="#Z #M #S1 #S2 #S3">mas tan venturoso</rdg></app> empleo</l>
+          <l n="638"><app n="638"><lem wit="#O">hace el error en que he dado</lem><rdg wit="#Z #M #S1 #S2 #S3">hace crecer un cuidado</rdg></app></l>
           <l n="639">disculpado, y aun honrado,</l>
           <l n="640">que no puede haber error</l>
           <l n="641">en las locuras de amor,</l>
           <l n="642">si es amor bien empleado.</l>
         </sp>
-        <stage>Don Enrique y don Filipe con borceguíes y acicates, y el Marqués</stage>
+        <stage><app n="642Acot"><lem wit="#O">Don Enrique y don Filipe con borceguíes y acicates, y el Marqués</lem><rdg wit="#Z #M #S1 #S2 #S3">Vanse y salen el Marqués, Enrique y don Felipe</rdg></app></stage>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="643">¿Con qué caballo entraréis?</l>
+          <l n="643">¿<app n="643"><lem wit="#O">Con</lem><rdg wit="#Z #M #S1 #S2 #S3">En</rdg></app> qué caballo entraréis?</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Felipe</speaker>
@@ -1418,7 +1419,7 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="645">Bravo de entrada es el viento,</l>
+          <l n="645"><app n="645"><lem wit="#O #Z #M #S2 #S3">Bravo</lem><rdg wit="#S1">Clavo</rdg></app> de entrada es el viento,</l>
           <l n="646">entre sus alas iréis.</l>
           <l part="I" n="647">¿Tú, Enrique?</l>
         </sp>
@@ -1428,12 +1429,12 @@
           <l n="648">por mejor para la entrada.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker>Marqués</speaker>
-          <l part="I" n="649">¿Y agora?</l>
+          <speaker><app n="649Per-a"><lem wit="#O">Marqués</lem><rdg wit="#Z #M #S1 #S2 #S3">Enrique</rdg></app></speaker>
+          <l part="I" n="649"><app n="649a"><lem wit="#O">¿Y agora?</lem><rdg wit="#Z #M #S1 #S2 #S3">Y agora</rdg></app></l>
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l part="F">El bayo me agrada.</l>
+          <l part="F"><app n="649b"><lem wit="#O">El bayo me agrada</lem><rdg wit="#Z #M #S1 #S2 #S3">el bayo me enfada</rdg></app>.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
@@ -1444,7 +1445,7 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l part="F">Llevo</l>
-          <l part="I" n="653">el castaño.</l>
+          <l part="I" n="653">el <app n="653"><lem wit="#O #Z #M #S2">castaño</lem><rdg wit="#S1 #S3">castigo</rdg></app>.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
@@ -1461,14 +1462,14 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="655">Llégase mejor al toro,</l>
-          <l n="656">y luce mucho adornado</l>
-          <l n="657">de aquel jaez encarnado,</l>
-          <l n="658">nielado de plata y oro.</l>
-          <l n="659">No dejó en Andalucía</l>
-          <l n="660">caballos el del Algaba.</l>
+          <l n="656">y <app n="656"><lem wit="#O">luce mucho</lem><rdg wit="#Z #M #S1 #S2 #S3">le hace más</rdg></app> adornado</l>
+          <l n="657"><app n="657"><lem wit="#O">de</lem><rdg wit="#Z #M #S1 #S2 #S3"/></app> aquel jaez encarnado,</l>
+          <l n="658"><app n="658"><lem wit="#O">nielado</lem><rdg wit="#Z #M #S1 #S2 #S3">mezclado</rdg></app> de plata y oro.</l>
+          <l n="659">No dejó <app n="659"><lem wit="#O">en Andalucía</lem><rdg wit="#Z #M #S1 #S2 #S3">en la Andalucía</rdg></app></l>
+          <l n="660">caballos el del <app n="660"><lem wit="#O #Z #S1 #S2 #S3">Algaba</lem><rdg wit="#M">Aljaba</rdg></app>.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker>Marqués</speaker>
+          <speaker><app n="661Per"><lem wit="#O">Marqués</lem><rdg wit="#Z #M #S1 #S2 #S3">Enrique</rdg></app></speaker>
           <l n="661">El de Palma tiene brava</l>
           <l part="I" n="662">cuadirilla.</l>
         </sp>
@@ -1478,7 +1479,7 @@
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="663">Salen Ásculi y Pastrana,</l>
+          <l n="663">Salen <app n="663"><lem wit="#O">Ásculi</lem><rdg wit="#Z #M #S2 #S3">Asquili</rdg><rdg wit="#S1">Asquil</rdg></app> y Pastrana,</l>
           <l n="664">que se va el mundo tras ellos.</l>
         </sp>
         <sp who="#Filipe">
@@ -1487,27 +1488,27 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="666">Eso se sabrá mañana,</l>
-          <l n="667">pues —por Dios— que Castañeda</l>
-          <l n="668">no sufre ventaja al sol.</l>
+          <l n="666">Eso se <app n="666"><lem wit="#O">sabrá</lem><rdg wit="#Z #M #S2 #S3">verá</rdg><rdg wit="#S1">vará</rdg></app> mañana,</l>
+          <l n="667">pues —por Dios— que <app n="667"><lem wit="#O">Castañeda</lem><rdg wit="#Z #M #S1 #S2 #S3">el de Maqueda</rdg></app></l>
+          <l n="668">no <app n="668"><lem wit="#O">sufre</lem><rdg wit="#Z #M #S1 #S2 #S3">admite</rdg></app> ventaja al sol.</l>
         </sp>
         <sp who="#Filipe">
-          <speaker>Filipe</speaker>
+          <speaker><app n="669Per"><lem wit="#O">Filipe</lem><rdg wit="#Z #M #S1 #S2 #S3">Enrique</rdg></app></speaker>
           <l n="669">Es un bizarro español.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <l n="670">Pero ¿dónde se nos queda</l>
+          <l n="670">Pero ¿dónde <app n="670"><lem wit="#O #Z #M #S2 #S3">se nos</lem><rdg wit="#S1">senor</rdg></app> queda</l>
           <l n="671">aquel Alba que amanece</l>
           <l n="672">con tan estendidos rayos</l>
-          <l n="673">que al mismo sol dan desmayos?</l>
+          <l n="673">que al mismo sol <app n="673"><lem wit="#O">dan</lem><rdg wit="#Z #M #S1 #S2 #S3">da</rdg></app> desmayos?</l>
         </sp>
         <sp who="#Enrique">
-          <speaker>Enrique</speaker>
-          <l n="674">Donde él mismo resplandece.</l>
+          <speaker><app n="674Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3">Marqués</rdg></app></speaker>
+          <l n="674"><app n="674"><lem wit="#O">Donde</lem><rdg wit="#Z #M #S1 #S2 #S3">cuando</rdg></app> él mismo resplandece.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker>Marqués</speaker>
+          <speaker><app n="675Per"><lem wit="#O">Marqués</lem><rdg wit="#Z #M #S1 #S2 #S3">Enrique</rdg></app></speaker>
           <l n="675">Pienso que sale con él</l>
           <l n="676">el duque de Franca Vila.</l>
         </sp>
@@ -1516,36 +1517,36 @@
           <l part="I" n="677">¿Qué hay de Peñafiel?</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker>Marqués</speaker>
-          <l part="F">Que afila</l>
-          <l n="678">rayos de Marte por él.</l>
+          <speaker><app n="677Per"><lem wit="#O">Marqués</lem><rdg wit="#Z #M #S1 #S2 #S3">Enrique</rdg></app></speaker>
+          <l part="F">Que <app n="677"><lem wit="#O">afila</lem><rdg wit="#Z #M #S1 #S2 #S3">cela</rdg></app></l>
+          <l n="678"><app n="679"><lem wit="#O">rayos de Marte por él</lem><rdg wit="#Z #M #S1 #S2 #S3">sus rayos Marte para él</rdg></app>.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker>Enrique</speaker>
+          <speaker><app n="679Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3">Filipe</rdg></app></speaker>
           <l n="679">Es don Juan el mismo Marte.</l>
-          <l part="I" n="680">¿Sale el de Pradas?</l>
+          <l part="I" n="680">¿Sale el de <app n="680"><lem wit="#O">Pradas</lem><rdg wit="#Z #M #S1 #S2 #S3">Prada</rdg></app>?</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
           <l part="F">Saldrá</l>
-          <l n="681">con que ninguno tendrá</l>
+          <l n="681"><app n="681"><lem wit="#O">con que</lem><rdg wit="#Z #M #S1 #S2 #S3">aunque</rdg></app> ninguno tendrá</l>
           <l n="682">en las galas mayor parte.</l>
           <l n="683">Tiene el conde de Melgar,</l>
           <l n="684">como hijo del almirante,</l>
-          <l n="685">el mundo en hombros, Atlante,</l>
-          <l n="686">que le podrá sustentar.</l>
+          <l n="685"><app n="685"><lem wit="#O">el mundo en hombros, Atlante</lem><rdg wit="#Z #M #S1 #S2 #S3">al mundo en hombros de Atlante</rdg></app>,</l>
+          <l n="686">que le <app n="686"><lem wit="#O">podrá</lem><rdg wit="#Z #M #S1 #S2 #S3">sabrá</rdg></app> sustentar.</l>
           <l n="687">¡Qué bizarro caballero!</l>
         </sp>
         <sp who="#Enrique">
-          <speaker>Enrique</speaker>
+          <speaker><app n="688Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3">Marqués</rdg></app></speaker>
           <l n="688">La fiesta ha de ser famosa.</l>
         </sp>
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
-          <l n="689">Si aquella ninfa amorosa</l>
+          <l n="689">Si aquella ninfa <app n="689"><lem wit="#O">amorosa</lem><rdg wit="#Z #M #S1 #S2 #S3">hermosa</rdg></app></l>
           <l n="690">por quien desde anoche muero</l>
           <l n="691">me prestara algún favor,</l>
-          <l n="692">yo sé, Marqués, lo que hiciera.</l>
+          <l n="692"><app n="692"><lem wit="#O #Z #M #S2 #S3">yo sé</lem><rdg wit="#S1">no sé</rdg></app>, Marqués, lo que hiciera.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
@@ -1571,7 +1572,7 @@
         <sp who="#Filipe">
           <speaker>Filipe</speaker>
           <l n="697">No es la jornada tan corta,</l>
-          <l n="698">que es muy noble y muy crüel.</l>
+          <l n="698"><app n="698"><lem wit="#O">que es muy noble y muy crüel</lem><rdg wit="#Z #M #S1 #S2 #S3">es muy bella y muy cruel</rdg></app>.</l>
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
