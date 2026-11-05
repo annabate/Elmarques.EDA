@@ -32,6 +32,7 @@
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Se resuelven diecisiete loci estructurales del acto II mediante variantes de speaker y redistribución controlada de versos partidos. La reconstrucción de testigos fusiona ahora parlamentos consecutivos del mismo personaje.</change>
       <change when="2026-11-05">Se resuelven la variante «a tormentarme/a atormentarme», la variante «agora/ahora» y el bloque de transmisión 1394–1401, modelado por verso para representar la omisión más extensa de M sin solapar intervalos; se retira asimismo un locus duplicado ya codificado inline.</change>
       <change when="2026-11-05">Se resuelven cinco loci escénicos del acto II: dos acotaciones añadidas en la tradición impresa, la acotación nocturna, la variante «luego/presto» con «Meten mano» y el cierre del acto con «Vanse» y variantes de colofón.</change>
       <change when="2026-11-05">Se integran dieciséis variantes textuales simples, seis variantes de atribución y una omisión adicional del acto II; se elimina además del registro de revisión un locus de atribución ya codificado inline.</change>
@@ -1929,7 +1930,7 @@
           <l n="838" xml:id="l_838_x_1">Yo no la he visto mejor.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn4">Enrique</speaker>
+          <speaker corresp="#fn4"><app n="839-840Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
           <l n="839" xml:id="l_839_x_2" corresp="#fn4">Cuanto ha querido el <app n="839" corresp="#fn13"><lem wit="#O #Z">valor</lem><rdg wit="#M #S1 #S2 #S3 #Har">honor</rdg></app>,</l>
           <l n="840" xml:id="l_840_x_3">la esperanza <app n="840" corresp="#fn13"><lem wit="#O">se ha lucido</lem><rdg wit="#Z #M #S2 #S3">lo ha sufrido</rdg><rdg wit="#S1 #Har">ha conseguido</rdg></app>.</l>
         </sp>
@@ -1968,7 +1969,7 @@
           <l n="849" xml:id="l_849_x_12"><app n="849"><lem wit="#O">Puede</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Pueden</rdg></app> con mucha razón.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn9">Enrique</speaker>
+          <speaker corresp="#fn9"><app n="850Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
           <l n="850" xml:id="l_850_x_13" corresp="#fn9">El Marqués pienso que viene.</l>
         </sp>
         <stage corresp="#fn10">
@@ -2056,7 +2057,7 @@
           <pb type="folio" n="2r"/>
         </sp>
         <sp who="#Filipe">
-          <speaker>Filipe</speaker>
+          <speaker><app n="886Per"><lem wit="#O #S3 #Har">Filipe</lem><rdg wit="#Z #M #S1 #S2">Enrique</rdg></app></speaker>
           <l n="885" xml:id="l_885_I_50" part="I">¿Los toros?</l>
         </sp>
         <sp who="#Mendoza">
@@ -2240,16 +2241,16 @@
           <l n="991" xml:id="l_991_x_158">Las hachas están aquí.</l>
         </sp>
         <sp who="#Filipe">
-          <speaker>Filipe</speaker>
-          <l n="992" xml:id="l_992_x_159">Hasme dado un gran pesar.</l>
+          <speaker><app n="993Per"><lem wit="#O">Filipe</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Mendoza</rdg></app></speaker>
+          <l n="992" xml:id="l_992_x_159"><app n="993"><lem wit="#O">Hasme dado un gran pesar</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Que se cansan de aguardar</rdg></app>.</l>
         </sp>
         <sp who="#Mendoza">
-          <speaker>Mendoza</speaker>
-          <l n="993" xml:id="l_993_I_160" part="I">¿Yo qué he dicho?</l>
+          <speaker><app n="994PerA"><lem wit="#O">Mendoza</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Enrique</rdg></app></speaker>
+          <l n="993" xml:id="l_993_I_160" part="I"><app n="994a"><lem wit="#O">¿Yo qué he dicho?</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Ahora bien, señores,</rdg></app></l>
         </sp>
         <sp who="#Enrique">
           <speaker>Enrique</speaker>
-          <l n="993" xml:id="l_993_F_161" part="F" corresp="#fn44">Ahora bien, vamos,</l>
+          <l n="993" xml:id="l_993_F_161" part="F" corresp="#fn44"><app n="994b"><lem wit="#O">Ahora bien, vamos,</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">vamos,</rdg></app></l>
           <l n="994" xml:id="l_994_x_162">que este novio no vendrá</l>
           <l n="995" xml:id="l_995_I_163" part="I">tan presto.</l>
         </sp>
@@ -2397,7 +2398,7 @@
           <l n="1059" xml:id="l_1059_I_231" part="I">¡Bravas finezas!</l>
         </sp>
         <sp who="#Gerarda">
-          <speaker>Gerarda</speaker>
+          <speaker><app n="1060Per"><lem wit="#O">Gerarda</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Laurencia</rdg></app></speaker>
           <l n="1059" xml:id="l_1059_F_232" part="F">¡Estrañas!</l>
         </sp>
         <sp who="#Clara">
@@ -2434,6 +2435,9 @@
           <l n="1071" xml:id="l_1071_x_244">Luego que <app n="1072" corresp="#fn57"><lem wit="#O">a la puerta</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">en la calle</rdg></app> os vi,</l>
           <l n="1072" xml:id="l_1072_x_245">en la persona y el traje</l>
           <l n="1073" xml:id="l_1073_x_246">conocí que érades vos,</l>
+        </sp>
+        <sp who="#Ludovico">
+          <speaker><app n="1075Per"><lem wit="#O">Ludovico</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></speaker>
           <l n="1074" xml:id="l_1074_x_247">sin acabar de apearme.</l>
         </sp>
         <sp who="#Leonardo">
@@ -2475,10 +2479,13 @@
           <l n="1085" xml:id="l_1085_x_259">licencia de que os las bese.</l>
         </sp>
         <sp who="#Laurencia">
-          <speaker>Laurencia</speaker>
+          <speaker><app n="1087-1089Per"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></speaker>
           <l n="1086" xml:id="l_1086_x_260" corresp="#fn57">Vuesa merced no se espante</l>
           <l n="1087" xml:id="l_1087_x_261">de que <app n="1088" corresp="#fn60"><lem wit="#O">su presta</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">en aquesta</rdg></app> venida</l>
           <l n="1088" xml:id="l_1088_x_262">me turbe y vergüenza cause.</l>
+        </sp>
+        <sp who="#Laurencia">
+          <speaker>Laurencia</speaker>
           <l n="1089" xml:id="l_1089_x_263">(Nunca, Gerarda, viniera;</l>
           <stage type="aside">Aparte</stage>
           <l n="1090" xml:id="l_1090_I_264" part="I">temblando estoy.)</l>
@@ -2571,7 +2578,7 @@
           <l n="1111" xml:id="l_1111_x_288">¡Aparta, aparta, aparta!</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker corresp="#fn59">Marqués</speaker>
+          <speaker corresp="#fn59"><app n="1113-1114Per"><lem wit="#O #Z #S1 #S2 #S3 #Har">Marqués</lem><rdg wit="#M">Padre</rdg></app></speaker>
           <l n="1112" xml:id="l_1112_x_289" corresp="#fn59 #fn60">Más que en la tierra, en el aire</l>
           <l n="1113" xml:id="l_1113_x_290">pone los pies Pensamiento.</l>
         </sp>
@@ -2917,7 +2924,10 @@
           <l n="1231" xml:id="l_1231_x_420" corresp="#fn73">Y con suertes admirables</l>
           <l n="1232" xml:id="l_1232_x_421">el gran conde de Melgar,</l>
           <l n="1233" xml:id="l_1233_x_422">sucesor del almirante.</l>
-          <l n="1234" xml:id="l_1234_x_423">Pastrana es príncipe insigne.</l>
+        </sp>
+        <sp who="#Leonardo">
+          <speaker><app n="1234Per"><lem wit="#O #S2 #S3">Leonardo</lem><rdg wit="#Z #M #S1 #Har">Padre</rdg></app></speaker>
+          <l n="1234" xml:id="l_1234_x_423"><app n="1234"><lem wit="#O">Pastrana es príncipe insigne</lem><rdg wit="#Z #M #S2 #Har">Pastrana príncipe ilustre</rdg><rdg wit="#S1 #S3">Pastrana príncipe</rdg></app>.</l>
         </sp>
         <sp who="#Ludovico">
           <speaker>Ludovico</speaker>
@@ -3014,8 +3024,9 @@
           <l n="1271" xml:id="l_1271_x_464">El cielo, <app n="1271" corresp="#fn81"><lem wit="#O">señora</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">señor</rdg></app>, os guarde.</l>
         </sp>
         <sp who="#Laurencia">
-          <speaker>Laurencia</speaker>
+          <speaker><app n="1272Per"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></speaker>
           <l n="1272" xml:id="l_1272_x_465">Y os dé lo que deseáis.</l>
+          <app type="addition" n="1272Acot"><lem wit="#O #Z #M #S1 #S2 #S3"/><rdg wit="#Har"><add><stage>Vanse Leonardo y Antonio</stage></add></rdg></app>
         </sp>
         <sp who="#Ludovico">
           <speaker>
@@ -3031,11 +3042,12 @@
         <sp who="#Laurencia">
           <speaker>Laurencia</speaker>
           <l n="1275" xml:id="l_1275_x_468">Solicita que descanse</l>
-          <l n="1276" xml:id="l_1276_I_469" part="I" corresp="#fn80">Gerarda, señor.</l>
+          <l n="1276" xml:id="l_1276_I_469" part="I" corresp="#fn80"><app n="1276a"><lem wit="#O">Gerarda, señor.</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">señor, Gerarda.</rdg></app></l>
         </sp>
         <sp who="#Ludovico">
-          <speaker>Ludovico</speaker>
-          <l n="1276" xml:id="l_1276_F_470" part="F">Adiós.</l>
+          <speaker><app n="1276Per"><lem wit="#O">Ludovico</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Gerarda</rdg></app></speaker>
+          <l n="1276" xml:id="l_1276_F_470" part="F"><app n="1276b"><lem wit="#O">Adiós.</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Sí haré.</rdg></app></l>
+          <app type="addition" n="1276Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Sale Clara</stage></add></rdg></app>
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
@@ -3175,11 +3187,14 @@
           <app type="addition" n="1333Acot"><lem wit="#O"/><rdg wit="#Z #M #S1 #S2 #S3 #Har"><add><stage>Saca la daga</stage></add></rdg></app>
           <l n="1334" xml:id="l_1334_x_529">¿Tú, infame? ¿Tú conmigo?</l>
           <l n="1335" xml:id="l_1335_x_530">¿Piensas que <app n="1335" corresp="#fn91"><lem wit="#O">de esa suerte</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">así tu agravio</rdg></app> se remedia</l>
-          <l n="1336" xml:id="l_1336_I_531" part="I">tu engaño?</l>
+        </sp>
+        <sp who="#Bernardo">
+          <speaker><app n="1336PerA"><lem wit="#O">Bernardo</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Feliciana</rdg></app></speaker>
+          <l n="1336" xml:id="l_1336_I_531" part="I"><app n="1336a"><lem wit="#O">tu engaño?</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Oye, cruel</rdg></app></l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l n="1336" xml:id="l_1336_F_532" part="F" corresp="#fn90">¡Oh, crüel Leonardo!</l>
+          <l n="1336" xml:id="l_1336_F_532" part="F" corresp="#fn90"><app n="1336b"><lem wit="#O">¡Oh, crüel Leonardo!</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
@@ -3261,10 +3276,13 @@
           <speaker>Feliciana</speaker>
           <l n="1352" xml:id="l_1352_F_552" part="F" corresp="#fn93"><app n="1351" corresp="#fn95"><lem wit="#O #Z #M #S2 #S3 #Har">Si no fuera</lem><rdg wit="#O #Z #M #S1 #S2 #S3">Si no S1;  que por disculpa</rdg><rdg wit="#Har">por disculpa que</rdg></app></l>
           <l n="1353" xml:id="l_1353_x_553">que por disculpa vale,</l>
+        </sp>
+        <sp who="#Feliciana">
+          <speaker><app n="1353Per"><lem wit="#O">Feliciana</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Padre</rdg></app></speaker>
           <l n="1354" xml:id="l_1354_x_554"><app n="1352" corresp="#fn95"><lem wit="#O">sola, desesperada y forastera</lem><rdg wit="#Z #M #S2 #Har">sola, mujer, vendida, y forastera</rdg><rdg wit="#S1 #S3">sola, mujer, venida, y forastera</rdg></app>.</l>
         </sp>
         <sp who="#Laurencia">
-          <speaker>Laurencia</speaker>
+          <speaker><app n="1354-1355Per"><lem wit="#O">Laurencia</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Padre</rdg></app></speaker>
           <l n="1355" xml:id="l_1355_x_555">¿<app n="1354" corresp="#fn95"><lem wit="#O">De qué os ha procedido</lem><rdg wit="#Z #M #S2 #S3 #Har">De dónde os ha venido</rdg><rdg wit="#S1">De dónde os ha venido tanta</rdg></app></l>
           <pb type="folio" n="10v"/>
           <l n="1356" xml:id="l_1356_I_556" part="I"><app n="1355" corresp="#fn95"><lem wit="#O">tan gran desdicha</lem><rdg wit="#Z #M #S2 #S3 #Har">tanta desdicha</rdg><rdg wit="#S1">desdicha</rdg></app>?</l>
@@ -3670,8 +3688,8 @@
           <l n="1580" xml:id="l_1580_x_786"><app n="1579" corresp="#fn145"><lem wit="#O">Tenemos que no tenemos</lem><rdg wit="#Z #M #S1 #S2 #S3">Tenemos que más queremos</rdg><rdg wit="#Har">Tenemos más que queremos</rdg></app>.</l>
         </sp>
         <sp who="#Enrique">
-          <speaker corresp="#fn141">Enrique</speaker>
-          <l n="1581" xml:id="l_1581_I_787" part="I" corresp="#fn141">¿Cómo ansí?</l>
+          <speaker corresp="#fn141"><app n="1580Per"><lem wit="#O">Enrique</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Filipe</rdg></app></speaker>
+          <l n="1581" xml:id="l_1581_I_787" part="I" corresp="#fn141"><app n="1580"><lem wit="#O">¿Cómo ansí?</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">¿Cómo así?</rdg></app></l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -3860,7 +3878,7 @@
           <l n="1673" xml:id="l_1673_x_881">echen por esotra parte.</l>
         </sp>
         <sp who="#Antonio">
-          <speaker corresp="#fn163">Antonio</speaker>
+          <speaker corresp="#fn163"><app n="1673Per"><lem wit="#O">Antonio</lem><rdg wit="#Z #M #S1 #S2 #S3 #Har">Leonardo</rdg></app></speaker>
           <l n="1674" xml:id="l_1674_I_882" part="I" corresp="#fn163 #fn164">¿Cómo dijo?</l>
         </sp>
         <sp who="#Leonardo">
@@ -3969,62 +3987,11 @@
 </text>
 <standOff type="critical-review" xml:id="act2-critical-review">
     <listApp>
-      <app xml:id="capp005" n="839-840" type="text" corresp="#fn13">
-        <note type="conversion-review">en ZMS1S2S3 Har forman parte del parlamento anterior atribuido a Filipe</note>
-      </app>
-      <app xml:id="capp009" n="845-846" type="text" corresp="#fn13">
-        <note type="conversion-review">en ZMS1S2S3 Har forman parte del parlamento anterior atribuido a Filipe</note>
-      </app>
-      <app xml:id="capp013" n="850" type="text" corresp="#fn13">
-        <note type="conversion-review">en ZMS1S2S3 Har forma parte del parlamento anterior atribuido a Filipe</note>
-      </app>
-      <app xml:id="capp022" n="886" type="text" corresp="#fn27">
-        <note type="conversion-review">¿Los toros? en ZMS1S2  es atribuido a Enrique</note>
-      </app>
       <app xml:id="capp044" n="950" type="text" corresp="#fn42">
         <note type="conversion-review">de O : en ZMS1S2S3 Har</note>
       </app>
-      <app xml:id="capp059" n="993" type="text" corresp="#fn46">
-        <note type="conversion-review">Hasme dado un gran pesar O : Que se cansan de aguardar ZMS1S2S3 Har  forma parte del parlamento de Mendoza</note>
-      </app>
-      <app xml:id="capp060" n="994" type="text" corresp="#fn46">
-        <note type="conversion-review">Mendoza  ¿Yo qué he dicho? Enrique  Ahora bien, vamos O : Ahora bien, señores, vamos ZMS1S2S3 Har  pronunciado por completo por Enrique</note>
-      </app>
-      <app xml:id="capp079" n="1060" type="text" corresp="#fn57">
-        <note type="conversion-review">Laurencia  ¡Bravas finezas!  Gerarda  Estrañas. O : en ZMS1S2S3 Har se atribuye por completo a Laurencia</note>
-      </app>
-      <app xml:id="capp087" n="1075" type="text" corresp="#fn57">
-        <note type="conversion-review">en ZmS1S2S3 Har se atribuye a Leonardo</note>
-      </app>
-      <app xml:id="capp096" n="1087-1089" type="text" corresp="#fn57">
-        <note type="conversion-review">versos atribuidos a Leonardo en ZMS1S2S3Har</note>
-      </app>
       <app xml:id="capp107" n="1112" type="text" corresp="#fn60">
         <note type="conversion-review">¡Aparta, aparta, aparta! O : ¡Aparta, aparta! Padre  ¿Qué es esto? ZS1S2S3 Har  sigue a este verso la acotación «Dentro el Marqués»</note>
-      </app>
-      <app xml:id="capp108" n="1113-1114" type="text" corresp="#fn60">
-        <note type="conversion-review">en M forman parte del parlamento de Ludovico (Padre)</note>
-      </app>
-      <app xml:id="capp161" n="1234" type="text" corresp="#fn78">
-        <note type="conversion-review">Pastrana es príncipe insigne O : Pastrana príncipe ilustre ZMS2 Har : Pastrana príncipe S1S3;  en ZMS1 Har este verso se atribuye a Ludovico (Padre)</note>
-      </app>
-      <app xml:id="capp175" n="1272" type="text" corresp="#fn81">
-        <note type="conversion-review">en ZMS1S2S3  Har, forma parte del parlamento de Leonardo;  Har añade tras este verso la acotación «Vanse Leonardo y Antonio»</note>
-      </app>
-      <app xml:id="capp177" n="1276" type="text" corresp="#fn81">
-        <note type="conversion-review">Gerarda, señor. Ludovico  Adiós O : señor, Gerarda. Gerarda  Sí haré. ZMS1S2S3 Har  sigue en los impresos la acotación «Sale Clara»</note>
-      </app>
-      <app xml:id="capp198" n="1336" type="text" corresp="#fn91">
-        <note type="conversion-review">tu engaño? Feliciana ¡Oh, cruel Leonardo! O : Oye, cruel Leonardo ZMS1S2S3 Har  atribuido por entero a Feliciana</note>
-      </app>
-      <app xml:id="capp213" n="1353-1355" type="text" corresp="#fn95">
-        <note type="conversion-review">Sola… desdicha?  en ZMS1S2S3 Har este fragmento es pronunciado por Ludovico (Padre)</note>
-      </app>
-      <app xml:id="capp312" n="1580" type="text" corresp="#fn145">
-        <note type="conversion-review">¿Cómo ansí? O : ¿Cómo así?  ZMS1S2S3 Har; pronunciado por Filipe</note>
-      </app>
-      <app xml:id="capp351" n="1673" type="text" corresp="#fn169">
-        <note type="conversion-review">Antonio ¿Cómo dijo? Leonardo ¡Bueno es esto! O : en ZMS1S2S3 Har el verso es pronunciado enteramente por Leonardo</note>
       </app>
       <app xml:id="capp360" n="1689-1692" type="text" corresp="#fn171">
         <note type="conversion-review">en ZMS1S2S3 Har estos versos aparecen tras el v.</note>
