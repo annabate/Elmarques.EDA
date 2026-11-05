@@ -253,6 +253,24 @@
       const markerLabel = seq ? `${layer}, fase ${seq}` : layer;
       marker.setAttribute("aria-label", markerLabel);
 
+      // Material placement is independent of the genetic layer.
+      // Display a tooltip only when the TEI explicitly records a margin.
+      const additions = Array.from(mod.querySelectorAll("tei-add"));
+      additions.forEach((addition) => {
+        const place = (attr(addition, "place") || "").toLowerCase().trim();
+        const tokens = place.split(/[\\s,;]+/);
+        const left = tokens.some((token) => ["left", "margin-left", "left-margin"].includes(token));
+        const right = tokens.some((token) => ["right", "margin-right", "right-margin"].includes(token));
+        if (left === right) return;
+        const label = left
+          ? "Añadido en el margen izquierdo"
+          : "Añadido en el margen derecho";
+        addition.classList.add("marginal-addition");
+        addition.dataset.marginSide = left ? "left" : "right";
+        addition.setAttribute("title", label);
+        addition.setAttribute("aria-label", label);
+      });
+
       const addReading = directChild(mod, "add");
       const delReading = directChild(mod, "del");
       const type = attr(mod, "type").toLowerCase();
