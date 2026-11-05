@@ -27,11 +27,10 @@
         <witness xml:id="S2">Primera suelta de la British Library.</witness>
         <witness xml:id="S3">Segunda suelta de la British Library.</witness>
         <witness xml:id="Har">Edición de Hartzenbusch.</witness>
-        <witness xml:id="E" type="legacy">Sigla heredada de la codificación antigua del acto I: Parte VIII de Escogidas; pendiente de normalización en el aparato del acto I.</witness>
-        <witness xml:id="P" type="legacy">Sigla heredada de la codificación antigua del acto I: copia de la Biblioteca Palatina de Parma; pendiente de normalización en el aparato del acto I.</witness>
       </listWit>
     </encodingDesc>
   <revisionDesc>
+      <change when="2026-11-05">Tras la normalización integral del acto I, se retiran del listWit las siglas legacy E y P, ya sin referencias en el aparato. La siglatura crítica queda unificada en O, Z, M, S1, S2, S3 y Har.</change>
       <change when="2026-11-05">Se completa la normalización del aparato crítico del acto I hasta el v. 836. Se integran las variantes de los vv. 702-831, la omisión 733-736, las variantes de la carta tras el v. 778, la redistribución estructural del v. 830 y el colofón. Cuatro loci (251, 260, 453 y 740) se conservan en standOff de revisión por insuficiencia o contradicción de la fuente editorial.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 601-700. Se integran las variantes textuales y escénicas de la recensio O, Z, M, S1, S2 y S3 y se representan mediante aparatos de speaker las redistribuciones de parlamentos en 649, 661, 669, 674-679 y 688. Las lecturas de Palatina indicadas aisladamente en la fuente no se incorporan al aparato crítico.</change>
       <change when="2026-11-05">Se normaliza el aparato crítico del acto I, vv. 521-600. Se modelan como omisiones por intervalo los vv. 523-532 (Z, M, S1, S3) y 563-572 (Z, M, S1, S2, S3), se actualizan las variantes de los vv. 538-585 y se divide estructuralmente el parlamento de Gerarda para representar la atribución de los vv. 593-594 a Laurencia en la tradición impresa.</change>
