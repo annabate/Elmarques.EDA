@@ -161,7 +161,7 @@
 <sp>
 <speaker>Feli</speaker>
 <lg>
-<l n="15">Y ¿cuándo <mod xml:id="g034" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">ser</del></mod>darás la vuelta? </l>
+<l n="15">Y ¿cuándo <mod xml:id="g034" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">ser</del></mod>darás la vuelta? </l>
 </lg
 ></sp>
 <sp>
@@ -185,7 +185,7 @@
 <speaker>Feli</speaker>
 <lg>
 <l n="27">Ya ¿de qué sirven cautelas?</l>
-<l n="28"><mod xml:id="g035" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">si ha hecho</del></mod>Cuando mi desconfianza</l>
+<l n="28"><mod xml:id="g035" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">si ha hecho</del></mod>Cuando mi desconfianza</l>
 <l n="29">llega a mirar tu mudanza</l>
 <l n="30">con alas y con espuelas.</l>
 <l met="stanza" n="31"> A pleitos dices que vas,</l>
@@ -224,7 +224,7 @@
 <l n="63">o has de ser tan desdichado</l>
 <l n="64">que aun honra no has de tener;</l>
 <l n="65">que si os llegan a ofender</l>
-<l n="66">las propia — <mod xml:id="g037" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">a los más sabios</del><add ana="#layer-A1">como lo esperes</add></mod><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note></l>
+<l n="66">las propia — <mod xml:id="g037" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">a los más sabios</del><add ana="#layer-A1" n="2T">como lo esperes</add></mod><note>parece producirse un error de copia en los versos iniciales de la segunda parte de la décima. Lo más probable es que Lope anticipe por un despiste parte del verso  68 «y a los más nobles y sabios», lo que genera una secuencia incoherente y obliga a su corrección inmediata. Cabe, en segundo término, la hipótesis de un desajuste previo en la planificación métrica de la estrofa. En cualquier caso, la enmienda se realiza de forma instantánea durante el propio proceso de escritura.</note></l>
 <l n="67">aunque tan honrado eres―</l>
 <l n="68">y a los más nobles y sabios,</l>
 <l n="69">es por vengar los agravios</l>
@@ -255,7 +255,7 @@
 <l met="stanza" n="81"> ¡Plega al cielo —pues el cielo</l>
 <l n="82">fue de tu maldad testigo―</l>
 <l n="83">que a sus puertas, enemigo,</l>
-<l n="84">bañes <mod xml:id="g038" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">d</del></mod>con tu sangre el suelo!</l>
+<l n="84">bañes <mod xml:id="g038" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">d</del></mod>con tu sangre el suelo!</l>
 </lg>
 </sp>
 <stage>Bernardo entre.</stage>
