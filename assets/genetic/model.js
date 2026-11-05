@@ -231,6 +231,7 @@
           current.classList.add("marginal-group-line");
           current.dataset.marginGroup = groupId;
           current.dataset.marginLabel = label;
+          current.dataset.marginLayer = eventLayer(span) || "A2";
         }
         if (current === target || current.contains(target)) break;
         current = current.nextElementSibling;
