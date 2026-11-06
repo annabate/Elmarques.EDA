@@ -1827,7 +1827,7 @@
 <l n="634">que me has tener en poco!</l>
 <l n="635">Mira, pensamiento loco,</l>
 <l n="636">que te vas tras el deseo.</l>
-<l n="637">Pero tan dichoso empleo</l>
+<l n="637">Pero tan dicho<mod xml:id="g637" type="add" hand="#Lope" change="#stage-A2" ana="#layer-A2" seq="2"><add ana="#layer-A2" n="2T">so</add></mod> empleo</l>
 <l met="stanza" n="638"> hace el error en que he dado</l>
 <l n="639">disculpado, y aun honrado,</l>
 <pb type="folio" n="[Fol. 13r]"/>
@@ -2097,7 +2097,7 @@
 <lg>
 <l met="stanza" n="703"> Aquí están ya los rejones</l>
 <l n="704">que no ha de quedar por ellos</l>
-<l n="705">todos vienen amarillos, </l>
+<l n="705"><mod xml:id="g705" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">m</del></mod><seg n="2T">todos vienen amarillos,</seg> </l>
 <l n="706"><mod xml:id="g122" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">m</del></mod>que a los toros tienen miedo.</l>
 </lg>
 </sp>
