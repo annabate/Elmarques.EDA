@@ -700,7 +700,7 @@
 <l n="237">a don Filipe y mi hermano</l>
 <l n="238">alargo liberalmente,</l>
 <l n="239">que un preso no ha de tratar</l>
-<l n="240">de amor, pues no le consienten</l>
+<l n="240">de amor, <mod xml:id="g240-phase1" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">si</del></mod><seg n="2T">pues no le consienten</seg></l>
 <l n="241">libertad que le ofrecen</l>
 <l n="242">a la dama que tuviere.</l>
 </lg>
@@ -995,7 +995,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>
-<l n="360">¿<mod xml:id="g065" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">conciert</del></mod>Voluntades diferentes <note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note></l>
+<l n="360">¿<mod xml:id="g065" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">conciert</del></mod><seg n="2T">Voluntades diferentes</seg> <note>la intervención bien puede explicarse por un error de atracción en el acto de la copia por parte del Fénix, quien habría anticipado el inicio del verso siguiente, corrigiéndolo de inmediato la secuencia al advertir la incongruencia.</note></l>
 <l part="I" n="361">conciertan estrellas?</l>
 </lg>
 </sp>
