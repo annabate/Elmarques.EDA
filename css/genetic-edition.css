@@ -1307,3 +1307,21 @@ tei-addspan::after {
   font-weight: 400;
   margin-left: 0.025em;
 }
+
+/* Cumulative modes preserve earlier readings but reserve colour for
+   the intervention layer selected in the reconstruction menu. */
+.cumulative-reconstruction tei-mod.reconstruction-earlier > tei-add {
+  background: none !important;
+  box-shadow: none !important;
+}
+.cumulative-reconstruction tei-mod.reconstruction-earlier > tei-del {
+  background: none !important;
+  box-shadow: none !important;
+}
+.cumulative-reconstruction tei-mod.reconstruction-earlier {
+  background: none !important;
+  box-shadow: none !important;
+}
+.cumulative-reconstruction tei-mod.reconstruction-earlier .genetic-event-marker {
+  display: none;
+}
