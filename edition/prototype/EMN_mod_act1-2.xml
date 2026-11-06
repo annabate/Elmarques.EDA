@@ -1239,7 +1239,7 @@
 <speaker>Fili</speaker>
 <lg>   
 <l part="F" n="422">¡Que lleguen</l>
-<l n="423">para no <mod xml:id="g076" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">acabarse</del></mod> los males,<note>opinamos que la intervención puede deberse a un despiste del Fénix, quien copiaría el texto casi de memoria. Otra explicación, menos plausible, la atribuiría a un error métrico en la versión primitiva, lo que obligaría a suponer una lección original del tipo «para acabarse los bienes», con ruptura de la asonancia en -ee- requerida por el romance.</note></l>
+<l n="423">para no <mod xml:id="g076" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">acabarse</del></mod> los males,<note>opinamos que la intervención puede deberse a un despiste del Fénix, quien copiaría el texto casi de memoria. Otra explicación, menos plausible, la atribuiría a un error métrico en la versión primitiva, lo que obligaría a suponer una lección original del tipo «para acabarse los bienes», con ruptura de la asonancia en -ee- requerida por el romance.</note></l>
 <l n="424">para no durar los bienes!</l>
 </lg>
 </sp>
@@ -1272,7 +1272,7 @@
 <speaker>Men</speaker>
 <lg>   
 <l n="428">Tarde, señor, me previenes.</l>
-<l n="429"><mod xml:id="g080" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">Si er</unclear></del></mod> ¡Hola, Inés, si eres Inés,</l>
+<l n="429"><mod xml:id="g080" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><unclear cert="low">Si er</unclear></del></mod> ¡Hola, Inés, si eres Inés,</l>
 <l n="430">Juana, o como tú quisieres,</l>
 <l n="431">los nombres me has de decir!</l>
 </lg>
@@ -1282,7 +1282,7 @@
 <lg>   
 <l n="432">Aunque imposibles emprenden,</l>
  <pb type="folio" n="[Fol. 9r]"/>
-<l n="433"><mod xml:id="g081" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">a</del></mod> la mayor de ellas <mod xml:id="g082" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">llam</del></mod> se llama</l>
+<l n="433"><mod xml:id="g081" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">a</del></mod> la mayor de ellas <mod xml:id="g082" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">llam</del></mod> se llama</l>
 <l part="I" n="434">Laurencia.</l>
 </lg>
 </sp>
@@ -1304,7 +1304,7 @@
 <speaker>Me</speaker>
 <lg>    
 <l n="438">Y gerarquía celeste</l>
-<l n="439">se puede llamar,<mod xml:id="g083" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">tu nombre</del></mod> por Dios.</l>
+<l n="439">se puede llamar,<mod xml:id="g083" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">tu nombre</del></mod> por Dios.</l>
 <l n="440" part="I">¿Qué estado?</l>
 </lg>
 </sp>
@@ -1555,7 +1555,7 @@
 <l n="517">No sé, alguna cosa vi</l>
 <l met="stanza" n="518"> que me ha quitado el sosiego,</l>
 <l n="519">pues cuando a pensarla llego</l>
-<l n="520">me corro <mod xml:id="g087" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">de</del></mod> en ver que se atreve </l>
+<l n="520">me corro <mod xml:id="g087" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">de</del></mod> en ver que se atreve </l>
 <l n="521">a todo un mundo de nieve</l>
 <l n="522">tan poca parte de fuego.</l>
 <l met="stanza" n="523"> Yo no debo de ser yo,</l>
