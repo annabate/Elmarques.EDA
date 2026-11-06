@@ -1652,7 +1652,7 @@
 <l n="580">sale como todo es fuego)</l>
 <l n="581">causó mi desasosiego,</l>
 <l n="582">galán gentilhmobre y sabio.</l>
-<l met="stanza" n="583"> Ha<mod xml:id="g092" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">le</unclear></del><add ana="#layer-A1">me</add></mod> venido muy bien</l>
+<l met="stanza" n="583"> Ha<mod xml:id="g092" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><unclear cert="low">le</unclear></del><add ana="#layer-A1" n="2T">me</add></mod> venido muy bien</l>
 <l n="584">para tratar de casarme</l>
 <l n="585">nuestro padre, que es matarme </l>
 <l n="586">sin haber visto con quien.</l>
@@ -1683,7 +1683,7 @@
 <speaker>Ger</speaker>
 <lg>    
 <l n="596">El tiempo ocasión te ha dado:</l>
-<l n="597">escríbele que <mod xml:id="g093a" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">te</unclear></del></mod> has <mod xml:id="g093b" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">trazado</del><add ana="#layer-A2">pensado</add></mod></l>
+<l n="597">escríbele que <mod xml:id="g093a" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><unclear cert="low">te</unclear></del></mod> has <mod xml:id="g093b" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2" seq="3"><del ana="#layer-A0">trazado</del><add ana="#layer-A2" n="3T">pensado</add></mod></l>
 <l met="stanza" n="598"> ir con secreto a la fiesta,</l>
 <l n="599">que te envíe un coche, que esta</l>
 <l n="600">es la mejor invención </l>
@@ -1753,7 +1753,7 @@
 <sp>
 <speaker>Lau</speaker>
 <lg>    
-<l n="617"><mod xml:id="g094" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">A don Filipe</del></mod>A buscar un coche vas</l>
+<l n="617"><mod xml:id="g094" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">A don Filipe</del></mod>A buscar un coche vas</l>
 <l met="stanza" n="618"> para ver las fiestas.</l>
 </lg>
 </sp>
@@ -1854,7 +1854,7 @@
 <speaker>Marqués</speaker>
 <lg>
 <l n="645">Bravo de entrada es el viento, </l>
-<l n="646"><mod xml:id="g098" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">gi</unclear> a su</del></mod>entre sus alas iréis.</l>
+<l n="646"><mod xml:id="g098" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><unclear cert="low">gi</unclear> a su</del></mod>entre sus alas iréis.</l>
 <l met="stanza" part="I" n="647">¿Tú, <mod xml:id="gB027-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Enrique</del><add ana="#layer-B"><mod xml:id="gB027-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Enrique</add></mod></add></mod>?</l>
 </lg>
 </sp>
