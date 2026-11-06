@@ -2331,7 +2331,7 @@
 <stage>Lea</stage>
 <sp>
 <speaker></speaker>
-<p>«Oy no viene mi padre y habemos determinado mi hermana y yo ver a v. s. tan valiente en la plaza como galán en el Prado. Si tenemos ventanas y coche, que las <mod xml:id="g130" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">nuestras</del><add ana="#layer-A1">de nuestra casa</add></mod>caen en Lavapies y en los nuestros no podemos ir donde quisiera el deseo.»</p>
+<p>«Oy no viene mi padre y habemos determinado mi hermana y yo ver a v. s. tan valiente en la plaza como galán en el Prado. Si tenemos ventanas y coche, que las <mod xml:id="g130" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">nuestras</del><add ana="#layer-A1" n="1T">de nuestra casa</add></mod>caen en Lavapies y en los nuestros no podemos ir donde quisiera el deseo.»</p>
 <lg>
   <l n="779">Basta, ¡qué letra tan linda!</l>
 </lg>
