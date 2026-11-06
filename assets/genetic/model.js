@@ -168,6 +168,21 @@
     const targetRank = LAYER_RANK[stage];
     if (targetRank === undefined) throw new Error(`Unknown reconstruction stage: ${stage}`);
 
+    // A0 is the reconstructed first inscription, not an intervention view.
+    // Resolve every later operation backwards, including nested corrections,
+    // and suppress the genetic apparatus in this mode.
+    if (stage === "A0") {
+      const initial = normalizeXmlIds(sourceRoot.cloneNode(true));
+      Array.from(initial.querySelectorAll("tei-mod"))
+        .sort((a, b) => depth(b) - depth(a))
+        .forEach((mod) => replaceWithReading(mod, false));
+      resolveSpans(initial, 0);
+      pruneEmptyStructures(initial);
+      initial.classList.add("reconstructed-text");
+      initial.dataset.reconstruction = "A0";
+      return initial;
+    }
+
     const root = normalizeXmlIds(sourceRoot.cloneNode(true));
     // Retain the complete sequence of earlier readings. Only interventions
     // later than the requested stage are rewound to their initial reading.
