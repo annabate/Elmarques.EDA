@@ -271,8 +271,9 @@
       if (seq) {
         const phase = document.createElement("sup");
         phase.className = "genetic-event-phase";
-        phase.textContent = seq;
-        phase.setAttribute("aria-label", `fase ${seq}`);
+        const adoptedHere = adoptedState === `${seq}T`;
+        phase.textContent = adoptedHere ? `${seq}T` : seq;
+        phase.setAttribute("aria-label", adoptedHere ? `fase ${seq}, lezione accolta` : `fase ${seq}`);
         marker.appendChild(phase);
       }
 
@@ -283,7 +284,7 @@
       if (related.length) details.push(`intervenciones vinculadas: ${related.join(", ")}`);
       if (details.length) marker.title = details.join(" · ");
 
-      const markerLabel = seq ? `${layer}, fase ${seq}` : layer;
+      const markerLabel = seq ? `${layer}, fase ${seq}${adoptedState === `${seq}T` ? ", lezione accolta" : ""}` : layer;
       marker.setAttribute("aria-label", markerLabel);
 
       // Material placement is independent of the genetic layer.
