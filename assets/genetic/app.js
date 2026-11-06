@@ -5,7 +5,10 @@
   if (!app) return;
 
   const baseUrl = app.dataset.baseurl || "";
-  const geneticSourceUrl = app.dataset.geneticSource;
+  const geneticSourceUrl = (app.dataset.geneticSource || "").replace(
+    /EMN_mod_act1_pilot\.xml$/,
+    "EMN_mod_act1-2.xml",
+  );
   const diplomaticSourceUrl = app.dataset.diplomaticSource;
 
   const geneticPane = document.getElementById("genetic-scroll");
