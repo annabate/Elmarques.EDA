@@ -2324,7 +2324,7 @@
 <speaker>Me</speaker>
 <lg>
 <l n="776">No sé yo si es angelo bueno,</l>
-<l n="777"><mod xml:id="g129" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">que los angeles</del><add ana="#layer-A2">que angel que viene</add></mod> de noche</l>
+<l n="777"><mod xml:id="g129" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2" seq="1"><del ana="#layer-A0">que los angeles</del><add ana="#layer-A2" n="1T">que angel que viene</add></mod> de noche</l>
 <l n="778">no debe de ser del cielo.</l>
 </lg>
 </sp>
