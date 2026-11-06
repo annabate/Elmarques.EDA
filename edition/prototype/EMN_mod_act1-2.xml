@@ -885,7 +885,7 @@
 <l n="305">con ingenio tan divino,</l>
 <l n="306">con talle tan excelente</l>
 <l n="307">y con tan hermosa cara?</l>
-<l n="308">Que aunque la noche <mod xml:id="g063" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">la defen</del><add ana="#layer-A1">escurece</add></mod></l>
+<l n="308">Que aunque la noche <mod xml:id="g063" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">la defen</del><add ana="#layer-A1" n="1T">escurece</add></mod></l>
 <l n="309">el cielo en que te retratas,</l>
 <l n="310">sus estrellas <mod xml:id="g064" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2"><del ana="#layer-A0">la defenden</del><add ana="#layer-A2">resplandecen</add></mod>.<note>esta intervención y la del verso inmediatamente anterior forman parte de un único proceso de enmienda, si bien llevado a cabo, al parecer, en dos fases diferentes. Las correcciones responden a un reajuste de la imagen poética, orientado a reforzar el contraste entre luz y oscuridad y la simetría del pasaje.
 </note></l>
@@ -1090,7 +1090,7 @@
 <speaker>Fili</speaker>
 <lg>
 <l n="383">Yo os daré treinta diamantes</l>
-<l n="384">que aquesta joya enriquecen</l>
+<l n="384">que aquesta joya <mod xml:id="g384" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><unclear cert="low">conti</unclear></del><add ana="#layer-A1" n="1T">enriquecen</add></mod></l>
 <l part="I" n="385">por esa mano.</l>
 </lg>
 </sp>
