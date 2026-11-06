@@ -166,51 +166,34 @@
 
   function materializeStage(sourceRoot, stage) {
     const targetRank = LAYER_RANK[stage];
-    if (targetRank === undefined) {
-      throw new Error(`Unknown reconstruction stage: ${stage}`);
-    }
+    if (targetRank === undefined) throw new Error(`Unknown reconstruction stage: ${stage}`);
 
     const root = normalizeXmlIds(sourceRoot.cloneNode(true));
-    const mods = Array.from(root.querySelectorAll("tei-mod")).sort(
-      (a, b) => depth(b) - depth(a),
-    );
+    // Retain the complete sequence of earlier readings. Only interventions
+    // later than the requested stage are rewound to their initial reading.
+    Array.from(root.querySelectorAll("tei-mod"))
+      .sort((a, b) => depth(b) - depth(a))
+      .forEach((mod) => {
+        const rank = LAYER_RANK[eventLayer(mod)];
+        if (rank !== undefined && rank > targetRank) replaceWithReading(mod, false);
+      });
 
-    mods.forEach((mod) => {
-      const layer = eventLayer(mod);
-      const rank = LAYER_RANK[layer];
-      if (rank === undefined) return;
-      const applies = targetRank >= rank;
-      if (applies && layer === stage) {
-        // Preserve the resulting reading as a single highlighted unit.
-        // Earlier layers remain part of the cumulative text, but unmarked.
-        const add = directChild(mod, "add");
-        const del = directChild(mod, "del");
-        const reading = add || del;
-        if (add && (add.textContent || "").trim()) {
-          const marker = document.createElement("sup");
-          marker.className = "genetic-reconstruction-phase";
-          const seq = attr(mod, "seq");
-          const adopted = attr(mod, "n") || attr(add, "n") || attr(del, "n");
-          marker.textContent = seq ? (adopted === `${seq}T` ? `${seq}T` : seq) : "";
-          marker.hidden = !seq;
-          marker.title = `${layer}${seq ? `, fase ${seq}` : ""}`;
-          marker.setAttribute("aria-label", marker.title);
-          const wrap = document.createElement("span");
-          wrap.className = `reconstruction-change event-${layer.toLowerCase()}`;
-          wrap.dataset.eventLayer = layer;
-          wrap.appendChild(marker);
-          Array.from(add.childNodes).forEach((node) => wrap.appendChild(node.cloneNode(true)));
-          mod.replaceWith(wrap);
-          return;
-        }
-        // A deletion-only operation has no surviving reading to highlight.
+    resolveUnselectedSpans(root, INTERVENTION_LAYERS.filter(
+      (layer) => LAYER_RANK[layer] <= targetRank
+    ));
+    decorateVisibleEvents(root);
+
+    root.querySelectorAll("tei-mod").forEach((mod) => {
+      if (eventLayer(mod) !== stage) {
+        mod.classList.add("reconstruction-earlier");
+        mod.querySelectorAll(".genetic-event-marker").forEach((marker) => marker.remove());
       }
-      replaceWithReading(mod, applies);
     });
-
-    resolveSpans(root, targetRank);
+    root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
+      if (eventLayer(span) !== stage) span.classList.add("reconstruction-earlier");
+    });
     pruneEmptyStructures(root);
-    root.classList.add("reconstructed-text");
+    root.classList.add("genetic-intervention-view", "cumulative-reconstruction");
     root.dataset.reconstruction = stage;
     return root;
   }
