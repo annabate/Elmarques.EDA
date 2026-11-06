@@ -2233,7 +2233,7 @@
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="755"><mod xml:id="g127" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">ya <unclear cert="low">se</unclear></del></mod>¿Con quién hablabas anoche</l>
+<l n="755"><mod xml:id="g127" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">ya <unclear cert="low">se</unclear></del></mod>¿Con quién hablabas anoche</l>
 <l n="756">en el Prado, majadero?</l>
 </lg>
 </sp>
@@ -2241,7 +2241,7 @@
 <speaker>Me</speaker>
 <lg>
 <l n="757">¡Válate Dios por borrica!</l>
-<l n="758">¿Tú en San <mod xml:id="gB053-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Martín</del><add ana="#layer-B"><mod xml:id="gB053-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Ginés</del><add ana="#layer-B">Martín</add></mod></add></mod>? ¿Qué hay de nuevo?</l>
+<l n="758">¿Tú en San <mod xml:id="gB053-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">Martín</del><add ana="#layer-B"><mod xml:id="gB053-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Ginés</del><add ana="#layer-B">Martín</add></mod></add></mod>? ¿Qué hay de nuevo?</l>
 </lg>
 </sp>
 <sp>
@@ -2357,7 +2357,7 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="787"><mod xml:id="gB054-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Marqués</del><add ana="#layer-B"><mod xml:id="gB054-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Conde</del><add ana="#layer-B">Marqués</add></mod></add></mod>, dadme vuestro coche,</l>
+<l n="787"><mod xml:id="gB054-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">Marqués</del><add ana="#layer-B"><mod xml:id="gB054-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Conde</del><add ana="#layer-B">Marqués</add></mod></add></mod>, dadme vuestro coche,</l>
 <l n="788">que desde agora os advierto</l>
 <l n="789">que tenéis dos convidados.</l>
 </lg>
@@ -2462,8 +2462,8 @@
 <sp>
 <speaker>Fili</speaker>
 <lg>
-<l n="824">Vamos, <mod xml:id="gB056-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">marqués</del><add ana="#layer-B"><mod xml:id="gB056-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod>, que hoy tenemos</l>
-<l n="825"><mod xml:id="gB057-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Henrique</del><add ana="#layer-B"><mod xml:id="gB057-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Henrique</add></mod></add></mod> y yo brava causa </l>
+<l n="824">Vamos, <mod xml:id="gB056-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">marqués</del><add ana="#layer-B"><mod xml:id="gB056-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde</del><add ana="#layer-B">marqués</add></mod></add></mod>, que hoy tenemos</l>
+<l n="825"><mod xml:id="gB057-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">Henrique</del><add ana="#layer-B"><mod xml:id="gB057-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Fadrique</del><add ana="#layer-B">Henrique</add></mod></add></mod> y yo brava causa </l>
 <l n="826">de dar rejones al viento.</l>
 </lg>
 </sp>
@@ -2515,7 +2515,7 @@
 <lg>
 <l n="833">Muy aprisa, soy dichoso,</l>
 <l n="834">perderé si amor es juego,</l>
-<l n="835"><mod xml:id="g136" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">que quien comienza</del><add ana="#layer-A1">que los que empiezan</add></mod> ganando</l>
+<l n="835"><mod xml:id="g136" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">que quien comienza</del><add ana="#layer-A1" n="1T">que los que empiezan</add></mod> ganando</l>
 <l n="836">suelen acabar perdiendo.</l>
 </lg>
 </sp>
