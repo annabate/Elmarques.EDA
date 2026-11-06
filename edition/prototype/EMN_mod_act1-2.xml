@@ -1634,7 +1634,7 @@
 <l n="562">cuando ya mata de amor.</l>
 <l met="stanza" n="563"> ¡Qué traidor <mod xml:id="g088" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">fue para mí</del><add ana="#layer-A1">, Gerarda, fue</add></mod></l>
 <l n="564"><mod xml:id="g089" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">de noche</del><add ana="#layer-A1">para mí!</add></mod> De noche vino.</l>
-<l n="565">¿Qué <mod xml:id="g090" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">tan</unclear></del></mod> salteador en camino </l>
+<l n="565">¿Qué <mod xml:id="g090" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">tan</del></mod> salteador en camino </l>
 <l n="566">hay que tan oculto esté?</l>
 <l n="567"><mod xml:id="g091" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">Vi</del></mod><seg n="2T">Al principio me burlé</seg></l>
 <l met="stanza" n="568"> de un hombre que a penas vía,</l>
