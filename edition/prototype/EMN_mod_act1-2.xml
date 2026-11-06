@@ -742,7 +742,7 @@
 <l n="254">Si Vuesa merced no huele,</l>
 <l n="255">―que tal vez, húmido, el Prado</l>
 <l n="256">el mejor olfato ofende―</l>
-<l n="257"><mod xml:id="g061" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">dele</del><add ana="#layer-A1">deme</add></mod> lugar junto a sí</l>
+<l n="257"><mod xml:id="g061" type="subst" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">dele</del><add ana="#layer-A1" n="1T">deme</add></mod> lugar junto a sí</l>
 <l n="258">y, por Dios, que no le pese</l>
 <pb type="folio" n="[Fol. 6r]"/>
 <l n="259">de un asocarrado gusto.</l>
@@ -779,7 +779,7 @@
 <l n="270">y esta es la causa que siempre</l>
 <l n="271">casan las hermosas tarde,</l>
 <l n="272">juzgando que más merecen.</l>
-<l n="273">No han dicho a una fea <mod xml:id="g062" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">amores</unclear></del><add ana="#layer-A1">envido</add></mod></l>
+<l n="273">No han dicho a una fea <mod xml:id="g062" type="subst" hand="#Lope" change="#stage-A2" ana="#layer-A2" seq="1"><del ana="#layer-A0"><unclear cert="low">amores</unclear></del><add ana="#layer-A2" n="1T">envido</add></mod></l>
 <l n="274">cuando con el resto quiere,</l>
 <l n="275">que piensa que no ha de haber</l>
 <l n="276">hombre que a la tienda llegue.</l>
@@ -1496,7 +1496,7 @@
 <l met="stanza" n="486"> tengo de andar su calle noche y día,</l>
 <l n="487">como nave en la mar mirando el puerto,</l>
 <l n="488">y así ella fuere para prenda mía,</l>
-<l met="stanza" n="489"><mod xml:id="g085" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">podré</del></mod>después sólo de mí tendré la queja. </l>
+<l met="stanza" n="489"><mod xml:id="g085" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">podré</del></mod><seg n="2T">después sólo de mí tendré la queja.</seg> </l>
 <l n="490">Preguntaré su misma celosía, </l>
 <l n="491">consultaré los hierros de su reja,</l>
 <l met="stanza" n="492"> hablaré con sus puertas y ventanas</l>
