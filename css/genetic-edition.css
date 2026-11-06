@@ -883,6 +883,30 @@ tei-mod[type="subst"] > tei-del::after {
   box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--b) 75%, transparent);
 }
 
+/* The chromatic cue belongs to the whole genetic intervention,
+   including the deleted reading in substitutions, not to the phase label. */
+.genetic-intervention-view tei-mod.event-a1 > tei-del,
+.genetic-intervention-view tei-mod.event-a1 > tei-add {
+  background-color: color-mix(in srgb, var(--a1-soft) 78%, white);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.genetic-intervention-view tei-mod.event-a2 > tei-del,
+.genetic-intervention-view tei-mod.event-a2 > tei-add {
+  background-color: color-mix(in srgb, var(--a2-soft) 78%, white);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.genetic-intervention-view tei-mod.event-b > tei-del,
+.genetic-intervention-view tei-mod.event-b > tei-add {
+  background-color: color-mix(in srgb, var(--b-soft) 78%, white);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.genetic-intervention-view .genetic-event-marker {
+  background: transparent;
+}
+
 .event-a1 > tei-del { text-decoration-color: var(--a1); }
 .event-a2 > tei-del { text-decoration-color: var(--a2); }
 .event-b > tei-del { text-decoration-color: var(--b); }
