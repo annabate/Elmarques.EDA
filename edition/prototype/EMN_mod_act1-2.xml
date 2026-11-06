@@ -1636,7 +1636,7 @@
 <l n="564"><mod xml:id="g089" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">de noche</del><add ana="#layer-A1">para mí!</add></mod> De noche vino.</l>
 <l n="565">¿Qué <mod xml:id="g090" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0"><unclear cert="low">tan</unclear></del></mod> salteador en camino </l>
 <l n="566">hay que tan oculto esté?</l>
-<l n="567"><mod xml:id="g091" type="del" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">Vi</del></mod>Al principio me burlé</l>
+<l n="567"><mod xml:id="g091" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0">Vi</del></mod><seg n="2T">Al principio me burlé</seg></l>
 <l met="stanza" n="568"> de un hombre que a penas vía,</l>
 <l n="569">pero no sé que tenía,</l>
 <l n="570">que tal blandura y donaire </l>
@@ -2173,7 +2173,7 @@
 <l n="731">que era muy hombre, y que había</l>
 <l n="732">todo su honor satisfecho.</l>
 <l n="733">Verdad es que algunas damas</l>
-<l n="734">que se tardó previnieron</l>
+<l n="734"><mod xml:id="g734" type="del" hand="#Lope" instant="true" ana="#layer-A1" seq="1"><del ana="#layer-A0"><gap reason="illegible"/></del></mod><seg n="2T">que se tardó previnieron</seg></l>
 <l n="735">en componer su negocio, </l>
 <l n="736">así estaba descompuesto.</l>
 </lg>
