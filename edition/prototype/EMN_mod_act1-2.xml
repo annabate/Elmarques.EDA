@@ -1121,21 +1121,21 @@
 <speaker>Me</speaker>
 <lg>
 <l part="F" n="392">Pues advierte:</l>
-<l n="393"><mod xml:id="g067" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">los que están a esta parte</del><add ana="#layer-A1"><mod xml:id="gB013-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A1">este es marqués de las Navas</del><add ana="#layer-B"><mod xml:id="gB013-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">este es el conde don Felis</del><add ana="#layer-B">este es marqués de las Navas</add></mod></add></mod></add></mod>.</l>
+<l n="393"><mod xml:id="g067" type="subst" hand="#Lope" instant="true" ana="#layer-A1"><del ana="#layer-A0">los que están a esta parte</del><add ana="#layer-A1"><mod xml:id="gB013-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A1" n="1T">este es marqués de las Navas</del><add ana="#layer-B"><mod xml:id="gB013-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">este es el conde don Felis</del><add ana="#layer-B">este es marqués de las Navas</add></mod></add></mod></add></mod>.</l>
 </lg>
 </sp>
 <sp>
 <speaker>Cla</speaker>
 <lg>
-<l n="394">¿El <mod xml:id="gB014-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">de las Navas</del><add ana="#layer-B"><mod xml:id="gB014-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde Felis</del><add ana="#layer-B">de las Navas</add></mod></add></mod> es este?</l>
-<l n="395">¿Que este <mod xml:id="gB015-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">el de las Navas es</del><add ana="#layer-B"><mod xml:id="gB015-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">es don Felis el conde</del><add ana="#layer-B">el de las Navas es</add></mod></add></mod>?</l>
+<l n="394">¿El <mod xml:id="gB014-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">de las Navas</del><add ana="#layer-B"><mod xml:id="gB014-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">conde Felis</del><add ana="#layer-B">de las Navas</add></mod></add></mod> es este?</l>
+<l n="395">¿Que este <mod xml:id="gB015-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">el de las Navas es</del><add ana="#layer-B"><mod xml:id="gB015-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">es don Felis el conde</del><add ana="#layer-B">el de las Navas es</add></mod></add></mod>?</l>
 </lg>
 </sp>
 <sp>
 <speaker>Me</speaker>
 <lg>
 <l n="396">Te admiras como si fuese</l>
-<l n="397"><mod xml:id="gB016-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">de las Navas de Tolosa</del><add ana="#layer-B"><mod xml:id="gB016-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">el conde Partinuplés</del><add ana="#layer-B">de las Navas de Tolosa</add></mod></add></mod></l>
+<l n="397"><mod xml:id="gB016-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">de las Navas de Tolosa</del><add ana="#layer-B"><mod xml:id="gB016-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">el conde Partinuplés</del><add ana="#layer-B">de las Navas de Tolosa</add></mod></add></mod></l>
 </lg>
 </sp>
 <sp>
@@ -1149,8 +1149,8 @@
 <sp>
 <speaker>Me</speaker>
 <lg>
-<l n="401">Es su hermano <mod xml:id="gB017-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">don Henrique</del><add ana="#layer-B"><mod xml:id="gB017-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">don Fadrique</del><add ana="#layer-B">don Henrique</add></mod></add></mod></l>
-<l n="402">de <mod xml:id="gB018-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Guzmán</del><add ana="#layer-B"><mod xml:id="gB018-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Oristán</del><add ana="#layer-B">Guzmán</add></mod></add></mod>, el que entretiene</l>
+<l n="401">Es su hermano <mod xml:id="gB017-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">don Henrique</del><add ana="#layer-B"><mod xml:id="gB017-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">don Fadrique</del><add ana="#layer-B">don Henrique</add></mod></add></mod></l>
+<l n="402">de <mod xml:id="gB018-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">Guzmán</del><add ana="#layer-B"><mod xml:id="gB018-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Oristán</del><add ana="#layer-B">Guzmán</add></mod></add></mod>, el que entretiene</l>
 <l n="403">esa tu menor señora.</l>
 </lg>
 </sp>
@@ -1177,7 +1177,7 @@
 <lg>
 <l part="F" n="405">Don Filipe</l>
 <pb type="folio" n="[Fol. 8v]"/>
-<l n="406">de <mod xml:id="gB019-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0">Córdoba</del><add ana="#layer-B"><mod xml:id="gB019-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Cardona</del><add ana="#layer-B">Córdoba</add></mod></add></mod>, que suspende</l>
+<l n="406">de <mod xml:id="gB019-1" type="subst" change="#stage-B" ana="#layer-B #B-substitution" seq="1"><del ana="#layer-A0" n="0T">Córdoba</del><add ana="#layer-B"><mod xml:id="gB019-2" type="subst" change="#stage-B" ana="#layer-B #B-restoration" seq="2"><del ana="#layer-B">Cardona</del><add ana="#layer-B">Córdoba</add></mod></add></mod>, que suspende</l>
 <l n="407">la corte en esta ocasión</l>
 <l n="408">con gentileza eminente</l>
 <l n="409">a cuantas celebra España.</l>
