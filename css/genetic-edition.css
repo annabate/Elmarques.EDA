@@ -805,29 +805,28 @@ tei-unclear {
 }
 
 .genetic-event-marker {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 0.045em;
-  margin: 0 0.24em 0 0.18em;
-  padding: 0.09em 0.3em 0.11em;
-  border: 1px solid currentColor;
-  border-radius: 0.2em;
+  display: inline;
+  margin: 0 0.08em 0 0.04em;
+  padding: 0;
+  border: 0;
   background: transparent;
-  font: 760 0.8em/1.08 var(--sch-sans);
-  letter-spacing: 0.01em;
-  vertical-align: 0.24em;
+  font-family: var(--sch-sans);
+  font-size: 0.78em;
+  font-weight: 500;
+  line-height: 1;
+  vertical-align: super;
   cursor: help;
   white-space: nowrap;
-  overflow: visible;
 }
 
+.genetic-event-marker[hidden] { display: none; }
+
 .genetic-event-phase {
-  position: relative;
-  top: -0.22em;
-  margin-left: 0.025em;
-  font-size: 0.88em;
-  line-height: 1;
-  font-weight: 500;
+  position: static;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   letter-spacing: 0;
 }
 
