@@ -1183,7 +1183,7 @@
 <l n="409">a cuantas celebra España.</l>
 <l n="410">
   <anchor xml:id="l_410"/>
-    <delSpan xml:id="gB020" spanTo="#l_415" change="#stage-B" ana="#layer-B"/>
+    <delSpan xml:id="gB020" spanTo="#l_415" change="#stage-B" ana="#layer-B" seq="1"/>
     Ya habrás oído mil veces
 </l>
 <l n="411">
@@ -1203,7 +1203,7 @@
 </l>
 <anchor xml:id="l_415"/>
 
-<mod xml:id="gB061" type="add" change="#stage-B" ana="#layer-B"><add ana="#layer-B">díjese</add></mod><note>la tachadura por parte de la primera mano parece responder a la misma intención de encubrimiento ya señalada en otros pasajes. Lo más plausible es que, ante la dificultad de reescribir el pasaje sustituyendo los nombres citados, se optara directamente por su supresión, al no tener relevancia en la economía dramática.</note>
+<mod xml:id="gB061" type="add" change="#stage-B" ana="#layer-B" seq="2"><add ana="#layer-B">díjese</add></mod><note>la tachadura por parte de la primera mano parece responder a la misma intención de encubrimiento ya señalada en otros pasajes. Lo más plausible es que, ante la dificultad de reescribir el pasaje sustituyendo los nombres citados, se optara directamente por su supresión, al no tener relevancia en la economía dramática.</note>
 </lg>
 </sp>
 <sp>
