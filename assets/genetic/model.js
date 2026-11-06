@@ -263,11 +263,6 @@
       marker.className =
         `genetic-event-marker marker-${layer.toLowerCase()}`;
 
-      const markerLayer = document.createElement("span");
-      markerLayer.className = "genetic-event-marker-layer";
-      markerLayer.textContent = layer;
-      marker.appendChild(markerLayer);
-
       if (seq) {
         const phase = document.createElement("sup");
         phase.className = "genetic-event-phase";
@@ -286,6 +281,8 @@
 
       const markerLabel = seq ? `${layer}, fase ${seq}${adoptedState === `${seq}T` ? ", lezione accolta" : ""}` : layer;
       marker.setAttribute("aria-label", markerLabel);
+      marker.title = [markerLabel, ...details].join(" · ");
+      if (!seq) marker.hidden = true;
 
       // Material placement is independent of the genetic layer.
       // Display a tooltip only when the TEI explicitly records a margin.
