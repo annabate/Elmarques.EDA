@@ -939,6 +939,33 @@ tei-addspan::after {
   all: unset;
 }
 
+/* Cumulative reconstructions: only the selected layer is highlighted. */
+.reconstructed-text .reconstruction-change {
+  border-radius: 0.12rem;
+  padding: 0 0.06rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.reconstructed-text .reconstruction-change.event-a1 {
+  background: color-mix(in srgb, var(--a1-soft) 78%, white);
+  box-shadow: inset 0 -1px 0 var(--a1);
+}
+.reconstructed-text .reconstruction-change.event-a2 {
+  background: color-mix(in srgb, var(--a2-soft) 78%, white);
+  box-shadow: inset 0 -1px 0 var(--a2);
+}
+.reconstructed-text .reconstruction-change.event-b {
+  background: color-mix(in srgb, var(--b-soft) 78%, white);
+  box-shadow: inset 0 -1px 0 var(--b);
+}
+.reconstructed-text .genetic-reconstruction-phase {
+  font: 500 0.68em/1 var(--sch-sans);
+  vertical-align: super;
+  margin-right: 0.1em;
+  cursor: help;
+}
+.reconstructed-text .genetic-reconstruction-phase[hidden] { display: none; }
+
 /* Notes */
 
 .edition-note {
