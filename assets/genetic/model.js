@@ -253,6 +253,11 @@
 
       const seq = attr(mod, "seq");
       if (seq) mod.dataset.seq = seq;
+      const adoptedState = attr(mod, "n").match(/^\d+T$/)?.[0] ||
+        attr(directChild(mod, "add"), "n").match(/^\d+T$/)?.[0] || "";
+      if (adoptedState) mod.dataset.adoptedState = adoptedState;
+      const related = attr(mod, "corresp").trim().split(/\s+/).filter(Boolean);
+      if (related.length) mod.dataset.relatedEvents = related.join(" ");
 
       const marker = document.createElement("span");
       marker.className =
@@ -274,6 +279,8 @@
       const details = [];
       if (fn) details.push(fn.replace(/^B-/, ""));
       if (seq) details.push(`fase ${seq}`);
+      if (adoptedState) details.push(`estado adoptado ${adoptedState}`);
+      if (related.length) details.push(`intervenciones vinculadas: ${related.join(", ")}`);
       if (details.length) marker.title = details.join(" · ");
 
       const markerLabel = seq ? `${layer}, fase ${seq}` : layer;
