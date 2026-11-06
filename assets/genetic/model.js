@@ -179,7 +179,33 @@
       const layer = eventLayer(mod);
       const rank = LAYER_RANK[layer];
       if (rank === undefined) return;
-      replaceWithReading(mod, targetRank >= rank);
+      const applies = targetRank >= rank;
+      if (applies && layer === stage) {
+        // Preserve the resulting reading as a single highlighted unit.
+        // Earlier layers remain part of the cumulative text, but unmarked.
+        const add = directChild(mod, "add");
+        const del = directChild(mod, "del");
+        const reading = add || del;
+        if (add && (add.textContent || "").trim()) {
+          const marker = document.createElement("sup");
+          marker.className = "genetic-reconstruction-phase";
+          const seq = attr(mod, "seq");
+          const adopted = attr(mod, "n") || attr(add, "n") || attr(del, "n");
+          marker.textContent = seq ? (adopted === `${seq}T` ? `${seq}T` : seq) : "";
+          marker.hidden = !seq;
+          marker.title = `${layer}${seq ? `, fase ${seq}` : ""}`;
+          marker.setAttribute("aria-label", marker.title);
+          const wrap = document.createElement("span");
+          wrap.className = `reconstruction-change event-${layer.toLowerCase()}`;
+          wrap.dataset.eventLayer = layer;
+          wrap.appendChild(marker);
+          Array.from(add.childNodes).forEach((node) => wrap.appendChild(node.cloneNode(true)));
+          mod.replaceWith(wrap);
+          return;
+        }
+        // A deletion-only operation has no surviving reading to highlight.
+      }
+      replaceWithReading(mod, applies);
     });
 
     resolveSpans(root, targetRank);
