@@ -14,6 +14,7 @@
   const geneticPane = document.getElementById("genetic-scroll");
   const diplomaticPane = document.getElementById("diplomatic-scroll");
   const reconstructionSelect = document.getElementById("reconstruction-select");
+  const cleanTextToggle = document.getElementById("clean-text-toggle");
   const layerInputs = Array.from(
     document.querySelectorAll('input[name="intervention-layer"]'),
   );
@@ -317,6 +318,8 @@
     const mode = reconstructionSelect.value;
     let rendered;
 
+    cleanTextToggle.disabled = mode === "genesis";
+    cleanTextToggle.closest("label")?.classList.toggle("is-disabled", mode === "genesis");
     if (mode === "genesis") {
       rendered = window.EMNGeneticModel.renderInterventions(
         geneticSource,
@@ -326,18 +329,16 @@
       modeHint.textContent =
         "Génesis del texto · estratos A1, A2 y B visibles.";
     } else {
-      rendered = window.EMNGeneticModel.materializeStage(
-        geneticSource,
-        mode,
-      );
+      rendered = cleanTextToggle.checked
+        ? window.EMNGeneticModel.renderCleanStage(geneticSource, mode)
+        : window.EMNGeneticModel.materializeStage(geneticSource, mode);
       setLayerControlsDisabled(true);
       const labels = {
-        A0: "A0 · primera redacción",
-        A1: "A0 + A1 · estado tras las correcciones inmediatas",
-        A2: "A0 + A1 + A2 · último estado autorial",
-        B: "A0 + A1 + A2 + B · estado final del manuscrito",
+        A1: "A1 · primera escritura y correcciones inmediatas",
+        A2: "A1 + A2 · revisión autógrafa acumulada",
+        B: "A1 + A2 + B · intervenciones acumuladas",
       };
-      modeHint.textContent = labels[mode];
+      modeHint.textContent = labels[mode] + (cleanTextToggle.checked ? " · texto sin marcas" : " · intervenciones visibles");
     }
 
     clearPane(geneticPane);
