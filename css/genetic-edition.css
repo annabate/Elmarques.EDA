@@ -911,24 +911,17 @@ tei-mod[type="subst"] > tei-del::after {
 .event-a2 > tei-del { text-decoration-color: var(--a2); }
 .event-b > tei-del { text-decoration-color: var(--b); }
 
+/* TEI span delimiters are structural, never visible labels. */
 tei-delspan,
 tei-addspan {
-  display: inline-block;
-  margin: 0 0.28rem;
-  padding: 0.05rem 0.24rem;
-  border: 1px solid #b9d0bf;
-  border-radius: 0.22rem;
-  color: var(--b);
-  background: #f1f6f2;
-  font: 650 0.62rem/1.2 var(--sch-sans);
+  display: none !important;
 }
 
-tei-delspan::after {
-  content: "B · supresión extensa";
-}
-
+tei-delspan::before,
+tei-delspan::after,
+tei-addspan::before,
 tei-addspan::after {
-  content: "B · adición extensa";
+  content: none !important;
 }
 
 .reconstructed-text tei-mod,
