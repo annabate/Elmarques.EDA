@@ -376,6 +376,7 @@
 
   function renderGenetic() {
     if (!geneticSource) return;
+    const timings = { started: performance.now() };
     clearSearch();
 
     const mode = reconstructionSelect.value;
@@ -407,9 +408,24 @@
       modeHint.textContent = labels[mode] + (cleanTextToggle.checked ? " · texto sin marcas" : " · intervenciones visibles");
     }
 
+    timings.model = performance.now();
+    const prepared = prepareRenderedRoot(rendered);
+    timings.decorate = performance.now();
     clearPane(geneticPane);
-    geneticPane.appendChild(prepareRenderedRoot(rendered));
+    geneticPane.appendChild(prepared);
+    timings.insert = performance.now();
     scheduleSplitVerseAlignment([geneticPane]);
+    requestAnimationFrame(() => {
+      timings.frame = performance.now();
+      console.info("[EMN genetic] phase timing (ms)", {
+        mode,
+        model: Math.round(timings.model - timings.started),
+        decoration: Math.round(timings.decorate - timings.model),
+        insertion: Math.round(timings.insert - timings.decorate),
+        untilFrame: Math.round(timings.frame - timings.insert),
+        total: Math.round(timings.frame - timings.started),
+      });
+    });
   }
 
   function renderDiplomatic() {
