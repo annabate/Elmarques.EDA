@@ -17,6 +17,7 @@ edition_label: Edición genética · prototipo
       <h1><em>El marqués de las Navas</em></h1>
       <p class="workspace-subtitle">Actos I y II · manuscrito autógrafo de Lope de Vega</p>
     </div>
+    <button id="genetic-tour-launch" class="genetic-tour-launch" type="button" aria-label="Iniciar visita guiada de la edición genética">Visita guiada</button>
     <div id="model-status" class="workspace-status" aria-live="polite">
       Preparando edición…
     </div>
@@ -178,3 +179,4 @@ edition_label: Edición genética · prototipo
 <script src="{{ site.baseurl }}/assets/genetic/model.js"></script>
 <script src="{{ site.baseurl }}/assets/genetic/facsimile.js"></script>
 <script src="{{ site.baseurl }}/assets/genetic/app.js"></script>
+<script src="{{ site.baseurl }}/assets/genetic/tour.js" defer></script>
