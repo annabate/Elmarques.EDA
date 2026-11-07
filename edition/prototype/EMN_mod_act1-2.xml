@@ -2641,7 +2641,7 @@
           <addSpan xml:id="margin_add_882_885" spanTo="#margin_end_885" place="right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group"/><l xml:id="v882_p71" n="882"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">y lució tanto su dueño</add></mod></l>
           <l xml:id="v883_p72" n="883"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">méritos más que ventura,</add></mod></l>
           <l xml:id="v884_p73" n="884"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">que a más de alguna hermosura</add></mod></l>
-          <l xml:id="v885_p74" n="885"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">quitará esta noche el sueño.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen inferior derecho, cuya correcta integración en el texto está señalada por una raya.</note><anchor xml:id="margin_end_885"/></l>
+          <l xml:id="v885_p74" n="885"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">quitará esta noche el sueño.</add></mod><anchor xml:id="margin_end_885"/></l>
         </sp>
         <pb type="folio" n="2r"/>
         <sp who="#Filipe">
@@ -2807,7 +2807,7 @@
           <speaker>Mendoza</speaker>
           <l xml:id="v980_p175" n="980"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Díjome que el desposado</add></mod></l>
           <l xml:id="v981_p176" n="981"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">viene a ser novio o novillo,</add></mod></l>
-          <l xml:id="v982_p177" n="982"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">si bien a vuseñoría</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal.</note><anchor xml:id="margin_end_982"/></l>
+          <l xml:id="v982_p177" n="982"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">si bien a vuseñoría</add></mod><anchor xml:id="margin_end_982"/></l>
           <l xml:id="v983_p178" n="983">le estará mucho mejor</l>
           <l xml:id="v984_p179" n="984">que delante un gastador</l>
           <l xml:id="v985_p180" n="985">le allane la incierta vía.</l>
@@ -3234,7 +3234,7 @@
           <addSpan xml:id="margin_add_1146_1149" spanTo="#margin_end_1149" place="right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group"/><l xml:id="v1146_p366" n="1146"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Si antes de casar me corren,</add></mod></l>
           <l xml:id="v1147_p367" n="1147"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">¿qué harán después que me case?</add></mod></l>
           <l xml:id="v1148_p368" n="1148"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Pero, pues «aparta» dicen,</add></mod></l>
-          <l xml:id="v1149_p369" n="1149"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">no será yerro apartarme.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal.</note><anchor xml:id="margin_end_1149"/></l>
+          <l xml:id="v1149_p369" n="1149"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">no será yerro apartarme.</add></mod><anchor xml:id="margin_end_1149"/></l>
         </sp>
         <sp who="#Antonio">
           <speaker>Antonio</speaker>
@@ -3346,7 +3346,7 @@
         </sp>
         <sp who="#Clara">
           <speaker>Clara</speaker>
-          <l xml:id="v1195_p423" n="1195"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Nunca los diablos le casen.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen derecho e integrados en el texto a través de una raya horizontal.</note><anchor xml:id="margin_end_1195"/></l>
+          <l xml:id="v1195_p423" n="1195"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Nunca los diablos le casen.</add></mod><anchor xml:id="margin_end_1195"/></l>
         </sp>
         <sp who="#Mendoza">
           <speaker>Mendoza</speaker>
@@ -3501,7 +3501,7 @@
           <l xml:id="v1260_p497" n="1260"><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">don henrriq de guzman</del><add ana="#layer-B">don Enrique de Guzmán,</add></mod></l>
           <l xml:id="v1261_p498" n="1261">con aquel valor que sabe</l>
           <addSpan xml:id="margin_add_1262_1263" spanTo="#margin_end_1263" place="right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group"/><l xml:id="v1262_p499" n="1262"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">de su gentileza el mundo</add></mod></l>
-          <l xml:id="v1263_p500" n="1263"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">y de sus heroicas partes?</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal.</note><anchor xml:id="margin_end_1263"/></l>
+          <l xml:id="v1263_p500" n="1263"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">y de sus heroicas partes?</add></mod><anchor xml:id="margin_end_1263"/></l>
         </sp>
         <sp who="#Leonardo">
           <speaker>Leonardo</speaker>
@@ -3825,11 +3825,11 @@
           <l xml:id="v1398_p654" n="1398">Pasaron tiempos, que pasa</l>
           <l xml:id="v1399_p655" n="1399">amando más presto el tiempo,</l>
           <addSpan xml:id="margin_add_1400_1401" spanTo="#margin_end_1401" place="right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group"/><l xml:id="v1400_p656" n="1400"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">las horas hurta a las noches,</add></mod></l>
-          <l xml:id="v1401_p657" n="1401"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">los días a los deseos.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen derecho, cuya correcta integración en el texto está señalada por una raya horizontal.</note><anchor xml:id="margin_end_1401"/></l>
+          <l xml:id="v1401_p657" n="1401"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">los días a los deseos.</add></mod><anchor xml:id="margin_end_1401"/></l>
           <l xml:id="v1402_p658" n="1402">Y sin haberle ofendido</l>
           <l xml:id="v1403_p659" n="1403">ni con solo el pensamiento,</l>
           <addSpan xml:id="margin_add_1404_1405" spanTo="#margin_end_1405" place="right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group"/><l xml:id="v1404_p660" n="1404"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">sin asomarse a mis ojos</add></mod></l>
-          <l xml:id="v1405_p661" n="1405"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">cosa que le diese celos,</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal.</note><anchor xml:id="margin_end_1405"/></l>
+          <l xml:id="v1405_p661" n="1405"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">cosa que le diese celos,</add></mod><anchor xml:id="margin_end_1405"/></l>
           <l xml:id="v1406_p662" n="1406">—porque a mí me parecía</l>
           <l xml:id="v1407_p663" n="1407"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">q quantos onbres ha hecho</del><add ana="#layer-A2">que cuantos hombres nacieron</add></mod></l>
           <l xml:id="v1408_p664" n="1408"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">dios desde Adan se ençerrauan</del><add ana="#layer-A2">se cifraban todos juntos</add></mod></l>
@@ -3941,7 +3941,7 @@
           <addSpan xml:id="margin_add_1480_1483" spanTo="#margin_end_1483" place="right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group"/><l xml:id="v1480_p742" n="1480"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Con el fin de mi desdicha</add></mod></l>
           <l xml:id="v1481_p743" n="1481"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">a don Filipe os envío;</add></mod></l>
           <l xml:id="v1482_p744" n="1482"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">nunca, pensamiento mío,</add></mod></l>
-          <l xml:id="v1483_p745" n="1483"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">pensaste en tanta dicha.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal.</note><anchor xml:id="margin_end_1483"/></l>
+          <l xml:id="v1483_p745" n="1483"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">pensaste en tanta dicha.</add></mod><anchor xml:id="margin_end_1483"/></l>
           <l xml:id="v1484_p746" n="1484">Desbarató mi ventura</l>
           <l xml:id="v1485_p747" n="1485">la tempestad que venía</l>
           <l xml:id="v1486_p748" n="1486">sobre mí, cuando no había</l>
