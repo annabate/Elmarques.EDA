@@ -415,6 +415,9 @@
       const kind = span.tagName.toLowerCase() === "tei-delspan" ? "supresión" : "restitución";
       marker.title = `${layer}, intervención ${seq}: ${kind}`;
       marker.setAttribute("aria-label", marker.title);
+      marker.dataset.eventLayer = layer;
+      marker.dataset.seq = seq;
+      marker.dataset.eventKind = kind;
       if (!spanMarkers.has(firstLine)) spanMarkers.set(firstLine, []);
       spanMarkers.get(firstLine).push({ marker, seq: Number(seq) });
     });
