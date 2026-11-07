@@ -4012,7 +4012,7 @@
         </sp>
         <sp who="#El_marqués">
           <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Mar</del><add ana="#layer-B">Marqués</add></mod></speaker>
-          <l xml:id="v1518_p783" n="1518"><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-B">Sola una vez quise, Enrique,</add></mod></l>
+          <l xml:id="v1518_p783" n="1518"><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">sola una vez quise henrriq</del><add ana="#layer-B">Sola una vez quise, Enrique,</add></mod><note type="genetic" resp="#Lope">A0: «sola una vez quise henrrriq». B, primera intervención: se tacha «sola» y se sustituye «henrriq» por «fadrique» en el margen izquierdo. B, segunda intervención: se restituye «sola» por encima y se sustituye «fadriq» por «enriq» en el interlineado superior. La codificación de las dos operaciones B queda pendiente de su representación secuencial en la interfaz.</note></l>
           <l xml:id="v1519_p784" n="1519">no he querido más después,</l>
           <l xml:id="v1520_p785" n="1520">ni hasta casarme estoy cierto</l>
           <l xml:id="v1521_p786" n="1521">de no volver a querer.</l>
