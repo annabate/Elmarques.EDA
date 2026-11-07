@@ -2576,7 +2576,7 @@
           <l xml:id="v851_p39" n="851" part="F">Fama tiene.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker>Marqués</speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v852_p40" n="852">Toros y cañas lo son.</l>
           <l xml:id="v853_p41" n="853">Dadme los brazos mil veces.</l>
         </sp>
@@ -2586,7 +2586,7 @@
         </sp>
         <pb type="folio" n="1v"/>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v855_p44" n="855">Ojos de quien quiere bien</l>
           <l xml:id="v856_p45" n="856">nunca son buenos jüeces;</l>
           <l xml:id="v857_p46" n="857">mas, por Dios, que para mí,</l>
@@ -2600,7 +2600,7 @@
           <l xml:id="v862_p51" n="862" part="I">a don Juan!</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v862_p52" n="862" part="F">No hay que alabar,</l>
           <l xml:id="v863_p53" n="863">los dos os podéis alzar</l>
           <l xml:id="v864_p54" n="864">con palacio y con la villa.</l>
@@ -2684,7 +2684,7 @@
           <l xml:id="v911_p102" n="911">de lo que hoy habéis gozado.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v912_p103" n="912">¿Tanto me habéis envidiado?</l>
         </sp>
         <pb type="folio" n="2v"/>
@@ -2695,7 +2695,7 @@
           <l xml:id="v915_p107" n="915">tan ocupado en Laurencia.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v916_p108" n="916">Los dos tenéis esperiencia</l>
           <l xml:id="v917_p109" n="917">de mi lealtad y de mí.</l>
           <l xml:id="v918_p110" n="918">Pero aseguraros puedo</l>
@@ -2719,7 +2719,7 @@
           <l xml:id="v933_p125" n="933">me trata con tal rigor.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v934_p126" n="934">Gerarda no sabe tanto,</l>
           <l xml:id="v935_p127" n="935">pero es gallarda mujer,</l>
           <l xml:id="v936_p128" n="936">y que debe de querer,</l>
@@ -2734,7 +2734,7 @@
         </sp>
         <pb type="folio" n="3r"/>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v942_p135" n="942">Inquietas están las dos.</l>
           <l xml:id="v943_p136" n="943">Seguid la empresa, que creo</l>
           <l xml:id="v944_p137" n="944">que tendrá dicha el deseo.</l>
@@ -2744,7 +2744,7 @@
           <l xml:id="v945_p138" n="945" part="I">¿Es burla?</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v945_p139" n="945" part="F">Es verdad, por Dios.</l>
           <l xml:id="v946_p140" n="946">No me han dejado alabar</l>
           <l xml:id="v947_p141" n="947">a caballero que hiciese</l>
@@ -2771,7 +2771,7 @@
           <l xml:id="v959_p153" n="959">de platicante con vos.</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v960_p154" n="960">Yo tengo de ir con los dos.</l>
         </sp>
         <sp who="#Mendoza">
@@ -2860,7 +2860,7 @@
         </sp>
         <pb type="folio" n="4r"/>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-A1" change="#stage-A1" hand="#Lope"><del ana="#layer-A0">Marqués</del><add ana="#layer-A1">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-A1" change="#stage-A1" hand="#Lope"><del ana="#layer-A0">Marqués</del><add ana="#layer-A1">Conde</add></mod></speaker>
           <l xml:id="v1000_p198" n="1000">Haz que me den el rocín</l>
           <l xml:id="v1001_p199" n="1001">y un herreruelo de noche.</l>
         </sp>
@@ -3123,7 +3123,7 @@
           <l xml:id="v1112_p327" n="1112">¡Aparta, aparta, aparta!</l>
         </sp>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Marqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v1113_p328" n="1113">Más que en la tierra, en el aire</l>
           <l xml:id="v1114_p329" n="1114">pone los pies Pensamiento.</l>
         </sp>
