@@ -2673,7 +2673,7 @@
         </sp>
         <sp who="#Enrique">
           <speaker><mod type="subst" ana="#layer-B" change="#stage-B" seq="1"><del ana="#layer-A0">Hen</del><add ana="#layer-B"><mod type="del" ana="#layer-B" change="#stage-B" seq="2"><del ana="#layer-B">Fad</del></mod></add></mod></speaker>
-          <anchor xml:id="Bdel_906_start"/><delSpan xml:id="Bdel_906_909" spanTo="#Bdel_909_end" ana="#layer-B" change="#stage-B"/><addSpan xml:id="Brestore_906_909" spanTo="#Brestore_909_end" ana="#layer-B" change="#stage-B"/><l xml:id="v906_p97" n="906">¿No preguntáis al Marqués</l>
+          <anchor xml:id="Bdel_906_start"/><delSpan xml:id="Bdel_906_909" spanTo="#Bdel_909_end" ana="#layer-B" change="#stage-B" seq="1" corresp="#Brestore_906_909"/><addSpan xml:id="Brestore_906_909" spanTo="#Brestore_909_end" ana="#layer-B" change="#stage-B" seq="2" place="margin-right" corresp="#Bdel_906_909"/><l xml:id="v906_p97" n="906">¿No preguntáis al Marqués</l>
           <l xml:id="v907_p98" n="907">por las güespedas que tuvo?</l>
         </sp>
         <sp who="#Filipe">
@@ -4351,7 +4351,7 @@
         </sp>
         <sp who="#El_marqués">
           <speaker>Marqués</speaker>
-          <anchor xml:id="Bdel_1689_start"/><delSpan xml:id="Bdel_1689_1695" spanTo="#Bdel_1695_end" ana="#layer-B" change="#stage-B"/><addSpan xml:id="Brestore_1689_1692" spanTo="#Brestore_1692_end" ana="#layer-B" change="#stage-B"/><l xml:id="v1689_p969" n="1689">Por otra parte les dije</l>
+          <anchor xml:id="Bdel_1689_start"/><delSpan xml:id="Bdel_1689_1695" spanTo="#Bdel_1695_end" ana="#layer-B" change="#stage-B" seq="1" corresp="#Brestore_1689_1692"/><addSpan xml:id="Brestore_1689_1692" spanTo="#Brestore_1692_end" ana="#layer-B" change="#stage-B" seq="2" corresp="#Bdel_1689_1695"/><l xml:id="v1689_p969" n="1689">Por otra parte les dije</l>
           <l xml:id="v1690_p970" n="1690">que echasen, y no quisieron,</l>
           <l xml:id="v1691_p971" n="1691">y ya es fuerza rodear,</l>
           <l xml:id="v1692_p972" n="1692">si es que han de ir por el barbero.</l>
