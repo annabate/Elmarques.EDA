@@ -388,6 +388,41 @@
       }
     });
 
+    // Span-based corrections also carry ordered interventions. Show their
+    // superscripts at the first affected verse, without creating B sub-stages.
+    const spanMarkers = new Map();
+    root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
+      if (attr(span, "type") === "material-group") return;
+      const seq = attr(span, "seq");
+      const layer = eventLayer(span);
+      if (!seq || !layer) return;
+      const target = getTargetAnchor(root, attr(span, "spanTo") || attr(span, "spanto"));
+      if (!target) return;
+      const range = document.createRange();
+      try {
+        range.setStartAfter(span);
+        range.setEndBefore(target);
+      } catch (_) { return; }
+      const firstLine = Array.from(root.querySelectorAll("tei-l[n]"))
+        .find((line) => range.intersectsNode(line));
+      if (!firstLine) return;
+      const marker = document.createElement("span");
+      marker.className = `genetic-event-marker marker-${layer.toLowerCase()}`;
+      const sup = document.createElement("sup");
+      sup.className = "genetic-event-phase";
+      sup.textContent = seq;
+      marker.appendChild(sup);
+      const kind = span.tagName.toLowerCase() === "tei-delspan" ? "supresión" : "restitución";
+      marker.title = `${layer}, intervención ${seq}: ${kind}`;
+      marker.setAttribute("aria-label", marker.title);
+      if (!spanMarkers.has(firstLine)) spanMarkers.set(firstLine, []);
+      spanMarkers.get(firstLine).push({ marker, seq: Number(seq) });
+    });
+    spanMarkers.forEach((markers, line) => {
+      markers.sort((a, b) => a.seq - b.seq);
+      line.prepend(...markers.map((item) => item.marker));
+    });
+
     decorateMarginalGroups(root);
     decorateDeletionSpans(root);
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
