@@ -304,30 +304,45 @@
   // Align split verse continuations with the actual preceding text width.
   // Measure the rendered reading: fonts, scale and genetic marks may vary.
   function alignSplitVerses(root) {
-    const lines = Array.from(root.querySelectorAll("tei-l[part]"));
     const groups = new Map();
-    lines.forEach((line) => {
+    root.querySelectorAll("tei-l[part][n]").forEach((line) => {
       const part = (line.getAttribute("part") || "").toUpperCase();
       if (!["I", "M", "F"].includes(part)) return;
       const number = line.getAttribute("n");
-      if (!number) return;
       if (!groups.has(number)) groups.set(number, []);
       groups.get(number).push({ line, part });
     });
+
+    // Read geometry in a single pass. The natural content width is derived
+    // from the previous padding, so no layout-affecting writes are needed
+    // before measurements are complete.
+    const measurements = [];
     groups.forEach((entries) => {
-      let accumulated = 0;
       for (const part of ["I", "M", "F"]) {
         const entry = entries.find((item) => item.part === part);
         if (!entry) continue;
-        const line = entry.line;
-        line.style.paddingLeft = part === "I" ? "" : accumulated + "px";
+        const { line } = entry;
+        const oldPadding = Number.parseFloat(line.style.paddingLeft) || 0;
         const range = document.createRange();
         range.selectNodeContents(line);
-        const rects = Array.from(range.getClientRects()).filter((rect) => rect.width > 0);
+        const rects = range.getClientRects();
         const lineRect = line.getBoundingClientRect();
-        const end = rects.length ? Math.max(...rects.map((rect) => rect.right)) : lineRect.left + accumulated;
-        accumulated = Math.max(accumulated, end - lineRect.left);
+        let end = lineRect.left + oldPadding;
+        for (const rect of rects) {
+          if (rect.width > 0 && rect.right > end) end = rect.right;
+        }
+        measurements.push({ line, part, group: entries, width: Math.max(0, end - lineRect.left - oldPadding) });
       }
+    });
+
+    // Apply computed offsets only after all DOM reads have finished.
+    const offsets = new Map();
+    measurements.forEach(({ line, part, group, width }) => {
+      const previous = offsets.get(group) || 0;
+      const padding = part === "I" ? 0 : previous;
+      offsets.set(group, padding + width);
+      const next = part === "I" ? "" : `${padding}px`;
+      if (line.style.paddingLeft !== next) line.style.paddingLeft = next;
     });
   }
 
