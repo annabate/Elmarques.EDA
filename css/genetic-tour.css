@@ -1,0 +1,17 @@
+.genetic-tour-launch{font:inherit;font-size:.85rem;cursor:pointer;border:1px solid currentColor;border-radius:8px;background:transparent;color:inherit;padding:.45rem .7rem}
+.genetic-tour-launch:focus-visible,.genetic-tour-dialog button:focus-visible{outline:3px solid #306b98;outline-offset:3px}
+.genetic-tour-overlay[hidden]{display:none}
+.genetic-tour-overlay{position:fixed;inset:0;z-index:9000;pointer-events:none}
+.genetic-tour-shade{position:absolute;inset:0;background:rgba(15,25,35,.53);pointer-events:auto}
+.genetic-tour-focus{position:relative!important;z-index:9001!important;box-shadow:0 0 0 5px #fff,0 0 0 8px #315c7a!important;border-radius:5px;pointer-events:none}
+.genetic-tour-dialog{position:fixed;z-index:9002;box-sizing:border-box;max-height:calc(100dvh - 24px);overflow:auto;background:#fff;color:#24303b;border-radius:12px;padding:20px;box-shadow:0 12px 45px rgba(0,0,0,.24);pointer-events:auto;font-family:inherit}
+.genetic-tour-top,.genetic-tour-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.genetic-tour-counter{font-size:.8rem;color:#526474}
+.genetic-tour-dialog h2{font-size:1.2rem;line-height:1.3;margin:12px 0 8px}
+.genetic-tour-dialog p{font-size:.95rem;line-height:1.55;margin:0 0 20px}
+.genetic-tour-dialog button{font:inherit;cursor:pointer;border-radius:7px;border:1px solid #8b9daa;background:#fff;color:#24303b;padding:8px 13px}
+.genetic-tour-dialog button:disabled{opacity:.4;cursor:default}
+.genetic-tour-dialog .genetic-tour-next{background:#274b65;color:white;border-color:#274b65}
+.genetic-tour-dialog .genetic-tour-close{font-size:1.4rem;padding:0 8px;border:0}
+@media(max-width:600px){.genetic-tour-dialog{left:12px!important;right:12px;width:auto!important;top:auto!important;bottom:12px;padding:16px}.genetic-tour-focus{box-shadow:0 0 0 3px #fff,0 0 0 5px #315c7a!important}}
+@media(prefers-reduced-motion:reduce){.genetic-tour-dialog *{scroll-behavior:auto!important}}
