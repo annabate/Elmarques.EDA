@@ -11,9 +11,9 @@ edition_label: Edición crítica · prototipo
 
   <div id="floating-tools" class="critical-toolbar-actions">
     <label class="witness-picker act-picker" for="act-select">
-      <span>Atto</span>
-      <select id="act-select" aria-label="Seleziona atto">
-        <option value="">Seleziona atto</option>
+      <span>Acto</span>
+      <select id="act-select" aria-label="Seleccionar acto">
+        <option value="">Seleccionar acto</option>
       </select>
     </label>
     <label class="witness-picker" for="witness-select">
@@ -2101,12 +2101,12 @@ edition_label: Edición crítica · prototipo
       root.querySelectorAll('tei-div[type="act"], tei-div[type="jornada"]'),
     );
 
-    select.innerHTML = '<option value="">Seleziona atto</option>';
+    select.innerHTML = '<option value="">Seleccionar acto</option>';
     acts.forEach((act, index) => {
       const n = act.getAttribute("n") || String(index + 1);
       const option = document.createElement("option");
       option.value = n;
-      option.textContent = `Atto ${n}`;
+      option.textContent = `Acto ${n}`;
       select.appendChild(option);
       act.setAttribute("data-act-n", n);
     });
