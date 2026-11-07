@@ -24,15 +24,19 @@ edition_label: Edición genética · prototipo
 
   <div class="edition-toolbar" aria-label="Controles de la edición genética">
     <div class="toolbar-group toolbar-view">
-      <label for="reconstruction-select" class="toolbar-label">Estado textual</label>
+      <label for="reconstruction-select" class="toolbar-label">Fase genética</label>
       <select id="reconstruction-select">
         <option value="genesis" selected>Génesis del texto</option>
-        <option value="A0">A0 · primera redacción</option>
-        <option value="A1">A0 + A1 · correcciones inmediatas</option>
-        <option value="A2">A0 + A1 + A2 · último estado autorial</option>
-        <option value="B">A0 + A1 + A2 + B · estado final del manuscrito</option>
+        <option value="A1">A1 · primera escritura</option>
+        <option value="A2">A2 · revisión autógrafa</option>
+        <option value="B">B · otras manos</option>
       </select>
     </div>
+
+    <label class="toolbar-group clean-text-toggle" for="clean-text-toggle">
+      <input id="clean-text-toggle" type="checkbox">
+      <span>Texto sin marcas</span>
+    </label>
 
     <fieldset class="toolbar-group toolbar-layers">
       <legend class="toolbar-label">Estratos</legend>
@@ -142,7 +146,7 @@ edition_label: Edición genética · prototipo
           <strong>Edición genética</strong>
         </div>
         <div class="pane-header-actions">
-          <span class="pane-meta">A0 · A1 · A2 · B</span>
+          <span class="pane-meta">A1 · A2 · B</span>
           <div class="text-size-controls" data-text-target="genetic-scroll" aria-label="Tamaño del texto de la edición genética">
             <button type="button" data-text-size="-1" title="Reducir texto" aria-label="Reducir texto">A−</button>
             <button type="button" data-text-size="1" title="Aumentar texto" aria-label="Aumentar texto">A+</button>
