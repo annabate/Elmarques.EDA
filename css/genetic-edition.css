@@ -1337,3 +1337,9 @@ tei-addspan::after {
 .genetic-intervention-view tei-mod.event-a2 > tei-del { background-color: #e0d4ff; }
 .genetic-intervention-view tei-mod.event-b > tei-add,
 .genetic-intervention-view tei-mod.event-b > tei-del { background-color: #c9efd2; }
+
+/* Split verse numbering: only the final fragment carries the printed number. */
+tei-l[part="I"][n$="0"]::after,
+tei-l[part="I"][n$="5"]::after,
+tei-l[part="M"][n$="0"]::after,
+tei-l[part="M"][n$="5"]::after { content: none; }
