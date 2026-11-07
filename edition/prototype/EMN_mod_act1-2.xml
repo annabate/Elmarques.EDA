@@ -2885,10 +2885,10 @@
           <l xml:id="v1011_p210" n="1011">de más alma, de más brío?</l>
           <l xml:id="v1012_p211" n="1012">Justamente, dueño mío,</l>
           <l xml:id="v1013_p212" n="1013"><mod type="subst" ana="#layer-A1" change="#stage-A1" hand="#Lope"><del ana="#layer-A0">por</del><add ana="#layer-A1">como a mis ojos te quiero.</add></mod></l>
-          <l xml:id="v1014_p213" n="1014"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Y no es poco encarecerte,</add></mod></l>
+          <addSpan xml:id="margin_add_1014_1017" spanTo="#margin_end_1017" place="margin-right" ana="#layer-A2" change="#stage-A2" hand="#Lope" type="material-group" rend="vertical"/><l xml:id="v1014_p213" n="1014"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">Y no es poco encarecerte,</add></mod></l>
           <l xml:id="v1015_p214" n="1015"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">puesto que me han dado enojos,</add></mod></l>
           <l xml:id="v1016_p215" n="1016"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">que quiero bien a mis ojos</add></mod></l>
-          <l xml:id="v1017_p216" n="1017"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">después que supieron verte.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal acompañada por un ‘ojo’ en ambas extremidades .</note></l>
+          <l xml:id="v1017_p216" n="1017"><mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2">después que supieron verte.</add></mod><note type="genetic">vv. añadidos verticalmente en el margen superior derecho, cuya correcta integración en el texto está señalada por una raya horizontal acompañada por un ‘ojo’ en ambas extremidades.</note><anchor xml:id="margin_end_1017"/></l>
           <l xml:id="v1018_p217" n="1018">No digan que es menester</l>
           <l xml:id="v1019_p218" n="1019">mucho tiempo para amar,</l>
           <l xml:id="v1020_p219" n="1020">que el amor que ha de matar</l>
