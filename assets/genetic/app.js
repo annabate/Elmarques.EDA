@@ -331,9 +331,19 @@
     });
   }
 
-  function scheduleSplitVerseAlignment() {
+  // Coalesce layout work into one animation frame and limit it to panes
+  // whose text or geometry actually changed.
+  const pendingSplitPanes = new Set();
+  let splitAlignmentFramePending = false;
+  function scheduleSplitVerseAlignment(panes = [geneticPane, diplomaticPane]) {
+    panes.forEach((pane) => { if (pane) pendingSplitPanes.add(pane); });
+    if (splitAlignmentFramePending) return;
+    splitAlignmentFramePending = true;
     requestAnimationFrame(() => {
-      [geneticPane, diplomaticPane].forEach((pane) => {
+      splitAlignmentFramePending = false;
+      const changedPanes = Array.from(pendingSplitPanes);
+      pendingSplitPanes.clear();
+      changedPanes.forEach((pane) => {
         const root = pane.firstElementChild;
         if (root) alignSplitVerses(root);
       });
@@ -384,7 +394,7 @@
 
     clearPane(geneticPane);
     geneticPane.appendChild(prepareRenderedRoot(rendered));
-    scheduleSplitVerseAlignment();
+    scheduleSplitVerseAlignment([geneticPane]);
   }
 
   function renderDiplomatic() {
@@ -393,7 +403,7 @@
     diplomaticPane.appendChild(
       prepareRenderedRoot(diplomaticSource.cloneNode(true)),
     );
-    scheduleSplitVerseAlignment();
+    scheduleSplitVerseAlignment([diplomaticPane]);
   }
 
   function numericVerse(value) {
@@ -989,7 +999,7 @@
             textScales.set(target.id, next);
             target.style.setProperty("--text-scale", String(next));
             target.dataset.textScale = String(next);
-            scheduleSplitVerseAlignment();
+            scheduleSplitVerseAlignment([target]);
           });
         });
       });
@@ -1256,7 +1266,9 @@
 
     setupPaneDragging();
     if (typeof ResizeObserver !== "undefined") {
-      const splitVerseObserver = new ResizeObserver(scheduleSplitVerseAlignment);
+      const splitVerseObserver = new ResizeObserver((entries) => {
+        scheduleSplitVerseAlignment(entries.map((entry) => entry.target));
+      });
       splitVerseObserver.observe(geneticPane);
       splitVerseObserver.observe(diplomaticPane);
     }
