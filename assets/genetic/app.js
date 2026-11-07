@@ -362,6 +362,18 @@
     while (pane.firstChild) pane.removeChild(pane.firstChild);
   }
 
+  // Cache TEI phase reconstructions: selecting a previously viewed phase
+  // must not rerun the full genetic model. Clone before UI decoration.
+  const phaseCache = new Map();
+  const MAX_PHASE_CACHE = 12;
+  function cachedGeneticReading(key, build) {
+    if (phaseCache.has(key)) return phaseCache.get(key).cloneNode(true);
+    const reading = build();
+    if (phaseCache.size >= MAX_PHASE_CACHE) phaseCache.delete(phaseCache.keys().next().value);
+    phaseCache.set(key, reading.cloneNode(true));
+    return reading;
+  }
+
   function renderGenetic() {
     if (!geneticSource) return;
     clearSearch();
@@ -372,17 +384,20 @@
     cleanTextToggle.disabled = mode === "genesis";
     cleanTextToggle.closest("label")?.classList.toggle("is-disabled", mode === "genesis");
     if (mode === "genesis") {
-      rendered = window.EMNGeneticModel.renderInterventions(
-        geneticSource,
-        activeLayers(),
+      const layers = activeLayers();
+      rendered = cachedGeneticReading(`genesis:${layers.join(",")}`, () =>
+        window.EMNGeneticModel.renderInterventions(geneticSource, layers)
       );
       setLayerControlsDisabled(false);
       modeHint.textContent =
         "Génesis del texto · estratos A1, A2 y B visibles.";
     } else {
-      rendered = cleanTextToggle.checked
-        ? window.EMNGeneticModel.renderCleanStage(geneticSource, mode)
-        : window.EMNGeneticModel.materializeStage(geneticSource, mode);
+      const clean = cleanTextToggle.checked;
+      rendered = cachedGeneticReading(`${mode}:${clean ? "clean" : "marked"}`, () =>
+        clean
+          ? window.EMNGeneticModel.renderCleanStage(geneticSource, mode)
+          : window.EMNGeneticModel.materializeStage(geneticSource, mode)
+      );
       setLayerControlsDisabled(true);
       const labels = {
         A1: "A1 · primera escritura y correcciones inmediatas",
