@@ -743,8 +743,8 @@ tei-l[n$="5"]::after {
   font: 500 0.62rem/1 var(--sch-sans);
 }
 
-tei-l[part="M"] { padding-left: 2rem; }
-tei-l[part="F"] { padding-left: 4rem; }
+tei-l[part="M"] { padding-left: 0; }
+tei-l[part="F"] { padding-left: 0; }
 
 tei-stage {
   display: block;
@@ -1291,8 +1291,8 @@ tei-addspan::after {
     line-height: 1.48;
   }
 
-  tei-l[part="M"] { padding-left: 1.25rem; }
-  tei-l[part="F"] { padding-left: 2.5rem; }
+  tei-l[part="M"] { padding-left: 0; }
+  tei-l[part="F"] { padding-left: 0; }
 }
 
 
