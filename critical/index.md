@@ -610,6 +610,34 @@ edition_label: Edición crítica · prototipo
     });
   }
 
+  // In split verses, the printed number belongs to the final fragment only.
+  // Keep logical coordinates on all fragments for navigation and synchronisation.
+  function moveSplitVerseNumbersToFinalFragment(root) {
+    const lines = Array.from(root.querySelectorAll("tei-l, l"));
+    for (let i = 0; i < lines.length; i += 1) {
+      const first = lines[i];
+      if ((first.getAttribute("part") || "").toUpperCase() !== "I") continue;
+      const fragments = [first];
+      let j = i + 1;
+      if ((lines[j]?.getAttribute("part") || "").toUpperCase() === "M") {
+        fragments.push(lines[j]);
+        j += 1;
+      }
+      if ((lines[j]?.getAttribute("part") || "").toUpperCase() === "F") {
+        fragments.push(lines[j]);
+      }
+      if (fragments.length < 2) continue;
+      const numberElements = fragments.map((line) =>
+        line.querySelector(":scope > .line-container > .line-number"),
+      );
+      const visibleNumber = numberElements.map((el) => el?.textContent?.trim()).find(Boolean);
+      numberElements.forEach((el) => { if (el) el.textContent = ""; });
+      const last = numberElements[numberElements.length - 1];
+      if (last && visibleNumber) last.textContent = visibleNumber;
+      i += fragments.length - 1;
+    }
+  }
+
   // Stable critical coordinate used only for alignment/synchronisation.
   // M/F fragments inherit the @n of the first fragment of the split verse.
   function assignLogicalLineNumbers(root) {
@@ -2070,6 +2098,7 @@ edition_label: Edición crítica · prototipo
     // 3) numerazione/impaginazione
     insertLeftAlignedLineNumbers(root);
     scheduleCriticalSplitAlignment();
+    moveSplitVerseNumbersToFinalFragment(root);
     // 4) hover sync
     enableLineSyncHighlighting();
     root.__decoratedOnce = true;
@@ -2296,6 +2325,7 @@ edition_label: Edición crítica · prototipo
       // Visible numbering belongs to the reconstructed witness itself.
       insertLeftAlignedLineNumbers(witnessDOM, { mode: "witness" });
       assignWitnessLineNumbers(witnessDOM);
+      moveSplitVerseNumbersToFinalFragment(witnessDOM);
       scheduleCriticalSplitAlignment();
       enableLineSyncHighlighting();
     });
