@@ -686,35 +686,49 @@ edition_label: Edición crítica · prototipo
 
   function alignSplitVerses(root) {
     const lines = Array.from(root.querySelectorAll("tei-l, l"));
-
-    // The function can be called again after a pane/layout change.
-    // Always clear the previous calculation first.
+    // Group fragments by logical verse, even when M is absent.
+    const groups = new Map();
+    let currentNumber = null;
     lines.forEach((line) => {
+      const part = (line.getAttribute("part") || "").toUpperCase();
+      const number = line.getAttribute("data-critical-n") || line.getAttribute("n");
+      if (number) currentNumber = number;
       const text = line.querySelector(".line-text");
-      if (!text) return;
-      text.style.removeProperty("--split-indent");
-      line.removeAttribute("data-split-indent");
+      if (text) text.style.removeProperty("--split-indent");
+      if (text) line.removeAttribute("data-split-indent");
+      if (!text || !["I", "M", "F"].includes(part)) return;
+      const key = number || currentNumber;
+      if (!key) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push({ line, part, text });
     });
+    groups.forEach((entries) => {
+      let offset = 0;
+      for (const part of ["I", "M", "F"]) {
+        const item = entries.find((entry) => entry.part === part);
+        if (!item) continue;
+        if (part !== "I") {
+          item.text.style.setProperty("--split-indent", offset + "px");
+          item.line.setAttribute("data-split-indent", String(Math.round(offset)));
+        }
+        // Content width excludes the CSS padding already used for alignment.
+        const range = document.createRange();
+        range.selectNodeContents(item.text);
+        const rects = Array.from(range.getClientRects()).filter((rect) => rect.width > 0);
+        const contentWidth = rects.length
+          ? Math.max(...rects.map((rect) => rect.right)) - item.text.getBoundingClientRect().left - (part === "I" ? 0 : offset)
+          : 0;
+        offset += Math.max(0, contentWidth);
+      }
+    });
+  }
 
-    lines.forEach((line, index) => {
-      const part = line.getAttribute("part");
-      const text = line.querySelector(".line-text");
-      if (!part || !text) return;
-
-      const prev = lines[index - 1];
-      const prevPart = prev?.getAttribute("part");
-      const prevText = prev?.querySelector(".line-text");
-      const continuesPrevious =
-        (part === "M" && prevPart === "I") ||
-        (part === "F" && (prevPart === "M" || prevPart === "I"));
-
-      if (!continuesPrevious || !prevText) return;
-
-      // .line-text is content-sized, so this is the width of the preceding
-      // fragment itself (including an earlier split indent), not the grid cell.
-      const indent = Math.max(0, prevText.getBoundingClientRect().width);
-      text.style.setProperty("--split-indent", `${indent}px`);
-      line.setAttribute("data-split-indent", String(Math.round(indent)));
+  function scheduleCriticalSplitAlignment() {
+    requestAnimationFrame(() => {
+      const critical = document.getElementById("tei-wrapper");
+      const witness = document.getElementById("witness-container");
+      if (critical) alignSplitVerses(critical);
+      if (witness) alignSplitVerses(witness);
     });
   }
 
@@ -2055,7 +2069,7 @@ edition_label: Edición crítica · prototipo
     decorateApparatus(root);
     // 3) numerazione/impaginazione
     insertLeftAlignedLineNumbers(root);
-    alignSplitVerses(root);
+    scheduleCriticalSplitAlignment();
     // 4) hover sync
     enableLineSyncHighlighting();
     root.__decoratedOnce = true;
@@ -2282,7 +2296,7 @@ edition_label: Edición crítica · prototipo
       // Visible numbering belongs to the reconstructed witness itself.
       insertLeftAlignedLineNumbers(witnessDOM, { mode: "witness" });
       assignWitnessLineNumbers(witnessDOM);
-      alignSplitVerses(witnessDOM);
+      scheduleCriticalSplitAlignment();
       enableLineSyncHighlighting();
     });
   }
@@ -2290,6 +2304,8 @@ edition_label: Edición crítica · prototipo
   // =========================
   // Boot
   // =========================
+  window.addEventListener('resize', scheduleCriticalSplitAlignment);
+  document.fonts?.ready.then(scheduleCriticalSplitAlignment);
   window.onload = function () {
     CETEIcean.getHTML5("el_marques.xml", function (data) {
       // 1) Los loci todavía pendientes de revisión permanecen en el TEI fuente,
