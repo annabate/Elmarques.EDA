@@ -266,7 +266,9 @@
       const target = getTargetAnchor(root, attr(span, "spanTo") || attr(span, "spanto"));
       if (!target) return;
       const place = attr(span, "place").toLowerCase();
-      const side = place === "right" ? "derecho" : place === "left" ? "izquierdo" : "";
+      const side = ["right", "margin-right", "right-margin"].includes(place)
+        ? "derecho"
+        : ["left", "margin-left", "left-margin"].includes(place) ? "izquierdo" : "";
       if (!side) return;
       const label = `Añadido en el margen ${side}`;
       const groupId = attr(span, "xml:id") || span.id;
