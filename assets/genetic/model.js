@@ -357,8 +357,8 @@
       additions.forEach((addition) => {
         const place = (attr(addition, "place") || "").toLowerCase().trim();
         const tokens = place.split(/[\\s,;]+/);
-        const left = tokens.some((token) => ["left", "margin-left", "left-margin"].includes(token));
-        const right = tokens.some((token) => ["right", "margin-right", "right-margin"].includes(token));
+        const left = tokens.some((token) => ["margin-left", "left-margin"].includes(token));
+        const right = tokens.some((token) => ["margin-right", "right-margin"].includes(token));
         if (left === right) return;
         const label = left
           ? "Añadido en el margen izquierdo"
