@@ -1170,6 +1170,7 @@
 
   function setupToolbar() {
     reconstructionSelect.addEventListener("change", renderGenetic);
+    cleanTextToggle.addEventListener("change", renderGenetic);
     layerInputs.forEach((input) =>
       input.addEventListener("change", renderGenetic),
     );
