@@ -287,8 +287,10 @@
       const lines = groups.get(id) || [];
       lines.forEach((item) => {
         const layer = item.dataset.marginLayer || "A2";
-        const layerColor = getComputedStyle(item).getPropertyValue(`--genetic-${layer.toLowerCase()}-highlight`).trim();
-        item.style.backgroundColor = layerColor || (layer === "A1" ? "rgba(70, 140, 210, 0.18)" : layer === "B" ? "rgba(130, 100, 170, 0.18)" : "rgba(220, 130, 70, 0.18)");
+        const css = getComputedStyle(item);
+        const phase = ["A1", "A2", "B"].includes(layer) ? layer.toLowerCase() : "a2";
+        const phaseSoft = css.getPropertyValue(`--${phase}-soft`).trim();
+        item.style.backgroundColor = phaseSoft || "transparent";
         item.style.borderRadius = "3px";
       });
       line.title = line.dataset.marginLabel || "";
