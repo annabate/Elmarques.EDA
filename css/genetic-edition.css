@@ -1336,3 +1336,10 @@ tei-l[part="I"][n$="0"]::after,
 tei-l[part="I"][n$="5"]::after,
 tei-l[part="M"][n$="0"]::after,
 tei-l[part="M"][n$="5"]::after { content: none; }
+
+/* Long-span deletions retain the B phase's visual language. */
+.genetic-intervention-view tei-l.genetic-span-deleted-b {
+  text-decoration-line: line-through;
+  text-decoration-color: var(--b);
+  text-decoration-thickness: 1.5px;
+}
