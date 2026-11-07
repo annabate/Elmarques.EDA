@@ -93,7 +93,8 @@ body.critical-edition {
   white-space: nowrap;
 }
 
-#witness-select {
+#witness-select,
+#act-select {
   min-width: 10.5rem;
   max-width: 17rem;
   height: 2rem;
@@ -106,6 +107,7 @@ body.critical-edition {
 }
 
 #witness-select:focus-visible,
+#act-select:focus-visible,
 button:focus-visible,
 .lem-apparatus:focus-visible {
   outline: 2px solid rgba(63, 74, 70, 0.35);
