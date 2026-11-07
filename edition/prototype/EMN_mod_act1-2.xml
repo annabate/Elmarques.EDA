@@ -2568,7 +2568,7 @@
         </sp>
         <stage xml:id="st_p37"><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqs y Mendoza</del><add ana="#layer-B">El Marqués y Mendoza</add></mod></stage>
         <sp who="#El_marqués">
-          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">maMarqués</add></mod></speaker>
+          <speaker><mod type="subst" ana="#layer-B" change="#stage-B"><del ana="#layer-A0">Marqués</del><add ana="#layer-B">Conde</add></mod></speaker>
           <l xml:id="v851_p38" n="851" part="I">¡Brava fiesta!</l>
         </sp>
         <sp who="#Mendoza">
