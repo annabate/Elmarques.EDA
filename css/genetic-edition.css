@@ -1325,3 +1325,9 @@ tei-addspan::after {
 .cumulative-reconstruction tei-mod.reconstruction-earlier .genetic-event-marker {
   display: none;
 }
+
+/* Clean reading toggle stays independent of the genetic stage menu. */
+.clean-text-toggle { display: flex; align-items: center; gap: .45rem; white-space: nowrap; font-size: .83rem; }
+.clean-text-toggle input { accent-color: #765f48; }
+.clean-text-toggle.is-disabled { opacity: .48; }
+.clean-text-view tei-del, .clean-text-view tei-add { background: none !important; text-decoration: none !important; }
