@@ -11,10 +11,10 @@
   --edition-accent: var(--sch-accent);
   --a1: #c85d00;
   --a1-soft: #ffd4ad;
-  --a2: #6a46b8;
-  --a2-soft: #ddd0ff;
-  --b: #087a57;
-  --b-soft: #c4eadb;
+  --a2: #5632aa;
+  --a2-soft: #c8b4fa;
+  --b: #006b75;
+  --b-soft: #9be1e5;
 }
 
 * {
@@ -1331,3 +1331,9 @@ tei-addspan::after {
 .clean-text-toggle input { accent-color: #765f48; }
 .clean-text-toggle.is-disabled { opacity: .48; }
 .clean-text-view tei-del, .clean-text-view tei-add { background: none !important; text-decoration: none !important; }
+
+/* Stronger visual separation: A2 violet, B cyan-teal. */
+.genetic-intervention-view tei-mod.event-a2 > tei-add,
+.genetic-intervention-view tei-mod.event-a2 > tei-del { background-color: #e0d4ff; }
+.genetic-intervention-view tei-mod.event-b > tei-add,
+.genetic-intervention-view tei-mod.event-b > tei-del { background-color: #b6edf0; }
