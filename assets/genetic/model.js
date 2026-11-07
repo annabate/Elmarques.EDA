@@ -285,6 +285,25 @@
     });
   }
 
+  // Mark the text covered by a deletion span, including spans across speeches.
+  // Structural span elements themselves remain invisible in the interface.
+  function decorateDeletionSpans(root) {
+    root.querySelectorAll("tei-delspan").forEach((span) => {
+      const layer = eventLayer(span);
+      const target = getTargetAnchor(root, attr(span, "spanTo") || attr(span, "spanto"));
+      if (!target || !layer) return;
+      const range = document.createRange();
+      try {
+        range.setStartAfter(span);
+        range.setEndBefore(target);
+      } catch (_) { return; }
+      root.querySelectorAll("tei-l").forEach((line) => {
+        if (!range.intersectsNode(line)) return;
+        line.classList.add("genetic-span-deleted", `genetic-span-deleted-${layer.toLowerCase()}`);
+      });
+    });
+  }
+
   function decorateVisibleEvents(root) {
     root.querySelectorAll("tei-mod").forEach((mod) => {
       const layer = eventLayer(mod);
@@ -365,6 +384,7 @@
     });
 
     decorateMarginalGroups(root);
+    decorateDeletionSpans(root);
     root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
       const layer = eventLayer(span);
       if (!layer) return;
