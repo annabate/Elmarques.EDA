@@ -299,6 +299,45 @@
     });
   }
 
+  // Align split verse continuations with the actual preceding text width.
+  // Measure the rendered reading: fonts, scale and genetic marks may vary.
+  function alignSplitVerses(root) {
+    const lines = Array.from(root.querySelectorAll("tei-l[part]"));
+    const groups = new Map();
+    lines.forEach((line) => {
+      const part = (line.getAttribute("part") || "").toUpperCase();
+      if (!["I", "M", "F"].includes(part)) return;
+      const number = line.getAttribute("n");
+      if (!number) return;
+      if (!groups.has(number)) groups.set(number, []);
+      groups.get(number).push({ line, part });
+    });
+    groups.forEach((entries) => {
+      let accumulated = 0;
+      for (const part of ["I", "M", "F"]) {
+        const entry = entries.find((item) => item.part === part);
+        if (!entry) continue;
+        const line = entry.line;
+        line.style.paddingLeft = part === "I" ? "" : accumulated + "px";
+        const range = document.createRange();
+        range.selectNodeContents(line);
+        const rects = Array.from(range.getClientRects()).filter((rect) => rect.width > 0);
+        const lineRect = line.getBoundingClientRect();
+        const end = rects.length ? Math.max(...rects.map((rect) => rect.right)) : lineRect.left + accumulated;
+        accumulated = Math.max(accumulated, end - lineRect.left);
+      }
+    });
+  }
+
+  function scheduleSplitVerseAlignment() {
+    requestAnimationFrame(() => {
+      [geneticPane, diplomaticPane].forEach((pane) => {
+        const root = pane.firstElementChild;
+        if (root) alignSplitVerses(root);
+      });
+    });
+  }
+
   function prepareRenderedRoot(root) {
     decorateNotes(root);
     decorateLines(root);
@@ -343,6 +382,7 @@
 
     clearPane(geneticPane);
     geneticPane.appendChild(prepareRenderedRoot(rendered));
+    scheduleSplitVerseAlignment();
   }
 
   function renderDiplomatic() {
@@ -351,6 +391,7 @@
     diplomaticPane.appendChild(
       prepareRenderedRoot(diplomaticSource.cloneNode(true)),
     );
+    scheduleSplitVerseAlignment();
   }
 
   function numericVerse(value) {
@@ -946,6 +987,7 @@
             textScales.set(target.id, next);
             target.style.setProperty("--text-scale", String(next));
             target.dataset.textScale = String(next);
+            scheduleSplitVerseAlignment();
           });
         });
       });
@@ -1211,6 +1253,12 @@
     });
 
     setupPaneDragging();
+    if (typeof ResizeObserver !== "undefined") {
+      const splitVerseObserver = new ResizeObserver(scheduleSplitVerseAlignment);
+      splitVerseObserver.observe(geneticPane);
+      splitVerseObserver.observe(diplomaticPane);
+    }
+    document.fonts?.ready.then(scheduleSplitVerseAlignment);
     setupTextSizing();
     setupViewSynchronization();
     updateSearchControls();
