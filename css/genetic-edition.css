@@ -1337,9 +1337,22 @@ tei-l[part="I"][n$="5"]::after,
 tei-l[part="M"][n$="0"]::after,
 tei-l[part="M"][n$="5"]::after { content: none; }
 
-/* Long-span deletions retain the B phase's visual language. */
+/* Extended B deletions use the same strike and green highlight as
+   individual <del> readings; no separate graphic convention. */
 .genetic-intervention-view tei-l.genetic-span-deleted-b {
-  text-decoration-line: line-through;
+  color: #8c8277;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
   text-decoration-color: var(--b);
-  text-decoration-thickness: 1.5px;
+  background-color: #c9efd2;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+/* The reconstructed B reading retains restored verses without a strike. */
+.genetic-intervention-view.cumulative-reconstruction[data-reconstruction="B"]
+  tei-l.genetic-span-restored-b {
+  color: inherit;
+  text-decoration: none;
+  background: linear-gradient(transparent 62%, color-mix(in srgb, var(--b-soft) 68%, #fff) 62%);
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--b) 75%, transparent);
 }
