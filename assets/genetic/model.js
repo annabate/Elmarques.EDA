@@ -213,6 +213,27 @@
     return root;
   }
 
+  // Reconstruct the resulting reading, not the momentary false starts.
+  // Immediate A1 corrections belong to the first writing state.
+  function renderCleanStage(sourceRoot, stage) {
+    const rank = LAYER_RANK[stage];
+    if (rank === undefined || stage === "A0") throw new Error("Invalid clean-text stage");
+    const root = normalizeXmlIds(sourceRoot.cloneNode(true));
+    Array.from(root.querySelectorAll("tei-mod"))
+      .sort((a, b) => depth(b) - depth(a))
+      .forEach((mod) => {
+        const layer = eventLayer(mod);
+        const eventRank = LAYER_RANK[layer];
+        replaceWithReading(mod, eventRank === undefined || eventRank <= rank);
+      });
+    resolveSpans(root, rank);
+    root.querySelectorAll("tei-add, tei-del").forEach((el) => el.replaceWith(...Array.from(el.childNodes)));
+    pruneEmptyStructures(root);
+    root.classList.add("reconstructed-text", "clean-text-view");
+    root.dataset.reconstruction = stage;
+    return root;
+  }
+
   function collapseUnselectedMods(root, activeLayers) {
     const active = new Set(activeLayers);
     const maxActiveRank = Math.max(
@@ -378,6 +399,7 @@
     eventLayer,
     bFunction,
     materializeStage,
+    renderCleanStage,
     renderInterventions,
     normalizeXmlIds,
     layerCounts,
