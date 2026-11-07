@@ -3645,18 +3645,18 @@
           <l xml:id="v1318_p561" n="1318">acero ponme al pecho,</l>
           <l xml:id="v1319_p562" n="1319"><mod type="subst" ana="#layer-A1" change="#stage-A1" hand="#Lope"><del ana="#layer-A0">de çera(…) q?</del><add ana="#layer-A1">a tantas pruebas de tormentos hecho;</add></mod></l>
           <l xml:id="v1320_p563" n="1320">di que quieres matarme...</l>
-          <l xml:id="v1321_p564" n="1321" part="I"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-A2">¡Ay si quisieras tú!</add></mod></l>
+          <l xml:id="v1321_p564" n="1321" part="I"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">Y ojalá que</del><add ana="#layer-A2">¡Ay si</add></mod> quisieras<mod type="add" ana="#layer-A2" change="#stage-A2" hand="#Lope"><add ana="#layer-A2"> tú!</add></mod></l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
-          <l xml:id="v1321_p565" n="1321" part="F"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-A2">Ya el fin aguardo.</add></mod></l>
+          <l xml:id="v1321_p565" n="1321" part="F"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">¿A qué efecto?</del><add ana="#layer-A2">Ya el fin aguardo.</add></mod></l>
         </sp>
         <sp who="#Feliciana">
           <speaker>Feliciana</speaker>
-          <l xml:id="v1322_p566" n="1322"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-A2">Quiero a voces quejarme,</add></mod></l>
-          <l xml:id="v1323_p567" n="1323"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-A2">por que salgan a verme. Tú, Bernardo,</add></mod></l>
-          <l xml:id="v1324_p568" n="1324"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-A2">huirás a la posada</add></mod></l>
-          <l xml:id="v1325_p569" n="1325"><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">[lectura anterior]</del><add ana="#layer-A2">donde me aguardarás muerta o vengada.</add></mod></l>
+          <l xml:id="v1322_p566" n="1322">Quiero a voces quejarme,</l>
+          <l xml:id="v1323_p567" n="1323">por que salgan a verme. Tú, <mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">discreto</del><add ana="#layer-A2">Bernardo</add></mod>,</l>
+          <l xml:id="v1324_p568" n="1324">huirás a la posada</l>
+          <l xml:id="v1325_p569" n="1325">donde me aguard<mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0">e</del><add ana="#layer-A2">a</add></mod><mod type="subst" ana="#layer-A2" change="#stage-A2" hand="#Lope"><del ana="#layer-A0"> o muerta o remediada</del><add ana="#layer-A2">rás muerta o vengada</add></mod>.</l>
         </sp>
         <sp who="#Bernardo">
           <speaker>Bernardo</speaker>
