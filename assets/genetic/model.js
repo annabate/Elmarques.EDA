@@ -288,8 +288,10 @@
   // Mark the text covered by a deletion span, including spans across speeches.
   // Structural span elements themselves remain invisible in the interface.
   function decorateDeletionSpans(root) {
-    root.querySelectorAll("tei-delspan").forEach((span) => {
+    root.querySelectorAll("tei-delspan, tei-addspan").forEach((span) => {
       const layer = eventLayer(span);
+      const isDeletion = span.tagName.toLowerCase() === "tei-delspan";
+      if (!isDeletion && !attr(span, "xml:id").startsWith("Brestore_")) return;
       const target = getTargetAnchor(root, attr(span, "spanTo") || attr(span, "spanto"));
       if (!target || !layer) return;
       const range = document.createRange();
@@ -299,7 +301,8 @@
       } catch (_) { return; }
       root.querySelectorAll("tei-l").forEach((line) => {
         if (!range.intersectsNode(line)) return;
-        line.classList.add("genetic-span-deleted", `genetic-span-deleted-${layer.toLowerCase()}`);
+        line.classList.add(isDeletion ? "genetic-span-deleted" : "genetic-span-restored",
+          `genetic-span-${isDeletion ? "deleted" : "restored"}-${layer.toLowerCase()}`);
       });
     });
   }
